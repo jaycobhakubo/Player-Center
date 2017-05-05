@@ -232,6 +232,7 @@
     </Compile>
     <Content Include="SQL\Schema\Trigger_trigLogRafflePrize.sql" />
     <Content Include="US2100.txt" />
+    <Content Include="_ForMyEyesOnly\DBSupport.txt" />
     <Content Include="_ForMyEyesOnly\Messages.txt" />
     <Content Include="_ForMyEyesOnly\Ref.txt" />
     <Content Include="_ForMyEyesOnly\UI.txt" />

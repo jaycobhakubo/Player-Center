@@ -1,0 +1,4 @@
+﻿GameTrans
+GameTransDetail
+PointBalance
+PlayerClubPoints

@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddPlayerFailed" xml:space="preserve">
+    <value>Falla al agregar jugador en el servidor. Razón: {0}</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ArrowDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\ArrowDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\ArrowUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueButtonDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\BlueButtonDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BlueButtonUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\BlueButtonUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Changes" xml:space="preserve">
+    <value>Deshacer los cambios hechos?</value>
+  </data>
+  <data name="ClearPlayerRaffle" xml:space="preserve">
+    <value>Falla al limpiar la Rifa en el servidor. Razón: {0}</value>
+  </data>
+  <data name="CurrentRaffleWinner" xml:space="preserve">
+    <value>Ganador de esta Rifa!</value>
+  </data>
+  <data name="FindPlayerBack1024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\FindPlayerBack1024.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FindPlayerBack800" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\FindPlayerBack800.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FindPlayerFormNoPlayer" xml:space="preserve">
+    <value>No se selecciono jugador.</value>
+  </data>
+  <data name="GetDeviceInfoFailed" xml:space="preserve">
+    <value>Falla al recuperar el numero de dispositivo y/o maquina. Razón: {0}</value>
+  </data>
+  <data name="GetLastPlayerRaffleWinner" xml:space="preserve">
+    <value>Falla al recuperar el ultimo ganador de la rifa del servidor.  Razón: {0}</value>
+  </data>
+  <data name="GetPlayerCompsFailed" xml:space="preserve">
+    <value>Falla al recuperar del servidor información de premios del jugador. Razón: {0}</value>
+  </data>
+  <data name="GetPlayerFailed" xml:space="preserve">
+    <value>Falla al recuperar del servidor información del jugador. Razón: {0}</value>
+  </data>
+  <data name="GetPlayerListFailed" xml:space="preserve">
+    <value>Falla al recuperar del servidor información de el(los) jugador(es). Razón: {0}</value>
+  </data>
+  <data name="GetPlayerTiersFailed" xml:space="preserve">
+    <value>Falla al recuperar la información del nivel de jugador del servidor. Razón: {0}</value>
+  </data>
+  <data name="GetSettingsFailed" xml:space="preserve">
+    <value>Falla al recuperar del servidor información de esta estación de trabajo. Razón: {0}</value>
+  </data>
+  <data name="InvalidBirthDate" xml:space="preserve">
+    <value>Cumpleaños inválido!</value>
+  </data>
+  <data name="InvalidMessageResponse" xml:space="preserve">
+    <value>Respuesta invalida {0} recibida del servidor.</value>
+  </data>
+  <data name="LastRaffleWinner" xml:space="preserve">
+    <value>Ultimo ganador de la Rifa.</value>
+  </data>
+  <data name="LoadingPlayerTiers" xml:space="preserve">
+    <value>Recuperando niveles de lealtad de jugador.</value>
+  </data>
+  <data name="LoadingWorkstationInfo" xml:space="preserve">
+    <value>Recuperando información de esta estación de trabajo.</value>
+  </data>
+  <data name="LoadPictureFailed" xml:space="preserve">
+    <value>Falla al cargar la foto del jugador. Razón: {0}</value>
+  </data>
+  <data name="LogFailed" xml:space="preserve">
+    <value>Falla al crear el registro. Razón: {0}</value>
+  </data>
+  <data name="MagCardBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\MagCardBack.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MessageName" xml:space="preserve">
+    <value>Message: {0}</value>
+  </data>
+  <data name="MessagePayloadTooSmall" xml:space="preserve">
+    <value>{0} el tamaño del mensaje es muy corto.</value>
+  </data>
+  <data name="MessagePayloadWrongSize" xml:space="preserve">
+    <value>{0} el tamaño del mensaje es incorrecto.</value>
+  </data>
+  <data name="NoNameOrCard" xml:space="preserve">
+    <value>El jugador debe tener apellido o número de tarjeta antes de grabar!</value>
+  </data>
+  <data name="NoPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\NoPic.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoPlayer" xml:space="preserve">
+    <value>No se puede establecer un jugador en blanco.</value>
+  </data>
+  <data name="NoPlayersFound" xml:space="preserve">
+    <value>Ningun jugador fue encontrado con esa tarjeta.</value>
+  </data>
+  <data name="NoRafflePlayers" xml:space="preserve">
+    <value>No hay minimo de jugadores para la Rifa.</value>
+  </data>
+  <data name="PlayerCenterError" xml:space="preserve">
+    <value>An error has occurred. The player center module will now shutdown. Error: {0}</value>
+  </data>
+  <data name="PlayerCenterName" xml:space="preserve">
+    <value>Player Center</value>
+  </data>
+  <data name="PlayerMgmtBack1024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\PlayerMgmtBack1024.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerMgmtBack800" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\PlayerMgmtBack800.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RaffleButtonText" xml:space="preserve">
+    <value>Rifa</value>
+  </data>
+  <data name="RaffleInProgress" xml:space="preserve">
+    <value>Rifa en progreso, favor de esperar a que termine la rifa previa.</value>
+  </data>
+  <data name="RaffleNotStarted" xml:space="preserve">
+    <value>No se han realizado Rifas.</value>
+  </data>
+  <data name="RunPlayerRaffle" xml:space="preserve">
+    <value>Falla al ejecutar la Rifa en el servidor. Razón: {0}</value>
+  </data>
+  <data name="SavePictureFailed" xml:space="preserve">
+    <value>Falla al salvar la foto del jugador. Razón: {0}</value>
+  </data>
+  <data name="SavePlayerFailed" xml:space="preserve">
+    <value>Falla al salvar el jugador en el servidor. Razón: {0}</value>
+  </data>
+  <data name="ServerCommFailed" xml:space="preserve">
+    <value>La comunicacion con el servidor se ha perdido.</value>
+  </data>
+  <data name="ServerErrorCode" xml:space="preserve">
+    <value>El servidor regreso codigo de error: {0}</value>
+  </data>
+  <data name="ShuttingDown" xml:space="preserve">
+    <value>Dando de baja el sistema...</value>
+  </data>
+  <data name="SpacebarDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\SpacebarDown.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpacebarUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\SpacebarUp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StartingPlayerCenter" xml:space="preserve">
+    <value>Starting Player Center...</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión </value>
+  </data>
+  <data name="WaitFormFindingPlayers" xml:space="preserve">
+    <value>Buscando jugadores, favor de esperar.</value>
+  </data>
+  <data name="WaitFormGettingPlayer" xml:space="preserve">
+    <value>Leyendo datos del jugador, favor de esperar.</value>
+  </data>
+  <data name="WaitFormSavingPlayer" xml:space="preserve">
+    <value>Salvando jugador, favor de esperar.</value>
+  </data>
+  <data name="ModuleDescription" xml:space="preserve">
+    <value>Add, Edit and Delete player data such as membership, game play and rewards info.</value>
+  </data>
+  <data name="InvalidPlayerListBirthday" xml:space="preserve">
+    <value>Birthday must be a valid date range!</value>
+  </data>
+  <data name="InvalidPlayerListBirthdayBackward" xml:space="preserve">
+    <value>From birthday must be before To birthday!</value>
+  </data>
+  <data name="InvalidPlayerListLastVisit" xml:space="preserve">
+    <value>From last visit must be before To last visit!</value>
+  </data>
+  <data name="InvalidPlayerListPoints" xml:space="preserve">
+    <value>Point balance must be a valid number range!</value>
+  </data>
+  <data name="InvalidPlayerListPointsBackward" xml:space="preserve">
+    <value>Min. points must be less than or equal to Max. points!</value>
+  </data>
+  <data name="InvalidPlayerListSpend" xml:space="preserve">
+    <value>Spend must be a valid number range!</value>
+  </data>
+  <data name="InvalidPlayerListSpendBackward" xml:space="preserve">
+    <value>From spend must be less than or equal to To spend!</value>
+  </data>
+  <data name="InvalidPlayerListSpendDateBackward" xml:space="preserve">
+    <value>From spend date must be before To spend date!</value>
+  </data>
+  <data name="GetReportFailed" xml:space="preserve">
+    <value>Failed to retrieve the report from the server. Reason: {0}</value>
+  </data>
+  <data name="WaitFormExportingList" xml:space="preserve">
+    <value>Exporting list, please wait.</value>
+  </data>
+  <data name="WaitFormGettingReport" xml:space="preserve">
+    <value>Generating player report, please wait.</value>
+  </data>
+  <data name="MagLoadError" xml:space="preserve">
+    <value>Failed to load the magnetic card reader. Reason: {0}</value>
+  </data>
+  <data name="NoPlayersExported" xml:space="preserve">
+    <value>No players matched the criteria you specified.</value>
+  </data>
+  <data name="PlayersExported" xml:space="preserve">
+    <value>{0} players exported.</value>
+  </data>
+  <data name="CreatePlayerFailed" xml:space="preserve">
+    <value>Failed to created the player. Reason: {0}</value>
+  </data>
+  <data name="InvalidPlayerListStatus" xml:space="preserve">
+    <value>Please select a status.</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>A&amp;ctivate</value>
+  </data>
+  <data name="Deactivate" xml:space="preserve">
+    <value>Dea&amp;ctivate</value>
+  </data>
+  <data name="UnnamedStatusEntries" xml:space="preserve">
+    <value>There are unnamed entries remaining, please name them.</value>
+  </data>
+  <data name="GenderFemale" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="GenderMale" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="InvalidSetting" xml:space="preserve">
+    <value>Invalid setting {0}. Value: {1}.</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="DayPlayedOption" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="DayPlayedOption1" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="DayPlayedOption2" xml:space="preserve">
+    <value>&gt;=</value>
+  </data>
+  <data name="DayPlayedOption3" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="DayPlayedOption4" xml:space="preserve">
+    <value>&lt;=</value>
+  </data>
+</root>

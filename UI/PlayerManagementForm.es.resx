@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="m_findPlayerButton.Text" xml:space="preserve">
+    <value>Buscar   Jugador</value>
+  </data>
+  <data name="m_newPlayerButton.Text" xml:space="preserve">
+    <value>Jugador   Nuevo</value>
+  </data>
+  <data name="m_assignCardButton.Text" xml:space="preserve">
+    <value>Asignar   Tarjeta</value>
+  </data>
+  <data name="m_saveChangesButton.Text" xml:space="preserve">
+    <value>Guardar Cambios</value>
+  </data>
+  <data name="m_cancelChangesButton.Text" xml:space="preserve">
+    <value>Cancelar Cambios</value>
+  </data>
+  <data name="m_setPlayerButton.Text" xml:space="preserve">
+    <value>Poner Como Jugador Actual</value>
+  </data>
+  <data name="m_exitButton.Text" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="m_takePictureButton.Text" xml:space="preserve">
+    <value>Tomar Foto</value>
+  </data>
+  <data name="m_firstNameLabel.Text" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="m_middleInitialLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 15</value>
+  </data>
+  <data name="m_middleInitialLabel.Text" xml:space="preserve">
+    <value>Inicial</value>
+  </data>
+  <data name="m_lastNameLabel.Text" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="m_birthDateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 15</value>
+  </data>
+  <data name="m_birthDateLabel.Text" xml:space="preserve">
+    <value>Fecha de Nacimiento</value>
+  </data>
+  <data name="m_genderLabel.Text" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="m_phoneNumLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 15</value>
+  </data>
+  <data name="m_phoneNumLabel.Text" xml:space="preserve">
+    <value>Núm. de teléfono</value>
+  </data>
+  <data name="m_pinNumLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 15</value>
+  </data>
+  <data name="m_pinNumLabel.Text" xml:space="preserve">
+    <value>Num. NIP</value>
+  </data>
+  <data name="m_socialSecurityNumLabel.Text" xml:space="preserve">
+    <value>R.F.C.</value>
+  </data>
+  <data name="m_emailLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 15</value>
+  </data>
+  <data name="m_emailLabel.Text" xml:space="preserve">
+    <value>Dirección de Correo Electronico</value>
+  </data>
+  <data name="m_playerIdentLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 15</value>
+  </data>
+  <data name="m_playerIdentLabel.Text" xml:space="preserve">
+    <value>Identificación</value>
+  </data>
+  <data name="m_commentsLabel.Text" xml:space="preserve">
+    <value>Comentarios</value>
+  </data>
+  <data name="m_address1Label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 15</value>
+  </data>
+  <data name="m_address1Label.Text" xml:space="preserve">
+    <value>Dirección 1</value>
+  </data>
+  <data name="m_address2Label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 15</value>
+  </data>
+  <data name="m_address2Label.Text" xml:space="preserve">
+    <value>Dirección 2</value>
+  </data>
+  <data name="m_cityLabel.Text" xml:space="preserve">
+    <value>Ciudad</value>
+  </data>
+  <data name="m_stateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 15</value>
+  </data>
+  <data name="m_stateLabel.Text" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="m_zipCodeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 15</value>
+  </data>
+  <data name="m_zipCodeLabel.Text" xml:space="preserve">
+    <value>Código Postal</value>
+  </data>
+  <data name="m_countryLabel.Text" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="m_pointsBalanceLabel.Text" xml:space="preserve">
+    <value>Puntos</value>
+  </data>
+  <data name="m_lastVisitLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 15</value>
+  </data>
+  <data name="m_lastVisitLabel.Text" xml:space="preserve">
+    <value>Ultima Visita</value>
+  </data>
+  <data name="m_joinDateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 15</value>
+  </data>
+  <data name="m_joinDateLabel.Text" xml:space="preserve">
+    <value>Fecha de Alta</value>
+  </data>
+  <data name="m_visitCountLabel.Text" xml:space="preserve">
+    <value>Visitas</value>
+  </data>
+  <data name="m_playerIdLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 15</value>
+  </data>
+  <data name="m_playerIdLabel.Text" xml:space="preserve">
+    <value>Núm. Jugador</value>
+  </data>
+  <data name="m_magCardNumLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 15</value>
+  </data>
+  <data name="m_magCardNumLabel.Text" xml:space="preserve">
+    <value>Núm. de Tarjeta Mágnetica</value>
+  </data>
+  <data name="m_playerTierLabel.Text" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+</root>

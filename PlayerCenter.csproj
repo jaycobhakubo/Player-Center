@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA9C5336-0D07-4E3D-875C-4733331E1965}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GTI.Modules.PlayerCenter</RootNamespace>
+    <AssemblyName>PlayerCenter</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>PlayerCenterKey.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <StartupObject>
+    </StartupObject>
+    <ApplicationIcon>Res\Players.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>http://localhost/PlayerCenter/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="IDAutomation.NetAssembly, Version=6.7.9.0, Culture=neutral, PublicKeyToken=5fc6adb61ca442c5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLLs\ManagedEliteModule\IDAutomation.NetAssembly.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\IGTIModule.cs" />
+    <Compile Include="Business\PlayerCenter.cs" />
+    <Compile Include="Business\PlayerCenterException.cs" />
+    <Compile Include="Business\PlayerCenterModule.cs" />
+    <Compile Include="Business\PlayerCenterSettings.cs" />
+    <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
+    <Compile Include="UI\CCBoxItem.cs" />
+    <Compile Include="UI\CheckedComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\ClearPlayerRaffleMessage.cs" />
+    <Compile Include="Data\CreateNewPlayerMessage.cs" />
+    <Compile Include="Data\DataPreviousWinner.cs" />
+    <Compile Include="Data\DataRafflePrizes.cs" />
+    <Compile Include="Data\GetLastPlayerRaffleWinnerMessage.cs" />
+    <Compile Include="Data\GetOperatorPlayerStatusList.cs" />
+    <Compile Include="Data\GetPlayerListDefinition.cs" />
+    <Compile Include="Data\GetPlayerListDetail.cs" />
+    <Compile Include="Data\GetPlayerListReportMessage.cs" />
+    <Compile Include="Data\GetRaffleDelaySettings.cs" />
+    <Compile Include="Data\GetRaffleInformation.cs" />
+    <Compile Include="Data\GetRafflePlayerDefinitions.cs" />
+    <Compile Include="UI\ListBoxSearchType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Data\RaffleSettings.cs" />
+    <Compile Include="Data\RunPlayerRaffle.cs" />
+    <Compile Include="Data\SetOperatorPlayerStatus.cs" />
+    <Compile Include="Data\SetPlayerDataMessage.cs" />
+    <Compile Include="Data\SetPlayerImageMessage.cs" />
+    <Compile Include="Data\SetPlayerRaffleDefinitions.cs" />
+    <Compile Include="Data\SetPlayerList.cs" />
+    <Compile Include="Data\SetPlayerStatusCode.cs" />
+    <Compile Include="Data\GetPlayerLocation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.es.Designer.cs">
+      <DependentUpon>Resources.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Content Include="SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
+    <Content Include="SQL\Schema\Table_PlayerRafflesPrizes.sql" />
+    <Compile Include="UI\ActiveStatusEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ActiveStatusEditor.designer.cs">
+      <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MCPFindPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MCPFindPlayerForm.Designer.cs">
+      <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MCPPlayerManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MCPPlayerManagementForm.Designer.cs">
+      <DependentUpon>MCPPlayerManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FindPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FindPlayerForm.Designer.cs">
+      <DependentUpon>FindPlayerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerForm.Designer.cs">
+      <DependentUpon>PlayerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayerGroupListEnterOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerGroupListEnterOrEdit.Designer.cs">
+      <DependentUpon>PlayerGroupListEnterOrEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerListForm.Designer.cs">
+      <DependentUpon>PlayerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayerLoyaltyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerLoyaltyForm.Designer.cs">
+      <DependentUpon>PlayerLoyaltyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PlayerManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerManagementForm.Designer.cs">
+      <DependentUpon>PlayerManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Raffle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Raffle.Designer.cs">
+      <DependentUpon>Raffle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TakePIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TakePIN.Designer.cs">
+      <DependentUpon>TakePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ViewRaffleWinnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ViewRaffleWinnerForm.Designer.cs">
+      <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
+    </Compile>
+    <Content Include="SQL\Schema\Trigger_trigLogRafflePrize.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ActiveStatusEditor.resx">
+      <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MCPFindPlayerForm.es.resx">
+      <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MCPFindPlayerForm.resx">
+      <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MCPPlayerManagementForm.es.resx">
+      <DependentUpon>MCPPlayerManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MCPPlayerManagementForm.resx">
+      <DependentUpon>MCPPlayerManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindPlayerForm.es.resx">
+      <DependentUpon>FindPlayerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FindPlayerForm.resx">
+      <DependentUpon>FindPlayerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerForm.resx">
+      <DependentUpon>PlayerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerGroupListEnterOrEdit.resx">
+      <DependentUpon>PlayerGroupListEnterOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerListForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PlayerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerLoyaltyForm.resx">
+      <DependentUpon>PlayerLoyaltyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerManagementForm.es.resx">
+      <DependentUpon>PlayerManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerManagementForm.resx">
+      <DependentUpon>PlayerManagementForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Raffle.resx">
+      <DependentUpon>Raffle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TakePIN.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TakePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ViewRaffleWinnerForm.es.resx">
+      <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ViewRaffleWinnerForm.resx">
+      <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\FindPlayerBack800.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\FindPlayerBack1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\PlayerMgmtBack800.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\PlayerMgmtBack1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\SpacebarDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\SpacebarUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\NoPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\BlueButtonUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\BlueButtonDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArrowDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArrowUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\MagCardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ViewRaffleWinnerBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\LoadingBack1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\LoadingBack800.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PlayerCenterKey.snk" />
+    <None Include="Res\Waiting.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArrUP32.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArrDN32.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\BG00.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\800x600searchBG2007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Reset50x42UP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArDn50x42DN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArDn50x42UP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArUp50x42DN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\ArUp50x42UP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\Reset50x42DN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\PlayerScreen1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\TouchBlueButtonDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Res\TouchBlueButtonUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Res\Players.ico" />
+    <None Include="Res\PlayerScreenCredits1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DLLs\EliteBase\EliteBase.csproj">
+      <Project>{D4D6E9F2-A627-413E-9B45-A20E29680A84}</Project>
+      <Name>EliteBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\GTIControls\GTIControls.csproj">
+      <Project>{A2B9C7C4-AE7E-48DC-B39C-C9442CF017F6}</Project>
+      <Name>GTIControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DLLs\ManagedEliteModule\ManagedEliteModule.csproj">
+      <Project>{308EF933-6B4E-48B2-9C54-85318FE50C63}</Project>
+      <Name>ManagedEliteModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -370,4 +370,6 @@ glob:include/sexpat/sexpat.h
 info/.+\.txt$
 ^build
 
+obj/
+
 #Testing

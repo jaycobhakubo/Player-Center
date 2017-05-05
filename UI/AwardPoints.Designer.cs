@@ -98,6 +98,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.cancelImageButton.Location = new System.Drawing.Point(175, 169);
             this.cancelImageButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.cancelImageButton.Name = "cancelImageButton";
+            this.cancelImageButton.RepeatRate = 150;
+            this.cancelImageButton.RepeatWhenHeldFor = 750;
             this.cancelImageButton.ShowFocus = false;
             this.cancelImageButton.Size = new System.Drawing.Size(133, 50);
             this.cancelImageButton.TabIndex = 3;
@@ -117,10 +119,12 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.Location = new System.Drawing.Point(12, 169);
             this.acceptImageButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.acceptImageButton.Name = "acceptImageButton";
+            this.acceptImageButton.RepeatRate = 150;
+            this.acceptImageButton.RepeatWhenHeldFor = 750;
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
             this.acceptImageButton.TabIndex = 2;
-            this.acceptImageButton.Text = "&Accept";
+            this.acceptImageButton.Text = "&Hello";
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
             // 
@@ -137,7 +141,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblErrorText.Text = "Pins do not match.";
             this.lblErrorText.Visible = false;
             // 
-            // TakePIN
+            // AwardPoints
             // 
             this.AcceptButton = this.acceptImageButton;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -158,7 +162,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TakePIN";
+            this.Name = "AwardPoints";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

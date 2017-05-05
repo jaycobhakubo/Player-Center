@@ -912,7 +912,6 @@ namespace GTI.Modules.PlayerCenter.UI
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.imageButton1);
             this.groupBox1.Controls.Add(this.m_noPic);
             this.groupBox1.Controls.Add(this.m_playerPicture);
             resources.ApplyResources(this.groupBox1, "groupBox1");
@@ -938,6 +937,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.m_saveChangesButton);
             this.Controls.Add(this.takePINImageButton);

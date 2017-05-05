@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_findPlayerButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="m_newPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -184,7 +184,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_newPlayerButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="m_cancelChangesButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_cancelChangesButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="lstReceiptNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1381,16 +1381,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;personalInfoGroupBox.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="m_noPic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="m_noPic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>5, 21</value>
   </data>
   <data name="m_noPic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 240</value>
+    <value>320, 247</value>
   </data>
   <data name="m_noPic.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -1408,7 +1408,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;m_noPic.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="txtComments.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1441,7 +1441,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_playerPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>6, 21</value>
   </data>
   <data name="m_playerPicture.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 240</value>
@@ -1465,7 +1465,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;m_playerPicture.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="commentsGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -1492,7 +1492,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;commentsGroupBox.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="receiptGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -1519,7 +1519,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;receiptGroupBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
@@ -1591,7 +1591,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="statusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2236,7 +2236,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;loyalityGroupBox.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="m_saveChangesButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2269,7 +2269,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_saveChangesButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="m_takePictureButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2302,7 +2302,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_takePictureButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="m_assignCardButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2335,7 +2335,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_assignCardButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="takePINImageButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2368,40 +2368,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;takePINImageButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="imageButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="imageButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imageButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 290</value>
-  </data>
-  <data name="imageButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imageButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 37</value>
-  </data>
-  <data name="imageButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="imageButton1.Text" xml:space="preserve">
-    <value>Award Points</value>
-  </data>
-  <data name="&gt;&gt;imageButton1.Name" xml:space="preserve">
-    <value>imageButton1</value>
-  </data>
-  <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.747, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;imageButton1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2410,7 +2377,7 @@
     <value>35, 30</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 333</value>
+    <value>331, 274</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -2428,6 +2395,39 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="imageButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="imageButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imageButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 315</value>
+  </data>
+  <data name="imageButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imageButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 37</value>
+  </data>
+  <data name="imageButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="imageButton1.Text" xml:space="preserve">
+    <value>Award Points</value>
+  </data>
+  <data name="&gt;&gt;imageButton1.Name" xml:space="preserve">
+    <value>imageButton1</value>
+  </data>
+  <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.747, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;imageButton1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

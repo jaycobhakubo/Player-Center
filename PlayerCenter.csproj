@@ -231,6 +231,8 @@
       <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
     </Compile>
     <Content Include="SQL\Schema\Trigger_trigLogRafflePrize.sql" />
+    <Content Include="US2100.txt" />
+    <Content Include="_ForMyEyesOnly\Ref.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.es.resx">

@@ -124,7 +124,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
             this.acceptImageButton.TabIndex = 2;
-            this.acceptImageButton.Text = "&Hello";
+            this.acceptImageButton.Text = "Hi";
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
             // 

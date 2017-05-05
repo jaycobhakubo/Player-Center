@@ -370,20 +370,4 @@ glob:include/sexpat/sexpat.h
 info/.+\.txt$
 ^build
 
-obj/
-
 #Testing
-bin/Debug/es/ManagedEliteModule.resources.dll
-bin/Debug/es/PlayerCenter.resources.dll
-bin/Debug/GameTech.Elite.Base.dll
-bin/Debug/GameTech.Elite.Base.pdb
-bin/Debug/GTIControls.dll
-bin/Debug/GTIControls.pdb
-bin/Debug/ManagedEliteModule.dll
-bin/Debug/ManagedEliteModule.pdb
-bin/Debug/PlayerCenter.dll
-bin/Debug/PlayerCenter.pdb
-obj/Debug/es/PlayerCenter.resources.dll
-obj/Debug/PlayerCenter.csprojResolveAssemblyReference.cache
-obj/Debug/PlayerCenter.dll
-obj/Debug/PlayerCenter.pdb

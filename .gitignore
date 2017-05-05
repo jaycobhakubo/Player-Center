@@ -371,3 +371,6 @@ info/.+\.txt$
 ^build
 
 #Testing
+bin/*.*
+bin/Debug/es/ManagedEliteModule.resources.dll
+bin/Debug/es/ManagedEliteModule.resources.dll

@@ -1,0 +1,19 @@
+﻿1.1.1  – Manually Delta Player Points
+
+This is a request message from the client to the GTIS app. The purpose of this message is to manually delta a player’s point balance.
+
+CommandID:            8041
+
+ 
+
+Request
+
+·         Player Id (int)
+
+·         Point Delta (unsigned short followed by chars)
+
+ 
+
+Response
+
+·         Return Code (int) (4 bytes)

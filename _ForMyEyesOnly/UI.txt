@@ -1,0 +1,12 @@
+﻿    Award Points button is inside of the Picture group box.
+    Maybe only display the button if a player is selected.
+        Steps to award points
+            Find player
+            Select player
+            Tap on Award Points
+    Award points box
+        Current points is probably not necessary
+        Could display the players name so the user can be sure of who they are giving the points to. 
+        Label, Points Awards could be Points to Award or Enter the number of points to award
+        Award button, Award Points would be more specific
+        Probably have to check if fractional points are allowed or not.

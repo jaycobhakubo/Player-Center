@@ -188,6 +188,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.imageButton1 = new GTI.Controls.ImageButton();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -207,6 +208,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_findPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_findPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_findPlayerButton.Name = "m_findPlayerButton";
+            this.m_findPlayerButton.RepeatRate = 150;
+            this.m_findPlayerButton.RepeatWhenHeldFor = 750;
             this.m_findPlayerButton.UseVisualStyleBackColor = false;
             this.m_findPlayerButton.Click += new System.EventHandler(this.FindPlayerClick);
             // 
@@ -219,6 +222,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_newPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_newPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_newPlayerButton.Name = "m_newPlayerButton";
+            this.m_newPlayerButton.RepeatRate = 150;
+            this.m_newPlayerButton.RepeatWhenHeldFor = 750;
             this.m_newPlayerButton.UseVisualStyleBackColor = false;
             this.m_newPlayerButton.Click += new System.EventHandler(this.NewPlayerClick);
             // 
@@ -231,6 +236,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelChangesButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_cancelChangesButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_cancelChangesButton.Name = "m_cancelChangesButton";
+            this.m_cancelChangesButton.RepeatRate = 150;
+            this.m_cancelChangesButton.RepeatWhenHeldFor = 750;
             this.m_cancelChangesButton.UseVisualStyleBackColor = false;
             this.m_cancelChangesButton.Click += new System.EventHandler(this.CancelChangesClick);
             // 
@@ -855,6 +862,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_saveChangesButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_saveChangesButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_saveChangesButton.Name = "m_saveChangesButton";
+            this.m_saveChangesButton.RepeatRate = 150;
+            this.m_saveChangesButton.RepeatWhenHeldFor = 750;
             this.m_saveChangesButton.UseVisualStyleBackColor = false;
             this.m_saveChangesButton.Click += new System.EventHandler(this.SaveChangesClick);
             // 
@@ -867,6 +876,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_takePictureButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_takePictureButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_takePictureButton.Name = "m_takePictureButton";
+            this.m_takePictureButton.RepeatRate = 150;
+            this.m_takePictureButton.RepeatWhenHeldFor = 750;
             this.m_takePictureButton.UseVisualStyleBackColor = false;
             this.m_takePictureButton.Click += new System.EventHandler(this.TakePictureClick);
             // 
@@ -879,6 +890,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_assignCardButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_assignCardButton.Name = "m_assignCardButton";
+            this.m_assignCardButton.RepeatRate = 150;
+            this.m_assignCardButton.RepeatWhenHeldFor = 750;
             this.m_assignCardButton.UseVisualStyleBackColor = false;
             this.m_assignCardButton.Click += new System.EventHandler(this.AssignCardClick);
             // 
@@ -891,18 +904,34 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.takePINImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.takePINImageButton.Name = "takePINImageButton";
+            this.takePINImageButton.RepeatRate = 150;
+            this.takePINImageButton.RepeatWhenHeldFor = 750;
             this.takePINImageButton.UseVisualStyleBackColor = false;
             this.takePINImageButton.Click += new System.EventHandler(this.takePINImageButton_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.imageButton1);
             this.groupBox1.Controls.Add(this.m_noPic);
             this.groupBox1.Controls.Add(this.m_playerPicture);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // imageButton1
+            // 
+            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.imageButton1.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.imageButton1, "imageButton1");
+            this.imageButton1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imageButton1.Name = "imageButton1";
+            this.imageButton1.RepeatRate = 150;
+            this.imageButton1.RepeatWhenHeldFor = 750;
+            this.imageButton1.UseVisualStyleBackColor = false;
             // 
             // MCPPlayerManagementForm
             // 
@@ -959,6 +988,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageLabel m_credits;
         private GTI.Controls.ImageLabel m_creditNonRef;
         private System.Windows.Forms.TextBox txtMagCard;
+        private Controls.ImageButton imageButton1;
 
        
        

@@ -47,6 +47,7 @@ D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\bin\Debug\es\ManagedElit
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\PlayerCenter.csprojResolveAssemblyReference.cache
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.Properties.Resources.resources
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.UI.ActiveStatusEditor.resources
+D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.UI.AwardPoints.resources
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.UI.MCPFindPlayerForm.resources
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.UI.MCPPlayerManagementForm.resources
 D:\fortunet\gti-gametech\Dev\ClientModules\PlayerCenter\obj\Debug\GTI.Modules.PlayerCenter.UI.FindPlayerForm.resources

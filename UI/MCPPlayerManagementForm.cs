@@ -439,6 +439,30 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         /// <summary>
+        /// Handles the take pin button click.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">An EventArgs object that contains the 
+        /// event data.</param>
+        private void takePINImageButton_Click(object sender, EventArgs e)
+        {
+            TakePIN pinform = new TakePIN();
+            Application.DoEvents();
+            pinform.ShowDialog();
+            Application.DoEvents();
+            m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
+        }
+
+        private void AwardPointsImageButton_Click(object sender, EventArgs e)
+        {
+            AwardPoints pinform = new AwardPoints();
+            Application.DoEvents();
+            pinform.ShowDialog();
+            Application.DoEvents();
+           // m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
+        }
+
+        /// <summary>
         /// Handles the save changes button click.
         /// </summary>
         /// <param name="sender">The sender of the event.</param>
@@ -591,14 +615,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_dataChanged = true;
         }
 
-        private void takePINImageButton_Click(object sender, EventArgs e)
-        {
-            TakePIN pinform = new TakePIN();
-            Application.DoEvents();
-            pinform.ShowDialog();
-            Application.DoEvents();
-            m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
-        }
+      
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

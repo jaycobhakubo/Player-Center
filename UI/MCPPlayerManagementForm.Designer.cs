@@ -187,8 +187,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton = new GTI.Controls.ImageButton();
             this.takePINImageButton = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.imageButton1 = new GTI.Controls.ImageButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -932,6 +932,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imageButton1.RepeatRate = 150;
             this.imageButton1.RepeatWhenHeldFor = 750;
             this.imageButton1.UseVisualStyleBackColor = false;
+            this.imageButton1.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 
             // MCPPlayerManagementForm
             // 

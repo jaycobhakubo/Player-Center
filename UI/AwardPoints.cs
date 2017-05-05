@@ -97,7 +97,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void PINTextBox_TextChanged(object sender, EventArgs e)
         {
             
-            lblErrorText.Visible = false;
+            //lblErrorText.Visible = false;
             var tb = sender as TextBox;
             if (tb != null)
             {
@@ -120,13 +120,13 @@ namespace GTI.Modules.PlayerCenter.UI
                         pinTextBox.Text.Length > pinLength ||
                         verifiedPINTextBox.Text.Length > pinLength)
                     {
-                        lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
-                        lblErrorText.Visible = true;
+                        //lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
+                        //lblErrorText.Visible = true;
                     }
                     else if (pinTextBox.Text.Length == verifiedPINTextBox.Text.Length)
                     {
-                        lblErrorText.Text = Resources.PinsDoNotMatchText;
-                        lblErrorText.Visible = true;
+                        //lblErrorText.Text = Resources.PinsDoNotMatchText;
+                        //lblErrorText.Visible = true;
                     }
                     //verifiedPINTextBox.BackColor = Color.LightPink;
                     acceptImageButton.Enabled = false;

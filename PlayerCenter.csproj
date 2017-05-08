@@ -150,8 +150,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Content Include="SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
-    <Content Include="SQL\Schema\Table_PlayerRafflesPrizes.sql" />
     <Compile Include="UI\ActiveStatusEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,12 +228,6 @@
     <Compile Include="UI\ViewRaffleWinnerForm.Designer.cs">
       <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
     </Compile>
-    <Content Include="SQL\Schema\Trigger_trigLogRafflePrize.sql" />
-    <Content Include="US2100.txt" />
-    <Content Include="_ForMyEyesOnly\DBSupport.txt" />
-    <Content Include="_ForMyEyesOnly\Messages.txt" />
-    <Content Include="_ForMyEyesOnly\Ref.txt" />
-    <Content Include="_ForMyEyesOnly\UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.es.resx">

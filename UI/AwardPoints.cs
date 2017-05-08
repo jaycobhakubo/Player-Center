@@ -5,36 +5,24 @@
 // International, Inc.
 #endregion
 
-//US4120 (ND) Add setting for Player PIN Required
-//DE12702 Validate pin length of verify text box
-//DE12734 Setting PIN length larger than 10 will not validate in POS
-//DE12758: POS: ND Mode cannot verify pin with leading zeros
 
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.Shared;
-using GTI.Modules.PlayerCenter.Properties; // FIX: DE3202
+using GTI.Modules.PlayerCenter.Properties; 
 
 namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class AwardPoints : EliteGradientForm
     {
         #region Member Variables
-        private string mPinNumber = string.Empty;
         private readonly bool isTouchScreen;
         private string m_playerName;
         #endregion
 
-        #region Member Properties
-
-        //DE12758:
-        public string PIN
-        {
-            get { return mPinNumber; }
-        }
-        #endregion
+     
 
         #region Constructors
         public AwardPoints(string playerName)
@@ -64,36 +52,34 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 FormBorderStyle = FormBorderStyle.FixedSingle;
-                // FIX: DE3202 - Dialog didn't match rest of the theme.
                 BackgroundImage = null;
                 DrawGradient = true;
                 acceptImageButton.ImageNormal = Resources.BlueButtonUp;
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;
                 cancelImageButton.ImagePressed = Resources.BlueButtonDown;
-                // END: DE3202
             }
         }
 
         private void Number_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var tb = sender as TextBox;
-            if (tb != null)
-            {
-                //DE12731 Able to enter "." into password box
-                if (!char.IsNumber(e.KeyChar) &&
-                    (Keys)e.KeyChar != Keys.Back)
-                {
-                    e.Handled = true;
-                }
+            //var tb = sender as TextBox;
+            //if (tb != null)
+            //{
+            //    //DE12731 Able to enter "." into password box
+            //    if (!char.IsNumber(e.KeyChar) &&
+            //        (Keys)e.KeyChar != Keys.Back)
+            //    {
+            //        e.Handled = true;
+            //    }
 
-                //US4186
-                if (tb.Text.Length >= PlayerCenterSettings.Instance.PlayerPinLength &&
-                    (Keys)e.KeyChar != Keys.Back)
-                {
-                    e.Handled = true;
-                }
-            }
+            //    //US4186
+            //    if (tb.Text.Length >= PlayerCenterSettings.Instance.PlayerPinLength &&
+            //        (Keys)e.KeyChar != Keys.Back)
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
         }
 
         private void PINTextBox_TextChanged(object sender, EventArgs e)
@@ -155,10 +141,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void pinTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                txtbxPointsAwarded.Focus();
-            }
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    txtbxPointsAwarded.Focus();
+            //}
         }
 
         #endregion

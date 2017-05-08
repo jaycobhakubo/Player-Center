@@ -25,23 +25,19 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class MCPPlayerManagementForm : GradientForm
     {
         #region Member Variables
-
-        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
+        protected bool m_playersSaved;
+        protected bool mbolCreditOnline = true;
         protected object m_lastFocus;
         protected bool m_dataChanged;
         protected Player m_player = new Player();
         protected Player m_playerToSet;
-        protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358
-        protected bool m_playersSaved;
+        protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358     
         protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
-
-        protected bool mbolCreditOnline = true;
-      //  private clsUSB mobjUSB = null;
-
+        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
         private PlayerManager m_parent;
-
+        private bool m_isManualAwardPointsEnable = false;
         private string mstrComments = String.Empty;
-        //private bool mbolClickComment;
+
 
         #endregion
 
@@ -357,49 +353,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-       // US2100/TA15670
-        private bool m_isManualAwardPointsEnable = false;
-
-        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
-        {
-            m_isManualAwardPointsEnable = isManualAwardPointsEnable;
-            if (isManualAwardPointsEnable)
-            {
-                groupBox1.Size = new Size(331, 274);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 247);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(5, 21);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = true;
-                m_btnImgAwardPointManual.BringToFront();
-            }
-            else
-            {
-                groupBox1.Size = new Size(331, 333);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 240);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(6, 44);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = false;
-                m_btnImgAwardPointManual.SendToBack();
-            }
-        }
-
-        // US2100/TA15670
-        private void HideManualAwardPointsButton()
-        {
-            groupBox1.Size = new Size(331, 333);
-            groupBox1.Location = new Point(35, 30);
-            m_playerPicture.Size = new Size(320, 240);
-            m_noPic.Size = m_playerPicture.Size;
-            m_playerPicture.Location = new Point(6, 44);
-            m_noPic.Location = m_playerPicture.Location;
-            m_btnImgAwardPointManual.Visible = false;
-            m_btnImgAwardPointManual.SendToBack();
-        }
-
         /// <summary>
         /// Handles the new player button click and clears out
         /// the current player.
@@ -518,11 +471,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
       
-            AwardPoints pinform = new AwardPoints(GetPlayerName());
+            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName());
             Application.DoEvents();
-            pinform.ShowDialog();
-            Application.DoEvents();
-           // m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
+            ManualPointsAward.ShowDialog();
+            Application.DoEvents();     
         }
 
         /// <summary>
@@ -531,7 +483,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SaveChangesClick(object sender, EventArgs e)//lnc
+        private void SaveChangesClick(object sender, EventArgs e)
         {
             if (ValidateData())
             {
@@ -611,60 +563,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
             GC.Collect(); // DE2476
         }
-
-        ///// <summary>
-        ///// Handles the set as current player button click and
-        ///// sets the POS's player.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">An EventArgs object that contains the 
-        ///// event data.</param>
-        //private void SetAsCurrentPlayerClick(object sender, EventArgs e)
-        //{
-        //    if (m_player.Id > 0)
-        //    {
-        //        if (ChkDataChange())
-        //        {
-        //            m_playerToSet = m_player;
-        //            Close();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageForm.Show(Resources.NoPlayer, Resources.PlayerCenterName);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Handles the exit button click and closes the form.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">An EventArgs object that contains the 
-        ///// event data.</param>
-        //private void ExitClick(object sender, EventArgs e)
-        //{
-
-        //    if (ChkDataChange())
-        //    {
-        //        m_playerToSet = null;
-        //        Close();
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Handles when a key on the virtual keyboard is clicked.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">A KeyboardEventArgs object that contains the 
-        ///// event data.</param>
-        //private void KeyboardKeyPressed(object sender, KeyboardEventArgs e)
-        //{
-        //    //if(m_lastFocus is Control && (m_lastFocus != m_virtualKeyboard))
-        //    //{
-        //    //    ((Control)m_lastFocus).Focus();
-        //    //    SendKeys.Send(e.KeyPressed);
-        //    //}
-        //}
 
         /// <summary>
         /// Handles when the player data has changed.
@@ -1020,6 +918,34 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_dataChanged = false;
             }
         }
+
+        // US2100/TA15670
+        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
+        {
+            m_isManualAwardPointsEnable = isManualAwardPointsEnable;
+            if (isManualAwardPointsEnable)
+            {
+                groupBox1.Size = new Size(331, 274);
+                groupBox1.Location = new Point(35, 30);
+                m_playerPicture.Size = new Size(320, 247);
+                m_noPic.Size = m_playerPicture.Size;
+                m_playerPicture.Location = new Point(5, 21);
+                m_noPic.Location = m_playerPicture.Location;
+                m_btnImgAwardPointManual.Visible = true;
+                m_btnImgAwardPointManual.BringToFront();
+            }
+            else
+            {
+                groupBox1.Size = new Size(331, 333);
+                groupBox1.Location = new Point(35, 30);
+                m_playerPicture.Size = new Size(320, 240);
+                m_noPic.Size = m_playerPicture.Size;
+                m_playerPicture.Location = new Point(6, 44);
+                m_noPic.Location = m_playerPicture.Location;
+                m_btnImgAwardPointManual.Visible = false;
+                m_btnImgAwardPointManual.SendToBack();
+            }
+        }
        
         #endregion
 
@@ -1142,12 +1068,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
-
-        //private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm();
-        //        playerLoyalty.Show(this);
-        //}
 
     }
 }

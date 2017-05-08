@@ -505,9 +505,20 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
         }
 
+        private string GetPlayerName()
+        {
+            var FullName = "";
+            if (m_player != null)
+            {
+                FullName = m_player.FirstName + " " + m_player.MiddleInitial + " " + m_player.LastName;
+            }
+            return FullName;
+        }
+
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
-            AwardPoints pinform = new AwardPoints();
+      
+            AwardPoints pinform = new AwardPoints(GetPlayerName());
             Application.DoEvents();
             pinform.ShowDialog();
             Application.DoEvents();

@@ -28,62 +28,25 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.pinTextBox = new System.Windows.Forms.TextBox();
-            this.pinNumberLabel = new System.Windows.Forms.Label();
-            this.verifiedPINTextBox = new System.Windows.Forms.TextBox();
-            this.verifiedPINLabel = new System.Windows.Forms.Label();
+            this.txtbxPointsAwarded = new System.Windows.Forms.TextBox();
             this.cancelImageButton = new GTI.Controls.ImageButton();
             this.acceptImageButton = new GTI.Controls.ImageButton();
+            this.lblPointsAwarded = new System.Windows.Forms.Label();
+            this.lblPlayerNameIndicator = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // pinTextBox
+            // txtbxPointsAwarded
             // 
-            this.pinTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pinTextBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pinTextBox.Location = new System.Drawing.Point(175, 30);
-            this.pinTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pinTextBox.Name = "pinTextBox";
-            this.pinTextBox.PasswordChar = '*';
-            this.pinTextBox.Size = new System.Drawing.Size(125, 20);
-            this.pinTextBox.TabIndex = 0;
-            this.pinTextBox.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
-            this.pinTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Number_KeyPress);
-            this.pinTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pinTextBox_KeyUp);
-            // 
-            // pinNumberLabel
-            // 
-            this.pinNumberLabel.AutoSize = true;
-            this.pinNumberLabel.BackColor = System.Drawing.Color.Transparent;
-            this.pinNumberLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pinNumberLabel.Location = new System.Drawing.Point(16, 30);
-            this.pinNumberLabel.Name = "pinNumberLabel";
-            this.pinNumberLabel.Size = new System.Drawing.Size(127, 19);
-            this.pinNumberLabel.TabIndex = 1;
-            this.pinNumberLabel.Text = "Current Points";
-            // 
-            // verifiedPINTextBox
-            // 
-            this.verifiedPINTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.verifiedPINTextBox.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verifiedPINTextBox.Location = new System.Drawing.Point(175, 83);
-            this.verifiedPINTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.verifiedPINTextBox.Name = "verifiedPINTextBox";
-            this.verifiedPINTextBox.PasswordChar = '*';
-            this.verifiedPINTextBox.Size = new System.Drawing.Size(125, 20);
-            this.verifiedPINTextBox.TabIndex = 1;
-            this.verifiedPINTextBox.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
-            this.verifiedPINTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Number_KeyPress);
-            // 
-            // verifiedPINLabel
-            // 
-            this.verifiedPINLabel.AutoSize = true;
-            this.verifiedPINLabel.BackColor = System.Drawing.Color.Transparent;
-            this.verifiedPINLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verifiedPINLabel.Location = new System.Drawing.Point(16, 83);
-            this.verifiedPINLabel.Name = "verifiedPINLabel";
-            this.verifiedPINLabel.Size = new System.Drawing.Size(138, 19);
-            this.verifiedPINLabel.TabIndex = 3;
-            this.verifiedPINLabel.Text = "Points Awarded";
+            this.txtbxPointsAwarded.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtbxPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 97);
+            this.txtbxPointsAwarded.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
+            this.txtbxPointsAwarded.PasswordChar = '*';
+            this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 20);
+            this.txtbxPointsAwarded.TabIndex = 1;
+            this.txtbxPointsAwarded.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
+            this.txtbxPointsAwarded.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Number_KeyPress);
             // 
             // cancelImageButton
             // 
@@ -123,9 +86,29 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
             this.acceptImageButton.TabIndex = 2;
-            this.acceptImageButton.Text = "Award";
+            this.acceptImageButton.Text = "Award Points";
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
+            // 
+            // lblPointsAwarded
+            // 
+            this.lblPointsAwarded.BackColor = System.Drawing.Color.Transparent;
+            this.lblPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsAwarded.Location = new System.Drawing.Point(8, 65);
+            this.lblPointsAwarded.Name = "lblPointsAwarded";
+            this.lblPointsAwarded.Size = new System.Drawing.Size(308, 28);
+            this.lblPointsAwarded.TabIndex = 3;
+            this.lblPointsAwarded.Text = "Enter the number of points to award";
+            // 
+            // lblPlayerNameIndicator
+            // 
+            this.lblPlayerNameIndicator.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlayerNameIndicator.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerNameIndicator.Location = new System.Drawing.Point(12, 9);
+            this.lblPlayerNameIndicator.Name = "lblPlayerNameIndicator";
+            this.lblPlayerNameIndicator.Size = new System.Drawing.Size(296, 22);
+            this.lblPlayerNameIndicator.TabIndex = 4;
+            this.lblPlayerNameIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AwardPoints
             // 
@@ -136,12 +119,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.CancelButton = this.cancelImageButton;
             this.ClientSize = new System.Drawing.Size(320, 240);
             this.ControlBox = false;
+            this.Controls.Add(this.lblPlayerNameIndicator);
             this.Controls.Add(this.cancelImageButton);
             this.Controls.Add(this.acceptImageButton);
-            this.Controls.Add(this.verifiedPINLabel);
-            this.Controls.Add(this.verifiedPINTextBox);
-            this.Controls.Add(this.pinNumberLabel);
-            this.Controls.Add(this.pinTextBox);
+            this.Controls.Add(this.lblPointsAwarded);
+            this.Controls.Add(this.txtbxPointsAwarded);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -161,11 +143,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
-        private System.Windows.Forms.TextBox pinTextBox;
-        private System.Windows.Forms.Label pinNumberLabel;
-        private System.Windows.Forms.TextBox verifiedPINTextBox;
-        private System.Windows.Forms.Label verifiedPINLabel;
+        private System.Windows.Forms.TextBox txtbxPointsAwarded;
         private GTI.Controls.ImageButton acceptImageButton;
         private GTI.Controls.ImageButton cancelImageButton;
+        private System.Windows.Forms.Label lblPointsAwarded;
+        private System.Windows.Forms.Label lblPlayerNameIndicator;
     }
 }

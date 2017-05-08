@@ -24,6 +24,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #region Member Variables
         private string mPinNumber = string.Empty;
         private readonly bool isTouchScreen;
+        private string m_playerName;
         #endregion
 
         #region Member Properties
@@ -36,9 +37,10 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Constructors
-        public AwardPoints()
+        public AwardPoints(string playerName)
         {
             InitializeComponent();
+            lblPlayerNameIndicator.Text = playerName;
         }
 
         public AwardPoints(DisplayMode displayMode)
@@ -96,42 +98,42 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void PINTextBox_TextChanged(object sender, EventArgs e)
         {
-            
-            //lblErrorText.Visible = false;
-            var tb = sender as TextBox;
-            if (tb != null)
-            {
-                //DE12734 
-                //US4120
-                //get pin length from settings
-                var pinLength = PlayerCenterSettings.Instance.PlayerPinLength;
 
-                //tb.BackColor = SystemColors.Window;
-                if (verifiedPINTextBox.Text == pinTextBox.Text && pinTextBox.Text.Length == pinLength)
-                {
-                    //verifiedPINTextBox.BackColor = SystemColors.Window;
-                    acceptImageButton.Enabled = true;
-                }
-                else
-                {
-                    //US4120
-                    //DE12702 Validate pin length of verify text box
-                    if ((pinTextBox.Text.Length == verifiedPINTextBox.Text.Length && pinTextBox.Text.Length != pinLength) ||
-                        pinTextBox.Text.Length > pinLength ||
-                        verifiedPINTextBox.Text.Length > pinLength)
-                    {
-                        //lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
-                        //lblErrorText.Visible = true;
-                    }
-                    else if (pinTextBox.Text.Length == verifiedPINTextBox.Text.Length)
-                    {
-                        //lblErrorText.Text = Resources.PinsDoNotMatchText;
-                        //lblErrorText.Visible = true;
-                    }
-                    //verifiedPINTextBox.BackColor = Color.LightPink;
-                    acceptImageButton.Enabled = false;
-                }
-            }
+            ////lblErrorText.Visible = false;
+            //var tb = sender as TextBox;
+            //if (tb != null)
+            //{
+            //    //DE12734 
+            //    //US4120
+            //    //get pin length from settings
+            //    var pinLength = PlayerCenterSettings.Instance.PlayerPinLength;
+
+            //    //tb.BackColor = SystemColors.Window;
+            //    if (txtbxPointsAwarded.Text == pinTextBox.Text && pinTextBox.Text.Length == pinLength)
+            //    {
+            //        //verifiedPINTextBox.BackColor = SystemColors.Window;
+            //        acceptImageButton.Enabled = true;
+            //    }
+            //    else
+            //    {
+            //        //US4120
+            //        //DE12702 Validate pin length of verify text box
+            //        if ((pinTextBox.Text.Length == txtbxPointsAwarded.Text.Length && pinTextBox.Text.Length != pinLength) ||
+            //            pinTextBox.Text.Length > pinLength ||
+            //            txtbxPointsAwarded.Text.Length > pinLength)
+            //        {
+            //            //lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
+            //            //lblErrorText.Visible = true;
+            //        }
+            //        else if (pinTextBox.Text.Length == txtbxPointsAwarded.Text.Length)
+            //        {
+            //            //lblErrorText.Text = Resources.PinsDoNotMatchText;
+            //            //lblErrorText.Visible = true;
+            //        }
+            //        //verifiedPINTextBox.BackColor = Color.LightPink;
+            //        acceptImageButton.Enabled = false;
+            //    }
+            //}
         }
 
         private void cancelImageButton_Click(object sender, EventArgs e)
@@ -142,20 +144,20 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(pinTextBox.Text))
-            {
-                mPinNumber = pinTextBox.Text;
-            }
+            //if (!string.IsNullOrEmpty(pinTextBox.Text))
+            //{
+            //    mPinNumber = pinTextBox.Text;
+            //}
 
-            DialogResult = DialogResult.OK;
-            Close();
+            //DialogResult = DialogResult.OK;
+            //Close();
         }
 
         private void pinTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                verifiedPINTextBox.Focus();
+                txtbxPointsAwarded.Focus();
             }
         }
 

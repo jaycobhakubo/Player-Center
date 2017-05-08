@@ -187,7 +187,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton = new GTI.Controls.ImageButton();
             this.takePINImageButton = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.imageButton1 = new GTI.Controls.ImageButton();
+            this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
@@ -919,25 +919,24 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // imageButton1
+            // m_btnImgAwardPointManual
             // 
-            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton1.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
-            this.imageButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.RepeatRate = 150;
-            this.imageButton1.RepeatWhenHeldFor = 750;
-            this.imageButton1.UseVisualStyleBackColor = false;
-            this.imageButton1.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
+            this.m_btnImgAwardPointManual.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnImgAwardPointManual.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnImgAwardPointManual, "m_btnImgAwardPointManual");
+            this.m_btnImgAwardPointManual.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_btnImgAwardPointManual.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnImgAwardPointManual.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnImgAwardPointManual.Name = "m_btnImgAwardPointManual";
+            this.m_btnImgAwardPointManual.RepeatRate = 150;
+            this.m_btnImgAwardPointManual.RepeatWhenHeldFor = 750;
+            this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
+            this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 
             // MCPPlayerManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.m_saveChangesButton);
             this.Controls.Add(this.takePINImageButton);
@@ -951,6 +950,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.loyalityGroupBox);
             this.Controls.Add(this.personalInfoGroupBox);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.m_btnImgAwardPointManual);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -989,7 +989,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageLabel m_credits;
         private GTI.Controls.ImageLabel m_creditNonRef;
         private System.Windows.Forms.TextBox txtMagCard;
-        private Controls.ImageButton imageButton1;
+        private Controls.ImageButton m_btnImgAwardPointManual;
 
        
        

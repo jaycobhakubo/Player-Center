@@ -315,6 +315,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 //Application.DoEvents();
                 IsInitialized = true;
 
+                //GrpbxPicture = new GroupBox();
+                //PicbxNoPic = new PictureBox();
+                //PicbxPlayer = new PictureBox();
+                //BtnAwardPointsManual = new Button();
+                //this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);  
+
                 strErr = "fire log...Player Center initialized!";
                 Log("Player Center initialized!", LoggerLevel.Debug);
             }
@@ -2475,11 +2481,63 @@ namespace GTI.Modules.PlayerCenter.Business
         internal static List<LocationCity> ListLocationCity { get; private set; }
         internal static List<LocationState> ListLocationState { get; private set; }
         internal static List<LocationZipCode> ListLocationZipCode { get; private set; }
-        internal static List<LocationCountry> ListLocationCountry { get; private set; } 
+        internal static List<LocationCountry> ListLocationCountry { get; private set; }
 
-        
+        public GroupBox GrpbxPicture
+        {
+            get;
+            set;
+        }
+
+        public PictureBox PicbxPlayer { get; set; }
+        public PictureBox PicbxNoPic { get; set; }
+        public Button BtnAwardPointsManual { get; set; }
+
         #endregion
+
+
+        public void SetManualAwardPoints()
+        {
+
+        }
+
+        // US2100/TA15670
+        // if (!m_parent.m_isManualAwardPointsEnable)
+        public bool m_isManualAwardPointsEnable { get; set; }
+
+        public void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
+        {
+            if (isManualAwardPointsEnable != m_isManualAwardPointsEnable)
+            {
+                m_isManualAwardPointsEnable = isManualAwardPointsEnable;
+
+                if (isManualAwardPointsEnable)
+                {
+                    GrpbxPicture.Size = new Size(331, 274);
+                    GrpbxPicture.Location = new Point(35, 30);
+                    PicbxPlayer.Size = new Size(320, 247);
+                    PicbxNoPic.Size = PicbxPlayer.Size;
+                    PicbxPlayer.Location = new Point(5, 21);
+                    PicbxNoPic.Location = PicbxPlayer.Location;
+                    BtnAwardPointsManual.Visible = true;
+                    BtnAwardPointsManual.BringToFront();
+                }
+                else
+                {
+                    GrpbxPicture.Size = new Size(331, 333);
+                    GrpbxPicture.Location = new Point(35, 30);
+                    PicbxPlayer.Size = new Size(320, 240);
+                    PicbxNoPic.Size = PicbxPlayer.Size;
+                    PicbxPlayer.Location = new Point(6, 44);
+                    PicbxNoPic.Location = PicbxPlayer.Location;
+                    BtnAwardPointsManual.Visible = false;
+                    BtnAwardPointsManual.SendToBack();
+                }
+            }
+        }
     }
+
+
 
     // Rally US144
     /// <summary>

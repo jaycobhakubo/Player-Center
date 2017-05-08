@@ -22,18 +22,10 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class AwardPoints : EliteGradientForm
     {
         #region Member Variables
-        private string mPinNumber = string.Empty;
         private readonly bool isTouchScreen;
-        private string m_playerName;
         #endregion
 
         #region Member Properties
-
-        //DE12758:
-        public string PIN
-        {
-            get { return mPinNumber; }
-        }
         #endregion
 
         #region Constructors

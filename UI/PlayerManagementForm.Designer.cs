@@ -138,6 +138,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_ReceiptNumberColorListBox.Name = "m_ReceiptNumberColorListBox";
             this.m_ReceiptNumberColorListBox.SuppressVerticalScroll = true;
             this.m_ReceiptNumberColorListBox.TabStop = false;
+            this.m_ReceiptNumberColorListBox.TopIndexForScroll = 0;
             // 
             // m_virtualKeyboard
             // 
@@ -825,6 +826,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_activeStatusList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.m_activeStatusList.SuppressVerticalScroll = true;
             this.m_activeStatusList.TabStop = false;
+            this.m_activeStatusList.TopIndexForScroll = 0;
             this.m_activeStatusList.SelectedIndexChanged += new System.EventHandler(this.ActiveStatusList_ItemSelectionChanged);
             // 
             // m_genderCycleButton

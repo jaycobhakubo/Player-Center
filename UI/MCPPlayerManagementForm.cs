@@ -57,8 +57,18 @@ namespace GTI.Modules.PlayerCenter.UI
             try
             {
                 m_parent = parent;
+               
+
                 InitializeComponent();
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
+
+                //US2001 
+                m_parent.GrpbxPicture = m_grpbxPicture;
+                m_parent.PicbxPlayer = m_playerPicture;
+                m_parent.PicbxNoPic = m_noPic;
+                m_parent.BtnAwardPointsManual = m_btnImgAwardPointManual;
+                m_parent.m_isManualAwardPointsEnable = false;
+
                 //ApplyDisplayMode();
                 SetMaxTextLengths();
 
@@ -346,8 +356,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (m_player != null)
                     {
-                        if (!m_isManualAwardPointsEnable)
-                        ShowManualAwardPointsButton(true);
+                            m_parent.ShowManualAwardPointsButton(true);
                     }
 
                 }
@@ -355,51 +364,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             GC.Collect(); // DE2476 - Try to clean up memory after a player is saved and reloaded.
         }
-
-
-       // US2100/TA15670
-        private bool m_isManualAwardPointsEnable = false;
-
-        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
-        {
-            m_isManualAwardPointsEnable = isManualAwardPointsEnable;
-            if (isManualAwardPointsEnable)
-            {
-                groupBox1.Size = new Size(331, 274);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 247);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(5, 21);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = true;
-                m_btnImgAwardPointManual.BringToFront();
-            }
-            else
-            {
-                groupBox1.Size = new Size(331, 333);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 240);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(6, 44);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = false;
-                m_btnImgAwardPointManual.SendToBack();
-            }
-        }
-
-        // US2100/TA15670
-        private void HideManualAwardPointsButton()
-        {
-            groupBox1.Size = new Size(331, 333);
-            groupBox1.Location = new Point(35, 30);
-            m_playerPicture.Size = new Size(320, 240);
-            m_noPic.Size = m_playerPicture.Size;
-            m_playerPicture.Location = new Point(6, 44);
-            m_noPic.Location = m_playerPicture.Location;
-            m_btnImgAwardPointManual.Visible = false;
-            m_btnImgAwardPointManual.SendToBack();
-        }
-
+    
         /// <summary>
         /// Handles the new player button click and clears out
         /// the current player.
@@ -416,7 +381,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_dataChanged = false;
                 txtFirstName.Focus();
                 personalInfoGroupBox.Text = "Personal Information - Add New";
-               if (m_isManualAwardPointsEnable) ShowManualAwardPointsButton(false);
+                m_parent.ShowManualAwardPointsButton(false);
                 Application.DoEvents();
             }
 
@@ -581,7 +546,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     Application.DoEvents();
                     m_dataChanged = false;
                     m_playersSaved = true;
-                    if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);
+                    m_parent.ShowManualAwardPointsButton(true);
                     MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
                 }
                 personalInfoGroupBox.Text = "Personal Information";
@@ -612,59 +577,6 @@ namespace GTI.Modules.PlayerCenter.UI
             GC.Collect(); // DE2476
         }
 
-        ///// <summary>
-        ///// Handles the set as current player button click and
-        ///// sets the POS's player.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">An EventArgs object that contains the 
-        ///// event data.</param>
-        //private void SetAsCurrentPlayerClick(object sender, EventArgs e)
-        //{
-        //    if (m_player.Id > 0)
-        //    {
-        //        if (ChkDataChange())
-        //        {
-        //            m_playerToSet = m_player;
-        //            Close();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageForm.Show(Resources.NoPlayer, Resources.PlayerCenterName);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Handles the exit button click and closes the form.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">An EventArgs object that contains the 
-        ///// event data.</param>
-        //private void ExitClick(object sender, EventArgs e)
-        //{
-
-        //    if (ChkDataChange())
-        //    {
-        //        m_playerToSet = null;
-        //        Close();
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Handles when a key on the virtual keyboard is clicked.
-        ///// </summary>
-        ///// <param name="sender">The sender of the event.</param>
-        ///// <param name="e">A KeyboardEventArgs object that contains the 
-        ///// event data.</param>
-        //private void KeyboardKeyPressed(object sender, KeyboardEventArgs e)
-        //{
-        //    //if(m_lastFocus is Control && (m_lastFocus != m_virtualKeyboard))
-        //    //{
-        //    //    ((Control)m_lastFocus).Focus();
-        //    //    SendKeys.Send(e.KeyPressed);
-        //    //}
-        //}
 
         /// <summary>
         /// Handles when the player data has changed.
@@ -1059,6 +971,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
+
+   
         
         #region Assembly Attribute Accessors
 

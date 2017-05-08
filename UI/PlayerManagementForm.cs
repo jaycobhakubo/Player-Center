@@ -61,7 +61,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 ApplyDisplayMode();
                 strErr = "set max lengths.";
                 SetMaxTextLengths();
-
+          
                 strErr = "set IsCreditOnline.";
                 // Rally TA7897
                 mbolCreditOnline = parent.Settings.CreditEnabled;

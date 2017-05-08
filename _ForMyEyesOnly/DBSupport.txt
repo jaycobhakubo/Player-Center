@@ -1,4 +1,4 @@
 ﻿GameTrans
 GameTransDetail
 PointBalance
-PlayerClubPointshhh
+PlayerClubPoints

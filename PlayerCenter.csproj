@@ -106,6 +106,11 @@
     <Compile Include="Business\PlayerCenterSettings.cs" />
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
+    <Compile Include="ForMyEyesOnly\SQL\Schema\Business\IGTIModule.cs" />
+    <Compile Include="ForMyEyesOnly\SQL\Schema\Business\PlayerCenter.cs" />
+    <Compile Include="ForMyEyesOnly\SQL\Schema\Business\PlayerCenterException.cs" />
+    <Compile Include="ForMyEyesOnly\SQL\Schema\Business\PlayerCenterModule.cs" />
+    <Compile Include="ForMyEyesOnly\SQL\Schema\Business\PlayerCenterSettings.cs" />
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">
       <SubType>Component</SubType>
@@ -404,7 +409,6 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ForMyEyesOnly\Awardpoints_orig.txt" />
     <Content Include="ForMyEyesOnly\DBSupport.txt" />
     <Content Include="ForMyEyesOnly\Messages.txt" />
     <Content Include="ForMyEyesOnly\Ref.txt" />

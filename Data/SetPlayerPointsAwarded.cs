@@ -7,17 +7,20 @@ using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
-    class SetPlayerPointsAwarded : ServerMessage
-    {
-        private int m_playerID;
-        private string m_playerPointsAwarded;    
+    /// <summary>
+    /// INPUT:
+    ///     (playerID) -> The player id.
+    ///     (playerPointsAwardedManually) -> The points value awarded to this player.
+    /// RETURN: no return
+    /// 
+    /// NOTE: Player current points will be updated in MCPPlayerManagementForm.cs
+    /// </summary>
+    /// 
 
-        public SetPlayerPointsAwarded(int playerID, string playerPointsAwarded)
-        {
-            m_id = 8041;
-            m_playerID = playerID;
-            m_playerPointsAwarded = playerPointsAwarded;
-        }
+    class SetPlayerPointsAwarded : ServerMessage
+    {  
+        private int m_playerID;
+        private string m_playerPointsAwarded;
 
         protected override void PackRequest()
         {
@@ -36,7 +39,6 @@ namespace GTI.Modules.PlayerCenter.Data
         protected override void UnpackResponse()
         {
             base.UnpackResponse();
-
             MemoryStream responseStream = new MemoryStream(m_responsePayload);
             BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 

@@ -19,24 +19,26 @@ namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class AwardPoints : EliteGradientForm
     {
-        #region Member Variables
+        #region Members
+
         private readonly int m_playerId;
-        public bool IsManualPointsAwarded { get; set; }
-        public decimal ManualPointsAwardedValue;
+
         #endregion
 
         #region Constructors
+
         public AwardPoints(string playerName, int playerId)
         {
             InitializeComponent();
             lblPlayerNameIndicator.Text = playerName;
             m_playerId = playerId;
-            ManualPointsAwarded = 0M;
+            PointsAwarded = 0M;
         }
 
         #endregion
 
-        #region Member Methods
+        #region Events
+
         private void ManualAwardPoints_Load(object sender, EventArgs e)
         {        
                 FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -46,15 +48,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;
                 cancelImageButton.ImagePressed = Resources.BlueButtonDown;
-        }
-
-        private void Number_KeyPress(object sender, KeyPressEventArgs e)
-        {         
-        }
-
-        private void PINTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
+        }      
 
         private void cancelImageButton_Click(object sender, EventArgs e)
         {
@@ -62,24 +56,22 @@ namespace GTI.Modules.PlayerCenter.UI
             Close();
         }
 
-        public decimal ManualPointsAwarded { get; set; }
-
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
-                ManualPointsAwarded = 0M;
+                PointsAwarded = 0M;
                 var tempManualPlayerPoints = txtbxPointsAwarded.Text;
                 SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);               
                 msg.Send();
                 if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
                 {
-                    IsManualPointsAwarded = true;
-                    ManualPointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                    IsPointsAwardedSuccess = true;
+                    PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
                 }
                 else
                 {
-                    IsManualPointsAwarded = false;
+                    IsPointsAwardedSuccess = false;
                 }
             }
 
@@ -87,13 +79,25 @@ namespace GTI.Modules.PlayerCenter.UI
             Close();
         }
 
+        private void Number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void PINTextBox_TextChanged(object sender, EventArgs e)
+        {
+        }
+
         private void pinTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    txtbxPointsAwarded.Focus();
-            //}
         }
+
+        #endregion
+
+
+        #region Properties
+
+        public bool IsPointsAwardedSuccess { get; set; }
+        public decimal PointsAwarded { get; set; }
 
         #endregion
 

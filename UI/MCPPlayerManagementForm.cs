@@ -477,9 +477,9 @@ namespace GTI.Modules.PlayerCenter.UI
             Application.DoEvents();
 
             //Update the current player points if awarded is successfull to UI.
-            if (ManualPointsAward.IsManualPointsAwarded == true)
+            if (ManualPointsAward.IsPointsAwardedSuccess == true)
             {
-                var newPointBalance = m_player.PointsBalance + ManualPointsAward.ManualPointsAwarded;
+                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
                 m_player.PointsBalance = newPointBalance;//Not updated
                 m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
             }

@@ -4,7 +4,7 @@
     <StartAction>Program</StartAction>
     <StartProgram>D:\GameTech\Common\EliteMCP.exe</StartProgram>
     <StartWorkingDirectory>D:\GameTech\Common\</StartWorkingDirectory>
-    <StartArguments>-server=10.0.11.107 -window -runonce -guid={BF874654-BCEC-4c87-996A-55F4789F1EAA}</StartArguments>
+    <StartArguments>-server=kcamacho-pc -window -runonce -guid={BF874654-BCEC-4c87-996A-55F4789F1EAA}</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartAction>Project</StartAction>

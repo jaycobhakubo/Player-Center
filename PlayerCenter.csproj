@@ -104,6 +104,7 @@
     <Compile Include="Business\PlayerCenterException.cs" />
     <Compile Include="Business\PlayerCenterModule.cs" />
     <Compile Include="Business\PlayerCenterSettings.cs" />
+    <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">

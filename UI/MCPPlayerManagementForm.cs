@@ -468,10 +468,10 @@ namespace GTI.Modules.PlayerCenter.UI
             return FullName;
         }
 
+        //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
-        {
-      
-            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName());
+        {      
+            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
             Application.DoEvents();
             ManualPointsAward.ShowDialog();
             Application.DoEvents();     

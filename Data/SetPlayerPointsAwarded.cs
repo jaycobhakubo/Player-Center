@@ -7,29 +7,20 @@ using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
-    class SetPlayerRaffleDefinitions : ServerMessage//18210
+    class SetPlayerPointsAwarded : ServerMessage
     {
-        private int RaffleDefID { get; set; }
-        private bool isDelete { get; set; }
-        private int NumberOfPlayersToDraw { get; set; }
-        private string RaffleName { get; set; }
-        private string RaffleDefinition { get; set; }
-        private string RaffleDisclaimer { get; set; }
-
-        public SetPlayerRaffleDefinitions(DataRafflePrizes rd, bool isdelete)
+       private int m_playerID { get; set; }
+        private string m_playerPointsAwarded { get; set; }
+        public SetPlayerPointsAwarded(int playerID, string playerPointsAwarded)
         {
-            m_id = 18210;
-            RaffleDefID = rd.RaffleID;
-            isDelete = isdelete;
-            NumberOfPlayersToDraw = rd.NoOfRafflePrize;
-            RaffleName = rd.RaffleName;
-            RaffleDefinition = rd.RafflePrizeDescription;
-            RaffleDisclaimer = rd.RaffleDisclaimer;
+            m_id = 8041;
+            m_playerID = playerID;
+            m_playerPointsAwarded = playerPointsAwarded;
         }
 
-        public static int Set(DataRafflePrizes rd, bool isdelete)
+        public static void Set(int playerID, string playerPointsAwarded)
         {
-            SetPlayerRaffleDefinitions msg = new SetPlayerRaffleDefinitions(rd, isdelete);
+            SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(playerID, playerPointsAwarded);
             try
             {
                 msg.Send();
@@ -38,8 +29,6 @@ namespace GTI.Modules.PlayerCenter.Data
             {
                 throw new Exception("SetPlayerRaffleDefinitions: " + ex.Message);
             }
-
-            return msg.RaffleDefID;
         }
 
 
@@ -48,22 +37,13 @@ namespace GTI.Modules.PlayerCenter.Data
             MemoryStream requestStream = new MemoryStream();
             BinaryWriter requestWriter = new BinaryWriter(requestStream, Encoding.Unicode);
 
-            requestWriter.Write(RaffleDefID); 
-            requestWriter.Write(isDelete);
+            requestWriter.Write(m_playerID); //PlayerId
 
-            requestWriter.Write(NumberOfPlayersToDraw);
-            requestWriter.Write((ushort)RaffleName.Length);
-            requestWriter.Write(RaffleName.ToCharArray());
-
-            requestWriter.Write((ushort)RaffleDefinition.Length);
-            requestWriter.Write(RaffleDefinition.ToCharArray());
-
-            requestWriter.Write((ushort) RaffleDisclaimer.Length);
-            requestWriter.Write(RaffleDisclaimer.ToCharArray());
+            requestWriter.Write((ushort)m_playerPointsAwarded.Length);//Player points awarded manually
+            requestWriter.Write(m_playerPointsAwarded.ToCharArray());
 
             m_requestPayload = requestStream.ToArray();
             requestWriter.Close();
-
         }
 
         protected override void UnpackResponse()
@@ -73,27 +53,20 @@ namespace GTI.Modules.PlayerCenter.Data
             MemoryStream responseStream = new MemoryStream(m_responsePayload);
             BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 
-        
             try
             {
                 responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
-                RaffleDefID = responseReader.ReadInt32(); //it give me back TierID now what??
-
             }
             catch (EndOfStreamException e)
             {
-                throw new MessageWrongSizeException("SetPlayerRaffleDefinitions:", e);
+                throw new MessageWrongSizeException("SetPlayerPointsAwarded:", e);
             }
             catch (Exception e)
             {
-                throw new ServerException("SetPlayerRaffleDefinitions:", e);
+                throw new ServerException("SetPlayerPointsAwarded:", e);
             }
 
             responseReader.Close();
-
-
         }
-
-
     }
 }

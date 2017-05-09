@@ -11,7 +11,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.Shared;
-using GTI.Modules.PlayerCenter.Properties; 
+using GTI.Modules.PlayerCenter.Properties;
+using GTI.Modules.PlayerCenter.Data; 
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -19,25 +20,27 @@ namespace GTI.Modules.PlayerCenter.UI
     {
         #region Member Variables
         private readonly bool isTouchScreen;
-        private string m_playerName;
+        //private readonly string m_playerName;
+        private readonly int m_playerId;        
+        private string m_manualPlayerPoints;
         #endregion
 
-     
-
         #region Constructors
-        public AwardPoints(string playerName)
+        public AwardPoints(string playerName, int playerId)
         {
             InitializeComponent();
             lblPlayerNameIndicator.Text = playerName;
+            m_playerId = playerId;
         }
 
-        public AwardPoints(DisplayMode displayMode)
-            : base(displayMode)
-        {
-            InitializeComponent();
-            isTouchScreen = true;
+        //US2100 (This will only trigger on POS -> ManagePlayer). Turning this off since its not required.
+        //public AwardPoints(DisplayMode displayMode)
+        //    : base(displayMode)
+        //{
+        //    InitializeComponent();
+        //    isTouchScreen = true;
+        //}
 
-        }
         #endregion
 
         #region Member Methods
@@ -130,13 +133,14 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrEmpty(pinTextBox.Text))
-            //{
-            //    mPinNumber = pinTextBox.Text;
-            //}
+            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+            {
+                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                SetPlayerPointsAwarded.Set(m_playerId, tempManualPlayerPoints);//Do we want to track these data? "Lets not for now".
+            }
 
-            //DialogResult = DialogResult.OK;
-            //Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void pinTextBox_KeyUp(object sender, KeyEventArgs e)

@@ -42,7 +42,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 97);
             this.txtbxPointsAwarded.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
-            this.txtbxPointsAwarded.PasswordChar = '*';
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 20);
             this.txtbxPointsAwarded.TabIndex = 1;
             this.txtbxPointsAwarded.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
@@ -72,7 +71,6 @@ namespace GTI.Modules.PlayerCenter.UI
             // acceptImageButton
             // 
             this.acceptImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.acceptImageButton.Enabled = false;
             this.acceptImageButton.FocusColor = System.Drawing.Color.Black;
             this.acceptImageButton.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acceptImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonUp;

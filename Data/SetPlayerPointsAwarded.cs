@@ -22,6 +22,13 @@ namespace GTI.Modules.PlayerCenter.Data
         private int m_playerID;
         private string m_playerPointsAwarded;
 
+        public SetPlayerPointsAwarded(int playerID, string playerPointsAwarded)
+        {
+            m_id = 8041;
+            m_playerID = playerID;
+            m_playerPointsAwarded = playerPointsAwarded;
+        }
+
         protected override void PackRequest()
         {
             MemoryStream requestStream = new MemoryStream();

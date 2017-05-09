@@ -29,7 +29,7 @@ namespace GTI.Modules.PlayerCenter.UI
         protected bool mbolCreditOnline = true;
         protected object m_lastFocus;
         protected bool m_dataChanged;
-        protected Player m_player = new Player();
+        protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
         protected Player m_playerToSet;
         protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358     
         protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
@@ -474,7 +474,15 @@ namespace GTI.Modules.PlayerCenter.UI
             AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
             Application.DoEvents();
             ManualPointsAward.ShowDialog();
-            Application.DoEvents();     
+            Application.DoEvents();
+
+            //Update the current player points if awarded is successfull to UI.
+            if (ManualPointsAward.IsManualPointsAwarded == true)
+            {
+                var newPointBalance = m_player.PointsBalance + ManualPointsAward.ManualPointsAwarded;
+                m_player.PointsBalance = newPointBalance;//Not updated
+                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
+            }
         }
 
         /// <summary>
@@ -716,7 +724,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             m_lastVisit.Text = m_player.LastVisit != DateTime.MinValue ? m_player.LastVisit.ToShortDateString() : string.Empty;
 
-            m_pointsBalance.Text = m_player.PointsBalance.ToString("N");
+            m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
             m_visitCount.Text = m_player.VisitCount.ToString();
             // FIX: DE6690
 //            m_magCardNum.Text = m_player.MagneticCardNumber;

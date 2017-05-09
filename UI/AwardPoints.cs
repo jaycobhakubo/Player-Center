@@ -12,17 +12,17 @@ using System.Windows.Forms;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties;
-using GTI.Modules.PlayerCenter.Data; 
+using GTI.Modules.PlayerCenter.Data;
+using System.Globalization; 
 
 namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class AwardPoints : EliteGradientForm
     {
         #region Member Variables
-        private readonly bool isTouchScreen;
-        //private readonly string m_playerName;
-        private readonly int m_playerId;        
-        private string m_manualPlayerPoints;
+        private readonly int m_playerId;
+        public bool IsManualPointsAwarded { get; set; }
+        public decimal ManualPointsAwardedValue;
         #endregion
 
         #region Constructors
@@ -31,29 +31,14 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             lblPlayerNameIndicator.Text = playerName;
             m_playerId = playerId;
+            ManualPointsAwarded = 0M;
         }
-
-        //US2100 (This will only trigger on POS -> ManagePlayer). Turning this off since its not required.
-        //public AwardPoints(DisplayMode displayMode)
-        //    : base(displayMode)
-        //{
-        //    InitializeComponent();
-        //    isTouchScreen = true;
-        //}
 
         #endregion
 
         #region Member Methods
-        private void TakePIN_Load(object sender, EventArgs e)
-        {
-            if (isTouchScreen)
-            {
-                Size = m_displayMode.DialogSize;
-                acceptImageButton.Text = acceptImageButton.Text.Replace("&", string.Empty);
-                cancelImageButton.Text = cancelImageButton.Text.Replace("&", string.Empty);
-            }
-            else
-            {
+        private void ManualAwardPoints_Load(object sender, EventArgs e)
+        {        
                 FormBorderStyle = FormBorderStyle.FixedSingle;
                 BackgroundImage = null;
                 DrawGradient = true;
@@ -61,68 +46,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;
                 cancelImageButton.ImagePressed = Resources.BlueButtonDown;
-            }
         }
 
         private void Number_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //var tb = sender as TextBox;
-            //if (tb != null)
-            //{
-            //    //DE12731 Able to enter "." into password box
-            //    if (!char.IsNumber(e.KeyChar) &&
-            //        (Keys)e.KeyChar != Keys.Back)
-            //    {
-            //        e.Handled = true;
-            //    }
-
-            //    //US4186
-            //    if (tb.Text.Length >= PlayerCenterSettings.Instance.PlayerPinLength &&
-            //        (Keys)e.KeyChar != Keys.Back)
-            //    {
-            //        e.Handled = true;
-            //    }
-            //}
+        {         
         }
 
         private void PINTextBox_TextChanged(object sender, EventArgs e)
         {
-
-            ////lblErrorText.Visible = false;
-            //var tb = sender as TextBox;
-            //if (tb != null)
-            //{
-            //    //DE12734 
-            //    //US4120
-            //    //get pin length from settings
-            //    var pinLength = PlayerCenterSettings.Instance.PlayerPinLength;
-
-            //    //tb.BackColor = SystemColors.Window;
-            //    if (txtbxPointsAwarded.Text == pinTextBox.Text && pinTextBox.Text.Length == pinLength)
-            //    {
-            //        //verifiedPINTextBox.BackColor = SystemColors.Window;
-            //        acceptImageButton.Enabled = true;
-            //    }
-            //    else
-            //    {
-            //        //US4120
-            //        //DE12702 Validate pin length of verify text box
-            //        if ((pinTextBox.Text.Length == txtbxPointsAwarded.Text.Length && pinTextBox.Text.Length != pinLength) ||
-            //            pinTextBox.Text.Length > pinLength ||
-            //            txtbxPointsAwarded.Text.Length > pinLength)
-            //        {
-            //            //lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
-            //            //lblErrorText.Visible = true;
-            //        }
-            //        else if (pinTextBox.Text.Length == txtbxPointsAwarded.Text.Length)
-            //        {
-            //            //lblErrorText.Text = Resources.PinsDoNotMatchText;
-            //            //lblErrorText.Visible = true;
-            //        }
-            //        //verifiedPINTextBox.BackColor = Color.LightPink;
-            //        acceptImageButton.Enabled = false;
-            //    }
-            //}
         }
 
         private void cancelImageButton_Click(object sender, EventArgs e)
@@ -131,12 +62,25 @@ namespace GTI.Modules.PlayerCenter.UI
             Close();
         }
 
+        public decimal ManualPointsAwarded { get; set; }
+
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
+                ManualPointsAwarded = 0M;
                 var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-                SetPlayerPointsAwarded.Set(m_playerId, tempManualPlayerPoints);//Do we want to track these data? "Lets not for now".
+                SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);               
+                msg.Send();
+                if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                {
+                    IsManualPointsAwarded = true;
+                    ManualPointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    IsManualPointsAwarded = false;
+                }
             }
 
             DialogResult = DialogResult.OK;

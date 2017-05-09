@@ -9,28 +9,15 @@ namespace GTI.Modules.PlayerCenter.Data
 {
     class SetPlayerPointsAwarded : ServerMessage
     {
-       private int m_playerID { get; set; }
-        private string m_playerPointsAwarded { get; set; }
+        private int m_playerID;
+        private string m_playerPointsAwarded;    
+
         public SetPlayerPointsAwarded(int playerID, string playerPointsAwarded)
         {
             m_id = 8041;
             m_playerID = playerID;
             m_playerPointsAwarded = playerPointsAwarded;
         }
-
-        public static void Set(int playerID, string playerPointsAwarded)
-        {
-            SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(playerID, playerPointsAwarded);
-            try
-            {
-                msg.Send();
-            }
-            catch (ServerCommException ex)
-            {
-                throw new Exception("SetPlayerRaffleDefinitions: " + ex.Message);
-            }
-        }
-
 
         protected override void PackRequest()
         {

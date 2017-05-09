@@ -404,6 +404,15 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ForMyEyesOnly\Awardpoints_orig.txt" />
+    <Content Include="ForMyEyesOnly\DBSupport.txt" />
+    <Content Include="ForMyEyesOnly\Messages.txt" />
+    <Content Include="ForMyEyesOnly\Ref.txt" />
+    <Content Include="ForMyEyesOnly\SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
+    <Content Include="ForMyEyesOnly\SQL\Schema\Table_PlayerRafflesPrizes.sql" />
+    <Content Include="ForMyEyesOnly\SQL\Schema\Trigger_trigLogRafflePrize.sql" />
+    <Content Include="ForMyEyesOnly\UI.txt" />
+    <Content Include="ForMyEyesOnly\US2100.txt" />
     <Content Include="Res\Players.ico" />
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>

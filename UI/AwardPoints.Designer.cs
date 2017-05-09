@@ -133,7 +133,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Award Points";
-            this.Load += new System.EventHandler(this.TakePIN_Load);
+            this.Load += new System.EventHandler(this.ManualAwardPoints_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -51,7 +51,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.GroupBox loyalityGroupBox;
         private GTI.Controls.ImageLabel m_IsLogInStatusImageLabel;
-        private GTI.Controls.ImageLabel m_pointsBalance;
+        private GTI.Controls.ImageLabel m_pointsBalanceUI;
         private System.Windows.Forms.Label m_pointsBalanceLabel;
         private GTI.Controls.ImageLabel m_lastVisit;
         private System.Windows.Forms.Label m_lastVisitLabel;
@@ -167,7 +167,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lvActiveStatus = new System.Windows.Forms.ListView();
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.m_IsLogInStatusImageLabel = new GTI.Controls.ImageLabel();
-            this.m_pointsBalance = new GTI.Controls.ImageLabel();
+            this.m_pointsBalanceUI = new GTI.Controls.ImageLabel();
             this.m_pointsBalanceLabel = new System.Windows.Forms.Label();
             this.m_lastVisit = new GTI.Controls.ImageLabel();
             this.m_lastVisitLabel = new System.Windows.Forms.Label();
@@ -685,7 +685,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.loyalityGroupBox.Controls.Add(this.statusLabel);
             this.loyalityGroupBox.Controls.Add(this.lvActiveStatus);
             this.loyalityGroupBox.Controls.Add(this.m_IsLogInStatusImageLabel);
-            this.loyalityGroupBox.Controls.Add(this.m_pointsBalance);
+            this.loyalityGroupBox.Controls.Add(this.m_pointsBalanceUI);
             this.loyalityGroupBox.Controls.Add(this.m_pointsBalanceLabel);
             this.loyalityGroupBox.Controls.Add(this.m_lastVisit);
             this.loyalityGroupBox.Controls.Add(this.m_lastVisitLabel);
@@ -741,13 +741,13 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_IsLogInStatusImageLabel.ForeColor = System.Drawing.Color.Black;
             this.m_IsLogInStatusImageLabel.Name = "m_IsLogInStatusImageLabel";
             // 
-            // m_pointsBalance
+            // m_pointsBalanceUI
             // 
-            this.m_pointsBalance.BackColor = System.Drawing.Color.Transparent;
-            this.m_pointsBalance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.m_pointsBalance, "m_pointsBalance");
-            this.m_pointsBalance.ForeColor = System.Drawing.Color.Black;
-            this.m_pointsBalance.Name = "m_pointsBalance";
+            this.m_pointsBalanceUI.BackColor = System.Drawing.Color.Transparent;
+            this.m_pointsBalanceUI.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.m_pointsBalanceUI, "m_pointsBalanceUI");
+            this.m_pointsBalanceUI.ForeColor = System.Drawing.Color.Black;
+            this.m_pointsBalanceUI.Name = "m_pointsBalanceUI";
             // 
             // m_pointsBalanceLabel
             // 

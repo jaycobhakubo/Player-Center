@@ -1,6 +1,7 @@
 [Dd]ebug*/
 [Bb]in
 obj/
+PlayerCenter.csproj.user
 
 
 ## Ignore Visual Studio temporary files, build results, and

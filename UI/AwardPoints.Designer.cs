@@ -44,8 +44,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 20);
             this.txtbxPointsAwarded.TabIndex = 1;
-            this.txtbxPointsAwarded.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
-            this.txtbxPointsAwarded.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Number_KeyPress);
+
             // 
             // cancelImageButton
             // 

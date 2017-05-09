@@ -27,7 +27,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region Constructors
 
-        public AwardPoints(string playerName, int playerId)
+        public AwardPoints(string playerName, int playerId)//No need to send the whole player object I just need this 2.
         {
             InitializeComponent();
             lblPlayerNameIndicator.Text = playerName;
@@ -77,18 +77,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
             DialogResult = DialogResult.OK;
             Close();
-        }
-
-        private void Number_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
-
-        private void PINTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void pinTextBox_KeyUp(object sender, KeyEventArgs e)
-        {
         }
 
         #endregion

@@ -1,33 +1,18 @@
 use daily
 go
-
-
-
-if not exists (select 1 from ModuleFeatures where ModuleFeatureName like 'Manual Points Award to Player')
+if not exists (select 1 from ModuleFeatures where ModuleFeatureID = 48 /*ModuleFeatureName like 'Manual Points Award to Player'*/)
 begin
-	--select @ModuleFeatureIdMax
-	--select * from ModuleFeatures
 
---Lets add module group
+	if not exists (select 1 from ModuleGroup where mgModuleID = 3 and mgSequenceNo = 1)
+	begin 
+		insert into ModuleGroup 
+		values(3,1,'Player Center',1)
+	end
 
-declare @ModuleFeatureIdMax int
-	declare @ModuleFeatureId int 
-select @ModuleFeatureIdMax = max(ModuleFeatureID) from ModuleFeatures 
-
-
-
-	set @ModuleFeatureId = @ModuleFeatureIdMax + 1
-
-	set identity_insert daily.dbo.ModuleFeatures on
-	
-	select @ModuleFeatureId
-	
+	set identity_insert daily.dbo.ModuleFeatures on				
 	insert into ModuleFeatures(ModuleFeatureID, ModuleID, ModuleFeatureName, ModuleFeatureDescription, IsCreditFeature, IsGTIStaffFeature, SequenceNo)
-	values (@ModuleFeatureId, 3, 'Manual Points Award to Player','Allow user to award points manually to a player',0,0,1)
-	
+	values (48, 3, 'Manual Points Award to Player','Allow user to award points manually to a player',0,0,1)		
 	set identity_insert daily.dbo.ModuleFeatures off
 end
 
-
---select * from ModuleGroup
 

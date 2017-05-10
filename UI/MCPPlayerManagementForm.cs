@@ -37,7 +37,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private PlayerManager m_parent;
         private bool m_isManualAwardPointsEnable = false;
         private string mstrComments = String.Empty;
-
+        private bool m_staffHasPermissionToAwardPointsManually;
 
         #endregion
 
@@ -90,6 +90,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ChkSystemCamera();
                 AddToolStripMenuItem();
+                m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;
+
             }
             catch (Exception)
             {
@@ -340,7 +342,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     SetPlayerValues(false);//RALLY DE8358
                     m_dataChanged = false;
 
-                    if (m_player != null)
+                    if (m_player != null && m_staffHasPermissionToAwardPointsManually)
                     {
                         if (!m_isManualAwardPointsEnable)
                         ShowManualAwardPointsButton(true);
@@ -369,7 +371,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_dataChanged = false;
                 txtFirstName.Focus();
                 personalInfoGroupBox.Text = "Personal Information - Add New";
-               if (m_isManualAwardPointsEnable) ShowManualAwardPointsButton(false);
+
+                if (m_staffHasPermissionToAwardPointsManually)
+                {
+                    if (m_isManualAwardPointsEnable) ShowManualAwardPointsButton(false);
+                }
+
                 Application.DoEvents();
             }
 
@@ -525,14 +532,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                 {
                     m_player = m_parent.LastPlayerFromServer; // TTP 50067
-
-                    // Set the saved player's values back to the UI.
-                    SetPlayerValues(false);//RALLY DE8358
+                    SetPlayerValues(false);         // Set the saved player's values back to the UI.//RALLY DE8358
                     Application.DoEvents();
                     m_dataChanged = false;
                     m_playersSaved = true;
-                    if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);
-                    MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
+
+                    if (m_staffHasPermissionToAwardPointsManually)
+                    {
+                        if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);
+                        MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
+                    }
                 }
                 personalInfoGroupBox.Text = "Personal Information";
 
@@ -934,18 +943,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
         {
             m_isManualAwardPointsEnable = isManualAwardPointsEnable;
-            if (isManualAwardPointsEnable)
-            {
-                groupBox1.Size = new Size(331, 274);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 247);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(5, 21);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = true;
-                m_btnImgAwardPointManual.BringToFront();
-            }
-            else
+            if ( !isManualAwardPointsEnable)
             {
                 groupBox1.Size = new Size(331, 333);
                 groupBox1.Location = new Point(35, 30);
@@ -955,6 +953,17 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_noPic.Location = m_playerPicture.Location;
                 m_btnImgAwardPointManual.Visible = false;
                 m_btnImgAwardPointManual.SendToBack();
+            }
+            else
+            {
+                    groupBox1.Size = new Size(331, 274);
+                    groupBox1.Location = new Point(35, 30);
+                    m_playerPicture.Size = new Size(320, 247);
+                    m_noPic.Size = m_playerPicture.Size;
+                    m_playerPicture.Location = new Point(5, 21);
+                    m_noPic.Location = m_playerPicture.Location;
+                    m_btnImgAwardPointManual.Visible = true;
+                    m_btnImgAwardPointManual.BringToFront();              
             }
         }
        

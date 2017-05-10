@@ -17,6 +17,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
+using System.Linq;
 using CrystalDecisions.CrystalReports.Engine;
 using GTI.Modules.Shared;
 using GTI.Controls;
@@ -26,6 +27,7 @@ using GTI.Modules.PlayerCenter.Properties;
 using System.Text;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.PlayerCenter.Data.Printing;
+
 
 namespace GTI.Modules.PlayerCenter.Business
 {
@@ -97,10 +99,10 @@ namespace GTI.Modules.PlayerCenter.Business
         public PlayerManager(PlayerCenterModule module)
         {            
             m_module = module;
-        }
-        
+        }       
         #endregion
 
+    
         #region Member Methods
 
         #region Initialization Methods
@@ -240,6 +242,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetListLocationCountry();
                 GetPackageName();
 
+                //US2100
+                GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);
 
                 strErr = "set form loading status..again.";
                 //loading player status code
@@ -274,7 +278,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 strErr = "create instance of player center form.";
                 // Create main menu.
-                m_mainMenuForm = new MCPPlayerManagementForm(this);
+                m_mainMenuForm = new MCPPlayerManagementForm(this);//knc
 
                 // FIX: DE2476 - Performance slows down as player pictures are added.
                 // Load our wait form.
@@ -335,7 +339,9 @@ namespace GTI.Modules.PlayerCenter.Business
         ///  fill up the status code dictionary
         /// </summary>
         public static void GetStatusCode()
-        {OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(OperatorID);}
+        {
+            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(OperatorID);
+        }
 
         //US2649
 
@@ -348,7 +354,22 @@ namespace GTI.Modules.PlayerCenter.Business
                 PackageListName = message.PackageItems;
             }
         }
-        
+
+        //US2100
+         private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
+        {
+            StaffHasPermissionToAwardPoints = false;
+            var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
+            message.Send();
+
+            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
+            {         
+                 StaffHasPermissionToAwardPoints =  (message.ModuleFeatureList.ToList().Count != 0)?true:false;
+            }
+        }
+
+         public bool StaffHasPermissionToAwardPoints { get; set; }
+
         public static void RunGetPlayerLocation()
         {
                GetPlayerLocation.GetPlayerLocationX();  
@@ -373,6 +394,10 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             ListLocationCountry = GetPlayerLocationPer.CountryName;
         }
+
+
+
+
         //US2649
         /// <summary>
         /// Returns a string with the version and copyright information of 

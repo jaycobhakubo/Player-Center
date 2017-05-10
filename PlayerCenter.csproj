@@ -405,15 +405,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Res\Players.ico" />
-    <Content Include="_MYREF\Awardpoints_orig.txt" />
-    <Content Include="_MYREF\DBSupport.txt" />
-    <Content Include="_MYREF\Messages.txt" />
-    <Content Include="_MYREF\Ref.txt" />
-    <Content Include="_MYREF\UI.txt" />
-    <Content Include="_MYREF\US2100.txt" />
-    <Content Include="_SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
-    <Content Include="_SQL\Schema\Table_PlayerRafflesPrizes.sql" />
-    <Content Include="_SQL\Schema\Trigger_trigLogRafflePrize.sql" />
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>
   <ItemGroup>

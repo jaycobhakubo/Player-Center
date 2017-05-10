@@ -18,13 +18,13 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using CrystalDecisions.CrystalReports.Engine;
 using GTI.Modules.Shared;
 using GTI.Controls;
 using GTI.Modules.PlayerCenter.UI;
 using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Properties;
-using System.Text;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.PlayerCenter.Data.Printing;
 
@@ -41,52 +41,34 @@ namespace GTI.Modules.PlayerCenter.Business
         private const int ServerCommShutdownWait = 15000;
         private const string LogPrefix = "PlayerCenter - ";
         // FIX: DE2475 - Appears to be problems with the registration of GTIVidcap.ocx on the system.
-        private const string GameTechDir = "%GMTCDRIVE%";
+        private const string GameTechDir = "%GMTCDRIVE%";      
         private const string VidSnapshotName = @"Common\VidSnapshot.exe";
         private const string TempPicFileName = "TempPlayerPic.jpg";
         // END: DE2475
         #endregion
 
         #region Member Variables
-        // System Related
-        private PlayerCenterModule m_module = null;
 
-        private bool m_loggingEnabled = false;
-        private object m_logSync = new object();
-
-        private int m_deviceId = 0;
-        private int m_machineId = 0;
-       // private int m_workstationId = 0;
-
+        private PlayerCenterModule m_module = null;        // System Related
         private BackgroundWorker m_worker = null;
-
         private Exception m_asyncException = null;
-        private object m_errorSync = new object();
-
-        // Player Center Related
-
         private PlayerLoyaltyTier[] m_playerTiers = null;
-
         private PlayerListItem[] m_lastFindPlayersResults = null;
-        private object m_findPlayerSync = new object();
-
-        // TTP 50067
-        private Player m_lastPlayerFromServer = null;
-        private object m_lastPlayerSync = new object();
-
+        private Player m_lastPlayerFromServer = null;        // TTP 50067
         private Bitmap m_lastPlayerPic = null;
-        private object m_playerPicSync = new object();
-
-        // PDTS 1064 - Portable POS Card Swipe.
-        private bool m_externalMagCardReader;
-
-        // Raffle Related
-
-        // UIs
-        private  SplashScreen  m_loadingForm = null;
+        private SplashScreen m_loadingForm = null;        // UIs
         private MCPPlayerManagementForm m_mainMenuForm = null;
         private WaitForm m_waitForm = null;
         private ReportForm m_reportForm; // PDTS 312
+        private object m_errorSync = new object();
+        private object m_findPlayerSync = new object();
+        private object m_lastPlayerSync = new object();
+        private object m_playerPicSync = new object();
+        private object m_logSync = new object();
+        private bool m_loggingEnabled = false;
+        private bool m_externalMagCardReader;        // PDTS 1064 - Portable POS Card Swipe.
+        private int m_deviceId = 0;
+        private int m_machineId = 0;
 
         #endregion
 
@@ -101,7 +83,6 @@ namespace GTI.Modules.PlayerCenter.Business
             m_module = module;
         }       
         #endregion
-
     
         #region Member Methods
 
@@ -250,7 +231,6 @@ namespace GTI.Modules.PlayerCenter.Business
                 m_loadingForm.Status = Resources.LoadingStatusCode;
                 GetStatusCode();
 
-
                 strErr = "set form loading status..loading tiers.";
                 // Load the Player Loyalty Tiers
                 m_loadingForm.Status = Resources.LoadingPlayerTiers;
@@ -278,7 +258,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 strErr = "create instance of player center form.";
                 // Create main menu.
-                m_mainMenuForm = new MCPPlayerManagementForm(this);//knc
+                m_mainMenuForm = new MCPPlayerManagementForm(this);
 
                 // FIX: DE2476 - Performance slows down as player pictures are added.
                 // Load our wait form.
@@ -367,8 +347,6 @@ namespace GTI.Modules.PlayerCenter.Business
                  StaffHasPermissionToAwardPoints =  (message.ModuleFeatureList.ToList().Count != 0)?true:false;
             }
         }
-
-         public bool StaffHasPermissionToAwardPoints { get; set; }
 
         public static void RunGetPlayerLocation()
         {
@@ -2368,6 +2346,9 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets the Player Center's current settings.
         /// </summary>
         public PlayerCenterSettings Settings { get; private set; }
+
+
+        public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
 
         /// <summary>
         /// Gets whether to allow picture capturing.

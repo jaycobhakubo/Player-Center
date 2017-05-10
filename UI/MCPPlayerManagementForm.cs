@@ -539,9 +539,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (m_staffHasPermissionToAwardPointsManually)
                     {
-                        if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);
-                        MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
+                        if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);                    
                     }
+                    MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
                 }
                 personalInfoGroupBox.Text = "Personal Information";
 

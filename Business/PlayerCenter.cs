@@ -131,37 +131,26 @@ namespace GTI.Modules.PlayerCenter.Business
                 }
 
                 strErr = "create setting obj.";
-                // Create a settings object with the default values.
-                Settings = PlayerCenterSettings.Instance; //US4119 changed to singleton
-
+                Settings = PlayerCenterSettings.Instance;  // Create a settings object with the default values. //US4119 changed to singleton
                 strErr = "Check to see what resolution to run in.";
-                // Check to see what resolution to run in.
-                if (m_deviceId == Device.POSPortable.Id)
+
+                if (m_deviceId == Device.POSPortable.Id)      // Check to see what resolution to run in.
                     Settings.DisplayMode = new CompactDisplayMode();
                 else
                     Settings.DisplayMode = new NormalDisplayMode();
 
                 strErr = "Create and show the loading form.";
-                // Create and show the loading form.
                 m_loadingForm = new SplashScreen();
-
-                //if(m_settings.DisplayMode is NormalDisplayMode)
-                //    m_loadingForm.BackgroundImage = Resources.LoadingBack1024;
-                //else
-                //    m_loadingForm.BackgroundImage = Resources.LoadingBack800;
-
                 strErr = "set form...version, cursor, app name.";
                 m_loadingForm.Version = GetVersionAndCopyright(true);
                 m_loadingForm.Cursor = Cursors.WaitCursor;
                 m_loadingForm.ApplicationName = Properties.Resources.productName;
-
                 strErr = "show form.";
-                if (showLoadingForm)
-                    m_loadingForm.Show();
 
+                if (showLoadingForm) m_loadingForm.Show();
+              
                 strErr = "set form loading status.";
-                // Get the workstation's settings from the server.
-                m_loadingForm.Status = Resources.LoadingWorkstationInfo;
+                m_loadingForm.Status = Resources.LoadingWorkstationInfo;                // Get the workstation's settings from the server.
                 Application.DoEvents();
 
                 try
@@ -175,13 +164,12 @@ namespace GTI.Modules.PlayerCenter.Business
                         MessageForm.Show(Settings.DisplayMode, string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
                     else
                         MessageForm.Show(string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
-
                     return;
                 }
 
                 strErr = "Check to see if we want to log everything.";
-                // Check to see if we want to log everything.
-                try
+
+                try  // Check to see if we want to log everything.
                 {
                     strErr = "EnableLogging.";
                     if (Settings.EnableLogging)

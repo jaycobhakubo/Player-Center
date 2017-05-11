@@ -1,17 +1,15 @@
 USE [Daily]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spDeltaPlayerPoints_Manual]    Script Date: 5/11/2017 11:34:13 AM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[spDeltaPlayerPoints_Manual]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[spDeltaPlayerPoints_Manual]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spDeltaPlayerPoints_Manual]    Script Date: 5/11/2017 11:34:13 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 CREATE PROCEDURE [dbo].[spDeltaPlayerPoints_Manual]
 --=============================================================================
@@ -156,7 +154,6 @@ END
 SELECT @result AS result
 
 SET NOCOUNT OFF
-
 GO
 
 

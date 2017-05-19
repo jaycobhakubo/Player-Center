@@ -59,10 +59,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+            if (!string.IsNullOrEmpty(txtbxPlayerSpend.Text))
             {
                 PointsAwarded = 0M;
-                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                var tempManualPlayerPoints = txtbxPlayerSpend.Text;
                 SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);               
                 msg.Send();
                 if (msg.ReturnCode == (int)GTIServerReturnCode.Success)

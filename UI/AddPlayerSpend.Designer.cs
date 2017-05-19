@@ -32,7 +32,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton = new GTI.Controls.ImageButton();
             this.lblPointsAwarded = new System.Windows.Forms.Label();
             this.lblPlayerNameIndicator = new System.Windows.Forms.Label();
-            this.txtBxCcDecimalOrNumeric1 = new GTI.Controls.txtBxCcDecimalOrNumeric();
+            this.txtbxPlayerSpend = new GTI.Controls.TextBoxNumeric2();
             this.SuspendLayout();
             // 
             // cancelImageButton
@@ -96,15 +96,16 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPlayerNameIndicator.TabIndex = 4;
             this.lblPlayerNameIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtBxCcDecimalOrNumeric1
+            // txtbxPlayerSpend
             // 
-            this.txtBxCcDecimalOrNumeric1.Location = new System.Drawing.Point(12, 95);
-            this.txtBxCcDecimalOrNumeric1.Mask = GTI.Controls.txtBxCcDecimalOrNumeric.TextBoxType.Integer;
-            this.txtBxCcDecimalOrNumeric1.MaxLength = 16;
-            this.txtBxCcDecimalOrNumeric1.Name = "txtBxCcDecimalOrNumeric1";
-            this.txtBxCcDecimalOrNumeric1.Precision = 2;
-            this.txtBxCcDecimalOrNumeric1.Size = new System.Drawing.Size(296, 23);
-            this.txtBxCcDecimalOrNumeric1.TabIndex = 0;
+            this.txtbxPlayerSpend.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtbxPlayerSpend.Location = new System.Drawing.Point(12, 95);
+            this.txtbxPlayerSpend.Mask = GTI.Controls.TextBoxNumeric2.TextBoxType.Decimal;
+            this.txtbxPlayerSpend.MaxLength = 16;
+            this.txtbxPlayerSpend.Name = "txtbxPlayerSpend";
+            this.txtbxPlayerSpend.Precision = 2;
+            this.txtbxPlayerSpend.Size = new System.Drawing.Size(296, 27);
+            this.txtbxPlayerSpend.TabIndex = 0;
             // 
             // AddPlayerSpend
             // 
@@ -115,7 +116,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.CancelButton = this.cancelImageButton;
             this.ClientSize = new System.Drawing.Size(320, 240);
             this.ControlBox = false;
-            this.Controls.Add(this.txtBxCcDecimalOrNumeric1);
+            this.Controls.Add(this.txtbxPlayerSpend);
             this.Controls.Add(this.lblPlayerNameIndicator);
             this.Controls.Add(this.cancelImageButton);
             this.Controls.Add(this.acceptImageButton);
@@ -143,6 +144,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageButton cancelImageButton;
         private System.Windows.Forms.Label lblPointsAwarded;
         private System.Windows.Forms.Label lblPlayerNameIndicator;
-        private Controls.txtBxCcDecimalOrNumeric txtBxCcDecimalOrNumeric1;
+        private Controls.TextBoxNumeric2 txtbxPlayerSpend;
     }
 }

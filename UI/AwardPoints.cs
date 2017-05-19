@@ -15,6 +15,7 @@ using GTI.Modules.PlayerCenter.Properties;
 using GTI.Modules.PlayerCenter.Data;
 using System.Globalization; 
 
+
 namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class AwardPoints : EliteGradientForm

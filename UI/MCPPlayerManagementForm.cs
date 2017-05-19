@@ -467,20 +467,23 @@ namespace GTI.Modules.PlayerCenter.UI
 
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
-        {      
-            //AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
-            //Application.DoEvents();
-            //ManualPointsAward.ShowDialog();
-            //Application.DoEvents();
+        {
+            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            Application.DoEvents();
+            ManualPointsAward.ShowDialog();
+            Application.DoEvents();
 
-            ////Update the current player points if awarded is successfull to UI.
-            //if (ManualPointsAward.IsPointsAwardedSuccess == true)
-            //{
-            //    var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
-            //    m_player.PointsBalance = newPointBalance;//Not updated
-            //    m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
-            //}
+            //Update the current player points if awarded is successfull to UI.
+            if (ManualPointsAward.IsPointsAwardedSuccess == true)
+            {
+                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                m_player.PointsBalance = newPointBalance;//Not updated
+                m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+            }
+        }
 
+        private void m_btnImgAddSpend_Click(object sender, EventArgs e)
+        {
             AddPlayerSpend AddSpendUI = new AddPlayerSpend(GetPlayerName(), m_player.Id);
             Application.DoEvents();
             AddSpendUI.ShowDialog();
@@ -630,22 +633,6 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             try
             {
-                //if (mobjUSB != null)
-                //{
-                //    if (!mbolClickComment)
-                //    {
-                //        mstrComments = this.txtComments.Text;
-                //        this.txtComments.Text = mobjUSB.ToString();
-                //        this.txtComments.Text += mobjUSB.ErrorMsg;
-                //        mbolClickComment = true;
-                //    }
-                //    else
-                //    {
-                //        this.txtComments.Text = mstrComments;
-                //        mstrComments = "";
-                //        mbolClickComment = false;
-                //    }
-                //}
             }
             catch (Exception ex)
             {
@@ -840,14 +827,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Is Player PIN is Read Only on this form? 
             m_player.PinNumber = m_pinNumber; // m_pinNum.Text.Trim();
-
             m_player.Address1 = txtAddress1.Text.Trim();
             m_player.Address2 = txtAddress2.Text.Trim();
             m_player.City = txCity.Text.Trim();
             m_player.State = txtState.Text.Trim();
             m_player.Zip = txtZipCode.Text.Trim();
             m_player.Country = txtCountry.Text.Trim();
-//            m_player.MagneticCardNumber = m_magCardNum.Text; // FIX: DE6690
             m_player.MagneticCardNumber = txtMagCard.Text.Trim();
 
             //this.txtCredits.Text = String.Format("{0:C}", m_player.RefundableCredit);
@@ -927,20 +912,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             try
             {
-                //mobjUSB = new clsUSB();
-                //mobjUSB.Load();
-
-                //while (mobjUSB.pIsLoading)
-                //{
-                //    Thread.Sleep(200);
-                //    Application.DoEvents();
-                //}
-
-                //if (!mobjUSB.pHasCamera)
-                //{
-                //    this.m_takePictureButton.Enabled = false;
-                //    txtComments.Text = "No camera installed.";
-                //}               
+            
             }
             catch (Exception ex)
             {
@@ -1101,6 +1073,8 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
+
+       
 
     }
 }

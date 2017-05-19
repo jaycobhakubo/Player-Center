@@ -75,7 +75,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     IsPointsAwardedSuccess = false;
                 }
             }
-
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -131,7 +131,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Award Points";
+            this.Text = "Player Spend";
             this.Load += new System.EventHandler(this.ManualAwardPoints_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

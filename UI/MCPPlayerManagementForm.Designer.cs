@@ -946,6 +946,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAddSpend.RepeatRate = 150;
             this.m_btnImgAddSpend.RepeatWhenHeldFor = 750;
             this.m_btnImgAddSpend.UseVisualStyleBackColor = false;
+            this.m_btnImgAddSpend.Click += new System.EventHandler(this.m_btnImgAddSpend_Click);
             // 
             // MCPPlayerManagementForm
             // 

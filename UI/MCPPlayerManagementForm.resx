@@ -3040,19 +3040,19 @@
     <value>NoControl</value>
   </data>
   <data name="m_btnImgAwardPointManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 315</value>
+    <value>35, 315</value>
   </data>
   <data name="m_btnImgAwardPointManual.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="m_btnImgAwardPointManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 37</value>
+    <value>331, 37</value>
   </data>
   <data name="m_btnImgAwardPointManual.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
   <data name="m_btnImgAwardPointManual.Text" xml:space="preserve">
-    <value>Add Spend</value>
+    <value>Award Points</value>
   </data>
   <data name="m_btnImgAwardPointManual.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3079,19 +3079,22 @@
     <value>NoControl</value>
   </data>
   <data name="m_btnImgAddSpend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 315</value>
+    <value>35, 315</value>
   </data>
   <data name="m_btnImgAddSpend.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="m_btnImgAddSpend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 37</value>
+    <value>331, 37</value>
   </data>
   <data name="m_btnImgAddSpend.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
+    <value>23</value>
   </data>
   <data name="m_btnImgAddSpend.Text" xml:space="preserve">
     <value>Add Spend</value>
+  </data>
+  <data name="m_btnImgAddSpend.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;m_btnImgAddSpend.Name" xml:space="preserve">
     <value>m_btnImgAddSpend</value>

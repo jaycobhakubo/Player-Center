@@ -599,8 +599,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             m_dataChanged = true;
         }
-
-      
+   
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

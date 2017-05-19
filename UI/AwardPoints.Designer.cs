@@ -28,25 +28,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtbxPointsAwarded = new System.Windows.Forms.TextBox();
             this.cancelImageButton = new GTI.Controls.ImageButton();
             this.acceptImageButton = new GTI.Controls.ImageButton();
             this.lblPointsAwarded = new System.Windows.Forms.Label();
             this.lblPlayerNameIndicator = new System.Windows.Forms.Label();
-            this.textBoxNumeric1 = new GTI.Controls.TextBoxNumeric();
-            this.textBoxNumeric21 = new GTI.Controls.TextBoxNumeric2();
+            this.txtbxPointsAwarded = new GTI.Controls.txtBxCcDecimalOrNumeric();
             this.SuspendLayout();
-            // 
-            // txtbxPointsAwarded
-            // 
-            this.txtbxPointsAwarded.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbxPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 89);
-            this.txtbxPointsAwarded.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
-            this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 20);
-            this.txtbxPointsAwarded.TabIndex = 1;
-            this.txtbxPointsAwarded.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cancelImageButton
             // 
@@ -93,7 +80,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.lblPointsAwarded.BackColor = System.Drawing.Color.Transparent;
             this.lblPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointsAwarded.Location = new System.Drawing.Point(12, 31);
+            this.lblPointsAwarded.Location = new System.Drawing.Point(12, 75);
             this.lblPointsAwarded.Name = "lblPointsAwarded";
             this.lblPointsAwarded.Size = new System.Drawing.Size(145, 20);
             this.lblPointsAwarded.TabIndex = 3;
@@ -107,27 +94,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPlayerNameIndicator.Name = "lblPlayerNameIndicator";
             this.lblPlayerNameIndicator.Size = new System.Drawing.Size(296, 22);
             this.lblPlayerNameIndicator.TabIndex = 4;
-            this.lblPlayerNameIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPlayerNameIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxNumeric1
+            // txtbxPointsAwarded
             // 
-            this.textBoxNumeric1.Location = new System.Drawing.Point(12, 54);
-            this.textBoxNumeric1.Mask = GTI.Controls.TextBoxNumeric.TextBoxType.Integer;
-            this.textBoxNumeric1.MaxLength = 10;
-            this.textBoxNumeric1.Name = "textBoxNumeric1";
-            this.textBoxNumeric1.Precision = 2;
-            this.textBoxNumeric1.Size = new System.Drawing.Size(292, 23);
-            this.textBoxNumeric1.TabIndex = 6;
-            // 
-            // textBoxNumeric21
-            // 
-            this.textBoxNumeric21.Location = new System.Drawing.Point(16, 130);
-            this.textBoxNumeric21.Mask = GTI.Controls.TextBoxNumeric2.TextBoxType.Decimal;
-            this.textBoxNumeric21.MaxLength = 16;
-            this.textBoxNumeric21.Name = "textBoxNumeric21";
-            this.textBoxNumeric21.Precision = 2;
-            this.textBoxNumeric21.Size = new System.Drawing.Size(288, 23);
-            this.textBoxNumeric21.TabIndex = 7;
+            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 98);
+            this.txtbxPointsAwarded.Mask = GTI.Controls.txtBxCcDecimalOrNumeric.TextBoxType.Decimal;
+            this.txtbxPointsAwarded.MaxLength = 16;
+            this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
+            this.txtbxPointsAwarded.Precision = 2;
+            this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 23);
+            this.txtbxPointsAwarded.TabIndex = 0;
             // 
             // AwardPoints
             // 
@@ -138,13 +115,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.CancelButton = this.cancelImageButton;
             this.ClientSize = new System.Drawing.Size(320, 240);
             this.ControlBox = false;
-            this.Controls.Add(this.textBoxNumeric21);
-            this.Controls.Add(this.textBoxNumeric1);
+            this.Controls.Add(this.txtbxPointsAwarded);
             this.Controls.Add(this.lblPlayerNameIndicator);
             this.Controls.Add(this.cancelImageButton);
             this.Controls.Add(this.acceptImageButton);
             this.Controls.Add(this.lblPointsAwarded);
-            this.Controls.Add(this.txtbxPointsAwarded);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -164,12 +139,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtbxPointsAwarded;
         private GTI.Controls.ImageButton acceptImageButton;
         private GTI.Controls.ImageButton cancelImageButton;
         private System.Windows.Forms.Label lblPointsAwarded;
         private System.Windows.Forms.Label lblPlayerNameIndicator;
-        private Controls.TextBoxNumeric textBoxNumeric1;
-        private Controls.TextBoxNumeric2 textBoxNumeric21;
+        private Controls.txtBxCcDecimalOrNumeric txtbxPointsAwarded;
     }
 }

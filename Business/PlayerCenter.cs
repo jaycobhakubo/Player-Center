@@ -740,7 +740,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
-                settingsMsg.Send();
+                settingsMsg.Send();//knc
             }
             catch(Exception e)
             {
@@ -755,7 +755,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             foreach (SettingValue setting in stationSettings)
             {
-                Settings.LoadSetting(setting);
+                Settings.LoadSetting(setting);//knc
             }
 
             // Rally TA7897

@@ -468,17 +468,30 @@ namespace GTI.Modules.PlayerCenter.UI
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {      
-            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            //AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            //Application.DoEvents();
+            //ManualPointsAward.ShowDialog();
+            //Application.DoEvents();
+
+            ////Update the current player points if awarded is successfull to UI.
+            //if (ManualPointsAward.IsPointsAwardedSuccess == true)
+            //{
+            //    var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+            //    m_player.PointsBalance = newPointBalance;//Not updated
+            //    m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
+            //}
+
+            AddPlayerSpend AddSpendUI = new AddPlayerSpend(GetPlayerName(), m_player.Id);
             Application.DoEvents();
-            ManualPointsAward.ShowDialog();
+            AddSpendUI.ShowDialog();
             Application.DoEvents();
 
             //Update the current player points if awarded is successfull to UI.
-            if (ManualPointsAward.IsPointsAwardedSuccess == true)
+            if (AddSpendUI.IsPointsAwardedSuccess == true)
             {
-                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                var newPointBalance = m_player.PointsBalance + AddSpendUI.PointsAwarded;
                 m_player.PointsBalance = newPointBalance;//Not updated
-                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
+                m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
             }
         }
 

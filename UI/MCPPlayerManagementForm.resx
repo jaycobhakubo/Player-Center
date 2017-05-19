@@ -282,6 +282,453 @@
   <data name="&gt;&gt;lblMagCardNumLabel.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="&gt;&gt;txtMagCard.Name" xml:space="preserve">
+    <value>txtMagCard</value>
+  </data>
+  <data name="&gt;&gt;txtMagCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMagCard.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtMagCard.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;m_creditNonRef.Name" xml:space="preserve">
+    <value>m_creditNonRef</value>
+  </data>
+  <data name="&gt;&gt;m_creditNonRef.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_creditNonRef.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_creditNonRef.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;m_credits.Name" xml:space="preserve">
+    <value>m_credits</value>
+  </data>
+  <data name="&gt;&gt;m_credits.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_credits.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_credits.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_genderList.Name" xml:space="preserve">
+    <value>m_genderList</value>
+  </data>
+  <data name="&gt;&gt;m_genderList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_genderList.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_genderList.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblCreditsNonRef.Name" xml:space="preserve">
+    <value>lblCreditsNonRef</value>
+  </data>
+  <data name="&gt;&gt;lblCreditsNonRef.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCreditsNonRef.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblCreditsNonRef.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;lblCredits.Name" xml:space="preserve">
+    <value>lblCredits</value>
+  </data>
+  <data name="&gt;&gt;lblCredits.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCredits.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblCredits.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;txtBirthDate.Name" xml:space="preserve">
+    <value>txtBirthDate</value>
+  </data>
+  <data name="&gt;&gt;txtBirthDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtBirthDate.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtBirthDate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;lblFirstNameLabel.Name" xml:space="preserve">
+    <value>lblFirstNameLabel</value>
+  </data>
+  <data name="&gt;&gt;lblFirstNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblFirstNameLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblFirstNameLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Name" xml:space="preserve">
+    <value>txtFirstName</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtFirstName.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;txtMiddleInitial.Name" xml:space="preserve">
+    <value>txtMiddleInitial</value>
+  </data>
+  <data name="&gt;&gt;txtMiddleInitial.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtMiddleInitial.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtMiddleInitial.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;lblMiddleInitialLabel.Name" xml:space="preserve">
+    <value>lblMiddleInitialLabel</value>
+  </data>
+  <data name="&gt;&gt;lblMiddleInitialLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblMiddleInitialLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblMiddleInitialLabel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Name" xml:space="preserve">
+    <value>txtLastName</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtLastName.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;lblLastNameLabel.Name" xml:space="preserve">
+    <value>lblLastNameLabel</value>
+  </data>
+  <data name="&gt;&gt;lblLastNameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblLastNameLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblLastNameLabel.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;lblBirthDateLabel.Name" xml:space="preserve">
+    <value>lblBirthDateLabel</value>
+  </data>
+  <data name="&gt;&gt;lblBirthDateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBirthDateLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblBirthDateLabel.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;lblGenderLabel.Name" xml:space="preserve">
+    <value>lblGenderLabel</value>
+  </data>
+  <data name="&gt;&gt;lblGenderLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblGenderLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblGenderLabel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;lblPhoneNumLabel.Name" xml:space="preserve">
+    <value>lblPhoneNumLabel</value>
+  </data>
+  <data name="&gt;&gt;lblPhoneNumLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPhoneNumLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblPhoneNumLabel.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;txtPhoneNum.Name" xml:space="preserve">
+    <value>txtPhoneNum</value>
+  </data>
+  <data name="&gt;&gt;txtPhoneNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPhoneNum.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtPhoneNum.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;txtSocialSecurityNum.Name" xml:space="preserve">
+    <value>txtSocialSecurityNum</value>
+  </data>
+  <data name="&gt;&gt;txtSocialSecurityNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtSocialSecurityNum.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtSocialSecurityNum.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;lblSocialSecurityNumLabel.Name" xml:space="preserve">
+    <value>lblSocialSecurityNumLabel</value>
+  </data>
+  <data name="&gt;&gt;lblSocialSecurityNumLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSocialSecurityNumLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblSocialSecurityNumLabel.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;lblCountryLabel.Name" xml:space="preserve">
+    <value>lblCountryLabel</value>
+  </data>
+  <data name="&gt;&gt;lblCountryLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCountryLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblCountryLabel.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;lblEmailLabel.Name" xml:space="preserve">
+    <value>lblEmailLabel</value>
+  </data>
+  <data name="&gt;&gt;lblEmailLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblEmailLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblEmailLabel.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;lblZipCodeLabel.Name" xml:space="preserve">
+    <value>lblZipCodeLabel</value>
+  </data>
+  <data name="&gt;&gt;lblZipCodeLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblZipCodeLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblZipCodeLabel.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;txtEmail.Name" xml:space="preserve">
+    <value>txtEmail</value>
+  </data>
+  <data name="&gt;&gt;txtEmail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtEmail.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtEmail.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;lblStateLabel.Name" xml:space="preserve">
+    <value>lblStateLabel</value>
+  </data>
+  <data name="&gt;&gt;lblStateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblStateLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblStateLabel.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;txtPlayerIdent.Name" xml:space="preserve">
+    <value>txtPlayerIdent</value>
+  </data>
+  <data name="&gt;&gt;txtPlayerIdent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtPlayerIdent.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtPlayerIdent.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;lblCityLabel.Name" xml:space="preserve">
+    <value>lblCityLabel</value>
+  </data>
+  <data name="&gt;&gt;lblCityLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblCityLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblCityLabel.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerIdentLabel.Name" xml:space="preserve">
+    <value>lblPlayerIdentLabel</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerIdentLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerIdentLabel.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblPlayerIdentLabel.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;lblAddress2Label.Name" xml:space="preserve">
+    <value>lblAddress2Label</value>
+  </data>
+  <data name="&gt;&gt;lblAddress2Label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAddress2Label.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblAddress2Label.ZOrder" xml:space="preserve">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;lblAddress1Label.Name" xml:space="preserve">
+    <value>lblAddress1Label</value>
+  </data>
+  <data name="&gt;&gt;lblAddress1Label.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblAddress1Label.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lblAddress1Label.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;txtAddress1.Name" xml:space="preserve">
+    <value>txtAddress1</value>
+  </data>
+  <data name="&gt;&gt;txtAddress1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtAddress1.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtAddress1.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;txtAddress2.Name" xml:space="preserve">
+    <value>txtAddress2</value>
+  </data>
+  <data name="&gt;&gt;txtAddress2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtAddress2.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtAddress2.ZOrder" xml:space="preserve">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;txCity.Name" xml:space="preserve">
+    <value>txCity</value>
+  </data>
+  <data name="&gt;&gt;txCity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txCity.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txCity.ZOrder" xml:space="preserve">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;txtState.Name" xml:space="preserve">
+    <value>txtState</value>
+  </data>
+  <data name="&gt;&gt;txtState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtState.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtState.ZOrder" xml:space="preserve">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;txtZipCode.Name" xml:space="preserve">
+    <value>txtZipCode</value>
+  </data>
+  <data name="&gt;&gt;txtZipCode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtZipCode.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtZipCode.ZOrder" xml:space="preserve">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Name" xml:space="preserve">
+    <value>txtCountry</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.Parent" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtCountry.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
+  <data name="personalInfoGroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="personalInfoGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 30</value>
+  </data>
+  <data name="personalInfoGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>614, 333</value>
+  </data>
+  <data name="personalInfoGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="personalInfoGroupBox.Text" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+  <data name="&gt;&gt;personalInfoGroupBox.Name" xml:space="preserve">
+    <value>personalInfoGroupBox</value>
+  </data>
+  <data name="&gt;&gt;personalInfoGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;personalInfoGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;personalInfoGroupBox.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
   <data name="txtMagCard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
@@ -1356,33 +1803,6 @@
   <data name="&gt;&gt;txtCountry.ZOrder" xml:space="preserve">
     <value>35</value>
   </data>
-  <data name="personalInfoGroupBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="personalInfoGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 30</value>
-  </data>
-  <data name="personalInfoGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 333</value>
-  </data>
-  <data name="personalInfoGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="personalInfoGroupBox.Text" xml:space="preserve">
-    <value>Personal Information</value>
-  </data>
-  <data name="&gt;&gt;personalInfoGroupBox.Name" xml:space="preserve">
-    <value>personalInfoGroupBox</value>
-  </data>
-  <data name="&gt;&gt;personalInfoGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;personalInfoGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;personalInfoGroupBox.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="m_noPic.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1527,48 +1947,6 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 26</value>
-  </data>
-  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
-    <value>E&amp;xit</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 26</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="playerListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 26</value>
-  </data>
-  <data name="playerListToolStripMenuItem.Text" xml:space="preserve">
-    <value>Player List...</value>
-  </data>
-  <data name="playerStatusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 26</value>
-  </data>
-  <data name="playerStatusToolStripMenuItem.Text" xml:space="preserve">
-    <value>Player Status...</value>
-  </data>
-  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 26</value>
-  </data>
-  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 26</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;About...</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 26</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1592,6 +1970,291 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 26</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 26</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 26</value>
+  </data>
+  <data name="viewToolStripMenuItem.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="playerListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 26</value>
+  </data>
+  <data name="playerListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Player List...</value>
+  </data>
+  <data name="playerStatusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 26</value>
+  </data>
+  <data name="playerStatusToolStripMenuItem.Text" xml:space="preserve">
+    <value>Player Status...</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 26</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 26</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;About...</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.Name" xml:space="preserve">
+    <value>statusLabel</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;statusLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lvActiveStatus.Name" xml:space="preserve">
+    <value>lvActiveStatus</value>
+  </data>
+  <data name="&gt;&gt;lvActiveStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lvActiveStatus.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;lvActiveStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;m_IsLogInStatusImageLabel.Name" xml:space="preserve">
+    <value>m_IsLogInStatusImageLabel</value>
+  </data>
+  <data name="&gt;&gt;m_IsLogInStatusImageLabel.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_IsLogInStatusImageLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_IsLogInStatusImageLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceUI.Name" xml:space="preserve">
+    <value>m_pointsBalanceUI</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceUI.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceUI.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceUI.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceLabel.Name" xml:space="preserve">
+    <value>m_pointsBalanceLabel</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_pointsBalanceLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisit.Name" xml:space="preserve">
+    <value>m_lastVisit</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisit.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisit.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisit.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisitLabel.Name" xml:space="preserve">
+    <value>m_lastVisitLabel</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisitLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisitLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_lastVisitLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;isLoginLabel.Name" xml:space="preserve">
+    <value>isLoginLabel</value>
+  </data>
+  <data name="&gt;&gt;isLoginLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;isLoginLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;isLoginLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;m_joinDate.Name" xml:space="preserve">
+    <value>m_joinDate</value>
+  </data>
+  <data name="&gt;&gt;m_joinDate.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_joinDate.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_joinDate.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;m_joinDateLabel.Name" xml:space="preserve">
+    <value>m_joinDateLabel</value>
+  </data>
+  <data name="&gt;&gt;m_joinDateLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_joinDateLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_joinDateLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;spendLabel.Name" xml:space="preserve">
+    <value>spendLabel</value>
+  </data>
+  <data name="&gt;&gt;spendLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;spendLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;spendLabel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;m_SpendDataImageLabel.Name" xml:space="preserve">
+    <value>m_SpendDataImageLabel</value>
+  </data>
+  <data name="&gt;&gt;m_SpendDataImageLabel.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_SpendDataImageLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_SpendDataImageLabel.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;m_visitCount.Name" xml:space="preserve">
+    <value>m_visitCount</value>
+  </data>
+  <data name="&gt;&gt;m_visitCount.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_visitCount.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_visitCount.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;m_visitCountLabel.Name" xml:space="preserve">
+    <value>m_visitCountLabel</value>
+  </data>
+  <data name="&gt;&gt;m_visitCountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_visitCountLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_visitCountLabel.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;m_playerId.Name" xml:space="preserve">
+    <value>m_playerId</value>
+  </data>
+  <data name="&gt;&gt;m_playerId.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_playerId.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_playerId.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;m_playerTierLabel.Name" xml:space="preserve">
+    <value>m_playerTierLabel</value>
+  </data>
+  <data name="&gt;&gt;m_playerTierLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_playerTierLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_playerTierLabel.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;m_playerIdLabel.Name" xml:space="preserve">
+    <value>m_playerIdLabel</value>
+  </data>
+  <data name="&gt;&gt;m_playerIdLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_playerIdLabel.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_playerIdLabel.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;m_playerTier.Name" xml:space="preserve">
+    <value>m_playerTier</value>
+  </data>
+  <data name="&gt;&gt;m_playerTier.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_playerTier.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_playerTier.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="loyalityGroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="loyalityGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 367</value>
+  </data>
+  <data name="loyalityGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>956, 132</value>
+  </data>
+  <data name="loyalityGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="loyalityGroupBox.Text" xml:space="preserve">
+    <value>Loyalty Information</value>
+  </data>
+  <data name="&gt;&gt;loyalityGroupBox.Name" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;loyalityGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;loyalityGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;loyalityGroupBox.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="statusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1629,9 +2292,6 @@
   <data name="&gt;&gt;statusLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="columnName.Width" type="System.Int32, mscorlib">
-    <value>260</value>
-  </data>
   <data name="lvActiveStatus.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 10pt</value>
   </data>
@@ -1658,6 +2318,9 @@
   </data>
   <data name="&gt;&gt;lvActiveStatus.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="columnName.Width" type="System.Int32, mscorlib">
+    <value>260</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -2211,33 +2874,6 @@
   <data name="&gt;&gt;m_playerTier.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="loyalityGroupBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="loyalityGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 367</value>
-  </data>
-  <data name="loyalityGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>956, 132</value>
-  </data>
-  <data name="loyalityGroupBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="loyalityGroupBox.Text" xml:space="preserve">
-    <value>Loyalty Information</value>
-  </data>
-  <data name="&gt;&gt;loyalityGroupBox.Name" xml:space="preserve">
-    <value>loyalityGroupBox</value>
-  </data>
-  <data name="&gt;&gt;loyalityGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;loyalityGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;loyalityGroupBox.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
   <data name="m_saveChangesButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
@@ -2416,7 +3052,7 @@
     <value>23</value>
   </data>
   <data name="m_btnImgAwardPointManual.Text" xml:space="preserve">
-    <value>Award Points</value>
+    <value>Add Spend</value>
   </data>
   <data name="m_btnImgAwardPointManual.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2436,6 +3072,39 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 0</value>
   </metadata>
+  <data name="m_btnImgAddSpend.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="m_btnImgAddSpend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_btnImgAddSpend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 315</value>
+  </data>
+  <data name="m_btnImgAddSpend.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_btnImgAddSpend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 37</value>
+  </data>
+  <data name="m_btnImgAddSpend.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="m_btnImgAddSpend.Text" xml:space="preserve">
+    <value>Add Spend</value>
+  </data>
+  <data name="&gt;&gt;m_btnImgAddSpend.Name" xml:space="preserve">
+    <value>m_btnImgAddSpend</value>
+  </data>
+  <data name="&gt;&gt;m_btnImgAddSpend.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.771, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_btnImgAddSpend.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_btnImgAddSpend.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

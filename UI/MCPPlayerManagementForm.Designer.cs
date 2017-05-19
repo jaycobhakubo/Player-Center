@@ -189,6 +189,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.m_btnImgAddSpend = new GTI.Controls.ImageButton();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -933,6 +934,19 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
             this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 
+            // m_btnImgAddSpend
+            // 
+            this.m_btnImgAddSpend.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnImgAddSpend.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnImgAddSpend, "m_btnImgAddSpend");
+            this.m_btnImgAddSpend.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_btnImgAddSpend.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnImgAddSpend.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnImgAddSpend.Name = "m_btnImgAddSpend";
+            this.m_btnImgAddSpend.RepeatRate = 150;
+            this.m_btnImgAddSpend.RepeatWhenHeldFor = 750;
+            this.m_btnImgAddSpend.UseVisualStyleBackColor = false;
+            // 
             // MCPPlayerManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -951,6 +965,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.personalInfoGroupBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.m_btnImgAwardPointManual);
+            this.Controls.Add(this.m_btnImgAddSpend);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -990,6 +1005,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageLabel m_creditNonRef;
         private System.Windows.Forms.TextBox txtMagCard;
         private Controls.ImageButton m_btnImgAwardPointManual;
+        private Controls.ImageButton m_btnImgAddSpend;
 
        
        

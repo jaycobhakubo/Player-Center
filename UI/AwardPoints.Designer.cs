@@ -80,9 +80,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.lblPointsAwarded.BackColor = System.Drawing.Color.Transparent;
             this.lblPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointsAwarded.Location = new System.Drawing.Point(12, 75);
+            this.lblPointsAwarded.Location = new System.Drawing.Point(12, 72);
             this.lblPointsAwarded.Name = "lblPointsAwarded";
-            this.lblPointsAwarded.Size = new System.Drawing.Size(145, 20);
+            this.lblPointsAwarded.Size = new System.Drawing.Size(155, 20);
             this.lblPointsAwarded.TabIndex = 3;
             this.lblPointsAwarded.Text = "Points to Award";
             // 
@@ -98,7 +98,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // txtbxPointsAwarded
             // 
-            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 98);
+            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 95);
             this.txtbxPointsAwarded.Mask = GTI.Controls.txtBxCcDecimalOrNumeric.TextBoxType.Decimal;
             this.txtbxPointsAwarded.MaxLength = 16;
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";

@@ -405,6 +405,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Res\Players.ico" />
+    <Content Include="_MYREF\Awardpoints_orig.txt" />
+    <Content Include="_MYREF\DBSupport.txt" />
+    <Content Include="_MYREF\Messages.txt" />
+    <Content Include="_MYREF\Ref.txt" />
+    <Content Include="_MYREF\UI.txt" />
+    <Content Include="_MYREF\US2100.txt" />
+    <Content Include="_MYREF\_SQL\Add Module Feature Allow User To Award Points Manually.sql" />
+    <Content Include="_MYREF\_SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
+    <Content Include="_MYREF\_SQL\Schema\Table_PlayerRafflesPrizes.sql" />
+    <Content Include="_MYREF\_SQL\Schema\Trigger_trigLogRafflePrize.sql" />
+    <Content Include="_MYREF\_SQL\spDeltaPlayerPoints_Manual.sql" />
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>
   <ItemGroup>

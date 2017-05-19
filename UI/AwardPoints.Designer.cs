@@ -39,12 +39,12 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.txtbxPointsAwarded.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbxPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbxPointsAwarded.Location = new System.Drawing.Point(12, 97);
+            this.txtbxPointsAwarded.Location = new System.Drawing.Point(175, 65);
             this.txtbxPointsAwarded.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
-            this.txtbxPointsAwarded.Size = new System.Drawing.Size(296, 20);
+            this.txtbxPointsAwarded.Size = new System.Drawing.Size(133, 20);
             this.txtbxPointsAwarded.TabIndex = 1;
-
+            this.txtbxPointsAwarded.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cancelImageButton
             // 
@@ -91,11 +91,11 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.lblPointsAwarded.BackColor = System.Drawing.Color.Transparent;
             this.lblPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointsAwarded.Location = new System.Drawing.Point(8, 65);
+            this.lblPointsAwarded.Location = new System.Drawing.Point(14, 65);
             this.lblPointsAwarded.Name = "lblPointsAwarded";
-            this.lblPointsAwarded.Size = new System.Drawing.Size(308, 28);
+            this.lblPointsAwarded.Size = new System.Drawing.Size(143, 20);
             this.lblPointsAwarded.TabIndex = 3;
-            this.lblPointsAwarded.Text = "Enter the number of points to award";
+            this.lblPointsAwarded.Text = "Points to Award";
             // 
             // lblPlayerNameIndicator
             // 

@@ -923,8 +923,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_btnImgAwardPointManual
             // 
             this.m_btnImgAwardPointManual.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnImgAwardPointManual.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_btnImgAwardPointManual, "m_btnImgAwardPointManual");
+            this.m_btnImgAwardPointManual.FocusColor = System.Drawing.Color.Black;
             this.m_btnImgAwardPointManual.ForeColor = System.Drawing.SystemColors.ControlText;
             this.m_btnImgAwardPointManual.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_btnImgAwardPointManual.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
@@ -965,8 +965,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.loyalityGroupBox);
             this.Controls.Add(this.personalInfoGroupBox);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.m_btnImgAwardPointManual);
             this.Controls.Add(this.m_btnImgAddSpend);
+            this.Controls.Add(this.m_btnImgAwardPointManual);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.Window;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

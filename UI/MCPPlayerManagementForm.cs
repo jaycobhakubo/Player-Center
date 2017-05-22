@@ -91,6 +91,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 ChkSystemCamera();
                 AddToolStripMenuItem();
                 m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;
+                ShowManualAwardPointsButton(true);
 
             }
             catch (Exception)
@@ -346,6 +347,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         if (!m_isManualAwardPointsEnable)
                         ShowManualAwardPointsButton(true);
+                        m_btnImgAwardPointManual.Enabled = true;
                     }
 
                 }

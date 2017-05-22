@@ -1,1 +1,6 @@
-﻿Hiyyydfra
+﻿  SettingValue tempSettingValue;
+            int tempInt;
+
+            Common.GetOpSettingValue(Setting.ThirdPartyPlayerInterfaceID, out tempSettingValue);//knc
+
+			------------------------------------------------------------------------------

@@ -96,7 +96,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// initializing; otherwise false.</param>
         /// <param name="isTouchScreen">Whether this is being used by a 
         /// touchscreen based module.</param>
-        public void Initialize(bool showLoadingForm, bool isTouchScreen)
+        public void Initialize(bool showLoadingForm, bool isTouchScreen)//knc
         {
             string strErr = "PlayerManager start init.";
             
@@ -213,6 +213,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 //US2100
                 GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);
+                //var x =  CommonValues ThirdPartyPlayerInterfaceID
 
                 strErr = "set form loading status..again.";
                 //loading player status code
@@ -777,6 +778,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 Settings.LoadSetting(setting);
             }
             // END: TA7897
+
+     
         }
 
         /// <summary>

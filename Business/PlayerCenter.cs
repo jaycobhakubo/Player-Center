@@ -777,9 +777,29 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 Settings.LoadSetting(setting);
             }
-            // END: TA7897
+            // END: TA7897    
 
-     
+            GetPlayerInterface();
+        }
+
+
+        private void GetPlayerInterface()
+        {
+            GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfaceID);//knc
+          
+            try
+            {
+                settingsMsg.Send();//knc
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
+
+            SettingValue stationSettings = settingsMsg.Settings[0];//knc1
+
+            Settings.LoadSettingPlayerInterface(stationSettings);
+
         }
 
         /// <summary>
@@ -2441,6 +2461,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 }
             }
         }
+
+        internal int PlayerInterfaceId { get; set; }//knc
 
         // Rally US144
         /// <summary>

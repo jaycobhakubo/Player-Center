@@ -150,6 +150,9 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.PlayerPinLength: //US4147
                         PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
+                    //case Setting.ThirdPartyPlayerInterfaceID:
+                    //   var x  = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                    //    break;
                 }
             }
             catch
@@ -186,6 +189,15 @@ namespace GTI.Modules.PlayerCenter.Business
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidSetting, setting.Id, setting.Value), e);
             }
         }
+
+
+        public void LoadSettingPlayerInterface(SettingValue setting)
+        {
+            //var param = (Setting)setting.Id;
+            PlayerInterfaceId = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+        }
+
+
         #endregion
 
         #region Member Properties
@@ -314,6 +326,8 @@ namespace GTI.Modules.PlayerCenter.Business
         public bool CreditEnabled { get; set; }
 
         public bool NDSalesMode { get; set; } //US4147
+
+        public int PlayerInterfaceId { get; set; }
 
         //ALL about raffle
         public string POSreceiptPrinterName

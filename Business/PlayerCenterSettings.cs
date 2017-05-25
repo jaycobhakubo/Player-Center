@@ -186,6 +186,16 @@ namespace GTI.Modules.PlayerCenter.Business
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidSetting, setting.Id, setting.Value), e);
             }
         }
+
+
+        public void LoadSettingPlayerInterface(SettingValue setting)
+        {
+            //var param = (Setting)setting.Id;
+            PlayerInterfaceId = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+        }
+
+        public int PlayerInterfaceId { get; set; }
+
         #endregion
 
         #region Member Properties

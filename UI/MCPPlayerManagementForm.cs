@@ -25,19 +25,21 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class MCPPlayerManagementForm : GradientForm
     {
         #region Member Variables
+
+        protected bool m_dataChanged;
         protected bool m_playersSaved;
         protected bool mbolCreditOnline = true;
-        protected object m_lastFocus;
-        protected bool m_dataChanged;
+        private bool m_staffHasPermissionToAwardPointsManually;
+        private bool m_isManualAwardPointsEnable = false;
+        private bool m_isPlayerPinRequired = false;
+        private string mstrComments = String.Empty;
         protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
         protected Player m_playerToSet;
         protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358     
-        protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
-        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
         private PlayerManager m_parent;
-        private bool m_isManualAwardPointsEnable = false;
-        private string mstrComments = String.Empty;
-        private bool m_staffHasPermissionToAwardPointsManually;
+        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
+        protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
+        protected object m_lastFocus;
 
         #endregion
 
@@ -91,6 +93,21 @@ namespace GTI.Modules.PlayerCenter.UI
                 ChkSystemCamera();
                 AddToolStripMenuItem();
                 m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;
+
+                var x = m_parent.Settings.PlayerInterfaceId;
+                if (x == (int)InterfaceFor.BallyACSC
+                    || x == (int)InterfaceFor.BallyACSC13
+                    || x == (int)InterfaceFor.BallyCMP
+                    || x == (int)InterfaceFor.BoydBConnect
+                    )
+                {
+                    m_btnImgAwardPointManual.Text = "Player Spend";
+                   
+                }
+                else
+                {
+                 
+                }
 
             }
             catch (Exception)

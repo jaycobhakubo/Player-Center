@@ -732,7 +732,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <summary>
         /// Gets the settings from the server.
         /// </summary>
-        private void GetWorkstationSettings()
+        private void GetWorkstationSettings()//knc
         {
             // Send message for global settings.
             // Rally DE130
@@ -777,7 +777,31 @@ namespace GTI.Modules.PlayerCenter.Business
                 Settings.LoadSetting(setting);
             }
             // END: TA7897
+
+            GetPlayerInterface();
         }
+
+        private void GetPlayerInterface()
+        {
+            GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfaceNeedPINForRating);//knc
+
+            try
+            {
+                settingsMsg.Send();//knc
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
+
+            SettingValue stationSettings = settingsMsg.Settings[0];//knc1
+
+            Settings.LoadSettingPlayerInterface(stationSettings);
+
+
+        }
+
+        internal int PlayerInterfaceId { get; set; }//knc
 
         /// <summary>
         /// Retrieves the Player Loyalty Tiers from the server.

@@ -61,6 +61,13 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
+                //Check if the player required pin
+                if (IsPlayerPinRequiredForPointAdjustment)
+                {
+
+                }
+
+                IsPointsAwardedSuccess = false;
                 PointsAwarded = 0M;
                 var tempManualPlayerPoints = txtbxPointsAwarded.Text;
                 SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);               
@@ -70,14 +77,53 @@ namespace GTI.Modules.PlayerCenter.UI
                     IsPointsAwardedSuccess = true;
                     PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
                 }
-                else
-                {
-                    IsPointsAwardedSuccess = false;
-                }
+               
             }
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+
+        /// <summary>
+        /// Pops up a window to get the player card pin input from the user
+        /// </summary>
+        /// <param name="throwOnCancel"></param>
+        /// <returns></returns>
+        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
+        {
+            int PIN = 0;
+            //bool inputCanceled = false;
+
+      
+            ////bool MSRActive = m_parent.MagCardReader.ReadingCards;
+
+            ////if (MSRActive)
+            ////    m_parent.MagCardReader.EndReading();
+
+            ////we need a PIN, get it and get the player points to test the PIN
+            //GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_parent.PlayerInterfaceIsPinRequiredForPointAdjustmentLength);//knc
+            //PINEntry.UseDecimalKey = false;
+            //PINEntry.Password = true;
+            //PINEntry.Description = "Enter Player Card PIN";
+
+            //do
+            //{
+            //    inputCanceled = PINEntry.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel;
+
+            //    if (!inputCanceled)
+            //        PIN = Convert.ToInt32(PINEntry.DecimalResult);
+            //} while (!inputCanceled && PIN == 0);
+
+            //PINEntry.Dispose();
+
+            //if (MSRActive)
+            //    //m_parent.MagCardReader.BeginReading();
+
+            //if (inputCanceled && throwOnCancel)
+            //    throw new PlayerCenterException("Player card PIN entry canceled");
+
+            return PIN;
         }
 
         #endregion
@@ -87,6 +133,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
         public bool IsPointsAwardedSuccess { get; set; }
         public decimal PointsAwarded { get; set; }
+        public bool IsPlayerPinRequiredForPointAdjustment { get; set; }
+        public int PlayerPinRequiredForPointAdjustmentLength { get; set; }
+        public bool MSRActive;
 
         #endregion
 

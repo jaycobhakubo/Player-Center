@@ -150,6 +150,12 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.PlayerPinLength: //US4147
                         PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
+                    case Setting.ThirdPartyPlayerInterfaceNeedPINForRating:
+                        PlayerInterfaceIsPinRequiredForPointAdjustment = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfacePINLength:
+                        PlayerInterfaceIsPinRequiredForPointAdjustmentLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                        break;
                 }
             }
             catch
@@ -188,14 +194,8 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
 
-        public void LoadSettingPlayerInterface(SettingValue setting)
-        {
-            //var param = (Setting)setting.Id;
-            PlayerInterfaceId = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
-        }
-
-        public int PlayerInterfaceId { get; set; }
-
+      
+       
         #endregion
 
         #region Member Properties
@@ -317,6 +317,11 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets or sets whether a pin number is required.
         /// </summary>
         public bool PinRequired { get; set; }
+
+
+        // US2100/TA15710
+        public bool PlayerInterfaceIsPinRequiredForPointAdjustment { get; set; }
+        public int PlayerInterfaceIsPinRequiredForPointAdjustmentLength { get; set; }
 
         public int PlayerPinLength { get; set; } //US4120
 

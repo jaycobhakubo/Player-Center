@@ -156,7 +156,19 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get workstation settings.";
-                    GetWorkstationSettings();
+
+                    GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
+
+                    //if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
+                    //{
+
+                        //if (GetSettingPlayerPinRequiredForPointsAdjustments())//knc
+                        //{
+                        //    GetSettingPlayerPinRequiredForPointsAdjustmentsLength();
+                        //}
+                    //}
+
+                    GetWorkstationSettings();//knc
                 }
                 catch (Exception e)
                 {
@@ -210,9 +222,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetListLocationZipCode();
                 GetListLocationCountry();
                 GetPackageName();
-
-                //US2100
-                GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);
+              
 
                 strErr = "set form loading status..again.";
                 //loading player status code
@@ -303,6 +313,70 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
+
+
+        //US2100/TA15674
+        //private bool GetSettingPlayerPinRequiredForPointsAdjustments()//knc
+        //{
+           // GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfaceNeedPINForRating);//knc
+
+           // try
+           // {
+           //     settingsMsg.Send();//knc
+           // }
+           // catch (Exception e)
+           // {
+           //     ReformatException(e);
+           // }
+
+           // SettingValue setting = settingsMsg.Settings[0];
+           //PlayerInterfaceIsPinRequiredForPointAdjustment = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
+           //return PlayerInterfaceIsPinRequiredForPointAdjustment;
+        //    return false;
+
+        //}
+
+        //private void GetSettingPlayerPinRequiredForPointsAdjustmentsLength()//knc
+        //{
+        //    GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfacePINLength);//knc
+
+        //    try
+        //    {
+        //        settingsMsg.Send();//knc
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        ReformatException(e);
+        //    }
+
+        //    SettingValue setting = settingsMsg.Settings[0];
+        //    PlayerInterfaceIsPinRequiredForPointAdjustmentLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+
+        //}
+
+        //public MagneticCardReader MagCardReader
+        //{
+        //    get
+        //    {
+        //        return m_magCardReader;
+        //    }
+        //}
+
+        private MagneticCardReader m_magCardReader;
+
+        //US2100/TA15674
+        private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
+        {
+            StaffHasPermissionToAwardPoints = false;
+            var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
+            message.Send();
+
+            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
+            {
+                StaffHasPermissionToAwardPoints = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
+            }
+        }
+
         /// <summary>
         ///  fill up the status code dictionary
         /// </summary>
@@ -320,19 +394,6 @@ namespace GTI.Modules.PlayerCenter.Business
             if (message.ReturnCode == (int)GTIServerReturnCode.Success)
             {
                 PackageListName = message.PackageItems;
-            }
-        }
-
-        //US2100
-         private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
-        {
-            StaffHasPermissionToAwardPoints = false;
-            var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
-            message.Send();
-
-            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
-            {         
-                 StaffHasPermissionToAwardPoints =  (message.ModuleFeatureList.ToList().Count != 0)?true:false;
             }
         }
 
@@ -778,28 +839,35 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             // END: TA7897
 
-            GetPlayerInterface();
+
+            //Get all setting on third party
+            if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
+            {
+                GetSettingsMessage thirdPartySettingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ThirdPartyPlayerTrackingSettings);
+
+                try
+                {
+                    thirdPartySettingsMsg.Send();//Just get every setting
+                }
+                catch (Exception e)
+                {
+                    ReformatException(e);
+                }
+
+                // Set the workstation id.
+                //m_workstationId = settingsMsg.WorkstationId;
+
+                // Loop through each setting and parse the value.
+                SettingValue[] thirdPartyStationSettings = thirdPartySettingsMsg.Settings;
+
+                foreach (SettingValue setting in thirdPartyStationSettings)
+                {
+                    Settings.LoadSetting(setting);
+                }            
+            }
+        
         }
 
-        private void GetPlayerInterface()
-        {
-            GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfaceNeedPINForRating);//knc
-
-            try
-            {
-                settingsMsg.Send();//knc
-            }
-            catch (Exception e)
-            {
-                ReformatException(e);
-            }
-
-            SettingValue stationSettings = settingsMsg.Settings[0];//knc1
-
-            Settings.LoadSettingPlayerInterface(stationSettings);
-
-
-        }
 
         internal int PlayerInterfaceId { get; set; }//knc
 
@@ -2362,6 +2430,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
         public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
 
+
         /// <summary>
         /// Gets whether to allow picture capturing.
         /// </summary>
@@ -2473,7 +2542,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <summary>
         /// Gets the MagneticCardReader instance for PlayerCenter.
         /// </summary>
-        internal MagneticCardReader MagCardReader { get; private set; }
+        public MagneticCardReader MagCardReader { get; set; }
 
         // Rally US144
         /// <summary>

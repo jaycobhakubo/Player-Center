@@ -31,7 +31,7 @@ namespace GTI.Modules.PlayerCenter.UI
         protected bool mbolCreditOnline = true;
         private bool m_staffHasPermissionToAwardPointsManually;
         private bool m_isManualAwardPointsEnable = false;
-        private bool m_isPlayerPinRequired = false;
+        private bool m_isPlayerPinRequiredForPointAdjustment = false;
         private string mstrComments = String.Empty;
         protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
         protected Player m_playerToSet;
@@ -92,23 +92,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ChkSystemCamera();
                 AddToolStripMenuItem();
-                m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;
 
-                var x = m_parent.Settings.PlayerInterfaceId;
-                if (x == (int)InterfaceFor.BallyACSC
-                    || x == (int)InterfaceFor.BallyACSC13
-                    || x == (int)InterfaceFor.BallyCMP
-                    || x == (int)InterfaceFor.BoydBConnect
-                    )
-                {
-                    m_btnImgAwardPointManual.Text = "Player Spend";
-                   
-                }
-                else
-                {
-                 
-                }
+                m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;                //US2100/TA15674
 
+                //if (m_staffHasPermissionToAwardPointsManually)//US2100/TA15710
+                //{
+                //    m_isPlayerPinRequiredForPointAdjustment = m_parent.PlayerInterfaceIsPinRequiredForPointAdjustment;
+                //}
             }
             catch (Exception)
             {
@@ -482,22 +472,43 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
         }
 
+
+      
+
+
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
-        {      
-            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
-            Application.DoEvents();
-            ManualPointsAward.ShowDialog();
-            Application.DoEvents();
+        {
+            //if (m_isPlayerPinRequiredForPointAdjustment)
+            //{
+            //    GetPlayerCardPINFromUser();
+            //}
+            //else
+            //{
+                AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+                //if (m_isPlayerPinRequiredForPointAdjustment)
+                //{
+                //    ManualPointsAward.IsPlayerPinRequiredForPointAdjustment = m_isPlayerPinRequiredForPointAdjustment;
+                //    ManualPointsAward.PlayerPinRequiredForPointAdjustmentLength = m_parent.PlayerInterfaceIsPinRequiredForPointAdjustmentLength;
+                //    ManualPointsAward.MSRActive = m_parent.MagCardReader.ReadingCards;
+                //}
+                    
+            if (ManualPointsAward.MSRActive)
+                m_parent.MagCardReader.EndReading();
 
-            //Update the current player points if awarded is successfull to UI.
-            if (ManualPointsAward.IsPointsAwardedSuccess == true)
-            {
-                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
-                m_player.PointsBalance = newPointBalance;//Not updated
-                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
+                Application.DoEvents();
+                ManualPointsAward.ShowDialog();
+                Application.DoEvents();
+
+                //Update the current player points if awarded is successfull to UI.
+                if (ManualPointsAward.IsPointsAwardedSuccess == true)
+                {
+                    var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                    m_player.PointsBalance = newPointBalance;//Not updated
+                    m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+                }
             }
-        }
+      
 
         /// <summary>
         /// Handles the save changes button click.

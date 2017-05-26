@@ -583,4 +583,10 @@
   <data name="WaitFormPrintingPlayerRaffle2" xml:space="preserve">
     <value>Printing {0} player receipts, please wait.</value>
   </data>
+  <data name="EnterPlayerCardPIN" xml:space="preserve">
+    <value>Enter Player Card PIN</value>
+  </data>
+  <data name="PlayerCardPINError" xml:space="preserve">
+    <value>Incorrect PIN.</value>
+  </data>
 </root>

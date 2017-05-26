@@ -159,15 +159,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
                     GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
 
-                    //if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
-                    //{
-
-                        //if (GetSettingPlayerPinRequiredForPointsAdjustments())//knc
-                        //{
-                        //    GetSettingPlayerPinRequiredForPointsAdjustmentsLength();
-                        //}
-                    //}
-
                     GetWorkstationSettings();//knc
                 }
                 catch (Exception e)
@@ -313,56 +304,9 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
+     
 
-
-        //US2100/TA15674
-        //private bool GetSettingPlayerPinRequiredForPointsAdjustments()//knc
-        //{
-           // GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfaceNeedPINForRating);//knc
-
-           // try
-           // {
-           //     settingsMsg.Send();//knc
-           // }
-           // catch (Exception e)
-           // {
-           //     ReformatException(e);
-           // }
-
-           // SettingValue setting = settingsMsg.Settings[0];
-           //PlayerInterfaceIsPinRequiredForPointAdjustment = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
-           //return PlayerInterfaceIsPinRequiredForPointAdjustment;
-        //    return false;
-
-        //}
-
-        //private void GetSettingPlayerPinRequiredForPointsAdjustmentsLength()//knc
-        //{
-        //    GetSettingsMessage settingsMsg = new GetSettingsMessage(0, 0, 0, Setting.ThirdPartyPlayerInterfacePINLength);//knc
-
-        //    try
-        //    {
-        //        settingsMsg.Send();//knc
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        ReformatException(e);
-        //    }
-
-        //    SettingValue setting = settingsMsg.Settings[0];
-        //    PlayerInterfaceIsPinRequiredForPointAdjustmentLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
-
-        //}
-
-        //public MagneticCardReader MagCardReader
-        //{
-        //    get
-        //    {
-        //        return m_magCardReader;
-        //    }
-        //}
-
-        private MagneticCardReader m_magCardReader;
+        //private MagneticCardReader m_magCardReader;
 
         //US2100/TA15674
         private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)

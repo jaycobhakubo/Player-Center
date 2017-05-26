@@ -150,6 +150,8 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.PlayerPinLength: //US4147
                         PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
+
+                    //US2100 if staff has permission to adjust points to a player then get this 2 setting.
                     case Setting.ThirdPartyPlayerInterfaceNeedPINForRating:
                         PlayerInterfaceIsPinRequiredForPointAdjustment = Convert.ToBoolean(setting.Value);
                         break;

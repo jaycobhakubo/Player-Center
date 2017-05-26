@@ -31,7 +31,6 @@ namespace GTI.Modules.PlayerCenter.UI
         protected bool mbolCreditOnline = true;
         private bool m_staffHasPermissionToAwardPointsManually;
         private bool m_isManualAwardPointsEnable = false;
-        private bool m_isPlayerPinRequiredForPointAdjustment = false;
         private string mstrComments = String.Empty;
         protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
         protected Player m_playerToSet;
@@ -95,10 +94,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;                //US2100/TA15674
 
-                //if (m_staffHasPermissionToAwardPointsManually)//US2100/TA15710
-                //{
-                //    m_isPlayerPinRequiredForPointAdjustment = m_parent.PlayerInterfaceIsPinRequiredForPointAdjustment;
-                //}
+               //var x = m_parent.Settings.
             }
             catch (Exception)
             {
@@ -473,19 +469,47 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-      
+       
 
 
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
-            //if (m_isPlayerPinRequiredForPointAdjustment)
+            var x = m_player;
+            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id, m_player);
+
+            if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment)
+            {
+                ManualPointsAward.SetInterfaceSetting
+                    (
+                    m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment,
+                    m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustmentLength,
+                   new MagneticCardReader(m_parent.Settings.MSRSettingsInfo)
+                    );
+            }
+
+            Application.DoEvents();
+            ManualPointsAward.ShowDialog();
+            Application.DoEvents();
+
+              //Update the current player points if awarded is successfull to UI.
+            if (ManualPointsAward.IsPointsAwardedSuccess == true)
+            {
+                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                m_player.PointsBalance = newPointBalance;//Not updated
+                m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+            }
+
+            //if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment)
             //{
             //    GetPlayerCardPINFromUser();
             //}
             //else
             //{
-                AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            //    AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            //}
+            //{
+                //AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
                 //if (m_isPlayerPinRequiredForPointAdjustment)
                 //{
                 //    ManualPointsAward.IsPlayerPinRequiredForPointAdjustment = m_isPlayerPinRequiredForPointAdjustment;
@@ -493,21 +517,22 @@ namespace GTI.Modules.PlayerCenter.UI
                 //    ManualPointsAward.MSRActive = m_parent.MagCardReader.ReadingCards;
                 //}
                     
-            if (ManualPointsAward.MSRActive)
-                m_parent.MagCardReader.EndReading();
+            //if (ManualPointsAward.MSRActive)
+                //m_parent.MagCardReader.EndReading();
 
-                Application.DoEvents();
-                ManualPointsAward.ShowDialog();
-                Application.DoEvents();
+                //Application.DoEvents();
+                //ManualPointsAward.ShowDialog();
+                //Application.DoEvents();
 
-                //Update the current player points if awarded is successfull to UI.
-                if (ManualPointsAward.IsPointsAwardedSuccess == true)
-                {
-                    var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
-                    m_player.PointsBalance = newPointBalance;//Not updated
-                    m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
-                }
-            }
+                ////Update the current player points if awarded is successfull to UI.
+                //if (ManualPointsAward.IsPointsAwardedSuccess == true)
+                //{
+                //    var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                //    m_player.PointsBalance = newPointBalance;//Not updated
+                //    m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+                //}
+        }
+            
       
 
         /// <summary>

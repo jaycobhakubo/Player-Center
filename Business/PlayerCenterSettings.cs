@@ -28,6 +28,25 @@ namespace GTI.Modules.PlayerCenter.Business
         private static volatile PlayerCenterSettings m_instance;
         private static readonly object m_sync = new Object();
         private MSRSettings CardReaderSettings = new MSRSettings();
+        protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
+        protected int m_ThirdPartyPlayerInterfaceID;
+
+        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
+        {
+            get
+            {
+                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
+        public int ThirdPartyPlayerInterfaceID
+        {
+            get
+            {
+                return m_ThirdPartyPlayerInterfaceID;
+            }
+        }
+ 
 
         private PlayerCenterSettings()
         {
@@ -158,6 +177,13 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.ThirdPartyPlayerInterfacePINLength:
                         PlayerInterfaceIsPinRequiredForPointAdjustmentLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
+                    case Setting.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped:
+                        m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfaceID:
+                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);
+                        break;
+
                 }
             }
             catch

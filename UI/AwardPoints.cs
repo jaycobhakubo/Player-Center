@@ -124,7 +124,7 @@ namespace GTI.Modules.PlayerCenter.UI
                       
                             newPIN = true;
 
-                            PIN = GetPlayerCardPINFromUser(true);//4_knc
+                            //PIN = GetPlayerCardPINFromUser(true);//4_knc
 
                             if (PIN == 0) //PIN entry canceled.
                                 return ;
@@ -278,46 +278,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_waitForm.ShowDialog(owner);
         }
 
-        //private bool Reading
-
-        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
-        {
-
-            int PIN = 0;
-            bool inputCanceled = false;
-
-            if (!m_isPlayerPinRequiredForPointAdjustment)
-                return 0;
-
-            bool MSRActive = m_magCardReader.ReadingCards;
-
-            if (MSRActive)
-                m_magCardReader.EndReading();
-
-            //we need a PIN, get it and get the player points to test the PIN
-            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_playerPinRequiredForPointAdjustmentLength);//knc
-            PINEntry.UseDecimalKey = false;
-            PINEntry.Password = true;
-            PINEntry.Description = Resources.EnterPlayerCardPIN;
-
-            do
-            {
-                inputCanceled = PINEntry.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel;
-
-                if (!inputCanceled)
-                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
-            } while (!inputCanceled && PIN == 0);
-
-            PINEntry.Dispose();
-
-            if (MSRActive)
-                m_magCardReader.BeginReading();
-
-            if (inputCanceled && throwOnCancel)
-                throw new PlayerCenterException("Player card PIN entry canceled");
-
-            return PIN;
-        }
+  
 
         #endregion
 

@@ -194,7 +194,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SelectPlayerClick(object sender, EventArgs e)
+        private void SelectPlayerClick(object sender, EventArgs e)//knc
         {
             int intPlayerID = 0;
             Application.DoEvents();
@@ -208,7 +208,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
-            m_parent.GetPlayer(intPlayerID);
+            m_parent.GetPlayer(intPlayerID);//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
             Application.DoEvents();

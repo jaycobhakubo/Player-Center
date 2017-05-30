@@ -69,6 +69,22 @@ namespace GTI.Modules.PlayerCenter.Business
         private bool m_externalMagCardReader;        // PDTS 1064 - Portable POS Card Swipe.
         private int m_deviceId = 0;
         private int m_machineId = 0;
+        private bool  m_needPlayerCardPIN;
+        private MagneticCardReader m_magCardReader;
+
+          public bool NeedPlayerCardPIN
+        {
+            get
+            {
+                return m_needPlayerCardPIN;
+            }
+
+            set
+            {
+                m_needPlayerCardPIN = value;
+            }
+        }
+
 
         #endregion
 
@@ -158,7 +174,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     strErr = "get workstation settings.";
 
                     GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
-
+                    m_magCardReader = new MagneticCardReader (Settings.MSRSettingsInfo);
                     GetWorkstationSettings();//knc
                 }
                 catch (Exception e)
@@ -806,7 +822,12 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 foreach (SettingValue setting in thirdPartyStationSettings)
                 {
-                    Settings.LoadSetting(setting);
+                    Settings.LoadSetting(setting);//knc
+                    
+                    if (Setting.ThirdPartyPlayerInterfaceNeedPINForRating == (Setting)setting.Id && Convert.ToBoolean(setting.Value))//And player does not have a pin
+                    {
+                        m_needPlayerCardPIN = true;
+                    }
                 }            
             }
         
@@ -902,7 +923,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// the WaitForm's settings.
         /// </summary>
         /// <param name="playerId">The id of the player to look for.</param>
-        internal void GetPlayer(int playerId)
+        internal void GetPlayer(int playerId)//knc
         {
             // Set the wait message.
             m_waitForm.Message = Resources.WaitFormGettingPlayer;
@@ -917,6 +938,26 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(playerId);
         }
         // END: DE2476
+
+
+        //private void DisplayGettingPlayer()
+        //{
+        //    if (this.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
+        //    {
+        //        this.BeginInvoke((Action)DisplayGettingPlayer);
+        //        return;
+        //    }
+
+        //    // Clear out the last player's information. Keep the name if updating the current player's information (card was the same)
+        //    bool gettingNewPlayer = m_parent.CurrentSale == null || m_parent.CurrentSale.Player == null;
+        //    ClearPlayer(gettingNewPlayer);
+
+        //    if (!gettingNewPlayer)
+        //        m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormUpdatingPlayer);
+        //    else
+        //        m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer);
+        //}
+
 
         /// <summary>
         /// Gets a player's data from the server.
@@ -973,12 +1014,58 @@ namespace GTI.Modules.PlayerCenter.Business
                 else
                     playerId = cardMsg.PlayerId;
             }
+                        int PIN = 0;
+            //Check if the third party is enable and player required pin = true.
+                        if (Settings.PlayerInterfaceIsPinRequiredForPointAdjustment == true)
+                        {
+                            try
+                            {
+                                bool PINProblem = false;
+                                bool newPIN = false;
+
+                                //do
+                                //{
+                                    if (Settings.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped || (NeedPlayerCardPIN)) //we have done something requiring a player and a PIN
+                                    {
+                                        newPIN = true;
+
+                                        PIN = GetPlayerCardPINFromUser(true);
+                                    }
+
+                                    //we always block when using a PIN since we need to validate the PIN before moving on
+                                    //if (!newPIN)
+                                    //    DisplayGettingPlayer(); //not blocking, tell the user we are working on it
+
+                                    StartGetPlayer(magCardNum, PIN);
+
+                                    if (newPIN) //we need to wait here until we get the player so we can validate the PIN
+                                    {
+                                      //ShowWaitForm(this); // Block until we are done.
+
+                                      if (playerId != 0)
+                                        {
+                                            PINProblem = PIN != 0 && ThirdPartyInterfaceDown && PlayerCardPINError;
+
+                                            if (PINProblem)//knc_6
+                                                MessageForm.Show(Resources.PlayerCardPINError);//knc_6
+                                        }
+                                    }
+                                //} while (PINProblem);
+
+                            }
+
+                            catch (Exception ex)
+                            {
+                                //m_parent.Log("Failed to get the player/machine: " + ex.Message, LoggerLevel.Severe);
+                                //MessageForm.Show(this, m_displayMode, string.Format(CultureInfo.CurrentCulture, (m_parent.Settings.EnableAnonymousMachineAccounts) ? Resources.GetMachineFailed : Resources.GetPlayerFailed, ex.Message));
+                            }
+                        }
 
             Player player = null;
             
             try
             {
-                player = new Player(playerId, OperatorID, -1);
+                player = new Player(playerId, OperatorID, -1);//knc
             }
             catch(ServerCommException)
             {
@@ -994,6 +1081,106 @@ namespace GTI.Modules.PlayerCenter.Business
             }
 
             e.Result = player;
+        }
+
+        private void ShowWaitForm(PlayerManager playerManager)
+        {
+            throw new NotImplementedException();
+        }
+
+        //private WaitForm m_waitForm;
+        //internal void ShowWaitForm(IWin32Window owner)
+        //{
+        //    if (m_waitForm != null)
+        //        m_waitForm.ShowDialog(owner);
+        //}
+
+        private class PlayerLookupInfo
+        {
+            public int playerID = 0;
+            public string CardNumber = string.Empty;
+            public int PIN = 0;
+            public bool UpdateCurrentPlayer = false;
+            public bool WaitFormDisplayed = false;
+        }
+
+        //internal void RunWorker( DoWorkEventHandler doWorkHandler, object argument, RunWorkerCompletedEventHandler completeHandler)
+        //{
+        //    // Set the wait message.
+        //    if (m_waitForm != null && !m_waitForm.IsDisposed)
+        //        //m_waitForm.Message = waitFormMessage;
+
+        //    // Create the worker thread and run it.
+        //    m_worker = new BackgroundWorker();
+        //    m_worker.WorkerReportsProgress = true;
+        //    m_worker.WorkerSupportsCancellation = false;
+        //    m_worker.DoWork += doWorkHandler;
+        //    m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+        //    m_worker.RunWorkerCompleted += completeHandler;
+
+        //    if (argument != null)
+        //        m_worker.RunWorkerAsync(argument);
+        //    else
+        //        m_worker.RunWorkerAsync();
+        //}
+
+        //internal void StartGetPlayer(int playerId)
+        //{
+        //    StartGetPlayer(playerId, 0);
+        //}
+
+
+        internal void StartGetPlayer(string magCardNumber, int PIN)//_knc
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.CardNumber = magCardNumber;
+            playerInfo.PIN = PIN;
+
+            //// TTP 50114
+            //RunWorker(
+            //          new DoWorkEventHandler(SendGetPlayer), (object)playerInfo, new RunWorkerCompletedEventHandler(GetPlayerComplete));
+        }
+
+                  //private bool Reading
+
+        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
+        {
+
+            int PIN = 0;
+            bool inputCanceled = false;
+
+            if (!Settings.PlayerInterfaceIsPinRequiredForPointAdjustment)
+                return 0;
+
+            bool MSRActive = m_magCardReader.ReadingCards;
+
+            if (MSRActive)
+                m_magCardReader.EndReading();
+
+            //we need a PIN, get it and get the player points to test the PIN
+            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(Settings.PlayerInterfaceIsPinRequiredForPointAdjustmentLength);//knc
+            PINEntry.UseDecimalKey = false;
+            PINEntry.Password = true;
+            PINEntry.Description = Resources.EnterPlayerCardPIN;
+
+            do
+            {
+                inputCanceled = PINEntry.ShowDialog() == System.Windows.Forms.DialogResult.Cancel;
+
+                if (!inputCanceled)
+                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
+            } while (!inputCanceled && PIN == 0);
+
+            PINEntry.Dispose();
+
+            if (MSRActive)
+                m_magCardReader.BeginReading();
+
+            if (inputCanceled && throwOnCancel)
+                throw new PlayerCenterException("Player card PIN entry canceled");
+
+            return PIN;
         }
 
         /// <summary>
@@ -2510,6 +2697,10 @@ namespace GTI.Modules.PlayerCenter.Business
 
         
         #endregion
+
+        public bool ThirdPartyInterfaceDown { get; set; }
+
+        public bool PlayerCardPINError { get; set; }
     }
 
     // Rally US144

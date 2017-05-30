@@ -25,6 +25,7 @@ namespace GTI.Modules.PlayerCenter.Business
         #region Member Variables
 
         //US4120 changed singlton to access from Pin form
+        protected object m_syncRoot = new object();
         private static volatile PlayerCenterSettings m_instance;
         private static readonly object m_sync = new Object();
         private MSRSettings CardReaderSettings = new MSRSettings();

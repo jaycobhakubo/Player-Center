@@ -44,6 +44,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private const string GameTechDir = "%GMTCDRIVE%";      
         private const string VidSnapshotName = @"Common\VidSnapshot.exe";
         private const string TempPicFileName = "TempPlayerPic.jpg";
+        private PlayerCenterSettings m_settings;
         // END: DE2475
         #endregion
 
@@ -1028,8 +1029,9 @@ namespace GTI.Modules.PlayerCenter.Business
                                     if (Settings.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped || (NeedPlayerCardPIN)) //we have done something requiring a player and a PIN
                                     {
                                         newPIN = true;
-
                                         PIN = GetPlayerCardPINFromUser(true);
+                                       // SendGetSetPlayerCardPIN()
+
                                     }
 
                                     //we always block when using a PIN since we need to validate the PIN before moving on
@@ -1088,13 +1090,6 @@ namespace GTI.Modules.PlayerCenter.Business
             throw new NotImplementedException();
         }
 
-        //private WaitForm m_waitForm;
-        //internal void ShowWaitForm(IWin32Window owner)
-        //{
-        //    if (m_waitForm != null)
-        //        m_waitForm.ShowDialog(owner);
-        //}
-
         private class PlayerLookupInfo
         {
             public int playerID = 0;
@@ -1104,30 +1099,81 @@ namespace GTI.Modules.PlayerCenter.Business
             public bool WaitFormDisplayed = false;
         }
 
-        //internal void RunWorker( DoWorkEventHandler doWorkHandler, object argument, RunWorkerCompletedEventHandler completeHandler)
-        //{
-        //    // Set the wait message.
-        //    if (m_waitForm != null && !m_waitForm.IsDisposed)
-        //        //m_waitForm.Message = waitFormMessage;
 
-        //    // Create the worker thread and run it.
-        //    m_worker = new BackgroundWorker();
-        //    m_worker.WorkerReportsProgress = true;
-        //    m_worker.WorkerSupportsCancellation = false;
-        //    m_worker.DoWork += doWorkHandler;
-        //    m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-        //    m_worker.RunWorkerCompleted += completeHandler;
 
-        //    if (argument != null)
-        //        m_worker.RunWorkerAsync(argument);
-        //    else
-        //        m_worker.RunWorkerAsync();
-        //}
+        internal void SetupThread()
+        {
+            // Set the language.
+            lock (m_settings.SyncRoot)
+            {
+                if (m_settings.ForceEnglish)
+                    ForceEnglish();
+                else
+                    Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+            }
 
-        //internal void StartGetPlayer(int playerId)
-        //{
-        //    StartGetPlayer(playerId, 0);
-        //}
+            // Wait a couple of ticks to let the wait form display.
+            System.Windows.Forms.Application.DoEvents();
+        }
+
+        private void ForceEnglish()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetPlayerCardPIN(int playerId_, int playerPIN)//_knc
+        {
+            //SetupThread();
+
+            //// Unbox the argument.
+            //int playerId = playerId_;
+            //int PIN = playerPIN;
+
+            //// Are we getting the PIN?
+            //if (PIN == -1) //yes
+            //{
+            //    GetPlayerMagCardPINMessage PINMsg = new GetPlayerMagCardPINMessage(playerId);
+
+            //    PINMsg.Send();
+
+            //    PIN = PINMsg.PlayerMagCardPIN;
+            //}
+            //else //setting the PIN
+            //{
+            //    SetPlayerMagCardPINMessage PINMsg = new SetPlayerMagCardPINMessage(playerId, PIN);
+
+            //    PINMsg.Send();
+            //}
+
+            //e.Result = new Tuple<int, int>(playerId, PIN);
+        }
+
+        private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)//_knc
+        {
+            SetupThread();
+
+            // Unbox the argument.
+            int playerId = ((PlayerLookupInfo)(e.Argument)).playerID;
+            int PIN = ((PlayerLookupInfo)(e.Argument)).PIN;
+
+            // Are we getting the PIN?
+            if (PIN == -1) //yes
+            {
+                GetPlayerMagCardPINMessage PINMsg = new GetPlayerMagCardPINMessage(playerId);
+
+                PINMsg.Send();
+
+                PIN = PINMsg.PlayerMagCardPIN;
+            }
+            else //setting the PIN
+            {
+                SetPlayerMagCardPINMessage PINMsg = new SetPlayerMagCardPINMessage(playerId, PIN);
+
+                PINMsg.Send();
+            }
+
+            e.Result = new Tuple<int, int>(playerId, PIN);
+        }
 
 
         internal void StartGetPlayer(string magCardNumber, int PIN)//_knc

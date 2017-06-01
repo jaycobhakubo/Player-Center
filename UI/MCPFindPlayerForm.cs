@@ -217,9 +217,8 @@ namespace GTI.Modules.PlayerCenter.UI
             try
             {
                 int PIN = 0;
-                if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment
-                    && m_parent.PlayerCardPinError
-                    )
+                //Player does not have a card pin set. 
+                if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment && m_parent.PlayerCardPinError)
                 {
 
                     bool PINProblem = false;

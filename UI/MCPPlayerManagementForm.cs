@@ -468,7 +468,7 @@ namespace GTI.Modules.PlayerCenter.UI
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {      
-            AwardPoints ManualPointsAward = new AwardPoints(GetPlayerName(), m_player.Id);
+            AwardPoints ManualPointsAward = new AwardPoints(m_parent);
             Application.DoEvents();
             ManualPointsAward.ShowDialog();
             Application.DoEvents();
@@ -656,18 +656,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region Member Methods
 
-        //US2100
-        private string GetPlayerName()
-        {
-            var FullName = "";
-            if (m_player != null)
-            {
-                FullName = (m_player.FirstName.Length != 0) ? m_player.FirstName + " " : "";
-                FullName += (m_player.MiddleInitial.Length != 0) ? m_player.MiddleInitial + " ": "";
-                FullName += (m_player.LastName.Length != 0) ? m_player.LastName : "";            
-            }
-            return FullName;
-        }
+       
 
         // 1-24-2008 JW: I removed old code here while doing "house cleaning" duties. 
         // I saved it in a text file. PlayerCenter.MCPPlayerForm.ApplyDisplayMode.txt

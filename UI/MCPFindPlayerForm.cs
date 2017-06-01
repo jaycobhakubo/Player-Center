@@ -211,29 +211,73 @@ namespace GTI.Modules.PlayerCenter.UI
             m_parent.GetPlayer(intPlayerID);//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
-            Application.DoEvents();
+
 
             //
-
-
-            if(m_parent.LastAsyncException != null)
+            try
             {
-                if(m_parent.LastAsyncException is ServerCommException)
-                    m_parent.ServerCommFailed();
+                int PIN = 0;
+                if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment
+                    && m_parent.PlayerCardPinError
+                    )
+                {
+
+                    bool PINProblem = false;
+
+
+
+                    do
+                    {
+                        PIN = m_parent.GetPlayerCardPINFromUser(true);
+                        PINProblem = (PIN != 0 && m_parent.ThirdPartyInterfaceDown); //Pin problem only if the 3rd party is down
+                        if (PINProblem)
+                            MessageForm.Show(Resources.PlayerCardPINError);
+                    }
+                    while (PINProblem);//if the third party interface is down then this will loop forever except cancel
+
+                    //m_parent.PlayerCardPINError = PINProblem;
+
+
+                    m_parent.StartSetPlayerCardPIN(intPlayerID, PIN);
+                    m_parent.ShowWaitForm(this); 
+                    Application.DoEvents();
+
+                    if (m_parent.LastAsyncException != null)
+                    {
+                        if (m_parent.LastAsyncException is ServerCommException)
+                            m_parent.ServerCommFailed();
+                        else
+                        {
+                            MessageForm.Show(m_parent.LastAsyncException.Message);
+                            Application.DoEvents();
+                        }
+
+                        return;
+                    }
+                    else
+                    {
+                        m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
+
+                    }
+
+                    DialogResult = DialogResult.OK;
+                    Close();
+                    Application.DoEvents();
+
+                }
                 else
                 {
-                    MessageForm.Show(m_parent.LastAsyncException.Message);
                     Application.DoEvents();
                 }
-
-                return;
             }
-            else
-                m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
+            catch (Exception ex)
+            {
+                m_parent.Log("Failed to get the player/machine: " + ex.Message, LoggerLevel.Severe);
+                MessageForm.Show(this, m_parent.Settings.DisplayMode, string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ex.Message));
+            }
 
-            DialogResult = DialogResult.OK;
-            Close();
-            Application.DoEvents();
+
+           
         }
 
         /// <summary>

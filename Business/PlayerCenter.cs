@@ -935,7 +935,7 @@ namespace GTI.Modules.PlayerCenter.Business
         // END: DE2476
 
 
-        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
+        public int GetPlayerCardPINFromUser(bool throwOnCancel = false)
         {
             int PIN = 0;
             bool inputCanceled = false;
@@ -1050,46 +1050,16 @@ namespace GTI.Modules.PlayerCenter.Business
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
             }
 
-            if (Settings.PlayerInterfaceIsPinRequiredForPointAdjustment && player.PlayerCardPINError)
-            {
-                bool PINProblem = false;
-                int PIN = 0;
-
-
-                do
-                {
-                    PIN = GetPlayerCardPINFromUser(true);
-                    PINProblem = (PIN != 0 && thirdPartInterfaceIsDown); //Pin problem only if the 3rd party is down
-                    if (PINProblem)
-                        MessageForm.Show(Resources.PlayerCardPINError);
-                }
-                while (PINProblem);//if the third party interface is down then this will loop forever except cancel
-
-                player.PlayerCardPINError = PINProblem; 
-
-           
-                       StartSetPlayerCardPIN(playerId, PIN);
-             
-                       //m_waitForm(this); // Block until we are done.
-                       // END: DE2476
-     
-                       if (m_setPlayerCardPinSuccess == true)
-                       {
-                           player.PlayerCardPIN = PIN;
-                       }
-            
-            }
-                 
 
             e.Result = player;
         }
 
-        //public bool PlayerCardPinError { get; set; }
+        public bool PlayerCardPinError { get; set; }
 
 
         internal void StartSetPlayerCardPIN(int playerId, int PIN)//knc
         {
-            m_setPlayerCardPinSuccess = false;
+
             PlayerLookupInfo playerInfo = new PlayerLookupInfo();
 
             playerInfo.playerID = playerId;
@@ -1108,7 +1078,7 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(playerInfo);
         }
 
-        bool m_setPlayerCardPinSuccess = false;
+
 
         private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)//just set
         {
@@ -1129,8 +1099,11 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 int playerId = ((Tuple<int, int>)e.Result).Item1;
                 int PIN = ((Tuple<int, int>)e.Result).Item2;
-                m_setPlayerCardPinSuccess = true;
-            
+                if (LastPlayerFromServer != null)
+                {
+                    LastPlayerFromServer.PlayerCardPINError = false;
+                    LastPlayerFromServer.PlayerCardPIN = PIN; //This is an int
+                }           
             }
 
             // Close the wait form.
@@ -1181,17 +1154,22 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // TTP 50067
-            if(e.Error != null)
+            if (e.Error != null)
                 LastPlayerFromServer = null;
             else
+            {
+         
                 LastPlayerFromServer = (Player)e.Result;
+                PlayerCardPinError = LastPlayerFromServer.PlayerCardPINError;
+                ThirdPartyInterfaceDown = LastPlayerFromServer.ThirdPartyInterfaceDown;
+            }
 
             // Close the wait form.
             // FIX: DE2476
             m_waitForm.CloseForm();
             // END: DE2476
         }
-
+        public bool ThirdPartyInterfaceDown { get; set; }
         #endregion
 
         #region Find Players

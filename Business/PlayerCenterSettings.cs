@@ -28,6 +28,26 @@ namespace GTI.Modules.PlayerCenter.Business
         private static volatile PlayerCenterSettings m_instance;
         private static readonly object m_sync = new Object();
         private MSRSettings CardReaderSettings = new MSRSettings();
+        protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
+        protected int m_ThirdPartyPlayerInterfaceID;
+        protected int m_ThirdPartyPlayerSyncMode = 0;
+
+        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
+        {
+            get
+            {
+                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
+        public int ThirdPartyPlayerInterfaceID
+        {
+            get
+            {
+                return m_ThirdPartyPlayerInterfaceID;
+            }
+        }
+ 
 
         private PlayerCenterSettings()
         {
@@ -150,13 +170,31 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.PlayerPinLength: //US4147
                         PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
+
+                    //US2100 if staff has permission to adjust points to a player then get this 2 setting.
+                    case Setting.ThirdPartyPlayerInterfaceNeedPINForRating:
+                        PlayerInterfaceIsPinRequiredForPointAdjustment = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfacePINLength:
+                        PlayerInterfaceIsPinRequiredForPointAdjustmentLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped:
+                        m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfaceID:
+                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerSyncMode:
+                        m_ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
+                        break;
                 }
             }
             catch
             {
             }
         }
-
+        public bool PlayerInterfaceIsPinRequiredForPointAdjustment { get; set; }
+        public int PlayerInterfaceIsPinRequiredForPointAdjustmentLength { get; set; }
         // Rally TA7897
         /// <summary>
         /// Parses a license setting from the server and loads it into the 

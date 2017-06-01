@@ -208,10 +208,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
-            m_parent.GetPlayer(intPlayerID);
+            m_parent.GetPlayer(intPlayerID);//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
             Application.DoEvents();
+
+            //
+
 
             if(m_parent.LastAsyncException != null)
             {
@@ -338,7 +341,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void PlayerResultsEnter(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                SelectPlayerClick(sender, new EventArgs());
+                SelectPlayerClick(sender, new EventArgs());//knc
 
         }
 

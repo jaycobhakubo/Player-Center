@@ -33,8 +33,10 @@ namespace GTI.Modules.PlayerCenter.UI
         public AwardPoints(PlayerManager parent)//No need to send the whole player object I just need this 2.
         {
             m_parent = parent;
+            
             InitializeComponent();
-            m_player = m_parent.CurrentPlayer;
+            m_player = (m_parent.CurrentPlayer != null ? m_parent.CurrentPlayer : m_parent.LastPlayerFromServer);
+            
             lblPlayerNameIndicator.Text = GetPlayerName();
             m_playerId = m_player.Id;
             PointsAwarded = 0M;
@@ -79,85 +81,119 @@ namespace GTI.Modules.PlayerCenter.UI
             UpdatePlayerPoints();
         }
 
-        //public bool UpdatePlayerPoints(bool forceIt = false)
+
         public bool UpdatePlayerPoints()
         {
             bool result = true;
-
-            //if (m_parent.CurrentSale == null || m_parent.CurrentSale.Player == null)
-            //    return false;
-
-            //if (!forceIt && m_parent.CurrentSale.Player.PointsUpToDate)
-            //{
-            //    m_parent.CurrentSale.NeedPlayerCardPIN = false;
-            //    return true;
-            //}
-
-
-
-            // Check if third party Interface required player pin to enter.
-
-                 int PIN = 0;
-                //if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment && !m_parent.CurrentSale.Player.WeHaveThePlayerCardPIN && (m_parent.Settings.ThirdPartyPlayerInterfaceNeedPINForPoints || m_parent.Settings.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped))
-                    if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment )
-                {
-
-       bool PINProblem = false;
- do
- {
-                                                   
-            bool newPIN = false;
-     
-
- //If player dont have his/her playerpin
-     var WeHaveThePlayerCardPIN = false;
-     if ( !WeHaveThePlayerCardPIN)
-     {
-                    newPIN = true;
-
-
-                    PIN = m_parent.GetPlayerCardPINFromUser(true);
-
-                    if (PIN == 0) //PIN entry canceled.
-                        return false;
-     }
-                
-
-                // Spawn a new thread to find the player and wait until done.
-                m_parent.StartUpdatePlayerPoints(PIN);
-                m_parent.ShowWaitForm(this); // Block until we are done.
-
-                PINProblem = PIN != 0 && !m_parent.CurrentSale.Player.ThirdPartyInterfaceDown && (m_parent.CurrentSale.Player.PlayerCardPINError || !m_parent.CurrentSale.Player.PointsUpToDate);
-                    
-                if (PINProblem)
-                    MessageForm.Show(Resources.PlayerCardPINError);
-  
- }
-            while (PINProblem);
-
-            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+            int PIN = 0;
+            //From this point we have our player info
+            if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment)
             {
-                PointsAwarded = 0M;
-                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-                SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);
-                msg.Send();
-                if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                var c = m_parent.LastPlayerFromServer.PlayerCardPINError;
+                bool PINProblem = false;
+                //bool playerCardPinError  = true;
+
+                try
                 {
-                    IsPointsAwardedSuccess = true;
-                    PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                    do
+                    {                                                
+                            PIN = m_parent.GetPlayerCardPINFromUser(true);
+                            if (PIN == 0) return false;
+                         
+
+                            m_parent.StartUpdatePlayerPoints(PIN);//knc2
+                            m_parent.ShowWaitForm(this); // Block until we are done.
+
+                            var x = m_parent.LastPlayerFromServer.PlayerCardPINError;
+
+                           // PINProblem = (PIN != 0 && m_parent.LastPlayerFromServer.ThirdPartyInterfaceDown && m_parent.LastPlayerFromServer.PlayerCardPINError);// && (m_parent.CurrentSale.Player.PlayerCardPINError || !m_parent.CurrentSale.Player.PointsUpToDate);
+
+                            PINProblem = false;
+                             if (PIN == 0)
+                            {
+                              //  PINProblem = false;
+                            }
+                            else
+                        if (m_parent.LastPlayerFromServer.ThirdPartyInterfaceDown)
+                            {
+                                PINProblem = true;
+                            }
+                            else 
+                            if (m_parent.LastPlayerFromServer.PlayerCardPINError)
+                            {
+                                PINProblem = true;
+                            }
+
+
+                        // if (m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN && !m_parent.CurrentSale.Player.WeHaveThePlayerCardPIN && (m_parent.Settings.ThirdPartyPlayerInterfaceNeedPINForPoints || m_parent.Settings.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped))
+                        if (PINProblem)
+                                MessageForm.Show(Resources.PlayerCardPINError);
+                   
+                    } while (PINProblem);
+
+
+                    if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+                    {
+                        PointsAwarded = 0M;
+                        var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);
+                        msg.Send();
+                        if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                        {
+                            IsPointsAwardedSuccess = true;
+                            PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                        }
+                        else
+                        {
+                            IsPointsAwardedSuccess = false;
+                        }
+
+
+                        DialogResult = DialogResult.OK;
+                        Close();
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //m_parent.Log("Failed to update points for player/machine: " + ex.Message, LoggerLevel.Severe);
+                    //MessageForm.Show(this, m_displayMode, Resources.GetPlayerFailed, ex.Message);
+                    MessageBox.Show("Hi");
+
+                    result = false;
+                }
+
+                if (!CheckForError())
+                {
+                    //SetPlayer();
+    //Save it all here
+                    MessageBox.Show("No error save it");
                 }
                 else
                 {
-                    IsPointsAwardedSuccess = false;
+                    result = false;
                 }
-            
 
-            DialogResult = DialogResult.OK;
-            Close();
-
-            return result;
+    
+            } return result;
         }
 
+
+        private bool CheckForError()
+        {
+            if (m_parent.LastAsyncException != null)
+            {
+                if (m_parent.LastAsyncException is ServerCommException)
+                    m_parent.ServerCommFailed();
+                else if (!(m_parent.LastAsyncException is PlayerCenterException))
+                    MessageForm.Show(this, m_displayMode, m_parent.LastAsyncException.Message);
+
+                return true;
+            }
+            else
+                return false;
+        }
 
         #endregion
 

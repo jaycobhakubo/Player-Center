@@ -187,10 +187,19 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.ThirdPartyPlayerSyncMode:
                         m_ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
                         break;
+
                 }
             }
             catch
             {
+            }
+        }
+
+        public int ThirdPartyPlayerSyncMode
+        {
+            get
+            {
+                return m_ThirdPartyPlayerSyncMode;
             }
         }
         public bool PlayerInterfaceIsPinRequiredForPointAdjustment { get; set; }

@@ -241,33 +241,55 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_parent.ShowWaitForm(this); 
                     Application.DoEvents();
 
-                    if (m_parent.LastAsyncException != null)
-                    {
-                        if (m_parent.LastAsyncException is ServerCommException)
-                            m_parent.ServerCommFailed();
-                        else
-                        {
-                            MessageForm.Show(m_parent.LastAsyncException.Message);
-                            Application.DoEvents();
-                        }
+                    //if (m_parent.LastAsyncException != null)
+                    //{
+                    //    if (m_parent.LastAsyncException is ServerCommException)
+                    //        m_parent.ServerCommFailed();
+                    //    else
+                    //    {
+                    //        MessageForm.Show(m_parent.LastAsyncException.Message);
+                    //        Application.DoEvents();
+                    //    }
 
-                        return;
-                    }
-                    else
-                    {
-                        m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
+                    //    return;
+                    //}
+                    //else
+                    //{
+                    //    m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
 
-                    }
+                    //}
 
-                    DialogResult = DialogResult.OK;
-                    Close();
-                    Application.DoEvents();
+                    //DialogResult = DialogResult.OK;
+                    //Close();
+                    //Application.DoEvents();
 
                 }
                 else
                 {
                     Application.DoEvents();
                 }
+
+                if (m_parent.LastAsyncException != null)
+                {
+                    if (m_parent.LastAsyncException is ServerCommException)
+                        m_parent.ServerCommFailed();
+                    else
+                    {
+                        MessageForm.Show(m_parent.LastAsyncException.Message);
+                        Application.DoEvents();
+                    }
+
+                    return;
+                }
+                else
+                {
+                    m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
+
+                }
+
+                DialogResult = DialogResult.OK;
+                Close();
+                Application.DoEvents();
             }
             catch (Exception ex)
             {

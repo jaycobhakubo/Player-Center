@@ -544,7 +544,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// the current player or null.</param>
         public void ShowPlayerManagment(out bool playersSaved, out Player playerToSet)
         {
-            if (m_loadingForm != null)
+            if (m_loadingForm != null)//knc
                 m_loadingForm.CloseForm();
 
             PlayerManagementForm mgmtForm = new PlayerManagementForm(this, Settings.DisplayMode);
@@ -880,6 +880,16 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerComplete);
             m_worker.RunWorkerAsync(playerId);
         }
+
+        public bool IsBusy
+        {
+            get
+            {
+                return (m_worker != null && m_worker.IsBusy);
+            }
+        }
+
+
         // END: DE2476
 
         /// <summary>

@@ -32,13 +32,41 @@ namespace GTI.Modules.PlayerCenter.UI
         public AwardPoints(PlayerManager parent)//No need to send the whole player object I just need this 2.
         {
             InitializeComponent();
-            m_player = m_parent.CurrentPlayer;
+            //m_player = new Player();
+            m_parent = parent;
             m_player = (m_parent.CurrentPlayer != null ? m_parent.CurrentPlayer : m_parent.LastPlayerFromServer);
             lblPlayerNameIndicator.Text = GetPlayerName();
             m_playerId = m_player.Id;
             PointsAwarded = 0M;
+            m_parent.GetPlayerCompletedAwardPoints += GetPlayerCompletedAwardPoints;
         }
 
+        private void GetPlayerCompletedAwardPoints(object sender, GetPlayerEventArgs e)
+        {
+            if (e.Player != null)
+            {
+                m_player = e.Player;
+                // Rally US493
+                //m_parent.CheckForAlerts(m_parent.CurrentSale.Player);
+
+                ////recalculate discount if any discounts required a player.
+                //m_parent.UpdateAutoDiscounts();
+                //SetPlayer();
+                //UpdateMenuButtonStates();
+                //UpdateSaleInfo();
+
+                if (m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&  m_player.ThirdPartyInterfaceDown)
+                    throw new PlayerCenterException(Resources.PlayerTrackingInterfaceDown);
+            }
+            else if (e.Error != null)
+            {
+                //m_playerInfoList.Items.Clear();
+                //m_playerInfoList.Items.Add(e.Error.Message);
+
+                if (e.Error is ServerCommException)
+                    m_parent.ServerCommFailed();
+            }
+        }
 
         //US2100
         private string GetPlayerName()
@@ -77,7 +105,15 @@ namespace GTI.Modules.PlayerCenter.UI
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
 
+            if (m_player.MagneticCardNumber != string.Empty)
+            {
+               GetPlayer(m_player.MagneticCardNumber);//knc
 
+            }
+            else
+            {
+                m_parent.StartGetPlayer(m_player.Id);
+            }
 
 
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
@@ -111,7 +147,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             int PIN = 0;
 
-            //if (m_parent.CurrentSale != null && m_parent.CurrentSale.Player != null && cardData != m_parent.CurrentSale.Player.PlayerCard) //changing player, abort current sale first
+            //if (m_parent.CurrentSale != null && m_player != null && cardData != m_player.PlayerCard) //changing player, abort current sale first
             //    StartOver(true);
 
             // Spawn a new thread to find the player and wait until done.
@@ -122,7 +158,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 do
                 {
-                    if (m_parent.Settings.PlayerInterfaceIsPinRequiredForPointAdjustment)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
+                    if (m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
                     {
                         newPIN = true;
 
@@ -139,27 +175,25 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         m_parent.ShowWaitForm(this); // Block until we are done.
 
-                        if (m_parent.CurrentSale != null && m_parent.CurrentSale.Player != null)
-                        {
-                            PINProblem = PIN != 0 && !m_parent.CurrentSale.Player.ThirdPartyInterfaceDown && m_parent.CurrentSale.Player.PlayerCardPINError;
+
+                        PINProblem = PIN != 0 && !m_player.ThirdPartyInterfaceDown && m_player.PlayerCardPINError; ;
 
                             if (PINProblem)
                                 MessageForm.Show(Resources.PlayerCardPINError);
-                        }
+                     
                     }
                 } while (PINProblem);
 
-                if (m_parent.CurrentSale != null && m_parent.CurrentSale.Player != null)
-                {
-                    m_parent.CurrentSale.NeedPlayerCardPIN = false;
-                    m_parent.CurrentSale.Player.WeHaveThePlayerCardPIN = PIN != 0 && !m_parent.CurrentSale.Player.ThirdPartyInterfaceDown && !m_parent.CurrentSale.Player.PlayerCardPINError && m_parent.CurrentSale.Player.PointsUpToDate;
+             
+                   // m_parent.NeedPlayerCardPIN = false;
+                m_player.WeHaveThePlayerCardPIN = PIN != 0 && !m_player.ThirdPartyInterfaceDown && !m_player.PlayerCardPINError && m_player.PointsUpToDate;
 
-                    if (newPIN && m_parent.CurrentSale.Player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
+                if (newPIN && m_player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
                     {
-                        m_parent.StartSetPlayerCardPIN(m_parent.CurrentSale.Player.Id, PIN);
+                        m_parent.StartSetPlayerCardPIN(m_player.Id, PIN);
                         m_parent.ShowWaitForm(this); // Block until we are done.
                     }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -168,6 +202,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+    
         int GetPlayerCardPINFromUser(bool throwOnCancel = false)
         {
             int PIN = 0;
@@ -182,7 +217,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.MagCardReader.EndReading();
 
             //we need a PIN, get it and get the player points to test the PIN
-            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_parent.Settings.ThirdPartyPlayerInterfacePINLength);
+            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength);
             PINEntry.UseDecimalKey = false;
             PINEntry.Password = true;
             PINEntry.Description = Resources.EnterPlayerCardPIN;
@@ -201,7 +236,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.MagCardReader.BeginReading();
 
             if (inputCanceled && throwOnCancel)
-                throw new POSException(Resources.PlayerCardPINEntryCanceled);
+                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
 
             return PIN;
         }
@@ -217,13 +252,13 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             // Clear out the last player's information. Keep the name if updating the current player's information (card was the same)
-            bool gettingNewPlayer = m_parent.CurrentSale == null || m_parent.CurrentSale.Player == null;
-            ClearPlayer(gettingNewPlayer);
+            //bool gettingNewPlayer = m_player == null;
+            //ClearPlayer(gettingNewPlayer);
 
-            if (!gettingNewPlayer)
-                m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormUpdatingPlayer);
-            else
-                m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer);
+            //if (!gettingNewPlayer)
+            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormUpdatingPlayer);
+            //else
+            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer);
         }
 
 

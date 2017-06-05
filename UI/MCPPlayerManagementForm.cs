@@ -466,10 +466,9 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         //US2100
-        private void AwardPointsImageButton_Click(object sender, EventArgs e)
-        {      
+        private void AwardPointsImageButton_Click(object sender, EventArgs e)//knc
+        {
             AwardPoints ManualPointsAward = new AwardPoints(m_parent);
-            Application.DoEvents();
             ManualPointsAward.ShowDialog();
             Application.DoEvents();
 

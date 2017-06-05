@@ -51,6 +51,34 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
     }
 
+
+    /// <summary>
+    /// The exception that is thrown when the user cancels a process.
+    /// </summary>
+    internal class PlayerCenterUserCancelException : PlayerCenterException
+    {
+        #region Constructors
+   
+
+        public PlayerCenterUserCancelException()
+            : base()
+        {
+        }
+
+
+        public PlayerCenterUserCancelException(string message)
+            : base(message)
+        {
+        }
+
+
+        public PlayerCenterUserCancelException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+        #endregion
+    }
+
     internal class DuplicateException : ModuleException
     {
 

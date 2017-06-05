@@ -27,6 +27,7 @@ using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Properties;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.PlayerCenter.Data.Printing;
+using System.Collections.Concurrent;
 
 
 namespace GTI.Modules.PlayerCenter.Business
@@ -69,6 +70,8 @@ namespace GTI.Modules.PlayerCenter.Business
         private bool m_externalMagCardReader;        // PDTS 1064 - Portable POS Card Swipe.
         private int m_deviceId = 0;
         private int m_machineId = 0;
+        private bool m_needPlayerCardPIN;
+        private MagneticCardReader m_magCardReader;
 
         #endregion
 
@@ -156,7 +159,10 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get workstation settings.";
+                    GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
                     GetWorkstationSettings();
+                    m_magCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
+              
                 }
                 catch (Exception e)
                 {
@@ -212,7 +218,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetPackageName();
 
                 //US2100
-                GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);
+                //GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);
 
                 strErr = "set form loading status..again.";
                 //loading player status code
@@ -266,6 +272,17 @@ namespace GTI.Modules.PlayerCenter.Business
                 // Initialize the mag. card reader.
                 try
                 {
+                    //if (m_deviceId == Device.POSPortable.Id && m_settings.MagCardMode == MagneticCardReaderMode.KeyboardAndCPCLTCP)
+                    //{
+                    //    // PDTS 1064
+                    //    // Replace PlayerCenter's MagCardReader with ours (only
+                    //    // if we are using the TCP mag card reader).
+                    //    m_playerCenter.SetExternalMagCardReader(MagCardReader);
+                    //}
+                    //else
+                    //    m_playerCenter.BeginMagCardReading(); // Rally DE1852
+
+                    //Log("Player Center initialized.", LoggerLevel.Debug);
                     MagCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
                     m_externalMagCardReader = false;
                 }
@@ -742,7 +759,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 settingsMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
@@ -751,7 +768,7 @@ namespace GTI.Modules.PlayerCenter.Business
             //m_workstationId = settingsMsg.WorkstationId;
 
             // Loop through each setting and parse the value.
-            SettingValue [] stationSettings = settingsMsg.Settings;
+            SettingValue[] stationSettings = settingsMsg.Settings;
 
             foreach (SettingValue setting in stationSettings)
             {
@@ -766,17 +783,48 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 licSettingsMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
 
             // Loop through each setting and parse the value.
-            foreach(LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
+            foreach (LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
             {
                 Settings.LoadSetting(setting);
             }
             // END: TA7897
+
+            //Get all setting on third party
+            if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
+            {
+                GetSettingsMessage thirdPartySettingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ThirdPartyPlayerTrackingSettings);
+
+                try
+                {
+                    thirdPartySettingsMsg.Send();//Just get every setting
+                }
+                catch (Exception e)
+                {
+                    ReformatException(e);
+                }
+
+                // Set the workstation id.
+                //m_workstationId = settingsMsg.WorkstationId;
+
+                // Loop through each setting and parse the value.
+                SettingValue[] thirdPartyStationSettings = thirdPartySettingsMsg.Settings;
+
+                foreach (SettingValue setting in thirdPartyStationSettings)
+                {
+                    Settings.LoadSetting(setting);
+
+                    if (Setting.ThirdPartyPlayerInterfaceNeedPINForRating == (Setting)setting.Id && Convert.ToBoolean(setting.Value))//And player does not have a pin
+                    {
+                        m_needPlayerCardPIN = true;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -887,9 +935,448 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 return (m_worker != null && m_worker.IsBusy);
             }
+            //set{ m_worker.IsBusy = value;}
+        }
+        private class PlayerLookupInfo
+        {
+            public int playerID = 0;
+            public string CardNumber = string.Empty;
+            public int PIN = 0;
+            public bool UpdateCurrentPlayer = false;
+            public bool WaitFormDisplayed = false;
+        }
+
+        internal void StartGetPlayer(int playerId)
+        {
+            StartGetPlayer(playerId, 0);
+        }
+
+          internal void StartGetPlayer(string magCardNumber, int PIN)
+        {
+
+
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.CardNumber = magCardNumber;
+            playerInfo.PIN = PIN;
+
+             m_waitForm.Message = Resources.WaitFormGettingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
+            m_worker.RunWorkerAsync(playerInfo);
+
+
+            // TTP 50114
+            //RunWorker(m_settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer,
+            //          new DoWorkEventHandler(SendGetPlayer), (object)playerInfo, new RunWorkerCompletedEventHandler(GetPlayerComplete));
+        }
+
+        internal void StartGetPlayer(int playerId, int PIN)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = PIN;        
+            m_waitForm.Message = Resources.WaitFormGettingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
+            m_worker.RunWorkerAsync(playerInfo);
+        
+        }
+
+            internal void StartSetPlayerCardPIN(int playerId, int PIN)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = PIN;
+            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
+            m_worker.RunWorkerAsync(playerInfo);
+                 
+        }
+
+            internal void StartGetPlayerCardPIN(int playerId)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = -1;
+
+           m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
+            m_worker.RunWorkerAsync(playerInfo);
         }
 
 
+          private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)
+        {
+            SetupThread();
+
+            // Unbox the argument.
+            int playerId = ((PlayerLookupInfo)(e.Argument)).playerID;
+            int PIN = ((PlayerLookupInfo)(e.Argument)).PIN;
+
+            // Are we getting the PIN?
+            if (PIN == -1) //yes
+            {
+                GetPlayerMagCardPINMessage PINMsg = new GetPlayerMagCardPINMessage(playerId);
+
+                PINMsg.Send();
+
+                PIN = PINMsg.PlayerMagCardPIN;
+            }
+            else //setting the PIN
+            {
+                SetPlayerMagCardPINMessage PINMsg = new SetPlayerMagCardPINMessage(playerId, PIN);
+
+                PINMsg.Send();
+            }
+
+            e.Result = new Tuple<int , int>(playerId, PIN);
+        }
+
+          private void GetSetPlayerCardPINComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Set the error that occurred (if any).
+            LastAsyncException = e.Error;
+
+            if (e.Error == null)
+            {
+                int playerId = ((Tuple<int, int>)e.Result).Item1;
+                int PIN = ((Tuple<int, int>)e.Result).Item2;
+
+                if (PIN > 0 && CurrentPlayer != null && CurrentPlayer.Id == playerId)
+                    CurrentPlayer.PlayerCardPIN = PIN;
+            }
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+        }
+
+
+      
+          internal static void ForceEnglish()
+        {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+        }
+        private PlayerCenterSettings m_settings;// = new PlayerCenterSettings();
+
+        internal void SetupThread()
+        {
+            // Set the language.
+            lock (m_settings.SyncRoot)
+            {
+                if (m_settings.ForceEnglish)
+                    ForceEnglish();
+                else
+                    Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
+            }
+
+            // Wait a couple of ticks to let the wait form display.
+            System.Windows.Forms.Application.DoEvents();
+        }
+             private ConcurrentQueue<ServerMessage> pendingMessages = new ConcurrentQueue<ServerMessage>();
+            private bool ShouldStartProcessingMessage(ServerMessage message)
+        {
+            bool addMessage = true; // defaults to true as undefined messages should always be added to the queue to be processed
+            lock (pendingMessages) // keep the "any" check and the enqueue atomic
+            {
+                if (message is FindPlayerByCardMessage) // US4809
+                {
+                    string magCardNum = (message as FindPlayerByCardMessage).MagCardNumber;
+
+                    addMessage = !pendingMessages.Any(x =>
+                    {
+                        if (!(x is FindPlayerByCardMessage))
+                            return false;
+                        else
+                            return String.Equals((x as FindPlayerByCardMessage).MagCardNumber, magCardNum, StringComparison.CurrentCultureIgnoreCase);
+                    });
+                }
+
+                if (addMessage)
+                {
+                    pendingMessages.Enqueue(message);
+                    //IsBusy = true;
+                }
+            }
+
+            return addMessage;
+        }
+        //private bool enableMachineAccounts=false;
+        private void SendGetPlayer(object sender, DoWorkEventArgs e)
+        {
+            SetupThread();
+
+            // FIX: DE2580 - A player swipe should enter the player in the
+            // raffle and give them points.
+            bool enableMachineAccounts, promptForCreate  =false, enterRaffle = false;
+            enableMachineAccounts= false;
+            //// Set the options.
+            //lock (m_settings.SyncRoot)
+            //{
+            //    // TTP 50114
+            //    enableMachineAccounts = m_settings.EnableAnonymousMachineAccounts;
+            //    promptForCreate = m_settings.PromptForPlayerCreation; // PDTS 1044
+            //    enterRaffle = m_settings.SwipeEntersRaffle;
+            //}
+
+            // Unbox the argument.
+            PlayerLookupInfo sentPlayer = (PlayerLookupInfo)e.Argument;
+            int playerId = sentPlayer.playerID;
+            string magCardNum = sentPlayer.CardNumber;
+            int PIN = sentPlayer.PIN;
+            bool updatePlayer = sentPlayer.UpdateCurrentPlayer;
+            bool justSynced = false;
+
+            if (!m_settings.ThirdPartyPlayerInterfaceUsesPIN)
+                PIN = 0;
+
+            // Are we getting the player by id or mag. card?
+            if (playerId == 0)
+            {
+                FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();
+                cardMsg.MagCardNumber = magCardNum;
+                cardMsg.PIN = PIN;
+                cardMsg.SyncPlayerWithThirdParty = m_settings.ThirdPartyPlayerSyncMode == 0;
+
+                if (!ShouldStartProcessingMessage(cardMsg))
+                {
+                    Log("FindPlayerByCardMessage with same card already being processed, ignored extra call", LoggerLevel.Message);
+                    return; // message is already pending, don't bother trying to send it again
+                }
+
+                // Send the message.
+                try
+                {
+                    cardMsg.Send();
+                }
+                catch (ServerCommException)
+                {
+                    throw; // Don't repackage the ServerCommException
+                }
+                catch (Exception ex)
+                {
+                    // TTP 50114
+                    throw new PlayerCenterException(string.Format(Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+                }
+
+                // Set the id that we got back from the server.
+                if (cardMsg.PlayerId == 0)
+                {
+                    // PDTS 1044
+                    // Can we create the account?
+                    bool noSyncWithThirdPartySoAddPlayer = Settings.ThirdPartyPlayerInterfaceID != 0 && (!cardMsg.SyncPlayerWithThirdParty || cardMsg.ThirdPartyInterfaceDown);
+                    //promptForCreate && 
+                    if ( !string.IsNullOrEmpty(magCardNum) && ((Settings.ThirdPartyPlayerInterfaceID == 0) || noSyncWithThirdPartySoAddPlayer))
+                    {
+                        bool doCreate = false;
+
+                        if (noSyncWithThirdPartySoAddPlayer)
+                        {
+                            doCreate = true;
+                        }
+                        else
+                        {
+                            //if (m_waitForm != null && !m_waitForm.IsDisposed && m_waitForm.InvokeRequired) // if we're using the wait form
+                            //{
+                            //    CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
+                            //    doCreate = ((DialogResult)m_waitForm.Invoke(prompt, new object[] { m_waitForm }) == DialogResult.Yes);
+                            //}
+                            //else if (m_sellingForm != null && m_sellingForm.InvokeRequired) // if there's no wait form, but still requires the UI thread
+                            //{
+                            //    //CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
+                            //    doCreate = ((DialogResult)m_sellingForm.Invoke(prompt, new object[] { m_sellingForm }) == DialogResult.Yes);
+                            //}
+                            //else // Just try it? Hopefully it doesn't get here if the UI thread is required
+                            //{
+                            //    doCreate = (PromptToCreatePlayer(m_waitForm) == DialogResult.Yes);
+                            //}
+                        }
+
+                        if (doCreate)
+                            playerId = CreatePlayerForPOS(magCardNum);
+                        else
+                            throw new PlayerCenterUserCancelException(Resources.NoPlayersFound);
+                    }
+                    else
+                    {
+                        throw new PlayerCenterException( Resources.NoPlayersFound);
+                    }
+                }
+                else
+                {
+                    playerId = cardMsg.PlayerId;
+
+                    if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate)//(if invalid pin = true /false) ; if valid pin = true/true
+                        justSynced = true;
+                }
+            }
+
+            Player player = null;
+            int opId;
+
+            //lock (m_currentOp.SyncRoot)
+            //{
+            opId = OperatorID;
+            //}
+
+            if (!enableMachineAccounts)
+            {
+                PlayerCardSwipeMessage swipeMsg = new PlayerCardSwipeMessage(playerId, null, enterRaffle, PIN);
+
+                try
+                {
+                    swipeMsg.Send();
+                }
+                catch (ServerCommException)
+                {
+                    throw; // Don't repackage the ServerCommException
+                }
+                catch (Exception ex)
+                {
+                    throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.CardSwipeFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+                }
+            }
+            // END: DE2580
+
+            try
+            {
+                bool syncPlayer = !justSynced && (m_settings.ThirdPartyPlayerSyncMode == 0 || updatePlayer); //realtime or need points
+
+                player = new Player(playerId, opId, PIN, syncPlayer, justSynced);//syncPlayer, justSynced If invalid pin = true/false ; if valisd pin = false /true
+            }
+            catch (ServerCommException)
+            {
+                throw; // Don't repackage the ServerCommException
+            }
+            catch (ServerException exc)
+            {
+                // TTP 50114
+                throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)) + " " + string.Format(CultureInfo.CurrentCulture, Resources.MessageName, exc.Message), exc);
+            }
+            catch (Exception exc)
+            {
+                // TTP 50114
+                throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture,   Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
+            }
+
+            //US4320
+            //try
+            //{
+            //    //player.DiscountUsageDictionary = GetDiscountUsageBySessionMessage.GetDiscountUsageBySession(playerId, CurrentSessionPlayedId);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerDiscountUsageFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+            //}
+
+            e.Result = new Tuple<Player, bool, bool>(player, updatePlayer, sentPlayer.WaitFormDisplayed);
+        }
+
+        private void GetPlayerCompleteAwardPoints(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null && e.Result == null) // the message didn't run
+            {
+                //                if (m_waitForm != null && !m_waitForm.IsDisposed && m_waitForm.WaitDialogIsActive)
+                //                    m_waitForm.CloseForm();
+
+                return;
+            }
+
+            try
+            {
+                // Set the error that occurred (if any).
+                LastAsyncException = e.Error;
+                Player player = null;
+
+                if (e.Error == null)
+                {
+                    Tuple<Player, bool, bool> result = (Tuple<Player, bool, bool>)e.Result;
+                    player = result.Item1;
+                    bool updatePoints = result.Item2;
+
+                    // If there is no sale, then start it.
+                    //if (m_currentSale == null)
+                    //    StartSale(false);
+
+                    if (updatePoints)//false for both valid pin and invalid pin
+                    {
+                        if (CurrentPlayer != null) //we have one, update it
+                        {
+                            CurrentPlayer.PlayerCardPINError = player.PlayerCardPINError;
+                            CurrentPlayer.PointsBalance = player.PointsBalance;
+                            CurrentPlayer.PointsUpToDate = player.PointsUpToDate;
+                        }
+                    }
+                    else
+                    {
+                        // Set the player we retrieved to the current player.
+                        try
+                        {
+                            CurrentPlayer = player; //Do we want to assign the new value?
+                            //SetPlayer(player, true, true);
+                        }
+                        catch (PlayerCenterException ex)
+                        {
+                            // TTP 50114
+                            MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                                 Resources.PlayerSetFailed, ex.Message));
+                        }
+                    }
+
+                    if (!player.PlayerCardPINError && player.ErrorMessage != string.Empty)
+                        MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                     Resources.MessageName, player.ErrorMessage));
+                }
+
+                // US4809 ***
+                EventHandler<GetPlayerEventArgs> handler = GetPlayerCompletedAwardPoints;
+                if (handler != null)
+                    handler(this, new GetPlayerEventArgs(player, LastAsyncException));
+            }
+            catch (Exception ex)
+            {
+                Log("Error finishing player lookup " + ex.ToString(), LoggerLevel.Severe);
+            }
+            finally
+            {
+                // Close the wait form.
+                if (m_waitForm != null && !m_waitForm.IsDisposed)
+                    m_waitForm.CloseForm();
+
+                DoneProcessingMessage(); // notify that we're done processing the message.
+            }
+        }
+        private void DoneProcessingMessage()
+        {
+            // Since only one message can be sent at a time, we only have to remove the oldest message, we don't have to search and remove
+            ServerMessage temp;
+            pendingMessages.TryDequeue(out temp);
+
+            if (pendingMessages.Count == 0) { }
+                //IsBusy = false;
+        }
+             public event EventHandler<GetPlayerEventArgs> GetPlayerCompletedAwardPoints;
         // END: DE2476
 
         /// <summary>
@@ -2343,7 +2830,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <summary>
         /// Gets the Player Center's current settings.
         /// </summary>
-        public PlayerCenterSettings Settings { get; private set; }
+        public PlayerCenterSettings Settings { get { return m_settings; } set { m_settings = value; } }
 
 
         public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
@@ -2552,8 +3039,62 @@ namespace GTI.Modules.PlayerCenter.Business
         public string ListName;
     }
 
-    public class GetOperatorID
+    internal class GetOperatorID
     {
         public static int operatorID;
+    }
+
+        public class GetPlayerEventArgs : EventArgs
+    {
+        #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the GetPlayerEventArgs class.
+        /// </summary>
+        /// <param name="player">The player found.</param>
+        public GetPlayerEventArgs(Player player)
+        {
+            Player = player;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the GetPlayerEventArgs class.
+        /// </summary>
+        /// <param name="ex">The exception encountered while looking up the player.</param>
+        public GetPlayerEventArgs(Exception ex)
+        {
+            Error = ex;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the GetPlayerEventArgs class.
+        /// </summary>
+        /// <param name="player">The player found.</param>
+        /// <param name="ex">The exception encountered while looking up the player.</param>
+        public GetPlayerEventArgs(Player player, Exception ex)
+        {
+            Player = player;
+            Error = ex;
+        }
+        #endregion
+
+        #region Member Variables
+        /// <summary>
+        /// Gets the player found or null an error occurred.
+        /// </summary>
+        public Player Player
+        {
+            get;
+             set;
+        }
+
+        /// <summary>
+        /// The error encountered while getting the player information
+        /// </summary>
+        public Exception Error
+        {
+            get;
+            set;
+        }
+        #endregion
     }
 }

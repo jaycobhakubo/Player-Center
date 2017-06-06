@@ -18,46 +18,23 @@ using System.Globalization;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-   partial class AwardPoints : EliteGradientForm
+   partial class AwardPoints : GradientForm
    {
        private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
        private WaitForm m_waitForm = null;
 
 
-        public AwardPoints()
+       public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface)
         {
-            InitializeComponent();         
-        }
-
-        internal void Initialize(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface)
-        {
+            InitializeComponent();
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
-            txtbxPointsAwarded.Text = string.Empty;
         }
 
-
+    
         public int PlayerId { get { return m_playercenterThirdPartyInterface.PlayerSelected.Id; } }
         public string CardNumber { get { return m_playercenterThirdPartyInterface.PlayerSelected.PlayerCard; } }
 
-        private static volatile AwardPoints m_instance;
-        private static readonly object m_sync = new Object();
-        public static AwardPoints Instance
-        {
-            get
-            {
-                if (m_instance == null)
-                {
-                    lock (m_sync)
-                    {
-                        if (m_instance == null)
-                            m_instance = new AwardPoints();
-                    }
-                }
-
-                return m_instance;
-            }
-        }
-
+     
         private void ManualAwardPoints_Load(object sender, EventArgs e)
         {        
                 FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -81,7 +58,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (CardNumber != string.Empty)
             {
                 m_playercenterThirdPartyInterface.GetPlayer(CardNumber);//knc
-
             }
             else
             {

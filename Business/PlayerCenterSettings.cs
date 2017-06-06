@@ -31,24 +31,6 @@ namespace GTI.Modules.PlayerCenter.Business
         protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
         protected int m_ThirdPartyPlayerInterfaceID;
  
-
-        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
-        {
-            get
-            {
-                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
-            }
-        }
-
-        public int ThirdPartyPlayerInterfaceID
-        {
-            get
-            {
-                return m_ThirdPartyPlayerInterfaceID;
-            }
-        }
-
-
         private PlayerCenterSettings()
         {
             SyncRoot = new object();
@@ -198,16 +180,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
         protected int m_ThirdPartyPlayerSyncMode = 0;
-        public int ThirdPartyPlayerSyncMode
-        {
-            get
-            {
-                return m_ThirdPartyPlayerSyncMode;
-            }
-        }
-        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
-        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
-            public bool    EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
+     
     
 
         // Rally TA7897
@@ -261,6 +234,34 @@ namespace GTI.Modules.PlayerCenter.Business
                 return m_instance;
             }
         }
+
+        public int ThirdPartyPlayerSyncMode
+        {
+            get
+            {
+                return m_ThirdPartyPlayerSyncMode;
+            }
+        }
+        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
+        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
+        public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
+
+        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
+        {
+            get
+            {
+                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
+        public int ThirdPartyPlayerInterfaceID
+        {
+            get
+            {
+                return m_ThirdPartyPlayerInterfaceID;
+            }
+        }
+
 
         /// <summary>
         /// Gets an object that can be used to synchronize access to 

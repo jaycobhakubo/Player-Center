@@ -2993,6 +2993,8 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal MagneticCardReader MagCardReader { get; private set; }
 
+        //internal bool StaffHasPermissionToAdjustPointsManually { get { return StaffHasPermissionToAwardPoints; } }
+
         // Rally US144
         /// <summary>
         /// Displays the report form.

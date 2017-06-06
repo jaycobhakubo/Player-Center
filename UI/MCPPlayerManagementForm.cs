@@ -37,7 +37,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private PlayerManager m_parent;
         private bool m_isManualAwardPointsEnable = false;
         private string mstrComments = String.Empty;
-        private bool m_staffHasPermissionToAwardPointsManually;
         private PlayerCenterThirdPartyInterface m_playerCenterThirdPartyInterface;
 
         #endregion
@@ -91,8 +90,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ChkSystemCamera();
                 AddToolStripMenuItem();
-                m_staffHasPermissionToAwardPointsManually = m_parent.StaffHasPermissionToAwardPoints;
-
+               
             }
             catch (Exception)
             {
@@ -320,30 +318,85 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lastFocus = sender;
         }
 
+
+
+        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)
+        {
+            m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
+                (newPlayerSelected,
+                m_parent.GetOperatorId(),
+                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
+                m_parent.Settings.ThirdPartyPlayerSyncMode,
+                m_parent.Settings.ThirdPartyPlayerInterfaceID,
+                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength,
+                m_parent.MagCardReader);
+        }
+
+        private AwardPoints ManualPointsAward;
+
+        //US2100
+        private void AwardPointsImageButton_Click(object sender, EventArgs e) //knc
+        {
+
+            SetPlayerCenterThirdPartyInterfaceNewValue(m_player);
+            ManualPointsAward = new AwardPoints(m_playerCenterThirdPartyInterface);
+            m_playerCenterThirdPartyInterface.UICurrent = ManualPointsAward;
+            ManualPointsAward.ShowDialog();
+            Application.DoEvents();
+
+            //Update the current player points if awarded is successfull to UI.
+            if (ManualPointsAward.IsPointsAwardedSuccess == true)
+            {
+                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
+                m_player.PointsBalance = newPointBalance;//Not updated
+                m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+            }
+
+            Application.DoEvents();
+        }
+
         /// <summary>
         /// Handles the find player button click.
         /// </summary>
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void FindPlayerClick(object sender, EventArgs e)
+        private void FindPlayerClick(object sender, EventArgs e)//knc
         {
             personalInfoGroupBox.Text = "Personal Information";
 
             if (ChkDataChange())
             {
                 MCPFindPlayerForm findForm = new MCPFindPlayerForm(m_parent);
-
                 Application.DoEvents();
-
+                var test = PlayerManager.Instance;
                 if (findForm.ShowDialog(this) == DialogResult.OK)
                 {
+                    
+                    //var test1 = PlayerManager.Instance.Settings.ThirdPartyPlayerInterfaceUsesPIN;
+                    //var test2 = PlayerManager.Instance.Settings.ThirdPartyPlayerInterfaceID;
+                    //var test3 = findForm.SelectedPlayer.PlayerCardPINError;
+                    var test3 = findForm.SelectedPlayer.PlayerCard;
+
+                    if (
+                GetThisStaffPermissionToAwardPoints() &&
+                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN &&
+                m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&
+                findForm.SelectedPlayer.PlayerCardPINError == true
+                )
+                    {
+                        SetPlayerCenterThirdPartyInterfaceNewValue(findForm.SelectedPlayer);
+                        m_playerCenterThirdPartyInterface.UICurrent = this;
+                        m_playerCenterThirdPartyInterface.GetPlayer(findForm.SelectedPlayer.PlayerCard);
+                        Application.DoEvents();
+                    }
+
                     Application.DoEvents();
                     m_player = findForm.SelectedPlayer;
                     SetPlayerValues(false);//RALLY DE8358
                     m_dataChanged = false;
 
-                    if (m_player != null && m_staffHasPermissionToAwardPointsManually)
+                    if (m_player != null && GetThisStaffPermissionToAwardPoints())
                     {
                         if (!m_isManualAwardPointsEnable)
                         ShowManualAwardPointsButton(true);
@@ -373,7 +426,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 txtFirstName.Focus();
                 personalInfoGroupBox.Text = "Personal Information - Add New";
 
-                if (m_staffHasPermissionToAwardPointsManually)
+                if (GetThisStaffPermissionToAwardPoints())
                 {
                     if (m_isManualAwardPointsEnable) ShowManualAwardPointsButton(false);
                 }
@@ -466,34 +519,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
         }
 
-        //US2100
-        private void AwardPointsImageButton_Click(object sender, EventArgs e)//knc
-        {
-            m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
-                (m_player,
-                m_parent.GetOperatorId(),
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
-                m_parent.Settings.ThirdPartyPlayerSyncMode,
-                m_parent.Settings.ThirdPartyPlayerInterfaceID,
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength,
-                m_parent.MagCardReader
-                );
-
-            var  ManualPointsAward =  AwardPoints.Instance;//Sending the palyer manager class to work same as the POS.
-            ManualPointsAward.Initialize(m_playerCenterThirdPartyInterface);
-            ManualPointsAward.ShowDialog();
-            Application.DoEvents();
-
-            //Update the current player points if awarded is successfull to UI.
-            if (ManualPointsAward.IsPointsAwardedSuccess == true)
-            {
-                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
-                m_player.PointsBalance = newPointBalance;//Not updated
-                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N");
-            }
-
-            Application.DoEvents();
-        }
+      
 
         /// <summary>
         /// Handles the save changes button click.
@@ -550,7 +576,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_dataChanged = false;
                     m_playersSaved = true;
 
-                    if (m_staffHasPermissionToAwardPointsManually)
+                    if (GetThisStaffPermissionToAwardPoints())
                     {
                         if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);                    
                     }
@@ -968,10 +994,16 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_btnImgAwardPointManual.BringToFront();              
             }
         }
+
+        private bool GetThisStaffPermissionToAwardPoints()
+        {
+            return m_parent.StaffHasPermissionToAwardPoints;//.StaffHasPermissionToAdjustPointsManually;
+        }
        
         #endregion
 
         #region Member Properties
+        
         /// <summary>
         /// Gets whether the user saved one or more players to the server while 
         /// the dialog was open.

@@ -17,13 +17,8 @@ using System.Windows.Forms;
 namespace GTI.Modules.PlayerCenter.Business
 {
      class PlayerCenterThirdPartyInterface
-   {
-
-         public Player PlayerSelected 
-         {
-             get { return m_player; }
-             set { m_player = value; }
-        }
+     {
+        #region VARIABLES
 
        private Player m_player;
        private bool m_isCardPinRequired;
@@ -43,10 +38,21 @@ namespace GTI.Modules.PlayerCenter.Business
        private bool m_loggingEnabled;
        private object m_logSync = new object();
        public event EventHandler<GetPlayerEventArgs> GetPlayerCompletedAwardPoints;
-      
+
+       class PlayerLookupInfo
+       {
+           public int playerID = 0;
+           public string CardNumber = string.Empty;
+           public int PIN = 0;
+           public bool UpdateCurrentPlayer = false;
+           public bool WaitFormDisplayed = false;
+       }
+
+        #endregion
+
         #region CONSTRUCTOR
 
-        public PlayerCenterThirdPartyInterface
+       public PlayerCenterThirdPartyInterface
             (Player player,
             int operatorId,
             bool isCardpinRequired,
@@ -71,30 +77,57 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #endregion
 
+        #region PROPERTIES
+
+       public bool IsPointsAwardedSuccess { get; set; }
+       public decimal PointsAwarded { get; set; }
+
+       public GradientForm UICurrent { get; set; }
+
         public bool IsBusy
+        {
+            get { return (m_worker != null && m_worker.IsBusy); }                                 
+        }
+
+        public Player PlayerSelected
+        {
+            get { return m_player; }
+            set { m_player = value; }
+        }
+
+        public Exception LastAsyncException
         {
             get
             {
-                return (m_worker != null && m_worker.IsBusy);
+                lock (m_errorSync)
+                {
+                    return m_asyncException;
+                }
             }
-            //set{ m_worker.IsBusy = value;}
+            set
+            {
+                lock (m_errorSync)
+                {
+                    m_asyncException = value;
+                }
+            }
         }
 
-        #region GETPLAYER
+
+
+
+        #endregion
+
+        #region FUNCTION
+
+        #region (GetPlayer) -> starting point
 
         internal void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
         {
-            if (IsBusy) // only one player request at a time. It ability to queue them up currently works, but it's confusing for the user.
-            {
-                return;
-            }
+            if (IsBusy) { return; } // only one player request at a time. It ability to queue them up currently works, but it's confusing for the user.
 
-            int PIN = 0;
-
-            //if (m_parent.CurrentSale != null && m_player != null && cardData != m_player.PlayerCard) //changing player, abort current sale first
-            //    StartOver(true);
-
-            // Spawn a new thread to find the player and wait until done.
+            int PIN = 0;      
+  
             try
             {
                 bool PINProblem = false;
@@ -105,27 +138,22 @@ namespace GTI.Modules.PlayerCenter.Business
                     if (m_isCardPinRequired)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
                     {
                         newPIN = true;
-
                         PIN = GetPlayerCardPINFromUser(true);
                     }
 
-                    //we always block when using a PIN since we need to validate the PIN before moving on
-                    if (!newPIN)
-                        DisplayGettingPlayer(); //not blocking, tell the user we are working on it
-
+                    if (!newPIN) DisplayGettingPlayer(); //not blocking, tell the user we are working on it
+                     
                     StartGetPlayer(cardData, PIN);//knc
 
                     if (newPIN) //we need to wait here until we get the player so we can validate the PIN
                     {
-                        ShowWaitForm(AwardPoints.Instance); // Block until we are done.
+                        ShowWaitForm(UICurrent); // Block until we are done.
                         PINProblem = PIN != 0 && !m_player.ThirdPartyInterfaceDown && m_player.PlayerCardPINError; ;
 
-                        if (PINProblem)
-                            MessageForm.Show(Resources.PlayerCardPINError);
-
+                        if (PINProblem) MessageForm.Show(Resources.PlayerCardPINError);                         
                     }
-                } while (PINProblem);
-
+                } 
+                while (PINProblem);
 
                 // m_parent.NeedPlayerCardPIN = false;
                 m_player.WeHaveThePlayerCardPIN = PIN != 0 && !m_player.ThirdPartyInterfaceDown && !m_player.PlayerCardPINError && m_player.PointsUpToDate;
@@ -133,9 +161,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 if (newPIN && m_player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
                 {
                     StartSetPlayerCardPIN(m_player.Id, PIN);
-                    ShowWaitForm(AwardPoints.Instance); // Block until we are done.
+                    ShowWaitForm(UICurrent); // Block until we are done.
                 }
-
             }
             catch (Exception ex)
             {
@@ -144,13 +171,99 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        internal void ShowWaitForm(IWin32Window owner)
+        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
         {
-            if (m_waitForm != null)
-                m_waitForm.ShowDialog(owner);
+            int PIN = 0;
+            bool inputCanceled = false;
+
+            if (!m_isCardPinRequired)
+                return 0;
+
+            bool MSRActive = m_magCardReader.ReadingCards;
+
+            if (MSRActive)
+                m_magCardReader.EndReading();
+
+            //we need a PIN, get it and get the player points to test the PIN
+            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_pinlength);
+            PINEntry.UseDecimalKey = false;
+            PINEntry.Password = true;
+            PINEntry.Description = Resources.EnterPlayerCardPIN;
+
+            do
+            {
+                inputCanceled = PINEntry.ShowDialog(UICurrent) == System.Windows.Forms.DialogResult.Cancel;
+
+                if (!inputCanceled)
+                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
+            } while (!inputCanceled && PIN == 0);
+
+            PINEntry.Dispose();
+
+            if (MSRActive)
+                m_magCardReader.BeginReading();
+
+            if (inputCanceled && throwOnCancel)
+                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
+
+            return PIN;
         }
 
-        private void SendGetPlayer(object sender, DoWorkEventArgs e)
+        private void DisplayGettingPlayer()
+        {
+
+            if (UICurrent.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
+            {
+                UICurrent.BeginInvoke((Action)DisplayGettingPlayer);
+                return;
+            }
+        }
+
+#endregion
+         
+        #region StartGetPlayer(thread)
+
+        internal void StartGetPlayer(int playerId)
+        {
+            StartGetPlayer(playerId, 0);
+        }
+
+        internal void StartGetPlayer(int playerId, int PIN)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = PIN;
+
+            m_waitForm.Message = Resources.WaitFormGettingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
+            m_worker.RunWorkerAsync(playerInfo);
+        }
+
+        internal void StartGetPlayer(string magCardNumber, int PIN)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+            playerInfo.CardNumber = magCardNumber;
+            playerInfo.PIN = PIN;
+
+            m_waitForm.Message = Resources.WaitFormGettingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
+            m_worker.RunWorkerAsync(playerInfo);
+        }
+
+        #endregion
+        #region (dowork)
+       
+  private void SendGetPlayer(object sender, DoWorkEventArgs e)
         {
             SetupThread();
             var enableMachineAccounts   = false;
@@ -226,6 +339,8 @@ namespace GTI.Modules.PlayerCenter.Business
        
         }
 
+        #endregion
+        #region (workcompleted)
 
         private void GetPlayerCompleteAwardPoints(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -253,11 +368,8 @@ namespace GTI.Modules.PlayerCenter.Business
                     }
                     else
                     {
-
                         try
                         {
-                            //test
-                            var x = PlayerManager.Instance.LastPlayerFromServer;
                             m_player = player; //Do we want to assign the new value?
                         }
                         catch (PlayerCenterException ex)
@@ -288,65 +400,9 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        private void _GetPlayerCompletedAwardPoints(object sender, GetPlayerEventArgs e)
-        {
-            if (e.Player != null)
-            {
-                m_player = e.Player;
-                if (m_interfaceId != 0 && m_player.ThirdPartyInterfaceDown)
-                    throw new PlayerCenterException(Resources.PlayerTrackingInterfaceDown);
-            }
-            else if (e.Error != null)
-            {
-                if (e.Error is ServerCommException)
-                    PlayerManager.Instance.ServerCommFailed();
-            }
-        }
+#endregion
 
-
-        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
-        {
-            int PIN = 0;
-            bool inputCanceled = false;
-
-            if (!m_isCardPinRequired)
-                return 0;
-
-            bool MSRActive = m_magCardReader.ReadingCards;
-
-            if (MSRActive)
-                m_magCardReader.EndReading();
-
-            //we need a PIN, get it and get the player points to test the PIN
-            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_pinlength);
-            PINEntry.UseDecimalKey = false;
-            PINEntry.Password = true;
-            PINEntry.Description = Resources.EnterPlayerCardPIN;
-
-            do
-            {
-                inputCanceled = PINEntry.ShowDialog(AwardPoints.Instance) == System.Windows.Forms.DialogResult.Cancel;
-
-                if (!inputCanceled)
-                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
-            } while (!inputCanceled && PIN == 0);
-
-            PINEntry.Dispose();
-
-            if (MSRActive)
-                m_magCardReader.BeginReading();
-
-            if (inputCanceled && throwOnCancel)
-                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
-
-            return PIN;
-        }
-
-        #endregion
-
-
-        #region SET PLAYER CARD PIN
-
+        #region StartSetPlayerCardPIN(thread)
         internal void StartSetPlayerCardPIN(int playerId, int PIN)
         {
             PlayerLookupInfo playerInfo = new PlayerLookupInfo();
@@ -363,26 +419,8 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(playerInfo);
 
         }
-
-     
-
-        internal void StartGetPlayerCardPIN(int playerId)
-        {
-            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
-
-            playerInfo.playerID = playerId;
-            playerInfo.PIN = -1;
-
-            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
-            m_worker.RunWorkerAsync(playerInfo);
-        }
-
+        #endregion
+        #region (dowork)
 
         private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)
         {
@@ -411,6 +449,8 @@ namespace GTI.Modules.PlayerCenter.Business
             e.Result = new Tuple<int, int>(playerId, PIN);
         }
 
+#endregion
+        #region (wrokcompleted)
         private void GetSetPlayerCardPINComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             // Set the error that occurred (if any).
@@ -429,27 +469,10 @@ namespace GTI.Modules.PlayerCenter.Business
             m_waitForm.CloseForm();
         }
 
-
         #endregion
 
-        private void DoneProcessingMessage()
-        {
-           
-            ServerMessage temp;
-            pendingMessages.TryDequeue(out temp);
+        #region Create Player
 
-            if (pendingMessages.Count == 0) { }
-            //IsBusy = false;
-        }
-
-      
-   
-
-        #region FUNCTIONs
-
-       
-
-   
         public int CreatePlayerForPOS(string magCardNum)
         {
             if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
@@ -482,52 +505,24 @@ namespace GTI.Modules.PlayerCenter.Business
             return createMsg.PlayerId;
         }
 
-    
-        #endregion 
+        #endregion
 
+        #region Supporting
 
-        class PlayerLookupInfo
+        private void DoneProcessingMessage()
         {
-            public int playerID = 0;
-            public string CardNumber = string.Empty;
-            public int PIN = 0;
-            public bool UpdateCurrentPlayer = false;
-            public bool WaitFormDisplayed = false;
+            ServerMessage temp;
+            pendingMessages.TryDequeue(out temp);
+
+            if (pendingMessages.Count == 0) { }
         }
 
-        internal void StartGetPlayer(string magCardNumber, int PIN)
+        internal void ShowWaitForm(IWin32Window owner)
         {
-            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
-            playerInfo.CardNumber = magCardNumber;
-            playerInfo.PIN = PIN;
-            m_waitForm.Message = Resources.WaitFormGettingPlayer;
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
-            m_worker.RunWorkerAsync(playerInfo);
+            if (m_waitForm != null)
+                m_waitForm.ShowDialog(owner);
         }
-        internal void StartGetPlayer(int playerId)
-        {
-            StartGetPlayer(playerId, 0);
-        }
-        internal void StartGetPlayer(int playerId, int PIN)
-        {
-            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
-            playerInfo.playerID = playerId;
-            playerInfo.PIN = PIN;
-            m_waitForm.Message = Resources.WaitFormGettingPlayer;
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(SendGetPlayer);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerCompleteAwardPoints);
-            m_worker.RunWorkerAsync(playerInfo);
 
-        }
 
         internal static void ForceEnglish()
         {
@@ -547,26 +542,7 @@ namespace GTI.Modules.PlayerCenter.Business
             System.Windows.Forms.Application.DoEvents();
         }
 
-        private void DisplayGettingPlayer()
-        {
-            //if (this.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
-            //{
-            //    this.BeginInvoke((Action)DisplayGettingPlayer);
-            //    return;
-            //}
 
-            // Clear out the last player's information. Keep the name if updating the current player's information (card was the same)
-            //bool gettingNewPlayer = m_player == null;
-            //ClearPlayer(gettingNewPlayer);
-
-            //if (!gettingNewPlayer)
-            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormUpdatingPlayer);
-            //else
-            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer);
-        }
-
-
- 
         internal string GetPlayerName()
         {
             var FullName = "";
@@ -663,28 +639,50 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        public bool IsPointsAwardedSuccess { get; set; }
-        public decimal PointsAwarded { get; set; }
+#endregion
 
-        public Exception LastAsyncException
+        #endregion
+
+        #region EVENTS
+
+        private void _GetPlayerCompletedAwardPoints(object sender, GetPlayerEventArgs e)
         {
-            get
+            if (e.Player != null)
             {
-                lock (m_errorSync)
-                {
-                    return m_asyncException;
-                }
+                m_player = e.Player;
+                if (m_interfaceId != 0 && m_player.ThirdPartyInterfaceDown)
+                    throw new PlayerCenterException(Resources.PlayerTrackingInterfaceDown);
             }
-            set
+            else if (e.Error != null)
             {
-                lock (m_errorSync)
-                {
-                    m_asyncException = value;
-                }
+                if (e.Error is ServerCommException)
+                    PlayerManager.Instance.ServerCommFailed();
             }
         }
 
-  
+        #endregion
+
+        #region NOT Sure if this is being called
+
+        internal void StartGetPlayerCardPIN(int playerId)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = -1;
+
+            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
+            m_worker.RunWorkerAsync(playerInfo);
+        }
+
+        #endregion 
+
     }
 
 

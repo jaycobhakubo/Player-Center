@@ -13,77 +13,44 @@ using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties;
 using GTI.Modules.PlayerCenter.Data;
-using System.Globalization; 
+using System.Globalization;
 
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-    public partial class AwardPoints : EliteGradientForm
-    {
-        #region Members
+   partial class AwardPoints : EliteGradientForm
+   {
+       private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
+       private WaitForm m_waitForm = null;
 
-        private readonly int m_playerId;
-        private PlayerManager m_parent;
-        private Player m_player;
-        #endregion
-
-        #region Constructors
-
-        public AwardPoints(PlayerManager parent)//No need to send the whole player object I just need this 2.
+        public AwardPoints()
         {
-            InitializeComponent();
-            //m_player = new Player();
-            m_parent = parent;
-            m_player = (m_parent.CurrentPlayer != null ? m_parent.CurrentPlayer : m_parent.LastPlayerFromServer);
-            lblPlayerNameIndicator.Text = GetPlayerName();
-            m_playerId = m_player.Id;
-            PointsAwarded = 0M;
-            m_parent.GetPlayerCompletedAwardPoints += GetPlayerCompletedAwardPoints;
+            InitializeComponent();         
         }
 
-        private void GetPlayerCompletedAwardPoints(object sender, GetPlayerEventArgs e)
+        internal void Initialize(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface)
         {
-            if (e.Player != null)
-            {
-                m_player = e.Player;
-                // Rally US493
-                //m_parent.CheckForAlerts(m_parent.CurrentSale.Player);
-
-                ////recalculate discount if any discounts required a player.
-                //m_parent.UpdateAutoDiscounts();
-                //SetPlayer();
-                //UpdateMenuButtonStates();
-                //UpdateSaleInfo();
-
-                if (m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&  m_player.ThirdPartyInterfaceDown)
-                    throw new PlayerCenterException(Resources.PlayerTrackingInterfaceDown);
-            }
-            else if (e.Error != null)
-            {
-                //m_playerInfoList.Items.Clear();
-                //m_playerInfoList.Items.Add(e.Error.Message);
-
-                if (e.Error is ServerCommException)
-                    m_parent.ServerCommFailed();
-            }
+            m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
         }
 
-        //US2100
-        private string GetPlayerName()
+        private static volatile AwardPoints m_instance;
+        private static readonly object m_sync = new Object();
+        public static AwardPoints Instance
         {
-            var FullName = "";
-            if (m_player != null)
+            get
             {
-                FullName = (m_player.FirstName.Length != 0) ? m_player.FirstName + " " : "";
-                FullName += (m_player.MiddleInitial.Length != 0) ? m_player.MiddleInitial + " " : "";
-                FullName += (m_player.LastName.Length != 0) ? m_player.LastName : "";
+                if (m_instance == null)
+                {
+                    lock (m_sync)
+                    {
+                        if (m_instance == null)
+                            m_instance = new AwardPoints();
+                    }
+                }
+
+                return m_instance;
             }
-            return FullName;
         }
-
-        #endregion
-
-        #region Events
 
         private void ManualAwardPoints_Load(object sender, EventArgs e)
         {        
@@ -104,33 +71,21 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-
-            if (m_player.MagneticCardNumber != string.Empty)
+        
+            if (m_playercenterThirdPartyInterface.PlayerSelected.MagneticCardNumber != string.Empty)
             {
-               GetPlayer(m_player.MagneticCardNumber);//knc
+                m_playercenterThirdPartyInterface.GetPlayer(m_playercenterThirdPartyInterface.PlayerSelected.MagneticCardNumber);//knc
 
             }
             else
             {
-                m_parent.StartGetPlayer(m_player.Id);
+                m_playercenterThirdPartyInterface.StartGetPlayer(m_playercenterThirdPartyInterface.PlayerSelected.Id);
             }
 
 
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
-                PointsAwarded = 0M;
-                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-                SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_playerId, tempManualPlayerPoints);               
-                msg.Send();
-                if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
-                {
-                    IsPointsAwardedSuccess = true;
-                    PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                }
-                else
-                {
-                    IsPointsAwardedSuccess = false;
-                }
+                m_playercenterThirdPartyInterface.RunMessageSetPlayerPoints(txtbxPointsAwarded.Text);
             }
 
             DialogResult = DialogResult.OK;
@@ -138,140 +93,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        public void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
-        {
-            if (m_parent.IsBusy) // only one player request at a time. It ability to queue them up currently works, but it's confusing for the user.
-            {
-                return;
-            }
-
-            int PIN = 0;
-
-            //if (m_parent.CurrentSale != null && m_player != null && cardData != m_player.PlayerCard) //changing player, abort current sale first
-            //    StartOver(true);
-
-            // Spawn a new thread to find the player and wait until done.
-            try
-            {
-                bool PINProblem = false;
-                bool newPIN = false;
-
-                do
-                {
-                    if (m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
-                    {
-                        newPIN = true;
-
-                        PIN = GetPlayerCardPINFromUser(true);
-                    }
-
-                    //we always block when using a PIN since we need to validate the PIN before moving on
-                    if (!newPIN)
-                        DisplayGettingPlayer(); //not blocking, tell the user we are working on it
-
-                    m_parent.StartGetPlayer(cardData, PIN);//knc
-
-                    if (newPIN) //we need to wait here until we get the player so we can validate the PIN
-                    {
-                        m_parent.ShowWaitForm(this); // Block until we are done.
-
-
-                        PINProblem = PIN != 0 && !m_player.ThirdPartyInterfaceDown && m_player.PlayerCardPINError; ;
-
-                            if (PINProblem)
-                                MessageForm.Show(Resources.PlayerCardPINError);
-                     
-                    }
-                } while (PINProblem);
-
-             
-                   // m_parent.NeedPlayerCardPIN = false;
-                m_player.WeHaveThePlayerCardPIN = PIN != 0 && !m_player.ThirdPartyInterfaceDown && !m_player.PlayerCardPINError && m_player.PointsUpToDate;
-
-                if (newPIN && m_player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
-                    {
-                        m_parent.StartSetPlayerCardPIN(m_player.Id, PIN);
-                        m_parent.ShowWaitForm(this); // Block until we are done.
-                    }
-                
-            }
-            catch (Exception ex)
-            {
-                m_parent.Log("Failed to get the player/machine: " + ex.Message, LoggerLevel.Severe);
-                MessageForm.Show(this, m_displayMode, string.Format(CultureInfo.CurrentCulture, (m_parent.Settings.EnableAnonymousMachineAccounts) ? Resources.GetMachineFailed : Resources.GetPlayerFailed, ex.Message));
-            }
-        }
-
-    
-        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
-        {
-            int PIN = 0;
-            bool inputCanceled = false;
-
-            if (!m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN)
-                return 0;
-
-            bool MSRActive = m_parent.MagCardReader.ReadingCards;
-
-            if (MSRActive)
-                m_parent.MagCardReader.EndReading();
-
-            //we need a PIN, get it and get the player points to test the PIN
-            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength);
-            PINEntry.UseDecimalKey = false;
-            PINEntry.Password = true;
-            PINEntry.Description = Resources.EnterPlayerCardPIN;
-
-            do
-            {
-                inputCanceled = PINEntry.ShowDialog(this) == System.Windows.Forms.DialogResult.Cancel;
-
-                if (!inputCanceled)
-                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
-            } while (!inputCanceled && PIN == 0);
-
-            PINEntry.Dispose();
-
-            if (MSRActive)
-                m_parent.MagCardReader.BeginReading();
-
-            if (inputCanceled && throwOnCancel)
-                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
-
-            return PIN;
-        }
-
-
-
-        private void DisplayGettingPlayer()
-        {
-            if (this.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
-            {
-                this.BeginInvoke((Action)DisplayGettingPlayer);
-                return;
-            }
-
-            // Clear out the last player's information. Keep the name if updating the current player's information (card was the same)
-            //bool gettingNewPlayer = m_player == null;
-            //ClearPlayer(gettingNewPlayer);
-
-            //if (!gettingNewPlayer)
-            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormUpdatingPlayer);
-            //else
-            //    m_playerInfoList.Items.Add(m_parent.Settings.EnableAnonymousMachineAccounts ? Resources.WaitFormGettingMachine : Resources.WaitFormGettingPlayer);
-        }
-
-
-
-        #endregion
-
-
-        #region Properties
-
         public bool IsPointsAwardedSuccess { get; set; }
         public decimal PointsAwarded { get; set; }
-
-        #endregion
-
     }
 }

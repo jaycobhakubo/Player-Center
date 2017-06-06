@@ -38,6 +38,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool m_isManualAwardPointsEnable = false;
         private string mstrComments = String.Empty;
         private bool m_staffHasPermissionToAwardPointsManually;
+        private PlayerCenterThirdPartyInterface m_playerCenterThirdPartyInterface;
 
         #endregion
 
@@ -57,7 +58,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
                 //ApplyDisplayMode();
                 SetMaxTextLengths();
-
+                
                 m_playerStatusList = new List<PlayerStatus>();//RALLY DE8358
 
                 // Rally TA7897
@@ -468,7 +469,18 @@ namespace GTI.Modules.PlayerCenter.UI
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)//knc
         {
-            AwardPoints ManualPointsAward = new AwardPoints(m_parent);
+            m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
+                (m_parent.LastPlayerFromServer,
+                m_parent.GetOperatorId(),
+                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
+                m_parent.Settings.ThirdPartyPlayerSyncMode,
+                m_parent.Settings.ThirdPartyPlayerInterfaceID,
+                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength,
+                m_parent.MagCardReader
+                );
+
+       var  ManualPointsAward =  AwardPoints.Instance;//Sending the palyer manager class to work same as the POS.
+           AwardPoints.Instance.Initialize(m_playerCenterThirdPartyInterface);
             ManualPointsAward.ShowDialog();
             Application.DoEvents();
 
@@ -482,6 +494,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_player.PointsBalance = newPointBalance;//Not updated
                 m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
             }
+            Application.DoEvents();
         }
 
         /// <summary>

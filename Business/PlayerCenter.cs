@@ -84,11 +84,34 @@ namespace GTI.Modules.PlayerCenter.Business
         public PlayerManager(PlayerCenterModule module)
         {            
             m_module = module;
-        }       
+        }
+
+
+        public PlayerManager()
+        {           
+        }  
+
         #endregion
     
         #region Member Methods
+        private static volatile PlayerManager m_instance;
+        private static readonly object m_sync = new Object();
+        public static PlayerManager Instance
+        {
+            get
+            {
+                if (m_instance == null)
+                {
+                    lock (m_sync)
+                    {
+                        if (m_instance == null)
+                            m_instance = new PlayerManager();
+                    }
+                }
 
+                return m_instance;
+            }
+        }
         #region Initialization Methods
 
         // FIX: DE2476
@@ -1293,6 +1316,18 @@ namespace GTI.Modules.PlayerCenter.Business
             e.Result = new Tuple<Player, bool, bool>(player, updatePlayer, sentPlayer.WaitFormDisplayed);
         }
 
+    public  void Message1(string xmessage)
+    {
+        MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                                      Resources.PlayerSetFailed, "test"));
+    }
+
+    public void Message2(string xmessage)
+    {
+        MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                   Resources.MessageName, "hello"));
+    }
+
         private void GetPlayerCompleteAwardPoints(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error == null && e.Result == null) // the message didn't run
@@ -1350,9 +1385,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 }
 
                 // US4809 ***
-                EventHandler<GetPlayerEventArgs> handler = GetPlayerCompletedAwardPoints;
-                if (handler != null)
-                    handler(this, new GetPlayerEventArgs(player, LastAsyncException));
+                //EventHandler<GetPlayerEventArgs> handler = GetPlayerCompletedAwardPoints;
+                //if (handler != null)
+                //    handler(this, new GetPlayerEventArgs(player, LastAsyncException));
             }
             catch (Exception ex)
             {
@@ -1367,6 +1402,10 @@ namespace GTI.Modules.PlayerCenter.Business
                 DoneProcessingMessage(); // notify that we're done processing the message.
             }
         }
+
+
+     
+
         private void DoneProcessingMessage()
         {
             // Since only one message can be sent at a time, we only have to remove the oldest message, we don't have to search and remove
@@ -1376,7 +1415,7 @@ namespace GTI.Modules.PlayerCenter.Business
             if (pendingMessages.Count == 0) { }
                 //IsBusy = false;
         }
-             public event EventHandler<GetPlayerEventArgs> GetPlayerCompletedAwardPoints;
+           //  public event EventHandler<GetPlayerEventArgs> GetPlayerCompletedAwardPoints;
         // END: DE2476
 
         /// <summary>
@@ -1626,6 +1665,12 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Save Player
+
+        //public void Message1()
+        //{
+        //    MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+        //                                     Resources.PlayerSetFailed, "Hello"));
+        //}
 
         // FIX: DE2476
         /// <summary>
@@ -2960,6 +3005,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 m_reportForm.BringToFront();
             }
         }
+
+        public int GetOperatorId()
+        {
+         return OperatorID;   
+        }
+
         internal static int OperatorID { get; private set; }
         internal static List<PlayerStatus> OperatorPlayerStatusList { get; private set; }
         internal static List<PackageItem> PackageListName { get; private set; }  
@@ -3044,57 +3095,57 @@ namespace GTI.Modules.PlayerCenter.Business
         public static int operatorID;
     }
 
-        public class GetPlayerEventArgs : EventArgs
-    {
-        #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the GetPlayerEventArgs class.
-        /// </summary>
-        /// <param name="player">The player found.</param>
-        public GetPlayerEventArgs(Player player)
-        {
-            Player = player;
-        }
+        //public class GetPlayerEventArgs : EventArgs
+    //{
+    //    #region Constructors
+    //    /// <summary>
+    //    /// Initializes a new instance of the GetPlayerEventArgs class.
+    //    /// </summary>
+    //    /// <param name="player">The player found.</param>
+    //    public GetPlayerEventArgs(Player player)
+    //    {
+    //        Player = player;
+    //    }
 
-        /// <summary>
-        /// Initializes a new instance of the GetPlayerEventArgs class.
-        /// </summary>
-        /// <param name="ex">The exception encountered while looking up the player.</param>
-        public GetPlayerEventArgs(Exception ex)
-        {
-            Error = ex;
-        }
+    //    /// <summary>
+    //    /// Initializes a new instance of the GetPlayerEventArgs class.
+    //    /// </summary>
+    //    /// <param name="ex">The exception encountered while looking up the player.</param>
+    //    public GetPlayerEventArgs(Exception ex)
+    //    {
+    //        Error = ex;
+    //    }
 
-        /// <summary>
-        /// Initializes a new instance of the GetPlayerEventArgs class.
-        /// </summary>
-        /// <param name="player">The player found.</param>
-        /// <param name="ex">The exception encountered while looking up the player.</param>
-        public GetPlayerEventArgs(Player player, Exception ex)
-        {
-            Player = player;
-            Error = ex;
-        }
-        #endregion
+    //    /// <summary>
+    //    /// Initializes a new instance of the GetPlayerEventArgs class.
+    //    /// </summary>
+    //    /// <param name="player">The player found.</param>
+    //    /// <param name="ex">The exception encountered while looking up the player.</param>
+    //    public GetPlayerEventArgs(Player player, Exception ex)
+    //    {
+    //        Player = player;
+    //        Error = ex;
+    //    }
+    //    #endregion
 
-        #region Member Variables
-        /// <summary>
-        /// Gets the player found or null an error occurred.
-        /// </summary>
-        public Player Player
-        {
-            get;
-             set;
-        }
+        //#region Member Variables
+        ///// <summary>
+        ///// Gets the player found or null an error occurred.
+        ///// </summary>
+        //public Player Player
+        //{
+        //    get;
+        //     set;
+        //}
 
-        /// <summary>
-        /// The error encountered while getting the player information
-        /// </summary>
-        public Exception Error
-        {
-            get;
-            set;
-        }
-        #endregion
-    }
+        ///// <summary>
+        ///// The error encountered while getting the player information
+        ///// </summary>
+        //public Exception Error
+        //{
+        //    get;
+        //    set;
+        //}
+        //#endregion
+    //}
 }

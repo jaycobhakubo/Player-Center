@@ -105,6 +105,7 @@
     <Compile Include="Business\PlayerCenterModule.cs" />
     <Compile Include="Business\PlayerCenterSettings.cs" />
     <Compile Include="Data\PlayerCardSwipeMessage.cs" />
+    <Compile Include="Business\PlayerCenterThirdPartyInterface.cs" />
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
     <Compile Include="UI\CCBoxItem.cs" />

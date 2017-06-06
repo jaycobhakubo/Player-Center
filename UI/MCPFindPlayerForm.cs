@@ -228,6 +228,8 @@ namespace GTI.Modules.PlayerCenter.UI
             else
                 m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
 
+
+
             DialogResult = DialogResult.OK;
             Close();
             Application.DoEvents();

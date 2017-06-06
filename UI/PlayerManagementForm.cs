@@ -411,7 +411,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 // Get the player's values from the UI.
                 GetPlayerValues();
-
+                
                 // If this player is new, make the join date right now.
                 if (m_player.Id == 0)
                     m_player.JoinDate = DateTime.Now;

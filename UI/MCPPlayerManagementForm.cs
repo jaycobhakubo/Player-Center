@@ -470,7 +470,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void AwardPointsImageButton_Click(object sender, EventArgs e)//knc
         {
             m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
-                (m_parent.LastPlayerFromServer,
+                (m_player,
                 m_parent.GetOperatorId(),
                 m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
                 m_parent.Settings.ThirdPartyPlayerSyncMode,
@@ -479,21 +479,19 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.MagCardReader
                 );
 
-       var  ManualPointsAward =  AwardPoints.Instance;//Sending the palyer manager class to work same as the POS.
-           AwardPoints.Instance.Initialize(m_playerCenterThirdPartyInterface);
+            var  ManualPointsAward =  AwardPoints.Instance;//Sending the palyer manager class to work same as the POS.
+            ManualPointsAward.Initialize(m_playerCenterThirdPartyInterface);
             ManualPointsAward.ShowDialog();
             Application.DoEvents();
-
-
-
 
             //Update the current player points if awarded is successfull to UI.
             if (ManualPointsAward.IsPointsAwardedSuccess == true)
             {
                 var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
                 m_player.PointsBalance = newPointBalance;//Not updated
-                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N"); 
+                m_pointsBalanceUI.Text =  m_player.PointsBalance.ToString("N");
             }
+
             Application.DoEvents();
         }
 

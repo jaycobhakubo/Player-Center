@@ -23,6 +23,7 @@ namespace GTI.Modules.PlayerCenter.UI
        private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
        private WaitForm m_waitForm = null;
 
+
         public AwardPoints()
         {
             InitializeComponent();         
@@ -31,7 +32,12 @@ namespace GTI.Modules.PlayerCenter.UI
         internal void Initialize(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface)
         {
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
+            txtbxPointsAwarded.Text = string.Empty;
         }
+
+
+        public int PlayerId { get { return m_playercenterThirdPartyInterface.PlayerSelected.Id; } }
+        public string CardNumber { get { return m_playercenterThirdPartyInterface.PlayerSelected.PlayerCard; } }
 
         private static volatile AwardPoints m_instance;
         private static readonly object m_sync = new Object();
@@ -72,20 +78,29 @@ namespace GTI.Modules.PlayerCenter.UI
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
         
-            if (m_playercenterThirdPartyInterface.PlayerSelected.MagneticCardNumber != string.Empty)
+            if (CardNumber != string.Empty)
             {
-                m_playercenterThirdPartyInterface.GetPlayer(m_playercenterThirdPartyInterface.PlayerSelected.MagneticCardNumber);//knc
+                m_playercenterThirdPartyInterface.GetPlayer(CardNumber);//knc
 
             }
             else
             {
-                m_playercenterThirdPartyInterface.StartGetPlayer(m_playercenterThirdPartyInterface.PlayerSelected.Id);
+                m_playercenterThirdPartyInterface.StartGetPlayer(PlayerId);
             }
 
 
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
-                m_playercenterThirdPartyInterface.RunMessageSetPlayerPoints(txtbxPointsAwarded.Text);
+                PointsAwarded = 0M;
+                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                IsPointsAwardedSuccess = false;
+                SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints);
+                msg.Send();
+                if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                {
+                    IsPointsAwardedSuccess = true;
+                    PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                }
             }
 
             DialogResult = DialogResult.OK;

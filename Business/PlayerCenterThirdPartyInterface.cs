@@ -447,22 +447,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #region FUNCTIONs
 
-         public void RunMessageSetPlayerPoints(string Points)
-         {
-             PointsAwarded = 0M;
-             var tempManualPlayerPoints = Points;
-             SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(m_player.Id, tempManualPlayerPoints);
-             msg.Send();
-             if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
-             {
-                 IsPointsAwardedSuccess = true;
-                 PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-             }
-             else
-             {
-                 IsPointsAwardedSuccess = false;
-             }
-         }
+       
 
    
         public int CreatePlayerForPOS(string magCardNum)

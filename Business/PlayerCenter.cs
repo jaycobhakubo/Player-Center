@@ -70,8 +70,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private int m_machineId = 0;
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
-        private PlayerCenterSettings m_settings;// = new PlayerCenterSettings
-
+  
         #endregion
 
         #region Constructors
@@ -202,8 +201,6 @@ namespace GTI.Modules.PlayerCenter.Business
                     Log("Forcing English.", LoggerLevel.Configuration);
                 }
 
-                //if(!m_settings.ShowCursor)
-                //    Cursor.Hide();
 
                 //US2649 
                 RunGetPlayerLocation();

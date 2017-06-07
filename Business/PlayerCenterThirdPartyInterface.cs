@@ -374,12 +374,12 @@ namespace GTI.Modules.PlayerCenter.Business
                         }
                         catch (PlayerCenterException ex)
                         {
-                            PlayerManager.Instance.Message1(ex.Message);
+                            //PlayerManager.Instance.Message1(ex.Message);//knc
                         }
                     }
 
                     if (!player.PlayerCardPINError && player.ErrorMessage != string.Empty) { }
-                    PlayerManager.Instance.Message2(player.ErrorMessage);
+                    //PlayerManager.Instance.Message2(player.ErrorMessage);//knc
                 }
 
                 EventHandler<GetPlayerEventArgs> handler = GetPlayerCompletedAwardPoints;
@@ -655,8 +655,8 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else if (e.Error != null)
             {
-                if (e.Error is ServerCommException)
-                    PlayerManager.Instance.ServerCommFailed();
+                if (e.Error is ServerCommException) { }
+                    //PlayerManager.Instance.ServerCommFailed();//knc
             }
         }
 

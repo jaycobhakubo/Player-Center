@@ -369,14 +369,9 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 MCPFindPlayerForm findForm = new MCPFindPlayerForm(m_parent);
                 Application.DoEvents();
-                var test = PlayerManager.Instance;
+
                 if (findForm.ShowDialog(this) == DialogResult.OK)
                 {
-                    
-                    //var test1 = PlayerManager.Instance.Settings.ThirdPartyPlayerInterfaceUsesPIN;
-                    //var test2 = PlayerManager.Instance.Settings.ThirdPartyPlayerInterfaceID;
-                    //var test3 = findForm.SelectedPlayer.PlayerCardPINError;
-                    var test3 = findForm.SelectedPlayer.PlayerCard;
 
                     if (
                 GetThisStaffPermissionToAwardPoints() &&

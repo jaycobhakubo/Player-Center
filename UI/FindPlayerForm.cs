@@ -254,7 +254,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
             // TTP 50067
-            m_parent.GetPlayer(((PlayerListItem)m_resultsList.SelectedItem).Id);//kncc
+            m_parent.GetPlayer(((PlayerListItem)m_resultsList.SelectedItem).Id);
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 

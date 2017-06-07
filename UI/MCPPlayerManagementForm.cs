@@ -335,7 +335,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private AwardPoints ManualPointsAward;
 
         //US2100
-        private void AwardPointsImageButton_Click(object sender, EventArgs e) //knc
+        private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
 
             SetPlayerCenterThirdPartyInterfaceNewValue(m_player);
@@ -361,7 +361,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void FindPlayerClick(object sender, EventArgs e)//knc
+        private void FindPlayerClick(object sender, EventArgs e)
         {
             personalInfoGroupBox.Text = "Personal Information";
 

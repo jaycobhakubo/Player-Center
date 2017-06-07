@@ -49,7 +49,6 @@ namespace GTI.Modules.PlayerCenter.Business
        }
 
         #endregion
-
         #region CONSTRUCTOR
 
        public PlayerCenterThirdPartyInterface
@@ -76,7 +75,6 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-
         #region PROPERTIES
 
        public bool IsPointsAwardedSuccess { get; set; }
@@ -114,9 +112,7 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-
         #region FUNCTION
-
         #region (GetPlayer) -> starting point
 
         internal void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
@@ -216,9 +212,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-#endregion
-         
-      
+#endregion           
         #region Create Player
 
         public int CreatePlayerForPOS(string magCardNum)
@@ -387,8 +381,9 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
 #endregion
-
-        #region StartGetPlayer(thread)
+        #endregion
+        #region FUNCTION -> (thread)
+        #region StartGetPlayer(from GetPlayer fn)
 
         internal void StartGetPlayer(int playerId)
         {
@@ -569,7 +564,6 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-
         #region StartSetPlayerCardPIN(thread)
         internal void StartSetPlayerCardPIN(int playerId, int PIN)
         {
@@ -638,10 +632,7 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-
-
-#endregion
-
+        #endregion
         #region EVENTS
 
         private void _GetPlayerCompletedAwardPoints(object sender, GetPlayerEventArgs e)
@@ -660,7 +651,6 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-
         #region NOT Sure if this is being called
 
         internal void StartGetPlayerCardPIN(int playerId)

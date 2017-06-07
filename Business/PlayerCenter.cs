@@ -71,6 +71,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
   
+
         #endregion
 
         #region Constructors
@@ -304,14 +305,13 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public static void GetStatusCode()
         {
-            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(OperatorID);
-        }
+            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);        }
 
         //US2649
 
         public static void GetPackageName()
         {
-            var message = new GetPackageItemMessage(OperatorID);
+            var message = new GetPackageItemMessage(GetOperatorID.operatorID);
             message.Send();
             if (message.ReturnCode == (int)GTIServerReturnCode.Success)
             {
@@ -2475,6 +2475,8 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal MagneticCardReader MagCardReader { get; private set; }
 
+        internal int OperatorID { get;  private set; }
+
         // Rally US144
         /// <summary>
         /// Displays the report form.
@@ -2488,12 +2490,12 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        public int GetOperatorId()
-        {
-         return OperatorID;   
-        }
+        //public int GetOperatorId()
+        //{
+        // return OperatorID;   
+        //}
 
-        internal static int OperatorID { get; private set; }
+
         internal static List<PlayerStatus> OperatorPlayerStatusList { get; private set; }
         internal static List<PackageItem> PackageListName { get; private set; }  
         internal static List<LocationCity> ListLocationCity { get; private set; }

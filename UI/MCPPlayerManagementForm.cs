@@ -256,7 +256,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void playerStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ActiveStatusEditor editor = new ActiveStatusEditor(PlayerManager.OperatorID);
+            ActiveStatusEditor editor = new ActiveStatusEditor(m_parent.OperatorID);
             if (editor.ShowDialog() == DialogResult.OK)
             {
                 // The editor must have already reloaded the OperatorPlayerStatusList
@@ -324,7 +324,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
                 (newPlayerSelected,
-                m_parent.GetOperatorId(),
+                m_parent.OperatorID,
                 m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
                 m_parent.Settings.ThirdPartyPlayerSyncMode,
                 m_parent.Settings.ThirdPartyPlayerInterfaceID,

@@ -30,6 +30,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private MSRSettings CardReaderSettings = new MSRSettings();
         protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
         protected int m_ThirdPartyPlayerInterfaceID;
+        protected int m_ThirdPartyPlayerSyncMode = 0;
  
         private PlayerCenterSettings()
         {
@@ -166,11 +167,11 @@ namespace GTI.Modules.PlayerCenter.Business
                         m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = Convert.ToBoolean(setting.Value);
                         break;
                     case Setting.ThirdPartyPlayerInterfaceID:
-                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);
+                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);                       
                         break;
                   
                     case Setting.ThirdPartyPlayerSyncMode:
-                        m_ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
+                        ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
                         break;
                    
                 }
@@ -179,7 +180,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
             }
         }
-        protected int m_ThirdPartyPlayerSyncMode = 0;
+
      
     
 
@@ -215,6 +216,21 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Member Properties
+
+        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
+        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
+        public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
+        public int ThirdPartyPlayerInterfaceID { get; set; }
+        public int ThirdPartyPlayerSyncMode { get; set; }
+    
+        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
+        {
+            get
+            {
+                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
         /// <summary>
         /// Gets an instance to Player Center Settings
         /// </summary>
@@ -234,34 +250,6 @@ namespace GTI.Modules.PlayerCenter.Business
                 return m_instance;
             }
         }
-
-        public int ThirdPartyPlayerSyncMode
-        {
-            get
-            {
-                return m_ThirdPartyPlayerSyncMode;
-            }
-        }
-        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
-        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
-        public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
-
-        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
-        {
-            get
-            {
-                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
-            }
-        }
-
-        public int ThirdPartyPlayerInterfaceID
-        {
-            get
-            {
-                return m_ThirdPartyPlayerInterfaceID;
-            }
-        }
-
 
         /// <summary>
         /// Gets an object that can be used to synchronize access to 

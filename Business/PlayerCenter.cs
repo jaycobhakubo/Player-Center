@@ -2347,50 +2347,9 @@ namespace GTI.Modules.PlayerCenter.Business
 
             IsInitialized = false;
         }
-
-
-        public void Message1(string xmessage)
-        {
-            MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
-                                                          Resources.PlayerSetFailed, "test"));
-        }
-
-        public void Message2(string xmessage)
-        {
-            MessageForm.Show(m_mainMenuForm, m_settings.DisplayMode, string.Format(CultureInfo.CurrentCulture,
-                                       Resources.MessageName, "hello"));
-        }
-
         #region Member Properties
 
-        public PlayerManager()
-        {
-        }
-
-
-        private static volatile PlayerManager m_instance;
-        private static readonly object m_sync = new Object();
-        public static PlayerManager Instance
-        {
-            get
-            {
-                if (m_instance == null)
-                {
-                    
-                        lock (m_sync)
-                        {
-                            if (m_instance == null)
-                                m_instance = new PlayerManager();
-                        }
-                    
-                }
-
-                return m_instance;
-            }
-        }
-
-
-        public PlayerCenterSettings Settings { get { return m_settings; } set { m_settings = value; } }
+        public PlayerCenterSettings Settings { get; private set; }
         
         // FIX: DE2476
         internal bool IsTouchScreen { get; set; }

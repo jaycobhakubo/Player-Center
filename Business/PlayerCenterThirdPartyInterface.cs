@@ -116,14 +116,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
         private delegate DialogResult CreatePlayerPromptDelegate(IWin32Window owner);
 
-        /// <summary>
-        /// Displays a message box asking if the user would like to create a 
-        /// new player account.
-        /// </summary>
-        /// <param name="owner">Any object that implements IWin32Window 
-        /// that represents the top-level window that will own any modal 
-        /// dialog boxes.</param>
-        /// <returns>The DialogResult of the MessageForm (Yes or No).</returns>
         private DialogResult PromptToCreatePlayer(IWin32Window owner)
         {
             DisplayMode displayMode;
@@ -135,38 +127,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
             return MessageForm.Show(owner, displayMode, Resources.NoPlayersFound + Environment.NewLine + Resources.CreatePlayer, MessageFormTypes.YesNo);
         }
-        //public int CreatePlayerForPOS(string magCardNum)
-        //{
-        //    if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
-        //        throw new ArgumentException("magCardNum");
-
-        //    CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
-        //    createMsg.JoinDate = DateTime.Now;
-        //    createMsg.LastVisit = createMsg.JoinDate;
-        //    createMsg.MagCardNumber = magCardNum;
-
-        //    // Send the message.
-        //    try
-        //    {
-        //        createMsg.Send();
-        //    }
-        //    catch (ServerCommException ex)
-        //    {
-        //        Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
-        //        throw ex; // Don't repackage the ServerCommException
-        //    }
-        //    catch (ServerException ex)
-        //    {
-        //        Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
-        //        if ((int)ex.ReturnCode == 1)
-        //            throw new PlayerCenterException(Resources.errorDupMagCard);
-        //        else
-        //            throw;
-        //    }
-
-        //    return createMsg.PlayerId;
-        //}
-
 
         #region (GetPlayer) -> starting point
 
@@ -191,7 +151,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                     if (!newPIN) DisplayGettingPlayer(); //not blocking, tell the user we are working on it
                      
-                    StartGetPlayer(cardData, PIN);//knc
+                    StartGetPlayer(cardData, PIN);
 
                     if (newPIN) //we need to wait here until we get the player so we can validate the PIN
                     {
@@ -387,7 +347,6 @@ namespace GTI.Modules.PlayerCenter.Business
                     StackFrame frame = new StackFrame(1, true);
                     string fileName = frame.GetFileName();
                     int lineNumber = frame.GetFileLineNumber();
-                    //message = ThirdPartyGetPlayerPerCardPin.LogPrefix + message; //PlayerManager.LogPrefix + message;
 
                     try
                     {
@@ -491,7 +450,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
             //lock (m_settings.SyncRoot)
             //{
-            //    // TTP 50114
             //    enableMachineAccounts = m_settings.EnableAnonymousMachineAccounts;
             //    promptForCreate = m_settings.PromptForPlayerCreation; // PDTS 1044
             //    enterRaffle = m_settings.SwipeEntersRaffle;
@@ -570,25 +528,6 @@ namespace GTI.Modules.PlayerCenter.Business
                     if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate)
                         justSynced = true;
                 }
-                //    bool noSyncWithThirdPartySoAddPlayer = m_interfaceId != 0 && (!cardMsg.SyncPlayerWithThirdParty || cardMsg.ThirdPartyInterfaceDown);
-
-                //    if (!string.IsNullOrEmpty(magCardNum) && ((m_interfaceId == 0) || noSyncWithThirdPartySoAddPlayer))
-                //    {
-                //        bool doCreate = false;
-                //        if (noSyncWithThirdPartySoAddPlayer) { doCreate = true; } else { }
-
-                //        if (doCreate)
-                //            playerId = CreatePlayerForPOS(magCardNum);
-                //        else
-                //            throw new PlayerCenterUserCancelException(Resources.NoPlayersFound);
-                //    }
-                //    else { throw new PlayerCenterException(Resources.NoPlayersFound); }
-                //}
-                //else
-                //{
-                //    playerId = cardMsg.PlayerId;
-                //    if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate) justSynced = true;//(if invalid pin = true /false) ; if valid pin = true/true                      
-                //}
             }
 
             Player player = null;
@@ -648,12 +587,15 @@ namespace GTI.Modules.PlayerCenter.Business
                         }
                         catch (PlayerCenterException ex)
                         {
-                            //PlayerManager.Instance.Message1(ex.Message);//knc
+                            MessageForm.Show(UICurrent, PlayerCenterSettings.Instance.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                                /*m_settings.EnableAnonymousMachineAccounts ? Resources.MachineSetFailed :*/ Resources.PlayerSetFailed, ex.Message));
+                      
                         }
                     }
 
-                    if (!player.PlayerCardPINError && player.ErrorMessage != string.Empty) { }
-                    //PlayerManager.Instance.Message2(player.ErrorMessage);//knc
+                    if (!player.PlayerCardPINError && player.ErrorMessage != string.Empty)
+                        MessageForm.Show(UICurrent, PlayerCenterSettings.Instance.DisplayMode, string.Format(CultureInfo.CurrentCulture,
+                                     Resources.MessageName, player.ErrorMessage));
                 }
 
                 EventHandler<GetPlayerEventArgs> handler = GetPlayerCompletedAwardPoints;

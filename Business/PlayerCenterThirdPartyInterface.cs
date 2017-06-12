@@ -712,7 +712,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #endregion
     }
-
     public class GetPlayerEventArgs : EventArgs
     {
 

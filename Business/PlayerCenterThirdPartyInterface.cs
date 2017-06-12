@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace GTI.Modules.PlayerCenter.Business
 {
-             class PlayerCenterThirdPartyInterface
+     class PlayerCenterThirdPartyInterface
      {
         #region VARIABLES
 
@@ -27,8 +27,6 @@ namespace GTI.Modules.PlayerCenter.Business
        private WaitForm m_waitForm = null;
        private MagneticCardReader m_magCardReader;
        private int m_pinlength;
-         //private PlayerCenterSettings m_settings;
-
        private BackgroundWorker m_worker = null;
        private const string LogPrefix = "PlayerCenter - ";
        private readonly int m_operatorID;
@@ -79,7 +77,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
        public bool IsPointsAwardedSuccess { get; set; }
        public decimal PointsAwarded { get; set; }
-
        public GradientForm UICurrent { get; set; }
 
         public bool IsBusy
@@ -112,158 +109,7 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
         #endregion
-        #region FUNCTION
-
-        private delegate DialogResult CreatePlayerPromptDelegate(IWin32Window owner);
-
-        private DialogResult PromptToCreatePlayer(IWin32Window owner)
-        {
-            DisplayMode displayMode;
-
-            lock (PlayerCenterSettings.Instance.SyncRoot)
-            {
-                displayMode = PlayerCenterSettings.Instance.DisplayMode;
-            }
-
-            return MessageForm.Show(owner, displayMode, Resources.NoPlayersFound + Environment.NewLine + Resources.CreatePlayer, MessageFormTypes.YesNo);
-        }
-
-        #region (GetPlayer) -> starting point
-
-        internal void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
-        {
-            if (IsBusy) { return; } // only one player request at a time. It ability to queue them up currently works, but it's confusing for the user.
-
-            int PIN = 0;      
-  
-            try
-            {
-                bool PINProblem = false;
-                bool newPIN = false;
-
-                do
-                {
-                    if (m_isCardPinRequired)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
-                    {
-                        newPIN = true;
-                        PIN = GetPlayerCardPINFromUser(true);
-                    }
-
-                    if (!newPIN) DisplayGettingPlayer(); //not blocking, tell the user we are working on it
-                     
-                    StartGetPlayer(cardData, PIN);
-
-                    if (newPIN) //we need to wait here until we get the player so we can validate the PIN
-                    {
-                        ShowWaitForm(UICurrent); // Block until we are done.
-                        PINProblem = PIN != 0 && !m_player.ThirdPartyInterfaceDown && m_player.PlayerCardPINError; ;
-
-                        if (PINProblem) MessageForm.Show(Resources.PlayerCardPINError);                         
-                    }
-                } 
-                while (PINProblem);
-
-                // m_parent.NeedPlayerCardPIN = false;
-                m_player.WeHaveThePlayerCardPIN = PIN != 0 && !m_player.ThirdPartyInterfaceDown && !m_player.PlayerCardPINError && m_player.PointsUpToDate;
-
-                if (newPIN && m_player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
-                {
-                    StartSetPlayerCardPIN(m_player.Id, PIN);
-                    ShowWaitForm(UICurrent); // Block until we are done.
-                }
-            }
-            catch (Exception ex)
-            {
-                Log("Failed to get the player/machine: " + ex.Message, LoggerLevel.Severe);
-                //MessageForm.Show(this, m_displayMode, string.Format(CultureInfo.CurrentCulture, (m_parent.Settings.EnableAnonymousMachineAccounts) ? Resources.GetMachineFailed : Resources.GetPlayerFailed, ex.Message));
-            }
-        }
-
-        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
-        {
-            int PIN = 0;
-            bool inputCanceled = false;
-
-            if (!m_isCardPinRequired)
-                return 0;
-
-            bool MSRActive = m_magCardReader.ReadingCards;
-
-            if (MSRActive)
-                m_magCardReader.EndReading();
-
-            //we need a PIN, get it and get the player points to test the PIN
-            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_pinlength);
-            PINEntry.UseDecimalKey = false;
-            PINEntry.Password = true;
-            PINEntry.Description = Resources.EnterPlayerCardPIN;
-
-            do
-            {
-                inputCanceled = PINEntry.ShowDialog(UICurrent) == System.Windows.Forms.DialogResult.Cancel;
-
-                if (!inputCanceled)
-                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
-            } while (!inputCanceled && PIN == 0);
-
-            PINEntry.Dispose();
-
-            if (MSRActive)
-                m_magCardReader.BeginReading();
-
-            if (inputCanceled && throwOnCancel)
-                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
-
-            return PIN;
-        }
-
-        private void DisplayGettingPlayer()
-        {
-
-            if (UICurrent.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
-            {
-                UICurrent.BeginInvoke((Action)DisplayGettingPlayer);
-                return;
-            }
-        }
-
-#endregion           
-        #region Create Player
-
-        public int CreatePlayerForPOS(string magCardNum)
-        {
-            if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
-                throw new ArgumentException("magCardNum");
-
-            CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
-            createMsg.JoinDate = DateTime.Now;
-            createMsg.LastVisit = createMsg.JoinDate;
-            createMsg.MagCardNumber = magCardNum;
-
-            // Send the message.
-            try
-            {
-                createMsg.Send();
-            }
-            catch (ServerCommException ex)
-            {
-                Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
-                throw ex; // Don't repackage the ServerCommException
-            }
-            catch (ServerException ex)
-            {
-                Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
-                if ((int)ex.ReturnCode == 1)
-                    throw new PlayerCenterException(Resources.errorDupMagCard);
-                else
-                    throw;
-            }
-
-            return createMsg.PlayerId;
-        }
-
-        #endregion
-        #region Supporting
+        #region Methods
 
         private void DoneProcessingMessage()
         {
@@ -394,10 +240,245 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-#endregion
         #endregion
-        #region FUNCTION -> (thread)
-        #region StartGetPlayer(from GetPlayer fn)
+        #region METHODS - delegate
+
+        private delegate DialogResult CreatePlayerPromptDelegate(IWin32Window owner);
+
+        private DialogResult PromptToCreatePlayer(IWin32Window owner)
+        {
+            DisplayMode displayMode;
+
+            lock (PlayerCenterSettings.Instance.SyncRoot)
+            {
+                displayMode = PlayerCenterSettings.Instance.DisplayMode;
+            }
+
+            return MessageForm.Show(owner, displayMode, Resources.NoPlayersFound + Environment.NewLine + Resources.CreatePlayer, MessageFormTypes.YesNo);
+        }
+        #endregion
+        #region METHOD - GetPlayer -> starting point
+
+        internal void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
+        {
+            if (IsBusy) { return; } // only one player request at a time. It ability to queue them up currently works, but it's confusing for the user.
+
+            int PIN = 0;      
+  
+            try
+            {
+                bool PINProblem = false;
+                bool newPIN = false;
+
+                do
+                {
+                    if (m_isCardPinRequired)// || (/* m_parent.CurrentSale.NeedPlayerCardPIN*/)) //we have done something requiring a player and a PIN
+                    {
+                        newPIN = true;
+                        PIN = GetPlayerCardPINFromUser(true);
+                    }
+
+                    if (!newPIN) DisplayGettingPlayer(); //not blocking, tell the user we are working on it
+                     
+                    StartGetPlayer(cardData, PIN);
+
+                    if (newPIN) //we need to wait here until we get the player so we can validate the PIN
+                    {
+                        ShowWaitForm(UICurrent); // Block until we are done.
+                        PINProblem = PIN != 0 && !m_player.ThirdPartyInterfaceDown && m_player.PlayerCardPINError; ;
+
+                        if (PINProblem) MessageForm.Show(Resources.PlayerCardPINError);                         
+                    }
+                } 
+                while (PINProblem);
+
+                // m_parent.NeedPlayerCardPIN = false;
+                m_player.WeHaveThePlayerCardPIN = PIN != 0 && !m_player.ThirdPartyInterfaceDown && !m_player.PlayerCardPINError && m_player.PointsUpToDate;
+
+                if (newPIN && m_player.WeHaveThePlayerCardPIN) //save the PIN with the player card number
+                {
+                    StartSetPlayerCardPIN(m_player.Id, PIN);
+                    ShowWaitForm(UICurrent); // Block until we are done.
+                }
+            }
+            catch (Exception ex)
+            {
+                Log("Failed to get the player/machine: " + ex.Message, LoggerLevel.Severe);
+                //MessageForm.Show(this, m_displayMode, string.Format(CultureInfo.CurrentCulture, (m_parent.Settings.EnableAnonymousMachineAccounts) ? Resources.GetMachineFailed : Resources.GetPlayerFailed, ex.Message));
+            }
+        }
+
+
+
+        int GetPlayerCardPINFromUser(bool throwOnCancel = false)
+        {
+            int PIN = 0;
+            bool inputCanceled = false;
+
+            if (!m_isCardPinRequired)
+                return 0;
+
+            bool MSRActive = m_magCardReader.ReadingCards;
+
+            if (MSRActive)
+                m_magCardReader.EndReading();
+
+            //we need a PIN, get it and get the player points to test the PIN
+            GTI.Modules.Shared.UI.NumericInputForm PINEntry = new Shared.UI.NumericInputForm(m_pinlength);
+            PINEntry.UseDecimalKey = false;
+            PINEntry.Password = true;
+            PINEntry.Description = Resources.EnterPlayerCardPIN;
+
+            do
+            {
+                inputCanceled = PINEntry.ShowDialog(UICurrent) == System.Windows.Forms.DialogResult.Cancel;
+
+                if (!inputCanceled)
+                    PIN = Convert.ToInt32(PINEntry.DecimalResult);
+            } while (!inputCanceled && PIN == 0);
+
+            PINEntry.Dispose();
+
+            if (MSRActive)
+                m_magCardReader.BeginReading();
+
+            if (inputCanceled && throwOnCancel)
+                throw new PlayerCenterException(Resources.PlayerCardPINEntryCanceled);
+
+            return PIN;
+        }
+
+        private void DisplayGettingPlayer()
+        {
+
+            if (UICurrent.InvokeRequired) // if it's not coming in on the UI thread, move the work to the UI thread.
+            {
+                UICurrent.BeginInvoke((Action)DisplayGettingPlayer);
+                return;
+            }
+        }
+
+#endregion         
+        #region METHOD - Create Player
+
+        public int CreatePlayerForPOS(string magCardNum)
+        {
+            if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
+                throw new ArgumentException("magCardNum");
+
+            CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
+            createMsg.JoinDate = DateTime.Now;
+            createMsg.LastVisit = createMsg.JoinDate;
+            createMsg.MagCardNumber = magCardNum;
+
+            // Send the message.
+            try
+            {
+                createMsg.Send();
+            }
+            catch (ServerCommException ex)
+            {
+                Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+                throw ex; // Don't repackage the ServerCommException
+            }
+            catch (ServerException ex)
+            {
+                Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+                if ((int)ex.ReturnCode == 1)
+                    throw new PlayerCenterException(Resources.errorDupMagCard);
+                else
+                    throw;
+            }
+
+            return createMsg.PlayerId;
+        }
+
+        #endregion        
+        #region Methods - StartSetPlayerCardPIN(thread)
+
+        internal void StartSetPlayerCardPIN(int playerId, int PIN)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = PIN;
+            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
+            m_worker.RunWorkerAsync(playerInfo);
+
+        }
+
+        internal void StartGetPlayerCardPIN(int playerId)
+        {
+            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
+
+            playerInfo.playerID = playerId;
+            playerInfo.PIN = -1;
+
+            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
+            m_worker.RunWorkerAsync(playerInfo);
+        }
+
+ 
+        private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)
+        {
+            SetupThread();
+
+            // Unbox the argument.
+            int playerId = ((PlayerLookupInfo)(e.Argument)).playerID;
+            int PIN = ((PlayerLookupInfo)(e.Argument)).PIN;
+
+            // Are we getting the PIN?
+            if (PIN == -1) //yes
+            {
+                GetPlayerMagCardPINMessage PINMsg = new GetPlayerMagCardPINMessage(playerId);
+
+                PINMsg.Send();
+
+                PIN = PINMsg.PlayerMagCardPIN;
+            }
+            else //setting the PIN
+            {
+                SetPlayerMagCardPINMessage PINMsg = new SetPlayerMagCardPINMessage(playerId, PIN);
+
+                PINMsg.Send();
+            }
+
+            e.Result = new Tuple<int, int>(playerId, PIN);
+        }
+
+        private void GetSetPlayerCardPINComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Set the error that occurred (if any).
+            LastAsyncException = e.Error;
+
+            if (e.Error == null)
+            {
+                int playerId = ((Tuple<int, int>)e.Result).Item1;
+                int PIN = ((Tuple<int, int>)e.Result).Item2;
+
+                if (PIN > 0 && m_player != null && m_player.Id == playerId)
+                    m_player.PlayerCardPIN = PIN;
+            }
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+        }
+
+
+        #endregion
+        #region Methods - StartGetPlayer(thread)
 
         internal void StartGetPlayer(int playerId)
         {
@@ -436,16 +517,12 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(playerInfo);
         }
 
-        #endregion
-        #region (dowork)
 
-
-         
         private void SendGetPlayer(object sender, DoWorkEventArgs e)
         {
             SetupThread();
             var enableMachineAccounts = false;
-            var promptForCreate         = false ;
+            var promptForCreate = false;
             var enterRaffle = false;
 
             //lock (m_settings.SyncRoot)
@@ -497,7 +574,7 @@ namespace GTI.Modules.PlayerCenter.Business
                         {
                             if (m_waitForm != null && !m_waitForm.IsDisposed && m_waitForm.InvokeRequired) // if we're using the wait form
                             {
-                           CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
+                                CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
                                 doCreate = ((DialogResult)m_waitForm.Invoke(prompt, new object[] { m_waitForm }) == DialogResult.Yes);
                             }
                             //else if (m_sellingForm != null && m_sellingForm.InvokeRequired) // if there's no wait form, but still requires the UI thread
@@ -551,9 +628,6 @@ namespace GTI.Modules.PlayerCenter.Business
             e.Result = new Tuple<Player, bool, bool>(player, updatePlayer, sentPlayer.WaitFormDisplayed);
 
         }
-
-        #endregion
-        #region (workcompleted)
 
         private void GetPlayerCompleteAwardPoints(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -615,76 +689,6 @@ namespace GTI.Modules.PlayerCenter.Business
                 DoneProcessingMessage(); // notify that we're done processing the message.
             }
         }
-
-        #endregion
-        #region StartSetPlayerCardPIN(thread)
-        internal void StartSetPlayerCardPIN(int playerId, int PIN)
-        {
-            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
-
-            playerInfo.playerID = playerId;
-            playerInfo.PIN = PIN;
-            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
-            m_worker.RunWorkerAsync(playerInfo);
-
-        }
-        #endregion
-        #region (dowork)
-
-        private void SendGetSetPlayerCardPIN(object sender, DoWorkEventArgs e)
-        {
-            SetupThread();
-
-            // Unbox the argument.
-            int playerId = ((PlayerLookupInfo)(e.Argument)).playerID;
-            int PIN = ((PlayerLookupInfo)(e.Argument)).PIN;
-
-            // Are we getting the PIN?
-            if (PIN == -1) //yes
-            {
-                GetPlayerMagCardPINMessage PINMsg = new GetPlayerMagCardPINMessage(playerId);
-
-                PINMsg.Send();
-
-                PIN = PINMsg.PlayerMagCardPIN;
-            }
-            else //setting the PIN
-            {
-                SetPlayerMagCardPINMessage PINMsg = new SetPlayerMagCardPINMessage(playerId, PIN);
-
-                PINMsg.Send();
-            }
-
-            e.Result = new Tuple<int, int>(playerId, PIN);
-        }
-
-        #endregion
-        #region (wrokcompleted)
-        private void GetSetPlayerCardPINComplete(object sender, RunWorkerCompletedEventArgs e)
-        {
-            // Set the error that occurred (if any).
-            LastAsyncException = e.Error;
-
-            if (e.Error == null)
-            {
-                int playerId = ((Tuple<int, int>)e.Result).Item1;
-                int PIN = ((Tuple<int, int>)e.Result).Item2;
-
-                if (PIN > 0 && m_player != null && m_player.Id == playerId)
-                    m_player.PlayerCardPIN = PIN;
-            }
-
-            // Close the wait form.
-            m_waitForm.CloseForm();
-        }
-
-        #endregion
         #endregion
         #region EVENTS
 
@@ -698,36 +702,16 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else if (e.Error != null)
             {
-                if (e.Error is ServerCommException) { }
-                    //PlayerManager.Instance.ServerCommFailed();//knc
+                if (e.Error is ServerCommException)
+                {
+                    throw new PlayerCenterException(e.Error.Message);
+
+                }
             }
         }
 
         #endregion
-        #region NOT Sure if this is being called
-
-        internal void StartGetPlayerCardPIN(int playerId)
-        {
-            PlayerLookupInfo playerInfo = new PlayerLookupInfo();
-
-            playerInfo.playerID = playerId;
-            playerInfo.PIN = -1;
-
-            m_waitForm.Message = Resources.WaitFormUpdatingPlayer;
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(SendGetSetPlayerCardPIN);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetSetPlayerCardPINComplete);
-            m_worker.RunWorkerAsync(playerInfo);
-        }
-
-        #endregion 
-
     }
-
-
 
     public class GetPlayerEventArgs : EventArgs
     {

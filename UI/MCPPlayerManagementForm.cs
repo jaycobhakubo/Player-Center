@@ -318,13 +318,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lastFocus = sender;
         }
 
-
-        //public int GetCreatePlayer
-        //{
-        //    return m_parent.CreatePlayerForPOS(magcardnumber);
-        //}
-
-        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)//knc
+        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)
         {
             m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
                 (newPlayerSelected,

@@ -617,4 +617,7 @@ Reason: {0}</value>
   <data name="WrongSize" xml:space="preserve">
     <value>is the wrong size.</value>
   </data>
+  <data name="CreatePlayer" xml:space="preserve">
+    <value>Would you like to create a new account?</value>
+  </data>
 </root>

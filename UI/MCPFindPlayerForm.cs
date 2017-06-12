@@ -141,7 +141,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SearchByCardClick(object sender, EventArgs e)
+        private void SearchByCardClick(object sender, EventArgs e)//knc
         {
             // PDTS 1064
             GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);
@@ -194,7 +194,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SelectPlayerClick(object sender, EventArgs e)
+        private void SelectPlayerClick(object sender, EventArgs e)//knc
         {
             int intPlayerID = 0;
             Application.DoEvents();

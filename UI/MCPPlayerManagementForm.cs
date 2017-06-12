@@ -319,8 +319,12 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
+        //public int GetCreatePlayer
+        //{
+        //    return m_parent.CreatePlayerForPOS(magcardnumber);
+        //}
 
-        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)
+        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)//knc
         {
             m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
                 (newPlayerSelected,
@@ -329,7 +333,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.Settings.ThirdPartyPlayerSyncMode,
                 m_parent.Settings.ThirdPartyPlayerInterfaceID,
                 m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength,
-                m_parent.MagCardReader);
+                m_parent.MagCardReader
+                );
         }
 
         private AwardPoints ManualPointsAward;

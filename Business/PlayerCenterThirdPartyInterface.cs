@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace GTI.Modules.PlayerCenter.Business
 {
-     class PlayerCenterThirdPartyInterface
+             class PlayerCenterThirdPartyInterface
      {
         #region VARIABLES
 
@@ -113,6 +113,61 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #endregion
         #region FUNCTION
+
+        private delegate DialogResult CreatePlayerPromptDelegate(IWin32Window owner);
+
+        /// <summary>
+        /// Displays a message box asking if the user would like to create a 
+        /// new player account.
+        /// </summary>
+        /// <param name="owner">Any object that implements IWin32Window 
+        /// that represents the top-level window that will own any modal 
+        /// dialog boxes.</param>
+        /// <returns>The DialogResult of the MessageForm (Yes or No).</returns>
+        private DialogResult PromptToCreatePlayer(IWin32Window owner)
+        {
+            DisplayMode displayMode;
+
+            lock (PlayerCenterSettings.Instance.SyncRoot)
+            {
+                displayMode = PlayerCenterSettings.Instance.DisplayMode;
+            }
+
+            return MessageForm.Show(owner, displayMode, Resources.NoPlayersFound + Environment.NewLine + Resources.CreatePlayer, MessageFormTypes.YesNo);
+        }
+        //public int CreatePlayerForPOS(string magCardNum)
+        //{
+        //    if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
+        //        throw new ArgumentException("magCardNum");
+
+        //    CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
+        //    createMsg.JoinDate = DateTime.Now;
+        //    createMsg.LastVisit = createMsg.JoinDate;
+        //    createMsg.MagCardNumber = magCardNum;
+
+        //    // Send the message.
+        //    try
+        //    {
+        //        createMsg.Send();
+        //    }
+        //    catch (ServerCommException ex)
+        //    {
+        //        Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+        //        throw ex; // Don't repackage the ServerCommException
+        //    }
+        //    catch (ServerException ex)
+        //    {
+        //        Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+        //        if ((int)ex.ReturnCode == 1)
+        //            throw new PlayerCenterException(Resources.errorDupMagCard);
+        //        else
+        //            throw;
+        //    }
+
+        //    return createMsg.PlayerId;
+        //}
+
+
         #region (GetPlayer) -> starting point
 
         internal void GetPlayer(string cardData, bool usingWaitForm = false)//This is force the player to create a new pin because third party requirements.
@@ -425,12 +480,23 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
         #region (dowork)
 
+
+         
         private void SendGetPlayer(object sender, DoWorkEventArgs e)
         {
             SetupThread();
             var enableMachineAccounts = false;
-            //var promptForCreate         = false ;
+            var promptForCreate         = false ;
             var enterRaffle = false;
+
+            //lock (m_settings.SyncRoot)
+            //{
+            //    // TTP 50114
+            //    enableMachineAccounts = m_settings.EnableAnonymousMachineAccounts;
+            //    promptForCreate = m_settings.PromptForPlayerCreation; // PDTS 1044
+            //    enterRaffle = m_settings.SwipeEntersRaffle;
+            //}
+
             var sentPlayer = (PlayerLookupInfo)e.Argument;
             var playerId = sentPlayer.playerID;
             var magCardNum = sentPlayer.CardNumber;
@@ -461,23 +527,68 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     bool noSyncWithThirdPartySoAddPlayer = m_interfaceId != 0 && (!cardMsg.SyncPlayerWithThirdParty || cardMsg.ThirdPartyInterfaceDown);
 
-                    if (!string.IsNullOrEmpty(magCardNum) && ((m_interfaceId == 0) || noSyncWithThirdPartySoAddPlayer))
+                    if (!enableMachineAccounts /*&& IsPlayerCenterInitialized */&& !string.IsNullOrEmpty(magCardNum) && ((promptForCreate && m_interfaceId == 0) || noSyncWithThirdPartySoAddPlayer))
                     {
                         bool doCreate = false;
-                        if (noSyncWithThirdPartySoAddPlayer) { doCreate = true; } else { }
+
+                        if (noSyncWithThirdPartySoAddPlayer)
+                        {
+                            doCreate = true;
+                        }
+                        else
+                        {
+                            if (m_waitForm != null && !m_waitForm.IsDisposed && m_waitForm.InvokeRequired) // if we're using the wait form
+                            {
+                           CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
+                                doCreate = ((DialogResult)m_waitForm.Invoke(prompt, new object[] { m_waitForm }) == DialogResult.Yes);
+                            }
+                            //else if (m_sellingForm != null && m_sellingForm.InvokeRequired) // if there's no wait form, but still requires the UI thread
+                            //{
+                            //    CreatePlayerPromptDelegate prompt = new CreatePlayerPromptDelegate(PromptToCreatePlayer);
+                            //    doCreate = ((DialogResult)m_sellingForm.Invoke(prompt, new object[] { m_sellingForm }) == DialogResult.Yes);
+                            //}
+                            else // Just try it? Hopefully it doesn't get here if the UI thread is required
+                            {
+                                doCreate = (PromptToCreatePlayer(m_waitForm) == DialogResult.Yes);
+                            }
+                        }
 
                         if (doCreate)
                             playerId = CreatePlayerForPOS(magCardNum);
                         else
                             throw new PlayerCenterUserCancelException(Resources.NoPlayersFound);
                     }
-                    else { throw new PlayerCenterException(Resources.NoPlayersFound); }
+                    else
+                    {
+                        throw new PlayerCenterException(/*enableMachineAccounts ? Resources.NoMachineFound :*/ Resources.NoPlayersFound);
+                    }
                 }
                 else
                 {
                     playerId = cardMsg.PlayerId;
-                    if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate) justSynced = true;//(if invalid pin = true /false) ; if valid pin = true/true                      
+
+                    if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate)
+                        justSynced = true;
                 }
+                //    bool noSyncWithThirdPartySoAddPlayer = m_interfaceId != 0 && (!cardMsg.SyncPlayerWithThirdParty || cardMsg.ThirdPartyInterfaceDown);
+
+                //    if (!string.IsNullOrEmpty(magCardNum) && ((m_interfaceId == 0) || noSyncWithThirdPartySoAddPlayer))
+                //    {
+                //        bool doCreate = false;
+                //        if (noSyncWithThirdPartySoAddPlayer) { doCreate = true; } else { }
+
+                //        if (doCreate)
+                //            playerId = CreatePlayerForPOS(magCardNum);
+                //        else
+                //            throw new PlayerCenterUserCancelException(Resources.NoPlayersFound);
+                //    }
+                //    else { throw new PlayerCenterException(Resources.NoPlayersFound); }
+                //}
+                //else
+                //{
+                //    playerId = cardMsg.PlayerId;
+                //    if (cardMsg.SyncPlayerWithThirdParty && cardMsg.PointsUpToDate) justSynced = true;//(if invalid pin = true /false) ; if valid pin = true/true                      
+                //}
             }
 
             Player player = null;

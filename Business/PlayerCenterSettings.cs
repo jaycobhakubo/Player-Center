@@ -28,10 +28,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private static volatile PlayerCenterSettings m_instance;
         private static readonly object m_sync = new Object();
         private MSRSettings CardReaderSettings = new MSRSettings();
-        protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
-        protected int m_ThirdPartyPlayerInterfaceID;
-        protected int m_ThirdPartyPlayerSyncMode = 0;
- 
+
         private PlayerCenterSettings()
         {
             SyncRoot = new object();
@@ -40,8 +37,6 @@ namespace GTI.Modules.PlayerCenter.Business
             ForceEnglish = false;
             EnableLogging = false;
             PinRequired = false;
-            ThirdPartyPlayerInterfaceUsesPINLength = 0;
-            EnableAnonymousMachineAccounts = false;
         }
 
         #endregion
@@ -58,7 +53,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 var param = (Setting)setting.Id;
 
-                switch (param)
+                switch(param)
                 {
                     case Setting.MagneticCardFilters:
                         CardReaderSettings.setFilters(setting.Value);
@@ -114,7 +109,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.MagneticCardReaderMode:
                         MagCardMode = (MagneticCardReaderMode)Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
 
-                        if (!Enum.IsDefined(typeof(MagneticCardReaderMode), MagCardMode))
+                        if(!Enum.IsDefined(typeof(MagneticCardReaderMode), MagCardMode))
                             throw new ArgumentException();
 
                         break;
@@ -155,34 +150,12 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.PlayerPinLength: //US4147
                         PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
                         break;
-
-                    //US2100 if staff has permission to adjust points to a player then get this 2 setting.
-                    case Setting.ThirdPartyPlayerInterfaceNeedPINForRating:
-                        ThirdPartyPlayerInterfaceUsesPIN = Convert.ToBoolean(setting.Value);
-                        break;
-                    case Setting.ThirdPartyPlayerInterfacePINLength:
-                        ThirdPartyPlayerInterfaceUsesPINLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case Setting.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped:
-                        m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = Convert.ToBoolean(setting.Value);
-                        break;
-                    case Setting.ThirdPartyPlayerInterfaceID:
-                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);                       
-                        break;
-                  
-                    case Setting.ThirdPartyPlayerSyncMode:
-                        ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
-                        break;
-                   
                 }
             }
             catch
             {
             }
         }
-
-     
-    
 
         // Rally TA7897
         /// <summary>
@@ -196,7 +169,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
-                switch (param)
+                switch(param)
                 {
                     case LicenseSetting.CreditEnabled:
                         CreditEnabled = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
@@ -208,7 +181,7 @@ namespace GTI.Modules.PlayerCenter.Business
                         break;
                 }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidSetting, setting.Id, setting.Value), e);
             }
@@ -216,21 +189,6 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Member Properties
-
-        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
-        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
-        public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
-        public int ThirdPartyPlayerInterfaceID { get; set; }
-        public int ThirdPartyPlayerSyncMode { get; set; }
-    
-        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
-        {
-            get
-            {
-                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
-            }
-        }
-
         /// <summary>
         /// Gets an instance to Player Center Settings
         /// </summary>
@@ -362,18 +320,18 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get { return UI.raffle_Setting.posRafflePrinterName; }
             set
-            { UI.raffle_Setting.posRafflePrinterName = value; }
+            { UI.raffle_Setting.posRafflePrinterName = value;}
         }
 
         //    RaffleDrawingSetting = 182,
-        public int RaffleDrawingSetting
-        {
-            get { return UI.raffle_Setting.RaffleTextSetting; }
-            set { UI.raffle_Setting.RaffleTextSetting = value; }
-
+        public int RaffleDrawingSetting 
+        { 
+            get{return UI.raffle_Setting.RaffleTextSetting;} 
+            set{UI.raffle_Setting.RaffleTextSetting = value; }
+        
         }
 
-        // ReceiptHeaderLine1 = 189,
+       // ReceiptHeaderLine1 = 189,
         public string ReceiptHeaderLine1
         {
             get { return UI.raffle_Setting.OperatorName; }

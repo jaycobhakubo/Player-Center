@@ -583,41 +583,4 @@
   <data name="WaitFormPrintingPlayerRaffle2" xml:space="preserve">
     <value>Printing {0} player receipts, please wait.</value>
   </data>
-  <data name="CardSwipeFailed" xml:space="preserve">
-    <value>Failed to record the attendance of the player.
-
-Reason: {0}</value>
-  </data>
-  <data name="PlayerCardPINError" xml:space="preserve">
-    <value>Incorrect PIN.</value>
-  </data>
-  <data name="PlayerSetFailed" xml:space="preserve">
-    <value>Could not set the player. Reason: {0}</value>
-  </data>
-  <data name="PlayerTrackingInterfaceDown" xml:space="preserve">
-    <value>The Player Tracking Interface is down.</value>
-  </data>
-  <data name="WaitFormGettingMachine" xml:space="preserve">
-    <value>Getting machine data, please wait.</value>
-  </data>
-  <data name="WaitFormUpdatingPlayer" xml:space="preserve">
-    <value>Updating player information, please wait.</value>
-  </data>
-  <data name="EnterPlayerCardPIN" xml:space="preserve">
-    <value>Enter Player Card PIN</value>
-  </data>
-  <data name="GetMachineFailed" xml:space="preserve">
-    <value>Failed to retrieve the machine's information from the server.
-
-Reason: {0}</value>
-  </data>
-  <data name="PlayerCardPINEntryCanceled" xml:space="preserve">
-    <value>Player card PIN entry canceled</value>
-  </data>
-  <data name="WrongSize" xml:space="preserve">
-    <value>is the wrong size.</value>
-  </data>
-  <data name="CreatePlayer" xml:space="preserve">
-    <value>Would you like to create a new account?</value>
-  </data>
 </root>

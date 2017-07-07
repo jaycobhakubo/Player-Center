@@ -104,9 +104,6 @@
     <Compile Include="Business\PlayerCenterException.cs" />
     <Compile Include="Business\PlayerCenterModule.cs" />
     <Compile Include="Business\PlayerCenterSettings.cs" />
-    <Compile Include="Data\PlayerCardSwipeMessage.cs" />
-    <Compile Include="Business\PlayerCenterThirdPartyInterface.cs" />
-    <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">
@@ -124,12 +121,6 @@
     <Compile Include="Data\GetRaffleDelaySettings.cs" />
     <Compile Include="Data\GetRaffleInformation.cs" />
     <Compile Include="Data\GetRafflePlayerDefinitions.cs" />
-    <Compile Include="UI\AwardPoints.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\AwardPoints.Designer.cs">
-      <DependentUpon>AwardPoints.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ListBoxSearchType.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -153,6 +144,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
+    <Content Include="SQL\Schema\Table_PlayerRafflesPrizes.sql" />
     <Compile Include="UI\ActiveStatusEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +224,7 @@
     <Compile Include="UI\ViewRaffleWinnerForm.Designer.cs">
       <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>
     </Compile>
+    <Content Include="SQL\Schema\Trigger_trigLogRafflePrize.sql" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.es.resx">
@@ -245,10 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ActiveStatusEditor.resx">
       <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\AwardPoints.resx">
-      <DependentUpon>AwardPoints.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MCPFindPlayerForm.es.resx">

@@ -141,7 +141,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SearchByCardClick(object sender, EventArgs e)//knc
+        private void SearchByCardClick(object sender, EventArgs e)
         {
             // PDTS 1064
             GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);
@@ -194,7 +194,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void SelectPlayerClick(object sender, EventArgs e)//knc
+        private void SelectPlayerClick(object sender, EventArgs e)
         {
             int intPlayerID = 0;
             Application.DoEvents();
@@ -227,8 +227,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
                 m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
-
-
 
             DialogResult = DialogResult.OK;
             Close();

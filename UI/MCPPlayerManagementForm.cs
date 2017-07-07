@@ -25,19 +25,23 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class MCPPlayerManagementForm : GradientForm
     {
         #region Member Variables
-        protected bool m_playersSaved;
-        protected bool mbolCreditOnline = true;
+
+        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
         protected object m_lastFocus;
         protected bool m_dataChanged;
-        protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
+        protected Player m_player = new Player();
         protected Player m_playerToSet;
-        protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358     
+        protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358
+        protected bool m_playersSaved;
         protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
-        private readonly DateTime limitedBirthDate = new DateTime(1900, 1, 1);
+
+        protected bool mbolCreditOnline = true;
+      //  private clsUSB mobjUSB = null;
+
         private PlayerManager m_parent;
-        private bool m_isManualAwardPointsEnable = false;
+
         private string mstrComments = String.Empty;
-        private PlayerCenterThirdPartyInterface m_playerCenterThirdPartyInterface;
+        //private bool mbolClickComment;
 
         #endregion
 
@@ -57,7 +61,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
                 //ApplyDisplayMode();
                 SetMaxTextLengths();
-                
+
                 m_playerStatusList = new List<PlayerStatus>();//RALLY DE8358
 
                 // Rally TA7897
@@ -90,7 +94,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ChkSystemCamera();
                 AddToolStripMenuItem();
-               
             }
             catch (Exception)
             {
@@ -256,7 +259,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void playerStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ActiveStatusEditor editor = new ActiveStatusEditor(m_parent.OperatorID);
+            ActiveStatusEditor editor = new ActiveStatusEditor(PlayerManager.OperatorID);
             if (editor.ShowDialog() == DialogResult.OK)
             {
                 // The editor must have already reloaded the OperatorPlayerStatusList
@@ -318,42 +321,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lastFocus = sender;
         }
 
-        private void SetPlayerCenterThirdPartyInterfaceNewValue(Player newPlayerSelected)
-        {
-            m_playerCenterThirdPartyInterface = new PlayerCenterThirdPartyInterface
-                (newPlayerSelected,
-                m_parent.OperatorID,
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN,
-                m_parent.Settings.ThirdPartyPlayerSyncMode,
-                m_parent.Settings.ThirdPartyPlayerInterfaceID,
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPINLength,
-                m_parent.MagCardReader
-                );
-        }
-
-        private AwardPoints ManualPointsAward;
-
-        //US2100
-        private void AwardPointsImageButton_Click(object sender, EventArgs e)
-        {
-
-            SetPlayerCenterThirdPartyInterfaceNewValue(m_player);
-            ManualPointsAward = new AwardPoints(m_playerCenterThirdPartyInterface);
-            m_playerCenterThirdPartyInterface.UICurrent = ManualPointsAward;
-            ManualPointsAward.ShowDialog();
-            Application.DoEvents();
-
-            //Update the current player points if awarded is successfull to UI.
-            if (ManualPointsAward.IsPointsAwardedSuccess == true)
-            {
-                var newPointBalance = m_player.PointsBalance + ManualPointsAward.PointsAwarded;
-                m_player.PointsBalance = newPointBalance;//Not updated
-                m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
-            }
-
-            Application.DoEvents();
-        }
-
         /// <summary>
         /// Handles the find player button click.
         /// </summary>
@@ -367,41 +334,20 @@ namespace GTI.Modules.PlayerCenter.UI
             if (ChkDataChange())
             {
                 MCPFindPlayerForm findForm = new MCPFindPlayerForm(m_parent);
+
                 Application.DoEvents();
 
                 if (findForm.ShowDialog(this) == DialogResult.OK)
                 {
-
-                    if (
-                GetThisStaffPermissionToAwardPoints() &&
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN &&
-                m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&
-                findForm.SelectedPlayer.PlayerCardPINError == true
-                )
-                    {
-                        SetPlayerCenterThirdPartyInterfaceNewValue(findForm.SelectedPlayer);
-                        m_playerCenterThirdPartyInterface.UICurrent = this;
-                        m_playerCenterThirdPartyInterface.GetPlayer(findForm.SelectedPlayer.PlayerCard);
-                        Application.DoEvents();
-                    }
-
                     Application.DoEvents();
                     m_player = findForm.SelectedPlayer;
                     SetPlayerValues(false);//RALLY DE8358
                     m_dataChanged = false;
-
-                    if (m_player != null && GetThisStaffPermissionToAwardPoints())
-                    {
-                        if (!m_isManualAwardPointsEnable)
-                        ShowManualAwardPointsButton(true);
-                    }
-
                 }
             }
 
             GC.Collect(); // DE2476 - Try to clean up memory after a player is saved and reloaded.
         }
-
 
         /// <summary>
         /// Handles the new player button click and clears out
@@ -419,12 +365,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_dataChanged = false;
                 txtFirstName.Focus();
                 personalInfoGroupBox.Text = "Personal Information - Add New";
-
-                if (GetThisStaffPermissionToAwardPoints())
-                {
-                    if (m_isManualAwardPointsEnable) ShowManualAwardPointsButton(false);
-                }
-
                 Application.DoEvents();
             }
 
@@ -499,23 +439,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         /// <summary>
-        /// Handles the take pin button click.
-        /// </summary>
-        /// <param name="sender">The sender of the event.</param>
-        /// <param name="e">An EventArgs object that contains the 
-        /// event data.</param>
-        private void takePINImageButton_Click(object sender, EventArgs e)
-        {
-            TakePIN pinform = new TakePIN();
-            Application.DoEvents();
-            pinform.ShowDialog();
-            Application.DoEvents();
-            m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
-        }
-
-      
-
-        /// <summary>
         /// Handles the save changes button click.
         /// </summary>
         /// <param name="sender">The sender of the event.</param>
@@ -565,15 +488,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                 {
                     m_player = m_parent.LastPlayerFromServer; // TTP 50067
-                    SetPlayerValues(false);         // Set the saved player's values back to the UI.//RALLY DE8358
+
+                    // Set the saved player's values back to the UI.
+                    SetPlayerValues(false);//RALLY DE8358
                     Application.DoEvents();
                     m_dataChanged = false;
                     m_playersSaved = true;
-
-                    if (GetThisStaffPermissionToAwardPoints())
-                    {
-                        if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);                    
-                    }
                     MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
                 }
                 personalInfoGroupBox.Text = "Personal Information";
@@ -604,6 +524,60 @@ namespace GTI.Modules.PlayerCenter.UI
             GC.Collect(); // DE2476
         }
 
+        ///// <summary>
+        ///// Handles the set as current player button click and
+        ///// sets the POS's player.
+        ///// </summary>
+        ///// <param name="sender">The sender of the event.</param>
+        ///// <param name="e">An EventArgs object that contains the 
+        ///// event data.</param>
+        //private void SetAsCurrentPlayerClick(object sender, EventArgs e)
+        //{
+        //    if (m_player.Id > 0)
+        //    {
+        //        if (ChkDataChange())
+        //        {
+        //            m_playerToSet = m_player;
+        //            Close();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageForm.Show(Resources.NoPlayer, Resources.PlayerCenterName);
+        //    }
+        //}
+
+        ///// <summary>
+        ///// Handles the exit button click and closes the form.
+        ///// </summary>
+        ///// <param name="sender">The sender of the event.</param>
+        ///// <param name="e">An EventArgs object that contains the 
+        ///// event data.</param>
+        //private void ExitClick(object sender, EventArgs e)
+        //{
+
+        //    if (ChkDataChange())
+        //    {
+        //        m_playerToSet = null;
+        //        Close();
+        //    }
+        //}
+
+        ///// <summary>
+        ///// Handles when a key on the virtual keyboard is clicked.
+        ///// </summary>
+        ///// <param name="sender">The sender of the event.</param>
+        ///// <param name="e">A KeyboardEventArgs object that contains the 
+        ///// event data.</param>
+        //private void KeyboardKeyPressed(object sender, KeyboardEventArgs e)
+        //{
+        //    //if(m_lastFocus is Control && (m_lastFocus != m_virtualKeyboard))
+        //    //{
+        //    //    ((Control)m_lastFocus).Focus();
+        //    //    SendKeys.Send(e.KeyPressed);
+        //    //}
+        //}
+
         /// <summary>
         /// Handles when the player data has changed.
         /// </summary>
@@ -617,7 +591,14 @@ namespace GTI.Modules.PlayerCenter.UI
             m_dataChanged = true;
         }
 
-      
+        private void takePINImageButton_Click(object sender, EventArgs e)
+        {
+            TakePIN pinform = new TakePIN();
+            Application.DoEvents();
+            pinform.ShowDialog();
+            Application.DoEvents();
+            m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583, RALLY US1955
+        }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -688,9 +669,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Member Methods
-
-      
-
+     
         // 1-24-2008 JW: I removed old code here while doing "house cleaning" duties. 
         // I saved it in a text file. PlayerCenter.MCPPlayerForm.ApplyDisplayMode.txt
 
@@ -758,7 +737,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             m_lastVisit.Text = m_player.LastVisit != DateTime.MinValue ? m_player.LastVisit.ToShortDateString() : string.Empty;
 
-            m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
+            m_pointsBalance.Text = m_player.PointsBalance.ToString("N");
             m_visitCount.Text = m_player.VisitCount.ToString();
             // FIX: DE6690
 //            m_magCardNum.Text = m_player.MagneticCardNumber;
@@ -960,44 +939,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_dataChanged = false;
             }
         }
-
-        // US2100/TA15670
-        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
-        {
-            m_isManualAwardPointsEnable = isManualAwardPointsEnable;
-            if ( !isManualAwardPointsEnable)
-            {
-                groupBox1.Size = new Size(331, 333);
-                groupBox1.Location = new Point(35, 30);
-                m_playerPicture.Size = new Size(320, 240);
-                m_noPic.Size = m_playerPicture.Size;
-                m_playerPicture.Location = new Point(6, 44);
-                m_noPic.Location = m_playerPicture.Location;
-                m_btnImgAwardPointManual.Visible = false;
-                m_btnImgAwardPointManual.SendToBack();
-            }
-            else
-            {
-                    groupBox1.Size = new Size(331, 274);
-                    groupBox1.Location = new Point(35, 30);
-                    m_playerPicture.Size = new Size(320, 247);
-                    m_noPic.Size = m_playerPicture.Size;
-                    m_playerPicture.Location = new Point(5, 21);
-                    m_noPic.Location = m_playerPicture.Location;
-                    m_btnImgAwardPointManual.Visible = true;
-                    m_btnImgAwardPointManual.BringToFront();              
-            }
-        }
-
-        private bool GetThisStaffPermissionToAwardPoints()
-        {
-            return m_parent.StaffHasPermissionToAwardPoints;//.StaffHasPermissionToAdjustPointsManually;
-        }
        
         #endregion
 
         #region Member Properties
-        
         /// <summary>
         /// Gets whether the user saved one or more players to the server while 
         /// the dialog was open.
@@ -1116,6 +1061,12 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
+
+        //private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm();
+        //        playerLoyalty.Show(this);
+        //}
 
     }
 }

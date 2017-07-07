@@ -17,14 +17,13 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using CrystalDecisions.CrystalReports.Engine;
 using GTI.Modules.Shared;
 using GTI.Controls;
 using GTI.Modules.PlayerCenter.UI;
 using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Properties;
+using System.Text;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.PlayerCenter.Data.Printing;
 
@@ -40,37 +39,52 @@ namespace GTI.Modules.PlayerCenter.Business
         private const int ServerCommShutdownWait = 15000;
         private const string LogPrefix = "PlayerCenter - ";
         // FIX: DE2475 - Appears to be problems with the registration of GTIVidcap.ocx on the system.
-        private const string GameTechDir = "%GMTCDRIVE%";      
+        private const string GameTechDir = "%GMTCDRIVE%";
         private const string VidSnapshotName = @"Common\VidSnapshot.exe";
         private const string TempPicFileName = "TempPlayerPic.jpg";
         // END: DE2475
         #endregion
 
         #region Member Variables
+        // System Related
+        private PlayerCenterModule m_module = null;
 
-        private PlayerCenterModule m_module = null;        // System Related
+        private bool m_loggingEnabled = false;
+        private object m_logSync = new object();
+
+        private int m_deviceId = 0;
+        private int m_machineId = 0;
+       // private int m_workstationId = 0;
+
         private BackgroundWorker m_worker = null;
+
         private Exception m_asyncException = null;
+        private object m_errorSync = new object();
+
+        // Player Center Related
+
         private PlayerLoyaltyTier[] m_playerTiers = null;
+
         private PlayerListItem[] m_lastFindPlayersResults = null;
-        private Player m_lastPlayerFromServer = null;        // TTP 50067
+        private object m_findPlayerSync = new object();
+
+        // TTP 50067
+        private Player m_lastPlayerFromServer = null;
+        private object m_lastPlayerSync = new object();
+
         private Bitmap m_lastPlayerPic = null;
-        private SplashScreen m_loadingForm = null;        // UIs
+        private object m_playerPicSync = new object();
+
+        // PDTS 1064 - Portable POS Card Swipe.
+        private bool m_externalMagCardReader;
+
+        // Raffle Related
+
+        // UIs
+        private  SplashScreen  m_loadingForm = null;
         private MCPPlayerManagementForm m_mainMenuForm = null;
         private WaitForm m_waitForm = null;
         private ReportForm m_reportForm; // PDTS 312
-        private object m_errorSync = new object();
-        private object m_findPlayerSync = new object();
-        private object m_lastPlayerSync = new object();
-        private object m_playerPicSync = new object();
-        private object m_logSync = new object();
-        private bool m_loggingEnabled = false;
-        private bool m_externalMagCardReader;        // PDTS 1064 - Portable POS Card Swipe.
-        private int m_deviceId = 0;
-        private int m_machineId = 0;
-        private bool m_needPlayerCardPIN;
-        private MagneticCardReader m_magCardReader;
-  
 
         #endregion
 
@@ -84,8 +98,12 @@ namespace GTI.Modules.PlayerCenter.Business
         {            
             m_module = module;
         }
-
+        
         #endregion
+
+        #region Member Methods
+
+        #region Initialization Methods
 
         // FIX: DE2476
         /// <summary>
@@ -130,35 +148,43 @@ namespace GTI.Modules.PlayerCenter.Business
                 }
 
                 strErr = "create setting obj.";
-                Settings = PlayerCenterSettings.Instance;  // Create a settings object with the default values. //US4119 changed to singleton
-                strErr = "Check to see what resolution to run in.";
+                // Create a settings object with the default values.
+                Settings = PlayerCenterSettings.Instance; //US4119 changed to singleton
 
-                if (m_deviceId == Device.POSPortable.Id)      // Check to see what resolution to run in.
+                strErr = "Check to see what resolution to run in.";
+                // Check to see what resolution to run in.
+                if (m_deviceId == Device.POSPortable.Id)
                     Settings.DisplayMode = new CompactDisplayMode();
                 else
                     Settings.DisplayMode = new NormalDisplayMode();
 
                 strErr = "Create and show the loading form.";
+                // Create and show the loading form.
                 m_loadingForm = new SplashScreen();
+
+                //if(m_settings.DisplayMode is NormalDisplayMode)
+                //    m_loadingForm.BackgroundImage = Resources.LoadingBack1024;
+                //else
+                //    m_loadingForm.BackgroundImage = Resources.LoadingBack800;
+
                 strErr = "set form...version, cursor, app name.";
                 m_loadingForm.Version = GetVersionAndCopyright(true);
                 m_loadingForm.Cursor = Cursors.WaitCursor;
                 m_loadingForm.ApplicationName = Properties.Resources.productName;
-                strErr = "show form.";
 
-                if (showLoadingForm) m_loadingForm.Show();
-              
+                strErr = "show form.";
+                if (showLoadingForm)
+                    m_loadingForm.Show();
+
                 strErr = "set form loading status.";
-                m_loadingForm.Status = Resources.LoadingWorkstationInfo;                // Get the workstation's settings from the server.
+                // Get the workstation's settings from the server.
+                m_loadingForm.Status = Resources.LoadingWorkstationInfo;
                 Application.DoEvents();
 
                 try
                 {
                     strErr = "get workstation settings.";
-                    GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
                     GetWorkstationSettings();
-                    m_magCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
-              
                 }
                 catch (Exception e)
                 {
@@ -166,12 +192,13 @@ namespace GTI.Modules.PlayerCenter.Business
                         MessageForm.Show(Settings.DisplayMode, string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
                     else
                         MessageForm.Show(string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
+
                     return;
                 }
 
                 strErr = "Check to see if we want to log everything.";
-
-                try  // Check to see if we want to log everything.
+                // Check to see if we want to log everything.
+                try
                 {
                     strErr = "EnableLogging.";
                     if (Settings.EnableLogging)
@@ -202,6 +229,8 @@ namespace GTI.Modules.PlayerCenter.Business
                     Log("Forcing English.", LoggerLevel.Configuration);
                 }
 
+                //if(!m_settings.ShowCursor)
+                //    Cursor.Hide();
 
                 //US2649 
                 RunGetPlayerLocation();
@@ -211,10 +240,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetListLocationCountry();
                 GetPackageName();
 
+
                 strErr = "set form loading status..again.";
                 //loading player status code
                 m_loadingForm.Status = Resources.LoadingStatusCode;
                 GetStatusCode();
+
 
                 strErr = "set form loading status..loading tiers.";
                 // Load the Player Loyalty Tiers
@@ -262,7 +293,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 strErr = "init the mag. card reader";
                 // Initialize the mag. card reader.
                 try
-                {                
+                {
                     MagCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
                     m_externalMagCardReader = false;
                 }
@@ -304,34 +335,20 @@ namespace GTI.Modules.PlayerCenter.Business
         ///  fill up the status code dictionary
         /// </summary>
         public static void GetStatusCode()
-        {
-            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);        }
+        {OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(OperatorID);}
 
         //US2649
 
         public static void GetPackageName()
         {
-            var message = new GetPackageItemMessage(GetOperatorID.operatorID);
+            var message = new GetPackageItemMessage(OperatorID);
             message.Send();
             if (message.ReturnCode == (int)GTIServerReturnCode.Success)
             {
                 PackageListName = message.PackageItems;
             }
         }
-
-        //US2100
-         private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
-        {
-            StaffHasPermissionToAwardPoints = false;
-            var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
-            message.Send();
-
-            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
-            {         
-                 StaffHasPermissionToAwardPoints =  (message.ModuleFeatureList.ToList().Count != 0)?true:false;
-            }
-        }
-
+        
         public static void RunGetPlayerLocation()
         {
                GetPlayerLocation.GetPlayerLocationX();  
@@ -356,10 +373,6 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             ListLocationCountry = GetPlayerLocationPer.CountryName;
         }
-
-
-
-
         //US2649
         /// <summary>
         /// Returns a string with the version and copyright information of 
@@ -394,6 +407,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 return version;
         }
 
+        #endregion
 
         #region UI Methods
 
@@ -737,7 +751,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 settingsMsg.Send();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 ReformatException(e);
             }
@@ -746,7 +760,7 @@ namespace GTI.Modules.PlayerCenter.Business
             //m_workstationId = settingsMsg.WorkstationId;
 
             // Loop through each setting and parse the value.
-            SettingValue[] stationSettings = settingsMsg.Settings;
+            SettingValue [] stationSettings = settingsMsg.Settings;
 
             foreach (SettingValue setting in stationSettings)
             {
@@ -761,44 +775,17 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 licSettingsMsg.Send();
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 ReformatException(e);
             }
 
             // Loop through each setting and parse the value.
-            foreach (LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
+            foreach(LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
             {
                 Settings.LoadSetting(setting);
             }
             // END: TA7897
-
-            //Get all setting on third party
-            if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
-            {
-                GetSettingsMessage thirdPartySettingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ThirdPartyPlayerTrackingSettings);
-
-                try
-                {
-                    thirdPartySettingsMsg.Send();//Just get every setting
-                }
-                catch (Exception e)
-                {
-                    ReformatException(e);
-                }
-
-                SettingValue[] thirdPartyStationSettings = thirdPartySettingsMsg.Settings;
-
-                foreach (SettingValue setting in thirdPartyStationSettings)
-                {
-                    Settings.LoadSetting(setting);
-
-                    if (Setting.ThirdPartyPlayerInterfaceNeedPINForRating == (Setting)setting.Id && Convert.ToBoolean(setting.Value))//And player does not have a pin
-                    {
-                        m_needPlayerCardPIN = true;
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -902,8 +889,6 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerComplete);
             m_worker.RunWorkerAsync(playerId);
         }
-
-    
         // END: DE2476
 
         /// <summary>
@@ -1153,7 +1138,6 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Save Player
-
 
         // FIX: DE2476
         /// <summary>
@@ -2344,10 +2328,9 @@ namespace GTI.Modules.PlayerCenter.Business
 
             IsInitialized = false;
         }
-        #region Member Properties
+        #endregion
 
-        public PlayerCenterSettings Settings { get; private set; }
-        
+        #region Member Properties
         // FIX: DE2476
         internal bool IsTouchScreen { get; set; }
         // END: DE2476
@@ -2359,8 +2342,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <summary>
         /// Gets the Player Center's current settings.
         /// </summary>
-
-        public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
+        public PlayerCenterSettings Settings { get; private set; }
 
         /// <summary>
         /// Gets whether to allow picture capturing.
@@ -2475,8 +2457,6 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal MagneticCardReader MagCardReader { get; private set; }
 
-        internal int OperatorID { get;  private set; }
-
         // Rally US144
         /// <summary>
         /// Displays the report form.
@@ -2489,13 +2469,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 m_reportForm.BringToFront();
             }
         }
-
-        //public int GetOperatorId()
-        //{
-        // return OperatorID;   
-        //}
-
-
+        internal static int OperatorID { get; private set; }
         internal static List<PlayerStatus> OperatorPlayerStatusList { get; private set; }
         internal static List<PackageItem> PackageListName { get; private set; }  
         internal static List<LocationCity> ListLocationCity { get; private set; }
@@ -2574,7 +2548,7 @@ namespace GTI.Modules.PlayerCenter.Business
         public string ListName;
     }
 
-    internal class GetOperatorID
+    public class GetOperatorID
     {
         public static int operatorID;
     }

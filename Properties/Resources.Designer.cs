@@ -225,17 +225,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to record the attendance of the player.
-        ///
-        ///Reason: {0}.
-        /// </summary>
-        internal static string CardSwipeFailed {
-            get {
-                return ResourceManager.GetString("CardSwipeFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Discard the changes you have made?.
         /// </summary>
         internal static string Changes {
@@ -277,15 +266,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         internal static string Country {
             get {
                 return ResourceManager.GetString("Country", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Would you like to create a new account?.
-        /// </summary>
-        internal static string CreatePlayer {
-            get {
-                return ResourceManager.GetString("CreatePlayer", resourceCulture);
             }
         }
         
@@ -367,15 +347,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         internal static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter Player Card PIN.
-        /// </summary>
-        internal static string EnterPlayerCardPIN {
-            get {
-                return ResourceManager.GetString("EnterPlayerCardPIN", resourceCulture);
             }
         }
         
@@ -504,17 +475,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         internal static string GetLastPlayerRaffleWinner {
             get {
                 return ResourceManager.GetString("GetLastPlayerRaffleWinner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to retrieve the machine&apos;s information from the server.
-        ///
-        ///Reason: {0}.
-        /// </summary>
-        internal static string GetMachineFailed {
-            get {
-                return ResourceManager.GetString("GetMachineFailed", resourceCulture);
             }
         }
         
@@ -1081,24 +1041,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Player card PIN entry canceled.
-        /// </summary>
-        internal static string PlayerCardPINEntryCanceled {
-            get {
-                return ResourceManager.GetString("PlayerCardPINEntryCanceled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Incorrect PIN..
-        /// </summary>
-        internal static string PlayerCardPINError {
-            get {
-                return ResourceManager.GetString("PlayerCardPINError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to An error has occurred. The Player Center module will now shutdown. Error: {0}.
         /// </summary>
         internal static string PlayerCenterError {
@@ -1185,29 +1127,11 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not set the player. Reason: {0}.
-        /// </summary>
-        internal static string PlayerSetFailed {
-            get {
-                return ResourceManager.GetString("PlayerSetFailed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} players exported..
         /// </summary>
         internal static string PlayersExported {
             get {
                 return ResourceManager.GetString("PlayersExported", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The Player Tracking Interface is down..
-        /// </summary>
-        internal static string PlayerTrackingInterfaceDown {
-            get {
-                return ResourceManager.GetString("PlayerTrackingInterfaceDown", resourceCulture);
             }
         }
         
@@ -1471,15 +1395,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting machine data, please wait..
-        /// </summary>
-        internal static string WaitFormGettingMachine {
-            get {
-                return ResourceManager.GetString("WaitFormGettingMachine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Getting player data, please wait..
         /// </summary>
         internal static string WaitFormGettingPlayer {
@@ -1525,15 +1440,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating player information, please wait..
-        /// </summary>
-        internal static string WaitFormUpdatingPlayer {
-            get {
-                return ResourceManager.GetString("WaitFormUpdatingPlayer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Waiting {
@@ -1558,15 +1464,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         internal static string warningBirthDate {
             get {
                 return ResourceManager.GetString("warningBirthDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to is the wrong size..
-        /// </summary>
-        internal static string WrongSize {
-            get {
-                return ResourceManager.GetString("WrongSize", resourceCulture);
             }
         }
         

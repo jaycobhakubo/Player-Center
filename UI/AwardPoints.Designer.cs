@@ -33,7 +33,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPointsAwarded = new System.Windows.Forms.Label();
             this.lblPlayerNameIndicator = new System.Windows.Forms.Label();
             this.txtbxPointsAwarded = new GTI.Controls.TextBoxNumeric2();
-            this.txtbxPointsAwarded1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cancelImageButton
@@ -100,24 +99,13 @@ namespace GTI.Modules.PlayerCenter.UI
             // txtbxPointsAwarded
             // 
             this.txtbxPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbxPointsAwarded.Location = new System.Drawing.Point(172, 105);
+            this.txtbxPointsAwarded.Location = new System.Drawing.Point(172, 58);
             this.txtbxPointsAwarded.Mask = GTI.Controls.TextBoxNumeric2.TextBoxType.Decimal;
             this.txtbxPointsAwarded.MaxLength = 16;
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
             this.txtbxPointsAwarded.Precision = 2;
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(137, 27);
             this.txtbxPointsAwarded.TabIndex = 5;
-            // 
-            // txtbxPointsAwarded1
-            // 
-            this.txtbxPointsAwarded1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtbxPointsAwarded1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbxPointsAwarded1.Location = new System.Drawing.Point(175, 65);
-            this.txtbxPointsAwarded1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtbxPointsAwarded1.Name = "txtbxPointsAwarded1";
-            this.txtbxPointsAwarded1.Size = new System.Drawing.Size(133, 20);
-            this.txtbxPointsAwarded1.TabIndex = 1;
-            this.txtbxPointsAwarded1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // AwardPoints
             // 
@@ -133,7 +121,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.cancelImageButton);
             this.Controls.Add(this.acceptImageButton);
             this.Controls.Add(this.lblPointsAwarded);
-            this.Controls.Add(this.txtbxPointsAwarded1);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -158,6 +145,5 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label lblPointsAwarded;
         private System.Windows.Forms.Label lblPlayerNameIndicator;
         private Controls.TextBoxNumeric2 txtbxPointsAwarded;
-        private System.Windows.Forms.TextBox txtbxPointsAwarded1;
     }
 }

@@ -226,7 +226,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_lastName);
             this.Controls.Add(this.m_firstName);
             this.Controls.Add(this.m_virtualKeyboard);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FindPlayerForm";
             this.ShowInTaskbar = false;

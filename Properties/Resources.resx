@@ -620,4 +620,7 @@ Reason: {0}</value>
   <data name="CreatePlayer" xml:space="preserve">
     <value>Would you like to create a new account?</value>
   </data>
+  <data name="infoPointsAwardSuccessed" xml:space="preserve">
+    <value>Points Award Successfully.</value>
+  </data>
 </root>

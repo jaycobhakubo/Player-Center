@@ -76,6 +76,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     IsPointsAwardedSuccess = true;
                     PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                    MessageForm.Show(Resources.infoPointsAwardSuccessed, Resources.PlayerCenterName);
                 }
             }
 

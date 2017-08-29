@@ -67,17 +67,25 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
             {
-                PointsAwarded = 0M;
-                var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-                IsPointsAwardedSuccess = false;
-                SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints);
-                msg.Send();
-                if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                try
                 {
-                    IsPointsAwardedSuccess = true;
-                    PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                    MessageForm.Show(Resources.infoPointsAwardSuccessed, Resources.PlayerCenterName);
+                    PointsAwarded = 0M;
+                    var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                    IsPointsAwardedSuccess = false;
+                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints);
+                    msg.Send();
+                    if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                    {
+                        IsPointsAwardedSuccess = true;
+                        PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                        MessageForm.Show(Resources.infoPointsAwardSuccessed, Resources.PlayerCenterName);
+                    }
                 }
+                catch
+                {
+                    MessageForm.Show(Resources.infoPointsAwardFailed, Resources.PlayerCenterName);
+                }
+               
             }
 
             DialogResult = DialogResult.OK;

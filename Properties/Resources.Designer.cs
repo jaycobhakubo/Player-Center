@@ -591,6 +591,15 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to Award Points.
+        /// </summary>
+        internal static string infoPointsAwardFailed {
+            get {
+                return ResourceManager.GetString("infoPointsAwardFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Points Award Successfully..
         /// </summary>
         internal static string infoPointsAwardSuccessed {

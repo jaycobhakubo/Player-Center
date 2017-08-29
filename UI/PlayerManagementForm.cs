@@ -439,7 +439,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_dataChanged = false;
                     m_playersSaved = true;
 
-                    MessageForm.Show(m_displayMode, Properties.Resources.infoSaveSuccessed);
+                    MessageForm.Show(m_displayMode, Properties.Resources.infoSaveSuccessed);//knc
                 }
             }
 

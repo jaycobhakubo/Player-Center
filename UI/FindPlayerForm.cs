@@ -123,15 +123,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 // Add the player(s) to the result list.
                 PlayerListItem[] players = m_parent.LastFindPlayersResults;
 
-                if(players != null && players.Length > 0)
+                if (players != null && players.Length > 0)
                 {
                     m_resultsList.Items.AddRange(players);
 
                     // Rally DE1889
-                    if(m_resultsList.Items.Count > 0)
+                    if (m_resultsList.Items.Count > 0)
                         m_resultsList.SelectedIndex = 0;
 
-                    if(m_resultsList.Items.Count == 1)
+                    if (m_resultsList.Items.Count == 1)
                         m_selectPlayerButton.PerformClick();
                 }
                 else

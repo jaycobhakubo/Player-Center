@@ -201,9 +201,12 @@ namespace GTI.Modules.PlayerCenter.Business
                     case LicenseSetting.CreditEnabled:
                         CreditEnabled = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
                         break;
-                    case LicenseSetting.NDSalesMode:                    //US4120
+
+                    //US4120
+                    case LicenseSetting.NDSalesMode:
                         NDSalesMode = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
                         break;
+
                     case LicenseSetting.ForceWholeProductPoints:
                         WholePoints = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
                         break;
@@ -350,11 +353,15 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets or sets whether a pin number is required.
         /// </summary>
         public bool PinRequired { get; set; }
-        public int PlayerPinLength { get; set; } //US4120
-        public bool CreditEnabled { get; set; }      // Rally TA7897
-        public bool NDSalesMode { get; set; } //US4147
-        public bool WholePoints { get; set; }
 
+        public int PlayerPinLength { get; set; } //US4120
+
+        // Rally TA7897
+        public bool CreditEnabled { get; set; }
+
+        public bool NDSalesMode { get; set; } //US4147
+
+        public bool WholePoints { get; set; }
         //ALL about raffle
         public string POSreceiptPrinterName
         {

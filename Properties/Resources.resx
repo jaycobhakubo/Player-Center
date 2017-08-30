@@ -623,7 +623,4 @@ Reason: {0}</value>
   <data name="infoPointsAwardSuccessed" xml:space="preserve">
     <value>Points Award Successfully.</value>
   </data>
-  <data name="infoPointsAwardFailed" xml:space="preserve">
-    <value>Unable to Award Points</value>
-  </data>
 </root>

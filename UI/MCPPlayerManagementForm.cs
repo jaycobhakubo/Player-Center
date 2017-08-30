@@ -336,7 +336,9 @@ namespace GTI.Modules.PlayerCenter.UI
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
-            ManualPointsAward = new AwardPoints(m_playerCenterThirdPartyInterface/*, m_parent.Settings.WholePoints*/);
+
+            SetPlayerCenterThirdPartyInterfaceNewValue(m_player);
+            ManualPointsAward = new AwardPoints(m_playerCenterThirdPartyInterface , m_parent.Settings.WholePoints);
             m_playerCenterThirdPartyInterface.UICurrent = ManualPointsAward;
             ManualPointsAward.ShowDialog();
             Application.DoEvents();

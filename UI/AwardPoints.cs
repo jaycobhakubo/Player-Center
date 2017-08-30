@@ -22,12 +22,15 @@ namespace GTI.Modules.PlayerCenter.UI
    {
        private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
        private WaitForm m_waitForm = null;
+       private bool m_wholePoints = false;
 
 
-       public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface)
+       public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface/*, bool wholePoints*/)
         {
             InitializeComponent();
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
+            //m_wholePoints = wholePoints;
+            CheckForWholePoints();
         }
 
     
@@ -44,7 +47,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;
                 cancelImageButton.ImagePressed = Resources.BlueButtonDown;
-        }      
+        }
+
+        public void CheckForWholePoints()
+        {
+            if (m_wholePoints)
+            {
+                txtbxPointsAwarded.Mask = GTI.Controls.TextBoxNumeric2.TextBoxType.Integer;            
+            }
+        }
 
         private void cancelImageButton_Click(object sender, EventArgs e)
         {
@@ -95,5 +106,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         public bool IsPointsAwardedSuccess { get; set; }
         public decimal PointsAwarded { get; set; }
+
     }
 }

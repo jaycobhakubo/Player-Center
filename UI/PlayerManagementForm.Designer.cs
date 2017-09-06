@@ -138,6 +138,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_ReceiptNumberColorListBox.Name = "m_ReceiptNumberColorListBox";
             this.m_ReceiptNumberColorListBox.SuppressVerticalScroll = true;
             this.m_ReceiptNumberColorListBox.TabStop = false;
+            this.m_ReceiptNumberColorListBox.TopIndexForScroll = 0;
             // 
             // m_virtualKeyboard
             // 
@@ -361,6 +362,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_findPlayerButton.Name = "m_findPlayerButton";
             this.m_findPlayerButton.RepeatRate = 150;
             this.m_findPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_findPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_findPlayerButton.ShowFocus = false;
             this.m_findPlayerButton.TabStop = false;
             this.m_findPlayerButton.UseVisualStyleBackColor = false;
@@ -387,6 +389,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_newPlayerButton.Name = "m_newPlayerButton";
             this.m_newPlayerButton.RepeatRate = 150;
             this.m_newPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_newPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_newPlayerButton.ShowFocus = false;
             this.m_newPlayerButton.TabStop = false;
             this.m_newPlayerButton.UseVisualStyleBackColor = false;
@@ -403,6 +406,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton.Name = "m_assignCardButton";
             this.m_assignCardButton.RepeatRate = 150;
             this.m_assignCardButton.RepeatWhenHeldFor = 750;
+            this.m_assignCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_assignCardButton.ShowFocus = false;
             this.m_assignCardButton.TabStop = false;
             this.m_assignCardButton.UseVisualStyleBackColor = false;
@@ -419,6 +423,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_saveChangesButton.Name = "m_saveChangesButton";
             this.m_saveChangesButton.RepeatRate = 150;
             this.m_saveChangesButton.RepeatWhenHeldFor = 750;
+            this.m_saveChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_saveChangesButton.ShowFocus = false;
             this.m_saveChangesButton.TabStop = false;
             this.m_saveChangesButton.UseVisualStyleBackColor = false;
@@ -435,6 +440,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelChangesButton.Name = "m_cancelChangesButton";
             this.m_cancelChangesButton.RepeatRate = 150;
             this.m_cancelChangesButton.RepeatWhenHeldFor = 750;
+            this.m_cancelChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelChangesButton.ShowFocus = false;
             this.m_cancelChangesButton.TabStop = false;
             this.m_cancelChangesButton.UseVisualStyleBackColor = false;
@@ -451,6 +457,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_setPlayerButton.Name = "m_setPlayerButton";
             this.m_setPlayerButton.RepeatRate = 150;
             this.m_setPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_setPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_setPlayerButton.ShowFocus = false;
             this.m_setPlayerButton.TabStop = false;
             this.m_setPlayerButton.UseVisualStyleBackColor = false;
@@ -467,6 +474,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_exitButton.Name = "m_exitButton";
             this.m_exitButton.RepeatRate = 150;
             this.m_exitButton.RepeatWhenHeldFor = 750;
+            this.m_exitButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_exitButton.ShowFocus = false;
             this.m_exitButton.TabStop = false;
             this.m_exitButton.UseVisualStyleBackColor = false;
@@ -483,6 +491,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_takePictureButton.Name = "m_takePictureButton";
             this.m_takePictureButton.RepeatRate = 150;
             this.m_takePictureButton.RepeatWhenHeldFor = 750;
+            this.m_takePictureButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_takePictureButton.ShowFocus = false;
             this.m_takePictureButton.TabStop = false;
             this.m_takePictureButton.UseVisualStyleBackColor = false;
@@ -670,6 +679,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton.Name = "takePINImageButton";
             this.takePINImageButton.RepeatRate = 150;
             this.takePINImageButton.RepeatWhenHeldFor = 750;
+            this.takePINImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.takePINImageButton.ShowFocus = false;
             this.takePINImageButton.TabStop = false;
             this.takePINImageButton.UseVisualStyleBackColor = false;
@@ -740,6 +750,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.receiptUpImageButton.RepeatingIfHeld = true;
             this.receiptUpImageButton.RepeatRate = 150;
             this.receiptUpImageButton.RepeatWhenHeldFor = 750;
+            this.receiptUpImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.receiptUpImageButton.ShowFocus = false;
             this.receiptUpImageButton.Stretch = false;
             this.receiptUpImageButton.TabStop = false;
@@ -757,6 +768,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.receiptDownImageButton.RepeatingIfHeld = true;
             this.receiptDownImageButton.RepeatRate = 150;
             this.receiptDownImageButton.RepeatWhenHeldFor = 750;
+            this.receiptDownImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.receiptDownImageButton.ShowFocus = false;
             this.receiptDownImageButton.Stretch = false;
             this.receiptDownImageButton.TabStop = false;
@@ -788,6 +800,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_statusDownButton.RepeatingIfHeld = true;
             this.m_statusDownButton.RepeatRate = 150;
             this.m_statusDownButton.RepeatWhenHeldFor = 750;
+            this.m_statusDownButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_statusDownButton.ShowFocus = false;
             this.m_statusDownButton.Stretch = false;
             this.m_statusDownButton.TabStop = false;
@@ -805,6 +818,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_statusUpButton.RepeatingIfHeld = true;
             this.m_statusUpButton.RepeatRate = 150;
             this.m_statusUpButton.RepeatWhenHeldFor = 750;
+            this.m_statusUpButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_statusUpButton.ShowFocus = false;
             this.m_statusUpButton.Stretch = false;
             this.m_statusUpButton.TabStop = false;
@@ -825,6 +839,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_activeStatusList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.m_activeStatusList.SuppressVerticalScroll = true;
             this.m_activeStatusList.TabStop = false;
+            this.m_activeStatusList.TopIndexForScroll = 0;
             this.m_activeStatusList.SelectedIndexChanged += new System.EventHandler(this.ActiveStatusList_ItemSelectionChanged);
             // 
             // m_genderCycleButton
@@ -837,6 +852,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_genderCycleButton.Name = "m_genderCycleButton";
             this.m_genderCycleButton.RepeatRate = 150;
             this.m_genderCycleButton.RepeatWhenHeldFor = 750;
+            this.m_genderCycleButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_genderCycleButton.ShowFocus = false;
             this.m_genderCycleButton.Stretch = false;
             this.m_genderCycleButton.TabStop = false;

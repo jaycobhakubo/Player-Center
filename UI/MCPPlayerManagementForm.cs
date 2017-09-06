@@ -54,6 +54,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_parent = parent;
                 InitializeComponent();
+
+                if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
+                    lblPlayerIdentLabel.Text = "Player Identity/Account";
+
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
                 //ApplyDisplayMode();
                 SetMaxTextLengths();

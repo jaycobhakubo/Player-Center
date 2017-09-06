@@ -64,7 +64,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 FormBorderStyle = FormBorderStyle.FixedSingle;
                 // FIX: DE3202 - Dialog didn't match rest of the theme.
                 BackgroundImage = null;
-                DrawGradient = true;
+                DrawAsGradient = true;
                 acceptImageButton.ImageNormal = Resources.BlueButtonUp;
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;

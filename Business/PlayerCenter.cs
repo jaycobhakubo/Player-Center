@@ -544,6 +544,13 @@ namespace GTI.Modules.PlayerCenter.Business
 
             PlayerManagementForm mgmtForm = new PlayerManagementForm(this, Settings.DisplayMode);
 
+            if (IsTouchScreen)
+            {
+                mgmtForm.DrawRounded = true;
+                mgmtForm.OuterBorderEdgeColor = Color.DimGray;
+                mgmtForm.DrawBorderOuterEdge = true;
+            }
+
             mgmtForm.EnableSetAsCurrentPlayer = true;
             mgmtForm.ShowDialog();
 
@@ -747,6 +754,26 @@ namespace GTI.Modules.PlayerCenter.Business
 
             // Loop through each setting and parse the value.
             SettingValue[] stationSettings = settingsMsg.Settings;
+
+            foreach (SettingValue setting in stationSettings)
+            {
+                Settings.LoadSetting(setting);
+            }
+
+            // Send message for receipt management settings.
+            settingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ReceiptMgmtSettings);
+
+            try
+            {
+                settingsMsg.Send();
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
+
+            // Loop through each setting and parse the value.
+            stationSettings = settingsMsg.Settings;
 
             foreach (SettingValue setting in stationSettings)
             {

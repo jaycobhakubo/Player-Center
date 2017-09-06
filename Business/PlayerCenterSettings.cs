@@ -31,6 +31,7 @@ namespace GTI.Modules.PlayerCenter.Business
         protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
         protected int m_ThirdPartyPlayerInterfaceID;
         protected int m_ThirdPartyPlayerSyncMode = 0;
+        protected bool m_UsePlayerIdentityAsAccountNumber = false;
  
         private PlayerCenterSettings()
         {
@@ -60,6 +61,10 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 switch (param)
                 {
+                    case Setting.PrintPlayerIdentityAsAccountNumber:
+                        m_UsePlayerIdentityAsAccountNumber = Convert.ToBoolean(setting.Value);
+                        break;
+
                     case Setting.MagneticCardFilters:
                         CardReaderSettings.setFilters(setting.Value);
                         break;
@@ -232,6 +237,14 @@ namespace GTI.Modules.PlayerCenter.Business
             get
             {
                 return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
+        public bool UsePlayerIdentityAsAccountNumber
+        {
+            get
+            {
+                return m_UsePlayerIdentityAsAccountNumber;
             }
         }
 

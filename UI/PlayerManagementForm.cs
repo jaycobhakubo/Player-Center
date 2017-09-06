@@ -57,6 +57,13 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 strErr = "Initialize.";
                 InitializeComponent();
+
+                if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
+                {
+                    m_playerIdentLabel.Text = "Identity/Account";
+                    m_playerIdent.UseSystemPasswordChar = false;
+                }
+
                 strErr = "apply display.";
                 ApplyDisplayMode();
                 strErr = "set max lengths.";
@@ -1137,7 +1144,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         this.lblCreditNonRef.Visible = false;
                         this.m_credits.Visible = false;
                         this.m_creditsNon.Visible = false;
-
+                        this.m_socialSecurityNum.Width = (this.m_credits.Location.X + this.m_credits.Width) - this.m_socialSecurityNum.Location.X;
+                        this.m_playerIdent.Width = (this.m_creditsNon.Location.X + this.m_creditsNon.Width) - this.m_playerIdent.Location.X;
                         strErr = "set BackgroundImage...false.";
                         this.BackgroundImage = Resources.PlayerScreen1024;
                     }

@@ -22,7 +22,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool isNew = false;
         private bool isModify = false;
         private bool isUpdate = false;
-        private bool isReceiptPrinterExists = false;
         private bool isDisclaimerEnable = false;
         private bool isNew2 = false;
         private bool isUpdate2 = false;
@@ -36,17 +35,13 @@ namespace GTI.Modules.PlayerCenter.UI
         private string PrinterName = "";
         private int N_oFDefaultPlayer;
         private bool N_OfPlayersReqMet;
-        int delaytime;
-        int CountTimerCheck = 0; //for delaying raffle winner
         int[] RaffleSettingID = new int[] { 214 };//, 22, 182, 38, 37, 3, 189, 190 };//, 77 };
-        System.Windows.Forms.Timer TimerCheck = new System.Windows.Forms.Timer();
-        System.Timers.Timer timer = new System.Timers.Timer(1000);
         Vouchers vouchers = new Vouchers();
-        RaffleReceipt raffleReceipt = new RaffleReceipt();
         Printer globalPrinter;
         DataRafflePrizes dataRafflePrize = new DataRafflePrizes();
         RaffleWinner raffleWinner = new RaffleWinner();
         Dictionary<int, int> IndexToDefID = new Dictionary<int, int>();
+        private Operator ActiveOperatorsData;
 
         //System Setting reference
         //==========================
@@ -67,7 +62,6 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             loadListRaffle();
-            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 
             RaffleSettings.data.Clear();
             foreach (int globalsettingID in RaffleSettingID)
@@ -224,9 +218,12 @@ namespace GTI.Modules.PlayerCenter.UI
         {
 
             //INFO
-            GetOperatorCompleteMessage getDataForReceipt = new GetOperatorCompleteMessage(GetOperatorID.operatorID);        //Run 18053 to get operator info           //Charity and operator 
-            getDataForReceipt.Send();
-            Operator ActiveOperatorsData = getDataForReceipt.OperatorList.Single(l => l.Id == GetOperatorID.operatorID);
+            if (ActiveOperatorsData == null)
+            {
+                GetOperatorCompleteMessage getDataForReceipt = new GetOperatorCompleteMessage(GetOperatorID.operatorID);        //Run 18053 to get operator info           //Charity and operator 
+                getDataForReceipt.Send();
+                ActiveOperatorsData = getDataForReceipt.OperatorList.Single(l => l.Id == GetOperatorID.operatorID);
+            }
             vouchers.OperatorsName = ActiveOperatorsData.Name;
             vouchers.OperatorsLicenseNumber = "";//null for now till i locate that license 
             vouchers.OperatorAddress1 = ((ActiveOperatorsData.Address1 != "") ? ActiveOperatorsData.Address1 + " " : "") + ((ActiveOperatorsData.Address2 != "") ? ActiveOperatorsData.Address2 + " " : "");
@@ -269,35 +266,37 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <summary>
         /// Check if the receipt printer is installed
         /// </summary>
-        private void checkReceiptPrinter()
+        private bool CheckForReceiptPrinter()
         {
+            bool exists = false;
             PrinterName = raffle_Setting.posRafflePrinterName;
 
-            if (isReceiptPrinterExists != false) { isReceiptPrinterExists = false; };
             if (PrinterName != null)
             {
                 foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
                 {
                     if (PrinterName == printer)//check if the receipt printer is installed
                     {
-                        //check the status
-                        checkReceiptPrinterStatus();
-                        if (isReceiptPrinterExists != false)
+                        //it exists, check the status
+                        if (checkReceiptPrinterStatus(PrinterName))
                         {
-                            isReceiptPrinterExists = true;
+                            exists = true;
                             globalPrinter = new Printer(PrinterName);//Assign Printer
                             break;
                         }
                     }
                 }
             }
+
+            return exists;
         }
 
 
-        private void checkReceiptPrinterStatus()
+        private bool checkReceiptPrinterStatus(string printerName)
         {
+            bool printerRunning = false;
 
-            string query = string.Format("SELECT * from Win32_Printer WHERE Name LIKE '%{0}'", PrinterName);
+            string query = string.Format("SELECT * from Win32_Printer WHERE Name LIKE '%{0}'", printerName);
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
             ManagementObjectCollection coll = searcher.Get();
 
@@ -327,11 +326,11 @@ namespace GTI.Modules.PlayerCenter.UI
                         // MessageBox.Show(property.Value.ToString());
                         if (Convert.ToInt32(property.Value) != 0)
                         {
-                            isReceiptPrinterExists = false;
+                            printerRunning = false;
                         }
                         else
                         {
-                            isReceiptPrinterExists = true;
+                            printerRunning = true;
                         }
                         count = -1;
                         break;
@@ -352,6 +351,8 @@ namespace GTI.Modules.PlayerCenter.UI
             //printer status = 65  3
             //extended printer status = 38  2
             //What is the statsu for offline?
+
+            return printerRunning;
         }
 
         /// <summary>
@@ -1310,8 +1311,6 @@ namespace GTI.Modules.PlayerCenter.UI
         //RUN RAFFLE
         private void btnRunRaffle_Click(object sender, EventArgs e)
         {
-            checkReceiptPrinter();
-
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
 
@@ -1319,16 +1318,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (lstbxRaffleWinners2.Items.Count != 0)
             {
-
-                for (int i = lstbxRaffleWinners2.Items.Count - 1; i >= 0; i--)
-                {
-                    lstbxRaffleWinners2.Items[i] = "";
-                    lstbxRaffleWinners2.SelectedIndex = i;
-                    lstbxRaffleWinners2.SetSelected(0, false);
-                }
                 lstbxRaffleWinners2.Items.Clear();
-                lstbxRaffleWinners2.SelectedIndex = -1;
-
             }
 
             List<RaffleWinner> raffleWinners = new List<RaffleWinner>();
@@ -1339,44 +1329,38 @@ namespace GTI.Modules.PlayerCenter.UI
             btnClearRaffle.Enabled = false;
             btnRaffleReprintVoucher.Enabled = false;
 
+            int delaytime = 0;
             bool resultTryParse = Int32.TryParse(RaffleDelayValue.Value.ToString(), out delaytime);//what happen if this is 0 or empty  //Get the raffle duration delay  
 
             raffleWinner = new RaffleWinner();//Winner should be clear in runnning a new raffle.
+            Cursor.Current = Cursors.WaitCursor;
 
             for (int startcount = 0; startcount < dataRafflePrize.NoOfRafflePrize; startcount++)
             {
-
-                CountTimerCheck = 0;
-                timer.Enabled = true;
-
                 int tempRaffleHistory = 0; //check if the raffleHistory already exists if not then set to 0 = new;
                 tempRaffleHistory = (raffleWinner.HistoryID == null) ? 0 : raffleWinner.HistoryID;
 
-                Cursor.Current = Cursors.WaitCursor;
                 raffleWinner = RunPlayerRaffleMessage.GetRaffleWinner(dataRafflePrize.RaffleID, tempRaffleHistory, DefID);   //Raffle winner here //What raffle is being run and is PlayerHistory = 0; //How to change the value from the existing raffleHistoryID
                 raffleWinners.Add(raffleWinner);
-                lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
+                if (String.IsNullOrWhiteSpace(raffleWinner.FirstName) && String.IsNullOrWhiteSpace(raffleWinner.LastName))
+                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.PlayerID.ToString());
+                else
+                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
 
                 getVouchersInfo(raffleWinner.PlayerID);
-                raffleReceipt = new RaffleReceipt();
+                RaffleReceipt raffleReceipt = new RaffleReceipt();
                 AssignValueToReceipt(raffleReceipt, startcount);
 
-                if (resultTryParse == true)//If delay time setting is set.
+                lstbxRaffleWinners2.SelectedIndex = startcount;
+                lstbxRaffleWinners2.SetSelected(startcount, false);
+
+                if (CheckForReceiptPrinter())
                 {
-                    while (CountTimerCheck < ((delaytime) / 2) - 1)//Delay untill time reaches
-                    { }
-                    lstbxRaffleWinners2.SelectedIndex = startcount;
-                    lstbxRaffleWinners2.SetSelected(startcount, false);
-                    CountTimerCheck = 0;
-
-                    if (isReceiptPrinterExists == true)
-                    {
-                        raffleReceipt.Print(globalPrinter, 1);//Just print one copy  //Print the winners vouchers
-                    }
-
-                    while (CountTimerCheck < ((delaytime) / 2) - 1)//Delay untill time reaches
-                    { }
+                    raffleReceipt.Print(globalPrinter, 1);//Just print one copy  //Print the winners vouchers
                 }
+
+                if (delaytime > 1 && startcount + 1 < dataRafflePrize.NoOfRafflePrize) // if there is another winner after this one, we should delay.
+                    System.Threading.Thread.Sleep(((delaytime -1) * 1000)); // note: takes over a second between winners without a delay
             }
 
             btnRunRaffle.Enabled = true;
@@ -1437,13 +1421,7 @@ namespace GTI.Modules.PlayerCenter.UI
             raffleReceipt1.RafflesWinnerPhoneNumber = vouchers.RafflesWinnerPhoneNumber;
             raffleReceipt1.RaffleDisclaimer = vouchers.RaffleDisclaimer;
         }
-
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            CountTimerCheck++;
-        }
-
-
+        
         private void btnRaffleReprintVoucher_Click(object sender, EventArgs e)
         {
 
@@ -1455,7 +1433,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
 
-            checkReceiptPrinter();
             DataPreviousWinner RafflePreviousWinner = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);
 
             //Print only selected winner
@@ -1467,10 +1444,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     //get the playerID
                     getVouchersInfo(playerID);
-                    raffleReceipt = new RaffleReceipt();
+                    RaffleReceipt raffleReceipt = new RaffleReceipt();
                     AssignValueToReceipt(raffleReceipt, count);
 
-                    if (isReceiptPrinterExists == true)
+                    if (CheckForReceiptPrinter())
                     {
                         raffleReceipt.Print(globalPrinter, 1);//Just print one copy  //Print the winners vouchers
                     }
@@ -1486,9 +1463,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 //get the playerID of the selected index
                 int PlayerID = RafflePreviousWinner.WinnerPlayerID[indexOfPlayerWinner];
                 getVouchersInfo(PlayerID);
-                raffleReceipt = new RaffleReceipt();
+                RaffleReceipt raffleReceipt = new RaffleReceipt();
                 AssignValueToReceipt(raffleReceipt, 0);
-                if (isReceiptPrinterExists == true)
+                if (CheckForReceiptPrinter())
                 {
                     raffleReceipt.Print(globalPrinter, 1);//Just print one copy  //Print the winners vouchers
                 }

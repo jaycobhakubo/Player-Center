@@ -377,3 +377,4 @@ info/.+\.txt$
 ^build
 
 #Testing
+Player Center.bat

@@ -210,6 +210,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_findPlayerButton.Name = "m_findPlayerButton";
             this.m_findPlayerButton.RepeatRate = 150;
             this.m_findPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_findPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_findPlayerButton.UseVisualStyleBackColor = false;
             this.m_findPlayerButton.Click += new System.EventHandler(this.FindPlayerClick);
             // 
@@ -224,6 +225,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_newPlayerButton.Name = "m_newPlayerButton";
             this.m_newPlayerButton.RepeatRate = 150;
             this.m_newPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_newPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_newPlayerButton.UseVisualStyleBackColor = false;
             this.m_newPlayerButton.Click += new System.EventHandler(this.NewPlayerClick);
             // 
@@ -238,6 +240,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelChangesButton.Name = "m_cancelChangesButton";
             this.m_cancelChangesButton.RepeatRate = 150;
             this.m_cancelChangesButton.RepeatWhenHeldFor = 750;
+            this.m_cancelChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelChangesButton.UseVisualStyleBackColor = false;
             this.m_cancelChangesButton.Click += new System.EventHandler(this.CancelChangesClick);
             // 
@@ -864,6 +867,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_saveChangesButton.Name = "m_saveChangesButton";
             this.m_saveChangesButton.RepeatRate = 150;
             this.m_saveChangesButton.RepeatWhenHeldFor = 750;
+            this.m_saveChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_saveChangesButton.UseVisualStyleBackColor = false;
             this.m_saveChangesButton.Click += new System.EventHandler(this.SaveChangesClick);
             // 
@@ -878,6 +882,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_takePictureButton.Name = "m_takePictureButton";
             this.m_takePictureButton.RepeatRate = 150;
             this.m_takePictureButton.RepeatWhenHeldFor = 750;
+            this.m_takePictureButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_takePictureButton.UseVisualStyleBackColor = false;
             this.m_takePictureButton.Click += new System.EventHandler(this.TakePictureClick);
             // 
@@ -892,6 +897,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton.Name = "m_assignCardButton";
             this.m_assignCardButton.RepeatRate = 150;
             this.m_assignCardButton.RepeatWhenHeldFor = 750;
+            this.m_assignCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_assignCardButton.UseVisualStyleBackColor = false;
             this.m_assignCardButton.Click += new System.EventHandler(this.AssignCardClick);
             // 
@@ -906,6 +912,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton.Name = "takePINImageButton";
             this.takePINImageButton.RepeatRate = 150;
             this.takePINImageButton.RepeatWhenHeldFor = 750;
+            this.takePINImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.takePINImageButton.UseVisualStyleBackColor = false;
             this.takePINImageButton.Click += new System.EventHandler(this.takePINImageButton_Click);
             // 
@@ -930,6 +937,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual.Name = "m_btnImgAwardPointManual";
             this.m_btnImgAwardPointManual.RepeatRate = 150;
             this.m_btnImgAwardPointManual.RepeatWhenHeldFor = 750;
+            this.m_btnImgAwardPointManual.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
             this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 

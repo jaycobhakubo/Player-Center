@@ -38,6 +38,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool m_isManualAwardPointsEnable = false;
         private string mstrComments = String.Empty;
         private PlayerCenterThirdPartyInterface m_playerCenterThirdPartyInterface;
+        private AwardPoints ManualPointsAward;
 
         #endregion
 
@@ -336,12 +337,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 );
         }
 
-        private AwardPoints ManualPointsAward;
+   
 
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
-
             SetPlayerCenterThirdPartyInterfaceNewValue(m_player);
             ManualPointsAward = new AwardPoints(m_playerCenterThirdPartyInterface , m_parent.Settings.WholePoints);
             m_playerCenterThirdPartyInterface.UICurrent = ManualPointsAward;

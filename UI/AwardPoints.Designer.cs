@@ -49,6 +49,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.cancelImageButton.Name = "cancelImageButton";
             this.cancelImageButton.RepeatRate = 150;
             this.cancelImageButton.RepeatWhenHeldFor = 750;
+            this.cancelImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.cancelImageButton.ShowFocus = false;
             this.cancelImageButton.Size = new System.Drawing.Size(133, 50);
             this.cancelImageButton.TabIndex = 3;
@@ -69,6 +70,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.Name = "acceptImageButton";
             this.acceptImageButton.RepeatRate = 150;
             this.acceptImageButton.RepeatWhenHeldFor = 750;
+            this.acceptImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
             this.acceptImageButton.TabIndex = 2;
@@ -101,7 +103,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsAwarded.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtbxPointsAwarded.Location = new System.Drawing.Point(172, 58);
             this.txtbxPointsAwarded.Mask = GTI.Controls.TextBoxNumeric2.TextBoxType.Decimal;
-            this.txtbxPointsAwarded.MaxLength = 16;
+            this.txtbxPointsAwarded.MaxLength = 10;
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
             this.txtbxPointsAwarded.Precision = 2;
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(137, 27);

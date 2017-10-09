@@ -62,6 +62,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     m_playerIdentLabel.Text = "Identity/Account";
                     m_playerIdent.UseSystemPasswordChar = false;
+                    m_playerIdent.ReadOnly = false;
                 }
 
                 strErr = "apply display.";
@@ -446,7 +447,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_dataChanged = false;
                     m_playersSaved = true;
 
-                    MessageForm.Show(m_displayMode, Properties.Resources.infoSaveSuccessed);
+                    MessageForm.Show(m_displayMode, Properties.Resources.InfoSaveSuccessed);
                 }
             }
 
@@ -903,6 +904,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_gender.Text = Resources.GenderMale;
             else if(m_player.Gender == Resources.GenderFemale)
                 m_gender.Text = Resources.GenderFemale;
+            else if (m_player.Gender == Resources.GenderOther)
+                m_gender.Text = Resources.GenderOther;
             else
                 m_gender.Text = string.Empty;
             // END: DE1891
@@ -1176,6 +1179,8 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_gender.Text == Resources.GenderMale)
                 m_gender.Text = Resources.GenderFemale;
             else if(m_gender.Text == Resources.GenderFemale)
+                m_gender.Text = Resources.GenderOther;
+            else if (m_gender.Text == Resources.GenderOther)
                 m_gender.Text = string.Empty;
             else
                 m_gender.Text = Resources.GenderMale;

@@ -157,6 +157,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_genderList.Items.Add(string.Empty);
             m_genderList.Items.Add(Resources.GenderMale);
             m_genderList.Items.Add(Resources.GenderFemale);
+            m_genderList.Items.Add(Resources.GenderOther);
 
             m_genderList.SelectedIndex = 0;
         }
@@ -578,7 +579,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         if (!m_isManualAwardPointsEnable) ShowManualAwardPointsButton(true);                    
                     }
-                    MessageForm.Show(Resources.infoSaveSuccessed, Resources.PlayerCenterName);
+                    MessageForm.Show(Resources.InfoSaveSuccessed, Resources.PlayerCenterName);
                 }
                 personalInfoGroupBox.Text = "Personal Information";
 

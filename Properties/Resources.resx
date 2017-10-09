@@ -205,10 +205,10 @@
   <data name="GetSettingsFailed" xml:space="preserve">
     <value>Failed to get this workstation's settings from the server.  Reason: {0}</value>
   </data>
-  <data name="infoPlayerNotFound" xml:space="preserve">
+  <data name="InfoPlayerNotFound" xml:space="preserve">
     <value>Player not found.</value>
   </data>
-  <data name="infoSaveSuccessed" xml:space="preserve">
+  <data name="InfoSaveSuccessed" xml:space="preserve">
     <value>Saved Data Successfully.</value>
   </data>
   <data name="InvalidBirthDate" xml:space="preserve">
@@ -620,7 +620,13 @@ Reason: {0}</value>
   <data name="CreatePlayer" xml:space="preserve">
     <value>Would you like to create a new account?</value>
   </data>
-  <data name="infoPointsAwardSuccessed" xml:space="preserve">
+  <data name="InfoPointsAwardSuccessed" xml:space="preserve">
     <value>Points Award Successfully.</value>
+  </data>
+  <data name="GenderOther" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="InfoPointsAwardFailed" xml:space="preserve">
+    <value>Unable to Award Points</value>
   </data>
 </root>

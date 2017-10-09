@@ -16,9 +16,22 @@ using System.Text.RegularExpressions;
 namespace GTI.Modules.PlayerCenter.UI
 {
 
-
     public partial class Raffle : GradientForm
     {
+        #region Private Members
+
+        #region Monetary Raffle Members
+        private BackgroundWorker m_monRaffleLoader;
+        private List<MonetaryRaffle> m_monRaffles;
+        private MonetaryRaffle m_editingMonRaffle = null;
+        #endregion
+
+        #region Wheel Raffle Members
+        private BackgroundWorker m_wheelRaffleLoader;
+        private List<WheelRaffle> m_wheelRaffles;
+        private WheelRaffle m_editingWheelRaffle = null;
+        #endregion
+
         private bool isNew = false;
         private bool isModify = false;
         private bool isUpdate = false;
@@ -33,13 +46,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private string RaffleName = "";
         private string displayedText = "";
         private string PrinterName = "";
-        private int N_oFDefaultPlayer;
         private bool N_OfPlayersReqMet;
         int[] RaffleSettingID = new int[] { 214 };//, 22, 182, 38, 37, 3, 189, 190 };//, 77 };
         Vouchers vouchers = new Vouchers();
         Printer globalPrinter;
         DataRafflePrizes dataRafflePrize = new DataRafflePrizes();
-        RaffleWinner raffleWinner = new RaffleWinner();
         Dictionary<int, int> IndexToDefID = new Dictionary<int, int>();
         private Operator ActiveOperatorsData;
 
@@ -58,6 +69,8 @@ namespace GTI.Modules.PlayerCenter.UI
         //77 Global printer 
         //==================================
 
+        #endregion
+
         public Raffle()
         {
             InitializeComponent();
@@ -75,11 +88,826 @@ namespace GTI.Modules.PlayerCenter.UI
 
             tbctrlRafle.SelectedIndexChanged += new EventHandler(tbctrlRafle_SelectedIndexChanged);
             GetAndLoadPlayerListComboBox();
+
+            SetupMonetaryRaffle();
+            SetupWheelRaffle();
         }
 
-
-
         #region METHODS
+
+        // US5414
+        #region Monetary Raffle Methods
+
+        /// <summary>
+        /// Sets whether or not UI elements are enabled on the monetary raffle UI
+        /// </summary>
+        private void SetEnableMonetaryRaffleFields()
+        {
+            monRaffleGroupBox2.Enabled = (m_editingMonRaffle != null);
+
+            monRafSaveBtn.Enabled = (m_editingMonRaffle != null && !String.IsNullOrWhiteSpace(monRafNameTxtBx.Text));
+
+            btnRunMonetary.Enabled = (m_editingMonRaffle != null && m_editingMonRaffle.ID.HasValue);
+
+            addMonRafPrizeBtn.Enabled = (!String.IsNullOrWhiteSpace(monRafPrizeWeightTxtBx.Text) && !String.IsNullOrWhiteSpace(monRafPrizeValTxtBx.Text));
+
+            removeMonRafPrizeBtn.Enabled = (monRafPrizeListBx.SelectedIndex != -1);
+
+            deleteMonRafBtn.Enabled = (monRaffleListBox.SelectedIndex != -1);
+        }
+
+        /// <summary>
+        /// Clears out the monetary raffle fields
+        /// </summary>
+        private void ClearMonRaffleFields()
+        {
+            monRafStatusLabel.Text = "";
+            monRafNameTxtBx.Text = "";
+            monRafDescTxtBx.Text = "";
+            monRafPrizeWeightTxtBx.Text = "";
+            monRafPrizeValTxtBx.Text = "";
+            monRafPrizeListBx.Items.Clear();
+            monRafSaveLbl.Visible = false;
+        }
+
+        /// <summary>
+        /// Sets the monetary raffle fields to the values in the raffle being edited
+        /// </summary>
+        private void SetMonRaffleFields()
+        {
+            if (m_editingMonRaffle == null)
+            {
+                ClearMonRaffleFields();
+            }
+            else
+            {
+                monRafNameTxtBx.Text = m_editingMonRaffle.Name;
+                monRafDescTxtBx.Text = m_editingMonRaffle.Description;
+                monRafPrizeWeightTxtBx.Text = "";
+                monRafPrizeValTxtBx.Text = "";
+                monRafPrizeListBx.Items.Clear();
+                if (m_editingMonRaffle.Options != null && m_editingMonRaffle.Options.Count > 0)
+                {
+                    foreach (var opt in m_editingMonRaffle.Options)
+                    {
+                        monRafPrizeListBx.Items.Add(opt);
+                    }
+                }
+            }
+
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Initializes the monetary raffle data
+        /// </summary>
+        private void SetupMonetaryRaffle()
+        {
+            m_monRaffleLoader = new BackgroundWorker();
+            m_monRaffleLoader.DoWork += new DoWorkEventHandler(MonRaffleLoader_DoWork);
+            m_monRaffleLoader.RunWorkerCompleted += new RunWorkerCompletedEventHandler(MonRaffleLoader_RunWorkerCompleted);
+            LoadMonetaryRaffle();
+        }
+
+        /// <summary>
+        /// Loads the list of monetary raffles from the server
+        /// </summary>
+        private void LoadMonetaryRaffle()
+        {
+            ClearMonRaffleFields();
+            monRafStatusLabel.Text = "Loading...";
+            monRaffleGroupBox1.Enabled = false;
+            monRaffleGroupBox2.Enabled = false;
+            m_monRaffleLoader.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// Loads the monetary raffles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MonRaffleLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                m_monRaffles = GetMonetaryRaffleDefinitions.GetMonetaryRaffles();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Actions that occur when the monetary raffles are done loading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MonRaffleLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            monRaffleGroupBox1.Enabled = true;
+            if (e.Error == null)
+            {
+                monRafStatusLabel.Text = "";
+                monRaffleListBox.Items.Clear();
+                if (m_monRaffles != null && m_monRaffles.Count > 0)
+                {
+                    monRaffleListBox.SuspendLayout();
+                    foreach (var monRaf in m_monRaffles)
+                    {
+                        monRaffleListBox.Items.Add(monRaf);
+                    }
+                    monRaffleListBox.ResumeLayout();
+                }
+                else
+                {
+                    monRafStatusLabel.Text = "No Monetary Raffles Found";
+                }
+            }
+            else
+            {
+                if (e.Error is ServerException)
+                {
+                    ServerException ex = e.Error as ServerException;
+                    monRafStatusLabel.Text = String.Format("Unable to get monetary raffles. Reason: {0} ",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    PlayerManager.Log("Error getting monetary raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                }
+                else
+                {
+                    monRafStatusLabel.Text = "Unable to get monetary raffles. Reason: " + e.Error.Message;
+                    PlayerManager.Log("Error getting monetary raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                }
+            }
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a new prize is selected on the monetary raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monRafPrizeListBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the button to create a new monetary raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newMonRafBtn_Click(object sender, EventArgs e)
+        {
+            ClearMonRaffleFields();
+            m_editingMonRaffle = new MonetaryRaffle();
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occus when a new item is selected on the monetary raffle list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monRaffleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (monRaffleListBox.SelectedIndex != -1)
+            {
+                m_editingMonRaffle = (MonetaryRaffle)monRaffleListBox.SelectedItem;
+            }
+            else
+            {
+                m_editingMonRaffle = null;
+            }
+            SetMonRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a user presses the close button on the monetary raffle form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeBtn3_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the cancel button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monRafCancelBtn_Click(object sender, EventArgs e)
+        {
+            m_editingMonRaffle = null;
+            LoadMonetaryRaffle();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monRafSaveBtn_Click(object sender, EventArgs e)
+        {
+            if (m_editingMonRaffle != null)
+            {
+                m_editingMonRaffle.Name = monRafNameTxtBx.Text;
+                m_editingMonRaffle.Description = monRafDescTxtBx.Text;
+                m_editingMonRaffle.Options.Clear();
+                foreach (var option in monRafPrizeListBx.Items)
+                {
+                    if (option is MonetaryRafflePrizes) // sanity check. Should never get bad ones
+                        m_editingMonRaffle.Options.Add((MonetaryRafflePrizes)option);
+                }
+
+                try
+                {
+                    SetMonetaryRaffleDefinition.SetMonetaryRaffle(m_editingMonRaffle);
+                    LoadMonetaryRaffle();
+                    monRafSaveLbl.Visible = true;
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to save monetary raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to save monetary raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to save monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the button to run the selected raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRunMonetary_Click(object sender, EventArgs e)
+        {
+            if (m_editingMonRaffle != null && m_editingMonRaffle.ID.HasValue)
+            {
+                decimal wonVal = 0.00m;
+                try
+                {
+                    wonVal = RunMonetaryRaffle.RunRaffle(m_editingMonRaffle.ID.Value);
+
+                    MessageBox.Show(String.Format("Raffle paid out: {0:C}", wonVal));
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to run monetary raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to run monetary raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to run monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+        }
+
+        private void addMonRafPrizeBtn_Click(object sender, EventArgs e)
+        {
+            int weight;
+            decimal val;
+            if (Int32.TryParse(monRafPrizeWeightTxtBx.Text, out weight) && Decimal.TryParse(monRafPrizeValTxtBx.Text, out val))
+            {
+                MonetaryRafflePrizes prize = new MonetaryRafflePrizes();
+                prize.Weight = weight;
+                prize.Value = val;
+                monRafPrizeListBx.Items.Add(prize);
+            }
+            wheelRafPrizeWeightTxtBx.Text = "1";
+            wheelRafPrizeListBx.Text = "";
+            SetEnableMonetaryRaffleFields();
+        }
+
+        private void removeMonRafPrizeBtn_Click(object sender, EventArgs e)
+        {
+            if (monRafPrizeListBx.SelectedIndex != -1)
+            {
+                monRafPrizeListBx.Items.RemoveAt(monRafPrizeListBx.SelectedIndex);
+            }
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the "delete" button is pressed on the monetary raffle tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteMonRafBtn_Click(object sender, EventArgs e)
+        {
+            if (m_editingMonRaffle != null)
+            {
+                try
+                {
+                    SetMonetaryRaffleDefinition.SetMonetaryRaffle(m_editingMonRaffle, true);
+                    LoadMonetaryRaffle();
+                    monRafSaveLbl.Visible = true;
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to delete monetary raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to delete monetary raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to delete monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+            SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a text field in the monetary raffle is updated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monRafTxtBx_TextChanged(object sender, EventArgs e)
+        {
+            SetEnableMonetaryRaffleFields();
+        }
+
+        private void monRafPrizeValTxtBx_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                addMonRafPrizeBtn_Click(this, new EventArgs());
+        }
+        #endregion Monetary Raffle Methods
+
+        // US5427
+        #region Wheel Raffle Methods
+
+        /// <summary>
+        /// Sets whether or not UI elements are enabled on the monetary raffle UI
+        /// </summary>
+        private void SetEnableWheelRaffleFields()
+        {
+            wheelRaffleGroupBox2.Enabled = (m_editingWheelRaffle != null);
+
+            wheelRafSaveBtn.Enabled = (m_editingWheelRaffle != null && !String.IsNullOrWhiteSpace(wheelRafNameTxtBx.Text));
+
+            btnRunWheel.Enabled = (m_editingWheelRaffle != null && m_editingWheelRaffle.ID.HasValue);
+
+            addWheelRafPrizeBtn.Enabled = (!String.IsNullOrWhiteSpace(wheelRafPrizeWeightTxtBx.Text) && !String.IsNullOrWhiteSpace(wheelRafPrizeValTxtBx.Text));
+
+            removeWheelRafPrizeBtn.Enabled = (wheelRafPrizeListBx.SelectedIndex != -1);
+
+            deleteWheelRafBtn.Enabled = (wheelRaffleListBox.SelectedIndex != -1);
+        }
+
+        /// <summary>
+        /// Clears out the wheel raffle fields
+        /// </summary>
+        private void ClearWheelRaffleFields()
+        {
+            wheelRafStatusLabel.Text = "";
+            wheelRafNameTxtBx.Text = "";
+            wheelRafDescTxtBx.Text = "";
+            txtWheelImageLoc.Text = "";
+            txtOverlayImageLoc.Text = "";
+            wheelImageBox.Image = null;
+            wheelRafPrizeWeightTxtBx.Text = "";
+            wheelRafPrizeValTxtBx.Text = "";
+            wheelRafPrizeListBx.Items.Clear();
+            wheelRafSaveLbl.Visible = false;
+        }
+
+        /// <summary>
+        /// Sets the wheel raffle fields to the values in the raffle being edited
+        /// </summary>
+        private void SetWheelRaffleFields()
+        {
+            if (m_editingWheelRaffle == null)
+            {
+                ClearWheelRaffleFields();
+            }
+            else
+            {
+                wheelRafNameTxtBx.Text = m_editingWheelRaffle.Name;
+                wheelRafDescTxtBx.Text = m_editingWheelRaffle.Description;
+                wheelRafPrizeWeightTxtBx.Text = "";
+                wheelRafPrizeValTxtBx.Text = "";
+                txtWheelImageLoc.Text = "";
+                txtOverlayImageLoc.Text = "";
+                wheelRafSaveLbl.Visible = false;
+                SetWheelRaffleImage();
+                wheelRafPrizeListBx.Items.Clear();
+                if (m_editingWheelRaffle.Options != null && m_editingWheelRaffle.Options.Count > 0)
+                {
+                    foreach (var opt in m_editingWheelRaffle.Options)
+                    {
+                        wheelRafPrizeListBx.Items.Add(opt);
+                    }
+                }
+            }
+
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Sets the UI to an overlayed combination of the wheel and the overlay
+        /// </summary>
+        private void SetWheelRaffleImage()
+        {
+            wheelImageBox.Image = new Bitmap(wheelImageBox.Width, wheelImageBox.Height); // have to layer things ourselves
+            Graphics overlay = Graphics.FromImage(wheelImageBox.Image);
+            if (m_editingWheelRaffle.WheelImage != null)
+                overlay.DrawImage(m_editingWheelRaffle.WheelImage, new Rectangle(0, 0, wheelImageBox.Width, wheelImageBox.Height));
+            if (m_editingWheelRaffle.OverlayImage != null)
+                overlay.DrawImage(m_editingWheelRaffle.OverlayImage, new Rectangle(0, 0, wheelImageBox.Width, wheelImageBox.Height));
+        }
+
+        /// <summary>
+        /// Initializes the wheel raffle data
+        /// </summary>
+        private void SetupWheelRaffle()
+        {
+            m_wheelRaffleLoader = new BackgroundWorker();
+            m_wheelRaffleLoader.DoWork += new DoWorkEventHandler(WheelRaffleLoader_DoWork);
+            m_wheelRaffleLoader.RunWorkerCompleted += new RunWorkerCompletedEventHandler(WheelRaffleLoader_RunWorkerCompleted);
+            LoadWheelRaffle();
+        }
+
+        /// <summary>
+        /// Loads the list of wheel raffles from the server
+        /// </summary>
+        private void LoadWheelRaffle()
+        {
+            ClearWheelRaffleFields();
+            wheelRafStatusLabel.Text = "Loading...";
+            wheelRaffleGroupBox1.Enabled = false;
+            wheelRaffleGroupBox2.Enabled = false;
+            m_wheelRaffleLoader.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// Loads the wheel raffles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WheelRaffleLoader_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                m_wheelRaffles = GetPrizeWheelRaffleDefinitions.GetPrizeWheelRaffles();
+
+                Dictionary<int, Bitmap> images = new Dictionary<int, Bitmap>(); // photo IDs => image; This is for use if we re-use images. Note: Not possible with current architecture, but it makes more sense than saving the same image a ton of times
+                bool anyImageFailed = false;
+                foreach (var raf in m_wheelRaffles) // load the images in
+                {
+                    if (raf.WheelPhotoId.HasValue && raf.WheelPhotoId.Value != 0)
+                    {
+                        if (images.ContainsKey(raf.WheelPhotoId.Value))
+                        {
+                            raf.WheelImage = images[raf.WheelPhotoId.Value];
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Bitmap image = GetPhotoMessage.GetPhoto(raf.WheelPhotoId.Value);
+                                images.Add(raf.WheelPhotoId.Value, image);
+                                raf.WheelImage = image;
+                            }
+                            catch
+                            {
+                                anyImageFailed = true;
+                            }
+                        }
+                    }
+                    if (raf.OverlayPhotoId.HasValue && raf.OverlayPhotoId.Value != 0)
+                    {
+                        if (images.ContainsKey(raf.OverlayPhotoId.Value))
+                        {
+                            raf.WheelImage = images[raf.OverlayPhotoId.Value];
+                        }
+                        else
+                        {
+                            try
+                            {
+                                Bitmap image = GetPhotoMessage.GetPhoto(raf.OverlayPhotoId.Value);
+                                images.Add(raf.OverlayPhotoId.Value, image);
+                                raf.OverlayImage = image;
+                            }
+                            catch
+                            {
+                                anyImageFailed = true;
+                            }
+                        }
+                    }
+                }
+
+                if (anyImageFailed)
+                    wheelRafStatusLabel.Text = "Some raffle wheel images have failed to load";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Actions that occur when the wheel raffles are done loading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WheelRaffleLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            wheelRaffleGroupBox1.Enabled = true;
+            if (e.Error == null)
+            {
+                wheelRafStatusLabel.Text = "";
+                wheelRaffleListBox.Items.Clear();
+                if (m_wheelRaffles != null && m_wheelRaffles.Count > 0)
+                {
+                    wheelRaffleListBox.SuspendLayout();
+                    foreach (var wheelRaf in m_wheelRaffles)
+                    {
+                        wheelRaffleListBox.Items.Add(wheelRaf);
+                    }
+                    wheelRaffleListBox.ResumeLayout();
+                }
+                else
+                {
+                    wheelRafStatusLabel.Text = "No Wheel Raffles Found";
+                }
+            }
+            else
+            {
+                if (e.Error is ServerException)
+                {
+                    ServerException ex = e.Error as ServerException;
+                    wheelRafStatusLabel.Text = String.Format("Unable to get wheel raffles. Reason: {0} ",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    PlayerManager.Log("Error getting wheel raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                }
+                else
+                {
+                    wheelRafStatusLabel.Text = "Unable to get wheel raffles. Reason: " + e.Error.Message;
+                    PlayerManager.Log("Error getting wheel raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                }
+            }
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a new prize is selected on the wheel raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wheelRafPrizeListBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the button to create a new wheel raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void newWheelRafBtn_Click(object sender, EventArgs e)
+        {
+            ClearWheelRaffleFields();
+            m_editingWheelRaffle = new WheelRaffle();
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occus when a new item is selected on the wheel raffle list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wheelRaffleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (wheelRaffleListBox.SelectedIndex != -1)
+            {
+                m_editingWheelRaffle = (WheelRaffle)wheelRaffleListBox.SelectedItem;
+            }
+            else
+            {
+                m_editingWheelRaffle = null;
+            }
+            SetWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a user presses the close button on the wheel raffle form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeBtn4_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the cancel button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wheelRafCancelBtn_Click(object sender, EventArgs e)
+        {
+            m_editingWheelRaffle = null;
+            LoadWheelRaffle();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the save button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wheelRafSaveBtn_Click(object sender, EventArgs e)
+        {
+            if (m_editingWheelRaffle != null)
+            {
+                m_editingWheelRaffle.Name = wheelRafNameTxtBx.Text;
+                m_editingWheelRaffle.Description = wheelRafDescTxtBx.Text;
+                m_editingWheelRaffle.Options.Clear();
+                foreach (var option in wheelRafPrizeListBx.Items)
+                {
+                    if (option is WheelRafflePrizes) // sanity check. Should never get bad ones
+                        m_editingWheelRaffle.Options.Add((WheelRafflePrizes)option);
+                }
+
+                try
+                {
+                    Tuple<int, int, int> ids = SetPrizeWheelRaffleDefinition.SetPrizeWheelRaffle(m_editingWheelRaffle);
+                    SetPhotoMessage.SetPhoto(ids.Item2, m_editingWheelRaffle.WheelImage);
+                    SetPhotoMessage.SetPhoto(ids.Item3, m_editingWheelRaffle.OverlayImage);
+
+                    LoadWheelRaffle();
+                    wheelRafSaveLbl.Visible = true;
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to save wheel raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to save wheel raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to save wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the button to run the selected raffle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRunWheel_Click(object sender, EventArgs e)
+        {
+            if (m_editingWheelRaffle != null && m_editingWheelRaffle.ID.HasValue)
+            {
+                string prize = "";
+                try
+                {
+                    prize = RunPrizeWheelRaffle.RunRaffle(m_editingWheelRaffle.ID.Value);
+
+                    MessageBox.Show(String.Format("Raffle paid out: {0}", prize));
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to run wheel raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to run wheel raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to run wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+        }
+
+        private void addWheelRafPrizeBtn_Click(object sender, EventArgs e)
+        {
+            int weight;
+            if (Int32.TryParse(wheelRafPrizeWeightTxtBx.Text, out weight))
+            {
+                WheelRafflePrizes prize = new WheelRafflePrizes();
+                prize.Weight = weight;
+                prize.Prize = wheelRafPrizeValTxtBx.Text;
+                wheelRafPrizeListBx.Items.Add(prize);
+            }
+            wheelRafPrizeWeightTxtBx.Text = "1";
+            wheelRafPrizeListBx.Text = "";
+            SetEnableWheelRaffleFields();
+        }
+
+        private void removeWheelRafPrizeBtn_Click(object sender, EventArgs e)
+        {
+            if (wheelRafPrizeListBx.SelectedIndex != -1)
+            {
+                wheelRafPrizeListBx.Items.RemoveAt(wheelRafPrizeListBx.SelectedIndex);
+            }
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the "delete" button is pressed on the wheel raffle tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deleteWheelRafBtn_Click(object sender, EventArgs e)
+        {
+            if (m_editingWheelRaffle != null)
+            {
+                try
+                {
+                    SetPrizeWheelRaffleDefinition.SetPrizeWheelRaffle(m_editingWheelRaffle, true);
+                    LoadWheelRaffle();
+                    wheelRafSaveLbl.Visible = true;
+                }
+                catch (ServerException ex)
+                {
+                    string err = String.Format("Unable to delete wheel raffle. Reason: {0}",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
+                    MessageBox.Show(err);
+                    PlayerManager.Log(err, LoggerLevel.Severe);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Unable to delete wheel raffle. Reason: {0}", ex.Message));
+                    PlayerManager.Log(String.Format("Unable to delete wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
+                }
+            }
+            SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when a text field in the wheel raffle is updated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void wheelRafTxtBx_TextChanged(object sender, EventArgs e)
+        {
+            SetEnableWheelRaffleFields();
+        }
+
+        private void wheelRafPrizeValTxtBx_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                addWheelRafPrizeBtn_Click(this, new EventArgs());
+        }
+        
+        /// <summary>
+        /// Browses for an image and then sets the UI to an overlayed combination
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDiag = new OpenFileDialog();
+            DialogResult result = fileDiag.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    string file = fileDiag.FileName;
+                    Bitmap imgTmp = (Bitmap)Image.FromFile(file);
+                    if (sender == btnBrowseWheel)
+                    {
+                        txtWheelImageLoc.Text = file;
+                        if (m_editingWheelRaffle != null)
+                            m_editingWheelRaffle.WheelImage = imgTmp;
+                    }
+                    else if (sender == btnBrowseOverlay)
+                    {
+                        txtOverlayImageLoc.Text = file;
+                        if (m_editingWheelRaffle != null)
+                            m_editingWheelRaffle.OverlayImage = imgTmp;
+                    }
+
+                    SetWheelRaffleImage();
+                }
+                catch (Exception ex)
+                {
+                    wheelRafStatusLabel.Text = "Error loading image: "+ex.ToString();
+                }
+            }
+        }
+        #endregion Wheel Raffle Methods
 
         private void GetAndLoadPlayerListComboBox()
         {
@@ -130,11 +958,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (btnSetupDelete.Enabled != false) { btnSetupDelete.Enabled = false; }
                 if (btnSetupNew.Enabled != false) { btnSetupNew.Enabled = false; }
                 enableSaveCancelClose();
-
             }
             else if (type == 2)
             {
-
 
             }
             else if (type == 3)
@@ -158,13 +984,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     clearAllContentsRaffleSettings();
                     disableRaffleSettingsControls();
-
                 }
                 if (btnSetupSave.Enabled != false) { btnSetupSave.Enabled = false; }
                 if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
             }
         }
-
 
         /// <summary>
         /// Check if the current entry is enough to run the raffle. 
@@ -216,7 +1040,6 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="PlayerID"></param>
         private void getVouchersInfo(int PlayerID)
         {
-
             //INFO
             if (ActiveOperatorsData == null)
             {
@@ -241,7 +1064,6 @@ namespace GTI.Modules.PlayerCenter.UI
             vouchers.RaffleDisclaimer = dataRafflePrize.RaffleDisclaimer;
 
             RafflePlayerWinnerInfo(PlayerID);
-
         }
 
         /// <summary>
@@ -261,7 +1083,6 @@ namespace GTI.Modules.PlayerCenter.UI
             vouchers.RafflesWinnerMailingAddress2 = ((runGetPlayerInfo.City != "") ? runGetPlayerInfo.City + " " : "") + ((runGetPlayerInfo.State != "") ? runGetPlayerInfo.State + " " : "") + ((runGetPlayerInfo.Zip != "") ? runGetPlayerInfo.Zip + " " : "");// +((runGetPlayerInfo.Country != "") ? runGetPlayerInfo.Country + " " : "");
             vouchers.RafflesWinnerPhoneNumber = runGetPlayerInfo.PhoneNumber;
         }
-
 
         /// <summary>
         /// Check if the receipt printer is installed
@@ -290,7 +1111,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
             return exists;
         }
-
 
         private bool checkReceiptPrinterStatus(string printerName)
         {
@@ -360,26 +1180,24 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void AppliedSystemSettingDisplayedText()
         {
-            //
-            //displayedText = (Convert.ToInt32(RaffleSettings.data[2].RaffleSettingValue.ToString()) == 1) ? "Raffle" : "Drawing";
             displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
             if (displayedText != "")
             {
-                groupBox1.Text = displayedText;
+                monRaffleGroupBox1.Text = groupBox1.Text = displayedText;
                 tabPage2.Text = displayedText;
                 btnRunRaffle.Text = "&Run " + displayedText;
                 label5.Text = displayedText;
                 //lblWarningMessage.Text =  (lblWarningMessage.Text.ToString()).Replace("raffle", displayedText.ToLower());
                 btnClearRaffle.Text = "Cle&ar " + displayedText;
                 this.Text = displayedText;
+
+                btnRunMonetary.Text = String.Format("Run &Monetary {0}", displayedText);
             }
         }
 
-
         /// <summary>
         /// Enable controls in Raffle Settings.
-        /// </summary>
-        ///        
+        /// </summary>      
         private void enableRaffleSettingsControls()
         {
             if (txtbxSetupName.Enabled != true) { txtbxSetupName.Enabled = true; }
@@ -427,7 +1245,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
             if (btnSetupClose.Enabled != false) { btnSetupClose.Enabled = false; }
         }
-
 
         private void enableSaveCancelClose()
         {
@@ -503,7 +1320,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void loadRaffleInfo()
         {
-
             GetRaffleInformation gri = new GetRaffleInformation(DefID);
             this.Cursor = Cursors.WaitCursor;
             //var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => NOfPlayer = gri.GetNumberOfPlayerPerPlayerList(GetOperatorID.operatorID, DefID));//SQL
@@ -513,12 +1329,10 @@ namespace GTI.Modules.PlayerCenter.UI
             N_OfPlayersReqMet = DisableOrEnableRunRaffle();
             if (cmbxRaffle.SelectedIndex != -1 && N_OfPlayersReqMet == true) { btnRunRaffle.Enabled = true; } else { btnRunRaffle.Enabled = false; }
             this.Cursor = Cursors.Default;
-
         }
 
         private void loadListRaffle()
         {
-
             GetRafflePlayerDefinitions run = new GetRafflePlayerDefinitions();
             run.runGetRafflePlayerDefinitions();
 
@@ -558,7 +1372,6 @@ namespace GTI.Modules.PlayerCenter.UI
             txtbxDisclaimer.Text = dataRafflePrize.RaffleDisclaimer;
         }
 
-
         private void isRaffleSettingModify()
         {
             if (isUpdate == true)
@@ -566,34 +1379,27 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dataRafflePrize.RaffleName != txtbxSetupName.Text.ToString())
                 {
                     isModify = true;
-
                 }
-                else
-                    if (dataRafflePrize.NoOfRafflePrize != Convert.ToInt32(txtbxSetupNumberofWinners.Text))
-                    {
-                        isModify = true;
-                    }
-                    else
-
-                        if (dataRafflePrize.RafflePrizeDescription != txtbxSetupPrizeDescription.Text.ToString())
-                        {
-                            isModify = true;
-                        }
-                        else
-                            if (dataRafflePrize.RaffleDisclaimer != txtbxDisclaimer.Text.ToString())
-                            {
-                                isModify = true;
-                            }
+                else if (dataRafflePrize.NoOfRafflePrize != Convert.ToInt32(txtbxSetupNumberofWinners.Text))
+                {
+                    isModify = true;
+                }
+                else if (dataRafflePrize.RafflePrizeDescription != txtbxSetupPrizeDescription.Text.ToString())
+                {
+                    isModify = true;
+                }
+                else if (dataRafflePrize.RaffleDisclaimer != txtbxDisclaimer.Text.ToString())
+                {
+                    isModify = true;
+                }
             }
         }
-
 
         private void SetAllCommandsToFalse()
         {
             isNew = false;
             isModify = false;
             isUpdate = false;
-
         }
 
         private void SaveOrUpdateRaffleDefinitions(int saveorupdate, bool isdelete)//0 = insert; !0 = update ; -1 delete
@@ -607,10 +1413,7 @@ namespace GTI.Modules.PlayerCenter.UI
             int RaffleID = SetPlayerRaffleDefinitions.Set(drp, isdelete);
         }
 
-
         #endregion
-
-
 
         #region VALIDATING
 
@@ -753,7 +1556,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (result == false)
             {
                 //m_bModified = true;
-
             }
 
             e.Handled = result;
@@ -761,31 +1563,26 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (cmbxPlayerList.SelectedIndex != 0 && cmbxPlayerList.SelectedIndex != -1)
             {
-
-                DefID = IndexToDefID[cmbxPlayerList.SelectedIndex];
-                loadRaffleInfo();
-
-            }
-            else
-            {
-                if (cmbxPlayerList.SelectedIndex == 0)
+                if (IndexToDefID.ContainsKey(cmbxPlayerList.SelectedIndex))
                 {
-                    DefID = 0;
+                    DefID = IndexToDefID[cmbxPlayerList.SelectedIndex];
                     loadRaffleInfo();
-                    N_OfPlayersReqMet = DisableOrEnableRunRaffle();
-                    if (cmbxRaffle.SelectedIndex != -1 && N_OfPlayersReqMet == true) { btnRunRaffle.Enabled = true; } else { btnRunRaffle.Enabled = false; }
                 }
-                else
-                    if (cmbxPlayerList.SelectedIndex == -1)
-                    {
-                        lblRaffleInfo.Text = string.Empty;
-                    }
+            }
+            else if (cmbxPlayerList.SelectedIndex == 0)
+            {
+                DefID = 0;
+                loadRaffleInfo();
+                N_OfPlayersReqMet = DisableOrEnableRunRaffle();
+                if (cmbxRaffle.SelectedIndex != -1 && N_OfPlayersReqMet == true) { btnRunRaffle.Enabled = true; } else { btnRunRaffle.Enabled = false; }
+            }
+            else if (cmbxPlayerList.SelectedIndex == -1)
+            {
+                lblRaffleInfo.Text = string.Empty;
             }
         }
-
 
         private void imgbtnUpdate_Click(object sender, EventArgs e)
         {
@@ -806,7 +1603,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             HandleControlsFromInsertUpdateDeleteCancelSaveClose(3);
         }
-
 
         /// <summary>
         /// Add new raffle prize.
@@ -843,7 +1639,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (isModify == true)
                 {
                     saveChanges = openActivity(2);
-
                 }
                 isModify = false;
                 if (saveChanges == true)
@@ -855,11 +1650,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-
                     lstBxRafflePrizes2.SelectedIndex = -1;
                     setControlsToFalse2();
                     SetAllCommandsToFalse();
-
                 }
             }
             else if (isNew == true)
@@ -875,13 +1668,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-
                     lstBxRafflePrizes2.SelectedIndex = -1;
                     setControlsToFalse2();
                     SetAllCommandsToFalse();
-
                 }
-
             }
 
             clearAllMessages();
@@ -901,7 +1691,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (isNew == true)
             {
-
                 clearAllContentsRaffleSettings();
                 HandleControlsFromInsertUpdateDeleteCancelSaveClose(4);
             }
@@ -918,7 +1707,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             setControlsToFalse2();
         }
-
 
         private bool SaveAddNewRaffle()
         {
@@ -949,7 +1737,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-
             return tempResult;
         }
 
@@ -972,7 +1759,6 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 tempResult = SaveAddNewRaffle();
             }
-
 
             return tempResult;
         }
@@ -1025,7 +1811,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 loadListRaffle();
                 clearAllContentsRaffleSettings();
                 SetAllCommandsToFalse();
-
             }
             else
             {
@@ -1037,15 +1822,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void ClearErrorProvider(object sender, EventArgs e)
         {
-
             clearAllMessages();
         }
 
         private void colorListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-            //if (lstBxRafflePrizes.SelectedIndex != -1)
             if (lstBxRafflePrizes2.SelectedIndex != -1)
             {
                 isNew = false;
@@ -1075,32 +1856,22 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e"></param>
         private void tbctrlRafle_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (Convert.ToInt32(tbctrlRafle.SelectedTab.Tag) == 1)//RaffleSetup Tab
             {
-
-
                 HandleControlsFromInsertUpdateDeleteCancelSaveClose(4);
-
-
             }
-            else
-                if (Convert.ToInt32(tbctrlRafle.SelectedTab.Tag) == 2)//Raffle Tab
-                {
-                    loadcmbxRafle();
-                    //loadRaffleInfo();
-                    DisableOrEnableRunRaffle();
-                    cmbxRaffle.SelectedIndex = -1;
-                    cmbxPlayerList.SelectedIndex = -1;
-                    btnRunRaffle.Enabled = false;
-                    label6.Text = "Winners";
-
-
-                }
+            else if (Convert.ToInt32(tbctrlRafle.SelectedTab.Tag) == 2)//Raffle Tab
+            {
+                loadcmbxRafle();
+                //loadRaffleInfo();
+                DisableOrEnableRunRaffle();
+                cmbxRaffle.SelectedIndex = -1;
+                cmbxPlayerList.SelectedIndex = -1;
+                btnRunRaffle.Enabled = false;
+                label6.Text = "Winners";
+            }
             clearAllMessages();
         }
-
-
 
         private void btnRaffleClose_Click(object sender, EventArgs e)
         {
@@ -1109,72 +1880,49 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         /// <summary>
-        /// Get the number of player in the player list per definition.
-        /// </summary>
-        private void GetTheNumberOfPlayerInTheRafflePerPlayerList()
-        {
-
-        }
-
-
-        /// <summary>
         /// Select a available raffle.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cmbxRaffle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstbxRaffleWinners2.Items.Clear();
-
-            if (cmbxRaffle.SelectedIndex != -1)
+            try
             {
-                dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == cmbxRaffle.SelectedItem.ToString());
-                //if (cmbxPlayerList.SelectedIndex != -1)
-                //{
-                //    if (btnRunRaffle.Enabled != true) { btnRunRaffle.Enabled = true; }
-                //}
-                //else
-                //{
-                //    if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; }
-                //}
-            }
-            else
-            {
-                if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; }
-                return;
-            }
+                lstbxRaffleWinners2.Items.Clear();
 
-
-            if (cmbxRaffle.SelectedIndex != -1 && cmbxPlayerList.SelectedIndex != -1)
-            {
-                //Check if the number of player is enough to win the raffle prize
-                bool RunOk = DisableOrEnableRunRaffle();
-                if (RunOk == false)
+                if (cmbxRaffle.SelectedIndex != -1)
                 {
+                    dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == cmbxRaffle.SelectedItem.ToString());
+                }
+                else
+                {
+                    if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; }
                     return;
                 }
 
-                bool tempResult = doWeHaveEnoughPlayerToWinTheRafflePrize();
-                if (tempResult == false)
+                if (cmbxRaffle.SelectedIndex != -1 && cmbxPlayerList.SelectedIndex != -1)
                 {
-                    if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; return; }
-                }
-                else
-                    if (tempResult == true)
+                    //Check if the number of player is enough to win the raffle prize
+                    if (!DisableOrEnableRunRaffle())
                     {
-                        if (btnRunRaffle.Enabled != true) { btnRunRaffle.Enabled = true; }
+                        return;
                     }
 
-                //check if the selected raffle have previous winner 
-                if (ListPreviousWinner.data.Count != 0)
-                {
+                    if (doWeHaveEnoughPlayerToWinTheRafflePrize())
+                    {
+                        btnRunRaffle.Enabled = true;
+                    }
+                    else
+                    {
+                        btnRunRaffle.Enabled = false;
+                    }
 
-                    //check if it exists
-                    var check = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID);
-                    if (check == true)
+                    //check if the selected raffle have previous winner 
+                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID))
                     {
                         string messagetext = "";
-                        if (ListPreviousWinner.data[cmbxRaffle.SelectedIndex].WinnerPlayerID.Count > 1)//ERROR
+                        DataPreviousWinner dpw = ListPreviousWinner.data.First(l => l.RaffleID == dataRafflePrize.RaffleID);
+                        if (dpw.WinnerPlayerID.Count > 1)
                         {
                             messagetext = "Previous Winners";
                         }
@@ -1184,14 +1932,11 @@ namespace GTI.Modules.PlayerCenter.UI
                         }
                         label6.Text = messagetext;
 
-                        DataPreviousWinner dpw = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);//This will commit an error if it did not found.
                         if (!string.IsNullOrEmpty(dpw.RaffleName))
                         {
-                            int count = 0;
-                            foreach (int id in dpw.WinnerPlayerID)
+                            for (int i = 0; i < dpw.WinnerPlayerID.Count; i++)
                             {
-                                lstbxRaffleWinners2.Items.Add((count + 1).ToString() + ". " + dpw.WinnerPlayerFName[count].ToString() + " " + dpw.WinnerPlayerLName[count].ToString());
-                                count = count + 1;
+                                lstbxRaffleWinners2.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
                             }
                         }
                     }
@@ -1199,53 +1944,42 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         label6.Text = "Winners";
                     }
-                    //}
                 }
-                else
+                else if (cmbxRaffle.SelectedIndex != -1)
                 {
-                    label6.Text = "Winners";
+                    //check if the selected raffle have previous winner 
+                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID))
+                    {
+                        DataPreviousWinner dpw = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);//This will commit an error if it did not found.
+                        string messagetext = "";
+                        if (dpw.WinnerPlayerID.Count > 1)//ERROR
+                        {
+                            messagetext = "Previous Winners";
+                        }
+                        else
+                        {
+                            messagetext = "Previous Winner";
+                        }
+                        label6.Text = messagetext;
+
+                        if (!string.IsNullOrEmpty(dpw.RaffleName))
+                        {
+                            for (int i = 0; i < dpw.WinnerPlayerID.Count; i++)
+                            {
+                                lstbxRaffleWinners2.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
+                            }
+                        }
+                    }
+                    else
+                    {
+                        label6.Text = "Winners";
+                    }
                 }
             }
-            else if (cmbxRaffle.SelectedIndex != -1)
+            catch (Exception ex)
             {
-                //check if the selected raffle have previous winner 
-                if (ListPreviousWinner.data.Count != 0)
-                {
-                    //check if it exists
-                    var check = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID);
-                    if (check == true)
-                    {
-                        string messagetext = "";
-                        if (ListPreviousWinner.data[cmbxRaffle.SelectedIndex].WinnerPlayerID.Count > 1)//ERROR
-                        {
-                            messagetext = "Previous Winners";
-                        }
-                        else
-                        {
-                            messagetext = "Previous Winner";
-                        }
-                        label6.Text = messagetext;
-
-                        DataPreviousWinner dpw = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);//This will commit an error if it did not found.
-                        if (!string.IsNullOrEmpty(dpw.RaffleName))
-                        {
-                            int count = 0;
-                            foreach (int id in dpw.WinnerPlayerID)
-                            {
-                                lstbxRaffleWinners2.Items.Add((count + 1).ToString() + ". " + dpw.WinnerPlayerFName[count].ToString() + " " + dpw.WinnerPlayerLName[count].ToString());
-                                count = count + 1;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        label6.Text = "Winners";
-                    }
-                }
-                else
-                {
-                    label6.Text = "Winners";
-                }
+                PlayerManager.Log(String.Format("Error selecting {0} in drop-down: {1}", label5.Text, ex.ToString()), LoggerLevel.Severe);
+                MessageBox.Show(String.Format("Error selecting {0} in drop-down: {1}", label5.Text,  ex.Message));
             }
         }
 
@@ -1281,22 +2015,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     RaffleName = txtbxSetupName.Text.ToString();
                     SaveOrUpdateRaffleDefinitions(dataRafflePrize.RaffleID, false);
-
-                }
-                else
-                {
-
                 }
             }
 
             if (isNew == true || isModify == true)
             {
-
                 loadListRaffle();
-
             }
             isModify = false;
-
 
             if (lblSavedSuccessfully.Visible != true)
             {
@@ -1305,8 +2031,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 //SetAllCommandsToFalse();                
             }
         }
-
-
 
         //RUN RAFFLE
         private void btnRunRaffle_Click(object sender, EventArgs e)
@@ -1332,18 +2056,18 @@ namespace GTI.Modules.PlayerCenter.UI
             int delaytime = 0;
             bool resultTryParse = Int32.TryParse(RaffleDelayValue.Value.ToString(), out delaytime);//what happen if this is 0 or empty  //Get the raffle duration delay  
 
-            raffleWinner = new RaffleWinner();//Winner should be clear in runnning a new raffle.
+            RaffleWinner raffleWinner = new RaffleWinner();//Winner should be clear in runnning a new raffle.
             Cursor.Current = Cursors.WaitCursor;
 
             for (int startcount = 0; startcount < dataRafflePrize.NoOfRafflePrize; startcount++)
             {
                 int tempRaffleHistory = 0; //check if the raffleHistory already exists if not then set to 0 = new;
-                tempRaffleHistory = (raffleWinner.HistoryID == null) ? 0 : raffleWinner.HistoryID;
+                tempRaffleHistory = raffleWinner.HistoryID;
 
                 raffleWinner = RunPlayerRaffleMessage.GetRaffleWinner(dataRafflePrize.RaffleID, tempRaffleHistory, DefID);   //Raffle winner here //What raffle is being run and is PlayerHistory = 0; //How to change the value from the existing raffleHistoryID
                 raffleWinners.Add(raffleWinner);
                 if (String.IsNullOrWhiteSpace(raffleWinner.FirstName) && String.IsNullOrWhiteSpace(raffleWinner.LastName))
-                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.PlayerID.ToString());
+                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + String.Format("[Player Id {0}]", raffleWinner.PlayerID));
                 else
                     lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
 
@@ -1359,8 +2083,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     raffleReceipt.Print(globalPrinter, 1);//Just print one copy  //Print the winners vouchers
                 }
 
-                if (delaytime > 1 && startcount + 1 < dataRafflePrize.NoOfRafflePrize) // if there is another winner after this one, we should delay.
-                    System.Threading.Thread.Sleep(((delaytime -1) * 1000)); // note: takes over a second between winners without a delay
+                Application.DoEvents();
+                if (delaytime > 0 && startcount + 1 < dataRafflePrize.NoOfRafflePrize) // if there is another winner after this one, we should delay.
+                    System.Threading.Thread.Sleep(((delaytime + 1) * 1000)); // note: same setting that remote display listens to. Can take a bit to load player images
             }
 
             btnRunRaffle.Enabled = true;
@@ -1421,7 +2146,7 @@ namespace GTI.Modules.PlayerCenter.UI
             raffleReceipt1.RafflesWinnerPhoneNumber = vouchers.RafflesWinnerPhoneNumber;
             raffleReceipt1.RaffleDisclaimer = vouchers.RaffleDisclaimer;
         }
-        
+
         private void btnRaffleReprintVoucher_Click(object sender, EventArgs e)
         {
 
@@ -1543,10 +2268,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
         private void Raffle_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             // MessageBox.Show("Test");
             if (isClose == false)
             {
@@ -1609,7 +2332,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
-
         private class Vouchers
         {
             public string OperatorsName { get; set; }
@@ -1631,8 +2353,6 @@ namespace GTI.Modules.PlayerCenter.UI
             public string RafflesWinnerPhoneNumber { get; set; }
             public string RaffleDisclaimer { get; set; }
         }
-
-
     }
 
     public class raffle_Setting

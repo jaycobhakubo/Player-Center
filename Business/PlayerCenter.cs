@@ -110,6 +110,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 strErr = "create modcom.";
                 ModuleComm modComm = null;
+                Application.EnableVisualStyles(); // allows us to do ctrl+a on textboxes... If it breaks something, remove it.
 
                 // Get the system related ids.
                 try
@@ -606,66 +607,51 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         /// <summary>
-        /// Writes a message to the Player Center's log.
+        /// Writes a message to the Product Center's log.
         /// </summary>
         /// <param name="message">The message to write to the log.</param>
-        /// <param name="type">The level of the message.</param>
-        /// <returns>true if success; otherwise false.</returns>
-        internal bool Log(string message, LoggerLevel level)
+        /// <param name="level">The level of the message.</param>
+        internal static void Log(string message, LoggerLevel level)
         {
-            lock (m_logSync)
+            try
             {
-                if (m_loggingEnabled)
+                var frame = new StackFrame(1, true);
+                var fileName = frame.GetFileName();
+                var lineNumber = frame.GetFileLineNumber();
+                message = LogPrefix + message;
+
+                switch (level)
                 {
-                    StackFrame frame = new StackFrame(1, true);
-                    string fileName = frame.GetFileName();
-                    int lineNumber = frame.GetFileLineNumber();
-                    message = PlayerManager.LogPrefix + message;
+                    case LoggerLevel.Severe:
+                        Logger.LogSevere(message, fileName, lineNumber);
+                        break;
 
-                    try
-                    {
-                        switch (level)
-                        {
-                            case LoggerLevel.Severe:
-                                Logger.LogSevere(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Warning:
+                        Logger.LogWarning(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Warning:
-                                Logger.LogWarning(message, fileName, lineNumber);
-                                break;
+                    default:
+                        Logger.LogInfo(message, fileName, lineNumber);
+                        break;
 
-                            default:
-                            case LoggerLevel.Information:
-                                Logger.LogInfo(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Configuration:
+                        Logger.LogConfig(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Configuration:
-                                Logger.LogConfig(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Debug:
+                        Logger.LogDebug(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Debug:
-                                Logger.LogDebug(message, fileName, lineNumber);
-                                break;
+                    case LoggerLevel.Message:
+                        Logger.LogMessage(message, fileName, lineNumber);
+                        break;
 
-                            case LoggerLevel.Message:
-                                Logger.LogMessage(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.SQL:
-                                Logger.LogSql(message, fileName, lineNumber);
-                                break;
-                        }
-
-                        return true;
-                    }
-                    catch (Exception)
-                    {
-                        return false;
-                    }
+                    case LoggerLevel.SQL:
+                        Logger.LogSql(message, fileName, lineNumber);
+                        break;
                 }
-                else
-                    return false;
             }
+            catch (Exception) { }
         }
 
         /// <summary>

@@ -2591,7 +2591,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             catch(Exception ex)
             {
-                m_parent.Log("Exception encountered validating 'from' date value " + ex.ToString(), LoggerLevel.Severe);
+                PlayerManager.Log("Exception encountered validating 'from' date value " + ex.ToString(), LoggerLevel.Severe);
                 e.Cancel = true;
                 m_errorProvider.SetError(m_rangeSPRadioButton, "Invalid Entry");
             }
@@ -2620,7 +2620,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             catch(Exception ex)
             {
-                m_parent.Log("Exception encountered validating 'to' date value " + ex.ToString(), LoggerLevel.Severe);
+                PlayerManager.Log("Exception encountered validating 'to' date value " + ex.ToString(), LoggerLevel.Severe);
                 e.Cancel = true;
                 //     m_errorProvider.SetError(m_toRangeSPTextBox,, Resources.InvalidPlayerListNSessionPlayedRange2);
                 m_errorProvider.SetError(m_rangeSPRadioButton, "Invalid Entry");
@@ -2992,7 +2992,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             catch(Exception ex)
             {
-                m_parent.Log("Exception encountered validating 'location' value " + ex.ToString(), LoggerLevel.Severe);
+                PlayerManager.Log("Exception encountered validating 'location' value " + ex.ToString(), LoggerLevel.Severe);
                 e.Cancel = true;
                 m_errorProvider.SetError(m_locListBoxSelected, "Unknown Error");
             }
@@ -3288,7 +3288,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 catch (Exception ex)
                 {
-                    m_parent.Log("Exception encountered validating textbox " + currentTextBox.ToString() +" value "+ ex.ToString(), LoggerLevel.Severe);
+                    PlayerManager.Log("Exception encountered validating textbox " + currentTextBox.ToString() +" value "+ ex.ToString(), LoggerLevel.Severe);
                     //countCheckBox = countCheckBox - 1;
                     //if (countCheckBox == 0)
                     //{
@@ -3319,7 +3319,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 catch (Exception ex)
                 {
-                    m_parent.Log("Exception encountered validating textbox " + currentTextBox.ToString() + " value " + ex.ToString(), LoggerLevel.Severe);
+                    PlayerManager.Log("Exception encountered validating textbox " + currentTextBox.ToString() + " value " + ex.ToString(), LoggerLevel.Severe);
                     //countCheckBox = countCheckBox - 1;
                     //if (countCheckBox == 0)
                     //{
@@ -3518,7 +3518,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             catch(Exception ex)
             {
-                m_parent.Log("Error validating the birthday fields " + ex.ToString(), LoggerLevel.Severe);
+                PlayerManager.Log("Error validating the birthday fields " + ex.ToString(), LoggerLevel.Severe);
                 e.Cancel = true;
                 m_errorProvider.SetError(m_birthdayCheck, Resources.InvalidPlayerListBirthday);
             }

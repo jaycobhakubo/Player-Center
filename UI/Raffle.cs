@@ -24,12 +24,14 @@ namespace GTI.Modules.PlayerCenter.UI
         private BackgroundWorker m_monRaffleLoader;
         private List<MonetaryRaffle> m_monRaffles;
         private MonetaryRaffle m_editingMonRaffle = null;
+        private bool _editingMonRaffle = false;
         #endregion
 
         #region Wheel Raffle Members
         private BackgroundWorker m_wheelRaffleLoader;
         private List<WheelRaffle> m_wheelRaffles;
         private WheelRaffle m_editingWheelRaffle = null;
+        private bool _editingWheelRaffle = false;
         #endregion
 
         private bool isNew = false;
@@ -103,9 +105,15 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void SetEnableMonetaryRaffleFields()
         {
-            monRaffleGroupBox2.Enabled = (m_editingMonRaffle != null);
+            monRaffleGroupBox2.Enabled = m_editingMonRaffle != null;
 
-            monRafSaveBtn.Enabled = (m_editingMonRaffle != null && !String.IsNullOrWhiteSpace(monRafNameTxtBx.Text));
+            if (monRaffleGroupBox2.Enabled) // the group box may be enabled, but the fields shouldn't be until the user clicks the edit button
+            {
+                monRafNameTxtBx.Enabled = monRafDescTxtBx.Enabled = monRafPrizeWeightTxtBx.Enabled = monRafPrizeValTxtBx.Enabled =
+                    addMonRafPrizeBtn.Enabled = monRafPrizeListBx.Enabled = removeMonRafPrizeBtn.Enabled = _editingMonRaffle;
+            }
+
+            monRafSaveBtn.Enabled = (_editingMonRaffle && m_editingMonRaffle != null && !String.IsNullOrWhiteSpace(monRafNameTxtBx.Text));
 
             btnRunMonetary.Enabled = (m_editingMonRaffle != null && m_editingMonRaffle.ID.HasValue);
 
@@ -114,6 +122,8 @@ namespace GTI.Modules.PlayerCenter.UI
             removeMonRafPrizeBtn.Enabled = (monRafPrizeListBx.SelectedIndex != -1);
 
             deleteMonRafBtn.Enabled = (monRaffleListBox.SelectedIndex != -1);
+
+            editMonRafBtn.Enabled = (monRaffleListBox.SelectedIndex != -1);
         }
 
         /// <summary>
@@ -121,7 +131,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void ClearMonRaffleFields()
         {
-            monRafStatusLabel.Text = "";
+            //monRafStatusLabel.Text = "";
             monRafNameTxtBx.Text = "";
             monRafDescTxtBx.Text = "";
             monRafPrizeWeightTxtBx.Text = "";
@@ -141,6 +151,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
+                //monRafStatusLabel.Text = "";
                 monRafNameTxtBx.Text = m_editingMonRaffle.Name;
                 monRafDescTxtBx.Text = m_editingMonRaffle.Description;
                 monRafPrizeWeightTxtBx.Text = "";
@@ -175,10 +186,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void LoadMonetaryRaffle()
         {
             ClearMonRaffleFields();
-            monRafStatusLabel.Text = "Loading...";
+            //monRafStatusLabel.Text = "Loading...";
             monRaffleGroupBox1.Enabled = false;
             monRaffleGroupBox2.Enabled = false;
-            m_monRaffleLoader.RunWorkerAsync();
+            if(!m_monRaffleLoader.IsBusy)
+                m_monRaffleLoader.RunWorkerAsync();
         }
 
         /// <summary>
@@ -208,7 +220,7 @@ namespace GTI.Modules.PlayerCenter.UI
             monRaffleGroupBox1.Enabled = true;
             if (e.Error == null)
             {
-                monRafStatusLabel.Text = "";
+                //monRafStatusLabel.Text = "";
                 monRaffleListBox.Items.Clear();
                 if (m_monRaffles != null && m_monRaffles.Count > 0)
                 {
@@ -221,7 +233,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    monRafStatusLabel.Text = "No Monetary Raffles Found";
+                   // monRafStatusLabel.Text = "No Monetary Raffles Found";
                 }
             }
             else
@@ -229,14 +241,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (e.Error is ServerException)
                 {
                     ServerException ex = e.Error as ServerException;
-                    monRafStatusLabel.Text = String.Format("Unable to get monetary raffles. Reason: {0} ",
-                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
                     PlayerManager.Log("Error getting monetary raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                    MessageForm.Show(String.Format("Unable to get monetary raffles. Reason: {0} ",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode)));
                 }
                 else
                 {
-                    monRafStatusLabel.Text = "Unable to get monetary raffles. Reason: " + e.Error.Message;
                     PlayerManager.Log("Error getting monetary raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                    MessageForm.Show("Unable to get monetary raffles. Reason: " + e.Error.Message);
                 }
             }
             SetEnableMonetaryRaffleFields();
@@ -259,6 +271,8 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e"></param>
         private void newMonRafBtn_Click(object sender, EventArgs e)
         {
+            _editingMonRaffle = true;
+            monRaffleListBox.SelectedIndex = -1;
             ClearMonRaffleFields();
             m_editingMonRaffle = new MonetaryRaffle();
             SetEnableMonetaryRaffleFields();
@@ -279,6 +293,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_editingMonRaffle = null;
             }
+            _editingMonRaffle = false;
             SetMonRaffleFields();
         }
 
@@ -325,6 +340,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 try
                 {
                     SetMonetaryRaffleDefinition.SetMonetaryRaffle(m_editingMonRaffle);
+
+                    m_editingMonRaffle = null;
                     LoadMonetaryRaffle();
                     monRafSaveLbl.Visible = true;
                 }
@@ -332,12 +349,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     string err = String.Format("Unable to save monetary raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to save monetary raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to save monetary raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to save monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
@@ -358,18 +375,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     wonVal = RunMonetaryRaffle.RunRaffle(m_editingMonRaffle.ID.Value);
 
-                    MessageBox.Show(String.Format("Raffle paid out: {0:C}", wonVal));
+                    MessageForm.Show(String.Format("Raffle paid out: {0:C}", wonVal));
                 }
                 catch (ServerException ex)
                 {
                     string err = String.Format("Unable to run monetary raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to run monetary raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to run monetary raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to run monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
@@ -379,15 +396,16 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             int weight;
             decimal val;
-            if (Int32.TryParse(monRafPrizeWeightTxtBx.Text, out weight) && Decimal.TryParse(monRafPrizeValTxtBx.Text, out val))
+            if (Int32.TryParse(monRafPrizeWeightTxtBx.Text, out weight) && weight > 0 && Decimal.TryParse(monRafPrizeValTxtBx.Text, out val))
             {
                 MonetaryRafflePrizes prize = new MonetaryRafflePrizes();
                 prize.Weight = weight;
                 prize.Value = val;
                 monRafPrizeListBx.Items.Add(prize);
+                monRafPrizeWeightTxtBx.Text = "1";
+                monRafPrizeValTxtBx.Text = "";
+                monRafPrizeWeightTxtBx.Focus();
             }
-            wheelRafPrizeWeightTxtBx.Text = "1";
-            wheelRafPrizeListBx.Text = "";
             SetEnableMonetaryRaffleFields();
         }
 
@@ -419,16 +437,31 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     string err = String.Format("Unable to delete monetary raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to delete monetary raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to delete monetary raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to delete monetary raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
             SetEnableMonetaryRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the "edit" button is pressed on the monetary raffle tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editMonRafBtn_Click(object sender, EventArgs e)
+        {
+            if (monRaffleListBox.SelectedIndex != -1)
+            {
+                _editingMonRaffle = true;
+                SetEnableMonetaryRaffleFields();
+            }
+
         }
 
         /// <summary>
@@ -458,15 +491,26 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             wheelRaffleGroupBox2.Enabled = (m_editingWheelRaffle != null);
 
-            wheelRafSaveBtn.Enabled = (m_editingWheelRaffle != null && !String.IsNullOrWhiteSpace(wheelRafNameTxtBx.Text));
+            if (wheelRaffleGroupBox2.Enabled) // the group box may be enabled, but the fields shouldn't be until the user clicks the edit button
+            {
+                wheelRafNameTxtBx.Enabled = wheelRafDescTxtBx.Enabled = wheelRafPrizeWeightTxtBx.Enabled = wheelRafPrizeValTxtBx.Enabled =
+                    addWheelRafPrizeBtn.Enabled = wheelRafPrizeListBx.Enabled = removeWheelRafPrizeBtn.Enabled = btnBrowseWheel.Enabled =
+                    txtWheelImageLoc.Enabled = btnBrowseOverlay.Enabled = txtOverlayImageLoc.Enabled = _editingWheelRaffle;
+            }
 
-            btnRunWheel.Enabled = (m_editingWheelRaffle != null && m_editingWheelRaffle.ID.HasValue);
+            wheelRafSaveBtn.Enabled = (_editingWheelRaffle && m_editingWheelRaffle != null && !String.IsNullOrWhiteSpace(wheelRafNameTxtBx.Text));
+
+            btnRunWheel.Visible = (m_editingWheelRaffle != null && m_editingWheelRaffle.ID.HasValue);
+
+            wheelRafInstructionLabel.Visible = !btnRunWheel.Visible;
 
             addWheelRafPrizeBtn.Enabled = (!String.IsNullOrWhiteSpace(wheelRafPrizeWeightTxtBx.Text) && !String.IsNullOrWhiteSpace(wheelRafPrizeValTxtBx.Text));
 
             removeWheelRafPrizeBtn.Enabled = (wheelRafPrizeListBx.SelectedIndex != -1);
 
             deleteWheelRafBtn.Enabled = (wheelRaffleListBox.SelectedIndex != -1);
+
+            editWheelRafBtn.Enabled = (wheelRaffleListBox.SelectedIndex != -1);
         }
 
         /// <summary>
@@ -474,12 +518,15 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void ClearWheelRaffleFields()
         {
-            wheelRafStatusLabel.Text = "";
+            //wheelRafStatusLabel.Text = "";
             wheelRafNameTxtBx.Text = "";
             wheelRafDescTxtBx.Text = "";
             txtWheelImageLoc.Text = "";
             txtOverlayImageLoc.Text = "";
+            Image temp = wheelImageBox.Image;
             wheelImageBox.Image = null;
+            if (temp != null)
+                temp.Dispose();
             wheelRafPrizeWeightTxtBx.Text = "";
             wheelRafPrizeValTxtBx.Text = "";
             wheelRafPrizeListBx.Items.Clear();
@@ -497,6 +544,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
+                //wheelRafStatusLabel.Text = "";
                 wheelRafNameTxtBx.Text = m_editingWheelRaffle.Name;
                 wheelRafDescTxtBx.Text = m_editingWheelRaffle.Description;
                 wheelRafPrizeWeightTxtBx.Text = "";
@@ -548,10 +596,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void LoadWheelRaffle()
         {
             ClearWheelRaffleFields();
-            wheelRafStatusLabel.Text = "Loading...";
+            //wheelRafStatusLabel.Text = "Loading...";
             wheelRaffleGroupBox1.Enabled = false;
             wheelRaffleGroupBox2.Enabled = false;
-            m_wheelRaffleLoader.RunWorkerAsync();
+            if(!m_wheelRaffleLoader.IsBusy)
+                m_wheelRaffleLoader.RunWorkerAsync();
         }
 
         /// <summary>
@@ -611,8 +660,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                 }
 
-                if (anyImageFailed)
-                    wheelRafStatusLabel.Text = "Some raffle wheel images have failed to load";
+                //if (anyImageFailed)
+                //    wheelRafStatusLabel.Text = "Some raffle wheel images have failed to load";
             }
             catch (Exception ex)
             {
@@ -630,7 +679,7 @@ namespace GTI.Modules.PlayerCenter.UI
             wheelRaffleGroupBox1.Enabled = true;
             if (e.Error == null)
             {
-                wheelRafStatusLabel.Text = "";
+                //wheelRafStatusLabel.Text = "";
                 wheelRaffleListBox.Items.Clear();
                 if (m_wheelRaffles != null && m_wheelRaffles.Count > 0)
                 {
@@ -643,7 +692,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    wheelRafStatusLabel.Text = "No Wheel Raffles Found";
+                    //wheelRafStatusLabel.Text = "No Wheel Raffles Found";
                 }
             }
             else
@@ -651,14 +700,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (e.Error is ServerException)
                 {
                     ServerException ex = e.Error as ServerException;
-                    wheelRafStatusLabel.Text = String.Format("Unable to get wheel raffles. Reason: {0} ",
-                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
                     PlayerManager.Log("Error getting wheel raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                    MessageForm.Show(String.Format("Unable to get wheel raffles. Reason: {0} ",
+                        GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode)));
                 }
                 else
                 {
-                    wheelRafStatusLabel.Text = "Unable to get wheel raffles. Reason: " + e.Error.Message;
                     PlayerManager.Log("Error getting wheel raffles: " + e.Error.ToString(), LoggerLevel.Severe);
+                    MessageForm.Show("Unable to get wheel raffles. Reason: " + e.Error.Message);
                 }
             }
             SetEnableWheelRaffleFields();
@@ -681,6 +730,8 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e"></param>
         private void newWheelRafBtn_Click(object sender, EventArgs e)
         {
+            _editingWheelRaffle = true;
+            wheelRaffleListBox.SelectedIndex = -1;
             ClearWheelRaffleFields();
             m_editingWheelRaffle = new WheelRaffle();
             SetEnableWheelRaffleFields();
@@ -701,6 +752,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_editingWheelRaffle = null;
             }
+            _editingWheelRaffle = false;
             SetWheelRaffleFields();
         }
 
@@ -750,6 +802,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     SetPhotoMessage.SetPhoto(ids.Item2, m_editingWheelRaffle.WheelImage);
                     SetPhotoMessage.SetPhoto(ids.Item3, m_editingWheelRaffle.OverlayImage);
 
+                    m_editingWheelRaffle = null;
                     LoadWheelRaffle();
                     wheelRafSaveLbl.Visible = true;
                 }
@@ -757,12 +810,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     string err = String.Format("Unable to save wheel raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to save wheel raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to save wheel raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to save wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
@@ -783,18 +836,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     prize = RunPrizeWheelRaffle.RunRaffle(m_editingWheelRaffle.ID.Value);
 
-                    MessageBox.Show(String.Format("Raffle paid out: {0}", prize));
+                    MessageForm.Show(String.Format("Raffle paid out: {0}", prize));
                 }
                 catch (ServerException ex)
                 {
                     string err = String.Format("Unable to run wheel raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to run wheel raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to run wheel raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to run wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
@@ -803,15 +856,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void addWheelRafPrizeBtn_Click(object sender, EventArgs e)
         {
             int weight;
-            if (Int32.TryParse(wheelRafPrizeWeightTxtBx.Text, out weight))
+            if (Int32.TryParse(wheelRafPrizeWeightTxtBx.Text, out weight) && weight > 0 && !String.IsNullOrWhiteSpace(wheelRafPrizeValTxtBx.Text))
             {
                 WheelRafflePrizes prize = new WheelRafflePrizes();
                 prize.Weight = weight;
                 prize.Prize = wheelRafPrizeValTxtBx.Text;
                 wheelRafPrizeListBx.Items.Add(prize);
+                wheelRafPrizeWeightTxtBx.Text = "1";
+                wheelRafPrizeListBx.Text = "";
+                wheelRafPrizeWeightTxtBx.Focus();
             }
-            wheelRafPrizeWeightTxtBx.Text = "1";
-            wheelRafPrizeListBx.Text = "";
             SetEnableWheelRaffleFields();
         }
 
@@ -843,16 +897,30 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     string err = String.Format("Unable to delete wheel raffle. Reason: {0}",
                         GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode));
-                    MessageBox.Show(err);
+                    MessageForm.Show(err);
                     PlayerManager.Log(err, LoggerLevel.Severe);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("Unable to delete wheel raffle. Reason: {0}", ex.Message));
+                    MessageForm.Show(String.Format("Unable to delete wheel raffle. Reason: {0}", ex.Message));
                     PlayerManager.Log(String.Format("Unable to delete wheel raffle. Reason: {0}", ex.ToString()), LoggerLevel.Severe);
                 }
             }
             SetEnableWheelRaffleFields();
+        }
+
+        /// <summary>
+        /// Actions that occur when the "edit" button is pressed on the wheel raffle tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editWheelRafBtn_Click(object sender, EventArgs e)
+        {
+            if (wheelRaffleListBox.SelectedIndex != -1)
+            {
+                _editingWheelRaffle = true;
+                SetEnableWheelRaffleFields();
+            }
         }
 
         /// <summary>
@@ -885,7 +953,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 try
                 {
                     string file = fileDiag.FileName;
-                    Bitmap imgTmp = (Bitmap)Image.FromFile(file);
+                    Bitmap imgTmp;
+                    using (var bmpTemp = new Bitmap(file)) // make a copy so we don't lock what's on disk
+                    {
+                        imgTmp = new Bitmap(bmpTemp);
+                    }
+
                     if (sender == btnBrowseWheel)
                     {
                         txtWheelImageLoc.Text = file;
@@ -903,7 +976,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 catch (Exception ex)
                 {
-                    wheelRafStatusLabel.Text = "Error loading image: "+ex.ToString();
+                    MessageForm.Show("Error loading image: "+ex.ToString());
                 }
             }
         }
@@ -1183,7 +1256,7 @@ namespace GTI.Modules.PlayerCenter.UI
             displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
             if (displayedText != "")
             {
-                monRaffleGroupBox1.Text = groupBox1.Text = displayedText;
+                wheelRaffleGroupBox1.Text = monRaffleGroupBox1.Text = groupBox1.Text = displayedText;
                 tabPage2.Text = displayedText;
                 btnRunRaffle.Text = "&Run " + displayedText;
                 label5.Text = displayedText;
@@ -1191,7 +1264,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 btnClearRaffle.Text = "Cle&ar " + displayedText;
                 this.Text = displayedText;
 
-                btnRunMonetary.Text = String.Format("Run &Monetary {0}", displayedText);
+                btnRunMonetary.Text = String.Format("&Run Monetary {0}", displayedText);
+                btnRunWheel.Text = String.Format("&Run Prize Wheel Raffle", displayedText);
             }
         }
 
@@ -1979,7 +2053,7 @@ namespace GTI.Modules.PlayerCenter.UI
             catch (Exception ex)
             {
                 PlayerManager.Log(String.Format("Error selecting {0} in drop-down: {1}", label5.Text, ex.ToString()), LoggerLevel.Severe);
-                MessageBox.Show(String.Format("Error selecting {0} in drop-down: {1}", label5.Text,  ex.Message));
+                MessageForm.Show(String.Format("Error selecting {0} in drop-down: {1}", label5.Text, ex.Message));
             }
         }
 

@@ -27,6 +27,7 @@ using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Properties;
 using GTI.Modules.Shared.Business;
 using GTI.Modules.PlayerCenter.Data.Printing;
+using GTI.Modules.Shared.Data;
 
 namespace GTI.Modules.PlayerCenter.Business
 {
@@ -40,7 +41,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private const int ServerCommShutdownWait = 15000;
         private const string LogPrefix = "PlayerCenter - ";
         // FIX: DE2475 - Appears to be problems with the registration of GTIVidcap.ocx on the system.
-        private const string GameTechDir = "%GMTCDRIVE%";      
+        private const string GameTechDir = "%GMTCDRIVE%";
         private const string VidSnapshotName = @"Common\VidSnapshot.exe";
         private const string TempPicFileName = "TempPlayerPic.jpg";
         // END: DE2475
@@ -70,7 +71,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private int m_machineId = 0;
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
-  
+
 
         #endregion
 
@@ -81,7 +82,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <param name="module">The module which is running this 
         /// object.</param>
         public PlayerManager(PlayerCenterModule module)
-        {            
+        {
             m_module = module;
         }
 
@@ -98,7 +99,7 @@ namespace GTI.Modules.PlayerCenter.Business
         public void Initialize(bool showLoadingForm, bool isTouchScreen)
         {
             string strErr = "PlayerManager start init.";
-            
+
             try
             {
                 // Check to see if we are already initialized.
@@ -110,7 +111,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 strErr = "create modcom.";
                 ModuleComm modComm = null;
-                Application.EnableVisualStyles(); // allows us to do ctrl+a on textboxes... If it breaks something, remove it.
+                //Application.EnableVisualStyles(); // allows us to do ctrl+a on textboxes... If it breaks something, remove it.
 
                 // Get the system related ids.
                 try
@@ -148,7 +149,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 strErr = "show form.";
 
                 if (showLoadingForm) m_loadingForm.Show();
-              
+
                 strErr = "set form loading status.";
                 m_loadingForm.Status = Resources.LoadingWorkstationInfo;                // Get the workstation's settings from the server.
                 Application.DoEvents();
@@ -159,7 +160,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
                     GetWorkstationSettings();
                     m_magCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
-              
+
                 }
                 catch (Exception e)
                 {
@@ -210,7 +211,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetListLocationState();
                 GetListLocationZipCode();
                 GetListLocationCountry();
-                GetPackageName();
+                GetEnabledProducts();
 
                 strErr = "set form loading status..again.";
                 //loading player status code
@@ -248,7 +249,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 // FIX: DE2476 - Performance slows down as player pictures are added.
                 // Load our wait form.
-                if(IsTouchScreen)
+                if (IsTouchScreen)
                     m_waitForm = new WaitForm(Settings.DisplayMode);
                 else
                     m_waitForm = new WaitForm();
@@ -263,13 +264,13 @@ namespace GTI.Modules.PlayerCenter.Business
                 strErr = "init the mag. card reader";
                 // Initialize the mag. card reader.
                 try
-                {                
+                {
                     MagCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
                     m_externalMagCardReader = false;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    if(IsTouchScreen)
+                    if (IsTouchScreen)
                         MessageForm.Show(Settings.DisplayMode, string.Format(CultureInfo.CurrentCulture, Resources.MagLoadError, e.Message + "...last step: " + strErr));
                     else
                         MessageForm.Show(string.Format(CultureInfo.CurrentCulture, Resources.MagLoadError, e.Message + "...last step: " + strErr));
@@ -306,51 +307,60 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public static void GetStatusCode()
         {
-            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);        }
+            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);
+        }
 
         //US2649
 
-        public static void GetPackageName()
+        public static void GetEnabledProducts()
         {
-            var message = new GetPackageItemMessage(GetOperatorID.operatorID);
-            message.Send();
-            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
+            try
             {
-                PackageListName = message.PackageItems;
+                EnabledProducts = GetProductItemsMessage.GetProductItems(GetOperatorID.operatorID);
+            }
+            catch (ServerException ex)
+            {
+                PlayerManager.Log("Error getting product items: " +
+                    GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode), LoggerLevel.Severe);
+
+            }
+            catch (Exception ex)
+            {
+                PlayerManager.Log("Error getting product items: " + ex.ToString(), LoggerLevel.Severe);
             }
         }
 
         //US2100
-         private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
+        private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
         {
             StaffHasPermissionToAwardPoints = false;
             var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
             message.Send();
 
             if (message.ReturnCode == (int)GTIServerReturnCode.Success)
-            {         
-                 StaffHasPermissionToAwardPoints =  (message.ModuleFeatureList.ToList().Count != 0)?true:false;
+            {
+                StaffHasPermissionToAwardPoints = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
             }
         }
 
         public static void RunGetPlayerLocation()
         {
-               GetPlayerLocation.GetPlayerLocationX();  
+            GetPlayerLocation.GetPlayerLocationX();
         }
 
         public static void GetListLocationCity()
         {
-            ListLocationCity = GetPlayerLocationPer.CityName; 
+            ListLocationCity = GetPlayerLocationPer.CityName;
         }
 
         public static void GetListLocationState()
         {
-            ListLocationState = GetPlayerLocationPer.StateName;  
+            ListLocationState = GetPlayerLocationPer.StateName;
         }
 
         public static void GetListLocationZipCode()
         {
-            ListLocationZipCode = GetPlayerLocationPer.ZipCodeName;   
+            ListLocationZipCode = GetPlayerLocationPer.ZipCodeName;
         }
 
         public static void GetListLocationCountry()
@@ -373,20 +383,20 @@ namespace GTI.Modules.PlayerCenter.Business
         private string GetVersionAndCopyright(bool justVersion)
         {
             // Get version.
-            string version = 
+            string version =
                 Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Build.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
 
             // Get copyright.
-            if(!justVersion)
+            if (!justVersion)
             {
                 string copyright = string.Empty;
 
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 
-                if(attributes.Length > 0)
+                if (attributes.Length > 0)
                     copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
 
                 return Resources.Version + version + " - " + copyright;
@@ -405,11 +415,11 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             if (m_loadingForm != null) m_loadingForm.CloseForm();
 
-            if(IsInitialized && m_mainMenuForm != null)
+            if (IsInitialized && m_mainMenuForm != null)
             {
                 Log("Starting Player Center.", LoggerLevel.Information);
 
-                if(!m_externalMagCardReader)
+                if (!m_externalMagCardReader)
                 {
                     MagCardReader.SynchronizingObject = m_mainMenuForm; // Rally DE1852
                     MagCardReader.BeginReading(); // PDTS 1064
@@ -427,7 +437,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// event data.</param>
         public void ClosePlayerCenter(object sender, EventArgs e)
         {
-            if(m_mainMenuForm != null)
+            if (m_mainMenuForm != null)
                 m_mainMenuForm.Close();
         }
 
@@ -450,7 +460,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     ActivateMainForm();
             }
         }
-        
+
         /// <summary>
         /// Shows the player picture capture dialog and then signals a wait handle.
         /// This method should only be called on STA threads.
@@ -567,7 +577,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 playerToSet = null;
             }
         }
-        
+
         /// <summary>
         /// Activates the main window for this application
         /// </summary>
@@ -586,7 +596,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// box.</param>
         internal void ShowWaitForm(IWin32Window owner)
         {
-            if(m_waitForm != null)
+            if (m_waitForm != null)
                 m_waitForm.ShowDialog(owner);
         }
         // END: DE2476
@@ -596,7 +606,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal void DisposeLoadingForm()
         {
-            if(m_loadingForm != null)
+            if (m_loadingForm != null)
             {
                 m_loadingForm.Hide();
                 m_loadingForm.Dispose();
@@ -663,13 +673,13 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <param name="ex">The exception to reformat.</param>
         internal void ReformatException(Exception ex)
         {
-            if(ex is MessageWrongSizeException)
+            if (ex is MessageWrongSizeException)
                 throw new PlayerCenterException(string.Format(Resources.MessagePayloadWrongSize, ex.Message), ex);
-            else if(ex is ServerCommException)
+            else if (ex is ServerCommException)
                 throw new PlayerCenterException(Resources.ServerCommFailed, ex);
-            else if(ex is ServerException && ex.InnerException != null)
+            else if (ex is ServerException && ex.InnerException != null)
                 throw new PlayerCenterException(string.Format(Resources.InvalidMessageResponse, ex.Message), ex.InnerException);
-            else if(ex is ServerException)
+            else if (ex is ServerException)
             {
                 int errorCode = (int)((ServerException)ex).ReturnCode;
                 throw new PlayerCenterException(string.Format(Resources.ServerErrorCode, errorCode), ex);
@@ -686,13 +696,13 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <returns>The exception's localized message.</returns>
         internal string FormatExceptionMessage(Exception ex)
         {
-            if(ex is MessageWrongSizeException)
+            if (ex is MessageWrongSizeException)
                 return string.Format(Resources.MessagePayloadWrongSize, ex.Message);
-            else if(ex is ServerCommException)
+            else if (ex is ServerCommException)
                 return Resources.ServerCommFailed;
-            else if(ex is ServerException && ex.InnerException != null)
+            else if (ex is ServerException && ex.InnerException != null)
                 return string.Format(Resources.InvalidMessageResponse, ex.Message);
-            else if(ex is ServerException)
+            else if (ex is ServerException)
             {
                 int errorCode = (int)((ServerException)ex).ReturnCode;
                 return string.Format(Resources.ServerErrorCode, errorCode);
@@ -708,7 +718,7 @@ namespace GTI.Modules.PlayerCenter.Business
         internal void ServerCommFailed()
         {
             // Display a message saying that the Player Center is closing.
-            if(IsTouchScreen)
+            if (IsTouchScreen)
                 MessageForm.Show(Settings.DisplayMode, Resources.ServerCommFailed + "\n\n" + Resources.ShuttingDown, MessageFormTypes.Pause, ServerCommShutdownWait);
             else
                 MessageForm.Show(Resources.ServerCommFailed + "\n\n" + Resources.ShuttingDown, Resources.PlayerCenterName, MessageFormTypes.Pause, ServerCommShutdownWait);
@@ -825,7 +835,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 tierMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
@@ -841,7 +851,7 @@ namespace GTI.Modules.PlayerCenter.Business
         public void SetExternalMagCardReader(MagneticCardReader reader)
         {
             // Dispose of ours.
-            if(MagCardReader != null)
+            if (MagCardReader != null)
             {
                 MagCardReader.EndReading();
                 MagCardReader.RemoveAllSources();
@@ -858,7 +868,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public void BeginMagCardReading()
         {
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
                 MagCardReader.BeginReading();
         }
 
@@ -867,7 +877,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public void EndMagCardReading()
         {
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
                 MagCardReader.EndReading();
         }
 
@@ -916,7 +926,7 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(playerId);
         }
 
-    
+
         // END: DE2476
 
         /// <summary>
@@ -928,9 +938,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void GetPlayerData(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -945,7 +955,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             magCardNum = e.Argument as string;
 
-            if(magCardNum == null)
+            if (magCardNum == null)
                 playerId = (int)e.Argument;
 
             // Are we getting the player by id or mag. card?
@@ -976,20 +986,20 @@ namespace GTI.Modules.PlayerCenter.Business
             }
 
             Player player = null;
-            
+
             try
             {
                 player = new Player(playerId, OperatorID, -1);
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(ServerException exc)
+            catch (ServerException exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)) + " " + string.Format(CultureInfo.CurrentCulture, Resources.MessageName, exc.Message), exc);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
             }
@@ -1010,7 +1020,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // TTP 50067
-            if(e.Error != null)
+            if (e.Error != null)
                 LastPlayerFromServer = null;
             else
                 LastPlayerFromServer = (Player)e.Result;
@@ -1067,9 +1077,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void GetPlayerList(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1081,7 +1091,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the search params.
             string[] parameters = (string[])e.Argument;
 
-            if(parameters[0] != string.Empty) // Mag. Card
+            if (parameters[0] != string.Empty) // Mag. Card
             {
                 FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();
                 cardMsg.MagCardNumber = parameters[0];
@@ -1091,11 +1101,11 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     cardMsg.Send();
                 }
-                catch(ServerCommException ex)
+                catch (ServerCommException ex)
                 {
                     throw ex; // Don't repackage the ServerCommException
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerFailed, FormatExceptionMessage(ex)), ex);
                 }
@@ -1122,11 +1132,11 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     listMsg.Send();
                 }
-                catch(ServerCommException ex)
+                catch (ServerCommException ex)
                 {
                     throw ex; // Don't repackage the ServerCommException
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerListFailed, FormatExceptionMessage(ex)), ex);
                 }
@@ -1147,7 +1157,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
 
-            if(e.Error == null)
+            if (e.Error == null)
             {
                 // Set the results of the search.
                 LastFindPlayersResults = (PlayerListItem[])e.Result;
@@ -1260,9 +1270,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void SavePlayerToServer(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1274,7 +1284,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the argument.
             Player player = (Player)e.Argument;
 
-            if(player.Id == 0) // We are creating a player.
+            if (player.Id == 0) // We are creating a player.
             {
                 CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
                 createMsg.FirstName = player.FirstName;
@@ -1305,7 +1315,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     createMsg.Send();
                 }
-                catch(ServerCommException ex)
+                catch (ServerCommException ex)
                 {
                     Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
                     // TTP 50120
@@ -1323,8 +1333,8 @@ namespace GTI.Modules.PlayerCenter.Business
                     else
                     {
                         throw new DuplicateException(message);
-                    }                      
-                   
+                    }
+
                 }
                 if (createMsg.PlayerId < 1) throw new PlayerCenterException(string.Format(Resources.CreatePlayerFailed, "Id < 1"));
 
@@ -1345,12 +1355,12 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 setPicMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 // TTP 50120
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new PlayerCenterException(string.Format(Resources.SavePictureFailed, FormatExceptionMessage(ex)), ex);
             }
@@ -1366,15 +1376,15 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 reloadPlayer = new Player(player.Id, OperatorID);
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(ServerException exc)
+            catch (ServerException exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)) + " " + string.Format(CultureInfo.CurrentCulture, Resources.MessageName, exc.Message), exc);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
             }
@@ -1394,7 +1404,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // TTP 50067
-            if(e.Error != null)
+            if (e.Error != null)
                 LastPlayerFromServer = null;
             else
                 LastPlayerFromServer = (Player)e.Result;
@@ -1420,7 +1430,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// A player with this mag. card number already exists.</exception>
         public int CreatePlayerForPOS(string magCardNum)
         {
-            if(string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
+            if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
                 throw new ArgumentException("magCardNum");
 
             CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
@@ -1433,15 +1443,15 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 createMsg.Send();
             }
-            catch(ServerCommException ex)
+            catch (ServerCommException ex)
             {
                 Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
                 throw ex; // Don't repackage the ServerCommException
             }
-            catch(ServerException ex)
+            catch (ServerException ex)
             {
                 Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
-                if((int)ex.ReturnCode == 1)
+                if ((int)ex.ReturnCode == 1)
                     throw new PlayerCenterException(Resources.errorDupMagCard);
                 else
                     throw;
@@ -1495,9 +1505,9 @@ namespace GTI.Modules.PlayerCenter.Business
             string drive, dir, dbServer, dbName, dbUser, dbPass;
 
             // Set the language and options.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1520,8 +1530,8 @@ namespace GTI.Modules.PlayerCenter.Business
 
             // Ask the server for the report.
             GetReportMessage reportMsg = null;
-            
-            if(listReport)
+
+            if (listReport)
                 reportMsg = new GetReportMessage((int)ReportIDs.Player_PlayerListLastName);
             else
                 reportMsg = new GetReportMessage((int)ReportIDs.Player_PlayerMailingLabels);
@@ -1530,11 +1540,11 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 reportMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetReportFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
             }
@@ -1542,7 +1552,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Save the report to a temporary file.
             string path = drive + dir + @"\Temp";
 
-            if(!Directory.Exists(path))
+            if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
             path += @"\TempPlayerReport.rpt";
@@ -1565,7 +1575,7 @@ namespace GTI.Modules.PlayerCenter.Business
             reportDoc.Load(path);
 
             // Set the database connection information.
-            foreach(CrystalDecisions.Shared.IConnectionInfo connInfo in reportDoc.DataSourceConnections)
+            foreach (CrystalDecisions.Shared.IConnectionInfo connInfo in reportDoc.DataSourceConnections)
             {
                 connInfo.SetConnection(dbServer, dbName, dbUser, dbPass);
             }
@@ -1576,7 +1586,7 @@ namespace GTI.Modules.PlayerCenter.Business
             reportDoc.SetParameterValue("@OperatorID", OperatorID);
             //reportDoc.SetParameterValue("@Birthday", listParams.UseBirthday);
 
-            if(listParams.UseBirthday)
+            if (listParams.UseBirthday)
             {
                 reportDoc.SetParameterValue("@BDFrom", listParams.FromBirthday);
                 reportDoc.SetParameterValue("@BDEnd", listParams.ToBirthday);
@@ -1587,9 +1597,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@BDEnd", invalidDate);
             }
 
-         //   reportDoc.SetParameterValue("@Gender", listParams.UseGender);
+            //   reportDoc.SetParameterValue("@Gender", listParams.UseGender);
 
-            if(listParams.UseGender)
+            if (listParams.UseGender)
             {
                 reportDoc.SetParameterValue("@GenderType", listParams.Gender);
             }
@@ -1599,8 +1609,8 @@ namespace GTI.Modules.PlayerCenter.Business
             }
 
 
-         //   reportDoc.SetParameterValue("@PointsBalance", listParams.UsePoints);
-            if (listParams.PBIsRange) 
+            //   reportDoc.SetParameterValue("@PointsBalance", listParams.UsePoints);
+            if (listParams.PBIsRange)
             {
                 reportDoc.SetParameterValue("@Min", listParams.MinPoints);
                 reportDoc.SetParameterValue("@Max", listParams.MaxPoints);
@@ -1623,9 +1633,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@PBOptionValue", 0M);
             }
 
-        //    reportDoc.SetParameterValue("@LastVisit", listParams.UseLastVisit);
+            //    reportDoc.SetParameterValue("@LastVisit", listParams.UseLastVisit);
 
-            if(listParams.UseLastVisit)
+            if (listParams.UseLastVisit)
             {
                 reportDoc.SetParameterValue("@LVStart", listParams.FromLastVisit);
                 reportDoc.SetParameterValue("@LVEnd", listParams.ToLastVisit);
@@ -1655,7 +1665,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     reportDoc.SetParameterValue("@StartDate", listParams.FromSpendDate);
                     reportDoc.SetParameterValue("@EndDate", listParams.ToSpendDate);
                 }
-                else if(listParams.IsProduct) //TEST
+                else if (listParams.IsProduct) //TEST
                 {
                     reportDoc.SetParameterValue("@StartDate", listParams.FromSpendDate);
                     reportDoc.SetParameterValue("@EndDate", listParams.ToSpendDate);
@@ -1682,9 +1692,9 @@ namespace GTI.Modules.PlayerCenter.Business
 
 
             // Rally US493
-           // reportDoc.SetParameterValue("@Status", listParams.UseStatus);
+            // reportDoc.SetParameterValue("@Status", listParams.UseStatus);
 
-            if(listParams.UseStatus)
+            if (listParams.UseStatus)
                 reportDoc.SetParameterValue("@StatusId", listParams.Status);
             else
                 reportDoc.SetParameterValue("@StatusId", string.Empty);
@@ -1700,21 +1710,21 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@LocationDefinition", string.Empty);
             }
 
-            reportDoc.SetParameterValue("@IsNOfDaysPlayed", listParams.IsNumberOfdDaysPlayed);          
-            reportDoc.SetParameterValue("@IsNOfSessioPlayed", listParams.IsNumberOfSessionPlayed );
-                        
-            if (listParams.IsNumberOfdDaysPlayed || listParams.IsNumberOfSessionPlayed 
-                || listParams.DaysOFweekAndSession != string.Empty   
+            reportDoc.SetParameterValue("@IsNOfDaysPlayed", listParams.IsNumberOfdDaysPlayed);
+            reportDoc.SetParameterValue("@IsNOfSessioPlayed", listParams.IsNumberOfSessionPlayed);
+
+            if (listParams.IsNumberOfdDaysPlayed || listParams.IsNumberOfSessionPlayed
+                || listParams.DaysOFweekAndSession != string.Empty
                 )   /*&& listParams.IsDPDateRange*/
             {
-                    reportDoc.SetParameterValue("@DPDateRangeFrom", listParams.DPDateRangeFrom);
-                    reportDoc.SetParameterValue("@DPDateRangeTo", listParams.DPDateRangeTo);
+                reportDoc.SetParameterValue("@DPDateRangeFrom", listParams.DPDateRangeFrom);
+                reportDoc.SetParameterValue("@DPDateRangeTo", listParams.DPDateRangeTo);
             }
-                           
-           else
+
+            else
             {
-                    reportDoc.SetParameterValue("@DPDateRangeFrom", invalidDate);
-                    reportDoc.SetParameterValue("@DPDateRangeTo", invalidDate);
+                reportDoc.SetParameterValue("@DPDateRangeFrom", invalidDate);
+                reportDoc.SetParameterValue("@DPDateRangeTo", invalidDate);
             }
 
             reportDoc.SetParameterValue("@IsDPRange", listParams.IsDPRange);
@@ -1722,10 +1732,10 @@ namespace GTI.Modules.PlayerCenter.Business
             if (listParams.IsNumberOfdDaysPlayed && listParams.IsDPRange)
             {
 
-                int min = Int32.Parse(listParams.DPRangeFrom); 
-                int max = Convert.ToInt32(listParams.DPRangeTo);  
-                
-                reportDoc.SetParameterValue("@DPRangeFrom",min);
+                int min = Int32.Parse(listParams.DPRangeFrom);
+                int max = Convert.ToInt32(listParams.DPRangeTo);
+
+                reportDoc.SetParameterValue("@DPRangeFrom", min);
                 reportDoc.SetParameterValue("@DPRangeTo", max);
             }
             else
@@ -1734,12 +1744,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@DPRangeTo", 0M);
             }
 
-            reportDoc.SetParameterValue("@IsDPOption", listParams.IsDPOption); 
+            reportDoc.SetParameterValue("@IsDPOption", listParams.IsDPOption);
 
             if (listParams.IsNumberOfdDaysPlayed && listParams.IsDPOption)
             {
                 reportDoc.SetParameterValue("@DPOprtionSelected", listParams.DPOptionSelected);
-                reportDoc.SetParameterValue("@DPOptionValue", Convert.ToInt32(listParams.DPOptionValue , CultureInfo.CurrentCulture));
+                reportDoc.SetParameterValue("@DPOptionValue", Convert.ToInt32(listParams.DPOptionValue, CultureInfo.CurrentCulture));
                 //reportDoc.SetParameterValue("@DPOptionValue", listParams.DPOptionValue);
             }
             else
@@ -1753,7 +1763,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (listParams.IsNumberOfSessionPlayed && listParams.IsSPRange)
             {
-                reportDoc.SetParameterValue("@SPRangeFrom", Convert.ToInt32(listParams.SPRangeFrom , CultureInfo.CurrentCulture) );
+                reportDoc.SetParameterValue("@SPRangeFrom", Convert.ToInt32(listParams.SPRangeFrom, CultureInfo.CurrentCulture));
                 reportDoc.SetParameterValue("@SpRangeTo", Convert.ToInt32(listParams.SPRangeTo, CultureInfo.CurrentCulture));
             }
             else
@@ -1777,22 +1787,22 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (listParams.DaysOFweekAndSession != string.Empty)
             {
-                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", listParams.DaysOFweekAndSession);     
+                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", listParams.DaysOFweekAndSession);
             }
             else
             {
-                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", string.Empty);   
+                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", string.Empty);
             }
 
             reportDoc.SetParameterValue("@IsPackageName", listParams.IsProduct);
 
-            if (listParams.IsProduct)  
+            if (listParams.IsProduct)
             {
-                reportDoc.SetParameterValue("@PackageName", listParams.SelectedProduct);  
+                reportDoc.SetParameterValue("@PackageName", listParams.SelectedProduct);
             }
             else
             {
-                reportDoc.SetParameterValue("@PackageName", string.Empty);    
+                reportDoc.SetParameterValue("@PackageName", string.Empty);
             }
 
 
@@ -1812,16 +1822,16 @@ namespace GTI.Modules.PlayerCenter.Business
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
 
-            if(e.Error == null)
+            if (e.Error == null)
             {
-                if(m_reportForm == null)
+                if (m_reportForm == null)
                     m_reportForm = new ReportForm(this);
 
                 try
                 {
                     m_reportForm.Report = (ReportDocument)e.Result;//On TEST jkc
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     LastAsyncException = ex;
                 }
@@ -1865,7 +1875,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             m_worker.RunWorkerAsync(workerArgs);
         }
-        
+
         // END: DE2476
         // US2149 - Enclose text field in double quotes.
         /// <summary>
@@ -1894,9 +1904,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void ExportPlayerList(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1917,16 +1927,16 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 listMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {//ERROR Here
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
             }
 
-            if(listMsg.Players != null && listMsg.Players.Length > 0)
+            if (listMsg.Players != null && listMsg.Players.Length > 0)
             {
                 // Write the data out to the specified file.
                 StreamWriter writer = File.CreateText(fileName);
@@ -1987,9 +1997,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 writer.Write(Resources.ExportSeparator);
                 writer.WriteLine(EscapeTextField(Resources.MagCardNumber));
 
-                foreach(PlayerExportItem item in listMsg.Players)
+                foreach (PlayerExportItem item in listMsg.Players)
                 {
-                    if(item.Player != null)
+                    if (item.Player != null)
                     {
                         // US1769 - Add more fields to export.
                         writer.Write(item.Player.Id);
@@ -2036,7 +2046,7 @@ namespace GTI.Modules.PlayerCenter.Business
                         {
                             writer.Write(item.AverageSpend);
                         }
-//                        writer.Write(item.AverageSpend.ToString("0.00", CultureInfo.CurrentCulture));
+                        //                        writer.Write(item.AverageSpend.ToString("0.00", CultureInfo.CurrentCulture));
                         writer.Write(Resources.ExportSeparator);
                         writer.Write(item.Player.VisitCount);
                         writer.Write(Resources.ExportSeparator);
@@ -2064,7 +2074,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else
                 e.Result = 0;
-            
+
         }
 
         /// <summary>
@@ -2080,7 +2090,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // Did we export any players?
-            if(e.Error == null)
+            if (e.Error == null)
                 LastNumPlayersExported = (int)e.Result;
 
             // Close the wait form.
@@ -2112,7 +2122,7 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.DoWork += new DoWorkEventHandler(PrintPlayerRaffle);
             m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(PrintPlayerRaffleComplete);
-            
+
             m_worker.RunWorkerAsync(playerListFilters);
         }
 
@@ -2150,7 +2160,7 @@ namespace GTI.Modules.PlayerCenter.Business
             if (playerCount > 0)
             {
                 // update the wait message. We're on a separate thread now, so we have to call back to the UI.
-                m_waitForm.BeginInvoke(((Action)(()=>
+                m_waitForm.BeginInvoke(((Action)(() =>
                 {
                     m_waitForm.Message = String.Format(Resources.WaitFormPrintingPlayerRaffle2, playerCount);
                     m_waitForm.ProgressBarVisible = true;
@@ -2181,7 +2191,7 @@ namespace GTI.Modules.PlayerCenter.Business
                             foreach (int session in dayOfWeekAndSession[dayOfWeek])
                                 sessions.Add(session);
                         }
-                        
+
                         raffleName = String.Format("Gaming Date: {0}, Session(s): {1}",
                             listParams.DPDateRangeFrom.ToShortDateString(), String.Join(",", sessions));
                     }
@@ -2206,7 +2216,7 @@ namespace GTI.Modules.PlayerCenter.Business
                         if (result == DialogResult.Cancel)
                             break;
                     }
-                    percentage = (++progress/playerCount)*100.0m;
+                    percentage = (++progress / playerCount) * 100.0m;
 
                     m_worker.ReportProgress((int)percentage);
                 }
@@ -2303,7 +2313,7 @@ namespace GTI.Modules.PlayerCenter.Business
             Log("Shutting down.", LoggerLevel.Debug);
 
             // PDTS 1064
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
             {
                 MagCardReader.EndReading();
                 MagCardReader.RemoveAllSources();
@@ -2319,33 +2329,33 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = null;
 
             // FIX: DE2476
-            if(m_waitForm != null)
+            if (m_waitForm != null)
             {
                 m_waitForm.Dispose();
                 m_waitForm = null;
             }
             // END: DE2476
 
-            if(m_reportForm != null)
+            if (m_reportForm != null)
             {
                 m_reportForm.Dispose();
                 m_reportForm = null;
             }
 
-            if(m_mainMenuForm != null)
+            if (m_mainMenuForm != null)
             {
                 m_mainMenuForm.Dispose();
                 m_mainMenuForm = null;
             }
 
-            if(m_loadingForm != null)
+            if (m_loadingForm != null)
             {
                 m_loadingForm.CloseForm();
                 m_loadingForm.Dispose();
                 m_loadingForm = null;
             }
 
-            if(!Settings.ShowCursor)
+            if (!Settings.ShowCursor)
                 Cursor.Show();
 
             Settings = null;
@@ -2360,7 +2370,7 @@ namespace GTI.Modules.PlayerCenter.Business
         #region Member Properties
 
         public PlayerCenterSettings Settings { get; private set; }
-        
+
         // FIX: DE2476
         internal bool IsTouchScreen { get; set; }
         // END: DE2476
@@ -2393,14 +2403,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_errorSync)
+                lock (m_errorSync)
                 {
                     return m_asyncException;
                 }
             }
             set
             {
-                lock(m_errorSync)
+                lock (m_errorSync)
                 {
                     m_asyncException = value;
                 }
@@ -2419,14 +2429,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_findPlayerSync)
+                lock (m_findPlayerSync)
                 {
                     return m_lastFindPlayersResults;
                 }
             }
             set
             {
-                lock(m_findPlayerSync)
+                lock (m_findPlayerSync)
                 {
                     m_lastFindPlayersResults = value;
                 }
@@ -2441,14 +2451,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_lastPlayerSync)
+                lock (m_lastPlayerSync)
                 {
                     return m_lastPlayerFromServer;
                 }
             }
             set
             {
-                lock(m_lastPlayerSync)
+                lock (m_lastPlayerSync)
                 {
                     m_lastPlayerFromServer = value;
                 }
@@ -2462,14 +2472,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_playerPicSync)
+                lock (m_playerPicSync)
                 {
                     return m_lastPlayerPic;
                 }
             }
             set
             {
-                lock(m_playerPicSync)
+                lock (m_playerPicSync)
                 {
                     m_lastPlayerPic = value;
                 }
@@ -2488,7 +2498,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal MagneticCardReader MagCardReader { get; private set; }
 
-        internal int OperatorID { get;  private set; }
+        internal int OperatorID { get; private set; }
 
         // Rally US144
         /// <summary>
@@ -2496,7 +2506,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal void ShowReportForm()
         {
-            if(m_reportForm != null)
+            if (m_reportForm != null)
             {
                 m_reportForm.Show();//On TEST jkc
                 m_reportForm.BringToFront();
@@ -2510,13 +2520,13 @@ namespace GTI.Modules.PlayerCenter.Business
 
 
         internal static List<PlayerStatus> OperatorPlayerStatusList { get; private set; }
-        internal static List<PackageItem> PackageListName { get; private set; }  
+        internal static List<ProductItem> EnabledProducts { get; private set; }
         internal static List<LocationCity> ListLocationCity { get; private set; }
         internal static List<LocationState> ListLocationState { get; private set; }
         internal static List<LocationZipCode> ListLocationZipCode { get; private set; }
-        internal static List<LocationCountry> ListLocationCountry { get; private set; } 
+        internal static List<LocationCountry> ListLocationCountry { get; private set; }
 
-        
+
         #endregion
     }
 
@@ -2530,12 +2540,12 @@ namespace GTI.Modules.PlayerCenter.Business
         public DateTime FromBirthday;
         public DateTime ToBirthday;
         public bool UseGender;
-        public string Gender;      
+        public string Gender;
         public bool UsePoints;
         public bool PBIsOption;
         public bool PBIsRange;
         public string PBOptionSelected;
-        public decimal PBOptionValue;     
+        public decimal PBOptionValue;
         public decimal MinPoints;
         public decimal MaxPoints;
         public bool UseLastVisit;

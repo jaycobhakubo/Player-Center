@@ -148,10 +148,10 @@
     <value>22</value>
   </data>
   <data name="lstBxRafflePrizes2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
+    <value>8, 40</value>
   </data>
   <data name="lstBxRafflePrizes2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 466</value>
+    <value>204, 422</value>
   </data>
   <data name="lstBxRafflePrizes2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -178,7 +178,7 @@
     <value>8, 8, 8, 8</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 500</value>
+    <value>220, 480</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -214,13 +214,13 @@
     <value>NoControl</value>
   </data>
   <data name="imgbtnUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 55</value>
+    <value>8, 56</value>
   </data>
   <data name="imgbtnUpdate.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="imgbtnUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="imgbtnUpdate.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -232,7 +232,7 @@
     <value>imgbtnUpdate</value>
   </data>
   <data name="&gt;&gt;imgbtnUpdate.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnUpdate.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
@@ -244,13 +244,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnSetupDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 91</value>
+    <value>8, 108</value>
   </data>
   <data name="btnSetupDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="btnSetupDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="btnSetupDelete.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -262,7 +262,7 @@
     <value>btnSetupDelete</value>
   </data>
   <data name="&gt;&gt;btnSetupDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupDelete.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
@@ -270,14 +270,17 @@
   <data name="&gt;&gt;btnSetupDelete.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnSetupNew.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnSetupNew.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 19</value>
+    <value>8, 3</value>
   </data>
   <data name="btnSetupNew.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="btnSetupNew.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="btnSetupNew.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -289,7 +292,7 @@
     <value>btnSetupNew</value>
   </data>
   <data name="&gt;&gt;btnSetupNew.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupNew.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
@@ -313,7 +316,7 @@
     <value>220, 637</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>500</value>
+    <value>480</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -360,8 +363,14 @@
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 353</value>
+    <value>20, 361</value>
+  </data>
+  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 22</value>
@@ -391,7 +400,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtbxDisclaimer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 353</value>
+    <value>24, 387</value>
+  </data>
+  <data name="txtbxDisclaimer.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="txtbxDisclaimer.MaxLength" type="System.Int32, mscorlib">
     <value>120</value>
@@ -449,7 +461,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSavedSuccessfully.Location" type="System.Drawing.Point, System.Drawing">
-    <value>593, 527</value>
+    <value>617, 555</value>
   </data>
   <data name="lblSavedSuccessfully.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 18</value>
@@ -482,7 +494,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtbxSetupPrizeDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 188</value>
+    <value>24, 202</value>
+  </data>
+  <data name="txtbxSetupPrizeDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="txtbxSetupPrizeDescription.MaxLength" type="System.Int32, mscorlib">
     <value>250</value>
@@ -518,7 +533,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtbxSetupNumberofWinners.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 140</value>
+    <value>24, 134</value>
+  </data>
+  <data name="txtbxSetupNumberofWinners.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="txtbxSetupNumberofWinners.MaxLength" type="System.Int32, mscorlib">
     <value>7</value>
@@ -548,7 +566,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtbxSetupName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 93</value>
+    <value>24, 66</value>
+  </data>
+  <data name="txtbxSetupName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="txtbxSetupName.MaxLength" type="System.Int32, mscorlib">
     <value>50</value>
@@ -574,8 +595,14 @@
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 191</value>
+    <value>20, 176</value>
+  </data>
+  <data name="label3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 22</value>
@@ -601,8 +628,14 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 144</value>
+    <value>20, 108</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 22</value>
@@ -628,8 +661,14 @@
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 97</value>
+    <value>20, 40</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 22</value>
@@ -659,7 +698,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>780, 564</value>
+    <value>780, 583</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -695,7 +734,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSetupSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 24</value>
+    <value>302, 5</value>
   </data>
   <data name="btnSetupSave.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -713,7 +752,7 @@
     <value>btnSetupSave</value>
   </data>
   <data name="&gt;&gt;btnSetupSave.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupSave.Parent" xml:space="preserve">
     <value>splitContainer3.Panel2</value>
@@ -725,7 +764,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSetupClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 24</value>
+    <value>620, 5</value>
   </data>
   <data name="btnSetupClose.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -743,7 +782,7 @@
     <value>btnSetupClose</value>
   </data>
   <data name="&gt;&gt;btnSetupClose.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupClose.Parent" xml:space="preserve">
     <value>splitContainer3.Panel2</value>
@@ -755,7 +794,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSetupCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 24</value>
+    <value>461, 5</value>
   </data>
   <data name="btnSetupCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -773,7 +812,7 @@
     <value>btnSetupCancel</value>
   </data>
   <data name="&gt;&gt;btnSetupCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupCancel.Parent" xml:space="preserve">
     <value>splitContainer3.Panel2</value>
@@ -797,7 +836,7 @@
     <value>780, 637</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>564</value>
+    <value>583</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -898,6 +937,9 @@
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 156</value>
   </data>
@@ -986,7 +1028,7 @@
     <value>30, 30</value>
   </data>
   <data name="btnRunRaffle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>293, 60</value>
+    <value>293, 40</value>
   </data>
   <data name="btnRunRaffle.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -998,7 +1040,7 @@
     <value>btnRunRaffle</value>
   </data>
   <data name="&gt;&gt;btnRunRaffle.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRunRaffle.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1081,96 +1123,6 @@
   <data name="&gt;&gt;lstbxRaffleWinners2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnClearRaffle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnClearRaffle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 589</value>
-  </data>
-  <data name="btnClearRaffle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="btnClearRaffle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 40</value>
-  </data>
-  <data name="btnClearRaffle.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="btnClearRaffle.Text" xml:space="preserve">
-    <value>Cle&amp;ar Raffle</value>
-  </data>
-  <data name="&gt;&gt;btnClearRaffle.Name" xml:space="preserve">
-    <value>btnClearRaffle</value>
-  </data>
-  <data name="&gt;&gt;btnClearRaffle.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;btnClearRaffle.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;btnClearRaffle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnRaffleClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRaffleClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>787, 589</value>
-  </data>
-  <data name="btnRaffleClose.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="btnRaffleClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 40</value>
-  </data>
-  <data name="btnRaffleClose.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="btnRaffleClose.Text" xml:space="preserve">
-    <value>&amp;Close</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleClose.Name" xml:space="preserve">
-    <value>btnRaffleClose</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleClose.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleClose.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleClose.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.Location" type="System.Drawing.Point, System.Drawing">
-    <value>571, 589</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 40</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="btnRaffleReprintVoucher.Text" xml:space="preserve">
-    <value>Reprint &amp;Voucher</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleReprintVoucher.Name" xml:space="preserve">
-    <value>btnRaffleReprintVoucher</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleReprintVoucher.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleReprintVoucher.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;btnRaffleReprintVoucher.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1199,6 +1151,96 @@
     <value>tabPage2</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnClearRaffle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnClearRaffle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>290, 589</value>
+  </data>
+  <data name="btnClearRaffle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnClearRaffle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 40</value>
+  </data>
+  <data name="btnClearRaffle.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="btnClearRaffle.Text" xml:space="preserve">
+    <value>Cle&amp;ar Raffle</value>
+  </data>
+  <data name="&gt;&gt;btnClearRaffle.Name" xml:space="preserve">
+    <value>btnClearRaffle</value>
+  </data>
+  <data name="&gt;&gt;btnClearRaffle.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnClearRaffle.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;btnClearRaffle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="btnRaffleClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRaffleClose.Location" type="System.Drawing.Point, System.Drawing">
+    <value>787, 589</value>
+  </data>
+  <data name="btnRaffleClose.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnRaffleClose.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 40</value>
+  </data>
+  <data name="btnRaffleClose.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="btnRaffleClose.Text" xml:space="preserve">
+    <value>&amp;Close</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleClose.Name" xml:space="preserve">
+    <value>btnRaffleClose</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleClose.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleClose.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleClose.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.Location" type="System.Drawing.Point, System.Drawing">
+    <value>571, 589</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 40</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="btnRaffleReprintVoucher.Text" xml:space="preserve">
+    <value>Reprint &amp;Voucher</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleReprintVoucher.Name" xml:space="preserve">
+    <value>btnRaffleReprintVoucher</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleReprintVoucher.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleReprintVoucher.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;btnRaffleReprintVoucher.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
@@ -1256,10 +1298,10 @@
     <value>22</value>
   </data>
   <data name="monRaffleListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
+    <value>8, 40</value>
   </data>
   <data name="monRaffleListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 488</value>
+    <value>204, 422</value>
   </data>
   <data name="monRaffleListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1286,7 +1328,7 @@
     <value>8, 8, 8, 8</value>
   </data>
   <data name="monRaffleGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 535</value>
+    <value>220, 480</value>
   </data>
   <data name="monRaffleGroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1318,17 +1360,47 @@
   <data name="&gt;&gt;splitContainer5.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="editMonRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="editMonRafBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 56</value>
+  </data>
+  <data name="editMonRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="editMonRafBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 40</value>
+  </data>
+  <data name="editMonRafBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="editMonRafBtn.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="&gt;&gt;editMonRafBtn.Name" xml:space="preserve">
+    <value>editMonRafBtn</value>
+  </data>
+  <data name="&gt;&gt;editMonRafBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;editMonRafBtn.Parent" xml:space="preserve">
+    <value>splitContainer5.Panel2</value>
+  </data>
+  <data name="&gt;&gt;editMonRafBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="deleteMonRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="deleteMonRafBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 58</value>
+    <value>8, 108</value>
   </data>
   <data name="deleteMonRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="deleteMonRafBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="deleteMonRafBtn.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1340,25 +1412,25 @@
     <value>deleteMonRafBtn</value>
   </data>
   <data name="&gt;&gt;deleteMonRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;deleteMonRafBtn.Parent" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
   </data>
   <data name="&gt;&gt;deleteMonRafBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="newMonRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="newMonRafBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 12</value>
+    <value>8, 3</value>
   </data>
   <data name="newMonRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="newMonRafBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="newMonRafBtn.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1370,13 +1442,13 @@
     <value>newMonRafBtn</value>
   </data>
   <data name="&gt;&gt;newMonRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;newMonRafBtn.Parent" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
   </data>
   <data name="&gt;&gt;newMonRafBtn.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer5.Panel2.Name" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
@@ -1394,7 +1466,7 @@
     <value>220, 637</value>
   </data>
   <data name="splitContainer5.SplitterDistance" type="System.Int32, mscorlib">
-    <value>535</value>
+    <value>480</value>
   </data>
   <data name="splitContainer5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1442,13 +1514,16 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="monRafPrizeValTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>411, 234</value>
+    <value>225, 202</value>
+  </data>
+  <data name="monRafPrizeValTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 0, 8, 0</value>
   </data>
   <data name="monRafPrizeValTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
   <data name="monRafPrizeValTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 26</value>
+    <value>120, 26</value>
   </data>
   <data name="monRafPrizeValTxtBx.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1460,7 +1535,7 @@
     <value>monRafPrizeValTxtBx</value>
   </data>
   <data name="&gt;&gt;monRafPrizeValTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafPrizeValTxtBx.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1472,7 +1547,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="monRafPrizeWeightTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 234</value>
+    <value>24, 202</value>
+  </data>
+  <data name="monRafPrizeWeightTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="monRafPrizeWeightTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1487,7 +1565,7 @@
     <value>monRafPrizeWeightTxtBx</value>
   </data>
   <data name="&gt;&gt;monRafPrizeWeightTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafPrizeWeightTxtBx.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1495,101 +1573,77 @@
   <data name="&gt;&gt;monRafPrizeWeightTxtBx.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="monRafStatusLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="monRafStatusLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="monRafStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 41</value>
-  </data>
-  <data name="monRafStatusLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="monRafStatusLabel.Text" xml:space="preserve">
-    <value>Loading....</value>
-  </data>
-  <data name="monRafStatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;monRafStatusLabel.Name" xml:space="preserve">
-    <value>monRafStatusLabel</value>
-  </data>
-  <data name="&gt;&gt;monRafStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;monRafStatusLabel.Parent" xml:space="preserve">
-    <value>monRaffleGroupBox2</value>
-  </data>
-  <data name="&gt;&gt;monRafStatusLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="removeMonRafPrizeBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
   <data name="removeMonRafPrizeBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="removeMonRafPrizeBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 441</value>
+    <value>356, 463</value>
+  </data>
+  <data name="removeMonRafPrizeBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 0, 8, 8</value>
   </data>
   <data name="removeMonRafPrizeBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="removeMonRafPrizeBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 30</value>
+    <value>78, 26</value>
   </data>
   <data name="removeMonRafPrizeBtn.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="removeMonRafPrizeBtn.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
+    <value>Remove</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.Name" xml:space="preserve">
     <value>removeMonRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="addMonRafPrizeBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
   <data name="addMonRafPrizeBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="addMonRafPrizeBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>563, 234</value>
+    <value>356, 202</value>
+  </data>
+  <data name="addMonRafPrizeBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="addMonRafPrizeBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="addMonRafPrizeBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 30</value>
+    <value>78, 26</value>
   </data>
   <data name="addMonRafPrizeBtn.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="addMonRafPrizeBtn.Text" xml:space="preserve">
-    <value>&amp;Add</value>
+    <value>Add</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.Name" xml:space="preserve">
     <value>addMonRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1601,7 +1655,10 @@
     <value>NoControl</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 234</value>
+    <value>117, 205</value>
+  </data>
+  <data name="label12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 4</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 22</value>
@@ -1622,7 +1679,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1631,7 +1688,10 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 239</value>
+    <value>20, 176</value>
+  </data>
+  <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
@@ -1652,7 +1712,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="btnRunMonetary.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
@@ -1661,43 +1721,49 @@
     <value>NoControl</value>
   </data>
   <data name="btnRunMonetary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 485</value>
+    <value>24, 533</value>
+  </data>
+  <data name="btnRunMonetary.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 16</value>
   </data>
   <data name="btnRunMonetary.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="btnRunMonetary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>340, 60</value>
+    <value>410, 40</value>
   </data>
   <data name="btnRunMonetary.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="btnRunMonetary.Text" xml:space="preserve">
-    <value>Run &amp;Monetary Raffle</value>
+    <value>&amp;Run Monetary Raffle</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.Name" xml:space="preserve">
     <value>btnRunMonetary</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="monRafPrizeListBx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="monRafPrizeListBx.ItemHeight" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>22</value>
   </data>
   <data name="monRafPrizeListBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 270</value>
+    <value>24, 235</value>
+  </data>
+  <data name="monRafPrizeListBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="monRafPrizeListBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 166</value>
+    <value>410, 224</value>
   </data>
   <data name="monRafPrizeListBx.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1712,25 +1778,25 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;monRafPrizeListBx.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="monRafDescTxtBx.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="monRafDescTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 140</value>
+    <value>24, 134</value>
+  </data>
+  <data name="monRafDescTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="monRafDescTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>250</value>
-  </data>
-  <data name="monRafDescTxtBx.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="monRafDescTxtBx.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
   <data name="monRafDescTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 67</value>
+    <value>410, 26</value>
   </data>
   <data name="monRafDescTxtBx.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1745,7 +1811,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;monRafDescTxtBx.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1754,7 +1820,10 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 143</value>
+    <value>20, 108</value>
+  </data>
+  <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 22</value>
@@ -1775,19 +1844,22 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>9</value>
   </data>
   <data name="monRafNameTxtBx.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="monRafNameTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 85</value>
+    <value>24, 66</value>
+  </data>
+  <data name="monRafNameTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="monRafNameTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
   <data name="monRafNameTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 26</value>
+    <value>340, 26</value>
   </data>
   <data name="monRafNameTxtBx.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1802,7 +1874,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;monRafNameTxtBx.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>10</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1811,7 +1883,10 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 89</value>
+    <value>20, 40</value>
+  </data>
+  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 22</value>
@@ -1832,7 +1907,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>11</value>
   </data>
   <data name="monRafSaveLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1863,7 +1938,7 @@
     <value>NoControl</value>
   </data>
   <data name="monRafSaveLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>593, 527</value>
+    <value>617, 555</value>
   </data>
   <data name="monRafSaveLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 18</value>
@@ -1887,7 +1962,7 @@
     <value>monRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;monRafSaveLbl.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="monRaffleGroupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1896,7 +1971,7 @@
     <value>0, 0</value>
   </data>
   <data name="monRaffleGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>780, 564</value>
+    <value>780, 583</value>
   </data>
   <data name="monRaffleGroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1932,7 +2007,7 @@
     <value>NoControl</value>
   </data>
   <data name="monRafSaveBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 24</value>
+    <value>302, 5</value>
   </data>
   <data name="monRafSaveBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -1950,7 +2025,7 @@
     <value>monRafSaveBtn</value>
   </data>
   <data name="&gt;&gt;monRafSaveBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafSaveBtn.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -1962,7 +2037,7 @@
     <value>NoControl</value>
   </data>
   <data name="closeBtn3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 24</value>
+    <value>620, 5</value>
   </data>
   <data name="closeBtn3.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -1980,7 +2055,7 @@
     <value>closeBtn3</value>
   </data>
   <data name="&gt;&gt;closeBtn3.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;closeBtn3.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -1992,7 +2067,7 @@
     <value>NoControl</value>
   </data>
   <data name="monRafCancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 24</value>
+    <value>461, 5</value>
   </data>
   <data name="monRafCancelBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -2010,7 +2085,7 @@
     <value>monRafCancelBtn</value>
   </data>
   <data name="&gt;&gt;monRafCancelBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafCancelBtn.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -2034,7 +2109,7 @@
     <value>780, 637</value>
   </data>
   <data name="splitContainer6.SplitterDistance" type="System.Int32, mscorlib">
-    <value>564</value>
+    <value>583</value>
   </data>
   <data name="splitContainer6.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2111,9 +2186,6 @@
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="splitContainer7.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="splitContainer7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2121,7 +2193,7 @@
     <value>True</value>
   </data>
   <data name="splitContainer7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="splitContainer8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2139,10 +2211,10 @@
     <value>22</value>
   </data>
   <data name="wheelRaffleListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 26</value>
+    <value>8, 40</value>
   </data>
   <data name="wheelRaffleListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 488</value>
+    <value>204, 422</value>
   </data>
   <data name="wheelRaffleListBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2169,7 +2241,7 @@
     <value>8, 8, 8, 8</value>
   </data>
   <data name="wheelRaffleGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 540</value>
+    <value>220, 480</value>
   </data>
   <data name="wheelRaffleGroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2201,17 +2273,47 @@
   <data name="&gt;&gt;splitContainer8.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="editWheelRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="editWheelRafBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 56</value>
+  </data>
+  <data name="editWheelRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="editWheelRafBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 40</value>
+  </data>
+  <data name="editWheelRafBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="editWheelRafBtn.Text" xml:space="preserve">
+    <value>&amp;Edit</value>
+  </data>
+  <data name="&gt;&gt;editWheelRafBtn.Name" xml:space="preserve">
+    <value>editWheelRafBtn</value>
+  </data>
+  <data name="&gt;&gt;editWheelRafBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;editWheelRafBtn.Parent" xml:space="preserve">
+    <value>splitContainer8.Panel2</value>
+  </data>
+  <data name="&gt;&gt;editWheelRafBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="deleteWheelRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="deleteWheelRafBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 58</value>
+    <value>8, 108</value>
   </data>
   <data name="deleteWheelRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="deleteWheelRafBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="deleteWheelRafBtn.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2223,25 +2325,25 @@
     <value>deleteWheelRafBtn</value>
   </data>
   <data name="&gt;&gt;deleteWheelRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;deleteWheelRafBtn.Parent" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
   </data>
   <data name="&gt;&gt;deleteWheelRafBtn.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="newWheelRafBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="newWheelRafBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 12</value>
+    <value>8, 3</value>
   </data>
   <data name="newWheelRafBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="newWheelRafBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 30</value>
+    <value>204, 40</value>
   </data>
   <data name="newWheelRafBtn.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2253,13 +2355,13 @@
     <value>newWheelRafBtn</value>
   </data>
   <data name="&gt;&gt;newWheelRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;newWheelRafBtn.Parent" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
   </data>
   <data name="&gt;&gt;newWheelRafBtn.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer8.Panel2.Name" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
@@ -2274,10 +2376,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 643</value>
+    <value>220, 637</value>
   </data>
   <data name="splitContainer8.SplitterDistance" type="System.Int32, mscorlib">
-    <value>540</value>
+    <value>480</value>
   </data>
   <data name="splitContainer8.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2306,9 +2408,6 @@
   <data name="&gt;&gt;splitContainer7.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="splitContainer9.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="splitContainer9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -2321,92 +2420,157 @@
   <data name="splitContainer9.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
+  <data name="btnRunWheel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="btnRunWheel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnRunWheel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 533</value>
+  </data>
+  <data name="btnRunWheel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 16</value>
+  </data>
+  <data name="btnRunWheel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 40</value>
+  </data>
+  <data name="btnRunWheel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 40</value>
+  </data>
+  <data name="btnRunWheel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="btnRunWheel.Text" xml:space="preserve">
+    <value>&amp;Run Prize Wheel Raffle</value>
+  </data>
+  <data name="&gt;&gt;btnRunWheel.Name" xml:space="preserve">
+    <value>btnRunWheel</value>
+  </data>
+  <data name="&gt;&gt;btnRunWheel.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;btnRunWheel.Parent" xml:space="preserve">
+    <value>wheelRaffleGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnRunWheel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="wheelRafInstructionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="wheelRafInstructionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 500</value>
+  </data>
+  <data name="wheelRafInstructionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>410, 78</value>
+  </data>
+  <data name="wheelRafInstructionLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="wheelRafInstructionLabel.Text" xml:space="preserve">
+    <value>Prizes entered above must be entered to match what is displayed on the wheel image. The first prize is tied to the slice at the 12 o'clock position and goes around clockwise.</value>
+  </data>
+  <data name="&gt;&gt;wheelRafInstructionLabel.Name" xml:space="preserve">
+    <value>wheelRafInstructionLabel</value>
+  </data>
+  <data name="&gt;&gt;wheelRafInstructionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;wheelRafInstructionLabel.Parent" xml:space="preserve">
+    <value>wheelRaffleGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;wheelRafInstructionLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnBrowseOverlay.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 10pt, style=Bold</value>
   </data>
   <data name="btnBrowseOverlay.ImageNormal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        Hz2IoxV0bDhqAAAAAElFTkSuQmCC
+        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
+        SUVORK5CYII=
 </value>
   </data>
   <data name="btnBrowseOverlay.ImagePressed" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAcHwAA
-        HB8BYP0E2gAAB6hJREFUSEu9l2twVOUdh9MpUAGFaaVfeplxAKfVfmipHzpaqg4KFCjeQKVUilBRrIwZ
-        0VpEdMZSKgKBbAoqNqAUmnBLoRGKQEJINiQkS3aTLOR+ATZkd7PJZjd7P2fPefp/lwVWtE6mH/rhOf/3
-        ffd9n985u3tuWWPGjLmZGUKOUC0EBP5H1FrlUK4ZQFYmWZwZkcVL41XgHcImITTnVQvP76jh7VMBNtoM
-        3qtNsrZaGxbvVCcFgzdKgimHciln2n0Hy76WRXbW1WA1IOz+ZfZmVpWGWHvW5G9Og1JXEpsvidWbpFj4
-        NF1vbmeyp0tje4vOlnqddTVJ3qoi5VRulZEKzwjeNOPlzayRSVsbDcq9Br6EiWaamPK9kNoawyZhGPQl
-        DJxBg4OXDXIcJmvOgMpQWalgaajfNPTHU2G2t5rUBU2CSRV0DSXThPAwiQkJQRdkBzSTSr/JRy0mqyRD
-        ZalMFZzzcLaFjY0mJ/pNPHEVpGOaCSEmhIUBoSfNlYx2JmpcoeYOCREhnnK5xancG+tNpkuWylTB1Qs/
-        PMuOLoPGkIFpJDCMiBAUfIJIjQ7BLu26VL1KnfSvta/2zaSa0yX0CmptkKQRlR1I0CBulaGyVGbW2LFj
-        Ai8U+ynsMXDHNJkYQU/6SSbdUrulNmHo54SjwyKp18maFll7SapXaiAVrtyFVwxe+NSvggNZY+Wc+32J
-        xrbmBFE9KhOD6FqfcEloJqmJKFGBqe3/chKfbyc1q+CQta2CC03zoetD4o6xtUnjxZM6crBk3SrBzx+P
-        8+aZkEzoJ5G4QiLWjhZ3COXocTmK2D6MWO6w0OMH0WOfocUqhUYS8S5xetB0P6vPRFh2PIHKzLpNNkuO
-        RXnxmJ94rJlwsIywv4CofxPxwdfQBp9FH3wCc3DKsNAHnyQxuIyYf7U48sR1UJxWcbex/NggS4/FUJlZ
-        42Wz+GiYZUd9RMMNDA18xlDfDiK+PxH3LUfzPYXuexjTdxdmv6DqV6D7ZpHwLSDmyybc9xdx7SI4cFLc
-        Tp47MsCiI9EbwQuLQywt9hIZqiXQd5iAexth92pi7iVonrno7vvBfedX47ladfc0Ep5HibqXEXK/RaD3
-        Q3EeITxkZ0mxjwXFEcZdC55/OMSiQ15CgbP43UX4L1sYcr1O1LWYRM9s9B4J7pk8LLSeB4j3PErE9TuC
-        rjX4XVsZcP+LoYCN3xz2Me9Q+EbwI0Vhni7qI+ivxtdThK/LwmDXKsLdi4l1z0W7eD/mxTuHRaJ7mqx5
-        jFDXcwx2vymubfS5Dou7lieL+iUr44hnHwgx74CHQH8FnouF9LVtwN/2CqH2Z4i1z0Brvw86JkK7oGpm
-        W9UMEu1TiXbMIdT2WwbaX8fbthnPpQMM9lfx+H4fsw5kHPH0vSEe2efB33ea3o7duJvWM9CUzVDzr4k2
-        TyfRci80i7hFUPVmMsYTzffJmlkEm56hv+k1eps20NtZKG4rv9rr46G9GcEPFISYVeil33Oanrbd9DSu
-        p8+ZTcC5gIhzJvHz92KenzgsYuenEnbOZtD5DF7nq7gaN+JqKxC3lZkFPn5RkPFV37s7zLQ9PvqunOZi
-        0x4u2d/D7ViJ376QIcccoo6pGPWThMlfxPH58Yj9QYKOufQ7ltBr/wPd9hy6LxTi7bXy4O4BfrY7fTqp
-        zU8/ifLzXX48PRV0OgvoqN2Eq1Z+H9tS/LbHGbLNQD8n56jClq6ZZIwFbTMZsD2Fx7acS7VraK+x0NG4
-        D3dPJfftGmTKJ+kLiLp8/WhnnHs+DtDrqqS1fh/NVRY6q97GVb0Cb7X8SaofI3b2nhvU/Je20F89H3f1
-        Ui5Xv0JH1VouVL1PS0ORuKuZsnOIu3emL5nqJjE5X+Pu/DAtXTaaHYdorNxOs3U9nRWruGx9Cbd1EUHr
-        tBtU3lSvtYVe67NctL5Mh/VNLlhzaKjcSZO9mNbuOu7KjzApP32TULfF71v8TNoe5aizleaGY9grdlFf
-        lseFsnW0l62iu3wFnvL5eCqEVH0Sb0Y/1U7TdTqb1rI1OE+vx172Pues/6Cp4ThHnG1M/CjG9/LSt0V1
-        U/72qrN85wON1ac8dLRasVcVUVu2k7qSPBpK3uVC6Ro6S1YMi/Ml71BfuhHbyW3UnNpFXdUhcVayutTL
-        dz/QmfBG+kFANjnjnrZw+zaDn3wc4YCjk+bGU9isRbLwE2pOyl6f3ET98bXUn/iz1GusS5Puq89OrMN2
-        wkLNie2cLf07tdZ/ckFc+x3d/Fj+wCpDZanM6w97t+WEGP9Xg4cKQ+y1d9LaVE6D7Ygc/QHqrHvk698p
-        7EjXq9SpWp4mPXbOWiBHWUS97d/iqEi51EVj/FaDWyVDZanM64+3o+dtZnQejM0z+GF+lFdPeCmyt9DQ
-        WktX+2m62krobP0ySq+31Zyu9nLqW20cdLSxUhw/yI8xJs/kFnGrDJX1hQf6bzyxmZEbQ4yyyESL7GFu
-        gnG5Mb5liXB7bogJllCq3i51guqnyRz7pswdZ4kzNlcTR5KRuTBqQ4hbxK0yVNb14JtfYUbNtzByZQ0j
-        3g0wItdg1JYko0U0eovIMlD962MqSKqaO3KLwdfXB1MO5VLOtPvGK4x0bub/8NJG1n8AqzsYo7+Ry08A
-        AAAASUVORK5CYII=
+        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
 </value>
   </data>
   <data name="btnBrowseOverlay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnBrowseOverlay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 211</value>
+    <value>660, 104</value>
+  </data>
+  <data name="btnBrowseOverlay.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 0</value>
   </data>
   <data name="btnBrowseOverlay.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="btnBrowseOverlay.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+    <value>100, 26</value>
   </data>
   <data name="btnBrowseOverlay.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>4</value>
   </data>
   <data name="btnBrowseOverlay.Text" xml:space="preserve">
     <value>Browse...</value>
@@ -2415,25 +2579,28 @@
     <value>btnBrowseOverlay</value>
   </data>
   <data name="&gt;&gt;btnBrowseOverlay.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnBrowseOverlay.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseOverlay.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtOverlayImageLoc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtOverlayImageLoc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 215</value>
+    <value>450, 134</value>
+  </data>
+  <data name="txtOverlayImageLoc.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="txtOverlayImageLoc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 26</value>
+    <value>310, 26</value>
   </data>
   <data name="txtOverlayImageLoc.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;txtOverlayImageLoc.Name" xml:space="preserve">
     <value>txtOverlayImageLoc</value>
@@ -2445,7 +2612,7 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;txtOverlayImageLoc.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2457,7 +2624,10 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 190</value>
+    <value>446, 108</value>
+  </data>
+  <data name="label18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 22</value>
@@ -2478,94 +2648,96 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnBrowseWheel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 10pt, style=Bold</value>
   </data>
   <data name="btnBrowseWheel.ImageNormal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        Hz2IoxV0bDhqAAAAAElFTkSuQmCC
+        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
+        SUVORK5CYII=
 </value>
   </data>
   <data name="btnBrowseWheel.ImagePressed" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
-        AAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAABwfAAAcHwFg/QTaAAAHqElE
+        QVRIS72Xa3BU5R2H0ylQAYVppV96mXEAp9V+aKkfOlqqDgoUKN5ApVSKUFGsjBnRWkR0xlIqAoFsCio2
+        oBSacEuhEYpAQkg2JCRLdpMs5H4BNmR3s8lmN3s/Z895+n+XBVa0TqYf+uE5//d9932f3zm7e25ZY8aM
+        uZkZQo5QLQQE/kfUWuVQrhlAViZZnBmRxUvjVeAdwiYhNOdVC8/vqOHtUwE22gzeq02ytlobFu9UJwWD
+        N0qCKYdyKWfafQfLvpZFdtbVYDUg7P5l9mZWlYZYe9bkb06DUlcSmy+J1ZukWPg0XW9uZ7KnS2N7i86W
+        ep11NUneqiLlVG6VkQrPCN404+XNrJFJWxsNyr0GvoSJZpqY8r2Q2hrDJmEY9CUMnEGDg5cNchwma86A
+        ylBZqWBpqN809MdTYba3mtQFTYJJFXQNJdOE8DCJCQlBF2QHNJNKv8lHLSarJENlqUwVnPNwtoWNjSYn
+        +k08cRWkY5oJISaEhQGhJ82VjHYmalyh5g4JESGecrnFqdwb602mS5bKVMHVCz88y44ug8aQgWkkMIyI
+        EBR8gkiNDsEu7bpUvUqd9K+1r/bNpJrTJfQKam2QpBGVHUjQIG6VobJUZtbYsWMCLxT7KewxcMc0mRhB
+        T/pJJt1Su6U2YejnhKPDIqnXyZoWWXtJqldqIBWu3IVXDF741K+CA1lj5Zz7fYnGtuYEUT0qE4PoWp9w
+        SWgmqYkoUYGp7f9yEp9vJzWr4JC1rYILTfOh60PijrG1SePFkzpysGTdKsHPH4/z5pmQTOgnkbhCItaO
+        FncI5ehxOYrYPoxY7rDQ4wfRY5+hxSqFRhLxLnF60HQ/q89EWHY8gcrMuk02S45FefGYn3ismXCwjLC/
+        gKh/E/HB19AGn0UffAJzcMqw0AefJDG4jJh/tTjyxHVQnFZxt7H82CBLj8VQmVnjZbP4aJhlR31Eww0M
+        DXzGUN8OIr4/EfctR/M9he57GNN3F2a/oOpXoPtmkfAtIObLJtz3F3HtIjhwUtxOnjsywKIj0RvBC4tD
+        LC32EhmqJdB3mIB7G2H3amLuJWieueju+8F951fjuVp19zQSnkeJupcRcr9FoPdDcR4hPGRnSbGPBcUR
+        xl0Lnn84xKJDXkKBs/jdRfgvWxhyvU7UtZhEz2z0HgnumTwstJ4HiPc8SsT1O4KuNfhdWxlw/4uhgI3f
+        HPYx71D4RvAjRWGeLuoj6K/G11OEr8vCYNcqwt2LiXXPRbt4P+bFO4dFonuarHmMUNdzDHa/Ka5t9LkO
+        i7uWJ4v6JSvjiGcfCDHvgIdAfwWei4X0tW3A3/YKofZniLXPQGu/DzomQrugamZb1QwS7VOJdswh1PZb
+        Btpfx9u2Gc+lAwz2V/H4fh+zDmQc8fS9IR7Z58Hfd5rejt24m9Yz0JTNUPOviTZPJ9FyLzSLuEVQ9WYy
+        xhPN98maWQSbnqG/6TV6mzbQ21kobiu/2uvjob0ZwQ8UhJhV6KXfc5qett30NK6nz5lNwLmAiHMm8fP3
+        Yp6fOCxi56cSds5m0PkMXueruBo34morELeVmQU+flGQ8VXfuzvMtD0++q6c5mLTHi7Z38PtWInfvpAh
+        xxyijqkY9ZOEyV/E8fnxiP1Bgo659DuW0Gv/A932HLovFOLttfLg7gF+tjt9OqnNTz+J8vNdfjw9FXQ6
+        C+io3YSrVn4f21L8tscZss1APyfnqMKWrplkjAVtMxmwPYXHtpxLtWtor7HQ0bgPd08l9+0aZMon6QuI
+        unz9aGecez4O0OuqpLV+H81VFjqr3sZVvQJvtfxJqh8jdvaeG9T8l7bQXz0fd/VSLle/QkfVWi5UvU9L
+        Q5G4q5myc4i7d6YvmeomMTlf4+78MC1dNpodh2is3E6zdT2dFau4bH0Jt3URQeu0G1TeVK+1hV7rs1y0
+        vkyH9U0uWHNoqNxJk72Y1u467sqPMCk/fZNQt8XvW/xM2h7lqLOV5oZj2Ct2UV+Wx4WydbSXraK7fAWe
+        8vl4KoRUfRJvRj/VTtN1OpvWsjU4T6/HXvY+56z/oKnhOEecbUz8KMb38tK3RXVT/vaqs3znA43Vpzx0
+        tFqxVxVRW7aTupI8Gkre5ULpGjpLVgyL8yXvUF+6EdvJbdSc2kVd1SFxVrK61Mt3P9CZ8Eb6QUA2OeOe
+        tnD7NoOffBzhgKOT5sZT2KxFsvATak7KXp/cRP3xtdSf+LPUa6xLk+6rz06sw3bCQs2J7Zwt/Tu11n9y
+        QVz7Hd38WP7AKkNlqczrD3u35YQY/1eDhwpD7LV30tpUToPtiBz9Aeqse+Tr3ynsSNer1KlaniY9ds5a
+        IEdZRL3t3+KoSLnURWP8VoNbJUNlqczrj7ej521mdB6MzTP4YX6UV094KbK30NBaS1f7abraSuhs/TJK
+        r7fVnK72cupbbRx0tLFSHD/IjzEmz+QWcasMlfWFB/pvPLGZkRtDjLLIRIvsYW6CcbkxvmWJcHtuiAmW
+        UKreLnWC6qfJHPumzB1niTM2VxNHkpG5MGpDiFvErTJU1vXgm19hRs23MHJlDSPeDTAi12DUliSjRTR6
+        i8gyUP3rYypIqpo7covB19cHUw7lUs60+8YrjHRu5v/w0kbWfwCrOxijv5HLTwAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnBrowseWheel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnBrowseWheel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>280, 157</value>
+    <value>660, 36</value>
+  </data>
+  <data name="btnBrowseWheel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 8, 20, 4</value>
   </data>
   <data name="btnBrowseWheel.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="btnBrowseWheel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
+    <value>100, 26</value>
   </data>
   <data name="btnBrowseWheel.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
+    <value>2</value>
   </data>
   <data name="btnBrowseWheel.Text" xml:space="preserve">
     <value>Browse...</value>
@@ -2574,19 +2746,25 @@
     <value>btnBrowseWheel</value>
   </data>
   <data name="&gt;&gt;btnBrowseWheel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnBrowseWheel.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;btnBrowseWheel.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
+  </data>
+  <data name="wheelImageBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="wheelImageBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 249</value>
+    <value>440, 176</value>
+  </data>
+  <data name="wheelImageBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 20, 8</value>
   </data>
   <data name="wheelImageBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 325</value>
+    <value>340, 340</value>
   </data>
   <data name="wheelImageBox.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>StretchImage</value>
@@ -2604,19 +2782,19 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;wheelImageBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="txtWheelImageLoc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtWheelImageLoc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 161</value>
+    <value>450, 65</value>
   </data>
   <data name="txtWheelImageLoc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 26</value>
+    <value>310, 26</value>
   </data>
   <data name="txtWheelImageLoc.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtWheelImageLoc.Name" xml:space="preserve">
     <value>txtWheelImageLoc</value>
@@ -2628,7 +2806,7 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;txtWheelImageLoc.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2636,8 +2814,11 @@
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 136</value>
+    <value>446, 40</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 22</value>
@@ -2658,19 +2839,22 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="wheelRafPrizeValTxtBx.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="wheelRafPrizeValTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>552, 161</value>
+    <value>193, 202</value>
+  </data>
+  <data name="wheelRafPrizeValTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="wheelRafPrizeValTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 26</value>
+    <value>152, 26</value>
   </data>
   <data name="wheelRafPrizeValTxtBx.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeValTxtBx.Name" xml:space="preserve">
     <value>wheelRafPrizeValTxtBx</value>
@@ -2682,130 +2866,109 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeValTxtBx.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="wheelRafPrizeWeightTxtBx.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="wheelRafPrizeWeightTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 161</value>
+    <value>24, 202</value>
+  </data>
+  <data name="wheelRafPrizeWeightTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="wheelRafPrizeWeightTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="wheelRafPrizeWeightTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 26</value>
+    <value>48, 26</value>
   </data>
   <data name="wheelRafPrizeWeightTxtBx.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.Name" xml:space="preserve">
     <value>wheelRafPrizeWeightTxtBx</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="wheelRafStatusLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="wheelRafStatusLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="wheelRafStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>767, 37</value>
-  </data>
-  <data name="wheelRafStatusLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>45</value>
-  </data>
-  <data name="wheelRafStatusLabel.Text" xml:space="preserve">
-    <value>Loading....</value>
-  </data>
-  <data name="wheelRafStatusLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;wheelRafStatusLabel.Name" xml:space="preserve">
-    <value>wheelRafStatusLabel</value>
-  </data>
-  <data name="&gt;&gt;wheelRafStatusLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;wheelRafStatusLabel.Parent" xml:space="preserve">
-    <value>wheelRaffleGroupBox2</value>
-  </data>
-  <data name="&gt;&gt;wheelRafStatusLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="removeWheelRafPrizeBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
   <data name="removeWheelRafPrizeBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="removeWheelRafPrizeBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>664, 510</value>
+    <value>356, 463</value>
+  </data>
+  <data name="removeWheelRafPrizeBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="removeWheelRafPrizeBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="removeWheelRafPrizeBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 30</value>
+    <value>78, 26</value>
   </data>
   <data name="removeWheelRafPrizeBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="removeWheelRafPrizeBtn.Text" xml:space="preserve">
-    <value>&amp;Remove</value>
+    <value>Remove</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.Name" xml:space="preserve">
     <value>removeWheelRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="addWheelRafPrizeBtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
   <data name="addWheelRafPrizeBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="addWheelRafPrizeBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>688, 157</value>
+    <value>356, 202</value>
+  </data>
+  <data name="addWheelRafPrizeBtn.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 4</value>
   </data>
   <data name="addWheelRafPrizeBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
+    <value>30, 26</value>
   </data>
   <data name="addWheelRafPrizeBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 30</value>
+    <value>78, 26</value>
   </data>
   <data name="addWheelRafPrizeBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="addWheelRafPrizeBtn.Text" xml:space="preserve">
-    <value>&amp;Add</value>
+    <value>Add</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.Name" xml:space="preserve">
     <value>addWheelRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2817,7 +2980,10 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>454, 165</value>
+    <value>85, 206</value>
+  </data>
+  <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 22</value>
@@ -2838,7 +3004,7 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2847,7 +3013,10 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>401, 136</value>
+    <value>20, 176</value>
+  </data>
+  <data name="label13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
@@ -2868,55 +3037,28 @@
     <value>wheelRaffleGroupBox2</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="btnRunWheel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="btnRunWheel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnRunWheel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 64</value>
-  </data>
-  <data name="btnRunWheel.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="btnRunWheel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 60</value>
-  </data>
-  <data name="btnRunWheel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnRunWheel.Text" xml:space="preserve">
-    <value>Run &amp;Wheel Raffle</value>
-  </data>
-  <data name="&gt;&gt;btnRunWheel.Name" xml:space="preserve">
-    <value>btnRunWheel</value>
-  </data>
-  <data name="&gt;&gt;btnRunWheel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;btnRunWheel.Parent" xml:space="preserve">
-    <value>wheelRaffleGroupBox2</value>
-  </data>
-  <data name="&gt;&gt;btnRunWheel.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
   <data name="wheelRafPrizeListBx.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 12pt, style=Bold</value>
+    <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="wheelRafPrizeListBx.ItemHeight" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>22</value>
   </data>
   <data name="wheelRafPrizeListBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 194</value>
+    <value>24, 235</value>
+  </data>
+  <data name="wheelRafPrizeListBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="wheelRafPrizeListBx.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 204</value>
   </data>
   <data name="wheelRafPrizeListBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 310</value>
+    <value>410, 224</value>
   </data>
   <data name="wheelRafPrizeListBx.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeListBx.Name" xml:space="preserve">
     <value>wheelRafPrizeListBx</value>
@@ -2934,13 +3076,16 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="wheelRafDescTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 98</value>
+    <value>24, 134</value>
+  </data>
+  <data name="wheelRafDescTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="wheelRafDescTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>250</value>
   </data>
   <data name="wheelRafDescTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>410, 26</value>
   </data>
   <data name="wheelRafDescTxtBx.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2964,7 +3109,10 @@
     <value>NoControl</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 102</value>
+    <value>20, 108</value>
+  </data>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 8, 0, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 22</value>
@@ -2991,13 +3139,16 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="wheelRafNameTxtBx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 62</value>
+    <value>24, 66</value>
+  </data>
+  <data name="wheelRafNameTxtBx.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 4, 8, 8</value>
   </data>
   <data name="wheelRafNameTxtBx.MaxLength" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
   <data name="wheelRafNameTxtBx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 26</value>
+    <value>340, 26</value>
   </data>
   <data name="wheelRafNameTxtBx.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3021,7 +3172,10 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 67</value>
+    <value>20, 40</value>
+  </data>
+  <data name="label15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 22</value>
@@ -3073,7 +3227,7 @@
     <value>NoControl</value>
   </data>
   <data name="wheelRafSaveLbl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 556</value>
+    <value>617, 555</value>
   </data>
   <data name="wheelRafSaveLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 18</value>
@@ -3103,7 +3257,7 @@
     <value>0, 0</value>
   </data>
   <data name="wheelRaffleGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>785, 590</value>
+    <value>780, 583</value>
   </data>
   <data name="wheelRaffleGroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3139,7 +3293,7 @@
     <value>NoControl</value>
   </data>
   <data name="wheelRafSaveBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>302, 3</value>
+    <value>302, 5</value>
   </data>
   <data name="wheelRafSaveBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -3157,7 +3311,7 @@
     <value>wheelRafSaveBtn</value>
   </data>
   <data name="&gt;&gt;wheelRafSaveBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafSaveBtn.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3169,7 +3323,7 @@
     <value>NoControl</value>
   </data>
   <data name="closeBtn4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 3</value>
+    <value>620, 5</value>
   </data>
   <data name="closeBtn4.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -3187,7 +3341,7 @@
     <value>closeBtn4</value>
   </data>
   <data name="&gt;&gt;closeBtn4.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;closeBtn4.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3199,7 +3353,7 @@
     <value>NoControl</value>
   </data>
   <data name="wheelRafCancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 3</value>
+    <value>461, 5</value>
   </data>
   <data name="wheelRafCancelBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -3217,7 +3371,7 @@
     <value>wheelRafCancelBtn</value>
   </data>
   <data name="&gt;&gt;wheelRafCancelBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.860, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafCancelBtn.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3238,10 +3392,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>785, 643</value>
+    <value>780, 637</value>
   </data>
   <data name="splitContainer9.SplitterDistance" type="System.Int32, mscorlib">
-    <value>590</value>
+    <value>583</value>
   </data>
   <data name="splitContainer9.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3271,10 +3425,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1010, 643</value>
+    <value>1004, 637</value>
   </data>
   <data name="splitContainer7.SplitterDistance" type="System.Int32, mscorlib">
-    <value>221</value>
+    <value>220</value>
   </data>
   <data name="splitContainer7.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3293,6 +3447,9 @@
   </data>
   <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 31</value>
+  </data>
+  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
     <value>1010, 643</value>
@@ -3370,6 +3527,6 @@
     <value>Raffle</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.860, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.893, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

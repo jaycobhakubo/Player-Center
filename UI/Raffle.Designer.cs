@@ -62,22 +62,22 @@
             this.btnRunRaffle = new GTI.Controls.ImageButton();
             this.lblRaffleInfo = new System.Windows.Forms.Label();
             this.lstbxRaffleWinners2 = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btnClearRaffle = new GTI.Controls.ImageButton();
             this.btnRaffleClose = new GTI.Controls.ImageButton();
             this.btnRaffleReprintVoucher = new GTI.Controls.ImageButton();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.monRaffleGroupBox1 = new System.Windows.Forms.GroupBox();
             this.monRaffleListBox = new System.Windows.Forms.ListBox();
+            this.editMonRafBtn = new GTI.Controls.ImageButton();
             this.deleteMonRafBtn = new GTI.Controls.ImageButton();
             this.newMonRafBtn = new GTI.Controls.ImageButton();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.monRaffleGroupBox2 = new System.Windows.Forms.GroupBox();
             this.monRafPrizeValTxtBx = new GTI.Controls.TextBoxNumeric();
             this.monRafPrizeWeightTxtBx = new GTI.Controls.TextBoxNumeric();
-            this.monRafStatusLabel = new System.Windows.Forms.Label();
             this.removeMonRafPrizeBtn = new GTI.Controls.ImageButton();
             this.addMonRafPrizeBtn = new GTI.Controls.ImageButton();
             this.label12 = new System.Windows.Forms.Label();
@@ -97,10 +97,13 @@
             this.splitContainer8 = new System.Windows.Forms.SplitContainer();
             this.wheelRaffleGroupBox1 = new System.Windows.Forms.GroupBox();
             this.wheelRaffleListBox = new System.Windows.Forms.ListBox();
+            this.editWheelRafBtn = new GTI.Controls.ImageButton();
             this.deleteWheelRafBtn = new GTI.Controls.ImageButton();
             this.newWheelRafBtn = new GTI.Controls.ImageButton();
             this.splitContainer9 = new System.Windows.Forms.SplitContainer();
             this.wheelRaffleGroupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRunWheel = new GTI.Controls.ImageButton();
+            this.wheelRafInstructionLabel = new System.Windows.Forms.Label();
             this.btnBrowseOverlay = new GTI.Controls.ImageButton();
             this.txtOverlayImageLoc = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -110,12 +113,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.wheelRafPrizeValTxtBx = new System.Windows.Forms.TextBox();
             this.wheelRafPrizeWeightTxtBx = new GTI.Controls.TextBoxNumeric();
-            this.wheelRafStatusLabel = new System.Windows.Forms.Label();
             this.removeWheelRafPrizeBtn = new GTI.Controls.ImageButton();
             this.addWheelRafPrizeBtn = new GTI.Controls.ImageButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnRunWheel = new GTI.Controls.ImageButton();
             this.wheelRafPrizeListBx = new System.Windows.Forms.ListBox();
             this.wheelRafDescTxtBx = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -421,10 +422,10 @@
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.lstbxRaffleWinners2);
+            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnClearRaffle);
             this.tabPage2.Controls.Add(this.btnRaffleClose);
             this.tabPage2.Controls.Add(this.btnRaffleReprintVoucher);
-            this.tabPage2.Controls.Add(this.label6);
             resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Tag = "2";
@@ -497,6 +498,11 @@
             this.lstbxRaffleWinners2.TabStop = false;
             this.lstbxRaffleWinners2.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // btnClearRaffle
             // 
             this.btnClearRaffle.BackColor = System.Drawing.Color.Transparent;
@@ -542,11 +548,6 @@
             this.btnRaffleReprintVoucher.Click += new System.EventHandler(this.btnRaffleReprintVoucher_Click);
             this.btnRaffleReprintVoucher.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
@@ -579,6 +580,7 @@
             // 
             // splitContainer5.Panel2
             // 
+            this.splitContainer5.Panel2.Controls.Add(this.editMonRafBtn);
             this.splitContainer5.Panel2.Controls.Add(this.deleteMonRafBtn);
             this.splitContainer5.Panel2.Controls.Add(this.newMonRafBtn);
             this.splitContainer5.TabStop = false;
@@ -596,6 +598,20 @@
             resources.ApplyResources(this.monRaffleListBox, "monRaffleListBox");
             this.monRaffleListBox.Name = "monRaffleListBox";
             this.monRaffleListBox.SelectedIndexChanged += new System.EventHandler(this.monRaffleListBox_SelectedIndexChanged);
+            // 
+            // editMonRafBtn
+            // 
+            this.editMonRafBtn.BackColor = System.Drawing.Color.Transparent;
+            this.editMonRafBtn.FocusColor = System.Drawing.Color.Black;
+            this.editMonRafBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.editMonRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.editMonRafBtn, "editMonRafBtn");
+            this.editMonRafBtn.Name = "editMonRafBtn";
+            this.editMonRafBtn.RepeatRate = 150;
+            this.editMonRafBtn.RepeatWhenHeldFor = 750;
+            this.editMonRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.editMonRafBtn.UseVisualStyleBackColor = false;
+            this.editMonRafBtn.Click += new System.EventHandler(this.editMonRafBtn_Click);
             // 
             // deleteMonRafBtn
             // 
@@ -645,7 +661,6 @@
             // 
             this.monRaffleGroupBox2.Controls.Add(this.monRafPrizeValTxtBx);
             this.monRaffleGroupBox2.Controls.Add(this.monRafPrizeWeightTxtBx);
-            this.monRaffleGroupBox2.Controls.Add(this.monRafStatusLabel);
             this.monRaffleGroupBox2.Controls.Add(this.removeMonRafPrizeBtn);
             this.monRaffleGroupBox2.Controls.Add(this.addMonRafPrizeBtn);
             this.monRaffleGroupBox2.Controls.Add(this.label12);
@@ -677,11 +692,6 @@
             this.monRafPrizeWeightTxtBx.Name = "monRafPrizeWeightTxtBx";
             this.monRafPrizeWeightTxtBx.Precision = 2;
             this.monRafPrizeWeightTxtBx.TextChanged += new System.EventHandler(this.monRafTxtBx_TextChanged);
-            // 
-            // monRafStatusLabel
-            // 
-            resources.ApplyResources(this.monRafStatusLabel, "monRafStatusLabel");
-            this.monRafStatusLabel.Name = "monRafStatusLabel";
             // 
             // removeMonRafPrizeBtn
             // 
@@ -812,10 +822,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             this.tabPage4.Controls.Add(this.splitContainer7);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // splitContainer7
             // 
@@ -843,6 +853,7 @@
             // 
             // splitContainer8.Panel2
             // 
+            this.splitContainer8.Panel2.Controls.Add(this.editWheelRafBtn);
             this.splitContainer8.Panel2.Controls.Add(this.deleteWheelRafBtn);
             this.splitContainer8.Panel2.Controls.Add(this.newWheelRafBtn);
             this.splitContainer8.TabStop = false;
@@ -860,6 +871,20 @@
             resources.ApplyResources(this.wheelRaffleListBox, "wheelRaffleListBox");
             this.wheelRaffleListBox.Name = "wheelRaffleListBox";
             this.wheelRaffleListBox.SelectedIndexChanged += new System.EventHandler(this.wheelRaffleListBox_SelectedIndexChanged);
+            // 
+            // editWheelRafBtn
+            // 
+            this.editWheelRafBtn.BackColor = System.Drawing.Color.Transparent;
+            this.editWheelRafBtn.FocusColor = System.Drawing.Color.Black;
+            this.editWheelRafBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.editWheelRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.editWheelRafBtn, "editWheelRafBtn");
+            this.editWheelRafBtn.Name = "editWheelRafBtn";
+            this.editWheelRafBtn.RepeatRate = 150;
+            this.editWheelRafBtn.RepeatWhenHeldFor = 750;
+            this.editWheelRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.editWheelRafBtn.UseVisualStyleBackColor = false;
+            this.editWheelRafBtn.Click += new System.EventHandler(this.editWheelRafBtn_Click);
             // 
             // deleteWheelRafBtn
             // 
@@ -907,6 +932,8 @@
             // 
             // wheelRaffleGroupBox2
             // 
+            this.wheelRaffleGroupBox2.Controls.Add(this.btnRunWheel);
+            this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafInstructionLabel);
             this.wheelRaffleGroupBox2.Controls.Add(this.btnBrowseOverlay);
             this.wheelRaffleGroupBox2.Controls.Add(this.txtOverlayImageLoc);
             this.wheelRaffleGroupBox2.Controls.Add(this.label18);
@@ -916,12 +943,10 @@
             this.wheelRaffleGroupBox2.Controls.Add(this.label17);
             this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafPrizeValTxtBx);
             this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafPrizeWeightTxtBx);
-            this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafStatusLabel);
             this.wheelRaffleGroupBox2.Controls.Add(this.removeWheelRafPrizeBtn);
             this.wheelRaffleGroupBox2.Controls.Add(this.addWheelRafPrizeBtn);
             this.wheelRaffleGroupBox2.Controls.Add(this.label11);
             this.wheelRaffleGroupBox2.Controls.Add(this.label13);
-            this.wheelRaffleGroupBox2.Controls.Add(this.btnRunWheel);
             this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafPrizeListBx);
             this.wheelRaffleGroupBox2.Controls.Add(this.wheelRafDescTxtBx);
             this.wheelRaffleGroupBox2.Controls.Add(this.label14);
@@ -931,6 +956,26 @@
             resources.ApplyResources(this.wheelRaffleGroupBox2, "wheelRaffleGroupBox2");
             this.wheelRaffleGroupBox2.Name = "wheelRaffleGroupBox2";
             this.wheelRaffleGroupBox2.TabStop = false;
+            // 
+            // btnRunWheel
+            // 
+            this.btnRunWheel.BackColor = System.Drawing.Color.Transparent;
+            this.btnRunWheel.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btnRunWheel, "btnRunWheel");
+            this.btnRunWheel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.btnRunWheel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.btnRunWheel.Name = "btnRunWheel";
+            this.btnRunWheel.RepeatRate = 150;
+            this.btnRunWheel.RepeatWhenHeldFor = 750;
+            this.btnRunWheel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnRunWheel.UseVisualStyleBackColor = false;
+            this.btnRunWheel.Click += new System.EventHandler(this.btnRunWheel_Click);
+            // 
+            // wheelRafInstructionLabel
+            // 
+            this.wheelRafInstructionLabel.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.wheelRafInstructionLabel, "wheelRafInstructionLabel");
+            this.wheelRafInstructionLabel.Name = "wheelRafInstructionLabel";
             // 
             // btnBrowseOverlay
             // 
@@ -1006,12 +1051,6 @@
             this.wheelRafPrizeWeightTxtBx.Precision = 2;
             this.wheelRafPrizeWeightTxtBx.TextChanged += new System.EventHandler(this.wheelRafTxtBx_TextChanged);
             // 
-            // wheelRafStatusLabel
-            // 
-            this.wheelRafStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.wheelRafStatusLabel, "wheelRafStatusLabel");
-            this.wheelRafStatusLabel.Name = "wheelRafStatusLabel";
-            // 
             // removeWheelRafPrizeBtn
             // 
             this.removeWheelRafPrizeBtn.BackColor = System.Drawing.Color.Transparent;
@@ -1049,20 +1088,6 @@
             // 
             resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            // 
-            // btnRunWheel
-            // 
-            this.btnRunWheel.BackColor = System.Drawing.Color.Transparent;
-            this.btnRunWheel.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btnRunWheel, "btnRunWheel");
-            this.btnRunWheel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btnRunWheel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.btnRunWheel.Name = "btnRunWheel";
-            this.btnRunWheel.RepeatRate = 150;
-            this.btnRunWheel.RepeatWhenHeldFor = 750;
-            this.btnRunWheel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btnRunWheel.UseVisualStyleBackColor = false;
-            this.btnRunWheel.Click += new System.EventHandler(this.btnRunWheel_Click);
             // 
             // wheelRafPrizeListBx
             // 
@@ -1276,7 +1301,6 @@
         private Controls.ImageButton removeMonRafPrizeBtn;
         private Controls.ImageButton addMonRafPrizeBtn;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label monRafStatusLabel;
         private Controls.TextBoxNumeric monRafPrizeValTxtBx;
         private Controls.TextBoxNumeric monRafPrizeWeightTxtBx;
         private System.Windows.Forms.TabPage tabPage4;
@@ -1289,7 +1313,6 @@
         private System.Windows.Forms.SplitContainer splitContainer9;
         private System.Windows.Forms.GroupBox wheelRaffleGroupBox2;
         private Controls.TextBoxNumeric wheelRafPrizeWeightTxtBx;
-        private System.Windows.Forms.Label wheelRafStatusLabel;
         private Controls.ImageButton removeWheelRafPrizeBtn;
         private Controls.ImageButton addWheelRafPrizeBtn;
         private System.Windows.Forms.Label label11;
@@ -1312,5 +1335,8 @@
         private System.Windows.Forms.TextBox txtWheelImageLoc;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox wheelRafPrizeValTxtBx;
+        private System.Windows.Forms.Label wheelRafInstructionLabel;
+        private Controls.ImageButton editMonRafBtn;
+        private Controls.ImageButton editWheelRafBtn;
     }
 }

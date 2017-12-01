@@ -1669,7 +1669,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                 {
                     List<string> Productx = new List<string>();
-                    foreach (PackageItem x in PlayerManager.PackageListName)
+                    foreach (ProductItem x in PlayerManager.EnabledProducts)
                     {
                         Productx.Add(x.ToString());
                     }

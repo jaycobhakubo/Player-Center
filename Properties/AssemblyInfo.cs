@@ -14,12 +14,12 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fortunet, Inc.")]
 [assembly: AssemblyProduct("GameTech® Edge Bingo System™")]
-[assembly: AssemblyCopyright("Copyright © 2017 FortuNet, Inc. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2018 FortuNet, Inc. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 [assembly: Guid("2157ac94-82e3-4fc6-95f0-4a0900a17dae")]
 
-[assembly: AssemblyVersion("1.10.0.0")]
-[assembly: AssemblyFileVersion("1.10.0.0")]
+[assembly: AssemblyVersion("1.11.0.2")]
+[assembly: AssemblyFileVersion("1.11.0.2")]

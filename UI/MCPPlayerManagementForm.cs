@@ -685,10 +685,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool ChkDataChange()
         {
             if (m_dataChanged)
-            {
-                return MessageForm.Show(Resources.Changes, Resources.PlayerCenterName, MessageFormTypes.YesNo) == DialogResult.Yes;
-            }
-            return true;
+                return MessageForm.ShowCustomTwoButton(this, m_parent.Settings.DisplayMode, Resources.Changes, Resources.PlayerCenterName, true, 1, "Keep", "Discard", 0) == 2;
+            else
+                return true;
         }
         #endregion
 
@@ -967,7 +966,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         // US2100/TA15670
-        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
+        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)//knc
         {
             m_isManualAwardPointsEnable = isManualAwardPointsEnable;
             if ( !isManualAwardPointsEnable)

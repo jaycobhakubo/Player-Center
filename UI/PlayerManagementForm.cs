@@ -295,14 +295,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void FindPlayerClick(object sender, EventArgs e)
         {
-            DialogResult result = DialogResult.Yes;
+            bool discardChanges = true;
 
             if (m_dataChanged)
-            {
-                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
-            }
+                discardChanges = ShouldWeDiscardChanges();
 
-            if (result == DialogResult.Yes)
+            if (discardChanges)
             {
                 FindPlayerForm findForm = new FindPlayerForm(m_parent, m_displayMode);
 
@@ -328,14 +326,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void NewPlayerClick(object sender, EventArgs e)
         {
-            DialogResult result = DialogResult.Yes;
+            bool discardChanges = true;
 
             if (m_dataChanged)
-            {
-                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
-            }
+                discardChanges = ShouldWeDiscardChanges();
 
-            if (result == DialogResult.Yes)
+            if (discardChanges)
             {
                 m_player = new Player();
                 SetPlayerValues(false);//RALLY DE8537
@@ -463,14 +459,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void CancelChangesClick(object sender, EventArgs e)
         {
-            DialogResult result = DialogResult.Yes;
+            bool discardChanges = true;
 
             if (m_dataChanged)
-            {
-                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
-            }
+                discardChanges = ShouldWeDiscardChanges();
 
-            if (result == DialogResult.Yes)
+            if (discardChanges)
             {
                 SetPlayerValues(true);//RALLY DE8537
                 m_dataChanged = false;
@@ -490,14 +484,12 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_player.Id > 0)
             {
-                DialogResult result = DialogResult.Yes;
+                bool discardChanges = true;
 
                 if (m_dataChanged)
-                {
-                    result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
-                }
+                    discardChanges = ShouldWeDiscardChanges();
 
-                if (result == DialogResult.Yes)
+                if (discardChanges)
                 {
                     m_playerToSet = m_player;
                     Close();
@@ -517,18 +509,21 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void ExitClick(object sender, EventArgs e)
         {
-            DialogResult result = DialogResult.Yes;
+            bool discardChanges = true;
 
             if (m_dataChanged)
-            {
-                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
-            }
+                discardChanges = ShouldWeDiscardChanges();
 
-            if (result == DialogResult.Yes)
+            if (discardChanges)
             {
                 m_playerToSet = null;
                 Close();
             }
+        }
+
+        private bool ShouldWeDiscardChanges()
+        {
+            return MessageForm.ShowCustomTwoButton(this, m_displayMode, Resources.Changes, Resources.PlayerCenterName, true, 1, "Keep", "Discard", 0) == 2;
         }
 
         /// <summary>

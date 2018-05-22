@@ -178,6 +178,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (!imgbtnDelete.Enabled) imgbtnDelete.Enabled = true;
                 if (!imgbtn.Enabled) imgbtn.Enabled = true;
+                if (!imgbtnAwardPoints.Enabled) imgbtnAwardPoints.Enabled = true;
                 if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                 if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
                 if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
@@ -2412,8 +2413,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (imgbtnDelete.Enabled) imgbtnDelete.Enabled = false;
                     if (imgbtn.Enabled) imgbtn.Enabled = false;
+                    if (imgbtnAwardPoints.Enabled) imgbtnAwardPoints.Enabled = false;
                     if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                     if (imgbtn.Visible) imgbtn.Visible = false;
+                    if (imgbtnAwardPoints.Visible) imgbtnAwardPoints.Visible = false;
 
                     if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                     if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
@@ -2441,6 +2444,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
                     if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                     imgbtn.Visible = false;
+                    imgbtnAwardPoints.Visible = false;
 
                     if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                     if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
@@ -3066,6 +3070,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (btnSaveList.Enabled) btnSaveList.Enabled = false;
                 if (!imgbtnCancel.Enabled) imgbtnCancel.Enabled = true;
                 if (!imgbtn.Visible) imgbtn.Visible = true;
+                if (!imgbtnAwardPoints.Visible) imgbtnAwardPoints.Visible = true;
                 if (!imgbtnDelete.Visible) imgbtnDelete.Visible = true;
 
                 if (m_playDatesButton.Enabled) m_playDatesPanel.Enabled = false;
@@ -3085,6 +3090,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
             if (imgbtnNewList.Visible) imgbtnNewList.Visible = false;
             if (imgbtn.Visible) imgbtn.Visible = false;
+            if (imgbtnAwardPoints.Visible) imgbtnAwardPoints.Visible = false;
             if (m_generateButton.Enabled) m_generateButton.Enabled = false;
             if (m_closeButton.Enabled) m_closeButton.Enabled = false;
             if (cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = false;
@@ -3143,6 +3149,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (cmbxPlayerList2.SelectedIndex != -1) cmbxPlayerList2.SelectedIndex = -1;
             if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
             if (imgbtn.Visible) imgbtn.Visible = false;
+            if (imgbtnAwardPoints.Visible) imgbtnAwardPoints.Visible = false;
             if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
 
 
@@ -3160,6 +3167,7 @@ namespace GTI.Modules.PlayerCenter.UI
             imgbtnNewList.Enabled = false;
             cmbxPlayerList2.Enabled = false;
             imgbtn.Enabled = false;
+            imgbtnAwardPoints.Enabled = false;
             imgbtnDelete.Enabled = false;
             m_closeButton.Enabled = false;
             m_generateButton.Enabled = false;
@@ -3851,6 +3859,11 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         
         #endregion
+
+        private void imgbtnAwardPoints_Click(object sender, EventArgs e)
+        {
+
+        }
         
     }
 

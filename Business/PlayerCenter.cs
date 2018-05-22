@@ -1918,7 +1918,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the arguments.
             object[] args = (object[])e.Argument;
             string fileName = (string)args[0];
-            PlayerListParams listParams = (PlayerListParams)args[1];//
+            PlayerListParams listParams = (PlayerListParams)args[1];
 
             // Rally DE1872
             GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
@@ -1932,7 +1932,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 throw; // Don't repackage the ServerCommException
             }
             catch (Exception ex)
-            {//ERROR Here
+            {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
             }
 
@@ -1943,126 +1943,86 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 // US1872 - Add headers to the export file.
                 // US2149 - Enclose text field in double quotes.
-                writer.Write(EscapeTextField(Resources.PlayerId));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.FirstName));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.MiddleInitial));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.LastName));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.BirthDate));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Email));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Gender));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Address1));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Address2));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.City));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.State));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Zip));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Country));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.RefundableCredit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.NonRefundableCredit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.LastVisit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PointsBalance));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.TotalSpend));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.AverageSpend));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.VisitCount));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.StatusList));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.GovIssuedIdNum));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PlayerIdentity));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PhoneNumber));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.JoinDate));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Comment));
-                writer.Write(Resources.ExportSeparator);
-                writer.WriteLine(EscapeTextField(Resources.MagCardNumber));
+                var header = new List<string>()
+                {
+                    Resources.PlayerId,
+                    Resources.FirstName,
+                    Resources.MiddleInitial,
+                    Resources.LastName,
+                    Resources.BirthDate,
+                    Resources.Email,
+                    Resources.Gender,
+                    Resources.Address1,
+                    Resources.Address2,
+                    Resources.City,
+                    Resources.State,
+                    Resources.Zip,
+                    Resources.Country,
+                    Resources.RefundableCredit,
+                    Resources.NonRefundableCredit,
+                    Resources.LastVisit,
+                    Resources.PointsBalance,
+                    Resources.TotalSpend,
+                    Resources.AverageSpend,
+                    Resources.VisitCount,
+                    Resources.StatusList,
+                    Resources.GovIssuedIdNum,
+                    Resources.PlayerIdentity,
+                    Resources.PhoneNumber,
+                    Resources.JoinDate,
+                    Resources.Comment,
+                    Resources.MagCardNumber
+                };
+                header = header.Select(x => EscapeTextField(x)).ToList(); // return me a list with all the strings sanitized
+                writer.WriteLine(String.Join(Resources.ExportSeparator, header)); // write the comma separated list to the file
 
+                // Note: if we want to speed up this next part even more, we could do something like the following:
+                // use a StringBuilder and we wait to write the data to the file till we get a couple hundred players or so (or once we reach the end)
+                List<object> playerData;
                 foreach (PlayerExportItem item in listMsg.Players)
                 {
                     if (item.Player != null)
                     {
                         // US1769 - Add more fields to export.
-                        writer.Write(item.Player.Id);
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.FirstName));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.MiddleInitial));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.LastName));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.BirthDate.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Email));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Gender));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Address1));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Address2));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.City));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.State));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Zip));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Country));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.RefundableCredit.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.NonRefundableCredit.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.LastVisit.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.PointsBalance.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.TotalSpend.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        if (/*item.AverageSpend == 0 ||*/ item.AverageSpend == null)
+                        playerData = new List<object>()
                         {
-                            writer.Write("");
-                        }
-                        else
-                        {
-                            writer.Write(item.AverageSpend);
-                        }
-                        //                        writer.Write(item.AverageSpend.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.VisitCount);
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.StatusList));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.GovIssuedIdNumber));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.PlayerIdentity));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.PhoneNumber));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.JoinDate.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Comment));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.WriteLine(EscapeTextField(item.Player.MagneticCardNumber));
+                            item.Player.Id,
+                            item.Player.FirstName,
+                            item.Player.MiddleInitial,
+                            item.Player.LastName,
+                            item.Player.BirthDate.ToShortDateString(),
+                            item.Player.Email,
+                            item.Player.Gender,
+                            item.Player.Address1,
+                            item.Player.Address2,
+                            item.Player.City,
+                            item.Player.State,
+                            item.Player.Zip,
+                            item.Player.Country,
+                            item.Player.RefundableCredit.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.NonRefundableCredit.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.LastVisit.ToShortDateString(),
+                            item.Player.PointsBalance.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.TotalSpend.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.AverageSpend == null ? "" : item.AverageSpend.Value.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.VisitCount,
+                            item.StatusList,
+                            item.Player.GovIssuedIdNumber,
+                            item.Player.PlayerIdentity,
+                            item.Player.PhoneNumber,
+                            item.Player.JoinDate.ToShortDateString(),
+                            item.Player.Comment,
+                            item.Player.MagneticCardNumber
+                        };
+
+                        var sanitizedData = playerData.Select(x =>
+                            {
+                                if (x is String)
+                                    return EscapeTextField((string)x);
+                                else
+                                    return x.ToString();
+                            } ); // return me a list with all the strings sanitized. Don't sanitize values that aren't strings
+                        writer.WriteLine(String.Join(Resources.ExportSeparator, sanitizedData)); // write the comma separated list to the file
                     }
                 }
 

@@ -826,7 +826,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_generateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>732, 685</value>
+    <value>744, 688</value>
   </data>
   <data name="m_generateButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -859,7 +859,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>874, 685</value>
+    <value>874, 688</value>
   </data>
   <data name="m_closeButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -897,40 +897,37 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1010, 740</value>
   </data>
-  <data name="imgbtnAwardPoints.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="imgbtnAwardPoints.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="imgbtn_AwardPointsToPlayerList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="imgbtnAwardPoints.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="imgbtn_AwardPointsToPlayerList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="imgbtnAwardPoints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 685</value>
+  <data name="imgbtn_AwardPointsToPlayerList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 688</value>
   </data>
-  <data name="imgbtnAwardPoints.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="imgbtn_AwardPointsToPlayerList.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="imgbtnAwardPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 38</value>
+  <data name="imgbtn_AwardPointsToPlayerList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 38</value>
   </data>
-  <data name="imgbtnAwardPoints.TabIndex" type="System.Int32, mscorlib">
+  <data name="imgbtn_AwardPointsToPlayerList.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
   </data>
-  <data name="imgbtnAwardPoints.Text" xml:space="preserve">
-    <value>Award Points</value>
+  <data name="imgbtn_AwardPointsToPlayerList.Text" xml:space="preserve">
+    <value>Award Points </value>
   </data>
-  <data name="&gt;&gt;imgbtnAwardPoints.Name" xml:space="preserve">
-    <value>imgbtnAwardPoints</value>
+  <data name="&gt;&gt;imgbtn_AwardPointsToPlayerList.Name" xml:space="preserve">
+    <value>imgbtn_AwardPointsToPlayerList</value>
   </data>
-  <data name="&gt;&gt;imgbtnAwardPoints.Type" xml:space="preserve">
+  <data name="&gt;&gt;imgbtn_AwardPointsToPlayerList.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1033, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;imgbtnAwardPoints.Parent" xml:space="preserve">
+  <data name="&gt;&gt;imgbtn_AwardPointsToPlayerList.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;imgbtnAwardPoints.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;imgbtn_AwardPointsToPlayerList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="imgbtnCancel.Enabled" type="System.Boolean, mscorlib">
@@ -943,7 +940,7 @@
     <value>NoControl</value>
   </data>
   <data name="imgbtnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>592, 685</value>
+    <value>616, 688</value>
   </data>
   <data name="imgbtnCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -3496,7 +3493,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSaveList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 685</value>
+    <value>488, 688</value>
   </data>
   <data name="btnSaveList.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -3665,9 +3662,6 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

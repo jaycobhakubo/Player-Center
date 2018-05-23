@@ -966,7 +966,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         // US2100/TA15670
-        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)//knc
+        private void ShowManualAwardPointsButton(bool isManualAwardPointsEnable)
         {
             m_isManualAwardPointsEnable = isManualAwardPointsEnable;
             if ( !isManualAwardPointsEnable)

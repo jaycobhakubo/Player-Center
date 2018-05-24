@@ -2319,23 +2319,30 @@ namespace GTI.Modules.PlayerCenter.Business
             {
               
                 decimal progress = 0, percentage = 0;
+
+                List<int> t_playerList = new List<int>();
+
                 foreach (var player in listMsg.Players)
                 {
                     try
                     {
-                 
-                     
-                    
+                        t_playerList.Add(player.Player.Id);
                     }
                     catch (Exception ex)
                     {
-                       
-                            break;
-                    }
-                    percentage = (++progress / playerCount) * 100.0m;
 
-                    m_worker.ReportProgress((int)percentage);
-                }
+                        break;
+                    }
+                }             
+
+                AwardPoints m_awardPoints = new AwardPoints();
+                m_awardPoints.PlayerList = t_playerList;
+                m_awardPoints.ShowDialog();
+                Application.DoEvents();
+
+                percentage = (++progress / playerCount) * 100.0m;
+                m_worker.ReportProgress((int)percentage);
+
             }
             e.Result = (int)playerCount;
         }

@@ -72,22 +72,24 @@ namespace GTI.Modules.PlayerCenter.UI
             DialogResult = DialogResult.Cancel;
             Close();
         }
+        private bool m_isPointsAwardedSuccess;
 
-        private void AwardPointsToPlayer(int playerId)
+        private bool AwardPointsToPlayer(int playerId)
         {
             PointsAwarded = 0M;
             var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-            IsPointsAwardedSuccess = false;
+            m_isPointsAwardedSuccess = false;
 
             SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(playerId, tempManualPlayerPoints);
             msg.Send();
             if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
             {
-                IsPointsAwardedSuccess = true;
+                m_isPointsAwardedSuccess = true;
                 PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                //MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
               
             }
+            return m_isPointsAwardedSuccess;
         }
 
         private void acceptImageButton_Click(object sender, EventArgs e)
@@ -110,7 +112,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     try
                     {
-                        AwardPointsToPlayer(PlayerId);
+                        if (AwardPointsToPlayer(PlayerId))
+                        {
+                            MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                        }
           
                     }
                     catch
@@ -132,6 +137,11 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         MessageForm.Show(Resources.InfoPointsAwardFailed, Resources.PlayerCenterName);
                     }
+                }
+
+                if (m_isPointsAwardedSuccess)
+                {
+                    MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                 }
             }
 

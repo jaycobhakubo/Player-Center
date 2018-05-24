@@ -2351,8 +2351,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 //m_parent.StartAwardPointsToPlayerList(args);
                 AwarPointsToPlayerList(args);
             }
-            else
-            {
+            //else
+            //{
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
                 DialogResult result = DialogResult.OK;
@@ -2480,7 +2480,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     result = saveForm.ShowDialog(this);
 
                     if (result == DialogResult.OK)
-                        m_parent.StartExportPlayerList(saveForm.FileName, args);
+                        m_parent.StartExportPlayerList(saveForm.FileName, args);//knc
                 }
                 else if (m_printRaffleRadio.Checked)
                 {
@@ -2511,13 +2511,16 @@ namespace GTI.Modules.PlayerCenter.UI
                         else
                             MessageForm.Show(this, Resources.NoPlayersExported, Resources.PlayerCenterName);
                     }
-                }
+               // }
             }// END: DE2476
         }
 
         private void imgbtn_AwardPointsToPlayerList_Click(object sender, EventArgs e)
         {
             m_isAwardPointToPlayerList = true;
+            //AwarPointsToPlayerList(args);
+            //I need the parameter list
+            //Show the award points
             GenerateClick(sender,e);
             m_isAwardPointToPlayerList = false;
         }
@@ -2553,7 +2556,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     catch (Exception ex)
                     {
-
                         break;
                     }
                 }
@@ -2561,11 +2563,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 AwardPoints m_awardPoints = new AwardPoints();              
                 m_awardPoints.PlayerList = t_playerList;
                 m_awardPoints.ShowDialog();
-                Application.DoEvents();
-
-              
+                Application.DoEvents();             
             }
-
         }
 
         #endregion
@@ -3310,7 +3309,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 else if (Regex.IsMatch(txtbxValue.Text, @"\.\d\d"))
                 {
                     result = true;
-
                 }
 
                 e.Handled = result;

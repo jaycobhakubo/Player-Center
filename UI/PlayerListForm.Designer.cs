@@ -149,7 +149,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_ProductCheckBox2 = new CheckComboBoxTest.CheckedComboBox();
             this.btnSaveList = new GTI.Controls.ImageButton();
             this.imgbtnCancel = new GTI.Controls.ImageButton();
-            this.imgbtn_AwardPointsToPlayerList = new GTI.Controls.ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
             this.m_selectionPanel.SuspendLayout();
@@ -331,7 +330,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_generateButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_generateButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_generateButton.Name = "m_generateButton";
-            this.m_generateButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_generateButton.Tag = "0";
             this.m_generateButton.UseVisualStyleBackColor = false;
             this.m_generateButton.Click += new System.EventHandler(this.GenerateClick);
@@ -345,7 +343,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_closeButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_closeButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_closeButton.Name = "m_closeButton";
-            this.m_closeButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_closeButton.UseVisualStyleBackColor = false;
             // 
             // m_errorProvider
@@ -512,7 +509,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_spendBotton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.m_spendBotton, "m_spendBotton");
             this.m_spendBotton.Name = "m_spendBotton";
-            this.m_spendBotton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_spendBotton.Click += new System.EventHandler(this.m_spendBotton_Click);
             // 
             // imgbtnNewList
@@ -523,7 +519,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtnNewList.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnNewList.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imgbtnNewList.Name = "imgbtnNewList";
-            this.imgbtnNewList.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnNewList.Tag = "1";
             this.imgbtnNewList.UseVisualStyleBackColor = false;
             this.imgbtnNewList.Click += new System.EventHandler(this.imgbtnNewList_Click);
@@ -543,7 +538,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imgbtn.Name = "imgbtn";
-            this.imgbtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtn.Tag = "3";
             this.imgbtn.UseVisualStyleBackColor = false;
             this.imgbtn.Click += new System.EventHandler(this.imgbtn_Click);
@@ -555,7 +549,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_playDatesButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.m_playDatesButton, "m_playDatesButton");
             this.m_playDatesButton.Name = "m_playDatesButton";
-            this.m_playDatesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_playDatesButton.Click += new System.EventHandler(this.m_playDatesButton_Click);
             // 
             // imgbtnDelete
@@ -566,7 +559,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtnDelete.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnDelete.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imgbtnDelete.Name = "imgbtnDelete";
-            this.imgbtnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnDelete.Tag = "2";
             this.imgbtnDelete.UseVisualStyleBackColor = false;
             this.imgbtnDelete.Click += new System.EventHandler(this.GenerateClick);
@@ -578,7 +570,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_locationButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.m_locationButton, "m_locationButton");
             this.m_locationButton.Name = "m_locationButton";
-            this.m_locationButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_locationButton.Click += new System.EventHandler(this.m_locationButton_Click);
             // 
             // m_listCriteriaButton1
@@ -589,7 +580,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.m_listCriteriaButton1, "m_listCriteriaButton1");
             this.m_listCriteriaButton1.Name = "m_listCriteriaButton1";
-            this.m_listCriteriaButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_listCriteriaButton1.UseVisualStyleBackColor = false;
             this.m_listCriteriaButton1.Click += new System.EventHandler(this.m_listCriteriaButton1_Click);
             // 
@@ -1183,7 +1173,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.btnSaveList.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnSaveList.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnSaveList.Name = "btnSaveList";
-            this.btnSaveList.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnSaveList.Tag = "1";
             this.btnSaveList.UseVisualStyleBackColor = false;
             this.btnSaveList.Click += new System.EventHandler(this.GenerateClick);
@@ -1196,30 +1185,15 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtnCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imgbtnCancel.Name = "imgbtnCancel";
-            this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnCancel.Tag = "1";
             this.imgbtnCancel.UseVisualStyleBackColor = false;
             this.imgbtnCancel.Click += new System.EventHandler(this.imgbtnCancel_Click);
-            // 
-            // imgbtn_AwardPointsToPlayerList
-            // 
-            this.imgbtn_AwardPointsToPlayerList.BackColor = System.Drawing.Color.Transparent;
-            this.imgbtn_AwardPointsToPlayerList.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imgbtn_AwardPointsToPlayerList, "imgbtn_AwardPointsToPlayerList");
-            this.imgbtn_AwardPointsToPlayerList.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imgbtn_AwardPointsToPlayerList.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtn_AwardPointsToPlayerList.Name = "imgbtn_AwardPointsToPlayerList";
-            this.imgbtn_AwardPointsToPlayerList.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imgbtn_AwardPointsToPlayerList.Tag = "1";
-            this.imgbtn_AwardPointsToPlayerList.UseVisualStyleBackColor = false;
-            this.imgbtn_AwardPointsToPlayerList.Click += new System.EventHandler(this.imgbtn_AwardPointsToPlayerList_Click);
             // 
             // PlayerListForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.imgbtn_AwardPointsToPlayerList);
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.m_playDatesPanel);
             this.Controls.Add(this.m_locationPanel);
@@ -1387,6 +1361,5 @@ namespace GTI.Modules.PlayerCenter.UI
         private CheckComboBoxTest.CheckedComboBox m_checkComboAllSession;
         private System.Windows.Forms.CheckBox m_allDaysVisitCheck;
         private System.Windows.Forms.RadioButton m_printRaffleRadio;
-        private Controls.ImageButton imgbtn_AwardPointsToPlayerList;
     }
 }

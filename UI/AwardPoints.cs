@@ -14,7 +14,6 @@ using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties;
 using GTI.Modules.PlayerCenter.Data;
 using System.Globalization;
-using System.Collections.Generic;
 
 
 namespace GTI.Modules.PlayerCenter.UI
@@ -24,9 +23,6 @@ namespace GTI.Modules.PlayerCenter.UI
        private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
        private WaitForm m_waitForm = null;
        private bool m_wholePoints = false;
-       private bool m_isAwardPointsToPlayerList;
-       public List<int> PlayerList { get; set; }
-
 
        public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface,  bool wholePoints)
         {
@@ -34,15 +30,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
             m_wholePoints = wholePoints;
             CheckForWholePoints();
-            m_isAwardPointsToPlayerList = false;
         }
-
-       public AwardPoints()
-       {
-           InitializeComponent();
-           m_isAwardPointsToPlayerList = true;
-    
-       }
 
        public void CheckForWholePoints()
        {
@@ -72,80 +60,42 @@ namespace GTI.Modules.PlayerCenter.UI
             DialogResult = DialogResult.Cancel;
             Close();
         }
-        private bool m_isPointsAwardedSuccess;
-
-        private bool AwardPointsToPlayer(int playerId)
-        {
-            PointsAwarded = 0M;
-            var tempManualPlayerPoints = txtbxPointsAwarded.Text;
-            m_isPointsAwardedSuccess = false;
-
-            SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(playerId, tempManualPlayerPoints);
-            msg.Send();
-            if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
-            {
-                m_isPointsAwardedSuccess = true;
-                PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                //MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
-              
-            }
-            return m_isPointsAwardedSuccess;
-        }
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-           
-
-
-            if (m_isAwardPointsToPlayerList == false)
+        
+            if (CardNumber != string.Empty)
             {
-                if (CardNumber != string.Empty)
-                {
-                    m_playercenterThirdPartyInterface.GetPlayer(CardNumber);
-                }
-                else
-                {
-                    m_playercenterThirdPartyInterface.StartGetPlayer(PlayerId);
-                }
-
-                if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
-                {
-                    try
-                    {
-                        if (AwardPointsToPlayer(PlayerId))
-                        {
-                            MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
-                        }
-          
-                    }
-                    catch
-                    {
-                        MessageForm.Show(Resources.InfoPointsAwardFailed, Resources.PlayerCenterName);
-                    }
-
-                }
+                m_playercenterThirdPartyInterface.GetPlayer(CardNumber);
             }
-            else//award points to a list of player
+            else
             {
-                foreach (int t_playerId in PlayerList)
-                {
-                    try
-                    {
-                        AwardPointsToPlayer(t_playerId);
-                    }
-                    catch
-                    {
-                        MessageForm.Show(Resources.InfoPointsAwardFailed, Resources.PlayerCenterName);
-                    }
-                }
-
-                if (m_isPointsAwardedSuccess)
-                {
-                    MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
-                }
+                m_playercenterThirdPartyInterface.StartGetPlayer(PlayerId);
             }
 
-          
+
+            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+            {
+                try
+                {
+                    PointsAwarded = 0M;
+                    var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                    IsPointsAwardedSuccess = false;
+                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints);
+                    msg.Send();
+                    if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
+                    {
+                        IsPointsAwardedSuccess = true;
+                        PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+                        MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                    }
+                }
+                catch
+                {
+                    MessageForm.Show(Resources.InfoPointsAwardFailed, Resources.PlayerCenterName);
+                }
+               
+            }
 
             DialogResult = DialogResult.OK;
             Close();

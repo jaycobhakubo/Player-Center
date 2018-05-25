@@ -2330,6 +2330,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     try
                     {
                         SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded.ToString());
+                        msg.Send();
                        
                     }
                     catch (Exception ex)

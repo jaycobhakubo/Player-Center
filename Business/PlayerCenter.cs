@@ -2319,7 +2319,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 // update the wait message. We're on a separate thread now, so we have to call back to the UI.
                 m_waitForm.BeginInvoke(((Action)(() =>
                 {
-                    m_waitForm.Message = String.Format("Please wait points are being awarded to {0} player.", 2);//knc change this
+                    m_waitForm.Message = String.Format(Resources.WaitFormAwardingToAGroupOfPlayer, playerCount);
                     m_waitForm.ProgressBarVisible = true;
                 })));
 

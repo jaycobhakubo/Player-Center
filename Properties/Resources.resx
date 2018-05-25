@@ -632,4 +632,7 @@ Reason: {0}</value>
   <data name="PlayersRewarded" xml:space="preserve">
     <value>{0} players rewarded.</value>
   </data>
+  <data name="WaitFormAwardingToAGroupOfPlayer" xml:space="preserve">
+    <value>Awarding points to a group of player, please wait.</value>
+  </data>
 </root>

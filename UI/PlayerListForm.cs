@@ -3117,7 +3117,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (cmbxPlayerList2.SelectedIndex != -1)
             {
-                imgbtn_AwardPointsToListOfPlayer.Visible = true;
+                if (m_parent.StaffHasPermissionToAwardPoints)
+                {
+                    imgbtn_AwardPointsToListOfPlayer.Visible = true;
+                }
+
                 DefID = IndexToDefID[cmbxPlayerList2.SelectedIndex];
                 PlyrActListSetting = new PlayerActualListSetting();
                 GetPlayerListDetail gpld = new GetPlayerListDetail(DefID);
@@ -3139,6 +3143,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
+                if (imgbtn_AwardPointsToListOfPlayer.Visible != false)
                 imgbtn_AwardPointsToListOfPlayer.Visible = false;
             }
         }

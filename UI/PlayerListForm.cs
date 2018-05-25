@@ -1083,7 +1083,10 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Events
-        
+
+
+      
+
         /// <summary>
         /// Handles the checkboxes' check changed event.
         /// </summary>
@@ -1733,7 +1736,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     dayList.SelectedIndex = 0;
             }
         }
-        
+
+       private  PlayerListParams m_playerListParams;// = new PlayerListParams();
+
         #region SAVEPLAYERLIST
         /// <summary>
         /// Handles the generate list button's click event. Also handles the save button's click event.
@@ -2345,143 +2350,206 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetListOfSetting((int)PlayerListSettingEnum.SpendTo, args.ToSpendDate.ToString());
             }
 
-            // Spawn a new thread to find players and wait until done.
-            // FIX: DE2476
-            DialogResult result = DialogResult.OK;
-
-            if (isSavedList == true || isDeleteList == true)//SaveList
+     
+            if (m_isAwardPointToPlayerList)
             {
-                if (cmbxPlayerList2.SelectedIndex == -1)//New
-                {
-                    PlyrActListSetting.DefID = 0;
-                    PlyrActListSetting.Definition = m_ListName; //txtbxDefinitionName.Text;
-                }
-                else
-                {
-                    PlyrActListSetting.DefID = DefID;
-                    if (isDeleteList == true)
-                    {
-                        PlyrActListSetting.Definition = cmbxPlayerList2.SelectedItem.ToString();
-                    }
-                    else//Update player definition name.
-                    {
-                        PlyrActListSetting.Definition = m_ListName; // txtbxDefinitionName.Text;
-                    }
-                }
-
-                if (isSavedList == true)
-                {
-                    if (PlyrActListSetting.Settings.Count() == 0)
-                    {
-                        m_errorProvider.SetError(btnSaveList, "Apply atleast one setting to set.");
-                        return;
-                    }
-
-                    PlyrActListSetting.Deleted = false;
-
-                }
-                else if (isDeleteList == true)
-                {
-                    DialogResult result2 = MessageForm.Show("Are you sure you want to delete " + PlyrActListSetting.Definition + "?", "Delete Player List", MessageFormTypes.YesNo);
-                    if (result2 == DialogResult.No)
-                    {
-                        isDeleteList = false;
-                        return;
-                    }
-
-                    PlyrActListSetting.Deleted = true;
-                    PlyrActListSetting.DefID = DefID;
-                }
-
-                SetPlayerList setPlayerList_ = new SetPlayerList();
-                setPlayerList_.SetPlayerListMSG(PlyrActListSetting);
-
-                if (setPlayerList_.IsSuccess == true && isSavedList == true)
-                {
-                    LoadPlayerListSettingComboBox(); //repopulate PlayerList combo box.    
-                    isSavedList = false; isNewList = false;
-
-                    PlayerListDefault2();
-
-                    if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
-                    if (btnSaveList.Enabled) btnSaveList.Enabled = false;
-
-                    //if (lblListName.Visible) lblListName.Visible = false;
-                    //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
-                    if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
-
-                    if (imgbtnDelete.Enabled) imgbtnDelete.Enabled = false;
-                    if (imgbtn.Enabled) imgbtn.Enabled = false;
-                    if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
-                    if (imgbtn.Visible) imgbtn.Visible = false;
-
-                    if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
-                    if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-                    if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
-                    if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
-
-                    if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
-                    if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
-                    if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
-                    if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
-
-                    cmbxPlayerList2.SelectedIndex = -1;
-                }
-                else if (setPlayerList_.IsSuccess == true && isDeleteList == true) //(SetPlayerList.IsSuccess_static == true && isDeleteList == true)
-                {
-                    LoadPlayerListSettingComboBox(); //repopulate PlayerList combo box.                
-                    isDeleteList = false;
-
-                    PlayerListDefault2();
-
-                    if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
-                    if (btnSaveList.Enabled) btnSaveList.Enabled = false;
-                    //if (lblListName.Visible) lblListName.Visible = false;
-                    //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
-                    if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
-                    if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
-                    imgbtn.Visible = false;
-
-                    if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
-                    if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-                    if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
-                    if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
-
-                    if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
-                    if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
-                    if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
-                    if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
-
-                }
-
-                isNewList = false;
-                cmbxPlayerList2.SelectedIndex = -1;
-                ActiveButton_ = 0;
-                if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
-
-                return;
-            }
-            else if (m_exportRadio.Checked)
-            {
-                // Prompt the user for the file name.
-                SaveFileDialog saveForm = new SaveFileDialog();
-                saveForm.RestoreDirectory = true;
-                saveForm.Filter = ExportFileFilter;
-                saveForm.DefaultExt = DefaultFileExt;
-
-                result = saveForm.ShowDialog(this);
-
-                if (result == DialogResult.OK)
-                    m_parent.StartExportPlayerList(saveForm.FileName, args);
-            }
-            else if (m_printRaffleRadio.Checked)
-            {
-                m_parent.StartPrintPlayerRaffle(args);
+                //Application.DoEvents();
+                m_playerListParams = args;
+              //  m_parent.StartAwardPointsToPlayer(args, m_pointsAwarded);
             }
             else
             {
-                m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);
+
+                // Spawn a new thread to find players and wait until done.
+                // FIX: DE2476
+                DialogResult result = DialogResult.OK;
+
+                if (isSavedList == true || isDeleteList == true)//SaveList
+                {
+                    if (cmbxPlayerList2.SelectedIndex == -1)//New
+                    {
+                        PlyrActListSetting.DefID = 0;
+                        PlyrActListSetting.Definition = m_ListName; //txtbxDefinitionName.Text;
+                    }
+                    else
+                    {
+                        PlyrActListSetting.DefID = DefID;
+                        if (isDeleteList == true)
+                        {
+                            PlyrActListSetting.Definition = cmbxPlayerList2.SelectedItem.ToString();
+                        }
+                        else//Update player definition name.
+                        {
+                            PlyrActListSetting.Definition = m_ListName; // txtbxDefinitionName.Text;
+                        }
+                    }
+
+                    if (isSavedList == true)
+                    {
+                        if (PlyrActListSetting.Settings.Count() == 0)
+                        {
+                            m_errorProvider.SetError(btnSaveList, "Apply atleast one setting to set.");
+                            return;
+                        }
+
+                        PlyrActListSetting.Deleted = false;
+
+                    }
+                    else if (isDeleteList == true)
+                    {
+                        DialogResult result2 = MessageForm.Show("Are you sure you want to delete " + PlyrActListSetting.Definition + "?", "Delete Player List", MessageFormTypes.YesNo);
+                        if (result2 == DialogResult.No)
+                        {
+                            isDeleteList = false;
+                            return;
+                        }
+
+                        PlyrActListSetting.Deleted = true;
+                        PlyrActListSetting.DefID = DefID;
+                    }
+
+                    SetPlayerList setPlayerList_ = new SetPlayerList();
+                    setPlayerList_.SetPlayerListMSG(PlyrActListSetting);
+
+                    if (setPlayerList_.IsSuccess == true && isSavedList == true)
+                    {
+                        LoadPlayerListSettingComboBox(); //repopulate PlayerList combo box.    
+                        isSavedList = false; isNewList = false;
+
+                        PlayerListDefault2();
+
+                        if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
+                        if (btnSaveList.Enabled) btnSaveList.Enabled = false;
+
+                        //if (lblListName.Visible) lblListName.Visible = false;
+                        //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
+                        if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
+
+                        if (imgbtnDelete.Enabled) imgbtnDelete.Enabled = false;
+                        if (imgbtn.Enabled) imgbtn.Enabled = false;
+                        if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
+                        if (imgbtn.Visible) imgbtn.Visible = false;
+
+                        if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+                        if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
+                        if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+                        if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
+
+                        if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
+                        if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
+                        if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
+                        if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
+
+                        cmbxPlayerList2.SelectedIndex = -1;
+                    }
+                    else if (setPlayerList_.IsSuccess == true && isDeleteList == true) //(SetPlayerList.IsSuccess_static == true && isDeleteList == true)
+                    {
+                        LoadPlayerListSettingComboBox(); //repopulate PlayerList combo box.                
+                        isDeleteList = false;
+
+                        PlayerListDefault2();
+
+                        if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
+                        if (btnSaveList.Enabled) btnSaveList.Enabled = false;
+                        //if (lblListName.Visible) lblListName.Visible = false;
+                        //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
+                        if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
+                        if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
+                        imgbtn.Visible = false;
+
+                        if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+                        if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
+                        if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+                        if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
+
+                        if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
+                        if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
+                        if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
+                        if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
+
+                    }
+
+                    isNewList = false;
+                    cmbxPlayerList2.SelectedIndex = -1;
+                    ActiveButton_ = 0;
+                    if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
+
+                    return;
+                }
+                else if (m_exportRadio.Checked)
+                {
+                    // Prompt the user for the file name.
+                    SaveFileDialog saveForm = new SaveFileDialog();
+                    saveForm.RestoreDirectory = true;
+                    saveForm.Filter = ExportFileFilter;
+                    saveForm.DefaultExt = DefaultFileExt;
+
+                    result = saveForm.ShowDialog(this);
+
+                    if (result == DialogResult.OK)
+                        m_parent.StartExportPlayerList(saveForm.FileName, args);
+                }
+                else if (m_printRaffleRadio.Checked)
+                {
+                    m_parent.StartPrintPlayerRaffle(args);
+                }
+                else
+                {
+                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);//knc
+                }
+
+                if (result == DialogResult.OK)
+                {
+                    m_parent.ShowWaitForm(this); // Block until we are done.
+
+                    if (m_parent.LastAsyncException != null)
+                    {
+                        if (m_parent.LastAsyncException is ServerCommException)
+                            Close();
+                        else
+                            MessageForm.Show(this, m_parent.LastAsyncException.Message, Resources.PlayerCenterName);
+                    }
+                    else if (m_parent.LastAsyncException == null && !m_exportRadio.Checked)
+                        m_parent.ShowReportForm();
+                    else if (m_parent.LastAsyncException == null && m_exportRadio.Checked)
+                    {
+                        if (m_parent.LastNumPlayersExported > 0)
+                            MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersExported, m_parent.LastNumPlayersExported), Resources.PlayerCenterName);
+                        else
+                            MessageForm.Show(this, Resources.NoPlayersExported, Resources.PlayerCenterName);
+                    }
+                }            // END: DE2476
             }
+        }
+        #endregion
+
+
+        private AwardPointsToListOfPlayer m_awardPointsToListOfPlayer;
+        private bool m_isAwardPointToPlayerList;
+        private decimal m_pointsAwarded;
+
+        private void imgbtn_AwardPointsToListOfPlayer_Click(object sender, EventArgs e)
+        {
+            m_isAwardPointToPlayerList = false;
+            m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer();
+            DialogResult result = DialogResult.OK;
+            result = m_awardPointsToListOfPlayer.ShowDialog();
+            //m_awardPointsToListOfPlayer.ShowDialog();
+            //Application.DoEvents();
+
+            m_isAwardPointToPlayerList = m_awardPointsToListOfPlayer.IsAwardPoints;
+            if (m_isAwardPointToPlayerList)
+            {
+                m_pointsAwarded = 0M;
+                m_pointsAwarded = m_awardPointsToListOfPlayer.PointsAwardedValue;
+                //Application.DoEvents();
+                GenerateClick(sender, e);
+                //Application.DoEvents();
+                m_parent.StartAwardPointsToPlayer(m_playerListParams, m_pointsAwarded);
+                m_isAwardPointToPlayerList = false;
+
+            }
+
 
             if (result == DialogResult.OK)
             {
@@ -2494,19 +2562,14 @@ namespace GTI.Modules.PlayerCenter.UI
                     else
                         MessageForm.Show(this, m_parent.LastAsyncException.Message, Resources.PlayerCenterName);
                 }
-                else if (m_parent.LastAsyncException == null && !m_exportRadio.Checked)
-                    m_parent.ShowReportForm();
-                else if (m_parent.LastAsyncException == null && m_exportRadio.Checked)
+                else
                 {
-                    if (m_parent.LastNumPlayersExported > 0)
-                        MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersExported, m_parent.LastNumPlayersExported), Resources.PlayerCenterName);
-                    else
-                        MessageForm.Show(this, Resources.NoPlayersExported, Resources.PlayerCenterName);
+                    MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersExported, m_parent.LastNumPlayersExported), Resources.PlayerCenterName);
                 }
-            }            // END: DE2476
-        }
-        #endregion
+              
+            }        
 
+        }
 
         private void m_locationButton_Click(object sender, EventArgs e)
         {
@@ -3851,6 +3914,8 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         
         #endregion
+
+        
         
     }
 

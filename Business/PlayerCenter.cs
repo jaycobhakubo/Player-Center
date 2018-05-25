@@ -1462,8 +1462,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #endregion
 
-        #region Player Raffle Methods
-
         #region Player Report
 
         // FIX: DE2476
@@ -2262,6 +2260,138 @@ namespace GTI.Modules.PlayerCenter.Business
             return daysToSessionList;
         }
         #endregion
+
+        #region Award Points To A List of Player
+        internal void StartAwardPointsToPlayer(PlayerListParams playerListFilters, decimal pointsAwarded)
+        {
+       
+            // Set the wait message.
+            m_waitForm.Message = Resources.WaitFormPrintingPlayerRaffle;
+            m_waitForm.CancelButtonVisible = true;
+            m_waitForm.CancelButtonClick += new EventHandler(m_waitFormPrintRaffle_CancelButtonClick);
+
+            // Create the worker thread and run it.
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = true;
+            m_worker.DoWork += new DoWorkEventHandler(AwardPointsToPlayerList);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AwardPointsToPlayerListeComplete);
+            object[] workerArgs = new object[2];
+            workerArgs[0] = playerListFilters;
+            workerArgs[1] = pointsAwarded;
+            m_worker.RunWorkerAsync(workerArgs);
+        }
+
+        private void AwardPointsToPlayerList(object sender, DoWorkEventArgs e)
+        {
+            object[] args = (object[])e.Argument;
+
+
+            PlayerListParams listParams = (PlayerListParams)args[0];
+            decimal t_pointsAwarded = (decimal)args[1];
+            //decimal t_pointsAwarded = decimal.Parse(args[1]);
+        
+
+            GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
+            try
+            {
+                listMsg.Send();
+            }
+            catch (ServerCommException ex)
+            {
+                Log("Server communication error sending the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw ex; // Don't repackage the ServerCommException
+            }
+            catch (Exception ex)
+            {
+                Log("Error processing the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+            }
+
+            if (m_worker.CancellationPending)
+                return;
+
+            decimal playerCount = listMsg.Players == null ? 0 : listMsg.Players.Length;
+
+            if (playerCount > 0)
+            {
+                // update the wait message. We're on a separate thread now, so we have to call back to the UI.
+                m_waitForm.BeginInvoke(((Action)(() =>
+                {
+                    m_waitForm.Message = String.Format("Please wait points are being awarded to {0} player.", 2);//knc change this
+                    m_waitForm.ProgressBarVisible = true;
+                })));
+
+                //string raffleName = listParams.ListName;
+                //// if the raffle is for one day, print the gaming date and session instead of the raffle name for Colusa
+                //if (!String.IsNullOrWhiteSpace(listParams.DaysOFweekAndSession)
+                //    && listParams.DPDateRangeFrom != DateTime.MinValue
+                //    && listParams.DPDateRangeTo != DateTime.MinValue
+                //    && listParams.DPDateRangeTo.Subtract(listParams.DPDateRangeFrom).Days == 0)
+                //{
+                //    Dictionary<string, List<int>> dayOfWeekAndSession = ConvertDayAndSessionString(listParams.DaysOFweekAndSession);
+                //    string dayOfWeek = listParams.ToLastVisit.DayOfWeek.ToString().Substring(0, 3);
+                //    string allDays = "All";
+                //    // if the session filter contains something in the date range
+                //    if (dayOfWeekAndSession.ContainsKey(allDays) ||
+                //        dayOfWeekAndSession.ContainsKey(dayOfWeek))
+                //    {
+                //        HashSet<int> sessions = new HashSet<int>();
+                //        if (dayOfWeekAndSession.ContainsKey(allDays))
+                //        {
+                //            foreach (int session in dayOfWeekAndSession[allDays])
+                //                sessions.Add(session);
+                //        }
+                //        if (dayOfWeekAndSession.ContainsKey(dayOfWeek))
+                //        {
+                //            foreach (int session in dayOfWeekAndSession[dayOfWeek])
+                //                sessions.Add(session);
+                //        }
+
+                //        raffleName = String.Format("Gaming Date: {0}, Session(s): {1}",
+                //            listParams.DPDateRangeFrom.ToShortDateString(), String.Join(",", sessions));
+                //    }
+                //}
+
+                decimal progress = 0, percentage = 0;
+                foreach (var player in listMsg.Players)
+                {
+                    try
+                    {
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded.ToString());
+                        //if (m_worker.CancellationPending) // remove print objects in OS's printer queue?
+                        //    return;
+                        //PlayerRaffleReceipt receipt = new PlayerRaffleReceipt(player, raffleName);
+                        //receipt.Print(printer, 1);
+                    }
+                    catch (Exception ex)
+                    {
+                        //string message = "Error printing the player's raffle ticket " + ex.ToString();
+                        //Log(message, LoggerLevel.Severe);
+                        //message += Environment.NewLine + Environment.NewLine + "Would you like to continue printing?";
+                        //DialogResult result = MessageForm.Show(message, "Error printing", MessageFormTypes.YesCancel);
+                        //if (result == DialogResult.Cancel)
+                        //    break;
+                    }
+                    percentage = (++progress / playerCount) * 100.0m;
+
+                    m_worker.ReportProgress((int)percentage);
+                }
+            }
+            e.Result = (int)playerCount;
+        }
+
+
+        private void AwardPointsToPlayerListeComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Set the error that occurred (if any).
+            LastAsyncException = e.Error;
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+            m_waitForm.ProgressBarVisible = false;
+        }
 
         #endregion
 

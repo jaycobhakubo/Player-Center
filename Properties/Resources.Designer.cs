@@ -1230,6 +1230,15 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} players rewarded..
+        /// </summary>
+        internal static string PlayersRewarded {
+            get {
+                return ResourceManager.GetString("PlayersRewarded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Player Tracking Interface is down..
         /// </summary>
         internal static string PlayerTrackingInterfaceDown {

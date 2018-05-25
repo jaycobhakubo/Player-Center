@@ -29,6 +29,8 @@ namespace GTI.Modules.PlayerCenter.Data
             m_playerPointsAwarded = playerPointsAwarded;
         }
 
+
+     
         protected override void PackRequest()
         {
             MemoryStream requestStream = new MemoryStream();

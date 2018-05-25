@@ -2495,7 +2495,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);//knc
+                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);
                 }
 
                 if (result == DialogResult.OK)
@@ -2564,7 +2564,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersExported, m_parent.LastNumPlayersExported), Resources.PlayerCenterName);
+                    MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersRewarded, m_parent.NumberOfPlayersRewarded), Resources.PlayerCenterName);
                 }
               
             }        
@@ -3117,6 +3117,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (cmbxPlayerList2.SelectedIndex != -1)
             {
+                imgbtn_AwardPointsToListOfPlayer.Visible = true;
                 DefID = IndexToDefID[cmbxPlayerList2.SelectedIndex];
                 PlyrActListSetting = new PlayerActualListSetting();
                 GetPlayerListDetail gpld = new GetPlayerListDetail(DefID);
@@ -3135,6 +3136,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (m_locationPanel.Enabled) m_locationPanel.Enabled = false;
                 if (m_spendAndLabel.Enabled) m_spendPanel.Enabled = false;
                 if (m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = false;
+            }
+            else
+            {
+                imgbtn_AwardPointsToListOfPlayer.Visible = false;
             }
         }
 

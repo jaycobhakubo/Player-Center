@@ -53,6 +53,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.cancelImageButton.TabIndex = 3;
             this.cancelImageButton.Text = "&Cancel";
             this.cancelImageButton.UseVisualStyleBackColor = false;
+            this.cancelImageButton.Click += new System.EventHandler(this.cancelImageButton_Click);
             // 
             // acceptImageButton
             // 
@@ -69,7 +70,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
             this.acceptImageButton.TabIndex = 2;
-            this.acceptImageButton.Text = "Award Points";
+            this.acceptImageButton.Text = "Accept";
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
             // 

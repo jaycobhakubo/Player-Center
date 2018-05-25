@@ -41,6 +41,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
        public bool IsAwardPoints { get; set; }
        public decimal PointsAwardedValue { get; set; }
+
+       private void cancelImageButton_Click(object sender, EventArgs e)
+       {
+           DialogResult = DialogResult.Cancel;
+           Close();
+       }
     }
 }
 

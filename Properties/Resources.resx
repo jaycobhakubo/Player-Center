@@ -629,4 +629,7 @@ Reason: {0}</value>
   <data name="InfoPointsAwardFailed" xml:space="preserve">
     <value>Unable to Award Points</value>
   </data>
+  <data name="PlayersRewarded" xml:space="preserve">
+    <value>{0} players rewarded.</value>
+  </data>
 </root>

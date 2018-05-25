@@ -2323,36 +2323,6 @@ namespace GTI.Modules.PlayerCenter.Business
                     m_waitForm.ProgressBarVisible = true;
                 })));
 
-                //string raffleName = listParams.ListName;
-                //// if the raffle is for one day, print the gaming date and session instead of the raffle name for Colusa
-                //if (!String.IsNullOrWhiteSpace(listParams.DaysOFweekAndSession)
-                //    && listParams.DPDateRangeFrom != DateTime.MinValue
-                //    && listParams.DPDateRangeTo != DateTime.MinValue
-                //    && listParams.DPDateRangeTo.Subtract(listParams.DPDateRangeFrom).Days == 0)
-                //{
-                //    Dictionary<string, List<int>> dayOfWeekAndSession = ConvertDayAndSessionString(listParams.DaysOFweekAndSession);
-                //    string dayOfWeek = listParams.ToLastVisit.DayOfWeek.ToString().Substring(0, 3);
-                //    string allDays = "All";
-                //    // if the session filter contains something in the date range
-                //    if (dayOfWeekAndSession.ContainsKey(allDays) ||
-                //        dayOfWeekAndSession.ContainsKey(dayOfWeek))
-                //    {
-                //        HashSet<int> sessions = new HashSet<int>();
-                //        if (dayOfWeekAndSession.ContainsKey(allDays))
-                //        {
-                //            foreach (int session in dayOfWeekAndSession[allDays])
-                //                sessions.Add(session);
-                //        }
-                //        if (dayOfWeekAndSession.ContainsKey(dayOfWeek))
-                //        {
-                //            foreach (int session in dayOfWeekAndSession[dayOfWeek])
-                //                sessions.Add(session);
-                //        }
-
-                //        raffleName = String.Format("Gaming Date: {0}, Session(s): {1}",
-                //            listParams.DPDateRangeFrom.ToShortDateString(), String.Join(",", sessions));
-                //    }
-                //}
 
                 decimal progress = 0, percentage = 0;
                 foreach (var player in listMsg.Players)
@@ -2360,10 +2330,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     try
                     {
                         SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded.ToString());
-                        //if (m_worker.CancellationPending) // remove print objects in OS's printer queue?
-                        //    return;
-                        //PlayerRaffleReceipt receipt = new PlayerRaffleReceipt(player, raffleName);
-                        //receipt.Print(printer, 1);
+                       
                     }
                     catch (Exception ex)
                     {
@@ -2375,7 +2342,6 @@ namespace GTI.Modules.PlayerCenter.Business
                         //    break;
                     }
                     percentage = (++progress / playerCount) * 100.0m;
-
                     m_worker.ReportProgress((int)percentage);
                 }
             }
@@ -2387,7 +2353,8 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
-
+            if (e.Error == null)
+               NumberOfPlayersRewarded = (int)e.Result;
             // Close the wait form.
             m_waitForm.CloseForm();
             m_waitForm.ProgressBarVisible = false;
@@ -2581,6 +2548,8 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets the number of players returned in the last export.
         /// </summary>
         internal int LastNumPlayersExported { get; private set; }
+
+        internal int NumberOfPlayersRewarded { get; private set; }
 
         // PDTS 1064
         /// <summary>

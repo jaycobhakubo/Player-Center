@@ -1489,6 +1489,15 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Awarding points to a group of player, please wait..
+        /// </summary>
+        internal static string WaitFormAwardingToAGroupOfPlayer {
+            get {
+                return ResourceManager.GetString("WaitFormAwardingToAGroupOfPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exporting list, please wait..
         /// </summary>
         internal static string WaitFormExportingList {

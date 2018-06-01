@@ -58,6 +58,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_closeButton = new GTI.Controls.ImageButton();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.m_listCriteriaPanel = new System.Windows.Forms.Panel();
+            this.m_statusCheckComboBox = new CheckComboBoxTest.CheckedComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.m_lastVisitBetweenLabel = new System.Windows.Forms.Label();
             this.m_averageRadio = new System.Windows.Forms.CheckBox();
@@ -88,6 +89,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listReportRadio = new System.Windows.Forms.RadioButton();
             this.m_mailingLabelRadio = new System.Windows.Forms.RadioButton();
             this.m_locationPanel = new System.Windows.Forms.Panel();
+            this.m_locListBox = new GTI.Modules.PlayerCenter.Data.MyListBox();
             this.m_findAllVIPCheckBox = new System.Windows.Forms.CheckBox();
             this.m_locListBoxSelected = new System.Windows.Forms.ListBox();
             this.m_addItemButton = new System.Windows.Forms.Button();
@@ -119,14 +121,22 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_toRangeSPLabel = new System.Windows.Forms.Label();
             this.m_rangeSPRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.m_checkComboAllSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_allDaysVisitCheck = new System.Windows.Forms.CheckBox();
             this.m_monDaysVisitCheck = new System.Windows.Forms.CheckBox();
+            this.m_checkComboSUNSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_wedDaysVisitCheck = new System.Windows.Forms.CheckBox();
             this.m_thursDaysVisitCheck = new System.Windows.Forms.CheckBox();
             this.m_tuesDaysVisitCheck = new System.Windows.Forms.CheckBox();
+            this.m_checkComboSATSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_satDaysVisitCheck = new System.Windows.Forms.CheckBox();
             this.m_sunDaysVisitCheck = new System.Windows.Forms.CheckBox();
+            this.m_checkComboFRISession = new CheckComboBoxTest.CheckedComboBox();
             this.m_friDaysVisitCheck = new System.Windows.Forms.CheckBox();
+            this.m_checkComboMONSession = new CheckComboBoxTest.CheckedComboBox();
+            this.m_checkComboTHURSSession = new CheckComboBoxTest.CheckedComboBox();
+            this.m_checkComboTUESession = new CheckComboBoxTest.CheckedComboBox();
+            this.m_checkComboWEDSession = new CheckComboBoxTest.CheckedComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_fromDateRangeDPLabel = new System.Windows.Forms.Label();
             this.m_dateRangefromDPDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -136,98 +146,74 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_RangeOptionSAPanel = new System.Windows.Forms.GroupBox();
             this.m_rangeOptionPBPanel = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.m_ProductCheckBox2 = new CheckComboBoxTest.CheckedComboBox();
             this.btnSaveList = new GTI.Controls.ImageButton();
             this.imgbtnCancel = new GTI.Controls.ImageButton();
             this.imgbtn_AwardPointsToListOfPlayer = new GTI.Controls.ImageButton();
             this.m_summaryPanel = new System.Windows.Forms.Panel();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.m_ProductCheckBox2 = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboAllSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboSUNSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboSATSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboFRISession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboMONSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboTHURSSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboTUESession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_checkComboWEDSession = new CheckComboBoxTest.CheckedComboBox();
-            this.m_locListBox = new GTI.Modules.PlayerCenter.Data.MyListBox();
-            this.m_statusCheckComboBox = new CheckComboBoxTest.CheckedComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.textBox22 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
             this.m_selectionPanel.SuspendLayout();
@@ -243,21 +229,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_rangeOptionPBPanel.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.m_summaryPanel.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel7.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_genderList
@@ -463,6 +449,19 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.Controls.Add(this.m_birthdayCheck);
             this.m_listCriteriaPanel.Controls.Add(this.m_genderCheck);
             this.m_listCriteriaPanel.Name = "m_listCriteriaPanel";
+            // 
+            // m_statusCheckComboBox
+            // 
+            resources.ApplyResources(this.m_statusCheckComboBox, "m_statusCheckComboBox");
+            this.m_statusCheckComboBox.CheckOnClick = true;
+            this.m_statusCheckComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_statusCheckComboBox.DropDownHeight = 1;
+            this.m_statusCheckComboBox.FormattingEnabled = true;
+            this.m_statusCheckComboBox.Name = "m_statusCheckComboBox";
+            this.m_statusCheckComboBox.Sorted = true;
+            this.m_statusCheckComboBox.ValueSeparator = ", ";
+            this.m_statusCheckComboBox.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            this.m_statusCheckComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.m_statusCheckComboBox_Validating);
             // 
             // label2
             // 
@@ -726,6 +725,16 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_locationPanel.Controls.Add(this.m_addressIsInLabel);
             resources.ApplyResources(this.m_locationPanel, "m_locationPanel");
             this.m_locationPanel.Name = "m_locationPanel";
+            // 
+            // m_locListBox
+            // 
+            this.m_locListBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            resources.ApplyResources(this.m_locListBox, "m_locListBox");
+            this.m_locListBox.FormattingEnabled = true;
+            this.m_locListBox.Name = "m_locListBox";
+            this.m_locListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.m_locListBox.Sorted = true;
+            this.m_locListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.m_locListBox_KeyDown);
             // 
             // m_findAllVIPCheckBox
             // 
@@ -1000,6 +1009,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // m_checkComboAllSession
+            // 
+            this.m_checkComboAllSession.CheckOnClick = true;
+            this.m_checkComboAllSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboAllSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboAllSession, "m_checkComboAllSession");
+            this.m_checkComboAllSession.FormattingEnabled = true;
+            this.m_checkComboAllSession.Name = "m_checkComboAllSession";
+            this.m_checkComboAllSession.ValueSeparator = ", ";
+            this.m_checkComboAllSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
             // m_allDaysVisitCheck
             // 
             resources.ApplyResources(this.m_allDaysVisitCheck, "m_allDaysVisitCheck");
@@ -1013,6 +1033,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_monDaysVisitCheck.Name = "m_monDaysVisitCheck";
             this.m_monDaysVisitCheck.UseVisualStyleBackColor = true;
             this.m_monDaysVisitCheck.CheckedChanged += new System.EventHandler(this.OptionChanged);
+            // 
+            // m_checkComboSUNSession
+            // 
+            this.m_checkComboSUNSession.CheckOnClick = true;
+            this.m_checkComboSUNSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboSUNSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboSUNSession, "m_checkComboSUNSession");
+            this.m_checkComboSUNSession.FormattingEnabled = true;
+            this.m_checkComboSUNSession.Name = "m_checkComboSUNSession";
+            this.m_checkComboSUNSession.ValueSeparator = ", ";
+            this.m_checkComboSUNSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
             // 
             // m_wedDaysVisitCheck
             // 
@@ -1035,6 +1066,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_tuesDaysVisitCheck.UseVisualStyleBackColor = true;
             this.m_tuesDaysVisitCheck.CheckedChanged += new System.EventHandler(this.OptionChanged);
             // 
+            // m_checkComboSATSession
+            // 
+            this.m_checkComboSATSession.CheckOnClick = true;
+            this.m_checkComboSATSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboSATSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboSATSession, "m_checkComboSATSession");
+            this.m_checkComboSATSession.FormattingEnabled = true;
+            this.m_checkComboSATSession.Name = "m_checkComboSATSession";
+            this.m_checkComboSATSession.ValueSeparator = ", ";
+            this.m_checkComboSATSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
             // m_satDaysVisitCheck
             // 
             resources.ApplyResources(this.m_satDaysVisitCheck, "m_satDaysVisitCheck");
@@ -1049,12 +1091,67 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_sunDaysVisitCheck.UseVisualStyleBackColor = true;
             this.m_sunDaysVisitCheck.CheckedChanged += new System.EventHandler(this.OptionChanged);
             // 
+            // m_checkComboFRISession
+            // 
+            this.m_checkComboFRISession.CheckOnClick = true;
+            this.m_checkComboFRISession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboFRISession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboFRISession, "m_checkComboFRISession");
+            this.m_checkComboFRISession.FormattingEnabled = true;
+            this.m_checkComboFRISession.Name = "m_checkComboFRISession";
+            this.m_checkComboFRISession.ValueSeparator = ", ";
+            this.m_checkComboFRISession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
             // m_friDaysVisitCheck
             // 
             resources.ApplyResources(this.m_friDaysVisitCheck, "m_friDaysVisitCheck");
             this.m_friDaysVisitCheck.Name = "m_friDaysVisitCheck";
             this.m_friDaysVisitCheck.UseVisualStyleBackColor = true;
             this.m_friDaysVisitCheck.CheckedChanged += new System.EventHandler(this.OptionChanged);
+            // 
+            // m_checkComboMONSession
+            // 
+            this.m_checkComboMONSession.CheckOnClick = true;
+            this.m_checkComboMONSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboMONSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboMONSession, "m_checkComboMONSession");
+            this.m_checkComboMONSession.FormattingEnabled = true;
+            this.m_checkComboMONSession.Name = "m_checkComboMONSession";
+            this.m_checkComboMONSession.ValueSeparator = ", ";
+            this.m_checkComboMONSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
+            // m_checkComboTHURSSession
+            // 
+            this.m_checkComboTHURSSession.CheckOnClick = true;
+            this.m_checkComboTHURSSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboTHURSSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboTHURSSession, "m_checkComboTHURSSession");
+            this.m_checkComboTHURSSession.FormattingEnabled = true;
+            this.m_checkComboTHURSSession.Name = "m_checkComboTHURSSession";
+            this.m_checkComboTHURSSession.ValueSeparator = ", ";
+            this.m_checkComboTHURSSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
+            // m_checkComboTUESession
+            // 
+            this.m_checkComboTUESession.CheckOnClick = true;
+            this.m_checkComboTUESession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboTUESession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboTUESession, "m_checkComboTUESession");
+            this.m_checkComboTUESession.FormattingEnabled = true;
+            this.m_checkComboTUESession.Name = "m_checkComboTUESession";
+            this.m_checkComboTUESession.ValueSeparator = ", ";
+            this.m_checkComboTUESession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // 
+            // m_checkComboWEDSession
+            // 
+            this.m_checkComboWEDSession.CheckOnClick = true;
+            this.m_checkComboWEDSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_checkComboWEDSession.DropDownHeight = 1;
+            resources.ApplyResources(this.m_checkComboWEDSession, "m_checkComboWEDSession");
+            this.m_checkComboWEDSession.FormattingEnabled = true;
+            this.m_checkComboWEDSession.Name = "m_checkComboWEDSession";
+            this.m_checkComboWEDSession.ValueSeparator = ", ";
+            this.m_checkComboWEDSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
             // 
             // groupBox1
             // 
@@ -1146,6 +1243,18 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
+            // m_ProductCheckBox2
+            // 
+            this.m_ProductCheckBox2.CheckOnClick = true;
+            this.m_ProductCheckBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_ProductCheckBox2.DropDownHeight = 1;
+            resources.ApplyResources(this.m_ProductCheckBox2, "m_ProductCheckBox2");
+            this.m_ProductCheckBox2.FormattingEnabled = true;
+            this.m_ProductCheckBox2.Name = "m_ProductCheckBox2";
+            this.m_ProductCheckBox2.ValueSeparator = ", ";
+            this.m_ProductCheckBox2.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            this.m_ProductCheckBox2.Validating += new System.ComponentModel.CancelEventHandler(this.m_ProductCheckBox2_Validating);
+            // 
             // btnSaveList
             // 
             this.btnSaveList.BackColor = System.Drawing.Color.Transparent;
@@ -1198,6 +1307,249 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_summaryPanel, "m_summaryPanel");
             this.m_summaryPanel.Name = "m_summaryPanel";
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.tableLayoutPanel4);
+            resources.ApplyResources(this.groupBox10, "groupBox10");
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.TabStop = false;
+            // 
+            // tableLayoutPanel4
+            // 
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel7, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel4, 1, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Controls.Add(this.label67);
+            this.flowLayoutPanel7.Controls.Add(this.label41);
+            this.flowLayoutPanel7.Controls.Add(this.label42);
+            this.flowLayoutPanel7.Controls.Add(this.label43);
+            this.flowLayoutPanel7.Controls.Add(this.label45);
+            this.flowLayoutPanel7.Controls.Add(this.label16);
+            this.flowLayoutPanel7.Controls.Add(this.label18);
+            this.flowLayoutPanel7.Controls.Add(this.label19);
+            this.flowLayoutPanel7.Controls.Add(this.label22);
+            resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            // 
+            // label67
+            // 
+            resources.ApplyResources(this.label67, "label67");
+            this.label67.Name = "label67";
+            // 
+            // label41
+            // 
+            resources.ApplyResources(this.label41, "label41");
+            this.label41.Name = "label41";
+            // 
+            // label42
+            // 
+            resources.ApplyResources(this.label42, "label42");
+            this.label42.Name = "label42";
+            // 
+            // label43
+            // 
+            resources.ApplyResources(this.label43, "label43");
+            this.label43.Name = "label43";
+            // 
+            // label45
+            // 
+            resources.ApplyResources(this.label45, "label45");
+            this.label45.Name = "label45";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.textBox14);
+            this.flowLayoutPanel4.Controls.Add(this.textBox15);
+            this.flowLayoutPanel4.Controls.Add(this.textBox16);
+            this.flowLayoutPanel4.Controls.Add(this.textBox17);
+            this.flowLayoutPanel4.Controls.Add(this.textBox18);
+            this.flowLayoutPanel4.Controls.Add(this.textBox19);
+            this.flowLayoutPanel4.Controls.Add(this.textBox20);
+            this.flowLayoutPanel4.Controls.Add(this.textBox21);
+            this.flowLayoutPanel4.Controls.Add(this.textBox22);
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.tableLayoutPanel3);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // tableLayoutPanel3
+            // 
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel5, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel6, 1, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.label56);
+            this.flowLayoutPanel5.Controls.Add(this.label57);
+            this.flowLayoutPanel5.Controls.Add(this.label30);
+            this.flowLayoutPanel5.Controls.Add(this.label31);
+            this.flowLayoutPanel5.Controls.Add(this.label28);
+            this.flowLayoutPanel5.Controls.Add(this.label9);
+            this.flowLayoutPanel5.Controls.Add(this.label59);
+            this.flowLayoutPanel5.Controls.Add(this.label60);
+            this.flowLayoutPanel5.Controls.Add(this.label12);
+            this.flowLayoutPanel5.Controls.Add(this.label5);
+            resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // label56
+            // 
+            resources.ApplyResources(this.label56, "label56");
+            this.label56.Name = "label56";
+            // 
+            // label57
+            // 
+            resources.ApplyResources(this.label57, "label57");
+            this.label57.Name = "label57";
+            // 
+            // label30
+            // 
+            resources.ApplyResources(this.label30, "label30");
+            this.label30.Name = "label30";
+            // 
+            // label31
+            // 
+            resources.ApplyResources(this.label31, "label31");
+            this.label31.Name = "label31";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // label59
+            // 
+            resources.ApplyResources(this.label59, "label59");
+            this.label59.Name = "label59";
+            // 
+            // label60
+            // 
+            resources.ApplyResources(this.label60, "label60");
+            this.label60.Name = "label60";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.Controls.Add(this.textBox4);
+            this.flowLayoutPanel6.Controls.Add(this.textBox5);
+            this.flowLayoutPanel6.Controls.Add(this.textBox6);
+            this.flowLayoutPanel6.Controls.Add(this.textBox7);
+            this.flowLayoutPanel6.Controls.Add(this.textBox8);
+            this.flowLayoutPanel6.Controls.Add(this.textBox9);
+            this.flowLayoutPanel6.Controls.Add(this.textBox10);
+            this.flowLayoutPanel6.Controls.Add(this.textBox11);
+            this.flowLayoutPanel6.Controls.Add(this.textBox12);
+            this.flowLayoutPanel6.Controls.Add(this.textBox13);
+            resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // textBox4
+            // 
+            resources.ApplyResources(this.textBox4, "textBox4");
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            // 
+            // textBox5
+            // 
+            resources.ApplyResources(this.textBox5, "textBox5");
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            // 
+            // textBox6
+            // 
+            resources.ApplyResources(this.textBox6, "textBox6");
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            // 
+            // textBox7
+            // 
+            resources.ApplyResources(this.textBox7, "textBox7");
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            // 
+            // textBox8
+            // 
+            resources.ApplyResources(this.textBox8, "textBox8");
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            // 
+            // textBox9
+            // 
+            resources.ApplyResources(this.textBox9, "textBox9");
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            // 
+            // textBox10
+            // 
+            resources.ApplyResources(this.textBox10, "textBox10");
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            // 
+            // textBox11
+            // 
+            resources.ApplyResources(this.textBox11, "textBox11");
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            // 
+            // textBox12
+            // 
+            resources.ApplyResources(this.textBox12, "textBox12");
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            // 
+            // textBox13
+            // 
+            resources.ApplyResources(this.textBox13, "textBox13");
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.tableLayoutPanel2);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
@@ -1216,10 +1568,18 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
             // 
-            // label10
+            // listBox2
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.listBox2, "listBox2");
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Name = "listBox2";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.tableLayoutPanel1);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -1253,165 +1613,29 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.label6);
-            this.flowLayoutPanel2.Controls.Add(this.label7);
-            this.flowLayoutPanel2.Controls.Add(this.label8);
+            this.flowLayoutPanel2.Controls.Add(this.textBox1);
+            this.flowLayoutPanel2.Controls.Add(this.textBox2);
+            this.flowLayoutPanel2.Controls.Add(this.textBox3);
             resources.ApplyResources(this.flowLayoutPanel2, "flowLayoutPanel2");
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
-            // label6
+            // textBox1
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.textBox1, "textBox1");
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             // 
-            // label7
+            // textBox2
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.textBox2, "textBox2");
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             // 
-            // label8
+            // textBox3
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // tableLayoutPanel3
-            // 
-            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel5, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel6, 1, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.label56);
-            this.flowLayoutPanel5.Controls.Add(this.label57);
-            this.flowLayoutPanel5.Controls.Add(this.label58);
-            this.flowLayoutPanel5.Controls.Add(this.label30);
-            this.flowLayoutPanel5.Controls.Add(this.label31);
-            this.flowLayoutPanel5.Controls.Add(this.label32);
-            this.flowLayoutPanel5.Controls.Add(this.label28);
-            this.flowLayoutPanel5.Controls.Add(this.label9);
-            this.flowLayoutPanel5.Controls.Add(this.label29);
-            this.flowLayoutPanel5.Controls.Add(this.label59);
-            this.flowLayoutPanel5.Controls.Add(this.label60);
-            this.flowLayoutPanel5.Controls.Add(this.label12);
-            resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            // 
-            // label30
-            // 
-            resources.ApplyResources(this.label30, "label30");
-            this.label30.Name = "label30";
-            // 
-            // label31
-            // 
-            resources.ApplyResources(this.label31, "label31");
-            this.label31.Name = "label31";
-            // 
-            // label32
-            // 
-            resources.ApplyResources(this.label32, "label32");
-            this.label32.Name = "label32";
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.Controls.Add(this.label34);
-            this.flowLayoutPanel6.Controls.Add(this.label35);
-            this.flowLayoutPanel6.Controls.Add(this.label36);
-            this.flowLayoutPanel6.Controls.Add(this.label37);
-            this.flowLayoutPanel6.Controls.Add(this.label38);
-            this.flowLayoutPanel6.Controls.Add(this.label39);
-            this.flowLayoutPanel6.Controls.Add(this.label11);
-            this.flowLayoutPanel6.Controls.Add(this.label61);
-            this.flowLayoutPanel6.Controls.Add(this.label62);
-            this.flowLayoutPanel6.Controls.Add(this.label63);
-            this.flowLayoutPanel6.Controls.Add(this.label64);
-            this.flowLayoutPanel6.Controls.Add(this.label65);
-            this.flowLayoutPanel6.Controls.Add(this.label66);
-            resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(this.label34, "label34");
-            this.label34.Name = "label34";
-            // 
-            // label35
-            // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // label39
-            // 
-            resources.ApplyResources(this.label39, "label39");
-            this.label39.Name = "label39";
-            // 
-            // tableLayoutPanel4
-            // 
-            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
-            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel7, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel4, 1, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.Controls.Add(this.label67);
-            this.flowLayoutPanel7.Controls.Add(this.label40);
-            this.flowLayoutPanel7.Controls.Add(this.label41);
-            this.flowLayoutPanel7.Controls.Add(this.label42);
-            this.flowLayoutPanel7.Controls.Add(this.label14);
-            this.flowLayoutPanel7.Controls.Add(this.label23);
-            this.flowLayoutPanel7.Controls.Add(this.label43);
-            this.flowLayoutPanel7.Controls.Add(this.label44);
-            this.flowLayoutPanel7.Controls.Add(this.label45);
-            this.flowLayoutPanel7.Controls.Add(this.label16);
-            this.flowLayoutPanel7.Controls.Add(this.label17);
-            this.flowLayoutPanel7.Controls.Add(this.label18);
-            this.flowLayoutPanel7.Controls.Add(this.label19);
-            this.flowLayoutPanel7.Controls.Add(this.label20);
-            this.flowLayoutPanel7.Controls.Add(this.label22);
-            resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            // 
-            // label40
-            // 
-            resources.ApplyResources(this.label40, "label40");
-            this.label40.Name = "label40";
-            // 
-            // label41
-            // 
-            resources.ApplyResources(this.label41, "label41");
-            this.label41.Name = "label41";
-            // 
-            // label42
-            // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
-            // 
-            // label43
-            // 
-            resources.ApplyResources(this.label43, "label43");
-            this.label43.Name = "label43";
-            // 
-            // label44
-            // 
-            resources.ApplyResources(this.label44, "label44");
-            this.label44.Name = "label44";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
+            resources.ApplyResources(this.textBox3, "textBox3");
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             // 
             // label52
             // 
@@ -1419,370 +1643,69 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label52, "label52");
             this.label52.Name = "label52";
             // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // m_ProductCheckBox2
-            // 
-            this.m_ProductCheckBox2.CheckOnClick = true;
-            this.m_ProductCheckBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_ProductCheckBox2.DropDownHeight = 1;
-            resources.ApplyResources(this.m_ProductCheckBox2, "m_ProductCheckBox2");
-            this.m_ProductCheckBox2.FormattingEnabled = true;
-            this.m_ProductCheckBox2.Name = "m_ProductCheckBox2";
-            this.m_ProductCheckBox2.ValueSeparator = ", ";
-            this.m_ProductCheckBox2.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            this.m_ProductCheckBox2.Validating += new System.ComponentModel.CancelEventHandler(this.m_ProductCheckBox2_Validating);
-            // 
-            // m_checkComboAllSession
-            // 
-            this.m_checkComboAllSession.CheckOnClick = true;
-            this.m_checkComboAllSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboAllSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboAllSession, "m_checkComboAllSession");
-            this.m_checkComboAllSession.FormattingEnabled = true;
-            this.m_checkComboAllSession.Name = "m_checkComboAllSession";
-            this.m_checkComboAllSession.ValueSeparator = ", ";
-            this.m_checkComboAllSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            // 
-            // m_checkComboSUNSession
-            // 
-            this.m_checkComboSUNSession.CheckOnClick = true;
-            this.m_checkComboSUNSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboSUNSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboSUNSession, "m_checkComboSUNSession");
-            this.m_checkComboSUNSession.FormattingEnabled = true;
-            this.m_checkComboSUNSession.Name = "m_checkComboSUNSession";
-            this.m_checkComboSUNSession.ValueSeparator = ", ";
-            this.m_checkComboSUNSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            // 
-            // m_checkComboSATSession
-            // 
-            this.m_checkComboSATSession.CheckOnClick = true;
-            this.m_checkComboSATSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboSATSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboSATSession, "m_checkComboSATSession");
-            this.m_checkComboSATSession.FormattingEnabled = true;
-            this.m_checkComboSATSession.Name = "m_checkComboSATSession";
-            this.m_checkComboSATSession.ValueSeparator = ", ";
-            this.m_checkComboSATSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            // 
-            // m_checkComboFRISession
-            // 
-            this.m_checkComboFRISession.CheckOnClick = true;
-            this.m_checkComboFRISession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboFRISession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboFRISession, "m_checkComboFRISession");
-            this.m_checkComboFRISession.FormattingEnabled = true;
-            this.m_checkComboFRISession.Name = "m_checkComboFRISession";
-            this.m_checkComboFRISession.ValueSeparator = ", ";
-            this.m_checkComboFRISession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            // 
-            // m_checkComboMONSession
-            // 
-            this.m_checkComboMONSession.CheckOnClick = true;
-            this.m_checkComboMONSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboMONSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboMONSession, "m_checkComboMONSession");
-            this.m_checkComboMONSession.FormattingEnabled = true;
-            this.m_checkComboMONSession.Name = "m_checkComboMONSession";
-            this.m_checkComboMONSession.ValueSeparator = ", ";
-            this.m_checkComboMONSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // label10
             // 
-            // m_checkComboTHURSSession
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
             // 
-            this.m_checkComboTHURSSession.CheckOnClick = true;
-            this.m_checkComboTHURSSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboTHURSSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboTHURSSession, "m_checkComboTHURSSession");
-            this.m_checkComboTHURSSession.FormattingEnabled = true;
-            this.m_checkComboTHURSSession.Name = "m_checkComboTHURSSession";
-            this.m_checkComboTHURSSession.ValueSeparator = ", ";
-            this.m_checkComboTHURSSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // label5
             // 
-            // m_checkComboTUESession
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
-            this.m_checkComboTUESession.CheckOnClick = true;
-            this.m_checkComboTUESession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboTUESession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboTUESession, "m_checkComboTUESession");
-            this.m_checkComboTUESession.FormattingEnabled = true;
-            this.m_checkComboTUESession.Name = "m_checkComboTUESession";
-            this.m_checkComboTUESession.ValueSeparator = ", ";
-            this.m_checkComboTUESession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // textBox14
             // 
-            // m_checkComboWEDSession
+            resources.ApplyResources(this.textBox14, "textBox14");
+            this.textBox14.Name = "textBox14";
+            this.textBox14.ReadOnly = true;
             // 
-            this.m_checkComboWEDSession.CheckOnClick = true;
-            this.m_checkComboWEDSession.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_checkComboWEDSession.DropDownHeight = 1;
-            resources.ApplyResources(this.m_checkComboWEDSession, "m_checkComboWEDSession");
-            this.m_checkComboWEDSession.FormattingEnabled = true;
-            this.m_checkComboWEDSession.Name = "m_checkComboWEDSession";
-            this.m_checkComboWEDSession.ValueSeparator = ", ";
-            this.m_checkComboWEDSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            // textBox15
             // 
-            // m_locListBox
+            resources.ApplyResources(this.textBox15, "textBox15");
+            this.textBox15.Name = "textBox15";
+            this.textBox15.ReadOnly = true;
             // 
-            this.m_locListBox.BackColor = System.Drawing.SystemColors.ButtonFace;
-            resources.ApplyResources(this.m_locListBox, "m_locListBox");
-            this.m_locListBox.FormattingEnabled = true;
-            this.m_locListBox.Name = "m_locListBox";
-            this.m_locListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.m_locListBox.Sorted = true;
-            this.m_locListBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.m_locListBox_KeyDown);
+            // textBox16
             // 
-            // m_statusCheckComboBox
+            resources.ApplyResources(this.textBox16, "textBox16");
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ReadOnly = true;
             // 
-            resources.ApplyResources(this.m_statusCheckComboBox, "m_statusCheckComboBox");
-            this.m_statusCheckComboBox.CheckOnClick = true;
-            this.m_statusCheckComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_statusCheckComboBox.DropDownHeight = 1;
-            this.m_statusCheckComboBox.FormattingEnabled = true;
-            this.m_statusCheckComboBox.Name = "m_statusCheckComboBox";
-            this.m_statusCheckComboBox.Sorted = true;
-            this.m_statusCheckComboBox.ValueSeparator = ", ";
-            this.m_statusCheckComboBox.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            this.m_statusCheckComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.m_statusCheckComboBox_Validating);
+            // textBox17
             // 
-            // label16
+            resources.ApplyResources(this.textBox17, "textBox17");
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ReadOnly = true;
             // 
-            resources.ApplyResources(this.label16, "label16");
-            this.label16.Name = "label16";
+            // textBox18
             // 
-            // label17
+            resources.ApplyResources(this.textBox18, "textBox18");
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ReadOnly = true;
             // 
-            resources.ApplyResources(this.label17, "label17");
-            this.label17.Name = "label17";
+            // textBox19
             // 
-            // label18
+            resources.ApplyResources(this.textBox19, "textBox19");
+            this.textBox19.Name = "textBox19";
+            this.textBox19.ReadOnly = true;
             // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
+            // textBox20
             // 
-            // label19
+            resources.ApplyResources(this.textBox20, "textBox20");
+            this.textBox20.Name = "textBox20";
+            this.textBox20.ReadOnly = true;
             // 
-            resources.ApplyResources(this.label19, "label19");
-            this.label19.Name = "label19";
+            // textBox21
             // 
-            // label20
+            resources.ApplyResources(this.textBox21, "textBox21");
+            this.textBox21.Name = "textBox21";
+            this.textBox21.ReadOnly = true;
             // 
-            resources.ApplyResources(this.label20, "label20");
-            this.label20.Name = "label20";
+            // textBox22
             // 
-            // label22
-            // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            // 
-            // label56
-            // 
-            resources.ApplyResources(this.label56, "label56");
-            this.label56.Name = "label56";
-            // 
-            // label57
-            // 
-            resources.ApplyResources(this.label57, "label57");
-            this.label57.Name = "label57";
-            // 
-            // label58
-            // 
-            resources.ApplyResources(this.label58, "label58");
-            this.label58.Name = "label58";
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
-            // 
-            // label29
-            // 
-            resources.ApplyResources(this.label29, "label29");
-            this.label29.Name = "label29";
-            // 
-            // label59
-            // 
-            resources.ApplyResources(this.label59, "label59");
-            this.label59.Name = "label59";
-            // 
-            // label60
-            // 
-            resources.ApplyResources(this.label60, "label60");
-            this.label60.Name = "label60";
-            // 
-            // label61
-            // 
-            resources.ApplyResources(this.label61, "label61");
-            this.label61.Name = "label61";
-            // 
-            // label62
-            // 
-            resources.ApplyResources(this.label62, "label62");
-            this.label62.Name = "label62";
-            // 
-            // label63
-            // 
-            resources.ApplyResources(this.label63, "label63");
-            this.label63.Name = "label63";
-            // 
-            // label64
-            // 
-            resources.ApplyResources(this.label64, "label64");
-            this.label64.Name = "label64";
-            // 
-            // label65
-            // 
-            resources.ApplyResources(this.label65, "label65");
-            this.label65.Name = "label65";
-            // 
-            // label66
-            // 
-            resources.ApplyResources(this.label66, "label66");
-            this.label66.Name = "label66";
-            // 
-            // label67
-            // 
-            resources.ApplyResources(this.label67, "label67");
-            this.label67.Name = "label67";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.label21);
-            this.flowLayoutPanel4.Controls.Add(this.label24);
-            this.flowLayoutPanel4.Controls.Add(this.label25);
-            this.flowLayoutPanel4.Controls.Add(this.listBox1);
-            this.flowLayoutPanel4.Controls.Add(this.label33);
-            this.flowLayoutPanel4.Controls.Add(this.label46);
-            this.flowLayoutPanel4.Controls.Add(this.label47);
-            this.flowLayoutPanel4.Controls.Add(this.label48);
-            this.flowLayoutPanel4.Controls.Add(this.label49);
-            this.flowLayoutPanel4.Controls.Add(this.label50);
-            this.flowLayoutPanel4.Controls.Add(this.label51);
-            this.flowLayoutPanel4.Controls.Add(this.label26);
-            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(this.label24, "label24");
-            this.label24.Name = "label24";
-            // 
-            // label25
-            // 
-            resources.ApplyResources(this.label25, "label25");
-            this.label25.Name = "label25";
-            // 
-            // listBox1
-            // 
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Name = "listBox1";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
-            // label33
-            // 
-            resources.ApplyResources(this.label33, "label33");
-            this.label33.Name = "label33";
-            // 
-            // label46
-            // 
-            resources.ApplyResources(this.label46, "label46");
-            this.label46.Name = "label46";
-            // 
-            // label47
-            // 
-            resources.ApplyResources(this.label47, "label47");
-            this.label47.Name = "label47";
-            // 
-            // label48
-            // 
-            resources.ApplyResources(this.label48, "label48");
-            this.label48.Name = "label48";
-            // 
-            // label49
-            // 
-            resources.ApplyResources(this.label49, "label49");
-            this.label49.Name = "label49";
-            // 
-            // label50
-            // 
-            resources.ApplyResources(this.label50, "label50");
-            this.label50.Name = "label50";
-            // 
-            // label51
-            // 
-            resources.ApplyResources(this.label51, "label51");
-            this.label51.Name = "label51";
-            // 
-            // listBox2
-            // 
-            resources.ApplyResources(this.listBox2, "listBox2");
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Name = "listBox2";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.tableLayoutPanel1);
-            resources.ApplyResources(this.groupBox7, "groupBox7");
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.TabStop = false;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.tableLayoutPanel2);
-            resources.ApplyResources(this.groupBox8, "groupBox8");
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.tableLayoutPanel3);
-            resources.ApplyResources(this.groupBox9, "groupBox9");
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.TabStop = false;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.tableLayoutPanel4);
-            resources.ApplyResources(this.groupBox10, "groupBox10");
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.TabStop = false;
+            resources.ApplyResources(this.textBox22, "textBox22");
+            this.textBox22.Name = "textBox22";
+            this.textBox22.ReadOnly = true;
             // 
             // PlayerListForm
             // 
@@ -1835,28 +1758,25 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox5.ResumeLayout(false);
             this.m_summaryPanel.ResumeLayout(false);
             this.m_summaryPanel.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel7.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel7.ResumeLayout(false);
-            this.flowLayoutPanel7.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1994,72 +1914,58 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
-        private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label32;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label58;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.Label label66;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox textBox22;
     }
 }

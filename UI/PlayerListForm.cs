@@ -428,39 +428,36 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_Status.Text = string.Empty;
             summary_Birthday.Text = string.Empty;
             summary_VisitedDateFrom.Text = string.Empty;
-            summary_VisitedDateTo.Text = string.Empty;
             summary_NDaysVisitedFrom.Text = string.Empty;
-            summary_NDaysVisitedTo.Text = string.Empty;
-            summary_NDaysVisited.Text = string.Empty;
+            summary_DaysWeek2.Text = string.Empty;
             summary_NSessionVisitedFrom.Text = string.Empty;
-            summary_NSessionVisitedTo.Text = string.Empty;
-            summary_NSessionVisited.Text = string.Empty;
-            summary_DaysWeek.Text = string.Empty;
-            summary_Session.Text = string.Empty;
+            summary_LastVisitDateFrom.Text = string.Empty;
             summary_Location.Text = string.Empty;
             summary_SpendDateFrom.Text = string.Empty;
-            summary_spendDateTo.Text = string.Empty;
-            summary_ProductPurchase.Text = string.Empty;
             summary_PBFrom.Text = string.Empty;
-            summary_PBTo.Text = string.Empty;
+  
             summary_NSpendFrom.Text = string.Empty;
-            summary_NSpendTo.Text = string.Empty;
-            summary_NSpend.Text = string.Empty;
-            summary_NAverageFrom.Text = string.Empty;
+
+          
             summary_NAverageTo.Text = string.Empty;
-            summary_NAverage.Text = string.Empty;                                                                                                                                                                                                                
+            summary_NAverage.Text = string.Empty;
+            summary_ProductPurchase2.Text = string.Empty;                                                                                                                                                                                               
 
         }
         
         private void PopulateDataIntoControls()
         {
             ClearAllSummaryItem();
+            string t_summary_DateFrom = "";
+            DateTime t_summary_DateFrom_dt = new DateTime();
+            string t_summary_value = "";
+            string t_summary_Option = "";
+
             foreach (PlayerListSetting pls in PlyrActListSetting.Settings)
             {
                 DateTime tempDateTime;
                 int tempIndexOf = 0; ;
-                string t_summary_DateFrom = "";
-                string t_summary_Option = "";
+               
 
                 switch (pls.SettingID)
                 {
@@ -474,7 +471,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         string tempStatus = pls.SettingValue.ToString() + ",";
                         tempStatus = tempStatus.Replace("/|\\", ",");
                         tempIndexOf = tempStatus.IndexOf(",");
-                        summary_Status.Text = tempStatus;
+                        summary_Status.Text =  tempStatus.Remove(tempStatus.Length - 1, 1);
                         while (tempStatus.IndexOf(",") != -1)
                         {
                             string Status = tempStatus.Substring(0, tempIndexOf);
@@ -492,7 +489,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_fromBirthdayMonth.SelectedIndex = tempDateTime.Month - 1;
                         m_fromBirthdayDay.SelectedIndex = tempDateTime.Day - 1;
-                        t_summary_DateFrom = tempDateTime.ToString();
+                        t_summary_DateFrom = tempDateTime.ToString("MMM dd");
+                        //summary_Birthday.Text = tempDateTime.ToString();
 
                         break;
                     case (int)PlayerListSettingEnum.BirthdayTo://BirthDay to
@@ -500,7 +498,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_toBirthdayMonth.SelectedIndex = tempDateTime.Month - 1;
                         m_toBirthdayDay.SelectedIndex = tempDateTime.Day - 1;
-                        summary_Birthday.Text = t_summary_DateFrom + "between" + tempDateTime.ToString();
+                        summary_Birthday.Text = " Between " + t_summary_DateFrom +" And "+ tempDateTime.ToString("MMM dd");
                         break;
 
                     case (int)PlayerListSettingEnum.City://VIP City
@@ -511,7 +509,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         //tempIndexOf = pls.SettingValue.IndexOf(",");
                         string tempCity = pls.SettingValue.ToString() + ",";
                         summary_lblLocation.Text = "City";
-                        summary_Location.Text = tempCity;
+                        summary_Location.Text = tempCity.Remove(tempCity.Length - 1, 1);
                         tempIndexOf = tempCity.IndexOf(",");
                         while (tempCity.IndexOf(",") != -1)
                         {
@@ -533,7 +531,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         //tempIndexOf = pls.SettingValue.IndexOf(",");
                         string tempState = pls.SettingValue.ToString() + ",";
                         summary_lblLocation.Text = "State";
-                        summary_Location.Text = tempState;
+                        summary_Location.Text = tempState.Remove(tempState.Length - 1, 1);
                         tempIndexOf = tempState.IndexOf(",");
 
                         while (tempState.IndexOf(",") != -1)
@@ -556,7 +554,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         //tempIndexOf = pls.SettingValue.IndexOf(",");
                         string tempPostal = pls.SettingValue.ToString() + ",";
                         summary_lblLocation.Text = "Postal";
-                        summary_Location.Text = tempPostal;
+                        summary_Location.Text = tempPostal.Remove(tempPostal.Length - 1, 1);
                         tempIndexOf = tempPostal.IndexOf(",");
 
                         while (tempPostal.IndexOf(",") != -1)
@@ -579,7 +577,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         // tempIndexOf = pls.SettingValue.IndexOf(",");
                         string tempCountry = pls.SettingValue.ToString() + ",";
                           summary_lblLocation.Text = "Country";
-                          summary_Location.Text = tempCountry;
+                          summary_Location.Text = tempCountry.Remove(tempCountry.Length - 1, 1);
                         tempIndexOf = tempCountry.IndexOf(",");
                         while (tempCountry.IndexOf(",") != -1)
                         {
@@ -595,15 +593,16 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     case (int)PlayerListSettingEnum.VisitedFrom://Date "From" days played.
 
-                        tempDateTime = Convert.ToDateTime(pls.SettingValue);
-                        summary_VisitedDateFrom.Text = tempDateTime.ToString();
+                        tempDateTime = Convert.ToDateTime(pls.SettingValue);                       
+                        t_summary_DateFrom_dt = tempDateTime;
                         m_dateRangefromDPDatePicker.Value = tempDateTime;
                         break;
 
                     case (int)PlayerListSettingEnum.VisitedTo://Date "To" days played.
 
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
-                        summary_VisitedDateTo.Text = tempDateTime.ToString();
+
+                        summary_VisitedDateFrom.Text =  t_summary_DateFrom_dt.ToString("MMM dd") +"  to " +  tempDateTime.ToString("MMM dd");
                         m_dateRangetoDPDatePicker.Value = tempDateTime;
                
                         break;
@@ -611,7 +610,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     case (int)PlayerListSettingEnum.LastVisitBetween://Date last visit from.
                         m_lastVisitCheck.Checked = true;
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
-                        
+                        t_summary_DateFrom_dt = tempDateTime;
                         m_fromLastVisit.Value = tempDateTime;
                         break;
 
@@ -619,18 +618,19 @@ namespace GTI.Modules.PlayerCenter.UI
                         //m_lastVisitCheck.Checked = true;
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_toLastVisit.Value = tempDateTime;
+                        summary_LastVisitDateFrom.Text = t_summary_DateFrom_dt.ToString("MMM dd") + "  to " + tempDateTime.ToString("MMM dd");
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedFrom://Days visited range from.
                         m_daysPlayedCheck.Checked = true;
                         m_rangeDPRadioButton.Checked = true;
-                        summary_NDaysVisitedFrom.Text = pls.SettingValue.ToString();
+                        t_summary_value = pls.SettingValue.ToString();
                         m_fromRangeDPTextBox.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedTo://Days visited ranger to.
                         m_toRangeDPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NDaysVisitedTo.Text = pls.SettingValue.ToString();
+                        summary_NDaysVisitedFrom.Text = "Between "+ t_summary_value + " and " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedGreaterThan://Days visited option >.
@@ -638,8 +638,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionDPRadioButton.Checked = true;
                         m_rangeOptionDPComboBox.SelectedIndex = 0;
                         m_rangeOptionDPTextBox.Text = pls.SettingValue.ToString();
-                        //t_summary_Option = pls.SettingValue.ToString();
-                        summary_NDaysVisited.Text = pls.SettingValue.ToString();
+                        summary_NDaysVisitedFrom.Text = m_rangeOptionDPComboBox.SelectedItem +" to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedGreaterThanOrEqualTo://Days visited option >=.
@@ -647,7 +646,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionDPRadioButton.Checked = true;
                         m_rangeOptionDPComboBox.SelectedIndex = 1;
                         m_rangeOptionDPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NDaysVisited.Text = pls.SettingValue.ToString();
+                        summary_NDaysVisitedFrom.Text = m_rangeOptionDPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedEqualTo://Days visited option =.
@@ -655,7 +654,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionDPRadioButton.Checked = true;
                         m_rangeOptionDPComboBox.SelectedIndex = 2;
                         m_rangeOptionDPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NDaysVisited.Text = pls.SettingValue.ToString();
+                       // summary_NDaysVisited.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedLessThanOrEqualTo://Days visited option <=.
@@ -663,7 +662,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionDPRadioButton.Checked = true;
                         m_rangeOptionDPComboBox.SelectedIndex = 3;
                         m_rangeOptionDPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NDaysVisited.Text = pls.SettingValue.ToString();
+                        summary_NDaysVisitedFrom.Text = m_rangeOptionDPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
+                       // summary_NDaysVisited.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofDaysVisitedLessThan://Days visited option <.
@@ -671,19 +671,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionDPRadioButton.Checked = true;
                         m_rangeOptionDPComboBox.SelectedIndex = 4;
                         m_rangeOptionDPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NDaysVisited.Text = pls.SettingValue.ToString();
+                        summary_NDaysVisitedFrom.Text = m_rangeOptionDPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
+                       // summary_NDaysVisited.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedFrom://Sessions visited range from.
                         m_sessionPlayedCheck.Checked = true;
                         m_rangeSPRadioButton.Checked = true;
                         m_fromRangeSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisitedFrom.Text   = pls.SettingValue.ToString();
+                        t_summary_value = pls.SettingValue.ToString();
+      
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVistsedTo://Session visited range to.
                         m_toRangeSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisitedTo.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = "Between " + t_summary_value + " and " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedGreaterThan://Session visited option >.
@@ -691,7 +693,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionSPRadioButton.Checked = true;
                         m_rangeOptionSPComboBox.SelectedIndex = 0;
                         m_rangeOptionSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        //summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = m_rangeOptionSPComboBox.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedGreaterThanOrEqualTo://Session visited option >=.
@@ -699,7 +702,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionSPRadioButton.Checked = true;
                         m_rangeOptionSPComboBox.SelectedIndex = 1;
                         m_rangeOptionSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = m_rangeOptionSPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedEqualTo://Session visited option  =.
@@ -707,7 +710,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionSPRadioButton.Checked = true;
                         m_rangeOptionSPComboBox.SelectedIndex = 2;
                         m_rangeOptionSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = m_rangeOptionSPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedLessThanOrEqualTo://Session visited option <=.
@@ -715,7 +718,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionSPRadioButton.Checked = true;
                         m_rangeOptionSPComboBox.SelectedIndex = 3;
                         m_rangeOptionSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = m_rangeOptionSPComboBox.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.NumberofSessionsVisitedLessThan://Session visited option <.
@@ -723,20 +726,20 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_rangeoptionSPRadioButton.Checked = true;
                         m_rangeOptionSPComboBox.SelectedIndex = 4;
                         m_rangeOptionSPTextBox.Text = pls.SettingValue.ToString();
-                        summary_NSessionVisited.Text = pls.SettingValue.ToString();
+                        summary_NSessionVisitedFrom.Text = m_rangeOptionSPComboBox.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.DaysofWeekSession://Days of week and sessions.
                         m_daysOfWeekAndSessionCheck.Checked = true;
-                        tempIndexOf = 0;
-
+                        tempIndexOf = 0;                  
                         tempIndexOf = pls.SettingValue.IndexOf(",");
                         string tempDays = "";
 
                         if (tempIndexOf != -1)
                         {
                             tempDays = pls.SettingValue.ToString() + ",";
-                            summary_DaysWeek.Text = tempDays;
+                   
+                            summary_DaysWeek2.Text = tempDays;
                             while (tempDays.IndexOf(",") != -1)
                             {
                                 string DaynSession = tempDays.Substring(0, tempIndexOf);
@@ -762,7 +765,6 @@ namespace GTI.Modules.PlayerCenter.UI
                             {
                                 cSession = "ALL";
                             }
-                            summary_Session.Text = cSession;
                             populateDays(Days, cSession);
                         }
                         break;
@@ -770,13 +772,14 @@ namespace GTI.Modules.PlayerCenter.UI
                     case (int)PlayerListSettingEnum.SpendFrom://Date spend from (date).
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_fromSpendDate.Value = tempDateTime;
-                        summary_SpendDateFrom.Text  = tempDateTime.ToString();
+                        t_summary_DateFrom_dt = tempDateTime;
                         break;
 
                     case (int)PlayerListSettingEnum.SpendTo://Date spend to (date).
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_toSpendDate.Value = tempDateTime;
-                        summary_spendDateTo.Text = tempDateTime.ToString();
+                        summary_SpendDateFrom.Text = t_summary_DateFrom_dt.ToString("MMM dd") + " to " + tempDateTime.ToString("MMM dd");
+                        //summary_spendDateFrom.Text = tempDateTime.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.ProductPurchased://Product purchased.
@@ -784,8 +787,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         string tempProduct = pls.SettingValue.ToString() + ",";
                         tempProduct = tempProduct.Replace("/|\\", ",");
                         tempIndexOf = tempProduct.IndexOf(",");
-                        summary_ProductPurchase.Text = tempProduct;
-
+                        summary_ProductPurchase2.Text = tempProduct;
                         while (tempProduct.IndexOf(",") != -1)
                         {                            //var indexof = m_ProductCheckBox2.Items.OfType<string>().;//IndexOf(Product);
                             string Product = tempProduct.Substring(0, tempIndexOf);
@@ -831,12 +833,13 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_pointBalanceCheck.Checked = true;
                         m_rangePBRadio.Checked = true;
                         m_minPointBalance.Text = pls.SettingValue.ToString();
-                        summary_NSpendFrom.Text = pls.SettingValue.ToString();
+                        //summary_NSpendFrom.Text = pls.SettingValue.ToString();
+                        t_summary_value = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceTo://Point balance range max.           
                         m_maxPointBalance.Text = pls.SettingValue.ToString();
-                        summary_NSpendTo.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text =  "Between " + t_summary_value.ToString() + " to " +  pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceGreaterThan://Point balance option >.
@@ -844,7 +847,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_optionPBRadio.Checked = true;
                         m_optionSelectedPBCombo.SelectedIndex = 0;
                         m_optionValuePBText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text = m_optionSelectedPBCombo.SelectedItem  + " " + pls.SettingValue.ToString();
+                       // summary_NSpend.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceGreaterThanOrEqualTo://Point balance option >=.
@@ -852,7 +856,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_optionPBRadio.Checked = true;
                         m_optionSelectedPBCombo.SelectedIndex = 1;
                         m_optionValuePBText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text = m_optionSelectedPBCombo.SelectedItem + " to " + pls.SettingValue.ToString();
+                     //   summary_NSpend.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceEqualTo://Point balance option =.
@@ -860,7 +865,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_optionPBRadio.Checked = true;
                         m_optionSelectedPBCombo.SelectedIndex = 2;
                         m_optionValuePBText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                      //  summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text = m_optionSelectedPBCombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceLessThanOrEqualTo://Point balance option <=.
@@ -868,7 +874,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_optionPBRadio.Checked = true;
                         m_optionSelectedPBCombo.SelectedIndex = 3;
                         m_optionValuePBText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text = m_optionSelectedPBCombo.SelectedItem + " to " + pls.SettingValue.ToString();
+                      //  summary_NSpend.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.PointBalanceLessThan://Point balance option <.
@@ -876,19 +883,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_optionPBRadio.Checked = true;
                         m_optionSelectedPBCombo.SelectedIndex = 4;
                         m_optionValuePBText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                     //   summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_PBFrom.Text = m_optionSelectedPBCombo.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendFromvalue://Spend range from.
                         m_spendCheck.Checked = true;
                         m_rangeSARadio.Checked = true;
                         m_fromSpend.Text = pls.SettingValue.ToString();
-                        summary_NSpendFrom.Text = pls.SettingValue.ToString();
+                        //summary_NSpendFrom.Text = pls.SettingValue.ToString();
+                        t_summary_value = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendTovalue:///Spend  range from.           
                         m_toSpend.Text = pls.SettingValue.ToString();
-                        summary_NSpendTo.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = "Between " + t_summary_value.ToString() + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendGreaterThan:///Spend  option >.
@@ -896,8 +905,9 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 0;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
-                       
+                     //   summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = m_optionSelectedSACombo.SelectedItem + " " + pls.SettingValue.ToString();
+            
                         break;
 
                     case (int)PlayerListSettingEnum.SpendGreaterThanOrEqualTo:///Spend option >=.
@@ -905,7 +915,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 1;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                     //   summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendEqualTo:///Spend  option =.
@@ -913,7 +924,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 2;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                  //      summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendLessThanOrEqualTo:///Spend  option <=.
@@ -921,7 +933,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 3;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                        //summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.SpendLessThan:///Spend option <.
@@ -929,19 +942,22 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 4;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NSpend.Text = pls.SettingValue.ToString();
+                       // summary_NSpend.Text = pls.SettingValue.ToString();
+                        summary_NSpendFrom.Text = m_optionSelectedSACombo.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageSpendFrom://Average spend range from.
                         m_averageRadio.Checked = true;
                         m_rangeSARadio.Checked = true;
                         m_fromSpend.Text = pls.SettingValue.ToString();
-                        summary_NAverageFrom.Text = pls.SettingValue.ToString();
+                        t_summary_value = pls.SettingValue.ToString();
+                        //summary_NAverageFrom.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageSpendTo:///Average spend  range from.           
                         m_toSpend.Text = pls.SettingValue.ToString();
-                        summary_NAverageTo.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = "Between " + t_summary_value + " to " + pls.SettingValue.ToString(); 
+                        //summary_NAverageTo.Text = pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageSpendGreaterThan:///Average spend  option >.
@@ -949,7 +965,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 0;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NAverage.Text = pls.SettingValue.ToString();
+                        //summary_NAverage.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = m_optionSelectedSACombo.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageGreaterThanOrEqualTo:///Average spend option >=.
@@ -957,7 +974,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 1;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NAverage.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageEqualTo:///Average spend  option =.
@@ -965,7 +982,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 2;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NAverage.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageLessThanOrEqualTo:///Average spend  option <=.
@@ -973,7 +990,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 3;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NAverage.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = m_optionSelectedSACombo.SelectedItem + " to " + pls.SettingValue.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.AverageLessThan:///Average spend option <.
@@ -981,7 +998,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_OptionSARadio.Checked = true;
                         m_optionSelectedSACombo.SelectedIndex = 4;
                         m_optionValueSAText.Text = pls.SettingValue.ToString();
-                        summary_NAverage.Text = pls.SettingValue.ToString();
+                        summary_NAverageFrom.Text = m_optionSelectedSACombo.SelectedItem + " " + pls.SettingValue.ToString();
                         break;
                 }
             }
@@ -4017,6 +4034,11 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         
         #endregion
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
        
 

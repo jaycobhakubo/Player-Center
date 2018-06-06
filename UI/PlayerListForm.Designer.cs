@@ -155,57 +155,35 @@ namespace GTI.Modules.PlayerCenter.UI
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.label67 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.summary_SpendDateFrom = new System.Windows.Forms.TextBox();
-            this.summary_spendDateTo = new System.Windows.Forms.TextBox();
-            this.summary_ProductPurchase = new System.Windows.Forms.TextBox();
             this.summary_PBFrom = new System.Windows.Forms.TextBox();
-            this.summary_PBTo = new System.Windows.Forms.TextBox();
             this.summary_NSpendFrom = new System.Windows.Forms.TextBox();
-            this.summary_NSpendTo = new System.Windows.Forms.TextBox();
-            this.summary_NSpend = new System.Windows.Forms.TextBox();
             this.summary_NAverageFrom = new System.Windows.Forms.TextBox();
-            this.summary_NAverageTo = new System.Windows.Forms.TextBox();
-            this.summary_NAverage = new System.Windows.Forms.TextBox();
+            this.summary_ProductPurchase2 = new System.Windows.Forms.RichTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.summary_VisitedDateFrom = new System.Windows.Forms.TextBox();
-            this.summary_VisitedDateTo = new System.Windows.Forms.TextBox();
             this.summary_NDaysVisitedFrom = new System.Windows.Forms.TextBox();
-            this.summary_NDaysVisitedTo = new System.Windows.Forms.TextBox();
-            this.summary_NDaysVisited = new System.Windows.Forms.TextBox();
             this.summary_NSessionVisitedFrom = new System.Windows.Forms.TextBox();
-            this.summary_NSessionVisitedTo = new System.Windows.Forms.TextBox();
-            this.summary_NSessionVisited = new System.Windows.Forms.TextBox();
-            this.summary_DaysWeek = new System.Windows.Forms.TextBox();
-            this.summary_Session = new System.Windows.Forms.TextBox();
+            this.summary_LastVisitDateFrom = new System.Windows.Forms.TextBox();
+            this.summary_DaysWeek2 = new System.Windows.Forms.RichTextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.summary_Location = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.summary_lblLocation = new System.Windows.Forms.Label();
+            this.summary_Location = new System.Windows.Forms.RichTextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -1328,16 +1306,10 @@ namespace GTI.Modules.PlayerCenter.UI
             // flowLayoutPanel7
             // 
             this.flowLayoutPanel7.Controls.Add(this.label67);
-            this.flowLayoutPanel7.Controls.Add(this.label41);
-            this.flowLayoutPanel7.Controls.Add(this.label42);
             this.flowLayoutPanel7.Controls.Add(this.label43);
-            this.flowLayoutPanel7.Controls.Add(this.label45);
             this.flowLayoutPanel7.Controls.Add(this.label16);
-            this.flowLayoutPanel7.Controls.Add(this.label18);
-            this.flowLayoutPanel7.Controls.Add(this.label6);
             this.flowLayoutPanel7.Controls.Add(this.label19);
-            this.flowLayoutPanel7.Controls.Add(this.label22);
-            this.flowLayoutPanel7.Controls.Add(this.label7);
+            this.flowLayoutPanel7.Controls.Add(this.label5);
             resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             // 
@@ -1346,69 +1318,33 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label67, "label67");
             this.label67.Name = "label67";
             // 
-            // label41
-            // 
-            resources.ApplyResources(this.label41, "label41");
-            this.label41.Name = "label41";
-            // 
-            // label42
-            // 
-            resources.ApplyResources(this.label42, "label42");
-            this.label42.Name = "label42";
-            // 
             // label43
             // 
             resources.ApplyResources(this.label43, "label43");
             this.label43.Name = "label43";
-            // 
-            // label45
-            // 
-            resources.ApplyResources(this.label45, "label45");
-            this.label45.Name = "label45";
             // 
             // label16
             // 
             resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
             // 
-            // label18
-            // 
-            resources.ApplyResources(this.label18, "label18");
-            this.label18.Name = "label18";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
             // 
-            // label22
+            // label5
             // 
-            resources.ApplyResources(this.label22, "label22");
-            this.label22.Name = "label22";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.summary_SpendDateFrom);
-            this.flowLayoutPanel4.Controls.Add(this.summary_spendDateTo);
-            this.flowLayoutPanel4.Controls.Add(this.summary_ProductPurchase);
             this.flowLayoutPanel4.Controls.Add(this.summary_PBFrom);
-            this.flowLayoutPanel4.Controls.Add(this.summary_PBTo);
             this.flowLayoutPanel4.Controls.Add(this.summary_NSpendFrom);
-            this.flowLayoutPanel4.Controls.Add(this.summary_NSpendTo);
-            this.flowLayoutPanel4.Controls.Add(this.summary_NSpend);
             this.flowLayoutPanel4.Controls.Add(this.summary_NAverageFrom);
-            this.flowLayoutPanel4.Controls.Add(this.summary_NAverageTo);
-            this.flowLayoutPanel4.Controls.Add(this.summary_NAverage);
+            this.flowLayoutPanel4.Controls.Add(this.summary_ProductPurchase2);
             resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
@@ -1418,29 +1354,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_SpendDateFrom.Name = "summary_SpendDateFrom";
             this.summary_SpendDateFrom.ReadOnly = true;
             // 
-            // summary_spendDateTo
-            // 
-            resources.ApplyResources(this.summary_spendDateTo, "summary_spendDateTo");
-            this.summary_spendDateTo.Name = "summary_spendDateTo";
-            this.summary_spendDateTo.ReadOnly = true;
-            // 
-            // summary_ProductPurchase
-            // 
-            resources.ApplyResources(this.summary_ProductPurchase, "summary_ProductPurchase");
-            this.summary_ProductPurchase.Name = "summary_ProductPurchase";
-            this.summary_ProductPurchase.ReadOnly = true;
-            // 
             // summary_PBFrom
             // 
             resources.ApplyResources(this.summary_PBFrom, "summary_PBFrom");
             this.summary_PBFrom.Name = "summary_PBFrom";
             this.summary_PBFrom.ReadOnly = true;
-            // 
-            // summary_PBTo
-            // 
-            resources.ApplyResources(this.summary_PBTo, "summary_PBTo");
-            this.summary_PBTo.Name = "summary_PBTo";
-            this.summary_PBTo.ReadOnly = true;
             // 
             // summary_NSpendFrom
             // 
@@ -1448,35 +1366,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NSpendFrom.Name = "summary_NSpendFrom";
             this.summary_NSpendFrom.ReadOnly = true;
             // 
-            // summary_NSpendTo
-            // 
-            resources.ApplyResources(this.summary_NSpendTo, "summary_NSpendTo");
-            this.summary_NSpendTo.Name = "summary_NSpendTo";
-            this.summary_NSpendTo.ReadOnly = true;
-            // 
-            // summary_NSpend
-            // 
-            resources.ApplyResources(this.summary_NSpend, "summary_NSpend");
-            this.summary_NSpend.Name = "summary_NSpend";
-            this.summary_NSpend.ReadOnly = true;
-            // 
             // summary_NAverageFrom
             // 
             resources.ApplyResources(this.summary_NAverageFrom, "summary_NAverageFrom");
             this.summary_NAverageFrom.Name = "summary_NAverageFrom";
             this.summary_NAverageFrom.ReadOnly = true;
             // 
-            // summary_NAverageTo
+            // summary_ProductPurchase2
             // 
-            resources.ApplyResources(this.summary_NAverageTo, "summary_NAverageTo");
-            this.summary_NAverageTo.Name = "summary_NAverageTo";
-            this.summary_NAverageTo.ReadOnly = true;
-            // 
-            // summary_NAverage
-            // 
-            resources.ApplyResources(this.summary_NAverage, "summary_NAverage");
-            this.summary_NAverage.Name = "summary_NAverage";
-            this.summary_NAverage.ReadOnly = true;
+            resources.ApplyResources(this.summary_ProductPurchase2, "summary_ProductPurchase2");
+            this.summary_ProductPurchase2.Name = "summary_ProductPurchase2";
+            this.summary_ProductPurchase2.ReadOnly = true;
             // 
             // groupBox9
             // 
@@ -1495,15 +1395,10 @@ namespace GTI.Modules.PlayerCenter.UI
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.label56);
-            this.flowLayoutPanel5.Controls.Add(this.label57);
             this.flowLayoutPanel5.Controls.Add(this.label30);
-            this.flowLayoutPanel5.Controls.Add(this.label31);
-            this.flowLayoutPanel5.Controls.Add(this.label28);
             this.flowLayoutPanel5.Controls.Add(this.label9);
-            this.flowLayoutPanel5.Controls.Add(this.label59);
-            this.flowLayoutPanel5.Controls.Add(this.label60);
-            this.flowLayoutPanel5.Controls.Add(this.label12);
-            this.flowLayoutPanel5.Controls.Add(this.label5);
+            this.flowLayoutPanel5.Controls.Add(this.label8);
+            this.flowLayoutPanel5.Controls.Add(this.label11);
             resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
@@ -1512,63 +1407,33 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label56, "label56");
             this.label56.Name = "label56";
             // 
-            // label57
-            // 
-            resources.ApplyResources(this.label57, "label57");
-            this.label57.Name = "label57";
-            // 
             // label30
             // 
             resources.ApplyResources(this.label30, "label30");
             this.label30.Name = "label30";
-            // 
-            // label31
-            // 
-            resources.ApplyResources(this.label31, "label31");
-            this.label31.Name = "label31";
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
             // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // label59
+            // label8
             // 
-            resources.ApplyResources(this.label59, "label59");
-            this.label59.Name = "label59";
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
-            // label60
+            // label11
             // 
-            resources.ApplyResources(this.label60, "label60");
-            this.label60.Name = "label60";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // flowLayoutPanel6
             // 
             this.flowLayoutPanel6.Controls.Add(this.summary_VisitedDateFrom);
-            this.flowLayoutPanel6.Controls.Add(this.summary_VisitedDateTo);
             this.flowLayoutPanel6.Controls.Add(this.summary_NDaysVisitedFrom);
-            this.flowLayoutPanel6.Controls.Add(this.summary_NDaysVisitedTo);
-            this.flowLayoutPanel6.Controls.Add(this.summary_NDaysVisited);
             this.flowLayoutPanel6.Controls.Add(this.summary_NSessionVisitedFrom);
-            this.flowLayoutPanel6.Controls.Add(this.summary_NSessionVisitedTo);
-            this.flowLayoutPanel6.Controls.Add(this.summary_NSessionVisited);
-            this.flowLayoutPanel6.Controls.Add(this.summary_DaysWeek);
-            this.flowLayoutPanel6.Controls.Add(this.summary_Session);
+            this.flowLayoutPanel6.Controls.Add(this.summary_LastVisitDateFrom);
+            this.flowLayoutPanel6.Controls.Add(this.summary_DaysWeek2);
             resources.ApplyResources(this.flowLayoutPanel6, "flowLayoutPanel6");
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
@@ -1578,29 +1443,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_VisitedDateFrom.Name = "summary_VisitedDateFrom";
             this.summary_VisitedDateFrom.ReadOnly = true;
             // 
-            // summary_VisitedDateTo
-            // 
-            resources.ApplyResources(this.summary_VisitedDateTo, "summary_VisitedDateTo");
-            this.summary_VisitedDateTo.Name = "summary_VisitedDateTo";
-            this.summary_VisitedDateTo.ReadOnly = true;
-            // 
             // summary_NDaysVisitedFrom
             // 
             resources.ApplyResources(this.summary_NDaysVisitedFrom, "summary_NDaysVisitedFrom");
             this.summary_NDaysVisitedFrom.Name = "summary_NDaysVisitedFrom";
             this.summary_NDaysVisitedFrom.ReadOnly = true;
-            // 
-            // summary_NDaysVisitedTo
-            // 
-            resources.ApplyResources(this.summary_NDaysVisitedTo, "summary_NDaysVisitedTo");
-            this.summary_NDaysVisitedTo.Name = "summary_NDaysVisitedTo";
-            this.summary_NDaysVisitedTo.ReadOnly = true;
-            // 
-            // summary_NDaysVisited
-            // 
-            resources.ApplyResources(this.summary_NDaysVisited, "summary_NDaysVisited");
-            this.summary_NDaysVisited.Name = "summary_NDaysVisited";
-            this.summary_NDaysVisited.ReadOnly = true;
             // 
             // summary_NSessionVisitedFrom
             // 
@@ -1608,29 +1455,18 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NSessionVisitedFrom.Name = "summary_NSessionVisitedFrom";
             this.summary_NSessionVisitedFrom.ReadOnly = true;
             // 
-            // summary_NSessionVisitedTo
+            // summary_LastVisitDateFrom
             // 
-            resources.ApplyResources(this.summary_NSessionVisitedTo, "summary_NSessionVisitedTo");
-            this.summary_NSessionVisitedTo.Name = "summary_NSessionVisitedTo";
-            this.summary_NSessionVisitedTo.ReadOnly = true;
+            resources.ApplyResources(this.summary_LastVisitDateFrom, "summary_LastVisitDateFrom");
+            this.summary_LastVisitDateFrom.Name = "summary_LastVisitDateFrom";
+            this.summary_LastVisitDateFrom.ReadOnly = true;
             // 
-            // summary_NSessionVisited
+            // summary_DaysWeek2
             // 
-            resources.ApplyResources(this.summary_NSessionVisited, "summary_NSessionVisited");
-            this.summary_NSessionVisited.Name = "summary_NSessionVisited";
-            this.summary_NSessionVisited.ReadOnly = true;
-            // 
-            // summary_DaysWeek
-            // 
-            resources.ApplyResources(this.summary_DaysWeek, "summary_DaysWeek");
-            this.summary_DaysWeek.Name = "summary_DaysWeek";
-            this.summary_DaysWeek.ReadOnly = true;
-            // 
-            // summary_Session
-            // 
-            resources.ApplyResources(this.summary_Session, "summary_Session");
-            this.summary_Session.Name = "summary_Session";
-            this.summary_Session.ReadOnly = true;
+            this.summary_DaysWeek2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.summary_DaysWeek2, "summary_DaysWeek2");
+            this.summary_DaysWeek2.Name = "summary_DaysWeek2";
+            this.summary_DaysWeek2.ReadOnly = true;
             // 
             // groupBox8
             // 
@@ -1642,15 +1478,10 @@ namespace GTI.Modules.PlayerCenter.UI
             // tableLayoutPanel2
             // 
             resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
-            this.tableLayoutPanel2.Controls.Add(this.summary_Location, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.summary_Location, 1, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            // 
-            // summary_Location
-            // 
-            resources.ApplyResources(this.summary_Location, "summary_Location");
-            this.summary_Location.Name = "summary_Location";
-            this.summary_Location.ReadOnly = true;
+            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // flowLayoutPanel3
             // 
@@ -1662,6 +1493,13 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             resources.ApplyResources(this.summary_lblLocation, "summary_lblLocation");
             this.summary_lblLocation.Name = "summary_lblLocation";
+            // 
+            // summary_Location
+            // 
+            this.summary_Location.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.summary_Location, "summary_Location");
+            this.summary_Location.Name = "summary_Location";
+            this.summary_Location.ReadOnly = true;
             // 
             // groupBox7
             // 
@@ -1710,18 +1548,21 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // summary_Gender
             // 
+            this.summary_Gender.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.summary_Gender, "summary_Gender");
             this.summary_Gender.Name = "summary_Gender";
             this.summary_Gender.ReadOnly = true;
             // 
             // summary_Status
             // 
+            this.summary_Status.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.summary_Status, "summary_Status");
             this.summary_Status.Name = "summary_Status";
             this.summary_Status.ReadOnly = true;
             // 
             // summary_Birthday
             // 
+            this.summary_Birthday.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.summary_Birthday, "summary_Birthday");
             this.summary_Birthday.Name = "summary_Birthday";
             this.summary_Birthday.ReadOnly = true;
@@ -1800,7 +1641,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.flowLayoutPanel6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1947,60 +1787,38 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label57;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label60;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox summary_VisitedDateFrom;
-        private System.Windows.Forms.TextBox summary_VisitedDateTo;
         private System.Windows.Forms.TextBox summary_NDaysVisitedFrom;
-        private System.Windows.Forms.TextBox summary_NDaysVisitedTo;
-        private System.Windows.Forms.TextBox summary_NDaysVisited;
         private System.Windows.Forms.TextBox summary_NSessionVisitedFrom;
-        private System.Windows.Forms.TextBox summary_NSessionVisitedTo;
-        private System.Windows.Forms.TextBox summary_NSessionVisited;
-        private System.Windows.Forms.TextBox summary_DaysWeek;
-        private System.Windows.Forms.TextBox summary_Session;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox summary_SpendDateFrom;
-        private System.Windows.Forms.TextBox summary_spendDateTo;
-        private System.Windows.Forms.TextBox summary_ProductPurchase;
         private System.Windows.Forms.TextBox summary_PBFrom;
-        private System.Windows.Forms.TextBox summary_PBTo;
         private System.Windows.Forms.TextBox summary_NSpendFrom;
-        private System.Windows.Forms.TextBox summary_NSpendTo;
-        private System.Windows.Forms.TextBox summary_NSpend;
         private System.Windows.Forms.TextBox summary_NAverageFrom;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox summary_Gender;
         private System.Windows.Forms.TextBox summary_Status;
         private System.Windows.Forms.TextBox summary_Birthday;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox summary_NAverageTo;
-        private System.Windows.Forms.TextBox summary_NAverage;
-        private System.Windows.Forms.TextBox summary_Location;
+        private System.Windows.Forms.RichTextBox summary_Location;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox summary_LastVisitDateFrom;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox summary_DaysWeek2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox summary_ProductPurchase2;
     }
 }

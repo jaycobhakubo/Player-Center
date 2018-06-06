@@ -3261,6 +3261,9 @@ namespace GTI.Modules.PlayerCenter.UI
             ActiveButton_ = 1;
             if (cmbxPlayerList2.Items.Count > 0) cmbxPlayerList2.SelectedIndex = -1;
 
+            if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
+            if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
+
             if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
             if (imgbtnNewList.Visible) imgbtnNewList.Visible = false;
             if (imgbtn.Visible) imgbtn.Visible = false;

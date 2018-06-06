@@ -435,12 +435,8 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_Location.Text = string.Empty;
             summary_SpendDateFrom.Text = string.Empty;
             summary_PBFrom.Text = string.Empty;
-  
+            summary_NAverageFrom.Text = string.Empty;
             summary_NSpendFrom.Text = string.Empty;
-
-          
-            summary_NAverageTo.Text = string.Empty;
-            summary_NAverage.Text = string.Empty;
             summary_ProductPurchase2.Text = string.Empty;                                                                                                                                                                                               
 
         }

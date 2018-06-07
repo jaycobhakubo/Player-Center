@@ -838,7 +838,7 @@
     <value>2</value>
   </data>
   <data name="m_generateButton.Text" xml:space="preserve">
-    <value>&amp;Generate List</value>
+    <value>Generate List</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Name" xml:space="preserve">
     <value>m_generateButton</value>
@@ -871,7 +871,7 @@
     <value>3</value>
   </data>
   <data name="m_closeButton.Text" xml:space="preserve">
-    <value>&amp;Close</value>
+    <value>Close</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Name" xml:space="preserve">
     <value>m_closeButton</value>
@@ -896,6 +896,96 @@
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1010, 740</value>
+  </data>
+  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 91</value>
+  </data>
+  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 26</value>
+  </data>
+  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
+    <value>m_statusCheckComboBox</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.11.0.2, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 166</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 22</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 23</value>
+  </data>
+  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 593</value>
+  </data>
+  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1846,7 +1936,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_summaryPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="m_daysPlayedCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3193,96 +3283,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_playDatesPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 91</value>
-  </data>
-  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
-  </data>
-  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
-    <value>m_statusCheckComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.11.0.2, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 166</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Between</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 23</value>
-  </data>
-  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 593</value>
-  </data>
-  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="m_spendCheck.AutoSize" type="System.Boolean, mscorlib">
@@ -4285,7 +4285,7 @@
     <value>53</value>
   </data>
   <data name="imgbtnNewList.Text" xml:space="preserve">
-    <value>&amp;New List</value>
+    <value>New List</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Name" xml:space="preserve">
     <value>imgbtnNewList</value>
@@ -4342,7 +4342,7 @@
     <value>52</value>
   </data>
   <data name="imgbtn.Text" xml:space="preserve">
-    <value>&amp;Edit List</value>
+    <value>Edit List</value>
   </data>
   <data name="imgbtn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4408,7 +4408,7 @@
     <value>51</value>
   </data>
   <data name="imgbtnDelete.Text" xml:space="preserve">
-    <value>&amp;Delete List</value>
+    <value>Delete List</value>
   </data>
   <data name="imgbtnDelete.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4564,7 +4564,7 @@
     <value>51</value>
   </data>
   <data name="imgbtnCancel.Text" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>Cancel</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Name" xml:space="preserve">
     <value>imgbtnCancel</value>
@@ -4600,7 +4600,7 @@
     <value>11</value>
   </data>
   <data name="btnSaveList.Text" xml:space="preserve">
-    <value>&amp;Save</value>
+    <value>Save</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Name" xml:space="preserve">
     <value>btnSaveList</value>

@@ -103,12 +103,38 @@ namespace GTI.Modules.PlayerCenter.UI
             cmbxPlayerList2.ContextMenuStrip = contextMenuStrip1;
             cmbxPlayerList2.MouseUp += new MouseEventHandler(listBox_Usernames_MouseUp);
             LoadPlayerListSettingComboBox(); //Load the Player List Setting combo box.
+            DisableAllControl();
+            DisableAllPanel();
+            m_listCriteriaPanel.Visible = false;
 
         }
         #endregion
 
         #region Member Methods
-        
+
+
+        private void DisableAllControl()
+        {
+    
+            //imgbtnNewList.Enabled = false;
+            imgbtn.Enabled = false;
+            imgbtnDelete.Enabled = false;
+            imgbtn_AwardPointsToListOfPlayer.Enabled =false;
+            btnSaveList.Enabled = false;
+            imgbtnCancel.Enabled = false;
+            m_generateButton.Enabled = false;
+            //m_closeButton.Enabled = false;
+            DisablePlayerListMainButton();
+        }
+
+        private void DisablePlayerListMainButton()
+        {
+            m_listCriteriaButton1.Enabled = false;
+            m_locationButton.Enabled = false;
+            m_playDatesButton.Enabled = false;
+            m_spendBotton.Enabled = false;
+        }
+
         /// <summary>
         /// Load the Player List Setting combo box.
         /// </summary>
@@ -117,7 +143,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (cmbxPlayerList2.Items.Count > 0)
             {
                 cmbxPlayerList2.Items.Clear();
-
             }
 
             if (IndexToDefID.Count > 0)
@@ -126,10 +151,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             GetPlayerListDefinition get_pld = new GetPlayerListDefinition();
-            // List<PlayerListDefinition> List_pld = get_pld.get_playerListdefSQL();
             List<PlayerListDefinition> List_pld = get_pld.GetPlayerListDefinitionMSG();
-
-
             int indexOf = 0;
 
             if (List_pld.Count > 0)
@@ -189,24 +211,18 @@ namespace GTI.Modules.PlayerCenter.UI
         protected void LoadValues()
         {
             Calendar cal = CultureInfo.CurrentCulture.Calendar;
-
-            // Birthday lists
             m_fromBirthdayMonth.BeginUpdate();
             m_toBirthdayMonth.BeginUpdate();
-
             m_fromBirthdayMonth.Items.Clear();
             m_toBirthdayMonth.Items.Clear();
-
             int numMonths = cal.GetMonthsInYear(DateTime.Now.Year);
 
             for (int month = 1; month <= numMonths; month++)
             {
                 DateTime time = new DateTime(DateTime.Now.Year, month, 1);
                 MonthItem item = new MonthItem();
-
                 item.Number = month;
                 item.Name = time.ToString("MMM", CultureInfo.CurrentCulture);
-
                 m_fromBirthdayMonth.Items.Add(item);
                 m_toBirthdayMonth.Items.Add(item);
             }
@@ -3201,8 +3217,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if ((e.Modifiers & Keys.Control) == Keys.Control)//if control key is being press
             {
                 x = MyListBox.y;
-                //     m_locListBox.SetSelected(x, false);
-
             }
             else //if control key is not being press
             {
@@ -3241,7 +3255,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (!imgbtnCancel.Enabled) imgbtnCancel.Enabled = true;
                 if (!imgbtn.Visible) imgbtn.Visible = true;
                 if (!imgbtnDelete.Visible) imgbtnDelete.Visible = true;
-
                 if (m_playDatesButton.Enabled) m_playDatesPanel.Enabled = false;
                 if (m_locationPanel.Enabled) m_locationPanel.Enabled = false;
                 if (m_spendAndLabel.Enabled) m_spendPanel.Enabled = false;
@@ -3263,6 +3276,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
             if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
+            EnablePlayerListButton();
 
             if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
             if (imgbtnNewList.Visible) imgbtnNewList.Visible = false;
@@ -3295,7 +3309,7 @@ namespace GTI.Modules.PlayerCenter.UI
             clearErrorProvider();
         }
         
-        private void imgbtnCancel_Click(object sender, EventArgs e)
+        private void imgbtnCancel_Click(object sender, EventArgs e)//knv
         {
             PlayerListDefault2();
             if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
@@ -3307,12 +3321,14 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             isNewList = false;
+            DisableAllPanel();
+            DisablePlayerListMainButton();
             if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
             if (btnSaveList.Enabled) btnSaveList.Enabled = false;
             //if (lblListName.Visible)lblListName.Visible = false;
             //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
 
-            if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+            if (m_generateButton.Enabled) m_generateButton.Enabled = false;
             if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
             if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
             if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
@@ -3327,12 +3343,13 @@ namespace GTI.Modules.PlayerCenter.UI
             if (imgbtn.Visible) imgbtn.Visible = false;
             if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
 
-
             clearErrorProvider();
         }
 
         private void imgbtn_Click(object sender, EventArgs e)
         {
+            if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
+            if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
             ActiveButton_ = 3;
             m_listTypePanel.Enabled = false;
             m_playDatesPanel.Enabled = true;
@@ -3347,6 +3364,16 @@ namespace GTI.Modules.PlayerCenter.UI
             m_generateButton.Enabled = false;
             btnSaveList.Enabled = true;
             imgbtnCancel.Enabled = true;
+            EnablePlayerListButton();
+
+        }
+
+        private void EnablePlayerListButton()
+        {
+            m_listCriteriaButton1.Enabled = true;
+            m_locationButton.Enabled = true;
+            m_playDatesButton.Enabled = true;
+            m_spendBotton.Enabled = true;
         }
 
         //US2649
@@ -3362,7 +3389,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (e.KeyChar == (char)Keys.Back)
             {
                 result = false;
-
             }
             if (result)
             {

@@ -76,6 +76,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool isNewList = false;
         private int countCheckBox = 0;
         private int ActiveButton_ = 0;
+        private PlayerListParams m_playerListParams;// = new PlayerListParams();
 
         #endregion
 
@@ -115,15 +116,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void DisableAllControl()
         {
-    
-            //imgbtnNewList.Enabled = false;
             imgbtn.Enabled = false;
             imgbtnDelete.Enabled = false;
             imgbtn_AwardPointsToListOfPlayer.Enabled =false;
             btnSaveList.Enabled = false;
             imgbtnCancel.Enabled = false;
             m_generateButton.Enabled = false;
-            //m_closeButton.Enabled = false;
             DisablePlayerListMainButton();
         }
 
@@ -453,7 +451,8 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_PBFrom.Text = string.Empty;
             summary_NAverageFrom.Text = string.Empty;
             summary_NSpendFrom.Text = string.Empty;
-            summary_ProductPurchase2.Text = string.Empty;                                                                                                                                                                                               
+            summary_ProductPurchase2.Text = string.Empty;
+                                                                                                                                                          
 
         }
         
@@ -510,7 +509,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_toBirthdayMonth.SelectedIndex = tempDateTime.Month - 1;
                         m_toBirthdayDay.SelectedIndex = tempDateTime.Day - 1;
-                        summary_Birthday.Text = " Between " + t_summary_DateFrom +" And "+ tempDateTime.ToString("MMM dd");
+                        summary_Birthday.Text = "Between " + t_summary_DateFrom +" And "+ tempDateTime.ToString("MMM dd");
                         break;
 
                     case (int)PlayerListSettingEnum.City://VIP City
@@ -751,7 +750,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             tempDays = pls.SettingValue.ToString() + ",";
                    
-                            summary_DaysWeek2.Text = tempDays;
+                            //summary_DaysWeek2.Text = tempDays;
                             while (tempDays.IndexOf(",") != -1)
                             {
                                 string DaynSession = tempDays.Substring(0, tempIndexOf);
@@ -759,7 +758,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
                                 string cSession = DaynSession.Substring(DaynSession.IndexOf("(") + 1);
                                 cSession = cSession.Replace(")", ":");
-
+                                if (summary_DaysWeek2.TextLength > 0)
+                                {
+                                    summary_DaysWeek2.AppendText(Environment.NewLine);
+                                }
+                                summary_DaysWeek2.AppendText(Days + "/ Session: ");//knc
                                 populateDays(Days, cSession);
 
                                 tempDays = tempDays.Substring(tempIndexOf + 1);
@@ -777,6 +780,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             {
                                 cSession = "ALL";
                             }
+               
                             populateDays(Days, cSession);
                         }
                         break;
@@ -1075,10 +1079,17 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (TempIndexOf != -1 && Sessions.Count() != 21)
             {
+                RichTextBox trchTxtBxText = new RichTextBox();
+                trchTxtBxText.Text = "";
                 while (Sessions.IndexOf(":") != -1)
                 {
                     int session;
                     bool result = Int32.TryParse(Sessions.Substring(0, TempIndexOf), out session);
+                    if (trchTxtBxText.TextLength > 0)
+                    {
+                        trchTxtBxText.AppendText(", ");
+                    }
+                    trchTxtBxText.AppendText(session.ToString());
                     if (result == true)
                     {
                         cmbx.SetItemChecked(session, true);
@@ -1088,10 +1099,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     TempIndexOf = Sessions.IndexOf(":");
 
                 }
+               // trchTxtBxText.Text = trchTxtBxText.Text.Remove(trchTxtBxText.Text.Length - 1, 1);
+                summary_DaysWeek2.AppendText(trchTxtBxText.Text);
             }
             else
             {
                 cmbx.SetItemChecked(0, true);
+                Sessions = Sessions.Remove(Sessions.Length - 1, 1);
+                Sessions = Sessions.Replace(":", ", ");
+                summary_DaysWeek2.AppendText(Sessions);
             }
         }
         
@@ -1857,7 +1873,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-       private  PlayerListParams m_playerListParams;// = new PlayerListParams();
 
         #region SAVEPLAYERLIST
         /// <summary>
@@ -2000,10 +2015,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 args.ToSpend = Convert.ToDecimal(m_toSpend.Text, CultureInfo.CurrentCulture);
                 args.FromSpendDate = m_fromSpendDate.Value;
                 args.ToSpendDate = m_toSpendDate.Value;
-
                 SetListOfSetting((int)PlayerListSettingEnum.SpendFromvalue, args.FromSpend.ToString());
                 SetListOfSetting((int)PlayerListSettingEnum.SpendTovalue, args.ToSpend.ToString());
-
                 SetListOfSetting((int)PlayerListSettingEnum.SpendFrom, args.FromSpendDate.ToString());
                 SetListOfSetting((int)PlayerListSettingEnum.SpendTo, args.ToSpendDate.ToString());
             }
@@ -2473,9 +2486,7 @@ namespace GTI.Modules.PlayerCenter.UI
      
             if (m_isAwardPointToPlayerList)
             {
-                //Application.DoEvents();
                 m_playerListParams = args;
-              //  m_parent.StartAwardPointsToPlayer(args, m_pointsAwarded);
             }
             else
             {
@@ -2537,24 +2548,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         isSavedList = false; isNewList = false;
 
                         PlayerListDefault2();
+                        DisablePlayerListMainButton();
 
                         if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
                         if (btnSaveList.Enabled) btnSaveList.Enabled = false;
-
                         //if (lblListName.Visible) lblListName.Visible = false;
                         //if (txtbxDefinitionName.Visible) txtbxDefinitionName.Visible = false;
                         if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
-
                         if (imgbtnDelete.Enabled) imgbtnDelete.Enabled = false;
                         if (imgbtn.Enabled) imgbtn.Enabled = false;
                         if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                         if (imgbtn.Visible) imgbtn.Visible = false;
-
                         if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
                         if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
-
                         if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
                         if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
                         if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
@@ -2566,9 +2574,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         LoadPlayerListSettingComboBox(); //repopulate PlayerList combo box.                
                         isDeleteList = false;
-
                         PlayerListDefault2();
-
                         if (imgbtnCancel.Enabled) imgbtnCancel.Enabled = false;
                         if (btnSaveList.Enabled) btnSaveList.Enabled = false;
                         //if (lblListName.Visible) lblListName.Visible = false;
@@ -2576,17 +2582,14 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
                         if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                         imgbtn.Visible = false;
-
                         if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
                         if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
-
                         if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
                         if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
                         if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
                         if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
-
                     }
 
                     isNewList = false;
@@ -3309,7 +3312,7 @@ namespace GTI.Modules.PlayerCenter.UI
             clearErrorProvider();
         }
         
-        private void imgbtnCancel_Click(object sender, EventArgs e)//knv
+        private void imgbtnCancel_Click(object sender, EventArgs e)
         {
             PlayerListDefault2();
             if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
@@ -3317,7 +3320,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (isNewList == true)
             {
                 cmbxPlayerList2.Items.Remove(cmbxPlayerList2.SelectedItem);//Remove select item.
-                // cmbxPlayerList2.Items.RemoveAt(cmbxPlayerList2.Items.Count - 1);//Remove item.
             }
 
             isNewList = false;
@@ -3424,6 +3426,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 bool result = false;
 
                 string x = txtbxValue.Text;
+                if (txtbxValue.SelectionLength > 0)
+                {
+                    int tlen = x.Length - txtbxValue.SelectionLength;
+                    x = x.Substring(0, tlen);
+                }
+
                 int count = x.Split('.').Length - 1;
 
                 if (!char.IsControl(e.KeyChar))
@@ -3452,7 +3460,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     result = false;
 
                 }
-                else if (Regex.IsMatch(txtbxValue.Text, @"\.\d\d"))
+            
+                else if (Regex.IsMatch(x, @"\.\d\d"))
                 {
                     result = true;
 

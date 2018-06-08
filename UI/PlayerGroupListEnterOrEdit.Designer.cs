@@ -56,10 +56,11 @@
             this.btnSaveList.Location = new System.Drawing.Point(12, 88);
             this.btnSaveList.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnSaveList.Name = "btnSaveList";
+            this.btnSaveList.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnSaveList.Size = new System.Drawing.Size(122, 30);
             this.btnSaveList.TabIndex = 54;
             this.btnSaveList.Tag = "1";
-            this.btnSaveList.Text = "&Create";
+            this.btnSaveList.Text = "Create";
             this.btnSaveList.UseVisualStyleBackColor = false;
             this.btnSaveList.Click += new System.EventHandler(this.btnSaveList_Click);
             // 
@@ -74,10 +75,11 @@
             this.imgbtnCancel.Location = new System.Drawing.Point(148, 88);
             this.imgbtnCancel.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnCancel.Name = "imgbtnCancel";
+            this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnCancel.Size = new System.Drawing.Size(122, 30);
             this.imgbtnCancel.TabIndex = 55;
             this.imgbtnCancel.Tag = "1";
-            this.imgbtnCancel.Text = "&Cancel";
+            this.imgbtnCancel.Text = "Cancel";
             this.imgbtnCancel.UseVisualStyleBackColor = false;
             this.imgbtnCancel.Click += new System.EventHandler(this.imgbtnCancel_Click);
             // 

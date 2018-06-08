@@ -70,7 +70,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void btnSaveList_Click(object sender, EventArgs e)
         {
             m_ListName = txtbxDefinitionName.Text;
-            m_isAccept = true;
+            m_isAccept = true;           
             this.Close();
         }
 

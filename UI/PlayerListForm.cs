@@ -2659,22 +2659,16 @@ namespace GTI.Modules.PlayerCenter.UI
             m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer();
             DialogResult result = DialogResult.OK;
             result = m_awardPointsToListOfPlayer.ShowDialog();
-            //m_awardPointsToListOfPlayer.ShowDialog();
-            //Application.DoEvents();
-
             m_isAwardPointToPlayerList = m_awardPointsToListOfPlayer.IsAwardPoints;
+
             if (m_isAwardPointToPlayerList)
             {
                 m_pointsAwarded = 0M;
                 m_pointsAwarded = m_awardPointsToListOfPlayer.PointsAwardedValue;
-                //Application.DoEvents();
                 GenerateClick(sender, e);
-                //Application.DoEvents();
                 m_parent.StartAwardPointsToPlayer(m_playerListParams, m_pointsAwarded);
                 m_isAwardPointToPlayerList = false;
-
             }
-
 
             if (result == DialogResult.OK)
             {
@@ -2690,10 +2684,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                 {
                     MessageForm.Show(this, string.Format(CultureInfo.CurrentCulture, Resources.PlayersRewarded, m_parent.NumberOfPlayersRewarded), Resources.PlayerCenterName);
-                }
-              
+                }           
             }        
-
         }
 
 

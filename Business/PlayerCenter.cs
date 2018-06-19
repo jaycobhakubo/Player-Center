@@ -2298,12 +2298,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void AwardPointsToPlayerList(object sender, DoWorkEventArgs e)
         {
             object[] args = (object[])e.Argument;
-
-
             PlayerListParams listParams = (PlayerListParams)args[0];
             decimal t_pointsAwarded = (decimal)args[1];
-            //decimal t_pointsAwarded = decimal.Parse(args[1]);
-        
+      
 
             GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
             try
@@ -2328,13 +2325,11 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (playerCount > 0)
             {
-                // update the wait message. We're on a separate thread now, so we have to call back to the UI.
-                m_waitForm.BeginInvoke(((Action)(() =>
+                m_waitForm.BeginInvoke(((Action)(() => // update the wait message. We're on a separate thread now, so we have to call back to the UI.
                 {
                     m_waitForm.Message = String.Format(Resources.WaitFormAwardingToAGroupOfPlayer, playerCount);
                     m_waitForm.ProgressBarVisible = true;
                 })));
-
 
                 decimal progress = 0, percentage = 0;
                 foreach (var player in listMsg.Players)

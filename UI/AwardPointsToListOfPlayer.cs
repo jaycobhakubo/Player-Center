@@ -20,10 +20,6 @@ namespace GTI.Modules.PlayerCenter.UI
 {
    partial class AwardPointsToListOfPlayer : GradientForm
    {
-       //private PlayerCenterThirdPartyInterface m_playercenterThirdPartyInterface;
-       //private WaitForm m_waitForm = null;
-       //private bool m_wholePoints = false;
-
        public AwardPointsToListOfPlayer()
         {
             InitializeComponent();
@@ -39,14 +35,14 @@ namespace GTI.Modules.PlayerCenter.UI
            Close();
        }
 
-       public bool IsAwardPoints { get; set; }
-       public decimal PointsAwardedValue { get; set; }
-
        private void cancelImageButton_Click(object sender, EventArgs e)
        {
            DialogResult = DialogResult.Cancel;
            Close();
        }
+
+       public bool IsAwardPoints { get; set; }
+       public decimal PointsAwardedValue { get; set; }
     }
 }
 

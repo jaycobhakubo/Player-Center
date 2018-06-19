@@ -233,6 +233,21 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
+        //US5590: Added ability to view receipt from player management
+        private void receiptNumberColorListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (m_ReceiptNumberColorListBox.SelectedItem == null)
+            {
+                return;
+            }
+
+            var receiptNumberSplit = m_ReceiptNumberColorListBox.SelectedItem.ToString().Split(' ');
+            if (receiptNumberSplit.Length > 0)
+            {
+                m_parent.RaiseReceiptClickedEvent(receiptNumberSplit[0]);
+            }
+            
+        }
         // Rally US493
         /// <summary>
         /// Handles the status list up button's click event.
@@ -979,13 +994,12 @@ namespace GTI.Modules.PlayerCenter.UI
             m_ReceiptNumberColorListBox.Items.Clear();
             if (m_player.ReceiptNumbers != null)
             {
-
-                for (int iReceipt = 0; iReceipt < m_player.ReceiptNumbers.Length; iReceipt++)
+                //US5591: (US5546) - added presold flag
+                foreach (var receiptNumber in m_player.ReceiptNumbers)
                 {
-                    m_ReceiptNumberColorListBox.Items.Add(m_player.ReceiptNumbers[iReceipt]);
+                    var presoldString = receiptNumber.Value ? " - Presale" : string.Empty;
+                    m_ReceiptNumberColorListBox.Items.Add(string.Format("{0}{1}", receiptNumber.Key, presoldString));
                 }
-                //alway select the first one
-                m_ReceiptNumberColorListBox.SelectedIndex = 0;
             }
 
             //START RALLY DE8358
@@ -1224,5 +1238,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
+
     }
 }

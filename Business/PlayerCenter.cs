@@ -88,6 +88,11 @@ namespace GTI.Modules.PlayerCenter.Business
 
         #endregion
 
+        //US5590: Added ability to view receipt from player management
+        // added event handlers to notify the receipt was clicked
+        public delegate void ReceiptClickedHandler(string receiptNumber);
+        public event ReceiptClickedHandler ReceiptClicked;
+
         // FIX: DE2476
         /// <summary>
         /// Initializes all the POS's data.
@@ -368,7 +373,14 @@ namespace GTI.Modules.PlayerCenter.Business
             ListLocationCountry = GetPlayerLocationPer.CountryName;
         }
 
-
+        //US5590: Added ability to view receipt from player management
+        internal void RaiseReceiptClickedEvent(string receiptNumber)
+        {
+            if (ReceiptClicked != null)
+            {
+                ReceiptClicked(receiptNumber);
+            }
+        }
 
 
         //US2649

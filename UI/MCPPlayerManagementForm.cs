@@ -802,12 +802,12 @@ namespace GTI.Modules.PlayerCenter.UI
             lstReceiptNumber.Items.Clear();
             if (m_player.ReceiptNumbers != null)
             {
-                for (int iReceipt = 0; iReceipt < m_player.ReceiptNumbers.Length; iReceipt++)
+                //US5591: (US5546) - added presold flag
+                foreach (var receiptNumber in m_player.ReceiptNumbers)
                 {
-                    lstReceiptNumber.Items.Add(m_player.ReceiptNumbers[iReceipt]);
+                    var presoldString = receiptNumber.Value ? " - Presale" : string.Empty;
+                    lstReceiptNumber.Items.Add(string.Format("{0}{1}", receiptNumber.Key, presoldString));
                 }
-                //alway select the first one
-                //m_ReceiptNumberColorListBox.SelectedIndex = 0;
             }
 
             //START RALLY DE8358

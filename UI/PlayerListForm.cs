@@ -3243,6 +3243,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (m_parent.StaffHasPermissionToAwardPoints)
                 {
                     imgbtn_AwardPointsToListOfPlayer.Visible = true;
+                    imgbtn_AwardPointsToListOfPlayer.Enabled = true;
                 }
 
                 DefID = IndexToDefID[cmbxPlayerList2.SelectedIndex];
@@ -3294,6 +3295,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
             if (!imgbtnCancel.Enabled) imgbtnCancel.Enabled = true;
             if (btnSaveList.Enabled) btnSaveList.Enabled = false;
+            if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
             //if (!lblListName.Visible) lblListName.Visible = true;
             //if (!txtbxDefinitionName.Visible) { txtbxDefinitionName.Visible = true; txtbxDefinitionName.Text = string.Empty; }
 
@@ -3352,6 +3354,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
             if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
+            if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
             ActiveButton_ = 3;
             m_listTypePanel.Enabled = false;
             m_playDatesPanel.Enabled = true;

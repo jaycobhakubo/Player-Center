@@ -2567,6 +2567,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
                         if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
                         if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
+                       
 
                         cmbxPlayerList2.SelectedIndex = -1;
                     }
@@ -2596,6 +2597,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     cmbxPlayerList2.SelectedIndex = -1;
                     ActiveButton_ = 0;
                     if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
+                    if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
 
                     return;
                 }

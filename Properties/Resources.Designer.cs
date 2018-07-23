@@ -1230,7 +1230,7 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} players rewarded..
+        ///   Looks up a localized string similar to {0} player(s) were awarded points..
         /// </summary>
         internal static string PlayersRewarded {
             get {
@@ -1489,11 +1489,20 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Awarding points to a group of player, please wait..
+        ///   Looks up a localized string similar to Awarding points to {0} players, please wait..
         /// </summary>
         internal static string WaitFormAwardingToAGroupOfPlayer {
             get {
                 return ResourceManager.GetString("WaitFormAwardingToAGroupOfPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awarding points to player list, please wait..
+        /// </summary>
+        internal static string WaitFormAwardPoints {
+            get {
+                return ResourceManager.GetString("WaitFormAwardPoints", resourceCulture);
             }
         }
         

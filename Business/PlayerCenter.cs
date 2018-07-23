@@ -2278,7 +2278,7 @@ namespace GTI.Modules.PlayerCenter.Business
         {
        
             // Set the wait message.
-            m_waitForm.Message = Resources.WaitFormPrintingPlayerRaffle;
+            m_waitForm.Message = Resources.WaitFormAwardPoints;
             m_waitForm.CancelButtonVisible = true;
             m_waitForm.CancelButtonClick += new EventHandler(m_waitFormPrintRaffle_CancelButtonClick);
 
@@ -2361,7 +2361,7 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
-            if (e.Error == null)
+            if (e.Error == null && e.Result != null) // e.Result is null on cancellation
                NumberOfPlayersRewarded = (int)e.Result;
             // Close the wait form.
             m_waitForm.CloseForm();

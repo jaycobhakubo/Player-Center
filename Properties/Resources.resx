@@ -630,9 +630,12 @@ Reason: {0}</value>
     <value>Unable to Award Points</value>
   </data>
   <data name="PlayersRewarded" xml:space="preserve">
-    <value>{0} players rewarded.</value>
+    <value>{0} player(s) were awarded points.</value>
   </data>
   <data name="WaitFormAwardingToAGroupOfPlayer" xml:space="preserve">
-    <value>Awarding points to a group of player, please wait.</value>
+    <value>Awarding points to {0} players, please wait.</value>
+  </data>
+  <data name="WaitFormAwardPoints" xml:space="preserve">
+    <value>Awarding points to player list, please wait.</value>
   </data>
 </root>

@@ -103,7 +103,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
             this.txtbxPointsAwarded.Precision = 2;
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(137, 27);
-            this.txtbxPointsAwarded.TabIndex = 5;
+            this.txtbxPointsAwarded.TabIndex = 0;
             // 
             // AwardPointsToListOfPlayer
             // 

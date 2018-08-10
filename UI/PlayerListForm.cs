@@ -2975,8 +2975,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-            if (isNewList == true)
-            {
+            //if (isNewList == true)
+            //{
                 if (m_locListBoxSelected.Items.Count > 0)
                 {
                     if (!btnSaveList.Enabled) btnSaveList.Enabled = true;
@@ -2985,7 +2985,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (btnSaveList.Enabled) btnSaveList.Enabled = false;
                 }
-            }
+            //}
 
         }
 

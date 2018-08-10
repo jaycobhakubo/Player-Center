@@ -2901,7 +2901,7 @@ namespace GTI.Modules.PlayerCenter.UI
         //# this code wil populate the m_locListBox Everytime m_locationTypeComboBox is changed. 
         int LocCat;
 
-        private void m_locationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_locationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)//knc
         {
             LocCat = m_locationTypeComboBox.SelectedIndex;
             m_locListBoxSelected.Items.Clear();
@@ -2919,7 +2919,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 foreach (object City in CityList)
                 {
-                    m_locListBoxSelected.Items.Add(City);
+                    m_locListBoxSelected.Items.Add(City);//knc
                 }
                 foreach (object City in CityList)
                 {
@@ -3072,7 +3072,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 foreach (object city in m_locListBox.Items)
                 {
-                    m_locListBoxSelected.Items.Add(city);
+                    m_locListBoxSelected.Items.Add(city);//knc
                 }
                 m_locListBox.Items.Clear();
             }

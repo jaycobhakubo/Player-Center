@@ -897,6 +897,417 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1018, 678</value>
   </data>
+  <data name="m_printRaffleRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_printRaffleRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_printRaffleRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 10</value>
+  </data>
+  <data name="m_printRaffleRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 26</value>
+  </data>
+  <data name="m_printRaffleRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="m_printRaffleRadio.Text" xml:space="preserve">
+    <value>Raffle Ticket</value>
+  </data>
+  <data name="&gt;&gt;m_printRaffleRadio.Name" xml:space="preserve">
+    <value>m_printRaffleRadio</value>
+  </data>
+  <data name="&gt;&gt;m_printRaffleRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_printRaffleRadio.Parent" xml:space="preserve">
+    <value>m_listTypePanel</value>
+  </data>
+  <data name="&gt;&gt;m_printRaffleRadio.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_exportRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_exportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_exportRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 10</value>
+  </data>
+  <data name="m_exportRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 26</value>
+  </data>
+  <data name="m_exportRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="m_exportRadio.Text" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="&gt;&gt;m_exportRadio.Name" xml:space="preserve">
+    <value>m_exportRadio</value>
+  </data>
+  <data name="&gt;&gt;m_exportRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_exportRadio.Parent" xml:space="preserve">
+    <value>m_listTypePanel</value>
+  </data>
+  <data name="&gt;&gt;m_exportRadio.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_listReportRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_listReportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_listReportRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 10</value>
+  </data>
+  <data name="m_listReportRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 26</value>
+  </data>
+  <data name="m_listReportRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_listReportRadio.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="&gt;&gt;m_listReportRadio.Name" xml:space="preserve">
+    <value>m_listReportRadio</value>
+  </data>
+  <data name="&gt;&gt;m_listReportRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_listReportRadio.Parent" xml:space="preserve">
+    <value>m_listTypePanel</value>
+  </data>
+  <data name="&gt;&gt;m_listReportRadio.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_mailingLabelRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_mailingLabelRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_mailingLabelRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 10</value>
+  </data>
+  <data name="m_mailingLabelRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 26</value>
+  </data>
+  <data name="m_mailingLabelRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="m_mailingLabelRadio.Text" xml:space="preserve">
+    <value>Mailing Label</value>
+  </data>
+  <data name="&gt;&gt;m_mailingLabelRadio.Name" xml:space="preserve">
+    <value>m_mailingLabelRadio</value>
+  </data>
+  <data name="&gt;&gt;m_mailingLabelRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_mailingLabelRadio.Parent" xml:space="preserve">
+    <value>m_listTypePanel</value>
+  </data>
+  <data name="&gt;&gt;m_mailingLabelRadio.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="m_listTypePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 570</value>
+  </data>
+  <data name="m_listTypePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 52</value>
+  </data>
+  <data name="m_listTypePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;m_listTypePanel.Name" xml:space="preserve">
+    <value>m_listTypePanel</value>
+  </data>
+  <data name="&gt;&gt;m_listTypePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_listTypePanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_listTypePanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_spendBotton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_spendBotton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 139</value>
+  </data>
+  <data name="m_spendBotton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_spendBotton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_spendBotton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="m_spendBotton.Text" xml:space="preserve">
+    <value>Spend</value>
+  </data>
+  <data name="&gt;&gt;m_spendBotton.Name" xml:space="preserve">
+    <value>m_spendBotton</value>
+  </data>
+  <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;m_spendBotton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="imgbtnNewList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtnNewList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnNewList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 538</value>
+  </data>
+  <data name="imgbtnNewList.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnNewList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtnNewList.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="imgbtnNewList.Text" xml:space="preserve">
+    <value>New List</value>
+  </data>
+  <data name="&gt;&gt;imgbtnNewList.Name" xml:space="preserve">
+    <value>imgbtnNewList</value>
+  </data>
+  <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;imgbtnNewList.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="cmbxPlayerList2.ItemHeight" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="cmbxPlayerList2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 192</value>
+  </data>
+  <data name="cmbxPlayerList2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 334</value>
+  </data>
+  <data name="cmbxPlayerList2.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;cmbxPlayerList2.Name" xml:space="preserve">
+    <value>cmbxPlayerList2</value>
+  </data>
+  <data name="&gt;&gt;cmbxPlayerList2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbxPlayerList2.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;cmbxPlayerList2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="imgbtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 582</value>
+  </data>
+  <data name="imgbtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtn.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="imgbtn.Text" xml:space="preserve">
+    <value>Edit List</value>
+  </data>
+  <data name="imgbtn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;imgbtn.Name" xml:space="preserve">
+    <value>imgbtn</value>
+  </data>
+  <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;imgbtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="m_playDatesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_playDatesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 96</value>
+  </data>
+  <data name="m_playDatesButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_playDatesButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_playDatesButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="m_playDatesButton.Text" xml:space="preserve">
+    <value>Visits</value>
+  </data>
+  <data name="&gt;&gt;m_playDatesButton.Name" xml:space="preserve">
+    <value>m_playDatesButton</value>
+  </data>
+  <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;m_playDatesButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="imgbtnDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 626</value>
+  </data>
+  <data name="imgbtnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtnDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="imgbtnDelete.Text" xml:space="preserve">
+    <value>Delete List</value>
+  </data>
+  <data name="imgbtnDelete.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Name" xml:space="preserve">
+    <value>imgbtnDelete</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;imgbtnDelete.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="m_locationButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_locationButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 53</value>
+  </data>
+  <data name="m_locationButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_locationButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_locationButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="m_locationButton.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="&gt;&gt;m_locationButton.Name" xml:space="preserve">
+    <value>m_locationButton</value>
+  </data>
+  <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;m_locationButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="m_listCriteriaButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_listCriteriaButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 10</value>
+  </data>
+  <data name="m_listCriteriaButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_listCriteriaButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_listCriteriaButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_listCriteriaButton1.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaButton1.Name" xml:space="preserve">
+    <value>m_listCriteriaButton1</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaButton1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="m_selectionPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 2</value>
+  </data>
+  <data name="m_selectionPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 679</value>
+  </data>
+  <data name="m_selectionPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;m_selectionPanel.Name" xml:space="preserve">
+    <value>m_selectionPanel</value>
+  </data>
+  <data name="&gt;&gt;m_selectionPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_selectionPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_selectionPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1225,417 +1636,6 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_locationPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_printRaffleRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_printRaffleRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_printRaffleRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 10</value>
-  </data>
-  <data name="m_printRaffleRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 26</value>
-  </data>
-  <data name="m_printRaffleRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="m_printRaffleRadio.Text" xml:space="preserve">
-    <value>Raffle Ticket</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Name" xml:space="preserve">
-    <value>m_printRaffleRadio</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_exportRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_exportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_exportRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>704, 10</value>
-  </data>
-  <data name="m_exportRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 26</value>
-  </data>
-  <data name="m_exportRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="m_exportRadio.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Name" xml:space="preserve">
-    <value>m_exportRadio</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_listReportRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_listReportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_listReportRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 10</value>
-  </data>
-  <data name="m_listReportRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 26</value>
-  </data>
-  <data name="m_listReportRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_listReportRadio.Text" xml:space="preserve">
-    <value>Report</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Name" xml:space="preserve">
-    <value>m_listReportRadio</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_mailingLabelRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_mailingLabelRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_mailingLabelRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 10</value>
-  </data>
-  <data name="m_mailingLabelRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 26</value>
-  </data>
-  <data name="m_mailingLabelRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="m_mailingLabelRadio.Text" xml:space="preserve">
-    <value>Mailing Label</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Name" xml:space="preserve">
-    <value>m_mailingLabelRadio</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_listTypePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 570</value>
-  </data>
-  <data name="m_listTypePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 52</value>
-  </data>
-  <data name="m_listTypePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;m_listTypePanel.Name" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_listTypePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listTypePanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_listTypePanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_spendBotton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_spendBotton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 139</value>
-  </data>
-  <data name="m_spendBotton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_spendBotton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_spendBotton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="m_spendBotton.Text" xml:space="preserve">
-    <value>Spend</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Name" xml:space="preserve">
-    <value>m_spendBotton</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="imgbtnNewList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtnNewList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtnNewList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 538</value>
-  </data>
-  <data name="imgbtnNewList.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtnNewList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtnNewList.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="imgbtnNewList.Text" xml:space="preserve">
-    <value>New List</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Name" xml:space="preserve">
-    <value>imgbtnNewList</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cmbxPlayerList2.ItemHeight" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="cmbxPlayerList2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 192</value>
-  </data>
-  <data name="cmbxPlayerList2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 334</value>
-  </data>
-  <data name="cmbxPlayerList2.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Name" xml:space="preserve">
-    <value>cmbxPlayerList2</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="imgbtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 582</value>
-  </data>
-  <data name="imgbtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtn.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="imgbtn.Text" xml:space="preserve">
-    <value>Edit List</value>
-  </data>
-  <data name="imgbtn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.Name" xml:space="preserve">
-    <value>imgbtn</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_playDatesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_playDatesButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 96</value>
-  </data>
-  <data name="m_playDatesButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_playDatesButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_playDatesButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="m_playDatesButton.Text" xml:space="preserve">
-    <value>Visits</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Name" xml:space="preserve">
-    <value>m_playDatesButton</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="imgbtnDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 626</value>
-  </data>
-  <data name="imgbtnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtnDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="imgbtnDelete.Text" xml:space="preserve">
-    <value>Delete List</value>
-  </data>
-  <data name="imgbtnDelete.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Name" xml:space="preserve">
-    <value>imgbtnDelete</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="m_locationButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_locationButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 53</value>
-  </data>
-  <data name="m_locationButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_locationButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_locationButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="m_locationButton.Text" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Name" xml:space="preserve">
-    <value>m_locationButton</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_listCriteriaButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_listCriteriaButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 10</value>
-  </data>
-  <data name="m_listCriteriaButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_listCriteriaButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_listCriteriaButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_listCriteriaButton1.Text" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Name" xml:space="preserve">
-    <value>m_listCriteriaButton1</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_selectionPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 2</value>
-  </data>
-  <data name="m_selectionPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 679</value>
-  </data>
-  <data name="m_selectionPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_selectionPanel.Name" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_selectionPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_selectionPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_selectionPanel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="imgbtn_AwardPointsToListOfPlayer.Font" type="System.Drawing.Font, System.Drawing">
@@ -4701,10 +4701,19 @@
   <data name="&gt;&gt;m_errorProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
+    <value>backgroundWorker1</value>
+  </data>
+  <data name="&gt;&gt;backgroundWorker1.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>PlayerListForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1157, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
+  <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>156, 17</value>
+  </metadata>
 </root>

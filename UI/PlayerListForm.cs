@@ -407,7 +407,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
             }
-            else if (selectedindex == 1)
+            else if (selectedindex == 1)//knc
             {
                 m_locListBox.Items.Clear();
                 foreach (LocationState State in PlayerManager.ListLocationState)
@@ -2919,7 +2919,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 foreach (object City in CityList)
                 {
-                    m_locListBoxSelected.Items.Add(City);//knc
+                    m_locListBoxSelected.Items.Add(City);
                 }
                 foreach (object City in CityList)
                 {
@@ -2975,8 +2975,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-            //if (isNewList == true)
-            //{
+            if (isNewList == true)
+            {
                 if (m_locListBoxSelected.Items.Count > 0)
                 {
                     if (!btnSaveList.Enabled) btnSaveList.Enabled = true;
@@ -2985,7 +2985,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (btnSaveList.Enabled) btnSaveList.Enabled = false;
                 }
-            //}
+            }
 
         }
 
@@ -3072,7 +3072,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 foreach (object city in m_locListBox.Items)
                 {
-                    m_locListBoxSelected.Items.Add(city);//knc
+                    m_locListBoxSelected.Items.Add(city);
                 }
                 m_locListBox.Items.Clear();
             }
@@ -3223,7 +3223,7 @@ namespace GTI.Modules.PlayerCenter.UI
         
        
 
-        private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)//knc
         {
             if (isNewList == true) return;
 

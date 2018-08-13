@@ -184,6 +184,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NDaysVisitedFrom = new System.Windows.Forms.TextBox();
             this.summary_NSessionVisitedFrom = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
             this.m_selectionPanel.SuspendLayout();
@@ -1501,9 +1502,9 @@ namespace GTI.Modules.PlayerCenter.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.m_locationPanel);
             this.Controls.Add(this.m_listTypePanel);
             this.Controls.Add(this.m_selectionPanel);
+            this.Controls.Add(this.m_locationPanel);
             this.Controls.Add(this.imgbtn_AwardPointsToListOfPlayer);
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.btnSaveList);
@@ -1707,5 +1708,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

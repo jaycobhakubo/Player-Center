@@ -844,13 +844,13 @@
     <value>m_generateButton</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_generateButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="m_closeButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
@@ -877,7 +877,7 @@
     <value>m_closeButton</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -897,6 +897,24 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1018, 678</value>
   </data>
+  <data name="m_printRaffleRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_printRaffleRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_printRaffleRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 10</value>
+  </data>
+  <data name="m_printRaffleRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 26</value>
+  </data>
+  <data name="m_printRaffleRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="m_printRaffleRadio.Text" xml:space="preserve">
+    <value>Raffle Ticket</value>
+  </data>
   <data name="&gt;&gt;m_printRaffleRadio.Name" xml:space="preserve">
     <value>m_printRaffleRadio</value>
   </data>
@@ -908,6 +926,24 @@
   </data>
   <data name="&gt;&gt;m_printRaffleRadio.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="m_exportRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_exportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_exportRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>704, 10</value>
+  </data>
+  <data name="m_exportRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 26</value>
+  </data>
+  <data name="m_exportRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="m_exportRadio.Text" xml:space="preserve">
+    <value>Export</value>
   </data>
   <data name="&gt;&gt;m_exportRadio.Name" xml:space="preserve">
     <value>m_exportRadio</value>
@@ -921,6 +957,24 @@
   <data name="&gt;&gt;m_exportRadio.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="m_listReportRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_listReportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_listReportRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 10</value>
+  </data>
+  <data name="m_listReportRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 26</value>
+  </data>
+  <data name="m_listReportRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_listReportRadio.Text" xml:space="preserve">
+    <value>Report</value>
+  </data>
   <data name="&gt;&gt;m_listReportRadio.Name" xml:space="preserve">
     <value>m_listReportRadio</value>
   </data>
@@ -932,6 +986,24 @@
   </data>
   <data name="&gt;&gt;m_listReportRadio.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="m_mailingLabelRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_mailingLabelRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_mailingLabelRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>182, 10</value>
+  </data>
+  <data name="m_mailingLabelRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 26</value>
+  </data>
+  <data name="m_mailingLabelRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="m_mailingLabelRadio.Text" xml:space="preserve">
+    <value>Mailing Label</value>
   </data>
   <data name="&gt;&gt;m_mailingLabelRadio.Name" xml:space="preserve">
     <value>m_mailingLabelRadio</value>
@@ -966,11 +1038,29 @@
   <data name="&gt;&gt;m_listTypePanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="m_spendBotton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_spendBotton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 139</value>
+  </data>
+  <data name="m_spendBotton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_spendBotton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_spendBotton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="m_spendBotton.Text" xml:space="preserve">
+    <value>Spend</value>
+  </data>
   <data name="&gt;&gt;m_spendBotton.Name" xml:space="preserve">
     <value>m_spendBotton</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -978,17 +1068,50 @@
   <data name="&gt;&gt;m_spendBotton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="imgbtnNewList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtnNewList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnNewList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 538</value>
+  </data>
+  <data name="imgbtnNewList.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnNewList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtnNewList.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="imgbtnNewList.Text" xml:space="preserve">
+    <value>New List</value>
+  </data>
   <data name="&gt;&gt;imgbtnNewList.Name" xml:space="preserve">
     <value>imgbtnNewList</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="cmbxPlayerList2.ItemHeight" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="cmbxPlayerList2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 192</value>
+  </data>
+  <data name="cmbxPlayerList2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 334</value>
+  </data>
+  <data name="cmbxPlayerList2.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
   </data>
   <data name="&gt;&gt;cmbxPlayerList2.Name" xml:space="preserve">
     <value>cmbxPlayerList2</value>
@@ -1002,11 +1125,35 @@
   <data name="&gt;&gt;cmbxPlayerList2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="imgbtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 582</value>
+  </data>
+  <data name="imgbtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtn.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="imgbtn.Text" xml:space="preserve">
+    <value>Edit List</value>
+  </data>
+  <data name="imgbtn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;imgbtn.Name" xml:space="preserve">
     <value>imgbtn</value>
   </data>
   <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1014,11 +1161,29 @@
   <data name="&gt;&gt;imgbtn.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="m_playDatesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_playDatesButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 96</value>
+  </data>
+  <data name="m_playDatesButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_playDatesButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_playDatesButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="m_playDatesButton.Text" xml:space="preserve">
+    <value>Visits</value>
+  </data>
   <data name="&gt;&gt;m_playDatesButton.Name" xml:space="preserve">
     <value>m_playDatesButton</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1026,11 +1191,35 @@
   <data name="&gt;&gt;m_playDatesButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="imgbtnDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="imgbtnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="imgbtnDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 626</value>
+  </data>
+  <data name="imgbtnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="imgbtnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="imgbtnDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="imgbtnDelete.Text" xml:space="preserve">
+    <value>Delete List</value>
+  </data>
+  <data name="imgbtnDelete.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;imgbtnDelete.Name" xml:space="preserve">
     <value>imgbtnDelete</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1038,11 +1227,29 @@
   <data name="&gt;&gt;imgbtnDelete.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="m_locationButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_locationButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 53</value>
+  </data>
+  <data name="m_locationButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_locationButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_locationButton.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="m_locationButton.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
   <data name="&gt;&gt;m_locationButton.Name" xml:space="preserve">
     <value>m_locationButton</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1050,11 +1257,29 @@
   <data name="&gt;&gt;m_locationButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="m_listCriteriaButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_listCriteriaButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>31, 10</value>
+  </data>
+  <data name="m_listCriteriaButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="m_listCriteriaButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 38</value>
+  </data>
+  <data name="m_listCriteriaButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_listCriteriaButton1.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Name" xml:space="preserve">
     <value>m_listCriteriaButton1</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1111,7 +1336,7 @@
     <value>imgbtn_AwardPointsToListOfPlayer</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1147,7 +1372,7 @@
     <value>imgbtnCancel</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1183,13 +1408,343 @@
     <value>btnSaveList</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1156, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSaveList.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  </data>
+  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 5</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 27</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_locListBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_locListBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_locListBox.ItemHeight" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="m_locListBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 149</value>
+  </data>
+  <data name="m_locListBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 356</value>
+  </data>
+  <data name="m_locListBox.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;m_locListBox.Name" xml:space="preserve">
+    <value>m_locListBox</value>
+  </data>
+  <data name="&gt;&gt;m_locListBox.Type" xml:space="preserve">
+    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_locListBox.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_locListBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 59</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 26</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="m_findAllVIPCheckBox.Text" xml:space="preserve">
+    <value>Find every player whose</value>
+  </data>
+  <data name="&gt;&gt;m_findAllVIPCheckBox.Name" xml:space="preserve">
+    <value>m_findAllVIPCheckBox</value>
+  </data>
+  <data name="&gt;&gt;m_findAllVIPCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_findAllVIPCheckBox.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_findAllVIPCheckBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_locListBoxSelected.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_locListBoxSelected.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_locListBoxSelected.ItemHeight" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="m_locListBoxSelected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>507, 149</value>
+  </data>
+  <data name="m_locListBoxSelected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 356</value>
+  </data>
+  <data name="m_locListBoxSelected.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;m_locListBoxSelected.Name" xml:space="preserve">
+    <value>m_locListBoxSelected</value>
+  </data>
+  <data name="&gt;&gt;m_locListBoxSelected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_locListBoxSelected.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_locListBoxSelected.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="m_addItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_addItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_addItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 257</value>
+  </data>
+  <data name="m_addItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 41</value>
+  </data>
+  <data name="m_addItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="m_addItemButton.Text" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="&gt;&gt;m_addItemButton.Name" xml:space="preserve">
+    <value>m_addItemButton</value>
+  </data>
+  <data name="&gt;&gt;m_addItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_addItemButton.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_addItemButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="m_removeItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_removeItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_removeItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 315</value>
+  </data>
+  <data name="m_removeItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 41</value>
+  </data>
+  <data name="m_removeItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="m_removeItemButton.Text" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="&gt;&gt;m_removeItemButton.Name" xml:space="preserve">
+    <value>m_removeItemButton</value>
+  </data>
+  <data name="&gt;&gt;m_removeItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_removeItemButton.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_removeItemButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="m_addAllItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_addAllItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_addAllItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 207</value>
+  </data>
+  <data name="m_addAllItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 41</value>
+  </data>
+  <data name="m_addAllItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="m_addAllItemButton.Text" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="&gt;&gt;m_addAllItemButton.Name" xml:space="preserve">
+    <value>m_addAllItemButton</value>
+  </data>
+  <data name="&gt;&gt;m_addAllItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_addAllItemButton.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_addAllItemButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="m_removedAllItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_removedAllItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_removedAllItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 362</value>
+  </data>
+  <data name="m_removedAllItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 41</value>
+  </data>
+  <data name="m_removedAllItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="m_removedAllItemButton.Text" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="&gt;&gt;m_removedAllItemButton.Name" xml:space="preserve">
+    <value>m_removedAllItemButton</value>
+  </data>
+  <data name="&gt;&gt;m_removedAllItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_removedAllItemButton.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_removedAllItemButton.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="m_locationTypeComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_locationTypeComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="m_locationTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>47, 114</value>
+  </data>
+  <data name="m_locationTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 26</value>
+  </data>
+  <data name="m_locationTypeComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_locationTypeComboBox.Name" xml:space="preserve">
+    <value>m_locationTypeComboBox</value>
+  </data>
+  <data name="&gt;&gt;m_locationTypeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_locationTypeComboBox.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_locationTypeComboBox.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="m_addressIsInLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_addressIsInLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_addressIsInLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_addressIsInLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 83</value>
+  </data>
+  <data name="m_addressIsInLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 22</value>
+  </data>
+  <data name="m_addressIsInLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_addressIsInLabel.Text" xml:space="preserve">
+    <value>address is in </value>
+  </data>
+  <data name="&gt;&gt;m_addressIsInLabel.Name" xml:space="preserve">
+    <value>m_addressIsInLabel</value>
+  </data>
+  <data name="&gt;&gt;m_addressIsInLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_addressIsInLabel.Parent" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_addressIsInLabel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="m_locationPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 2</value>
+  </data>
+  <data name="m_locationPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 562</value>
+  </data>
+  <data name="m_locationPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="m_locationPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;m_locationPanel.Name" xml:space="preserve">
+    <value>m_locationPanel</value>
+  </data>
+  <data name="&gt;&gt;m_locationPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_locationPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_locationPanel.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2080,7 +2635,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_summaryPanel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 5</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 27</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Spend</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -2093,585 +2669,6 @@
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_spendCheck.Name" xml:space="preserve">
-    <value>m_spendCheck</value>
-  </data>
-  <data name="&gt;&gt;m_spendCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_spendCheck.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_spendCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Name" xml:space="preserve">
-    <value>m_averageRadio</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Name" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Name" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Name" xml:space="preserve">
-    <value>m_ProductCheckBox</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="m_spendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 2</value>
-  </data>
-  <data name="m_spendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 562</value>
-  </data>
-  <data name="m_spendPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="m_spendPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;m_spendPanel.Name" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_spendPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_spendPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_spendPanel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
-    <value>m_statusCheckComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 2</value>
-  </data>
-  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 562</value>
-  </data>
-  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_daysPlayedCheck.Name" xml:space="preserve">
-    <value>m_daysPlayedCheck</value>
-  </data>
-  <data name="&gt;&gt;m_daysPlayedCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_daysPlayedCheck.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_daysPlayedCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_sessionPlayedCheck.Name" xml:space="preserve">
-    <value>m_sessionPlayedCheck</value>
-  </data>
-  <data name="&gt;&gt;m_sessionPlayedCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_sessionPlayedCheck.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_sessionPlayedCheck.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;m_daysOfWeekAndSessionCheck.Name" xml:space="preserve">
-    <value>m_daysOfWeekAndSessionCheck</value>
-  </data>
-  <data name="&gt;&gt;m_daysOfWeekAndSessionCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_daysOfWeekAndSessionCheck.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_daysOfWeekAndSessionCheck.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;m_fromDateRangeDPLabel.Name" xml:space="preserve">
-    <value>m_fromDateRangeDPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_fromDateRangeDPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_fromDateRangeDPLabel.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_fromDateRangeDPLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangefromDPDatePicker.Name" xml:space="preserve">
-    <value>m_dateRangefromDPDatePicker</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangefromDPDatePicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangefromDPDatePicker.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangefromDPDatePicker.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangetoDPDatePicker.Name" xml:space="preserve">
-    <value>m_dateRangetoDPDatePicker</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangetoDPDatePicker.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangetoDPDatePicker.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_dateRangetoDPDatePicker.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;m_toDateRangeDPLabel.Name" xml:space="preserve">
-    <value>m_toDateRangeDPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_toDateRangeDPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_toDateRangeDPLabel.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_toDateRangeDPLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="m_playDatesPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 2</value>
-  </data>
-  <data name="m_playDatesPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 562</value>
-  </data>
-  <data name="m_playDatesPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesPanel.Name" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesPanel.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Name" xml:space="preserve">
-    <value>m_locListBox</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Name" xml:space="preserve">
-    <value>m_findAllVIPCheckBox</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Name" xml:space="preserve">
-    <value>m_locListBoxSelected</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Name" xml:space="preserve">
-    <value>m_addItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Name" xml:space="preserve">
-    <value>m_removeItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Name" xml:space="preserve">
-    <value>m_addAllItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Name" xml:space="preserve">
-    <value>m_removedAllItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Name" xml:space="preserve">
-    <value>m_locationTypeComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Name" xml:space="preserve">
-    <value>m_addressIsInLabel</value>
-  </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_addressIsInLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="m_locationPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 2</value>
-  </data>
-  <data name="m_locationPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 562</value>
-  </data>
-  <data name="m_locationPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="m_locationPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;m_locationPanel.Name" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locationPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_locationPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_locationPanel.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Player List</value>
-  </data>
-  <data name="&gt;&gt;m_errorProvider.Name" xml:space="preserve">
-    <value>m_errorProvider</value>
-  </data>
-  <data name="&gt;&gt;m_errorProvider.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>PlayerListForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1141, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 165</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Between</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 32</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="m_lastVisitBetweenLabel.Text" xml:space="preserve">
-    <value>Between</value>
-  </data>
-  <data name="&gt;&gt;m_lastVisitBetweenLabel.Name" xml:space="preserve">
-    <value>m_lastVisitBetweenLabel</value>
-  </data>
-  <data name="&gt;&gt;m_lastVisitBetweenLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_lastVisitBetweenLabel.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;m_lastVisitBetweenLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_averageRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_averageRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_averageRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 278</value>
-  </data>
-  <data name="m_averageRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 26</value>
-  </data>
-  <data name="m_averageRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="m_averageRadio.Text" xml:space="preserve">
-    <value>(Average)</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Name" xml:space="preserve">
-    <value>m_averageRadio</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_averageRadio.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="m_spendCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2702,6 +2699,36 @@
   </data>
   <data name="&gt;&gt;m_spendCheck.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="m_averageRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_averageRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_averageRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 278</value>
+  </data>
+  <data name="m_averageRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 26</value>
+  </data>
+  <data name="m_averageRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="m_averageRadio.Text" xml:space="preserve">
+    <value>(Average)</value>
+  </data>
+  <data name="&gt;&gt;m_averageRadio.Name" xml:space="preserve">
+    <value>m_averageRadio</value>
+  </data>
+  <data name="&gt;&gt;m_averageRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_averageRadio.Parent" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;m_averageRadio.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="m_OptionSARadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2763,208 +2790,37 @@
   <data name="&gt;&gt;m_rangeSARadio.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="m_optionPBRadio.AutoSize" type="System.Boolean, mscorlib">
+  <data name="m_minSpenLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="m_optionPBRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_minSpenLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_minSpenLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_optionPBRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>431, 32</value>
+  <data name="m_minSpenLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 36</value>
   </data>
-  <data name="m_optionPBRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 26</value>
+  <data name="m_minSpenLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 22</value>
   </data>
-  <data name="m_optionPBRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+  <data name="m_minSpenLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
   </data>
-  <data name="m_optionPBRadio.Text" xml:space="preserve">
-    <value>Option</value>
+  <data name="m_minSpenLabel.Text" xml:space="preserve">
+    <value>From</value>
   </data>
-  <data name="&gt;&gt;m_optionPBRadio.Name" xml:space="preserve">
-    <value>m_optionPBRadio</value>
+  <data name="&gt;&gt;m_minSpenLabel.Name" xml:space="preserve">
+    <value>m_minSpenLabel</value>
   </data>
-  <data name="&gt;&gt;m_optionPBRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;m_minSpenLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_optionPBRadio.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionPBRadio.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_rangePBRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_rangePBRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_rangePBRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 29</value>
-  </data>
-  <data name="m_rangePBRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 26</value>
-  </data>
-  <data name="m_rangePBRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="m_rangePBRadio.Text" xml:space="preserve">
-    <value>Range</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Name" xml:space="preserve">
-    <value>m_rangePBRadio</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_ProductCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_ProductCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_ProductCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 93</value>
-  </data>
-  <data name="m_ProductCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 26</value>
-  </data>
-  <data name="m_ProductCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="m_ProductCheckBox.Text" xml:space="preserve">
-    <value>Product Purchased</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Name" xml:space="preserve">
-    <value>m_ProductCheckBox</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_optionValueSAText.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_optionValueSAText.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_optionValueSAText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>663, 32</value>
-  </data>
-  <data name="m_optionValueSAText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 26</value>
-  </data>
-  <data name="m_optionValueSAText.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="m_optionValueSAText.Text" xml:space="preserve">
-    <value>0.00</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Name" xml:space="preserve">
-    <value>m_optionValueSAText</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_minSpenLabel.Parent" xml:space="preserve">
     <value>m_RangeOptionSAPanel</value>
   </data>
-  <data name="&gt;&gt;m_optionValueSAText.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_optionSelectedSACombo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_optionSelectedSACombo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt</value>
-  </data>
-  <data name="m_optionSelectedSACombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>519, 32</value>
-  </data>
-  <data name="m_optionSelectedSACombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 26</value>
-  </data>
-  <data name="m_optionSelectedSACombo.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Name" xml:space="preserve">
-    <value>m_optionSelectedSACombo</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_optionValuePBText.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_optionValuePBText.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_optionValuePBText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>663, 32</value>
-  </data>
-  <data name="m_optionValuePBText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 26</value>
-  </data>
-  <data name="m_optionValuePBText.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="m_optionValuePBText.Text" xml:space="preserve">
-    <value>0.00</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Name" xml:space="preserve">
-    <value>m_optionValuePBText</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_optionSelectedPBCombo.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_optionSelectedPBCombo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt</value>
-  </data>
-  <data name="m_optionSelectedPBCombo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>519, 32</value>
-  </data>
-  <data name="m_optionSelectedPBCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 26</value>
-  </data>
-  <data name="m_optionSelectedPBCombo.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Name" xml:space="preserve">
-    <value>m_optionSelectedPBCombo</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_minSpenLabel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="m_maxSpendLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -3000,650 +2856,488 @@
   <data name="&gt;&gt;m_maxSpendLabel.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="m_minSpenLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_minSpenLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="m_minSpenLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_minSpenLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 36</value>
-  </data>
-  <data name="m_minSpenLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 22</value>
-  </data>
-  <data name="m_minSpenLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="m_minSpenLabel.Text" xml:space="preserve">
-    <value>From</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Name" xml:space="preserve">
-    <value>m_minSpenLabel</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="m_spendBotton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_spendBotton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 139</value>
-  </data>
-  <data name="m_spendBotton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_spendBotton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_spendBotton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="m_spendBotton.Text" xml:space="preserve">
-    <value>Spend</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Name" xml:space="preserve">
-    <value>m_spendBotton</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_spendBotton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="imgbtnNewList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtnNewList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtnNewList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 538</value>
-  </data>
-  <data name="imgbtnNewList.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtnNewList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtnNewList.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="imgbtnNewList.Text" xml:space="preserve">
-    <value>New List</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Name" xml:space="preserve">
-    <value>imgbtnNewList</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtnNewList.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="cmbxPlayerList2.ItemHeight" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="cmbxPlayerList2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 192</value>
-  </data>
-  <data name="cmbxPlayerList2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 334</value>
-  </data>
-  <data name="cmbxPlayerList2.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Name" xml:space="preserve">
-    <value>cmbxPlayerList2</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;cmbxPlayerList2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="imgbtn.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 582</value>
-  </data>
-  <data name="imgbtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtn.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="imgbtn.Text" xml:space="preserve">
-    <value>Edit List</value>
-  </data>
-  <data name="imgbtn.Visible" type="System.Boolean, mscorlib">
+  <data name="m_optionSelectedSACombo.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;imgbtn.Name" xml:space="preserve">
-    <value>imgbtn</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtn.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_playDatesButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_playDatesButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 96</value>
-  </data>
-  <data name="m_playDatesButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_playDatesButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_playDatesButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="m_playDatesButton.Text" xml:space="preserve">
-    <value>Visits</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Name" xml:space="preserve">
-    <value>m_playDatesButton</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_playDatesButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="imgbtnDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="imgbtnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="imgbtnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 626</value>
-  </data>
-  <data name="imgbtnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="imgbtnDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="imgbtnDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="imgbtnDelete.Text" xml:space="preserve">
-    <value>Delete List</value>
-  </data>
-  <data name="imgbtnDelete.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Name" xml:space="preserve">
-    <value>imgbtnDelete</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;imgbtnDelete.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="m_locationButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_locationButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 53</value>
-  </data>
-  <data name="m_locationButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_locationButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_locationButton.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="m_locationButton.Text" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Name" xml:space="preserve">
-    <value>m_locationButton</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locationButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_listCriteriaButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_listCriteriaButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 10</value>
-  </data>
-  <data name="m_listCriteriaButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_listCriteriaButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
-  </data>
-  <data name="m_listCriteriaButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_listCriteriaButton1.Text" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Name" xml:space="preserve">
-    <value>m_listCriteriaButton1</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1140, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
-    <value>m_selectionPanel</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaButton1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_printRaffleRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_printRaffleRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_printRaffleRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 10</value>
-  </data>
-  <data name="m_printRaffleRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 26</value>
-  </data>
-  <data name="m_printRaffleRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="m_printRaffleRadio.Text" xml:space="preserve">
-    <value>Raffle Ticket</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Name" xml:space="preserve">
-    <value>m_printRaffleRadio</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_printRaffleRadio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_exportRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_exportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_exportRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>704, 10</value>
-  </data>
-  <data name="m_exportRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 26</value>
-  </data>
-  <data name="m_exportRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="m_exportRadio.Text" xml:space="preserve">
-    <value>Export</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Name" xml:space="preserve">
-    <value>m_exportRadio</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_exportRadio.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_listReportRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_listReportRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_listReportRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 10</value>
-  </data>
-  <data name="m_listReportRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 26</value>
-  </data>
-  <data name="m_listReportRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_listReportRadio.Text" xml:space="preserve">
-    <value>Report</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Name" xml:space="preserve">
-    <value>m_listReportRadio</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_listReportRadio.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_mailingLabelRadio.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_mailingLabelRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_mailingLabelRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 10</value>
-  </data>
-  <data name="m_mailingLabelRadio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 26</value>
-  </data>
-  <data name="m_mailingLabelRadio.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="m_mailingLabelRadio.Text" xml:space="preserve">
-    <value>Mailing Label</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Name" xml:space="preserve">
-    <value>m_mailingLabelRadio</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.Parent" xml:space="preserve">
-    <value>m_listTypePanel</value>
-  </data>
-  <data name="&gt;&gt;m_mailingLabelRadio.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 59</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 26</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="m_findAllVIPCheckBox.Text" xml:space="preserve">
-    <value>Find every player whose</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Name" xml:space="preserve">
-    <value>m_findAllVIPCheckBox</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_findAllVIPCheckBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_locListBoxSelected.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_locListBoxSelected.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_locListBoxSelected.ItemHeight" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="m_locListBoxSelected.Location" type="System.Drawing.Point, System.Drawing">
-    <value>507, 149</value>
-  </data>
-  <data name="m_locListBoxSelected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 356</value>
-  </data>
-  <data name="m_locListBoxSelected.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Name" xml:space="preserve">
-    <value>m_locListBoxSelected</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locListBoxSelected.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_addItemButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_addItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_addItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 257</value>
-  </data>
-  <data name="m_addItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 41</value>
-  </data>
-  <data name="m_addItemButton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="m_addItemButton.Text" xml:space="preserve">
-    <value>&gt;</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Name" xml:space="preserve">
-    <value>m_addItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_addItemButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="m_removeItemButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_removeItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_removeItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 315</value>
-  </data>
-  <data name="m_removeItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 41</value>
-  </data>
-  <data name="m_removeItemButton.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="m_removeItemButton.Text" xml:space="preserve">
-    <value>&lt;</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Name" xml:space="preserve">
-    <value>m_removeItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_removeItemButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="m_addAllItemButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_addAllItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_addAllItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 207</value>
-  </data>
-  <data name="m_addAllItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 41</value>
-  </data>
-  <data name="m_addAllItemButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="m_addAllItemButton.Text" xml:space="preserve">
-    <value>&gt;&gt;</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Name" xml:space="preserve">
-    <value>m_addAllItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_addAllItemButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_removedAllItemButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_removedAllItemButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_removedAllItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 362</value>
-  </data>
-  <data name="m_removedAllItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 41</value>
-  </data>
-  <data name="m_removedAllItemButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="m_removedAllItemButton.Text" xml:space="preserve">
-    <value>&lt;&lt;</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Name" xml:space="preserve">
-    <value>m_removedAllItemButton</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_removedAllItemButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_locationTypeComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_locationTypeComboBox.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_optionSelectedSACombo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt</value>
   </data>
-  <data name="m_locationTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 114</value>
+  <data name="m_optionSelectedSACombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 32</value>
   </data>
-  <data name="m_locationTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 26</value>
+  <data name="m_optionSelectedSACombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 26</value>
   </data>
-  <data name="m_locationTypeComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="m_optionSelectedSACombo.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
   </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Name" xml:space="preserve">
-    <value>m_locationTypeComboBox</value>
+  <data name="&gt;&gt;m_optionSelectedSACombo.Name" xml:space="preserve">
+    <value>m_optionSelectedSACombo</value>
   </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_optionSelectedSACombo.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
+  <data name="&gt;&gt;m_optionSelectedSACombo.Parent" xml:space="preserve">
+    <value>m_RangeOptionSAPanel</value>
   </data>
-  <data name="&gt;&gt;m_locationTypeComboBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;m_optionSelectedSACombo.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="m_addressIsInLabel.AutoSize" type="System.Boolean, mscorlib">
+  <data name="m_optionValueSAText.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_optionValueSAText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_optionValueSAText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>663, 32</value>
+  </data>
+  <data name="m_optionValueSAText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 26</value>
+  </data>
+  <data name="m_optionValueSAText.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="m_optionValueSAText.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;m_optionValueSAText.Name" xml:space="preserve">
+    <value>m_optionValueSAText</value>
+  </data>
+  <data name="&gt;&gt;m_optionValueSAText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_optionValueSAText.Parent" xml:space="preserve">
+    <value>m_RangeOptionSAPanel</value>
+  </data>
+  <data name="&gt;&gt;m_optionValueSAText.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="m_RangeOptionSAPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_RangeOptionSAPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 281</value>
+  </data>
+  <data name="m_RangeOptionSAPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 80</value>
+  </data>
+  <data name="m_RangeOptionSAPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;m_RangeOptionSAPanel.Name" xml:space="preserve">
+    <value>m_RangeOptionSAPanel</value>
+  </data>
+  <data name="&gt;&gt;m_RangeOptionSAPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_RangeOptionSAPanel.Parent" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;m_RangeOptionSAPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="m_rangePBRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="m_addressIsInLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="m_addressIsInLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_rangePBRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_addressIsInLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 83</value>
+  <data name="m_rangePBRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 29</value>
   </data>
-  <data name="m_addressIsInLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 22</value>
+  <data name="m_rangePBRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 26</value>
   </data>
-  <data name="m_addressIsInLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_rangePBRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="m_rangePBRadio.Text" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="&gt;&gt;m_rangePBRadio.Name" xml:space="preserve">
+    <value>m_rangePBRadio</value>
+  </data>
+  <data name="&gt;&gt;m_rangePBRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_rangePBRadio.Parent" xml:space="preserve">
+    <value>m_rangeOptionPBPanel</value>
+  </data>
+  <data name="&gt;&gt;m_rangePBRadio.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="m_addressIsInLabel.Text" xml:space="preserve">
-    <value>address is in </value>
+  <data name="m_optionPBRadio.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Name" xml:space="preserve">
-    <value>m_addressIsInLabel</value>
+  <data name="m_optionPBRadio.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Type" xml:space="preserve">
+  <data name="m_optionPBRadio.Location" type="System.Drawing.Point, System.Drawing">
+    <value>431, 32</value>
+  </data>
+  <data name="m_optionPBRadio.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 26</value>
+  </data>
+  <data name="m_optionPBRadio.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="m_optionPBRadio.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="&gt;&gt;m_optionPBRadio.Name" xml:space="preserve">
+    <value>m_optionPBRadio</value>
+  </data>
+  <data name="&gt;&gt;m_optionPBRadio.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_optionPBRadio.Parent" xml:space="preserve">
+    <value>m_rangeOptionPBPanel</value>
+  </data>
+  <data name="&gt;&gt;m_optionPBRadio.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_optionSelectedPBCombo.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_optionSelectedPBCombo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt</value>
+  </data>
+  <data name="m_optionSelectedPBCombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>519, 32</value>
+  </data>
+  <data name="m_optionSelectedPBCombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 26</value>
+  </data>
+  <data name="m_optionSelectedPBCombo.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="&gt;&gt;m_optionSelectedPBCombo.Name" xml:space="preserve">
+    <value>m_optionSelectedPBCombo</value>
+  </data>
+  <data name="&gt;&gt;m_optionSelectedPBCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_optionSelectedPBCombo.Parent" xml:space="preserve">
+    <value>m_rangeOptionPBPanel</value>
+  </data>
+  <data name="&gt;&gt;m_optionSelectedPBCombo.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="m_optionValuePBText.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_optionValuePBText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_optionValuePBText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>663, 32</value>
+  </data>
+  <data name="m_optionValuePBText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 26</value>
+  </data>
+  <data name="m_optionValuePBText.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="m_optionValuePBText.Text" xml:space="preserve">
+    <value>0.00</value>
+  </data>
+  <data name="&gt;&gt;m_optionValuePBText.Name" xml:space="preserve">
+    <value>m_optionValuePBText</value>
+  </data>
+  <data name="&gt;&gt;m_optionValuePBText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_optionValuePBText.Parent" xml:space="preserve">
+    <value>m_rangeOptionPBPanel</value>
+  </data>
+  <data name="&gt;&gt;m_optionValuePBText.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="m_rangeOptionPBPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_rangeOptionPBPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 188</value>
+  </data>
+  <data name="m_rangeOptionPBPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 80</value>
+  </data>
+  <data name="m_rangeOptionPBPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;m_rangeOptionPBPanel.Name" xml:space="preserve">
+    <value>m_rangeOptionPBPanel</value>
+  </data>
+  <data name="&gt;&gt;m_rangeOptionPBPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_rangeOptionPBPanel.Parent" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;m_rangeOptionPBPanel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="m_ProductCheckBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_ProductCheckBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_ProductCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 93</value>
+  </data>
+  <data name="m_ProductCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 26</value>
+  </data>
+  <data name="m_ProductCheckBox.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="m_ProductCheckBox.Text" xml:space="preserve">
+    <value>Product Purchased</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox.Name" xml:space="preserve">
+    <value>m_ProductCheckBox</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox.Parent" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="m_ProductCheckBox2.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_ProductCheckBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_ProductCheckBox2.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_ProductCheckBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 32</value>
+  </data>
+  <data name="m_ProductCheckBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 26</value>
+  </data>
+  <data name="m_ProductCheckBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox2.Name" xml:space="preserve">
+    <value>m_ProductCheckBox2</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox2.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox2.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;m_ProductCheckBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 95</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>770, 80</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="m_spendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 2</value>
+  </data>
+  <data name="m_spendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 562</value>
+  </data>
+  <data name="m_spendPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="m_spendPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;m_spendPanel.Name" xml:space="preserve">
+    <value>m_spendPanel</value>
+  </data>
+  <data name="&gt;&gt;m_spendPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_spendPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_spendPanel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 5</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 27</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_addressIsInLabel.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
   </data>
-  <data name="&gt;&gt;m_addressIsInLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 106</value>
+  </data>
+  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 26</value>
+  </data>
+  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
+    <value>m_statusCheckComboBox</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 165</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 22</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 2</value>
+  </data>
+  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 562</value>
+  </data>
+  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 5</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 27</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Visits</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>m_playDatesPanel</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="m_daysPlayedCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3674,123 +3368,6 @@
   </data>
   <data name="&gt;&gt;m_daysPlayedCheck.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPTextBox.Name" xml:space="preserve">
-    <value>m_rangeOptionDPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPTextBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPLabel.Name" xml:space="preserve">
-    <value>m_fromRangeDPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPLabel.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPComboBox.Name" xml:space="preserve">
-    <value>m_rangeOptionDPComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPComboBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionDPComboBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPLabel.Name" xml:space="preserve">
-    <value>m_toRangeDPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPLabel.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeDPRadioButton.Name" xml:space="preserve">
-    <value>m_rangeDPRadioButton</value>
-  </data>
-  <data name="&gt;&gt;m_rangeDPRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeDPRadioButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeDPRadioButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPTextBox.Name" xml:space="preserve">
-    <value>m_fromRangeDPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPTextBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeDPTextBox.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPTextBox.Name" xml:space="preserve">
-    <value>m_toRangeDPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPTextBox.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeDPTextBox.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionDPRadioButton.Name" xml:space="preserve">
-    <value>m_rangeoptionDPRadioButton</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionDPRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionDPRadioButton.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionDPRadioButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 90</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>788, 94</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="m_rangeOptionDPTextBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4041,6 +3618,27 @@
   <data name="&gt;&gt;m_rangeoptionDPRadioButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 90</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 94</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>m_playDatesPanel</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="m_sessionPlayedCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4100,123 +3698,6 @@
   </data>
   <data name="&gt;&gt;m_daysOfWeekAndSessionCheck.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPTextBox.Name" xml:space="preserve">
-    <value>m_rangeOptionSPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPTextBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPTextBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPTextBox.Name" xml:space="preserve">
-    <value>m_toRangeSPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPTextBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPTextBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPLabel.Name" xml:space="preserve">
-    <value>m_fromRangeSPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPLabel.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPTextBox.Name" xml:space="preserve">
-    <value>m_fromRangeSPTextBox</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPTextBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_fromRangeSPTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPComboBox.Name" xml:space="preserve">
-    <value>m_rangeOptionSPComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPComboBox.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionSPComboBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionSPRadioButton.Name" xml:space="preserve">
-    <value>m_rangeoptionSPRadioButton</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionSPRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionSPRadioButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeoptionSPRadioButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPLabel.Name" xml:space="preserve">
-    <value>m_toRangeSPLabel</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPLabel.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_toRangeSPLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSPRadioButton.Name" xml:space="preserve">
-    <value>m_rangeSPRadioButton</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSPRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSPRadioButton.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSPRadioButton.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 195</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>788, 94</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="m_rangeOptionSPTextBox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4467,218 +3948,56 @@
   <data name="&gt;&gt;m_rangeSPRadioButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 195</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 94</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>m_playDatesPanel</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="m_checkComboAllSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboAllSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboAllSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboAllSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 35</value>
+  </data>
+  <data name="m_checkComboAllSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboAllSession.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
   <data name="&gt;&gt;m_checkComboAllSession.Name" xml:space="preserve">
     <value>m_checkComboAllSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_allDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_allDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_allDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_allDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_allDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_monDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_monDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_monDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_monDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_monDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Name" xml:space="preserve">
-    <value>m_checkComboSUNSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;m_wedDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_wedDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_wedDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_wedDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_wedDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_thursDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_thursDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_thursDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_thursDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_thursDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_tuesDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_tuesDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_tuesDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_tuesDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_tuesDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Name" xml:space="preserve">
-    <value>m_checkComboSATSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;m_satDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_satDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_satDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_satDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_satDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;m_sunDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_sunDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_sunDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_sunDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_sunDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Name" xml:space="preserve">
-    <value>m_checkComboFRISession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;m_friDaysVisitCheck.Name" xml:space="preserve">
-    <value>m_friDaysVisitCheck</value>
-  </data>
-  <data name="&gt;&gt;m_friDaysVisitCheck.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_friDaysVisitCheck.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_friDaysVisitCheck.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Name" xml:space="preserve">
-    <value>m_checkComboMONSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Name" xml:space="preserve">
-    <value>m_checkComboTHURSSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Name" xml:space="preserve">
-    <value>m_checkComboTUESession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Name" xml:space="preserve">
-    <value>m_checkComboWEDSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 299</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>788, 158</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>m_playDatesPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="m_allDaysVisitCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4745,6 +4064,36 @@
   </data>
   <data name="&gt;&gt;m_monDaysVisitCheck.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="m_checkComboSUNSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboSUNSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboSUNSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboSUNSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>620, 75</value>
+  </data>
+  <data name="m_checkComboSUNSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboSUNSession.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSUNSession.Name" xml:space="preserve">
+    <value>m_checkComboSUNSession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSUNSession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSUNSession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSUNSession.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="m_wedDaysVisitCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4845,6 +4194,36 @@
   <data name="&gt;&gt;m_tuesDaysVisitCheck.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="m_checkComboSATSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboSATSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboSATSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboSATSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>620, 35</value>
+  </data>
+  <data name="m_checkComboSATSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboSATSession.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSATSession.Name" xml:space="preserve">
+    <value>m_checkComboSATSession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSATSession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSATSession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboSATSession.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="m_satDaysVisitCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4911,6 +4290,36 @@
   <data name="&gt;&gt;m_sunDaysVisitCheck.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="m_checkComboFRISession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboFRISession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboFRISession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboFRISession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 115</value>
+  </data>
+  <data name="m_checkComboFRISession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboFRISession.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboFRISession.Name" xml:space="preserve">
+    <value>m_checkComboFRISession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboFRISession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboFRISession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboFRISession.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="m_friDaysVisitCheck.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4943,6 +4352,165 @@
   </data>
   <data name="&gt;&gt;m_friDaysVisitCheck.ZOrder" xml:space="preserve">
     <value>11</value>
+  </data>
+  <data name="m_checkComboMONSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboMONSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboMONSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboMONSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 75</value>
+  </data>
+  <data name="m_checkComboMONSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboMONSession.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboMONSession.Name" xml:space="preserve">
+    <value>m_checkComboMONSession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboMONSession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboMONSession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboMONSession.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="m_checkComboTHURSSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboTHURSSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboTHURSSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboTHURSSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 75</value>
+  </data>
+  <data name="m_checkComboTHURSSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboTHURSSession.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTHURSSession.Name" xml:space="preserve">
+    <value>m_checkComboTHURSSession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTHURSSession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTHURSSession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTHURSSession.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="m_checkComboTUESession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboTUESession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboTUESession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboTUESession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>136, 115</value>
+  </data>
+  <data name="m_checkComboTUESession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboTUESession.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTUESession.Name" xml:space="preserve">
+    <value>m_checkComboTUESession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTUESession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTUESession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboTUESession.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="m_checkComboWEDSession.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboWEDSession.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_checkComboWEDSession.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_checkComboWEDSession.Location" type="System.Drawing.Point, System.Drawing">
+    <value>380, 35</value>
+  </data>
+  <data name="m_checkComboWEDSession.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 26</value>
+  </data>
+  <data name="m_checkComboWEDSession.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboWEDSession.Name" xml:space="preserve">
+    <value>m_checkComboWEDSession</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboWEDSession.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboWEDSession.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_checkComboWEDSession.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 299</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>788, 158</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>m_playDatesPanel</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>41, 32</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 22</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="m_lastVisitBetweenLabel.Text" xml:space="preserve">
+    <value>Between</value>
   </data>
   <data name="&gt;&gt;m_lastVisitBetweenLabel.Name" xml:space="preserve">
     <value>m_lastVisitBetweenLabel</value>
@@ -5097,670 +4665,46 @@
   <data name="&gt;&gt;m_toDateRangeDPLabel.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="&gt;&gt;m_OptionSARadio.Name" xml:space="preserve">
-    <value>m_OptionSARadio</value>
+  <data name="m_playDatesPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 2</value>
   </data>
-  <data name="&gt;&gt;m_OptionSARadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="m_playDatesPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 562</value>
   </data>
-  <data name="&gt;&gt;m_OptionSARadio.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
+  <data name="m_playDatesPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="&gt;&gt;m_OptionSARadio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSARadio.Name" xml:space="preserve">
-    <value>m_rangeSARadio</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSARadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSARadio.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangeSARadio.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Name" xml:space="preserve">
-    <value>m_minSpenLabel</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_minSpenLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_maxSpendLabel.Name" xml:space="preserve">
-    <value>m_maxSpendLabel</value>
-  </data>
-  <data name="&gt;&gt;m_maxSpendLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_maxSpendLabel.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_maxSpendLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Name" xml:space="preserve">
-    <value>m_optionSelectedSACombo</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedSACombo.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Name" xml:space="preserve">
-    <value>m_optionValueSAText</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.Parent" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionValueSAText.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_RangeOptionSAPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_RangeOptionSAPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 281</value>
-  </data>
-  <data name="m_RangeOptionSAPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 80</value>
-  </data>
-  <data name="m_RangeOptionSAPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Name" xml:space="preserve">
-    <value>m_RangeOptionSAPanel</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_RangeOptionSAPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Name" xml:space="preserve">
-    <value>m_rangePBRadio</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangePBRadio.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_optionPBRadio.Name" xml:space="preserve">
-    <value>m_optionPBRadio</value>
-  </data>
-  <data name="&gt;&gt;m_optionPBRadio.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionPBRadio.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionPBRadio.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Name" xml:space="preserve">
-    <value>m_optionSelectedPBCombo</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionSelectedPBCombo.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Name" xml:space="preserve">
-    <value>m_optionValuePBText</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.Parent" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_optionValuePBText.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="m_rangeOptionPBPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_rangeOptionPBPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 188</value>
-  </data>
-  <data name="m_rangeOptionPBPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 80</value>
-  </data>
-  <data name="m_rangeOptionPBPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Name" xml:space="preserve">
-    <value>m_rangeOptionPBPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;m_rangeOptionPBPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Name" xml:space="preserve">
-    <value>m_ProductCheckBox2</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 95</value>
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>770, 80</value>
-  </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 15.75pt, style=Bold</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 27</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Spend</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>m_spendPanel</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 15.75pt, style=Bold</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 27</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 15.75pt, style=Bold</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 27</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Visits</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_playDatesPanel.Name" xml:space="preserve">
     <value>m_playDatesPanel</value>
   </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;m_playDatesPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label13.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;m_playDatesPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  <data name="&gt;&gt;m_playDatesPanel.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
-  <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 27</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Player List</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+  <data name="&gt;&gt;m_errorProvider.Name" xml:space="preserve">
+    <value>m_errorProvider</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Location</value>
+  <data name="&gt;&gt;m_errorProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PlayerListForm</value>
   </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_ProductCheckBox2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_ProductCheckBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_ProductCheckBox2.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_ProductCheckBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 32</value>
-  </data>
-  <data name="m_ProductCheckBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
-  </data>
-  <data name="m_ProductCheckBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Name" xml:space="preserve">
-    <value>m_ProductCheckBox2</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;m_ProductCheckBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 106</value>
-  </data>
-  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
-  </data>
-  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
-    <value>m_statusCheckComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="m_checkComboAllSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboAllSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboAllSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboAllSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 35</value>
-  </data>
-  <data name="m_checkComboAllSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboAllSession.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboAllSession.Name" xml:space="preserve">
-    <value>m_checkComboAllSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboAllSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboAllSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboAllSession.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_checkComboSUNSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboSUNSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboSUNSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboSUNSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 75</value>
-  </data>
-  <data name="m_checkComboSUNSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboSUNSession.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Name" xml:space="preserve">
-    <value>m_checkComboSUNSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSUNSession.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="m_checkComboSATSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboSATSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboSATSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboSATSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>620, 35</value>
-  </data>
-  <data name="m_checkComboSATSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboSATSession.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Name" xml:space="preserve">
-    <value>m_checkComboSATSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboSATSession.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="m_checkComboFRISession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboFRISession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboFRISession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboFRISession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 115</value>
-  </data>
-  <data name="m_checkComboFRISession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboFRISession.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Name" xml:space="preserve">
-    <value>m_checkComboFRISession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboFRISession.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="m_checkComboMONSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboMONSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboMONSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboMONSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 75</value>
-  </data>
-  <data name="m_checkComboMONSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboMONSession.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Name" xml:space="preserve">
-    <value>m_checkComboMONSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboMONSession.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="m_checkComboTHURSSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboTHURSSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboTHURSSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboTHURSSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 75</value>
-  </data>
-  <data name="m_checkComboTHURSSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboTHURSSession.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Name" xml:space="preserve">
-    <value>m_checkComboTHURSSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTHURSSession.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="m_checkComboTUESession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboTUESession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboTUESession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboTUESession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 115</value>
-  </data>
-  <data name="m_checkComboTUESession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboTUESession.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Name" xml:space="preserve">
-    <value>m_checkComboTUESession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboTUESession.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="m_checkComboWEDSession.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboWEDSession.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_checkComboWEDSession.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_checkComboWEDSession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 35</value>
-  </data>
-  <data name="m_checkComboWEDSession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 26</value>
-  </data>
-  <data name="m_checkComboWEDSession.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Name" xml:space="preserve">
-    <value>m_checkComboWEDSession</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;m_checkComboWEDSession.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="m_locListBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_locListBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_locListBox.ItemHeight" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="m_locListBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 149</value>
-  </data>
-  <data name="m_locListBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 356</value>
-  </data>
-  <data name="m_locListBox.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Name" xml:space="preserve">
-    <value>m_locListBox</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.13.0.4, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.Parent" xml:space="preserve">
-    <value>m_locationPanel</value>
-  </data>
-  <data name="&gt;&gt;m_locListBox.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1157, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

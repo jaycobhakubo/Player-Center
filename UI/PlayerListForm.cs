@@ -407,12 +407,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
             }
-            else if (selectedindex == 1)//knc
+            else if (selectedindex == 1)
             {
                 m_locListBox.Items.Clear();
                 foreach (LocationState State in PlayerManager.ListLocationState)
                 {
-                    m_locListBox.Items.Add(State);
+                    m_locListBox.Items.Add(State.State);//knc
                 }
             }
             else if (selectedindex == 2)
@@ -2901,7 +2901,7 @@ namespace GTI.Modules.PlayerCenter.UI
         //# this code wil populate the m_locListBox Everytime m_locationTypeComboBox is changed. 
         int LocCat;
 
-        private void m_locationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)//knc
+        private void m_locationTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LocCat = m_locationTypeComboBox.SelectedIndex;
             m_locListBoxSelected.Items.Clear();
@@ -3223,7 +3223,7 @@ namespace GTI.Modules.PlayerCenter.UI
         
        
 
-        private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)//knc
+        private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (isNewList == true) return;
 

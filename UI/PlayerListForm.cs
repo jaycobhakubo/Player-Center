@@ -412,7 +412,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_locListBox.Items.Clear();
                 foreach (LocationState State in PlayerManager.ListLocationState)
                 {
-                    m_locListBox.Items.Add(State.State);//knc
+                    m_locListBox.Items.Add(State.State);
                 }
             }
             else if (selectedindex == 2)
@@ -762,7 +762,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                 {
                                     summary_DaysWeek2.AppendText(Environment.NewLine);
                                 }
-                                summary_DaysWeek2.AppendText(Days + "/ Session: ");//knc
+                                summary_DaysWeek2.AppendText(Days + "/ Session: ");
                                 populateDays(Days, cSession);
 
                                 tempDays = tempDays.Substring(tempIndexOf + 1);

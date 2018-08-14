@@ -762,7 +762,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                 {
                                     summary_DaysWeek2.AppendText(Environment.NewLine);
                                 }
-                                summary_DaysWeek2.AppendText(Days + "/ Session: ");
+                                summary_DaysWeek2.AppendText(Days + "/ Session: ");//knc
                                 populateDays(Days, cSession);
 
                                 tempDays = tempDays.Substring(tempIndexOf + 1);

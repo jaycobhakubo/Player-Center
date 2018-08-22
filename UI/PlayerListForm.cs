@@ -17,6 +17,9 @@ using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.PlayerCenter.Properties;
 
+using System.Threading;
+using System.Threading.Tasks;
+
 using System.Drawing; //US2469  
 using GTI.Modules.PlayerCenter.Data; //US2469    
 using System.Collections.Generic;  //US2469
@@ -2612,7 +2615,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     result = saveForm.ShowDialog(this);
 
                     if (result == DialogResult.OK)
-                        m_parent.StartExportPlayerList(saveForm.FileName, args);
+                    {
+                        Cursor.Current = Cursors.WaitCursor;
+                        var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => m_parent.StartExportPlayerList(saveForm.FileName, args));
+                        ExecuteMe.Wait();
+                        Cursor.Current = Cursors.Default;
+                        //m_parent.StartExportPlayerList(saveForm.FileName, args);
+
+                    }
+                      
                 }
                 else if (m_printRaffleRadio.Checked)
                 {
@@ -2620,6 +2631,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
+
                     m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);
                 }
 
@@ -2646,6 +2658,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 }            // END: DE2476
             }
         }
+
+
         #endregion
 
 

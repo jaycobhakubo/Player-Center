@@ -1935,7 +1935,12 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
+                //Cursor.Current = Cursors.WaitCursor;
+                //var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() =>  listMsg.Send());             
+                //ExecuteMe.Wait();
+                //Cursor.Current = Cursors.Default;
                 listMsg.Send();
+
             }
             catch (ServerCommException)
             {

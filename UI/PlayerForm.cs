@@ -16,7 +16,7 @@ namespace GTI.Modules.PlayerCenter.UI
     /// <summary>
     /// The base class from which all player center forms should derive.
     /// </summary>
-    internal partial class PlayerForm : EliteGradientForm
+    internal partial class PlayerForm : EliteForm
     {
         #region Member Variables
         protected PlayerManager m_parent;

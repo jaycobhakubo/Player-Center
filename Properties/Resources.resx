@@ -205,10 +205,10 @@
   <data name="GetSettingsFailed" xml:space="preserve">
     <value>Failed to get this workstation's settings from the server.  Reason: {0}</value>
   </data>
-  <data name="InfoPlayerNotFound" xml:space="preserve">
+  <data name="infoPlayerNotFound" xml:space="preserve">
     <value>Player not found.</value>
   </data>
-  <data name="InfoSaveSuccessed" xml:space="preserve">
+  <data name="infoSaveSuccessed" xml:space="preserve">
     <value>Saved Data Successfully.</value>
   </data>
   <data name="InvalidBirthDate" xml:space="preserve">
@@ -570,72 +570,5 @@
   </data>
   <data name="InvalidPlayerListNSessionPlayedRange2" xml:space="preserve">
     <value>Range must be a valid number range!</value>
-  </data>
-  <data name="PinMustBeSetLengthText" xml:space="preserve">
-    <value>PIN must be {0} digits</value>
-  </data>
-  <data name="PinsDoNotMatchText" xml:space="preserve">
-    <value>PINs do not match</value>
-  </data>
-  <data name="WaitFormPrintingPlayerRaffle" xml:space="preserve">
-    <value>Printing player receipts, please wait.</value>
-  </data>
-  <data name="WaitFormPrintingPlayerRaffle2" xml:space="preserve">
-    <value>Printing {0} player receipts, please wait.</value>
-  </data>
-  <data name="CardSwipeFailed" xml:space="preserve">
-    <value>Failed to record the attendance of the player.
-
-Reason: {0}</value>
-  </data>
-  <data name="PlayerCardPINError" xml:space="preserve">
-    <value>Incorrect PIN.</value>
-  </data>
-  <data name="PlayerSetFailed" xml:space="preserve">
-    <value>Could not set the player. Reason: {0}</value>
-  </data>
-  <data name="PlayerTrackingInterfaceDown" xml:space="preserve">
-    <value>The Player Tracking Interface is down.</value>
-  </data>
-  <data name="WaitFormGettingMachine" xml:space="preserve">
-    <value>Getting machine data, please wait.</value>
-  </data>
-  <data name="WaitFormUpdatingPlayer" xml:space="preserve">
-    <value>Updating player information, please wait.</value>
-  </data>
-  <data name="EnterPlayerCardPIN" xml:space="preserve">
-    <value>Enter Player Card PIN</value>
-  </data>
-  <data name="GetMachineFailed" xml:space="preserve">
-    <value>Failed to retrieve the machine's information from the server.
-
-Reason: {0}</value>
-  </data>
-  <data name="PlayerCardPINEntryCanceled" xml:space="preserve">
-    <value>Player card PIN entry canceled</value>
-  </data>
-  <data name="WrongSize" xml:space="preserve">
-    <value>is the wrong size.</value>
-  </data>
-  <data name="CreatePlayer" xml:space="preserve">
-    <value>Would you like to create a new account?</value>
-  </data>
-  <data name="InfoPointsAwardSuccessed" xml:space="preserve">
-    <value>Points Award Successfully.</value>
-  </data>
-  <data name="GenderOther" xml:space="preserve">
-    <value>O</value>
-  </data>
-  <data name="InfoPointsAwardFailed" xml:space="preserve">
-    <value>Unable to Award Points</value>
-  </data>
-  <data name="PlayersRewarded" xml:space="preserve">
-    <value>{0} player(s) were awarded points.</value>
-  </data>
-  <data name="WaitFormAwardingToAGroupOfPlayer" xml:space="preserve">
-    <value>Awarding points to {0} players, please wait.</value>
-  </data>
-  <data name="WaitFormAwardPoints" xml:space="preserve">
-    <value>Awarding points to player list, please wait.</value>
   </data>
 </root>

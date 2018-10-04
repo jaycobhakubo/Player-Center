@@ -69,50 +69,23 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <RegisterForComInterop>true</RegisterForComInterop>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\Release\</OutputPath>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="IDAutomation.NetAssembly, Version=6.7.9.0, Culture=neutral, PublicKeyToken=5fc6adb61ca442c5">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DLLs\ManagedEliteModule\IDAutomation.NetAssembly.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Printing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\IGTIModule.cs" />
@@ -120,60 +93,29 @@
     <Compile Include="Business\PlayerCenterException.cs" />
     <Compile Include="Business\PlayerCenterModule.cs" />
     <Compile Include="Business\PlayerCenterSettings.cs" />
-    <Compile Include="Data\DataMonetaryRaffle.cs" />
-    <Compile Include="Data\DataWheelRaffle.cs" />
-    <Compile Include="Data\GetMonetaryRaffleDefinitions.cs" />
-    <Compile Include="Data\GetPhotoMessage.cs" />
-    <Compile Include="Data\GetPrizeWheelRaffleDefinitions.cs" />
-    <Compile Include="Data\PlayerCardSwipeMessage.cs" />
-    <Compile Include="Business\PlayerCenterThirdPartyInterface.cs" />
-    <Compile Include="Data\RunMonetaryRaffle.cs" />
-    <Compile Include="Data\RunPrizeWheelRaffle.cs" />
-    <Compile Include="Data\SetMonetaryRaffleDefinition.cs" />
-    <Compile Include="Data\SetPhotoMessage.cs" />
-    <Compile Include="Data\SetPlayerPointsAwarded.cs" />
-    <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
-    <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
-    <Compile Include="UI\CCBoxItem.cs" />
-    <Compile Include="UI\CheckedComboBox.cs">
+    <Compile Include="Data\CCBoxItem.cs" />
+    <Compile Include="Data\CheckedComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\ClearPlayerRaffleMessage.cs" />
     <Compile Include="Data\CreateNewPlayerMessage.cs" />
-    <Compile Include="Data\DataPreviousWinner.cs" />
-    <Compile Include="Data\DataRafflePrizes.cs" />
     <Compile Include="Data\GetLastPlayerRaffleWinnerMessage.cs" />
     <Compile Include="Data\GetOperatorPlayerStatusList.cs" />
-    <Compile Include="Data\GetPlayerListDefinition.cs" />
-    <Compile Include="Data\GetPlayerListDetail.cs" />
     <Compile Include="Data\GetPlayerListReportMessage.cs" />
-    <Compile Include="Data\GetRaffleDelaySettings.cs" />
-    <Compile Include="Data\GetRaffleInformation.cs" />
-    <Compile Include="Data\GetRafflePlayerDefinitions.cs" />
-    <Compile Include="UI\AwardPoints.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\AwardPoints.Designer.cs">
-      <DependentUpon>AwardPoints.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\AwardPointsToListOfPlayer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\AwardPointsToListOfPlayer.Designer.cs">
-      <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\ListBoxSearchType.cs">
+    <Compile Include="Data\GetPlayerTierRules.cs" />
+    <Compile Include="Data\ListBoxSearchType.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Data\RaffleSettings.cs" />
-    <Compile Include="Data\RunPlayerRaffle.cs" />
+    <Compile Include="Data\ProductList.cs" />
+    <Compile Include="Data\RunPlayerRaffleMessage.cs" />
     <Compile Include="Data\SetOperatorPlayerStatus.cs" />
     <Compile Include="Data\SetPlayerDataMessage.cs" />
     <Compile Include="Data\SetPlayerImageMessage.cs" />
-    <Compile Include="Data\SetPlayerRaffleDefinitions.cs" />
-    <Compile Include="Data\SetPlayerList.cs" />
     <Compile Include="Data\SetPlayerStatusCode.cs" />
     <Compile Include="Data\GetPlayerLocation.cs" />
+    <Compile Include="Data\SetPlayerTierRules.cs" />
+    <Compile Include="Data\TiersData.cs" />
+    <Compile Include="GetPackageNameList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.es.Designer.cs">
       <DependentUpon>Resources.es.resx</DependentUpon>
@@ -215,12 +157,6 @@
     <Compile Include="UI\PlayerForm.Designer.cs">
       <DependentUpon>PlayerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\PlayerGroupListEnterOrEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\PlayerGroupListEnterOrEdit.Designer.cs">
-      <DependentUpon>PlayerGroupListEnterOrEdit.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\PlayerListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,12 +174,6 @@
     </Compile>
     <Compile Include="UI\PlayerManagementForm.Designer.cs">
       <DependentUpon>PlayerManagementForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Raffle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Raffle.Designer.cs">
-      <DependentUpon>Raffle.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ReportForm.cs">
       <SubType>Form</SubType>
@@ -279,14 +209,6 @@
       <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AwardPoints.resx">
-      <DependentUpon>AwardPoints.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\AwardPointsToListOfPlayer.resx">
-      <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\MCPFindPlayerForm.es.resx">
       <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -315,9 +237,6 @@
       <DependentUpon>PlayerForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PlayerGroupListEnterOrEdit.resx">
-      <DependentUpon>PlayerGroupListEnterOrEdit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\PlayerListForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PlayerListForm.cs</DependentUpon>
@@ -332,9 +251,6 @@
     <EmbeddedResource Include="UI\PlayerManagementForm.resx">
       <DependentUpon>PlayerManagementForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Raffle.resx">
-      <DependentUpon>Raffle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
@@ -446,10 +362,6 @@
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DLLs\EliteBase\EliteBase.csproj">
-      <Project>{D4D6E9F2-A627-413E-9B45-A20E29680A84}</Project>
-      <Name>EliteBase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DLLs\GTIControls\GTIControls.csproj">
       <Project>{A2B9C7C4-AE7E-48DC-B39C-C9442CF017F6}</Project>
       <Name>GTIControls</Name>

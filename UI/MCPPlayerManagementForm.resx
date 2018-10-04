@@ -145,7 +145,7 @@
     <value>m_findPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_findPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_findPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -178,7 +178,7 @@
     <value>m_newPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_newPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_newPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -211,7 +211,7 @@
     <value>m_cancelChangesButton</value>
   </data>
   <data name="&gt;&gt;m_cancelChangesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_cancelChangesButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -334,7 +334,7 @@
     <value>m_creditNonRef</value>
   </data>
   <data name="&gt;&gt;m_creditNonRef.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_creditNonRef.Parent" xml:space="preserve">
     <value>personalInfoGroupBox</value>
@@ -370,7 +370,7 @@
     <value>m_credits</value>
   </data>
   <data name="&gt;&gt;m_credits.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_credits.Parent" xml:space="preserve">
     <value>personalInfoGroupBox</value>
@@ -853,7 +853,7 @@
     <value>223, 281</value>
   </data>
   <data name="lblSocialSecurityNumLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 22</value>
+    <value>71, 22</value>
   </data>
   <data name="lblSocialSecurityNumLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -925,7 +925,7 @@
     <value>15, 177</value>
   </data>
   <data name="lblEmailLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="lblEmailLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1540,16 +1540,22 @@
     <value>File</value>
   </data>
   <data name="playerListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 26</value>
+    <value>201, 26</value>
   </data>
   <data name="playerListToolStripMenuItem.Text" xml:space="preserve">
     <value>Player List...</value>
   </data>
   <data name="playerStatusToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 26</value>
+    <value>201, 26</value>
   </data>
   <data name="playerStatusToolStripMenuItem.Text" xml:space="preserve">
     <value>Player Status...</value>
+  </data>
+  <data name="playerLoyaltyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 26</value>
+  </data>
+  <data name="playerLoyaltyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Player Loyalty...</value>
   </data>
   <data name="viewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 26</value>
@@ -1684,7 +1690,7 @@
     <value>m_IsLogInStatusImageLabel</value>
   </data>
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -1692,37 +1698,37 @@
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="m_pointsBalanceUI.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_pointsBalance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
-  <data name="m_pointsBalanceUI.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_pointsBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_pointsBalanceUI.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_pointsBalance.Location" type="System.Drawing.Point, System.Drawing">
     <value>338, 42</value>
   </data>
-  <data name="m_pointsBalanceUI.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_pointsBalance.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
-  <data name="m_pointsBalanceUI.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_pointsBalance.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 26</value>
   </data>
-  <data name="m_pointsBalanceUI.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_pointsBalance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="m_pointsBalanceUI.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="m_pointsBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Name" xml:space="preserve">
-    <value>m_pointsBalanceUI</value>
+  <data name="&gt;&gt;m_pointsBalance.Name" xml:space="preserve">
+    <value>m_pointsBalance</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;m_pointsBalance.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_pointsBalance.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_pointsBalance.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="m_pointsBalanceLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -1738,7 +1744,7 @@
     <value>338, 17</value>
   </data>
   <data name="m_pointsBalanceLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
+    <value>55, 22</value>
   </data>
   <data name="m_pointsBalanceLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1786,7 +1792,7 @@
     <value>m_lastVisit</value>
   </data>
   <data name="&gt;&gt;m_lastVisit.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_lastVisit.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -1891,7 +1897,7 @@
     <value>m_joinDate</value>
   </data>
   <data name="&gt;&gt;m_joinDate.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_joinDate.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -1996,7 +2002,7 @@
     <value>m_SpendDataImageLabel</value>
   </data>
   <data name="&gt;&gt;m_SpendDataImageLabel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_SpendDataImageLabel.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -2029,7 +2035,7 @@
     <value>m_visitCount</value>
   </data>
   <data name="&gt;&gt;m_visitCount.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_visitCount.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -2098,7 +2104,7 @@
     <value>m_playerId</value>
   </data>
   <data name="&gt;&gt;m_playerId.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playerId.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -2119,7 +2125,7 @@
     <value>176, 17</value>
   </data>
   <data name="m_playerTierLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 22</value>
+    <value>40, 22</value>
   </data>
   <data name="m_playerTierLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2203,7 +2209,7 @@
     <value>m_playerTier</value>
   </data>
   <data name="&gt;&gt;m_playerTier.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playerTier.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
@@ -2263,7 +2269,7 @@
     <value>m_saveChangesButton</value>
   </data>
   <data name="&gt;&gt;m_saveChangesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_saveChangesButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2296,7 +2302,7 @@
     <value>m_takePictureButton</value>
   </data>
   <data name="&gt;&gt;m_takePictureButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_takePictureButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2329,7 +2335,7 @@
     <value>m_assignCardButton</value>
   </data>
   <data name="&gt;&gt;m_assignCardButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_assignCardButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2362,7 +2368,7 @@
     <value>takePINImageButton</value>
   </data>
   <data name="&gt;&gt;takePINImageButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;takePINImageButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2396,42 +2402,6 @@
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 315</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 37</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Text" xml:space="preserve">
-    <value>Award Points</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Name" xml:space="preserve">
-    <value>m_btnImgAwardPointManual</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.877, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.ZOrder" xml:space="preserve">
-    <value>13</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 0</value>
@@ -2711,7 +2681,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Player Center -- FortuNet Inc.</value>
+    <value>Player Center -- GameTech International Inc.</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
@@ -2743,6 +2713,12 @@
   <data name="&gt;&gt;playerStatusToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Name" xml:space="preserve">
+    <value>playerLoyaltyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
@@ -2771,6 +2747,6 @@
     <value>MCPPlayerManagementForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.877, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.0, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

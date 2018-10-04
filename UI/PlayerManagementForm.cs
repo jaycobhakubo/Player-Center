@@ -57,14 +57,6 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 strErr = "Initialize.";
                 InitializeComponent();
-
-                if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
-                {
-                    m_playerIdentLabel.Text = "Identity/Account";
-                    m_playerIdent.UseSystemPasswordChar = false;
-                    m_playerIdent.ReadOnly = false;
-                }
-
                 strErr = "apply display.";
                 ApplyDisplayMode();
                 strErr = "set max lengths.";
@@ -233,21 +225,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        //US5590: Added ability to view receipt from player management
-        private void receiptNumberColorListBox_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (m_ReceiptNumberColorListBox.SelectedItem == null)
-            {
-                return;
-            }
-
-            var receiptNumberSplit = m_ReceiptNumberColorListBox.SelectedItem.ToString().Split(' ');
-            if (receiptNumberSplit.Length > 0)
-            {
-                m_parent.RaiseReceiptClickedEvent(receiptNumberSplit[0]);
-            }
-            
-        }
         // Rally US493
         /// <summary>
         /// Handles the status list up button's click event.
@@ -310,12 +287,14 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void FindPlayerClick(object sender, EventArgs e)
         {
-            bool discardChanges = true;
+            DialogResult result = DialogResult.Yes;
 
             if (m_dataChanged)
-                discardChanges = ShouldWeDiscardChanges();
+            {
+                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
+            }
 
-            if (discardChanges)
+            if (result == DialogResult.Yes)
             {
                 FindPlayerForm findForm = new FindPlayerForm(m_parent, m_displayMode);
 
@@ -341,12 +320,14 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void NewPlayerClick(object sender, EventArgs e)
         {
-            bool discardChanges = true;
+            DialogResult result = DialogResult.Yes;
 
             if (m_dataChanged)
-                discardChanges = ShouldWeDiscardChanges();
+            {
+                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
+            }
 
-            if (discardChanges)
+            if (result == DialogResult.Yes)
             {
                 m_player = new Player();
                 SetPlayerValues(false);//RALLY DE8537
@@ -430,7 +411,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 // Get the player's values from the UI.
                 GetPlayerValues();
-                
+
                 // If this player is new, make the join date right now.
                 if (m_player.Id == 0)
                     m_player.JoinDate = DateTime.Now;
@@ -458,7 +439,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_dataChanged = false;
                     m_playersSaved = true;
 
-                    MessageForm.Show(m_displayMode, Properties.Resources.InfoSaveSuccessed);
+                    MessageForm.Show(m_displayMode, Properties.Resources.infoSaveSuccessed);
                 }
             }
 
@@ -474,12 +455,14 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void CancelChangesClick(object sender, EventArgs e)
         {
-            bool discardChanges = true;
+            DialogResult result = DialogResult.Yes;
 
             if (m_dataChanged)
-                discardChanges = ShouldWeDiscardChanges();
+            {
+                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
+            }
 
-            if (discardChanges)
+            if (result == DialogResult.Yes)
             {
                 SetPlayerValues(true);//RALLY DE8537
                 m_dataChanged = false;
@@ -499,12 +482,14 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_player.Id > 0)
             {
-                bool discardChanges = true;
+                DialogResult result = DialogResult.Yes;
 
                 if (m_dataChanged)
-                    discardChanges = ShouldWeDiscardChanges();
+                {
+                    result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
+                }
 
-                if (discardChanges)
+                if (result == DialogResult.Yes)
                 {
                     m_playerToSet = m_player;
                     Close();
@@ -524,21 +509,18 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void ExitClick(object sender, EventArgs e)
         {
-            bool discardChanges = true;
+            DialogResult result = DialogResult.Yes;
 
             if (m_dataChanged)
-                discardChanges = ShouldWeDiscardChanges();
+            {
+                result = MessageForm.Show(m_displayMode, Resources.Changes, MessageFormTypes.YesNo, 0);
+            }
 
-            if (discardChanges)
+            if (result == DialogResult.Yes)
             {
                 m_playerToSet = null;
                 Close();
             }
-        }
-
-        private bool ShouldWeDiscardChanges()
-        {
-            return MessageForm.ShowCustomTwoButton(this, m_displayMode, Resources.Changes, Resources.PlayerCenterName, true, 1, "Keep", "Discard", 0) == 2;
         }
 
         /// <summary>
@@ -570,11 +552,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             TakePIN pinform = new TakePIN(m_parent.Settings.DisplayMode);
             pinform.ShowDialog();
-            if (!string.IsNullOrEmpty(pinform.PIN) && pinform.DialogResult == DialogResult.OK) //DE12758
-            {
-                m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583
-            }
-            
+            m_pinNumber = SecurityHelper.HashPassword(pinform.PIN.ToString()); // Rally TA1583
         }
         #endregion
 
@@ -914,8 +892,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_gender.Text = Resources.GenderMale;
             else if(m_player.Gender == Resources.GenderFemale)
                 m_gender.Text = Resources.GenderFemale;
-            else if (m_player.Gender == Resources.GenderOther)
-                m_gender.Text = Resources.GenderOther;
             else
                 m_gender.Text = string.Empty;
             // END: DE1891
@@ -994,12 +970,13 @@ namespace GTI.Modules.PlayerCenter.UI
             m_ReceiptNumberColorListBox.Items.Clear();
             if (m_player.ReceiptNumbers != null)
             {
-                //US5591: (US5546) - added presold flag
-                foreach (var receiptNumber in m_player.ReceiptNumbers)
+
+                for (int iReceipt = 0; iReceipt < m_player.ReceiptNumbers.Length; iReceipt++)
                 {
-                    var presoldString = receiptNumber.Value ? " - Presale" : string.Empty;
-                    m_ReceiptNumberColorListBox.Items.Add(string.Format("{0}{1}", receiptNumber.Key, presoldString));
+                    m_ReceiptNumberColorListBox.Items.Add(m_player.ReceiptNumbers[iReceipt]);
                 }
+                //alway select the first one
+                m_ReceiptNumberColorListBox.SelectedIndex = 0;
             }
 
             //START RALLY DE8358
@@ -1131,10 +1108,10 @@ namespace GTI.Modules.PlayerCenter.UI
                      */
 
                     // FIX: DE6690
-//                  m_credits.Text = "";
-//                  m_creditsNon.Text = "";
-//                  m_socialSecurityNum.Text = "";
-//                  m_playerIdent.Text = "";
+                    m_credits.Text = "";
+                    m_creditsNon.Text = "";
+                    m_socialSecurityNum.Text = "";
+                    m_playerIdent.Text = "";
 
                     strErr = "test credit online.";
                     if (  this.mbolCreditOnline )
@@ -1156,8 +1133,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         this.lblCreditNonRef.Visible = false;
                         this.m_credits.Visible = false;
                         this.m_creditsNon.Visible = false;
-                        this.m_socialSecurityNum.Width = (this.m_credits.Location.X + this.m_credits.Width) - this.m_socialSecurityNum.Location.X;
-                        this.m_playerIdent.Width = (this.m_creditsNon.Location.X + this.m_creditsNon.Width) - this.m_playerIdent.Location.X;
+
                         strErr = "set BackgroundImage...false.";
                         this.BackgroundImage = Resources.PlayerScreen1024;
                     }
@@ -1188,8 +1164,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_gender.Text == Resources.GenderMale)
                 m_gender.Text = Resources.GenderFemale;
             else if(m_gender.Text == Resources.GenderFemale)
-                m_gender.Text = Resources.GenderOther;
-            else if (m_gender.Text == Resources.GenderOther)
                 m_gender.Text = string.Empty;
             else
                 m_gender.Text = Resources.GenderMale;
@@ -1238,6 +1212,5 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
-
     }
 }

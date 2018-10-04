@@ -130,7 +130,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    MessageForm.Show(Properties.Resources.InfoPlayerNotFound, Properties.Resources.PlayerCenterName);
+                    MessageForm.Show(Properties.Resources.infoPlayerNotFound, Properties.Resources.PlayerCenterName);
                 }
             }
         }
@@ -181,7 +181,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     else
                     {
-                        MessageForm.Show(Properties.Resources.InfoPlayerNotFound, Properties.Resources.PlayerCenterName);
+                        MessageForm.Show(Properties.Resources.infoPlayerNotFound, Properties.Resources.PlayerCenterName);
                     }
                 }
             }
@@ -227,8 +227,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
                 m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
-
-
 
             DialogResult = DialogResult.OK;
             Close();

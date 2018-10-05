@@ -124,6 +124,7 @@
     <Compile Include="Data\DataWheelRaffle.cs" />
     <Compile Include="Data\GetMonetaryRaffleDefinitions.cs" />
     <Compile Include="Data\GetPhotoMessage.cs" />
+    <Compile Include="Data\GetPlayerTierRules.cs" />
     <Compile Include="Data\GetPrizeWheelRaffleDefinitions.cs" />
     <Compile Include="Data\PlayerCardSwipeMessage.cs" />
     <Compile Include="Business\PlayerCenterThirdPartyInterface.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
     <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
+    <Compile Include="Data\TiersData.cs" />
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">
       <SubType>Component</SubType>
@@ -230,7 +232,7 @@
     <Compile Include="UI\PlayerLoyaltyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\PlayerLoyaltyForm.Designer.cs">
+    <Compile Include="UI\PlayerLoyaltyForm.designer.cs">
       <DependentUpon>PlayerLoyaltyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\PlayerManagementForm.cs">

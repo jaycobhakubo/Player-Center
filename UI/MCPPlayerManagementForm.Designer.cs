@@ -189,6 +189,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.playerLoyaltyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -208,8 +209,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_findPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_findPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_findPlayerButton.Name = "m_findPlayerButton";
-            this.m_findPlayerButton.RepeatRate = 150;
-            this.m_findPlayerButton.RepeatWhenHeldFor = 750;
             this.m_findPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_findPlayerButton.UseVisualStyleBackColor = false;
             this.m_findPlayerButton.Click += new System.EventHandler(this.FindPlayerClick);
@@ -223,8 +222,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_newPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_newPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_newPlayerButton.Name = "m_newPlayerButton";
-            this.m_newPlayerButton.RepeatRate = 150;
-            this.m_newPlayerButton.RepeatWhenHeldFor = 750;
             this.m_newPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_newPlayerButton.UseVisualStyleBackColor = false;
             this.m_newPlayerButton.Click += new System.EventHandler(this.NewPlayerClick);
@@ -238,8 +235,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelChangesButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_cancelChangesButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_cancelChangesButton.Name = "m_cancelChangesButton";
-            this.m_cancelChangesButton.RepeatRate = 150;
-            this.m_cancelChangesButton.RepeatWhenHeldFor = 750;
             this.m_cancelChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelChangesButton.UseVisualStyleBackColor = false;
             this.m_cancelChangesButton.Click += new System.EventHandler(this.CancelChangesClick);
@@ -651,7 +646,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerListToolStripMenuItem,
-            this.playerStatusToolStripMenuItem});
+            this.playerStatusToolStripMenuItem,
+            this.playerLoyaltyToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             resources.ApplyResources(this.viewToolStripMenuItem, "viewToolStripMenuItem");
@@ -865,8 +861,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_saveChangesButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_saveChangesButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_saveChangesButton.Name = "m_saveChangesButton";
-            this.m_saveChangesButton.RepeatRate = 150;
-            this.m_saveChangesButton.RepeatWhenHeldFor = 750;
             this.m_saveChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_saveChangesButton.UseVisualStyleBackColor = false;
             this.m_saveChangesButton.Click += new System.EventHandler(this.SaveChangesClick);
@@ -880,8 +874,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_takePictureButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_takePictureButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_takePictureButton.Name = "m_takePictureButton";
-            this.m_takePictureButton.RepeatRate = 150;
-            this.m_takePictureButton.RepeatWhenHeldFor = 750;
             this.m_takePictureButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_takePictureButton.UseVisualStyleBackColor = false;
             this.m_takePictureButton.Click += new System.EventHandler(this.TakePictureClick);
@@ -895,8 +887,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_assignCardButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_assignCardButton.Name = "m_assignCardButton";
-            this.m_assignCardButton.RepeatRate = 150;
-            this.m_assignCardButton.RepeatWhenHeldFor = 750;
             this.m_assignCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_assignCardButton.UseVisualStyleBackColor = false;
             this.m_assignCardButton.Click += new System.EventHandler(this.AssignCardClick);
@@ -910,8 +900,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.takePINImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.takePINImageButton.Name = "takePINImageButton";
-            this.takePINImageButton.RepeatRate = 150;
-            this.takePINImageButton.RepeatWhenHeldFor = 750;
             this.takePINImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.takePINImageButton.UseVisualStyleBackColor = false;
             this.takePINImageButton.Click += new System.EventHandler(this.takePINImageButton_Click);
@@ -935,11 +923,15 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_btnImgAwardPointManual.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_btnImgAwardPointManual.Name = "m_btnImgAwardPointManual";
-            this.m_btnImgAwardPointManual.RepeatRate = 150;
-            this.m_btnImgAwardPointManual.RepeatWhenHeldFor = 750;
             this.m_btnImgAwardPointManual.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
             this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
+            // 
+            // playerLoyaltyToolStripMenuItem
+            // 
+            this.playerLoyaltyToolStripMenuItem.Name = "playerLoyaltyToolStripMenuItem";
+            resources.ApplyResources(this.playerLoyaltyToolStripMenuItem, "playerLoyaltyToolStripMenuItem");
+            this.playerLoyaltyToolStripMenuItem.Click += new System.EventHandler(this.playerLoyaltyToolStripMenuItem_Click);
             // 
             // MCPPlayerManagementForm
             // 
@@ -998,6 +990,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageLabel m_creditNonRef;
         private System.Windows.Forms.TextBox txtMagCard;
         private Controls.ImageButton m_btnImgAwardPointManual;
+        private System.Windows.Forms.ToolStripMenuItem playerLoyaltyToolStripMenuItem;
 
        
        

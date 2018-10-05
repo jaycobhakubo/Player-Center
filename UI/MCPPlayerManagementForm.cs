@@ -271,6 +271,13 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm();
+            playerLoyalty.Show(this);
+        }
+
+
         #endregion
 
         private void SetCreditControls()
@@ -1121,5 +1128,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
+    
     }
 }

@@ -52,42 +52,42 @@ namespace GTI.Modules.PlayerCenter.UI
             // TODO Move these server messages to their own thread.
             try
             {
-                //m_parent.RunPlayerRaffle();
+                m_parent.RunPlayerRaffle();
 
-                //if(m_parent.LastRaffleReturnCode == (int)RunPlayerRaffleReturnCode.NotEnoughPlayers)
-                //    throw new PlayerCenterException(Resources.NoRafflePlayers);
+                if(m_parent.LastRaffleReturnCode == (int)RunPlayerRaffleReturnCode.NotEnoughPlayers)
+                    throw new PlayerCenterException(Resources.NoRafflePlayers);
 
-                //else if (m_parent.LastRaffleReturnCode == (int)RunPlayerRaffleReturnCode.RaffleInProgress)
-                //    throw new PlayerCenterException(Resources.RaffleInProgress);
+                else if (m_parent.LastRaffleReturnCode == (int)RunPlayerRaffleReturnCode.RaffleInProgress)
+                    throw new PlayerCenterException(Resources.RaffleInProgress);
 
-                //else
-                //{
-                //    // Get the player's picture
-                //    GetPlayerImageMessage getPicMsg = new GetPlayerImageMessage();
-                //    getPicMsg.PlayerId = m_parent.LastRafflePlayerId;
+                else
+                {
+                    // Get the player's picture
+                    GetPlayerImageMessage getPicMsg = new GetPlayerImageMessage();
+                    getPicMsg.PlayerId = m_parent.LastRafflePlayerId;
 
-                //    try
-                //    {
-                //        getPicMsg.Send();
-                //    }
-                //    catch (ServerCommException)
-                //    {
-                //        m_parent.ServerCommFailed();
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        throw new PlayerCenterException(string.Format(Resources.LoadPictureFailed, m_parent.FormatExceptionMessage(ex)), ex);
-                //    }
+                    try
+                    {
+                        getPicMsg.Send();
+                    }
+                    catch (ServerCommException)
+                    {
+                        m_parent.ServerCommFailed();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new PlayerCenterException(string.Format(Resources.LoadPictureFailed, m_parent.FormatExceptionMessage(ex)), ex);
+                    }
 
-                //    if (getPicMsg.Image != null)
-                //        PlayerImage = getPicMsg.Image;
-                //    else
-                //        PlayerImage = Resources.NoPic;
+                    if (getPicMsg.Image != null)
+                        PlayerImage = getPicMsg.Image;
+                    else
+                        PlayerImage = Resources.NoPic;
 
-                //    FirstName = m_parent.LastRafflePlayerFirstName;
-                //    LastName = m_parent.LastRafflePlayerLastName;
-                //    Comments = Resources.CurrentRaffleWinner;
-               // }
+                    FirstName = m_parent.LastRafflePlayerFirstName;
+                    LastName = m_parent.LastRafflePlayerLastName;
+                    Comments = Resources.CurrentRaffleWinner;
+                }
             }
             catch(ServerCommException)
             {
@@ -104,7 +104,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // Move the server message to their own thread.
             try
             {
-                //m_parent.ClearPlayerRaffle();
+                m_parent.ClearPlayerRaffle();
             }
             catch(ServerCommException)
             {
@@ -119,10 +119,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void CloseClick(object sender, EventArgs e)
         {
             // Clear last results.
-            //m_parent.LastRaffleReturnCode = 0;
-            //m_parent.LastRafflePlayerId = 0;
-            //m_parent.LastRafflePlayerFirstName = string.Empty;
-            //m_parent.LastRafflePlayerLastName = string.Empty;
+            m_parent.LastRaffleReturnCode = 0;
+            m_parent.LastRafflePlayerId = 0;
+            m_parent.LastRafflePlayerFirstName = string.Empty;
+            m_parent.LastRafflePlayerLastName = string.Empty;
 
             // Close this form
             Close();

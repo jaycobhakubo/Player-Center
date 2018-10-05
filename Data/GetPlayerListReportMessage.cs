@@ -20,7 +20,7 @@ namespace GTI.Modules.PlayerCenter.Data
     /// <summary>
     /// Holds player information to be exported.
     /// </summary>
-    public struct PlayerExportItem
+    internal struct PlayerExportItem
     {
         public Player Player;
         public Nullable<decimal> AverageSpend;

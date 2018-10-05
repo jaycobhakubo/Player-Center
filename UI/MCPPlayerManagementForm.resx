@@ -145,7 +145,7 @@
     <value>m_findPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_findPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_findPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -178,7 +178,7 @@
     <value>m_newPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_newPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_newPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -211,7 +211,7 @@
     <value>m_cancelChangesButton</value>
   </data>
   <data name="&gt;&gt;m_cancelChangesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_cancelChangesButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblMagCardNumLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 229</value>
+    <value>311, 223</value>
   </data>
   <data name="lblMagCardNumLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
@@ -286,7 +286,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtMagCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 254</value>
+    <value>311, 248</value>
   </data>
   <data name="txtMagCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 26</value>
@@ -313,7 +313,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_creditNonRef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>501, 305</value>
+    <value>501, 299</value>
   </data>
   <data name="m_creditNonRef.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -334,7 +334,7 @@
     <value>m_creditNonRef</value>
   </data>
   <data name="&gt;&gt;m_creditNonRef.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_creditNonRef.Parent" xml:space="preserve">
     <value>personalInfoGroupBox</value>
@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_credits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 305</value>
+    <value>395, 299</value>
   </data>
   <data name="m_credits.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -370,7 +370,7 @@
     <value>m_credits</value>
   </data>
   <data name="&gt;&gt;m_credits.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_credits.Parent" xml:space="preserve">
     <value>personalInfoGroupBox</value>
@@ -382,7 +382,7 @@
     <value>Trebuchet MS, 10pt</value>
   </data>
   <data name="m_genderList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 253</value>
+    <value>169, 247</value>
   </data>
   <data name="m_genderList.Size" type="System.Drawing.Size, System.Drawing">
     <value>133, 26</value>
@@ -412,7 +412,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCreditsNonRef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>501, 281</value>
+    <value>501, 275</value>
   </data>
   <data name="lblCreditsNonRef.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 22</value>
@@ -451,7 +451,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCredits.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 281</value>
+    <value>395, 275</value>
   </data>
   <data name="lblCredits.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 22</value>
@@ -484,7 +484,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtBirthDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 253</value>
+    <value>15, 247</value>
   </data>
   <data name="txtBirthDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 26</value>
@@ -514,7 +514,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblFirstNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 21</value>
+    <value>15, 15</value>
   </data>
   <data name="lblFirstNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 22</value>
@@ -544,7 +544,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtFirstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 45</value>
+    <value>15, 39</value>
   </data>
   <data name="txtFirstName.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 26</value>
@@ -568,7 +568,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtMiddleInitial.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 45</value>
+    <value>253, 39</value>
   </data>
   <data name="txtMiddleInitial.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 26</value>
@@ -598,7 +598,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblMiddleInitialLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 21</value>
+    <value>253, 15</value>
   </data>
   <data name="lblMiddleInitialLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 22</value>
@@ -628,7 +628,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtLastName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 45</value>
+    <value>311, 39</value>
   </data>
   <data name="txtLastName.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 26</value>
@@ -658,7 +658,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblLastNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 21</value>
+    <value>311, 15</value>
   </data>
   <data name="lblLastNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 22</value>
@@ -694,7 +694,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblBirthDateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 229</value>
+    <value>15, 223</value>
   </data>
   <data name="lblBirthDateLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 22</value>
@@ -730,7 +730,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblGenderLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 229</value>
+    <value>169, 223</value>
   </data>
   <data name="lblGenderLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 22</value>
@@ -766,7 +766,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPhoneNumLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 177</value>
+    <value>311, 171</value>
   </data>
   <data name="lblPhoneNumLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 22</value>
@@ -796,7 +796,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtPhoneNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 201</value>
+    <value>311, 195</value>
   </data>
   <data name="txtPhoneNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 26</value>
@@ -820,7 +820,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtSocialSecurityNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 305</value>
+    <value>223, 299</value>
   </data>
   <data name="txtSocialSecurityNum.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 26</value>
@@ -850,7 +850,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblSocialSecurityNumLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>223, 281</value>
+    <value>223, 275</value>
   </data>
   <data name="lblSocialSecurityNumLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 22</value>
@@ -886,7 +886,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCountryLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>458, 125</value>
+    <value>458, 119</value>
   </data>
   <data name="lblCountryLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 22</value>
@@ -922,7 +922,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblEmailLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 177</value>
+    <value>15, 171</value>
   </data>
   <data name="lblEmailLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 22</value>
@@ -958,7 +958,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblZipCodeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 125</value>
+    <value>311, 119</value>
   </data>
   <data name="lblZipCodeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 22</value>
@@ -988,7 +988,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 201</value>
+    <value>15, 195</value>
   </data>
   <data name="txtEmail.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 26</value>
@@ -1018,7 +1018,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblStateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 125</value>
+    <value>169, 119</value>
   </data>
   <data name="lblStateLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 22</value>
@@ -1048,7 +1048,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtPlayerIdent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 305</value>
+    <value>15, 299</value>
   </data>
   <data name="txtPlayerIdent.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -1078,7 +1078,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblCityLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 125</value>
+    <value>15, 119</value>
   </data>
   <data name="lblCityLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 22</value>
@@ -1114,7 +1114,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblPlayerIdentLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 281</value>
+    <value>15, 275</value>
   </data>
   <data name="lblPlayerIdentLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 22</value>
@@ -1150,7 +1150,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblAddress2Label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 73</value>
+    <value>311, 67</value>
   </data>
   <data name="lblAddress2Label.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 22</value>
@@ -1186,7 +1186,7 @@
     <value>NoControl</value>
   </data>
   <data name="lblAddress1Label.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 73</value>
+    <value>15, 67</value>
   </data>
   <data name="lblAddress1Label.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 22</value>
@@ -1216,7 +1216,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtAddress1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 97</value>
+    <value>15, 91</value>
   </data>
   <data name="txtAddress1.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 26</value>
@@ -1240,7 +1240,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtAddress2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 97</value>
+    <value>311, 91</value>
   </data>
   <data name="txtAddress2.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 26</value>
@@ -1264,7 +1264,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txCity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 149</value>
+    <value>15, 143</value>
   </data>
   <data name="txCity.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 26</value>
@@ -1288,7 +1288,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 149</value>
+    <value>169, 143</value>
   </data>
   <data name="txtState.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 26</value>
@@ -1312,7 +1312,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtZipCode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 149</value>
+    <value>311, 143</value>
   </data>
   <data name="txtZipCode.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 26</value>
@@ -1336,7 +1336,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="txtCountry.Location" type="System.Drawing.Point, System.Drawing">
-    <value>458, 149</value>
+    <value>458, 143</value>
   </data>
   <data name="txtCountry.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 26</value>
@@ -1387,7 +1387,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_noPic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>6, 33</value>
   </data>
   <data name="m_noPic.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 240</value>
@@ -1441,7 +1441,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_playerPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>6, 33</value>
   </data>
   <data name="m_playerPicture.Size" type="System.Drawing.Size, System.Drawing">
     <value>320, 240</value>
@@ -1528,7 +1528,7 @@
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>108, 26</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -1599,6 +1599,144 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>527, 71</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 22</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Tier Spend</value>
+  </data>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_TierPointSpend.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_TierPointSpend.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_TierPointSpend.Location" type="System.Drawing.Point, System.Drawing">
+    <value>527, 96</value>
+  </data>
+  <data name="m_TierPointSpend.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="m_TierPointSpend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 26</value>
+  </data>
+  <data name="m_TierPointSpend.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="m_TierPointSpend.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointSpend.Name" xml:space="preserve">
+    <value>m_TierPointSpend</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointSpend.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointSpend.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointSpend.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_TierPointBalance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_TierPointBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_TierPointBalance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>527, 42</value>
+  </data>
+  <data name="m_TierPointBalance.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="m_TierPointBalance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 26</value>
+  </data>
+  <data name="m_TierPointBalance.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="m_TierPointBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointBalance.Name" xml:space="preserve">
+    <value>m_TierPointBalance</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointBalance.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointBalance.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;m_TierPointBalance.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>527, 17</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 22</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Tier Points</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>loyalityGroupBox</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="statusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1633,7 +1771,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;statusLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="columnName.Width" type="System.Int32, mscorlib">
     <value>260</value>
@@ -1663,7 +1801,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;lvActiveStatus.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1672,13 +1810,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 96</value>
+    <value>397, 96</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_IsLogInStatusImageLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1690,46 +1828,46 @@
     <value>m_IsLogInStatusImageLabel</value>
   </data>
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_IsLogInStatusImageLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
-  <data name="m_pointsBalanceUI.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_pointsBalance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
-  <data name="m_pointsBalanceUI.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_pointsBalance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_pointsBalanceUI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 42</value>
+  <data name="m_pointsBalance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>141, 42</value>
   </data>
-  <data name="m_pointsBalanceUI.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_pointsBalance.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
-  <data name="m_pointsBalanceUI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+  <data name="m_pointsBalance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 26</value>
   </data>
-  <data name="m_pointsBalanceUI.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_pointsBalance.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="m_pointsBalanceUI.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="m_pointsBalance.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Name" xml:space="preserve">
-    <value>m_pointsBalanceUI</value>
+  <data name="&gt;&gt;m_pointsBalance.Name" xml:space="preserve">
+    <value>m_pointsBalance</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;m_pointsBalance.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_pointsBalance.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
-  <data name="&gt;&gt;m_pointsBalanceUI.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;m_pointsBalance.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="m_pointsBalanceLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1741,16 +1879,16 @@
     <value>NoControl</value>
   </data>
   <data name="m_pointsBalanceLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 17</value>
+    <value>141, 17</value>
   </data>
   <data name="m_pointsBalanceLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
+    <value>78, 22</value>
   </data>
   <data name="m_pointsBalanceLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="m_pointsBalanceLabel.Text" xml:space="preserve">
-    <value>Points</value>
+    <value>Points(lt)</value>
   </data>
   <data name="m_pointsBalanceLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1765,7 +1903,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_pointsBalanceLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="m_lastVisit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1774,13 +1912,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_lastVisit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 96</value>
+    <value>141, 96</value>
   </data>
   <data name="m_lastVisit.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
   <data name="m_lastVisit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_lastVisit.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1792,13 +1930,13 @@
     <value>m_lastVisit</value>
   </data>
   <data name="&gt;&gt;m_lastVisit.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_lastVisit.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_lastVisit.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="m_lastVisitLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1810,7 +1948,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lastVisitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 72</value>
+    <value>141, 71</value>
   </data>
   <data name="m_lastVisitLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 22</value>
@@ -1834,7 +1972,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_lastVisitLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <data name="isLoginLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1846,7 +1984,7 @@
     <value>NoControl</value>
   </data>
   <data name="isLoginLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 72</value>
+    <value>397, 71</value>
   </data>
   <data name="isLoginLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 22</value>
@@ -1870,7 +2008,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;isLoginLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="m_joinDate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1879,13 +2017,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_joinDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 96</value>
+    <value>268, 96</value>
   </data>
   <data name="m_joinDate.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
   <data name="m_joinDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_joinDate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1897,13 +2035,13 @@
     <value>m_joinDate</value>
   </data>
   <data name="&gt;&gt;m_joinDate.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_joinDate.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_joinDate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="m_joinDateLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1915,7 +2053,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_joinDateLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>338, 72</value>
+    <value>268, 71</value>
   </data>
   <data name="m_joinDateLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 22</value>
@@ -1939,7 +2077,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_joinDateLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
   <data name="spendLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1951,16 +2089,16 @@
     <value>NoControl</value>
   </data>
   <data name="spendLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 17</value>
+    <value>268, 17</value>
   </data>
   <data name="spendLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 22</value>
+    <value>76, 22</value>
   </data>
   <data name="spendLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="spendLabel.Text" xml:space="preserve">
-    <value>Spend</value>
+    <value>Spend(lt)</value>
   </data>
   <data name="spendLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1975,7 +2113,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;spendLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="m_SpendDataImageLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -1984,13 +2122,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_SpendDataImageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 42</value>
+    <value>268, 42</value>
   </data>
   <data name="m_SpendDataImageLabel.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
   <data name="m_SpendDataImageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_SpendDataImageLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2002,13 +2140,13 @@
     <value>m_SpendDataImageLabel</value>
   </data>
   <data name="&gt;&gt;m_SpendDataImageLabel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_SpendDataImageLabel.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_SpendDataImageLabel.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
   </data>
   <data name="m_visitCount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -2023,7 +2161,7 @@
     <value>20, 20</value>
   </data>
   <data name="m_visitCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_visitCount.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2035,13 +2173,13 @@
     <value>m_visitCount</value>
   </data>
   <data name="&gt;&gt;m_visitCount.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_visitCount.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_visitCount.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="m_visitCountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2053,7 +2191,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_visitCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 72</value>
+    <value>13, 71</value>
   </data>
   <data name="m_visitCountLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 22</value>
@@ -2077,7 +2215,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_visitCountLabel.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>17</value>
   </data>
   <data name="m_playerId.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -2092,7 +2230,7 @@
     <value>20, 20</value>
   </data>
   <data name="m_playerId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_playerId.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2104,13 +2242,13 @@
     <value>m_playerId</value>
   </data>
   <data name="&gt;&gt;m_playerId.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playerId.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_playerId.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>18</value>
   </data>
   <data name="m_playerTierLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2122,7 +2260,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_playerTierLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 17</value>
+    <value>397, 17</value>
   </data>
   <data name="m_playerTierLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 22</value>
@@ -2146,7 +2284,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_playerTierLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>19</value>
   </data>
   <data name="m_playerIdLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2182,7 +2320,7 @@
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_playerIdLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>20</value>
   </data>
   <data name="m_playerTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -2191,13 +2329,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_playerTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 42</value>
+    <value>397, 42</value>
   </data>
   <data name="m_playerTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
   <data name="m_playerTier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 26</value>
+    <value>116, 26</value>
   </data>
   <data name="m_playerTier.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2209,13 +2347,13 @@
     <value>m_playerTier</value>
   </data>
   <data name="&gt;&gt;m_playerTier.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageLabel, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playerTier.Parent" xml:space="preserve">
     <value>loyalityGroupBox</value>
   </data>
   <data name="&gt;&gt;m_playerTier.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>21</value>
   </data>
   <data name="loyalityGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
@@ -2269,7 +2407,7 @@
     <value>m_saveChangesButton</value>
   </data>
   <data name="&gt;&gt;m_saveChangesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_saveChangesButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2302,7 +2440,7 @@
     <value>m_takePictureButton</value>
   </data>
   <data name="&gt;&gt;m_takePictureButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_takePictureButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2335,7 +2473,7 @@
     <value>m_assignCardButton</value>
   </data>
   <data name="&gt;&gt;m_assignCardButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_assignCardButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2368,7 +2506,7 @@
     <value>takePINImageButton</value>
   </data>
   <data name="&gt;&gt;takePINImageButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.0, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;takePINImageButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2402,42 +2540,6 @@
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 315</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>30, 30</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 37</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Text" xml:space="preserve">
-    <value>Award Points</value>
-  </data>
-  <data name="m_btnImgAwardPointManual.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Name" xml:space="preserve">
-    <value>m_btnImgAwardPointManual</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1172, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_btnImgAwardPointManual.ZOrder" xml:space="preserve">
-    <value>13</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>109, 0</value>
@@ -2717,7 +2819,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Player Center -- FortuNet Inc.</value>
+    <value>Player Center -- GameTech International Inc.</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
@@ -2749,6 +2851,12 @@
   <data name="&gt;&gt;playerStatusToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Name" xml:space="preserve">
+    <value>playerLoyaltyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
@@ -2773,16 +2881,10 @@
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Name" xml:space="preserve">
-    <value>playerLoyaltyToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;playerLoyaltyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MCPPlayerManagementForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1173, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.0, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

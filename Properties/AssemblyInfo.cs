@@ -12,14 +12,14 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GameTech Edge Bingo System Player Center")]
 [assembly: AssemblyDescription("GameTech Edge Bingo System Player Center Module")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Fortunet, Inc.")]
+[assembly: AssemblyCompany("GameTech International Inc.")]
 [assembly: AssemblyProduct("GameTech® Edge Bingo System™")]
-[assembly: AssemblyCopyright("Copyright © 2018 FortuNet, Inc. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2008-2013 GameTech International, Inc. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
 [assembly: Guid("2157ac94-82e3-4fc6-95f0-4a0900a17dae")]
 
-[assembly: AssemblyVersion("1.13.0.11")]
-[assembly: AssemblyFileVersion("1.13.0.11")]
+[assembly: AssemblyVersion("1.3.45.0")]
+[assembly: AssemblyFileVersion("1.3.45.0")]

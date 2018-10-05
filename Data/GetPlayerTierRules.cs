@@ -13,7 +13,7 @@ namespace GTI.Modules.PlayerCenter.Data
     {
         private const int MinResponseMessageLenght = 6;
         private TierRulesData tierRulesData { get; set; }
-
+       public TierRulesData tierRulesData_ { get; set; }
 
             public GetPlayerTierRulesDatam()
             {
@@ -21,19 +21,19 @@ namespace GTI.Modules.PlayerCenter.Data
                 tierRulesData = new TierRulesData();
             }
 
-            public static void GetPlayerTierRules()
-            {
-                GetPlayerTierRulesDatam msg = new GetPlayerTierRulesDatam();
-                try
-                {
-                    msg.Send();
-                }
-                catch(ServerException ex)
-                {
-                    throw new Exception("GetPlayerTierRules: " + ex.Message);
-                }
+            //public static void GetPlayerTierRules()
+            //{
+            //    GetPlayerTierRulesDatam msg = new GetPlayerTierRulesDatam();
+            //    try
+            //    {
+            //        msg.Send();
+            //    }
+            //    catch(ServerException ex)
+            //    {
+            //        throw new Exception("GetPlayerTierRules: " + ex.Message);
+            //    }
 
-            }
+            //}
 
             protected override void PackRequest()
             {
@@ -74,7 +74,8 @@ namespace GTI.Modules.PlayerCenter.Data
                     if (!string.IsNullOrEmpty(tempDate))
                     { code.QualifyingEndDate = DateTime.Parse(tempDate, CultureInfo.InvariantCulture); }
 
-                    GetPlayerTierRulesData.getPlayerTierRulesData = code; //save it here
+                    //GetPlayerTierRulesData.getPlayerTierRulesData = code; //save it here
+                    tierRulesData_ = code;
                     
           
                     

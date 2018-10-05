@@ -8,16 +8,15 @@ namespace GTI.Modules.PlayerCenter.Data
 
 
     //Set GetPlayerTierRulesData
-    public class GetPlayerTierRulesData
-    {
-        //since its the same as SetPlayerTierRulesData let us just use it
-        public static TierRulesData getPlayerTierRulesData = new TierRulesData();
-    }
+    //public class GetPlayerTierRulesData
+    //{
+    //    public static TierRulesData getPlayerTierRulesData = new TierRulesData();
+    //}
 
-    public class SetPlayerTierRulesData
-    {
-        public static TierRulesData setPlayerTierRulesData = new TierRulesData(); 
-    }
+    //public class SetPlayerTierRulesData
+    //{
+    //    public static TierRulesData setPlayerTierRulesData = new TierRulesData(); 
+    //}
 
     public class TierRulesData
     {

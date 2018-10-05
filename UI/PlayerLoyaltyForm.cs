@@ -30,21 +30,42 @@ namespace GTI.Modules.PlayerCenter.UI
             cmbx_DefaultTier.Items.Clear();
             colorListBoxTiers.Items.Clear();
             dateTimePicker1.Value = DateTime.Now.AddYears(1); //Let us set to default first display.
-            GetPlayerTierRulesDatam.GetPlayerTierRules();
+            GetPlayerTierRulesDatam getPlayerTierRules = new GetPlayerTierRulesDatam();
+            getPlayerTierRules.Send();
 
            
-            int checkTierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID; //if its 0 the it means null
-                     
+           // int checkTierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID; //if its 0 the it means null
+
+            int checkTierRulesID = getPlayerTierRules.tierRulesData_.TierRulesID;
+
             if (checkTierRulesID != 0)
             {
-                dateTimePicker2.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingStartDate;
-                dateTimePicker1.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingEndDate;
+                //dateTimePicker2.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingStartDate;
+                //dateTimePicker1.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingEndDate;
 
-                int checkDefaultTier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
+                //int checkDefaultTier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
+                ////will work on this later on
+
+
+                //bool x = GetPlayerTierRulesData.getPlayerTierRulesData.DowngradeToDefault;//its false
+
+                //if (x == false)
+                //{
+                //    comboBoxRestart.SelectedIndex = 1;
+                //}
+                //else
+                //{
+                //    comboBoxRestart.SelectedIndex = 0;
+                //}
+
+                dateTimePicker2.Value = getPlayerTierRules.tierRulesData_.QualifyingStartDate;
+                dateTimePicker1.Value = getPlayerTierRules.tierRulesData_.QualifyingEndDate;
+
+                int checkDefaultTier = getPlayerTierRules.tierRulesData_.DefaultTierID;
                 //will work on this later on
 
 
-                bool x = GetPlayerTierRulesData.getPlayerTierRulesData.DowngradeToDefault;//its false
+                bool x = getPlayerTierRules.tierRulesData_.DowngradeToDefault;//its false
 
                 if (x == false)
                 {
@@ -54,8 +75,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     comboBoxRestart.SelectedIndex = 0;
                 }
-
-
             }
 
 
@@ -193,7 +212,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imageButton4_Click(object sender, EventArgs e)
         {   //we have to get the data first
-            SetPlayerTierRulesData code1 = new SetPlayerTierRulesData();
+            //SetPlayerTierRulesData code1 = new SetPlayerTierRulesData();
             
               
 

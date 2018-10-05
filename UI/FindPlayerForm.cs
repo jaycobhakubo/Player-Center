@@ -136,7 +136,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    MessageForm.Show(m_displayMode, Properties.Resources.infoPlayerNotFound);
+                    MessageForm.Show(m_displayMode, Properties.Resources.InfoPlayerNotFound);
                 }
             }
         }
@@ -187,7 +187,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     else
                     {
-                        MessageForm.Show(m_displayMode, Properties.Resources.infoPlayerNotFound);
+                        MessageForm.Show(m_displayMode, Properties.Resources.InfoPlayerNotFound);
                     }
                 }
             }

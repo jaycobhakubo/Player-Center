@@ -29,10 +29,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerManagementForm));
-//            this.m_magCardImageLabel = new GTI.Controls.ImageLabel();
             this.m_magCard = new System.Windows.Forms.TextBox();
             this.m_LoginStatusImageLabel = new GTI.Controls.ImageLabel();
             this.m_ReceiptNumberColorListBox = new GTI.Controls.ColorListBox();
+            this.receiptDownImageButton = new GTI.Controls.ImageButton();
+            this.receiptUpImageButton = new GTI.Controls.ImageButton();
             this.m_virtualKeyboard = new GTI.Controls.VirtualKeyboard();
             this.m_firstName = new System.Windows.Forms.TextBox();
             this.m_middleInitial = new System.Windows.Forms.TextBox();
@@ -94,8 +95,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_magCardNumLabel = new System.Windows.Forms.Label();
             this.tpdauReceiptLabel = new System.Windows.Forms.Label();
             this.m_comments = new System.Windows.Forms.TextBox();
-            this.receiptUpImageButton = new GTI.Controls.ImageButton();
-            this.receiptDownImageButton = new GTI.Controls.ImageButton();
             this.lblCredits = new System.Windows.Forms.Label();
             this.lblCreditNonRef = new System.Windows.Forms.Label();
             this.m_statusDownButton = new GTI.Controls.ImageButton();
@@ -105,19 +104,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_gender = new System.Windows.Forms.Label();
             this.m_credits = new GTI.Controls.ImageLabel();
             this.m_creditsNon = new GTI.Controls.ImageLabel();
-            this.m_magCard = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             this.SuspendLayout();
-            //// 
-            //// m_magCardImageLabel
-            //// 
-            //this.m_magCardImageLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
-            //resources.ApplyResources(this.m_magCardImageLabel, "m_magCardImageLabel");
-            //this.m_magCardImageLabel.ForeColor = System.Drawing.Color.White;
-            //this.m_magCardImageLabel.Name = "m_magCardImageLabel";
-            //this.m_magCardImageLabel.TextChanged += new System.EventHandler(this.PlayerDataChanged);
-            //this.m_magCardImageLabel.Enter += new System.EventHandler(this.FocusChanged);
+            // 
+            // m_magCard
+            // 
+            this.m_magCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
+            this.m_magCard.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.m_magCard, "m_magCard");
+            this.m_magCard.ForeColor = System.Drawing.Color.Yellow;
+            this.m_magCard.Name = "m_magCard";
             // 
             // m_LoginStatusImageLabel
             // 
@@ -132,15 +129,57 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.m_ReceiptNumberColorListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
             this.m_ReceiptNumberColorListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.m_ReceiptNumberColorListBox.DownButton = this.receiptDownImageButton;
+            this.m_ReceiptNumberColorListBox.DownIconBottomNotVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDownRed;
+            this.m_ReceiptNumberColorListBox.DownIconBottomVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDown;
             this.m_ReceiptNumberColorListBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             resources.ApplyResources(this.m_ReceiptNumberColorListBox, "m_ReceiptNumberColorListBox");
             this.m_ReceiptNumberColorListBox.ForeColor = System.Drawing.Color.White;
             this.m_ReceiptNumberColorListBox.FormattingEnabled = true;
-            this.m_ReceiptNumberColorListBox.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
+            this.m_ReceiptNumberColorListBox.HighlightColor = System.Drawing.Color.ForestGreen;
             this.m_ReceiptNumberColorListBox.ImageList = null;
             this.m_ReceiptNumberColorListBox.Name = "m_ReceiptNumberColorListBox";
             this.m_ReceiptNumberColorListBox.SuppressVerticalScroll = true;
             this.m_ReceiptNumberColorListBox.TabStop = false;
+            this.m_ReceiptNumberColorListBox.TopIndexForScroll = 0;
+            this.m_ReceiptNumberColorListBox.UpButton = this.receiptUpImageButton;
+            this.m_ReceiptNumberColorListBox.UpIconTopNotVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUpRed;
+            this.m_ReceiptNumberColorListBox.UpIconTopVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUp;
+            this.m_ReceiptNumberColorListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.receiptNumberColorListBox_MouseDoubleClick);
+            // 
+            // receiptDownImageButton
+            // 
+            this.receiptDownImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.receiptDownImageButton.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.receiptDownImageButton, "receiptDownImageButton");
+            this.receiptDownImageButton.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDown;
+            this.receiptDownImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42UP;
+            this.receiptDownImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42DN;
+            this.receiptDownImageButton.Name = "receiptDownImageButton";
+            this.receiptDownImageButton.RepeatingIfHeld = true;
+            this.receiptDownImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.receiptDownImageButton.ShowFocus = false;
+            this.receiptDownImageButton.Stretch = false;
+            this.receiptDownImageButton.TabStop = false;
+            this.receiptDownImageButton.UseVisualStyleBackColor = false;
+            this.receiptDownImageButton.Click += new System.EventHandler(this.receiptDownImageButton_Click);
+            // 
+            // receiptUpImageButton
+            // 
+            this.receiptUpImageButton.BackColor = System.Drawing.Color.Transparent;
+            this.receiptUpImageButton.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.receiptUpImageButton, "receiptUpImageButton");
+            this.receiptUpImageButton.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUp;
+            this.receiptUpImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42UP;
+            this.receiptUpImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42DN;
+            this.receiptUpImageButton.Name = "receiptUpImageButton";
+            this.receiptUpImageButton.RepeatingIfHeld = true;
+            this.receiptUpImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.receiptUpImageButton.ShowFocus = false;
+            this.receiptUpImageButton.Stretch = false;
+            this.receiptUpImageButton.TabStop = false;
+            this.receiptUpImageButton.UseVisualStyleBackColor = false;
+            this.receiptUpImageButton.Click += new System.EventHandler(this.receiptUpImageButton_Click);
             // 
             // m_virtualKeyboard
             // 
@@ -203,8 +242,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_socialSecurityNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
             this.m_socialSecurityNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.m_socialSecurityNum, "m_socialSecurityNum");
-            this.m_socialSecurityNum.ForeColor = System.Drawing.Color.Yellow;
+            this.m_socialSecurityNum.ForeColor = System.Drawing.Color.White;
             this.m_socialSecurityNum.Name = "m_socialSecurityNum";
+            this.m_socialSecurityNum.ReadOnly = true;
+            this.m_socialSecurityNum.UseSystemPasswordChar = true;
             this.m_socialSecurityNum.TextChanged += new System.EventHandler(this.PlayerDataChanged);
             this.m_socialSecurityNum.Enter += new System.EventHandler(this.FocusChanged);
             // 
@@ -233,8 +274,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_playerIdent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
             this.m_playerIdent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.m_playerIdent, "m_playerIdent");
-            this.m_playerIdent.ForeColor = System.Drawing.Color.Yellow;
+            this.m_playerIdent.ForeColor = System.Drawing.Color.White;
             this.m_playerIdent.Name = "m_playerIdent";
+            this.m_playerIdent.ReadOnly = true;
+            this.m_playerIdent.UseSystemPasswordChar = true;
             this.m_playerIdent.TextChanged += new System.EventHandler(this.PlayerDataChanged);
             this.m_playerIdent.Enter += new System.EventHandler(this.FocusChanged);
             // 
@@ -358,6 +401,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_findPlayerButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_findPlayerButton.ImageNormal")));
             this.m_findPlayerButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_findPlayerButton.ImagePressed")));
             this.m_findPlayerButton.Name = "m_findPlayerButton";
+            this.m_findPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_findPlayerButton.ShowFocus = false;
             this.m_findPlayerButton.TabStop = false;
             this.m_findPlayerButton.UseVisualStyleBackColor = false;
@@ -382,6 +426,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_newPlayerButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_newPlayerButton.ImageNormal")));
             this.m_newPlayerButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_newPlayerButton.ImagePressed")));
             this.m_newPlayerButton.Name = "m_newPlayerButton";
+            this.m_newPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_newPlayerButton.ShowFocus = false;
             this.m_newPlayerButton.TabStop = false;
             this.m_newPlayerButton.UseVisualStyleBackColor = false;
@@ -396,6 +441,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_assignCardButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_assignCardButton.ImageNormal")));
             this.m_assignCardButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_assignCardButton.ImagePressed")));
             this.m_assignCardButton.Name = "m_assignCardButton";
+            this.m_assignCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_assignCardButton.ShowFocus = false;
             this.m_assignCardButton.TabStop = false;
             this.m_assignCardButton.UseVisualStyleBackColor = false;
@@ -410,6 +456,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_saveChangesButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_saveChangesButton.ImageNormal")));
             this.m_saveChangesButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_saveChangesButton.ImagePressed")));
             this.m_saveChangesButton.Name = "m_saveChangesButton";
+            this.m_saveChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_saveChangesButton.ShowFocus = false;
             this.m_saveChangesButton.TabStop = false;
             this.m_saveChangesButton.UseVisualStyleBackColor = false;
@@ -424,6 +471,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelChangesButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_cancelChangesButton.ImageNormal")));
             this.m_cancelChangesButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_cancelChangesButton.ImagePressed")));
             this.m_cancelChangesButton.Name = "m_cancelChangesButton";
+            this.m_cancelChangesButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelChangesButton.ShowFocus = false;
             this.m_cancelChangesButton.TabStop = false;
             this.m_cancelChangesButton.UseVisualStyleBackColor = false;
@@ -438,6 +486,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_setPlayerButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_setPlayerButton.ImageNormal")));
             this.m_setPlayerButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_setPlayerButton.ImagePressed")));
             this.m_setPlayerButton.Name = "m_setPlayerButton";
+            this.m_setPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_setPlayerButton.ShowFocus = false;
             this.m_setPlayerButton.TabStop = false;
             this.m_setPlayerButton.UseVisualStyleBackColor = false;
@@ -452,6 +501,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_exitButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_exitButton.ImageNormal")));
             this.m_exitButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_exitButton.ImagePressed")));
             this.m_exitButton.Name = "m_exitButton";
+            this.m_exitButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_exitButton.ShowFocus = false;
             this.m_exitButton.TabStop = false;
             this.m_exitButton.UseVisualStyleBackColor = false;
@@ -466,6 +516,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_takePictureButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_takePictureButton.ImageNormal")));
             this.m_takePictureButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_takePictureButton.ImagePressed")));
             this.m_takePictureButton.Name = "m_takePictureButton";
+            this.m_takePictureButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_takePictureButton.ShowFocus = false;
             this.m_takePictureButton.TabStop = false;
             this.m_takePictureButton.UseVisualStyleBackColor = false;
@@ -651,6 +702,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.takePINImageButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("takePINImageButton.ImageNormal")));
             this.takePINImageButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("takePINImageButton.ImagePressed")));
             this.takePINImageButton.Name = "takePINImageButton";
+            this.takePINImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.takePINImageButton.ShowFocus = false;
             this.takePINImageButton.TabStop = false;
             this.takePINImageButton.UseVisualStyleBackColor = false;
@@ -710,34 +762,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_comments.TextChanged += new System.EventHandler(this.PlayerDataChanged);
             this.m_comments.Enter += new System.EventHandler(this.FocusChanged);
             // 
-            // receiptUpImageButton
-            // 
-            this.receiptUpImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.receiptUpImageButton.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.receiptUpImageButton, "receiptUpImageButton");
-            this.receiptUpImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42UP;
-            this.receiptUpImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42DN;
-            this.receiptUpImageButton.Name = "receiptUpImageButton";
-            this.receiptUpImageButton.ShowFocus = false;
-            this.receiptUpImageButton.Stretch = false;
-            this.receiptUpImageButton.TabStop = false;
-            this.receiptUpImageButton.UseVisualStyleBackColor = false;
-            this.receiptUpImageButton.Click += new System.EventHandler(this.receiptUpImageButton_Click);
-            // 
-            // receiptDownImageButton
-            // 
-            this.receiptDownImageButton.BackColor = System.Drawing.Color.Transparent;
-            this.receiptDownImageButton.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.receiptDownImageButton, "receiptDownImageButton");
-            this.receiptDownImageButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42UP;
-            this.receiptDownImageButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42DN;
-            this.receiptDownImageButton.Name = "receiptDownImageButton";
-            this.receiptDownImageButton.ShowFocus = false;
-            this.receiptDownImageButton.Stretch = false;
-            this.receiptDownImageButton.TabStop = false;
-            this.receiptDownImageButton.UseVisualStyleBackColor = false;
-            this.receiptDownImageButton.Click += new System.EventHandler(this.receiptDownImageButton_Click);
-            // 
             // lblCredits
             // 
             this.lblCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(184)))), ((int)(((byte)(212)))));
@@ -757,9 +781,12 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_statusDownButton.BackColor = System.Drawing.Color.Transparent;
             this.m_statusDownButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_statusDownButton, "m_statusDownButton");
+            this.m_statusDownButton.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDown;
             this.m_statusDownButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42UP;
             this.m_statusDownButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArDn50x42DN;
             this.m_statusDownButton.Name = "m_statusDownButton";
+            this.m_statusDownButton.RepeatingIfHeld = true;
+            this.m_statusDownButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_statusDownButton.ShowFocus = false;
             this.m_statusDownButton.Stretch = false;
             this.m_statusDownButton.TabStop = false;
@@ -771,9 +798,12 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_statusUpButton.BackColor = System.Drawing.Color.Transparent;
             this.m_statusUpButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_statusUpButton, "m_statusUpButton");
+            this.m_statusUpButton.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUp;
             this.m_statusUpButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42UP;
             this.m_statusUpButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.ArUp50x42DN;
             this.m_statusUpButton.Name = "m_statusUpButton";
+            this.m_statusUpButton.RepeatingIfHeld = true;
+            this.m_statusUpButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_statusUpButton.ShowFocus = false;
             this.m_statusUpButton.Stretch = false;
             this.m_statusUpButton.TabStop = false;
@@ -784,6 +814,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.m_activeStatusList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
             this.m_activeStatusList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.m_activeStatusList.DownButton = this.m_statusDownButton;
+            this.m_activeStatusList.DownIconBottomNotVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDownRed;
+            this.m_activeStatusList.DownIconBottomVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDown;
             this.m_activeStatusList.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             resources.ApplyResources(this.m_activeStatusList, "m_activeStatusList");
             this.m_activeStatusList.ForeColor = System.Drawing.Color.Yellow;
@@ -794,6 +827,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_activeStatusList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.m_activeStatusList.SuppressVerticalScroll = true;
             this.m_activeStatusList.TabStop = false;
+            this.m_activeStatusList.TopIndexForScroll = 0;
+            this.m_activeStatusList.UpButton = this.m_statusUpButton;
+            this.m_activeStatusList.UpIconTopNotVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUpRed;
+            this.m_activeStatusList.UpIconTopVisible = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUp;
             this.m_activeStatusList.SelectedIndexChanged += new System.EventHandler(this.ActiveStatusList_ItemSelectionChanged);
             // 
             // m_genderCycleButton
@@ -804,6 +841,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_genderCycleButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.Reset50x42UP;
             this.m_genderCycleButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.Reset50x42DN;
             this.m_genderCycleButton.Name = "m_genderCycleButton";
+            this.m_genderCycleButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_genderCycleButton.ShowFocus = false;
             this.m_genderCycleButton.Stretch = false;
             this.m_genderCycleButton.TabStop = false;
@@ -837,20 +875,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_creditsNon.TextChanged += new System.EventHandler(this.PlayerDataChanged);
             this.m_creditsNon.Enter += new System.EventHandler(this.FocusChanged);
             // 
-            // m_magCard
-            // 
-            this.m_magCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(67)))), ((int)(((byte)(115)))));
-            this.m_magCard.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.m_magCard, "m_magCard");
-            this.m_magCard.ForeColor = System.Drawing.Color.Yellow;
-            this.m_magCard.Name = "m_magCard";
-            // 
             // PlayerManagementForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.PlayerScreenCredits1024;
-            this.Controls.Add(this.m_magCard);
             this.Controls.Add(this.m_creditsNon);
             this.Controls.Add(this.m_credits);
             this.Controls.Add(this.m_gender);
@@ -860,7 +889,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_statusUpButton);
             this.Controls.Add(this.lblCreditNonRef);
             this.Controls.Add(this.lblCredits);
-//            this.Controls.Add(this.m_magCardImageLabel);
             this.Controls.Add(this.m_magCard);
             this.Controls.Add(this.m_LoginStatusImageLabel);
             this.Controls.Add(this.m_ReceiptNumberColorListBox);

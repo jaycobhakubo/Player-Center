@@ -221,7 +221,6 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnActive);
             this.Controls.Add(this.btnAdd);
-            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ActiveStatusEditor";

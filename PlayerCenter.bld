@@ -2,12 +2,27 @@
 <project version='7' encrypted='1'>
 	<steps type='0'>
 		<step action='Make VS 2010'>
+			<AssemblyVer type='11'>-1</AssemblyVer>
 			<Attr type='11'>-1</Attr>
 			<Config>Release|Any CPU</Config>
 			<FileVer type='11'>-1</FileVer>
 			<Filename>%SRC_ROOT%\Dev\ClientModules\PlayerCenter\PlayerCenter.sln</Filename>
 			<Force type='3'>1</Force>
-			<name>Build Player Center (Any CPU)</name>
+			<condcomparison type='3'>6</condcomparison>
+			<condexpr>%RELEASE_BUILD%</condexpr>
+			<name>Build Player Center (Release)</name>
+		</step>
+		<step action='Make VS 2010'>
+			<AssemblyVer type='11'>-1</AssemblyVer>
+			<Attr type='11'>-1</Attr>
+			<Config>Release|Any CPU</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%SRC_ROOT%\Dev\ClientModules\PlayerCenter\PlayerCenter.sln</Filename>
+			<Force type='3'>1</Force>
+			<VersionSel type='3'>1</VersionSel>
+			<condcomparison type='3'>7</condcomparison>
+			<condexpr>%RELEASE_BUILD%</condexpr>
+			<name>Build Player Center (Buddy Build)</name>
 		</step>
 		<step action='Delete Folder'>
 			<Path>%BUILD_PATH%\Client\Player Center\Latest</Path>

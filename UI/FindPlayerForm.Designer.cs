@@ -47,7 +47,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.m_virtualKeyboard.AltGrImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonUp;
             this.m_virtualKeyboard.AltGrImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonDown;
-            this.m_virtualKeyboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_virtualKeyboard.BackColor = System.Drawing.Color.Transparent;
             this.m_virtualKeyboard.BackspaceImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonUp;
             this.m_virtualKeyboard.BackspaceImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonDown;
             this.m_virtualKeyboard.ButtonForeColor = System.Drawing.SystemColors.ControlText;
@@ -89,13 +89,15 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_searchButton
             // 
-            this.m_searchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_searchButton.BackColor = System.Drawing.Color.Transparent;
             this.m_searchButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchButton, "m_searchButton");
             this.m_searchButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_searchButton.ImageNormal")));
             this.m_searchButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_searchButton.ImagePressed")));
-            this.m_searchButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_searchButton.Name = "m_searchButton";
+            this.m_searchButton.RepeatRate = 150;
+            this.m_searchButton.RepeatWhenHeldFor = 750;
+            this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.ShowFocus = false;
             this.m_searchButton.TabStop = false;
             this.m_searchButton.UseVisualStyleBackColor = false;
@@ -114,17 +116,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_resultsList.Name = "m_resultsList";
             this.m_resultsList.SuppressVerticalScroll = true;
             this.m_resultsList.TabStop = false;
+            this.m_resultsList.TopIndexForScroll = 0;
             // 
             // m_resultsListUp
             // 
-            this.m_resultsListUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(130)))), ((int)(((byte)(130)))));
+            this.m_resultsListUp.BackColor = System.Drawing.Color.Transparent;
             this.m_resultsListUp.FocusColor = System.Drawing.Color.Black;
             this.m_resultsListUp.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowUp;
             this.m_resultsListUp.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonUp;
             this.m_resultsListUp.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonDown;
             resources.ApplyResources(this.m_resultsListUp, "m_resultsListUp");
-            this.m_resultsListUp.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_resultsListUp.Name = "m_resultsListUp";
+            this.m_resultsListUp.RepeatingIfHeld = true;
+            this.m_resultsListUp.RepeatRate = 150;
+            this.m_resultsListUp.RepeatWhenHeldFor = 750;
+            this.m_resultsListUp.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_resultsListUp.ShowFocus = false;
             this.m_resultsListUp.TabStop = false;
             this.m_resultsListUp.UseVisualStyleBackColor = false;
@@ -132,14 +138,17 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_resultsListDown
             // 
-            this.m_resultsListDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(179)))), ((int)(((byte)(183)))));
+            this.m_resultsListDown.BackColor = System.Drawing.Color.Transparent;
             this.m_resultsListDown.FocusColor = System.Drawing.Color.Black;
             this.m_resultsListDown.ImageIcon = global::GTI.Modules.PlayerCenter.Properties.Resources.ArrowDown;
             this.m_resultsListDown.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonUp;
             this.m_resultsListDown.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.TouchBlueButtonDown;
             resources.ApplyResources(this.m_resultsListDown, "m_resultsListDown");
-            this.m_resultsListDown.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_resultsListDown.Name = "m_resultsListDown";
+            this.m_resultsListDown.RepeatingIfHeld = true;
+            this.m_resultsListDown.RepeatRate = 150;
+            this.m_resultsListDown.RepeatWhenHeldFor = 750;
+            this.m_resultsListDown.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_resultsListDown.ShowFocus = false;
             this.m_resultsListDown.TabStop = false;
             this.m_resultsListDown.UseVisualStyleBackColor = false;
@@ -147,13 +156,15 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_selectPlayerButton
             // 
-            this.m_selectPlayerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_selectPlayerButton.BackColor = System.Drawing.Color.Transparent;
             this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_selectPlayerButton, "m_selectPlayerButton");
             this.m_selectPlayerButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_selectPlayerButton.ImageNormal")));
             this.m_selectPlayerButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_selectPlayerButton.ImagePressed")));
-            this.m_selectPlayerButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_selectPlayerButton.Name = "m_selectPlayerButton";
+            this.m_selectPlayerButton.RepeatRate = 150;
+            this.m_selectPlayerButton.RepeatWhenHeldFor = 750;
+            this.m_selectPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_selectPlayerButton.ShowFocus = false;
             this.m_selectPlayerButton.TabStop = false;
             this.m_selectPlayerButton.UseVisualStyleBackColor = false;
@@ -161,13 +172,15 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_cancelButton
             // 
-            this.m_cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_cancelButton.BackColor = System.Drawing.Color.Transparent;
             this.m_cancelButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_cancelButton, "m_cancelButton");
             this.m_cancelButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_cancelButton.ImageNormal")));
             this.m_cancelButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_cancelButton.ImagePressed")));
-            this.m_cancelButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_cancelButton.Name = "m_cancelButton";
+            this.m_cancelButton.RepeatRate = 150;
+            this.m_cancelButton.RepeatWhenHeldFor = 750;
+            this.m_cancelButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelButton.ShowFocus = false;
             this.m_cancelButton.TabStop = false;
             this.m_cancelButton.UseVisualStyleBackColor = false;
@@ -175,13 +188,15 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_searchByCardButton
             // 
-            this.m_searchByCardButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_searchByCardButton.BackColor = System.Drawing.Color.Transparent;
             this.m_searchByCardButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchByCardButton, "m_searchByCardButton");
             this.m_searchByCardButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_searchByCardButton.ImageNormal")));
             this.m_searchByCardButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_searchByCardButton.ImagePressed")));
-            this.m_searchByCardButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_searchByCardButton.Name = "m_searchByCardButton";
+            this.m_searchByCardButton.RepeatRate = 150;
+            this.m_searchByCardButton.RepeatWhenHeldFor = 750;
+            this.m_searchByCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchByCardButton.ShowFocus = false;
             this.m_searchByCardButton.TabStop = false;
             this.m_searchByCardButton.UseVisualStyleBackColor = false;
@@ -218,9 +233,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_lastName);
             this.Controls.Add(this.m_firstName);
             this.Controls.Add(this.m_virtualKeyboard);
-            this.DoubleBuffered = true;
+            this.DrawBorderOuterEdge = true;
+            this.DrawRounded = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FindPlayerForm";
+            this.OuterBorderEdgeColor = System.Drawing.Color.DimGray;
             this.ShowInTaskbar = false;
             this.ResumeLayout(false);
             this.PerformLayout();

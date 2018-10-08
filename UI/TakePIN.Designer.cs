@@ -34,7 +34,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.verifiedPINLabel = new System.Windows.Forms.Label();
             this.cancelImageButton = new GTI.Controls.ImageButton();
             this.acceptImageButton = new GTI.Controls.ImageButton();
-            this.lblDoNotMatch = new System.Windows.Forms.Label();
+            this.lblErrorText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // pinTextBox
@@ -49,6 +49,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.pinTextBox.TabIndex = 0;
             this.pinTextBox.TextChanged += new System.EventHandler(this.PINTextBox_TextChanged);
             this.pinTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Number_KeyPress);
+            this.pinTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pinTextBox_KeyUp);
             // 
             // pinNumberLabel
             // 
@@ -123,18 +124,18 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
             // 
-            // lblDoNotMatch
+            // lblErrorText
             // 
-            this.lblDoNotMatch.AutoSize = true;
-            this.lblDoNotMatch.BackColor = System.Drawing.Color.Transparent;
-            this.lblDoNotMatch.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoNotMatch.ForeColor = System.Drawing.Color.Red;
-            this.lblDoNotMatch.Location = new System.Drawing.Point(16, 143);
-            this.lblDoNotMatch.Name = "lblDoNotMatch";
-            this.lblDoNotMatch.Size = new System.Drawing.Size(111, 14);
-            this.lblDoNotMatch.TabIndex = 4;
-            this.lblDoNotMatch.Text = "Pins do not match.";
-            this.lblDoNotMatch.Visible = false;
+            this.lblErrorText.AutoSize = true;
+            this.lblErrorText.BackColor = System.Drawing.Color.Transparent;
+            this.lblErrorText.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorText.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorText.Location = new System.Drawing.Point(16, 143);
+            this.lblErrorText.Name = "lblErrorText";
+            this.lblErrorText.Size = new System.Drawing.Size(111, 14);
+            this.lblErrorText.TabIndex = 4;
+            this.lblErrorText.Text = "Pins do not match.";
+            this.lblErrorText.Visible = false;
             // 
             // TakePIN
             // 
@@ -145,7 +146,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.CancelButton = this.cancelImageButton;
             this.ClientSize = new System.Drawing.Size(320, 240);
             this.ControlBox = false;
-            this.Controls.Add(this.lblDoNotMatch);
+            this.Controls.Add(this.lblErrorText);
             this.Controls.Add(this.cancelImageButton);
             this.Controls.Add(this.acceptImageButton);
             this.Controls.Add(this.verifiedPINLabel);
@@ -177,6 +178,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label verifiedPINLabel;
         private GTI.Controls.ImageButton acceptImageButton;
         private GTI.Controls.ImageButton cancelImageButton;
-        private System.Windows.Forms.Label lblDoNotMatch;
+        private System.Windows.Forms.Label lblErrorText;
     }
 }

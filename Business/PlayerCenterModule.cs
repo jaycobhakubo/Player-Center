@@ -139,7 +139,6 @@ namespace GTI.Modules.PlayerCenter.Business
             catch(Exception e)
             {
                 MessageBox.Show(string.Format(Resources.PlayerCenterError, e.Message + "\n" + e.StackTrace), Resources.PlayerCenterName);
-               
             }
             finally
             {

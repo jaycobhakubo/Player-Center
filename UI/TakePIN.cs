@@ -5,9 +5,15 @@
 // International, Inc.
 #endregion
 
+//US4120 (ND) Add setting for Player PIN Required
+//DE12702 Validate pin length of verify text box
+//DE12734 Setting PIN length larger than 10 will not validate in POS
+//DE12758: POS: ND Mode cannot verify pin with leading zeros
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties; // FIX: DE3202
 
@@ -16,12 +22,14 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class TakePIN : EliteGradientForm
     {
         #region Member Variables
-        int mPinNumber = -1;
+        private string mPinNumber = string.Empty;
         private readonly bool isTouchScreen;
         #endregion
 
         #region Member Properties
-        public int PIN
+
+        //DE12758:
+        public string PIN
         {
             get { return mPinNumber; }
         }
@@ -38,6 +46,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             isTouchScreen = true;
+
         }
         #endregion
 
@@ -55,7 +64,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 FormBorderStyle = FormBorderStyle.FixedSingle;
                 // FIX: DE3202 - Dialog didn't match rest of the theme.
                 BackgroundImage = null;
-                DrawGradient = true;
+                DrawAsGradient = true;
                 acceptImageButton.ImageNormal = Resources.BlueButtonUp;
                 acceptImageButton.ImagePressed = Resources.BlueButtonDown;
                 cancelImageButton.ImageNormal = Resources.BlueButtonUp;
@@ -69,15 +78,16 @@ namespace GTI.Modules.PlayerCenter.UI
             var tb = sender as TextBox;
             if (tb != null)
             {
+                //DE12731 Able to enter "." into password box
                 if (!char.IsNumber(e.KeyChar) &&
-                    (Keys)e.KeyChar != Keys.Back &&
-                    (Keys)e.KeyChar != Keys.Delete)
+                    (Keys)e.KeyChar != Keys.Back)
                 {
                     e.Handled = true;
                 }
-                if (tb.Text.Length >= 9 &&
-                    (Keys)e.KeyChar != Keys.Back &&
-                    (Keys)e.KeyChar != Keys.Delete)
+
+                //US4186
+                if (tb.Text.Length >= PlayerCenterSettings.Instance.PlayerPinLength &&
+                    (Keys)e.KeyChar != Keys.Back)
                 {
                     e.Handled = true;
                 }
@@ -86,61 +96,70 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void PINTextBox_TextChanged(object sender, EventArgs e)
         {
-            lblDoNotMatch.Visible = false;
+            
+            lblErrorText.Visible = false;
             var tb = sender as TextBox;
             if (tb != null)
             {
-                if (!ValidateNumber(tb.Text))
+                //DE12734 
+                //US4120
+                //get pin length from settings
+                var pinLength = PlayerCenterSettings.Instance.PlayerPinLength;
+
+                //tb.BackColor = SystemColors.Window;
+                if (verifiedPINTextBox.Text == pinTextBox.Text && pinTextBox.Text.Length == pinLength)
                 {
-                    //tb.Select(0, tb.Text.Length);
-                    //tb.BackColor = Color.LightPink;
-                    acceptImageButton.Enabled = false;
+                    //verifiedPINTextBox.BackColor = SystemColors.Window;
+                    acceptImageButton.Enabled = true;
                 }
                 else
                 {
-                    //tb.BackColor = SystemColors.Window;
-                    if (verifiedPINTextBox.Text == pinTextBox.Text)
+                    //US4120
+                    //DE12702 Validate pin length of verify text box
+                    if ((pinTextBox.Text.Length == verifiedPINTextBox.Text.Length && pinTextBox.Text.Length != pinLength) ||
+                        pinTextBox.Text.Length > pinLength ||
+                        verifiedPINTextBox.Text.Length > pinLength)
                     {
-                        //verifiedPINTextBox.BackColor = SystemColors.Window;
-                        acceptImageButton.Enabled = true;
+                        lblErrorText.Text = string.Format(Resources.PinMustBeSetLengthText, pinLength);
+                        lblErrorText.Visible = true;
                     }
-                    else
+                    else if (pinTextBox.Text.Length == verifiedPINTextBox.Text.Length)
                     {
-                        if (pinTextBox.Text.Length == verifiedPINTextBox.Text.Length) lblDoNotMatch.Visible = true;
-                        //verifiedPINTextBox.BackColor = Color.LightPink;
-                        acceptImageButton.Enabled = false;
+                        lblErrorText.Text = Resources.PinsDoNotMatchText;
+                        lblErrorText.Visible = true;
                     }
-
+                    //verifiedPINTextBox.BackColor = Color.LightPink;
+                    acceptImageButton.Enabled = false;
                 }
             }
-        }
-
-        private static bool ValidateNumber(string inText)
-        {
-            bool isOk = false;
-            if (inText.Length > 0)
-            {
-                int result;
-                isOk = int.TryParse(inText, out result);
-            }
-            return isOk;
         }
 
         private void cancelImageButton_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-            if (pinTextBox.Text != string.Empty)
+            if (!string.IsNullOrEmpty(pinTextBox.Text))
             {
-                int result;
-                if (int.TryParse(pinTextBox.Text, out result)) mPinNumber = result;
+                mPinNumber = pinTextBox.Text;
             }
+
+            DialogResult = DialogResult.OK;
             Close();
         }
 
+        private void pinTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                verifiedPINTextBox.Focus();
+            }
+        }
+
         #endregion
+
     }
 }

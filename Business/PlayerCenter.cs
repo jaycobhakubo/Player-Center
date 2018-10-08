@@ -5,6 +5,8 @@
 // International, Inc.
 #endregion
 
+//US4119: Set PIN number >  Sale with player card and PIN has not been set.
+
 using System;
 using System.IO;
 using System.Drawing;
@@ -15,16 +17,21 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Diagnostics;
+using System.Linq;
+using System.Text;
 using CrystalDecisions.CrystalReports.Engine;
 using GTI.Modules.Shared;
 using GTI.Controls;
 using GTI.Modules.PlayerCenter.UI;
 using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Properties;
-using System.Text;
+using GTI.Modules.Shared.Business;
+using GTI.Modules.PlayerCenter.Data.Printing;
+using GTI.Modules.Shared.Data;
 
 namespace GTI.Modules.PlayerCenter.Business
 {
+
     /// <summary>
     /// Represents the Player Center application.
     /// </summary>
@@ -41,45 +48,31 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Member Variables
-        // System Related
-        private PlayerCenterModule m_module = null;
 
-        private bool m_loggingEnabled = false;
-        private object m_logSync = new object();
-
-        private int m_deviceId = 0;
-        private int m_machineId = 0;
-       // private int m_workstationId = 0;
-
+        private PlayerCenterModule m_module = null;        // System Related
         private BackgroundWorker m_worker = null;
-
         private Exception m_asyncException = null;
-        private object m_errorSync = new object();
-
-        // Player Center Related
-
         private PlayerLoyaltyTier[] m_playerTiers = null;
-
         private PlayerListItem[] m_lastFindPlayersResults = null;
-        private object m_findPlayerSync = new object();
-
-        // TTP 50067
-        private Player m_lastPlayerFromServer = null;
-        private object m_lastPlayerSync = new object();
-
+        private Player m_lastPlayerFromServer = null;        // TTP 50067
         private Bitmap m_lastPlayerPic = null;
-        private object m_playerPicSync = new object();
-
-        // PDTS 1064 - Portable POS Card Swipe.
-        private bool m_externalMagCardReader;
-
-        // Raffle Related
-
-        // UIs
-        private  SplashScreen  m_loadingForm = null;
+        private SplashScreen m_loadingForm = null;        // UIs
         private MCPPlayerManagementForm m_mainMenuForm = null;
         private WaitForm m_waitForm = null;
         private ReportForm m_reportForm; // PDTS 312
+        private object m_errorSync = new object();
+        private object m_findPlayerSync = new object();
+        private object m_lastPlayerSync = new object();
+        private object m_playerPicSync = new object();
+        private object m_logSync = new object();
+        private bool m_loggingEnabled = false;
+        private bool m_externalMagCardReader;        // PDTS 1064 - Portable POS Card Swipe.
+        private int m_deviceId = 0;
+        private int m_machineId = 0;
+        private bool m_needPlayerCardPIN;
+        private MagneticCardReader m_magCardReader;
+
+
         #endregion
 
         #region Constructors
@@ -90,17 +83,16 @@ namespace GTI.Modules.PlayerCenter.Business
         /// object.</param>
         public PlayerManager(PlayerCenterModule module)
         {
-            LastRaffleReturnCode = 0;
-            LastRafflePlayerId = 0;
-            LastRafflePlayerFirstName = null;
-            LastRafflePlayerLastName = null;
-            
             m_module = module;
         }
-        
+
         #endregion
 
-        #region Member Methods
+        //US5590: Added ability to view receipt from player management
+        // added event handlers to notify the receipt was clicked
+        public delegate void ReceiptClickedHandler(string receiptNumber);
+        public event ReceiptClickedHandler ReceiptClicked;
+
         // FIX: DE2476
         /// <summary>
         /// Initializes all the POS's data.
@@ -112,7 +104,7 @@ namespace GTI.Modules.PlayerCenter.Business
         public void Initialize(bool showLoadingForm, bool isTouchScreen)
         {
             string strErr = "PlayerManager start init.";
-            
+
             try
             {
                 // Check to see if we are already initialized.
@@ -124,6 +116,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 strErr = "create modcom.";
                 ModuleComm modComm = null;
+                //Application.EnableVisualStyles(); // allows us to do ctrl+a on textboxes... If it breaks something, remove it.
 
                 // Get the system related ids.
                 try
@@ -135,6 +128,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     m_machineId = modComm.GetMachineId();
                     strErr = "modcom..set operatorid.";
                     OperatorID = modComm.GetOperatorId();
+                    GetOperatorID.operatorID = OperatorID;
                 }
                 catch (Exception e)
                 {
@@ -143,43 +137,35 @@ namespace GTI.Modules.PlayerCenter.Business
                 }
 
                 strErr = "create setting obj.";
-                // Create a settings object with the default values.
-                Settings = new PlayerCenterSettings();
-
+                Settings = PlayerCenterSettings.Instance;  // Create a settings object with the default values. //US4119 changed to singleton
                 strErr = "Check to see what resolution to run in.";
-                // Check to see what resolution to run in.
-                if (m_deviceId == Device.POSPortable.Id)
+
+                if (m_deviceId == Device.POSPortable.Id)      // Check to see what resolution to run in.
                     Settings.DisplayMode = new CompactDisplayMode();
                 else
                     Settings.DisplayMode = new NormalDisplayMode();
 
                 strErr = "Create and show the loading form.";
-                // Create and show the loading form.
                 m_loadingForm = new SplashScreen();
-
-                //if(m_settings.DisplayMode is NormalDisplayMode)
-                //    m_loadingForm.BackgroundImage = Resources.LoadingBack1024;
-                //else
-                //    m_loadingForm.BackgroundImage = Resources.LoadingBack800;
-
                 strErr = "set form...version, cursor, app name.";
                 m_loadingForm.Version = GetVersionAndCopyright(true);
                 m_loadingForm.Cursor = Cursors.WaitCursor;
                 m_loadingForm.ApplicationName = Properties.Resources.productName;
-
                 strErr = "show form.";
-                if (showLoadingForm)
-                    m_loadingForm.Show();
+
+                if (showLoadingForm) m_loadingForm.Show();
 
                 strErr = "set form loading status.";
-                // Get the workstation's settings from the server.
-                m_loadingForm.Status = Resources.LoadingWorkstationInfo;
+                m_loadingForm.Status = Resources.LoadingWorkstationInfo;                // Get the workstation's settings from the server.
                 Application.DoEvents();
 
                 try
                 {
                     strErr = "get workstation settings.";
+                    GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
                     GetWorkstationSettings();
+                    m_magCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
+
                 }
                 catch (Exception e)
                 {
@@ -187,13 +173,12 @@ namespace GTI.Modules.PlayerCenter.Business
                         MessageForm.Show(Settings.DisplayMode, string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
                     else
                         MessageForm.Show(string.Format(Resources.GetSettingsFailed, e.Message + "...last step: " + strErr));
-
                     return;
                 }
 
                 strErr = "Check to see if we want to log everything.";
-                // Check to see if we want to log everything.
-                try
+
+                try  // Check to see if we want to log everything.
                 {
                     strErr = "EnableLogging.";
                     if (Settings.EnableLogging)
@@ -224,8 +209,6 @@ namespace GTI.Modules.PlayerCenter.Business
                     Log("Forcing English.", LoggerLevel.Configuration);
                 }
 
-                //if(!m_settings.ShowCursor)
-                //    Cursor.Hide();
 
                 //US2649 
                 RunGetPlayerLocation();
@@ -233,14 +216,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 GetListLocationState();
                 GetListLocationZipCode();
                 GetListLocationCountry();
-                GetProductName();
-
+                GetEnabledProducts();
 
                 strErr = "set form loading status..again.";
                 //loading player status code
                 m_loadingForm.Status = Resources.LoadingStatusCode;
                 GetStatusCode();
-
 
                 strErr = "set form loading status..loading tiers.";
                 // Load the Player Loyalty Tiers
@@ -273,7 +254,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 // FIX: DE2476 - Performance slows down as player pictures are added.
                 // Load our wait form.
-                if(IsTouchScreen)
+                if (IsTouchScreen)
                     m_waitForm = new WaitForm(Settings.DisplayMode);
                 else
                     m_waitForm = new WaitForm();
@@ -289,15 +270,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 // Initialize the mag. card reader.
                 try
                 {
-                    MagCardReader = new MagneticCardReader(Settings.Sentinels);
-                    
-                    // Rally DE130 - Mag card number needs to be typed into the system with a colon.
-                    MagCardReader.StripNonAlphanumericChars = Settings.StripNonAlphanumeric; 
+                    MagCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
                     m_externalMagCardReader = false;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    if(IsTouchScreen)
+                    if (IsTouchScreen)
                         MessageForm.Show(Settings.DisplayMode, string.Format(CultureInfo.CurrentCulture, Resources.MagLoadError, e.Message + "...last step: " + strErr));
                     else
                         MessageForm.Show(string.Format(CultureInfo.CurrentCulture, Resources.MagLoadError, e.Message + "...last step: " + strErr));
@@ -328,44 +306,83 @@ namespace GTI.Modules.PlayerCenter.Business
 
             }
         }
+
         /// <summary>
         ///  fill up the status code dictionary
         /// </summary>
         public static void GetStatusCode()
-        {OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(OperatorID);}
+        {
+            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);
+        }
 
         //US2649
 
-        public static void GetProductName()
+        public static void GetEnabledProducts()
         {
-            ProductListName = GetPackageNameList.GetProduct(OperatorID) ;
+            try
+            {
+                EnabledProducts = GetProductItemsMessage.GetProductItems(GetOperatorID.operatorID);
+            }
+            catch (ServerException ex)
+            {
+                PlayerManager.Log("Error getting product items: " +
+                    GameTech.Elite.Client.ServerErrorTranslator.GetReturnCodeMessage((GameTech.Elite.Client.ServerReturnCode)ex.ReturnCode), LoggerLevel.Severe);
+
+            }
+            catch (Exception ex)
+            {
+                PlayerManager.Log("Error getting product items: " + ex.ToString(), LoggerLevel.Severe);
+            }
         }
 
+        //US2100
+        private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
+        {
+            StaffHasPermissionToAwardPoints = false;
+            var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
+            message.Send();
+
+            if (message.ReturnCode == (int)GTIServerReturnCode.Success)
+            {
+                StaffHasPermissionToAwardPoints = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
+            }
+        }
 
         public static void RunGetPlayerLocation()
         {
-               GetPlayerLocation.GetPlayerLocationX();  
+            GetPlayerLocation.GetPlayerLocationX();
         }
 
         public static void GetListLocationCity()
         {
-            ListLocationCity = GetPlayerLocationPer.CityName; 
+            ListLocationCity = GetPlayerLocationPer.CityName;
         }
 
         public static void GetListLocationState()
         {
-            ListLocationState = GetPlayerLocationPer.StateName;  
+            ListLocationState = GetPlayerLocationPer.StateName;
         }
 
         public static void GetListLocationZipCode()
         {
-            ListLocationZipCode = GetPlayerLocationPer.ZipCodeName;   
+            ListLocationZipCode = GetPlayerLocationPer.ZipCodeName;
         }
 
         public static void GetListLocationCountry()
         {
             ListLocationCountry = GetPlayerLocationPer.CountryName;
         }
+
+        //US5590: Added ability to view receipt from player management
+        internal void RaiseReceiptClickedEvent(string receiptNumber)
+        {
+            if (ReceiptClicked != null)
+            {
+                ReceiptClicked(receiptNumber);
+            }
+        }
+
+
         //US2649
         /// <summary>
         /// Returns a string with the version and copyright information of 
@@ -378,20 +395,20 @@ namespace GTI.Modules.PlayerCenter.Business
         private string GetVersionAndCopyright(bool justVersion)
         {
             // Get version.
-            string version = 
+            string version =
                 Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Build.ToString() +
                 "." + Assembly.GetExecutingAssembly().GetName().Version.Revision.ToString();
 
             // Get copyright.
-            if(!justVersion)
+            if (!justVersion)
             {
                 string copyright = string.Empty;
 
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
 
-                if(attributes.Length > 0)
+                if (attributes.Length > 0)
                     copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
 
                 return Resources.Version + version + " - " + copyright;
@@ -400,68 +417,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 return version;
         }
 
-        /// <summary>
-        /// Writes a message to the Player Center's log.
-        /// </summary>
-        /// <param name="message">The message to write to the log.</param>
-        /// <param name="type">The level of the message.</param>
-        /// <returns>true if success; otherwise false.</returns>
-        internal bool Log(string message, LoggerLevel level)
-        {
-            lock(m_logSync)
-            {
-                if(m_loggingEnabled)
-                {
-                    StackFrame frame = new StackFrame(1, true);
-                    string fileName = frame.GetFileName();
-                    int lineNumber = frame.GetFileLineNumber();
-                    message = PlayerManager.LogPrefix + message;
 
-                    try
-                    {
-                        switch(level)
-                        {
-                            case LoggerLevel.Severe:
-                                Logger.LogSevere(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.Warning:
-                                Logger.LogWarning(message, fileName, lineNumber);
-                                break;
-
-                            default:
-                            case LoggerLevel.Information:
-                                Logger.LogInfo(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.Configuration:
-                                Logger.LogConfig(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.Debug:
-                                Logger.LogDebug(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.Message:
-                                Logger.LogMessage(message, fileName, lineNumber);
-                                break;
-
-                            case LoggerLevel.SQL:
-                                Logger.LogSql(message, fileName, lineNumber);
-                                break;
-                        }
-
-                        return true;
-                    }
-                    catch(Exception)
-                    {
-                        return false;
-                    }
-                }
-                else
-                    return false;
-            }
-        }
+        #region UI Methods
 
         /// <summary>
         /// Shows the main menu form modally.
@@ -470,11 +427,11 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             if (m_loadingForm != null) m_loadingForm.CloseForm();
 
-            if(IsInitialized && m_mainMenuForm != null)
+            if (IsInitialized && m_mainMenuForm != null)
             {
                 Log("Starting Player Center.", LoggerLevel.Information);
 
-                if(!m_externalMagCardReader)
+                if (!m_externalMagCardReader)
                 {
                     MagCardReader.SynchronizingObject = m_mainMenuForm; // Rally DE1852
                     MagCardReader.BeginReading(); // PDTS 1064
@@ -492,7 +449,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// event data.</param>
         public void ClosePlayerCenter(object sender, EventArgs e)
         {
-            if(m_mainMenuForm != null)
+            if (m_mainMenuForm != null)
                 m_mainMenuForm.Close();
         }
 
@@ -516,8 +473,126 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        
+        /// <summary>
+        /// Shows the player picture capture dialog and then signals a wait handle.
+        /// This method should only be called on STA threads.
+        /// </summary>
+        internal void ShowPictureCapture()
+        {
+            // Clear out the previous pic.
+            LastPlayerPic = null;
 
+            // FIX: DE2475
+            // Generate a temp file.
+            string fileName = System.Environment.ExpandEnvironmentVariables(GameTechDir) + @"\Temp\";
+
+            if (!Directory.Exists(fileName))
+                Directory.CreateDirectory(fileName);
+
+            fileName += TempPicFileName;
+
+            // Setup the processes arguments.
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.FileName = Path.Combine(System.Environment.ExpandEnvironmentVariables(GameTechDir), VidSnapshotName);
+            startInfo.Arguments = fileName;
+            // END: DE2475
+
+            lock (Settings.SyncRoot)
+            {
+                if (!Settings.ShowCursor)
+                    startInfo.Arguments += " /hidecursor";
+            }
+
+            startInfo.CreateNoWindow = true;
+
+            // Start the picture process.
+            try
+            {
+                System.Diagnostics.Process picProcess = System.Diagnostics.Process.Start(startInfo);
+
+                // Wait until it has closed.
+                // Rally DE2427 - User is unable to take more than 1 picture without restarting EliteMCP.
+                while (!picProcess.HasExited)
+                {
+                    Thread.Sleep(50);
+                }
+
+                // Did it take the picture?
+                if (picProcess.ExitCode == 1)
+                {
+                    try
+                    {
+                        Bitmap tempPic = new Bitmap(fileName);
+                        LastPlayerPic = new Bitmap(tempPic);
+
+                        tempPic.Dispose();
+                        tempPic = null;
+
+                        System.IO.File.Delete(fileName);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log(Resources.errorFailedToTakePicture + ex.ToString(), LoggerLevel.Severe);
+                if (IsTouchScreen)
+                    MessageForm.Show(Settings.DisplayMode, Properties.Resources.errorFailedToTakePicture + ex.Message);
+                else
+                    MessageForm.Show(Properties.Resources.errorFailedToTakePicture + ex.Message, Properties.Resources.PlayerCenterName);
+            }
+            finally
+            {
+                // Signal the other waiting thread(s).
+                EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, "Player Picture Wait Handle");
+                waitHandle.Set();
+            }
+        }
+
+        /// <summary>
+        /// Displays the Player Management form.  The CurrentPlayer property 
+        /// will be used to load the form with the starting values 
+        /// (if applicable).
+        /// </summary>
+        /// <param name="playersSaved">true if the user saved any players 
+        /// while the form was open; otherwise false.</param>
+        /// <param name="playerToSet">An instance of a player object to set as 
+        /// the current player or null.</param>
+        public void ShowPlayerManagment(out bool playersSaved, out Player playerToSet)
+        {
+            if (m_loadingForm != null)
+                m_loadingForm.CloseForm();
+
+            PlayerManagementForm mgmtForm = new PlayerManagementForm(this, Settings.DisplayMode);
+
+            if (IsTouchScreen)
+            {
+                mgmtForm.DrawRounded = true;
+                mgmtForm.OuterBorderEdgeColor = Color.DimGray;
+                mgmtForm.DrawBorderOuterEdge = true;
+            }
+
+            mgmtForm.EnableSetAsCurrentPlayer = true;
+            mgmtForm.ShowDialog();
+
+            // TTP 50120
+            if (!(LastAsyncException is ServerCommException))
+            {
+                playersSaved = mgmtForm.PlayersSaved;
+                playerToSet = mgmtForm.PlayerToSet;
+            }
+            else
+            {
+                playersSaved = false;
+                playerToSet = null;
+            }
+        }
+
+        /// <summary>
+        /// Activates the main window for this application
+        /// </summary>
         private void ActivateMainForm()
         {
             m_mainMenuForm.WindowState = FormWindowState.Normal;
@@ -533,7 +608,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// box.</param>
         internal void ShowWaitForm(IWin32Window owner)
         {
-            if(m_waitForm != null)
+            if (m_waitForm != null)
                 m_waitForm.ShowDialog(owner);
         }
         // END: DE2476
@@ -543,12 +618,62 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal void DisposeLoadingForm()
         {
-            if(m_loadingForm != null)
+            if (m_loadingForm != null)
             {
                 m_loadingForm.Hide();
                 m_loadingForm.Dispose();
                 m_loadingForm = null;
             }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Writes a message to the Product Center's log.
+        /// </summary>
+        /// <param name="message">The message to write to the log.</param>
+        /// <param name="level">The level of the message.</param>
+        internal static void Log(string message, LoggerLevel level)
+        {
+            try
+            {
+                var frame = new StackFrame(1, true);
+                var fileName = frame.GetFileName();
+                var lineNumber = frame.GetFileLineNumber();
+                message = LogPrefix + message;
+
+                switch (level)
+                {
+                    case LoggerLevel.Severe:
+                        Logger.LogSevere(message, fileName, lineNumber);
+                        break;
+
+                    case LoggerLevel.Warning:
+                        Logger.LogWarning(message, fileName, lineNumber);
+                        break;
+
+                    default:
+                        Logger.LogInfo(message, fileName, lineNumber);
+                        break;
+
+                    case LoggerLevel.Configuration:
+                        Logger.LogConfig(message, fileName, lineNumber);
+                        break;
+
+                    case LoggerLevel.Debug:
+                        Logger.LogDebug(message, fileName, lineNumber);
+                        break;
+
+                    case LoggerLevel.Message:
+                        Logger.LogMessage(message, fileName, lineNumber);
+                        break;
+
+                    case LoggerLevel.SQL:
+                        Logger.LogSql(message, fileName, lineNumber);
+                        break;
+                }
+            }
+            catch (Exception) { }
         }
 
         /// <summary>
@@ -560,13 +685,13 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <param name="ex">The exception to reformat.</param>
         internal void ReformatException(Exception ex)
         {
-            if(ex is MessageWrongSizeException)
+            if (ex is MessageWrongSizeException)
                 throw new PlayerCenterException(string.Format(Resources.MessagePayloadWrongSize, ex.Message), ex);
-            else if(ex is ServerCommException)
+            else if (ex is ServerCommException)
                 throw new PlayerCenterException(Resources.ServerCommFailed, ex);
-            else if(ex is ServerException && ex.InnerException != null)
+            else if (ex is ServerException && ex.InnerException != null)
                 throw new PlayerCenterException(string.Format(Resources.InvalidMessageResponse, ex.Message), ex.InnerException);
-            else if(ex is ServerException)
+            else if (ex is ServerException)
             {
                 int errorCode = (int)((ServerException)ex).ReturnCode;
                 throw new PlayerCenterException(string.Format(Resources.ServerErrorCode, errorCode), ex);
@@ -583,13 +708,13 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <returns>The exception's localized message.</returns>
         internal string FormatExceptionMessage(Exception ex)
         {
-            if(ex is MessageWrongSizeException)
+            if (ex is MessageWrongSizeException)
                 return string.Format(Resources.MessagePayloadWrongSize, ex.Message);
-            else if(ex is ServerCommException)
+            else if (ex is ServerCommException)
                 return Resources.ServerCommFailed;
-            else if(ex is ServerException && ex.InnerException != null)
+            else if (ex is ServerException && ex.InnerException != null)
                 return string.Format(Resources.InvalidMessageResponse, ex.Message);
-            else if(ex is ServerException)
+            else if (ex is ServerException)
             {
                 int errorCode = (int)((ServerException)ex).ReturnCode;
                 return string.Format(Resources.ServerErrorCode, errorCode);
@@ -605,7 +730,7 @@ namespace GTI.Modules.PlayerCenter.Business
         internal void ServerCommFailed()
         {
             // Display a message saying that the Player Center is closing.
-            if(IsTouchScreen)
+            if (IsTouchScreen)
                 MessageForm.Show(Settings.DisplayMode, Resources.ServerCommFailed + "\n\n" + Resources.ShuttingDown, MessageFormTypes.Pause, ServerCommShutdownWait);
             else
                 MessageForm.Show(Resources.ServerCommFailed + "\n\n" + Resources.ShuttingDown, Resources.PlayerCenterName, MessageFormTypes.Pause, ServerCommShutdownWait);
@@ -627,7 +752,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 settingsMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
@@ -636,7 +761,27 @@ namespace GTI.Modules.PlayerCenter.Business
             //m_workstationId = settingsMsg.WorkstationId;
 
             // Loop through each setting and parse the value.
-            SettingValue [] stationSettings = settingsMsg.Settings;
+            SettingValue[] stationSettings = settingsMsg.Settings;
+
+            foreach (SettingValue setting in stationSettings)
+            {
+                Settings.LoadSetting(setting);
+            }
+
+            // Send message for receipt management settings.
+            settingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ReceiptMgmtSettings);
+
+            try
+            {
+                settingsMsg.Send();
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
+
+            // Loop through each setting and parse the value.
+            stationSettings = settingsMsg.Settings;
 
             foreach (SettingValue setting in stationSettings)
             {
@@ -651,17 +796,44 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 licSettingsMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
 
             // Loop through each setting and parse the value.
-            foreach(LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
+            foreach (LicenseSettingValue setting in licSettingsMsg.LicenseSettings)
             {
                 Settings.LoadSetting(setting);
             }
             // END: TA7897
+
+            //Get all setting on third party
+            if (StaffHasPermissionToAwardPoints)//If staff has permission to grant points then check if the player pin is required.
+            {
+                GetSettingsMessage thirdPartySettingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ThirdPartyPlayerTrackingSettings);
+
+                try
+                {
+                    thirdPartySettingsMsg.Send();//Just get every setting
+                }
+                catch (Exception e)
+                {
+                    ReformatException(e);
+                }
+
+                SettingValue[] thirdPartyStationSettings = thirdPartySettingsMsg.Settings;
+
+                foreach (SettingValue setting in thirdPartyStationSettings)
+                {
+                    Settings.LoadSetting(setting);
+
+                    if (Setting.ThirdPartyPlayerInterfaceNeedPINForRating == (Setting)setting.Id && Convert.ToBoolean(setting.Value))//And player does not have a pin
+                    {
+                        m_needPlayerCardPIN = true;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -675,7 +847,7 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 tierMsg.Send();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ReformatException(e);
             }
@@ -691,7 +863,7 @@ namespace GTI.Modules.PlayerCenter.Business
         public void SetExternalMagCardReader(MagneticCardReader reader)
         {
             // Dispose of ours.
-            if(MagCardReader != null)
+            if (MagCardReader != null)
             {
                 MagCardReader.EndReading();
                 MagCardReader.RemoveAllSources();
@@ -708,7 +880,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public void BeginMagCardReading()
         {
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
                 MagCardReader.BeginReading();
         }
 
@@ -717,86 +889,11 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public void EndMagCardReading()
         {
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
                 MagCardReader.EndReading();
         }
 
-        /// <summary>
-        /// Shows the player picture capture dialog and then signals a wait handle.
-        /// This method should only be called on STA threads.
-        /// </summary>
-        internal void ShowPictureCapture()
-        {
-            // Clear out the previous pic.
-            LastPlayerPic = null;
-
-            // FIX: DE2475
-            // Generate a temp file.
-            string fileName = System.Environment.ExpandEnvironmentVariables(GameTechDir) + @"\Temp\";
-
-            if(!Directory.Exists(fileName))
-                Directory.CreateDirectory(fileName);
-
-            fileName += TempPicFileName;
-
-            // Setup the processes arguments.
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.FileName = Path.Combine(System.Environment.ExpandEnvironmentVariables(GameTechDir), VidSnapshotName);
-            startInfo.Arguments = fileName;
-            // END: DE2475
-
-            lock(Settings.SyncRoot)
-            {
-                if(!Settings.ShowCursor)
-                    startInfo.Arguments += " /hidecursor";
-            }
-
-            startInfo.CreateNoWindow = true;
-            
-            // Start the picture process.
-            try
-            {
-                System.Diagnostics.Process picProcess = System.Diagnostics.Process.Start(startInfo);
-
-                // Wait until it has closed.
-                // Rally DE2427 - User is unable to take more than 1 picture without restarting EliteMCP.
-                while(!picProcess.HasExited)
-                {
-                    Thread.Sleep(50);
-                }
-
-                // Did it take the picture?
-                if(picProcess.ExitCode == 1)
-                {
-                    try
-                    {
-                        Bitmap tempPic = new Bitmap(fileName);
-                        LastPlayerPic = new Bitmap(tempPic);
-
-                        tempPic.Dispose();
-                        tempPic = null;
-
-                        System.IO.File.Delete(fileName);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                if(IsTouchScreen)
-                    MessageForm.Show(Settings.DisplayMode, Properties.Resources.errorFailedToTakePicture + ex.Message);
-                else
-                    MessageForm.Show(Properties.Resources.errorFailedToTakePicture + ex.Message, Properties.Resources.PlayerCenterName);
-            }
-            finally
-            {
-                // Signal the other waiting thread(s).
-                EventWaitHandle waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, "Player Picture Wait Handle");
-                waitHandle.Set();
-            }
-        }
+        #region Get Player
 
         // FIX: DE2476
         // TTP 50067
@@ -840,6 +937,8 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(GetPlayerComplete);
             m_worker.RunWorkerAsync(playerId);
         }
+
+
         // END: DE2476
 
         /// <summary>
@@ -851,9 +950,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void GetPlayerData(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -868,11 +967,11 @@ namespace GTI.Modules.PlayerCenter.Business
 
             magCardNum = e.Argument as string;
 
-            if(magCardNum == null)
+            if (magCardNum == null)
                 playerId = (int)e.Argument;
 
             // Are we getting the player by id or mag. card?
-            if(playerId == 0)
+            if (playerId == 0)
             {
                 FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();
                 cardMsg.MagCardNumber = magCardNum;
@@ -882,37 +981,37 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     cardMsg.Send();
                 }
-                catch(ServerCommException)
+                catch (ServerCommException)
                 {
                     throw; // Don't repackage the ServerCommException
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
                 }
 
                 // Set the id that we got back from the server.
-                if(cardMsg.PlayerId == 0)
+                if (cardMsg.PlayerId == 0)
                     throw new PlayerCenterException(Resources.NoPlayersFound);
                 else
                     playerId = cardMsg.PlayerId;
             }
 
             Player player = null;
-            
+
             try
             {
-                player = new Player(playerId, OperatorID);
+                player = new Player(playerId, OperatorID, -1);
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(ServerException exc)
+            catch (ServerException exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)) + " " + string.Format(CultureInfo.CurrentCulture, Resources.MessageName, exc.Message), exc);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
             }
@@ -933,7 +1032,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // TTP 50067
-            if(e.Error != null)
+            if (e.Error != null)
                 LastPlayerFromServer = null;
             else
                 LastPlayerFromServer = (Player)e.Result;
@@ -943,6 +1042,10 @@ namespace GTI.Modules.PlayerCenter.Business
             m_waitForm.CloseForm();
             // END: DE2476
         }
+
+        #endregion
+
+        #region Find Players
 
         // FIX: DE2476
         /// <summary>
@@ -986,9 +1089,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void GetPlayerList(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1000,7 +1103,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the search params.
             string[] parameters = (string[])e.Argument;
 
-            if(parameters[0] != string.Empty) // Mag. Card
+            if (parameters[0] != string.Empty) // Mag. Card
             {
                 FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();
                 cardMsg.MagCardNumber = parameters[0];
@@ -1010,11 +1113,11 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     cardMsg.Send();
                 }
-                catch(ServerCommException ex)
+                catch (ServerCommException ex)
                 {
                     throw ex; // Don't repackage the ServerCommException
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerFailed, FormatExceptionMessage(ex)), ex);
                 }
@@ -1041,11 +1144,11 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     listMsg.Send();
                 }
-                catch(ServerCommException ex)
+                catch (ServerCommException ex)
                 {
                     throw ex; // Don't repackage the ServerCommException
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerListFailed, FormatExceptionMessage(ex)), ex);
                 }
@@ -1066,7 +1169,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
 
-            if(e.Error == null)
+            if (e.Error == null)
             {
                 // Set the results of the search.
                 LastFindPlayersResults = (PlayerListItem[])e.Result;
@@ -1082,6 +1185,11 @@ namespace GTI.Modules.PlayerCenter.Business
             // END: DE2476
         }
 
+        #endregion
+
+        #region Save Player
+
+
         // FIX: DE2476
         /// <summary>
         /// Creates a thread to save the player to the server and sets
@@ -1090,7 +1198,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <param name="waitForm">The wait form to be used while 
         /// saving the player.</param>
         /// <param name="player">The player to save.</param>
-        internal void SavePlayer(Player player)
+        public void SavePlayer(Player player)
         {
             // Set the wait message.
             m_waitForm.Message = Resources.WaitFormSavingPlayer;
@@ -1106,6 +1214,65 @@ namespace GTI.Modules.PlayerCenter.Business
         }
         // END: DE2476
 
+        //US4119: Set PIN number >  Sale with player card and PIN has not been set.   
+        /// <summary>
+        /// Updates existing player
+        /// </summary>
+        /// <param name="player">The player to save.</param>
+        public void UpdateExistingPlayer(Player player)
+        {
+            SetPlayerDataMessage setMsg = new SetPlayerDataMessage
+            {
+                PlayerId = player.Id,
+                FirstName = player.FirstName,
+                MiddleInitial = player.MiddleInitial,
+                LastName = player.LastName,
+                GovIssuedIdNumber = player.GovIssuedIdNumber,
+                BirthDate = player.BirthDate,
+                Email = player.Email,
+                PlayerIdentity = player.PlayerIdentity,
+                PhoneNumber = player.PhoneNumber,
+                Gender = player.Gender,
+                PinNumber = player.PinNumber,
+                Address1 = player.Address1,
+                Address2 = player.Address2,
+                City = player.City,
+                State = player.State,
+                Zip = player.Zip,
+                Country = player.Country,
+                JoinDate = player.JoinDate,
+                LastVisit = player.LastVisit,
+                PointsBalance = player.PointsBalance,
+                VisitCount = player.VisitCount,
+                Comment = player.Comment,
+                MagCardNumber = player.MagneticCardNumber
+            };
+
+            // Send the message.
+            try
+            {
+                setMsg.Send();
+            }
+            catch (ServerCommException)
+            {
+                // TTP 50120
+                throw; // Don't repackage the ServerCommException
+            }
+            catch (Exception ex)
+            {
+                string message = Resources.errorDupMagCard;
+                if (setMsg.ReturnCode != 1)
+                {
+                    message = ex.Message;
+                    throw new PlayerCenterException(string.Format(Resources.SavePictureFailed, FormatExceptionMessage(ex)), ex);
+                }
+                else
+                {
+                    throw new DuplicateException(message);
+                }
+            }
+        }
+
         /// <summary>
         /// Adds or saves a player to the server.
         /// </summary>
@@ -1115,9 +1282,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void SavePlayerToServer(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1129,7 +1296,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the argument.
             Player player = (Player)e.Argument;
 
-            if(player.Id == 0) // We are creating a player.
+            if (player.Id == 0) // We are creating a player.
             {
                 CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
                 createMsg.FirstName = player.FirstName;
@@ -1160,13 +1327,15 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     createMsg.Send();
                 }
-                catch(ServerCommException)
+                catch (ServerCommException ex)
                 {
+                    Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
                     // TTP 50120
-                    throw; // Don't repackage the ServerCommException
+                    throw ex; // Don't repackage the ServerCommException
                 }
                 catch (Exception ex)
                 {
+                    Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
                     string message = Resources.errorDupMagCard;
                     if (createMsg.ReturnCode != 1)
                     {
@@ -1176,8 +1345,8 @@ namespace GTI.Modules.PlayerCenter.Business
                     else
                     {
                         throw new DuplicateException(message);
-                    }                      
-                   
+                    }
+
                 }
                 if (createMsg.PlayerId < 1) throw new PlayerCenterException(string.Format(Resources.CreatePlayerFailed, "Id < 1"));
 
@@ -1186,54 +1355,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else // We are updating a player
             {
-                SetPlayerDataMessage setMsg = new SetPlayerDataMessage();
-                setMsg.PlayerId = player.Id;
-                setMsg.FirstName = player.FirstName;
-                setMsg.MiddleInitial = player.MiddleInitial;
-                setMsg.LastName = player.LastName;
-                setMsg.GovIssuedIdNumber = player.GovIssuedIdNumber;
-                setMsg.BirthDate = player.BirthDate;
-                setMsg.Email = player.Email;
-                setMsg.PlayerIdentity = player.PlayerIdentity;
-                setMsg.PhoneNumber = player.PhoneNumber;
-                setMsg.Gender = player.Gender;
-                setMsg.PinNumber = player.PinNumber;
-                setMsg.Address1 = player.Address1;
-                setMsg.Address2 = player.Address2;
-                setMsg.City = player.City;
-                setMsg.State = player.State;
-                setMsg.Zip = player.Zip;
-                setMsg.Country = player.Country;
-                setMsg.JoinDate = player.JoinDate;
-                setMsg.LastVisit = player.LastVisit;
-                setMsg.PointsBalance = player.PointsBalance;
-                setMsg.VisitCount = player.VisitCount;
-                setMsg.Comment = player.Comment;
-                setMsg.MagCardNumber = player.MagneticCardNumber;
-
-                // Send the message.
-                try
-                {
-                    setMsg.Send();
-                }
-                catch(ServerCommException)
-                {
-                    // TTP 50120
-                    throw; // Don't repackage the ServerCommException
-                }
-                catch (Exception ex)
-                {
-                    string message = Resources.errorDupMagCard;
-                    if(setMsg.ReturnCode != 1)
-                    {  
-                        message = ex.Message;
-                        throw new PlayerCenterException(string.Format(Resources.SavePictureFailed, FormatExceptionMessage(ex)), ex);
-                    }
-                    else 
-                    {
-                        throw new DuplicateException(message);
-                    }
-                }
+                UpdateExistingPlayer(player); //US4119
             }
 
             // Save the player's picture (if applicable).
@@ -1245,12 +1367,12 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 setPicMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 // TTP 50120
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new PlayerCenterException(string.Format(Resources.SavePictureFailed, FormatExceptionMessage(ex)), ex);
             }
@@ -1266,15 +1388,15 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 reloadPlayer = new Player(player.Id, OperatorID);
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(ServerException exc)
+            catch (ServerException exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)) + " " + string.Format(CultureInfo.CurrentCulture, Resources.MessageName, exc.Message), exc);
             }
-            catch(Exception exc)
+            catch (Exception exc)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(exc)), exc);
             }
@@ -1294,7 +1416,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // TTP 50067
-            if(e.Error != null)
+            if (e.Error != null)
                 LastPlayerFromServer = null;
             else
                 LastPlayerFromServer = (Player)e.Result;
@@ -1320,7 +1442,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// A player with this mag. card number already exists.</exception>
         public int CreatePlayerForPOS(string magCardNum)
         {
-            if(string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
+            if (string.IsNullOrEmpty(magCardNum) || magCardNum.Trim().Length == 0)
                 throw new ArgumentException("magCardNum");
 
             CreateNewPlayerMessage createMsg = new CreateNewPlayerMessage();
@@ -1333,13 +1455,15 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 createMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException ex)
             {
-                throw; // Don't repackage the ServerCommException
+                Log("Server communication error sending the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+                throw ex; // Don't repackage the ServerCommException
             }
-            catch(ServerException ex)
+            catch (ServerException ex)
             {
-                if((int)ex.ReturnCode == 1)
+                Log("Error processing the 'CreateNewPlayer' message " + ex.ToString(), LoggerLevel.Severe);
+                if ((int)ex.ReturnCode == 1)
                     throw new PlayerCenterException(Resources.errorDupMagCard);
                 else
                     throw;
@@ -1348,127 +1472,9 @@ namespace GTI.Modules.PlayerCenter.Business
             return createMsg.PlayerId;
         }
 
-        /// <summary>
-        /// Displays the Player Management form.  The CurrentPlayer property 
-        /// will be used to load the form with the starting values 
-        /// (if applicable).
-        /// </summary>
-        /// <param name="playersSaved">true if the user saved any players 
-        /// while the form was open; otherwise false.</param>
-        /// <param name="playerToSet">An instance of a player object to set as 
-        /// the current player or null.</param>
-        public void ShowPlayerManagment(out bool playersSaved, out Player playerToSet)
-        {
-            if (m_loadingForm != null)
-                m_loadingForm.CloseForm();
+        #endregion
 
-            PlayerManagementForm mgmtForm = new PlayerManagementForm(this, Settings.DisplayMode);
-            mgmtForm.EnableSetAsCurrentPlayer = true;
-            mgmtForm.ShowDialog();
-
-            // TTP 50120
-            if(!(LastAsyncException is ServerCommException))
-            {
-                playersSaved = mgmtForm.PlayersSaved;
-                playerToSet = mgmtForm.PlayerToSet;
-            }
-            else
-            {
-                playersSaved = false;
-                playerToSet = null;
-            }
-        }
-
-        /// <summary>
-        /// Gets the last raffle winner.
-        /// </summary>
-        internal void GetLastPlayerRaffleWinner()
-        {
-            GetLastPlayerRaffleWinnerMessage lastRaffleWinner = new GetLastPlayerRaffleWinnerMessage();
-
-            try
-            {
-                lastRaffleWinner.Send();
-                LastRaffleReturnCode = lastRaffleWinner.ReturnCode;
-
-                if(lastRaffleWinner.ReturnCode == (int)GTIServerReturnCode.Success)
-                {
-                    LastRafflePlayerId = lastRaffleWinner.PlayerId;
-                    LastRafflePlayerFirstName = lastRaffleWinner.PlayerFirstName;
-                    LastRafflePlayerLastName = lastRaffleWinner.PlayerLastName;
-                }
-                else
-                {
-                    LastRafflePlayerId = 0;
-                    LastRafflePlayerFirstName = null;
-                    LastRafflePlayerLastName = null;
-                }
-            }
-            catch(ServerCommException ex)
-            {
-                throw ex; // Don't repackage the ServerCommException
-            }
-            catch(Exception ex)
-            {
-                throw new PlayerCenterException(string.Format(Resources.GetLastPlayerRaffleWinner, FormatExceptionMessage(ex)), ex);
-            }
-        }
-
-        /// <summary>
-        /// Runs the Player Raffle
-        /// </summary>
-        internal void RunPlayerRaffle()
-        {
-            RunPlayerRaffleMessage runRaffle = new RunPlayerRaffleMessage();
-
-            try
-            {
-                runRaffle.Send();
-                LastRaffleReturnCode = runRaffle.ReturnCode;
-
-                if(runRaffle.ReturnCode == (int)GTIServerReturnCode.Success)
-                {
-                    LastRafflePlayerId = runRaffle.PlayerId;
-                    LastRafflePlayerFirstName = runRaffle.PlayerFirstName;
-                    LastRafflePlayerLastName = runRaffle.PlayerLastName;
-                }
-                else
-                {
-                    LastRafflePlayerId = 0;
-                    LastRafflePlayerFirstName = null;
-                    LastRafflePlayerLastName = null;
-                }
-            }
-            catch(ServerCommException ex)
-            {
-                throw ex; // Don't repackage the ServerCommException
-            }
-            catch(ModuleException ex)
-            {
-                throw new PlayerCenterException(string.Format(Resources.RunPlayerRaffle, FormatExceptionMessage(ex)), ex);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        internal void ClearPlayerRaffle()
-        {
-            ClearPlayerRaffleMessage clearRaffle = new ClearPlayerRaffleMessage();
-
-            try
-            {
-                clearRaffle.Send();
-            }
-            catch(ServerCommException ex)
-            {
-                throw ex; // Don't repackage the ServerCommException
-            }
-            catch(Exception ex)
-            {
-                throw new PlayerCenterException(string.Format(Resources.ClearPlayerRaffle, FormatExceptionMessage(ex)), ex);
-            }
-        }
+        #region Player Report
 
         // FIX: DE2476
         // Rally US144
@@ -1509,9 +1515,9 @@ namespace GTI.Modules.PlayerCenter.Business
             string drive, dir, dbServer, dbName, dbUser, dbPass;
 
             // Set the language and options.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1534,8 +1540,8 @@ namespace GTI.Modules.PlayerCenter.Business
 
             // Ask the server for the report.
             GetReportMessage reportMsg = null;
-            
-            if(listReport)
+
+            if (listReport)
                 reportMsg = new GetReportMessage((int)ReportIDs.Player_PlayerListLastName);
             else
                 reportMsg = new GetReportMessage((int)ReportIDs.Player_PlayerMailingLabels);
@@ -1544,11 +1550,11 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 reportMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetReportFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
             }
@@ -1556,7 +1562,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Save the report to a temporary file.
             string path = drive + dir + @"\Temp";
 
-            if(!Directory.Exists(path))
+            if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
             path += @"\TempPlayerReport.rpt";
@@ -1579,7 +1585,7 @@ namespace GTI.Modules.PlayerCenter.Business
             reportDoc.Load(path);
 
             // Set the database connection information.
-            foreach(CrystalDecisions.Shared.IConnectionInfo connInfo in reportDoc.DataSourceConnections)
+            foreach (CrystalDecisions.Shared.IConnectionInfo connInfo in reportDoc.DataSourceConnections)
             {
                 connInfo.SetConnection(dbServer, dbName, dbUser, dbPass);
             }
@@ -1590,7 +1596,7 @@ namespace GTI.Modules.PlayerCenter.Business
             reportDoc.SetParameterValue("@OperatorID", OperatorID);
             //reportDoc.SetParameterValue("@Birthday", listParams.UseBirthday);
 
-            if(listParams.UseBirthday)
+            if (listParams.UseBirthday)
             {
                 reportDoc.SetParameterValue("@BDFrom", listParams.FromBirthday);
                 reportDoc.SetParameterValue("@BDEnd", listParams.ToBirthday);
@@ -1601,9 +1607,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@BDEnd", invalidDate);
             }
 
-         //   reportDoc.SetParameterValue("@Gender", listParams.UseGender);
+            //   reportDoc.SetParameterValue("@Gender", listParams.UseGender);
 
-            if(listParams.UseGender)
+            if (listParams.UseGender)
             {
                 reportDoc.SetParameterValue("@GenderType", listParams.Gender);
             }
@@ -1613,8 +1619,8 @@ namespace GTI.Modules.PlayerCenter.Business
             }
 
 
-         //   reportDoc.SetParameterValue("@PointsBalance", listParams.UsePoints);
-            if (listParams.PBIsRange) 
+            //   reportDoc.SetParameterValue("@PointsBalance", listParams.UsePoints);
+            if (listParams.PBIsRange)
             {
                 reportDoc.SetParameterValue("@Min", listParams.MinPoints);
                 reportDoc.SetParameterValue("@Max", listParams.MaxPoints);
@@ -1637,9 +1643,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@PBOptionValue", 0M);
             }
 
-        //    reportDoc.SetParameterValue("@LastVisit", listParams.UseLastVisit);
+            //    reportDoc.SetParameterValue("@LastVisit", listParams.UseLastVisit);
 
-            if(listParams.UseLastVisit)
+            if (listParams.UseLastVisit)
             {
                 reportDoc.SetParameterValue("@LVStart", listParams.FromLastVisit);
                 reportDoc.SetParameterValue("@LVEnd", listParams.ToLastVisit);
@@ -1669,7 +1675,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     reportDoc.SetParameterValue("@StartDate", listParams.FromSpendDate);
                     reportDoc.SetParameterValue("@EndDate", listParams.ToSpendDate);
                 }
-                else if(listParams.IsProduct) //TEST
+                else if (listParams.IsProduct) //TEST
                 {
                     reportDoc.SetParameterValue("@StartDate", listParams.FromSpendDate);
                     reportDoc.SetParameterValue("@EndDate", listParams.ToSpendDate);
@@ -1696,9 +1702,9 @@ namespace GTI.Modules.PlayerCenter.Business
 
 
             // Rally US493
-           // reportDoc.SetParameterValue("@Status", listParams.UseStatus);
+            // reportDoc.SetParameterValue("@Status", listParams.UseStatus);
 
-            if(listParams.UseStatus)
+            if (listParams.UseStatus)
                 reportDoc.SetParameterValue("@StatusId", listParams.Status);
             else
                 reportDoc.SetParameterValue("@StatusId", string.Empty);
@@ -1714,21 +1720,21 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@LocationDefinition", string.Empty);
             }
 
-            reportDoc.SetParameterValue("@IsNOfDaysPlayed", listParams.IsNumberOfdDaysPlayed);          
-            reportDoc.SetParameterValue("@IsNOfSessioPlayed", listParams.IsNumberOfSessionPlayed );
-                        
-            if (listParams.IsNumberOfdDaysPlayed || listParams.IsNumberOfSessionPlayed 
-                || listParams.DaysOFweekAndSession != string.Empty   
+            reportDoc.SetParameterValue("@IsNOfDaysPlayed", listParams.IsNumberOfdDaysPlayed);
+            reportDoc.SetParameterValue("@IsNOfSessioPlayed", listParams.IsNumberOfSessionPlayed);
+
+            if (listParams.IsNumberOfdDaysPlayed || listParams.IsNumberOfSessionPlayed
+                || listParams.DaysOFweekAndSession != string.Empty
                 )   /*&& listParams.IsDPDateRange*/
             {
-                    reportDoc.SetParameterValue("@DPDateRangeFrom", listParams.DPDateRangeFrom);
-                    reportDoc.SetParameterValue("@DPDateRangeTo", listParams.DPDateRangeTo);
+                reportDoc.SetParameterValue("@DPDateRangeFrom", listParams.DPDateRangeFrom);
+                reportDoc.SetParameterValue("@DPDateRangeTo", listParams.DPDateRangeTo);
             }
-                           
-           else
+
+            else
             {
-                    reportDoc.SetParameterValue("@DPDateRangeFrom", invalidDate);
-                    reportDoc.SetParameterValue("@DPDateRangeTo", invalidDate);
+                reportDoc.SetParameterValue("@DPDateRangeFrom", invalidDate);
+                reportDoc.SetParameterValue("@DPDateRangeTo", invalidDate);
             }
 
             reportDoc.SetParameterValue("@IsDPRange", listParams.IsDPRange);
@@ -1736,10 +1742,10 @@ namespace GTI.Modules.PlayerCenter.Business
             if (listParams.IsNumberOfdDaysPlayed && listParams.IsDPRange)
             {
 
-                int min = Int32.Parse(listParams.DPRangeFrom); 
-                int max = Convert.ToInt32(listParams.DPRangeTo);  
-                
-                reportDoc.SetParameterValue("@DPRangeFrom",min);
+                int min = Int32.Parse(listParams.DPRangeFrom);
+                int max = Convert.ToInt32(listParams.DPRangeTo);
+
+                reportDoc.SetParameterValue("@DPRangeFrom", min);
                 reportDoc.SetParameterValue("@DPRangeTo", max);
             }
             else
@@ -1748,12 +1754,12 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@DPRangeTo", 0M);
             }
 
-            reportDoc.SetParameterValue("@IsDPOption", listParams.IsDPOption); 
+            reportDoc.SetParameterValue("@IsDPOption", listParams.IsDPOption);
 
             if (listParams.IsNumberOfdDaysPlayed && listParams.IsDPOption)
             {
                 reportDoc.SetParameterValue("@DPOprtionSelected", listParams.DPOptionSelected);
-                reportDoc.SetParameterValue("@DPOptionValue", Convert.ToInt32(listParams.DPOptionValue , CultureInfo.CurrentCulture));
+                reportDoc.SetParameterValue("@DPOptionValue", Convert.ToInt32(listParams.DPOptionValue, CultureInfo.CurrentCulture));
                 //reportDoc.SetParameterValue("@DPOptionValue", listParams.DPOptionValue);
             }
             else
@@ -1767,7 +1773,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (listParams.IsNumberOfSessionPlayed && listParams.IsSPRange)
             {
-                reportDoc.SetParameterValue("@SPRangeFrom", Convert.ToInt32(listParams.SPRangeFrom , CultureInfo.CurrentCulture) );
+                reportDoc.SetParameterValue("@SPRangeFrom", Convert.ToInt32(listParams.SPRangeFrom, CultureInfo.CurrentCulture));
                 reportDoc.SetParameterValue("@SpRangeTo", Convert.ToInt32(listParams.SPRangeTo, CultureInfo.CurrentCulture));
             }
             else
@@ -1791,22 +1797,22 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (listParams.DaysOFweekAndSession != string.Empty)
             {
-                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", listParams.DaysOFweekAndSession);     
+                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", listParams.DaysOFweekAndSession);
             }
             else
             {
-                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", string.Empty);   
+                reportDoc.SetParameterValue("@DaysOfWeekNSessionNbr", string.Empty);
             }
 
             reportDoc.SetParameterValue("@IsPackageName", listParams.IsProduct);
 
-            if (listParams.IsProduct)  
+            if (listParams.IsProduct)
             {
-                reportDoc.SetParameterValue("@PackageName", listParams.SelectedProduct);  
+                reportDoc.SetParameterValue("@PackageName", listParams.SelectedProduct);
             }
             else
             {
-                reportDoc.SetParameterValue("@PackageName", string.Empty);    
+                reportDoc.SetParameterValue("@PackageName", string.Empty);
             }
 
 
@@ -1826,16 +1832,16 @@ namespace GTI.Modules.PlayerCenter.Business
             // Set the error that occurred (if any).
             LastAsyncException = e.Error;
 
-            if(e.Error == null)
+            if (e.Error == null)
             {
-                if(m_reportForm == null)
+                if (m_reportForm == null)
                     m_reportForm = new ReportForm(this);
 
                 try
                 {
                     m_reportForm.Report = (ReportDocument)e.Result;//On TEST jkc
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     LastAsyncException = ex;
                 }
@@ -1846,6 +1852,10 @@ namespace GTI.Modules.PlayerCenter.Business
             m_waitForm.CloseForm();
             // END: DE2476
         }
+
+        #endregion
+
+        #region Export Player List
 
         // FIX: DE2476
         /// <summary>
@@ -1875,6 +1885,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             m_worker.RunWorkerAsync(workerArgs);
         }
+
         // END: DE2476
         // US2149 - Enclose text field in double quotes.
         /// <summary>
@@ -1903,9 +1914,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private void ExportPlayerList(object sender, DoWorkEventArgs e)
         {
             // Set the language.
-            lock(Settings.SyncRoot)
+            lock (Settings.SyncRoot)
             {
-                if(Settings.ForceEnglish)
+                if (Settings.ForceEnglish)
                     Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
 
                 Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
@@ -1917,7 +1928,7 @@ namespace GTI.Modules.PlayerCenter.Business
             // Unbox the arguments.
             object[] args = (object[])e.Argument;
             string fileName = (string)args[0];
-            PlayerListParams listParams = (PlayerListParams)args[1];//
+            PlayerListParams listParams = (PlayerListParams)args[1];
 
             // Rally DE1872
             GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
@@ -1926,142 +1937,102 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 listMsg.Send();
             }
-            catch(ServerCommException)
+            catch (ServerCommException)
             {
                 throw; // Don't repackage the ServerCommException
             }
-            catch(Exception ex)
-            {//ERROR Here
+            catch (Exception ex)
+            {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
             }
 
-            if(listMsg.Players != null && listMsg.Players.Length > 0)
+            if (listMsg.Players != null && listMsg.Players.Length > 0)
             {
                 // Write the data out to the specified file.
                 StreamWriter writer = File.CreateText(fileName);
 
                 // US1872 - Add headers to the export file.
                 // US2149 - Enclose text field in double quotes.
-                writer.Write(EscapeTextField(Resources.PlayerId));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.FirstName));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.MiddleInitial));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.LastName));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.BirthDate));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Email));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Gender));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Address1));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Address2));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.City));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.State));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Zip));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Country));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.RefundableCredit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.NonRefundableCredit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.LastVisit));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PointsBalance));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.TotalSpend));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.AverageSpend));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.VisitCount));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.StatusList));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.GovIssuedIdNum));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PlayerIdentity));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.PhoneNumber));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.JoinDate));
-                writer.Write(Resources.ExportSeparator);
-                writer.Write(EscapeTextField(Resources.Comment));
-                writer.Write(Resources.ExportSeparator);
-                writer.WriteLine(EscapeTextField(Resources.MagCardNumber));
-
-                foreach(PlayerExportItem item in listMsg.Players)
+                var header = new List<string>()
                 {
-                    if(item.Player != null)
+                    Resources.PlayerId,
+                    Resources.FirstName,
+                    Resources.MiddleInitial,
+                    Resources.LastName,
+                    Resources.BirthDate,
+                    Resources.Email,
+                    Resources.Gender,
+                    Resources.Address1,
+                    Resources.Address2,
+                    Resources.City,
+                    Resources.State,
+                    Resources.Zip,
+                    Resources.Country,
+                    Resources.RefundableCredit,
+                    Resources.NonRefundableCredit,
+                    Resources.LastVisit,
+                    Resources.PointsBalance,
+                    Resources.TotalSpend,
+                    Resources.AverageSpend,
+                    Resources.VisitCount,
+                    Resources.StatusList,
+                    Resources.GovIssuedIdNum,
+                    Resources.PlayerIdentity,
+                    Resources.PhoneNumber,
+                    Resources.JoinDate,
+                    Resources.Comment,
+                    Resources.MagCardNumber
+                };
+                header = header.Select(x => EscapeTextField(x)).ToList(); // return me a list with all the strings sanitized
+                writer.WriteLine(String.Join(Resources.ExportSeparator, header)); // write the comma separated list to the file
+
+                // Note: if we want to speed up this next part even more, we could do something like the following:
+                // use a StringBuilder and we wait to write the data to the file till we get a couple hundred players or so (or once we reach the end)
+                List<object> playerData;
+                foreach (PlayerExportItem item in listMsg.Players)
+                {
+                    if (item.Player != null)
                     {
                         // US1769 - Add more fields to export.
-                        writer.Write(item.Player.Id);
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.FirstName));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.MiddleInitial));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.LastName));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.BirthDate.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Email));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Gender));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Address1));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Address2));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.City));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.State));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Zip));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Country));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.RefundableCredit.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.NonRefundableCredit.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.LastVisit.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.PointsBalance.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.TotalSpend.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        if (/*item.AverageSpend == 0 ||*/ item.AverageSpend == null)
+                        playerData = new List<object>()
                         {
-                            writer.Write("");
-                        }
-                        else
-                        {
-                            writer.Write(item.AverageSpend);
-                        }
-//                        writer.Write(item.AverageSpend.ToString("0.00", CultureInfo.CurrentCulture));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.VisitCount);
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.StatusList));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.GovIssuedIdNumber));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.PlayerIdentity));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.PhoneNumber));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(item.Player.JoinDate.ToShortDateString());
-                        writer.Write(Resources.ExportSeparator);
-                        writer.Write(EscapeTextField(item.Player.Comment));
-                        writer.Write(Resources.ExportSeparator);
-                        writer.WriteLine(EscapeTextField(item.Player.MagneticCardNumber));
+                            item.Player.Id,
+                            item.Player.FirstName,
+                            item.Player.MiddleInitial,
+                            item.Player.LastName,
+                            item.Player.BirthDate.ToShortDateString(),
+                            item.Player.Email,
+                            item.Player.Gender,
+                            item.Player.Address1,
+                            item.Player.Address2,
+                            item.Player.City,
+                            item.Player.State,
+                            item.Player.Zip,
+                            item.Player.Country,
+                            item.Player.RefundableCredit.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.NonRefundableCredit.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.LastVisit.ToShortDateString(),
+                            item.Player.PointsBalance.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.TotalSpend.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.AverageSpend == null ? "" : item.AverageSpend.Value.ToString("0.00", CultureInfo.CurrentCulture),
+                            item.Player.VisitCount,
+                            item.StatusList,
+                            item.Player.GovIssuedIdNumber,
+                            item.Player.PlayerIdentity,
+                            item.Player.PhoneNumber,
+                            item.Player.JoinDate.ToShortDateString(),
+                            item.Player.Comment,
+                            item.Player.MagneticCardNumber
+                        };
+
+                        var sanitizedData = playerData.Select(x =>
+                            {
+                                if (x is String)
+                                    return EscapeTextField((string)x);
+                                else
+                                    return x.ToString();
+                            } ); // return me a list with all the strings sanitized. Don't sanitize values that aren't strings
+                        writer.WriteLine(String.Join(Resources.ExportSeparator, sanitizedData)); // write the comma separated list to the file
                     }
                 }
 
@@ -2073,7 +2044,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else
                 e.Result = 0;
-            
+
         }
 
         /// <summary>
@@ -2089,7 +2060,7 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = e.Error;
 
             // Did we export any players?
-            if(e.Error == null)
+            if (e.Error == null)
                 LastNumPlayersExported = (int)e.Result;
 
             // Close the wait form.
@@ -2097,6 +2068,307 @@ namespace GTI.Modules.PlayerCenter.Business
             m_waitForm.CloseForm();
             // END: DE2476
         }
+
+        #endregion
+
+        #region Print Player Raffle
+
+        // US4781
+        /// <summary>
+        /// Runs the "print player raffle" functionality on a separate thread
+        /// </summary>
+        /// <param name="playerListFilters"></param>
+        internal void StartPrintPlayerRaffle(PlayerListParams playerListFilters)
+        {
+            // Set the wait message.
+            m_waitForm.Message = Resources.WaitFormPrintingPlayerRaffle;
+            m_waitForm.CancelButtonVisible = true;
+            m_waitForm.CancelButtonClick += new EventHandler(m_waitFormPrintRaffle_CancelButtonClick);
+
+            // Create the worker thread and run it.
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = true;
+            m_worker.DoWork += new DoWorkEventHandler(PrintPlayerRaffle);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(PrintPlayerRaffleComplete);
+
+            m_worker.RunWorkerAsync(playerListFilters);
+        }
+
+        /// <summary>
+        /// Performs the player list lookup and the printing of the player raffle tickets
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintPlayerRaffle(object sender, DoWorkEventArgs e)
+        {
+            PlayerListParams listParams = (PlayerListParams)e.Argument;
+            string printer = Settings.POSreceiptPrinterName;
+
+            GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
+            try
+            {
+                listMsg.Send();
+            }
+            catch (ServerCommException ex)
+            {
+                Log("Server communication error sending the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw ex; // Don't repackage the ServerCommException
+            }
+            catch (Exception ex)
+            {
+                Log("Error processing the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+            }
+
+            if (m_worker.CancellationPending)
+                return;
+
+            decimal playerCount = listMsg.Players == null ? 0 : listMsg.Players.Length;
+
+            if (playerCount > 0)
+            {
+                // update the wait message. We're on a separate thread now, so we have to call back to the UI.
+                m_waitForm.BeginInvoke(((Action)(() =>
+                {
+                    m_waitForm.Message = String.Format(Resources.WaitFormPrintingPlayerRaffle2, playerCount);
+                    m_waitForm.ProgressBarVisible = true;
+                })));
+
+                string raffleName = listParams.ListName;
+                // if the raffle is for one day, print the gaming date and session instead of the raffle name for Colusa
+                if (!String.IsNullOrWhiteSpace(listParams.DaysOFweekAndSession)
+                    && listParams.DPDateRangeFrom != DateTime.MinValue
+                    && listParams.DPDateRangeTo != DateTime.MinValue
+                    && listParams.DPDateRangeTo.Subtract(listParams.DPDateRangeFrom).Days == 0)
+                {
+                    Dictionary<string, List<int>> dayOfWeekAndSession = ConvertDayAndSessionString(listParams.DaysOFweekAndSession);
+                    string dayOfWeek = listParams.ToLastVisit.DayOfWeek.ToString().Substring(0, 3);
+                    string allDays = "All";
+                    // if the session filter contains something in the date range
+                    if (dayOfWeekAndSession.ContainsKey(allDays) ||
+                        dayOfWeekAndSession.ContainsKey(dayOfWeek))
+                    {
+                        HashSet<int> sessions = new HashSet<int>();
+                        if (dayOfWeekAndSession.ContainsKey(allDays))
+                        {
+                            foreach (int session in dayOfWeekAndSession[allDays])
+                                sessions.Add(session);
+                        }
+                        if (dayOfWeekAndSession.ContainsKey(dayOfWeek))
+                        {
+                            foreach (int session in dayOfWeekAndSession[dayOfWeek])
+                                sessions.Add(session);
+                        }
+
+                        raffleName = String.Format("Gaming Date: {0}, Session(s): {1}",
+                            listParams.DPDateRangeFrom.ToShortDateString(), String.Join(",", sessions));
+                    }
+                }
+
+                decimal progress = 0, percentage = 0;
+                foreach (var player in listMsg.Players)
+                {
+                    try
+                    {
+                        if (m_worker.CancellationPending) // remove print objects in OS's printer queue?
+                            return;
+                        PlayerRaffleReceipt receipt = new PlayerRaffleReceipt(player, raffleName);
+                        receipt.Print(printer, 1);
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = "Error printing the player's raffle ticket " + ex.ToString();
+                        Log(message, LoggerLevel.Severe);
+                        message += Environment.NewLine + Environment.NewLine + "Would you like to continue printing?";
+                        DialogResult result = MessageForm.Show(message, "Error printing", MessageFormTypes.YesCancel);
+                        if (result == DialogResult.Cancel)
+                            break;
+                    }
+                    percentage = (++progress / playerCount) * 100.0m;
+
+                    m_worker.ReportProgress((int)percentage);
+                }
+            }
+            e.Result = (int)playerCount;
+        }
+
+        /// <summary>
+        /// Actions that occur when the player raffle print completes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintPlayerRaffleComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Set the error that occurred (if any).
+            LastAsyncException = e.Error;
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+            m_waitForm.ProgressBarVisible = false;
+        }
+
+        /// <summary>
+        /// Cancels printing the player raffle receipts
+        /// </summary>
+        internal void CancelPrintPlayerRaffle()
+        {
+            Log("Physical player raffle printing was cancelled by user", LoggerLevel.Message);
+            m_waitForm.BeginInvoke(((Action)(() =>
+            {
+                m_waitForm.Message = "Cancelling...";
+            })));
+            // Note: this should only be able to be called while the "printing raffle" window is displaying, but will cancel any worker that supports cancellation (looks like the others do not, however)
+            if (m_worker.WorkerSupportsCancellation)
+                m_worker.CancelAsync();
+        }
+
+        /// <summary>
+        /// Actions that occur when the user presses the "cancel" button on the wait form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void m_waitFormPrintRaffle_CancelButtonClick(object sender, EventArgs e)
+        {
+            m_waitForm.CancelButtonClick -= m_waitFormPrintRaffle_CancelButtonClick;
+            CancelPrintPlayerRaffle();
+
+            //Reset wait form properties
+            m_waitForm.CancelButtonVisible = false;
+        }
+
+        /// <summary>
+        /// Takes the day of week and session filter list from the player list filter and converts it into something that's easier to use
+        /// </summary>
+        /// <param name="dayAndSession">string that has a day of the week and session for use in the player list filter formatted like 'All (1),Mon (1:2:3:4:5)'</param>
+        /// <returns>a map of the 3 character day of week to the list of sessions for that day</returns>
+        internal static Dictionary<string, List<int>> ConvertDayAndSessionString(string dayAndSession)
+        {
+            Dictionary<string, List<int>> daysToSessionList = new Dictionary<string, List<int>>();
+            List<string> filters = new List<string>(dayAndSession.Split(','));
+
+            string day, sessString;
+            int dayLoc, session;
+            List<int> sessions;
+            foreach (string dayOfWeek in filters)
+            {
+                dayLoc = dayOfWeek.IndexOf("(");
+                day = dayOfWeek.Substring(0, dayLoc - 1);       // parse out the day
+                sessString = dayOfWeek.Substring(dayLoc + 1);   // take out the rest
+                sessString = sessString.Replace(")", "");       // remove parenthesis
+
+                sessions = new List<int>();
+                List<string> sesSplit = new List<string>(sessString.Split(':'));
+                foreach (string sesStr in sesSplit)             //parse out sessions
+                {
+                    if (Int32.TryParse(sesStr, out session))
+                        sessions.Add(session);
+                }
+
+                daysToSessionList.Add(day, sessions);
+            }
+
+            return daysToSessionList;
+        }
+        #endregion
+
+        #region Award Points To A List of Player
+        internal void StartAwardPointsToPlayer(PlayerListParams playerListFilters, decimal pointsAwarded)
+        {
+       
+            // Set the wait message.
+            m_waitForm.Message = Resources.WaitFormAwardPoints;
+            m_waitForm.CancelButtonVisible = true;
+            m_waitForm.CancelButtonClick += new EventHandler(m_waitFormPrintRaffle_CancelButtonClick);
+
+            // Create the worker thread and run it.
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = true;
+            m_worker.DoWork += new DoWorkEventHandler(AwardPointsToPlayerList);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AwardPointsToPlayerListeComplete);
+            object[] workerArgs = new object[2];
+            workerArgs[0] = playerListFilters;
+            workerArgs[1] = pointsAwarded;
+            m_worker.RunWorkerAsync(workerArgs);
+        }
+
+        private void AwardPointsToPlayerList(object sender, DoWorkEventArgs e)
+        {
+            object[] args = (object[])e.Argument;
+            PlayerListParams listParams = (PlayerListParams)args[0];
+            decimal t_pointsAwarded = (decimal)args[1];
+      
+
+            GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
+            try
+            {
+                listMsg.Send();
+            }
+            catch (ServerCommException ex)
+            {
+                Log("Server communication error sending the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw ex; // Don't repackage the ServerCommException
+            }
+            catch (Exception ex)
+            {
+                Log("Error processing the 'GetPlayerListReport' message " + ex.ToString(), LoggerLevel.Severe);
+                throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.GetPlayerListFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex);
+            }
+
+            if (m_worker.CancellationPending)
+                return;
+
+            decimal playerCount = listMsg.Players == null ? 0 : listMsg.Players.Length;
+
+            if (playerCount > 0)
+            {
+                m_waitForm.BeginInvoke(((Action)(() => // update the wait message. We're on a separate thread now, so we have to call back to the UI.
+                {
+                    m_waitForm.Message = String.Format(Resources.WaitFormAwardingToAGroupOfPlayer, playerCount);
+                    m_waitForm.ProgressBarVisible = true;
+                })));
+
+                decimal progress = 0, percentage = 0;
+                foreach (var player in listMsg.Players)
+                {
+                    try
+                    {
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded.ToString());
+                        msg.Send();
+                       
+                    }
+                    catch (Exception ex)
+                    {
+                        //string message = "Error printing the player's raffle ticket " + ex.ToString();
+                        //Log(message, LoggerLevel.Severe);
+                        //message += Environment.NewLine + Environment.NewLine + "Would you like to continue printing?";
+                        //DialogResult result = MessageForm.Show(message, "Error printing", MessageFormTypes.YesCancel);
+                        //if (result == DialogResult.Cancel)
+                        //    break;
+                    }
+                    percentage = (++progress / playerCount) * 100.0m;
+                    m_worker.ReportProgress((int)percentage);
+                }
+            }
+            e.Result = (int)playerCount;
+        }
+
+
+        private void AwardPointsToPlayerListeComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Set the error that occurred (if any).
+            LastAsyncException = e.Error;
+            if (e.Error == null && e.Result != null) // e.Result is null on cancellation
+               NumberOfPlayersRewarded = (int)e.Result;
+            // Close the wait form.
+            m_waitForm.CloseForm();
+            m_waitForm.ProgressBarVisible = false;
+        }
+
+        #endregion
 
         /// <summary>
         /// Cancels any pending transactions and shuts down the POS.
@@ -2106,7 +2378,7 @@ namespace GTI.Modules.PlayerCenter.Business
             Log("Shutting down.", LoggerLevel.Debug);
 
             // PDTS 1064
-            if(!m_externalMagCardReader && MagCardReader != null)
+            if (!m_externalMagCardReader && MagCardReader != null)
             {
                 MagCardReader.EndReading();
                 MagCardReader.RemoveAllSources();
@@ -2122,33 +2394,33 @@ namespace GTI.Modules.PlayerCenter.Business
             LastAsyncException = null;
 
             // FIX: DE2476
-            if(m_waitForm != null)
+            if (m_waitForm != null)
             {
                 m_waitForm.Dispose();
                 m_waitForm = null;
             }
             // END: DE2476
 
-            if(m_reportForm != null)
+            if (m_reportForm != null)
             {
                 m_reportForm.Dispose();
                 m_reportForm = null;
             }
 
-            if(m_mainMenuForm != null)
+            if (m_mainMenuForm != null)
             {
                 m_mainMenuForm.Dispose();
                 m_mainMenuForm = null;
             }
 
-            if(m_loadingForm != null)
+            if (m_loadingForm != null)
             {
                 m_loadingForm.CloseForm();
                 m_loadingForm.Dispose();
                 m_loadingForm = null;
             }
 
-            if(!Settings.ShowCursor)
+            if (!Settings.ShowCursor)
                 Cursor.Show();
 
             Settings = null;
@@ -2160,9 +2432,10 @@ namespace GTI.Modules.PlayerCenter.Business
 
             IsInitialized = false;
         }
-        #endregion
-
         #region Member Properties
+
+        public PlayerCenterSettings Settings { get; private set; }
+
         // FIX: DE2476
         internal bool IsTouchScreen { get; set; }
         // END: DE2476
@@ -2174,7 +2447,8 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <summary>
         /// Gets the Player Center's current settings.
         /// </summary>
-        public PlayerCenterSettings Settings { get; private set; }
+
+        public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
 
         /// <summary>
         /// Gets whether to allow picture capturing.
@@ -2194,14 +2468,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_errorSync)
+                lock (m_errorSync)
                 {
                     return m_asyncException;
                 }
             }
             set
             {
-                lock(m_errorSync)
+                lock (m_errorSync)
                 {
                     m_asyncException = value;
                 }
@@ -2220,14 +2494,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_findPlayerSync)
+                lock (m_findPlayerSync)
                 {
                     return m_lastFindPlayersResults;
                 }
             }
             set
             {
-                lock(m_findPlayerSync)
+                lock (m_findPlayerSync)
                 {
                     m_lastFindPlayersResults = value;
                 }
@@ -2242,14 +2516,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_lastPlayerSync)
+                lock (m_lastPlayerSync)
                 {
                     return m_lastPlayerFromServer;
                 }
             }
             set
             {
-                lock(m_lastPlayerSync)
+                lock (m_lastPlayerSync)
                 {
                     m_lastPlayerFromServer = value;
                 }
@@ -2263,14 +2537,14 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             get
             {
-                lock(m_playerPicSync)
+                lock (m_playerPicSync)
                 {
                     return m_lastPlayerPic;
                 }
             }
             set
             {
-                lock(m_playerPicSync)
+                lock (m_playerPicSync)
                 {
                     m_lastPlayerPic = value;
                 }
@@ -2283,11 +2557,15 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal int LastNumPlayersExported { get; private set; }
 
+        internal int NumberOfPlayersRewarded { get; private set; }
+
         // PDTS 1064
         /// <summary>
         /// Gets the MagneticCardReader instance for PlayerCenter.
         /// </summary>
         internal MagneticCardReader MagCardReader { get; private set; }
+
+        internal int OperatorID { get; private set; }
 
         // Rally US144
         /// <summary>
@@ -2295,41 +2573,27 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         internal void ShowReportForm()
         {
-            if(m_reportForm != null)
+            if (m_reportForm != null)
             {
                 m_reportForm.Show();//On TEST jkc
                 m_reportForm.BringToFront();
             }
         }
 
-        /// <summary>
-        /// Gets or sets the results of the last raffle return code.
-        /// </summary>
-        internal int LastRaffleReturnCode { get; set; }
+        //public int GetOperatorId()
+        //{
+        // return OperatorID;   
+        //}
 
-        /// <summary>
-        /// Gets or sets the results of the last raffle player's Id.
-        /// </summary>
-        internal int LastRafflePlayerId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the results of the last raffle player's first name.
-        /// </summary>
-        internal string LastRafflePlayerFirstName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the results of the last raffle player's last name.
-        /// </summary>
-        internal string LastRafflePlayerLastName { get; set; }
-        internal static int OperatorID { get; private set; }
         internal static List<PlayerStatus> OperatorPlayerStatusList { get; private set; }
-        internal static List<ProductList> ProductListName { get; private set; }  
+        internal static List<ProductItem> EnabledProducts { get; private set; }
         internal static List<LocationCity> ListLocationCity { get; private set; }
         internal static List<LocationState> ListLocationState { get; private set; }
         internal static List<LocationZipCode> ListLocationZipCode { get; private set; }
-        internal static List<LocationCountry> ListLocationCountry { get; private set; } 
+        internal static List<LocationCountry> ListLocationCountry { get; private set; }
 
-        
+
         #endregion
     }
 
@@ -2343,12 +2607,12 @@ namespace GTI.Modules.PlayerCenter.Business
         public DateTime FromBirthday;
         public DateTime ToBirthday;
         public bool UseGender;
-        public string Gender;      
+        public string Gender;
         public bool UsePoints;
         public bool PBIsOption;
         public bool PBIsRange;
         public string PBOptionSelected;
-        public decimal PBOptionValue;     
+        public decimal PBOptionValue;
         public decimal MinPoints;
         public decimal MaxPoints;
         public bool UseLastVisit;
@@ -2397,5 +2661,11 @@ namespace GTI.Modules.PlayerCenter.Business
         public string DaysOFweekAndSession;
         public bool IsProduct;
         public string SelectedProduct;
+        public string ListName;
+    }
+
+    internal class GetOperatorID
+    {
+        public static int operatorID;
     }
 }

@@ -5,10 +5,14 @@
 // International, Inc.
 #endregion
 
+//US4120 (ND) Add setting for Player PIN Required
+//US4147 System Settings: Set the PIN length.
+
 using System;
 using System.Globalization;
 using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties;
+using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Business
 {
@@ -19,16 +23,28 @@ namespace GTI.Modules.PlayerCenter.Business
     public class PlayerCenterSettings
     {
         #region Member Variables
-        public PlayerCenterSettings()
+
+        //US4120 changed singlton to access from Pin form
+        private static volatile PlayerCenterSettings m_instance;
+        private static readonly object m_sync = new Object();
+        private MSRSettings CardReaderSettings = new MSRSettings();
+        protected bool m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = false;
+        protected int m_ThirdPartyPlayerInterfaceID;
+        protected int m_ThirdPartyPlayerSyncMode = 0;
+        protected bool m_UsePlayerIdentityAsAccountNumber = false;
+ 
+        private PlayerCenterSettings()
         {
             SyncRoot = new object();
             DisplayMode = null;
-            Sentinels = null;
             ShowCursor = false;
             ForceEnglish = false;
             EnableLogging = false;
             PinRequired = false;
+            ThirdPartyPlayerInterfaceUsesPINLength = 0;
+            EnableAnonymousMachineAccounts = false;
         }
+
         #endregion
 
         #region Member Methods
@@ -43,10 +59,14 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 var param = (Setting)setting.Id;
 
-                switch(param)
+                switch (param)
                 {
-                    case Setting.MagneticCardSentinels:
-                        Sentinels = SentinelPair.CreatePairs(setting.Value);
+                    case Setting.PrintPlayerIdentityAsAccountNumber:
+                        m_UsePlayerIdentityAsAccountNumber = Convert.ToBoolean(setting.Value);
+                        break;
+
+                    case Setting.MagneticCardFilters:
+                        CardReaderSettings.setFilters(setting.Value);
                         break;
 
                     case Setting.ShowMouseCursor:
@@ -99,7 +119,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     case Setting.MagneticCardReaderMode:
                         MagCardMode = (MagneticCardReaderMode)Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
 
-                        if(!Enum.IsDefined(typeof(MagneticCardReaderMode), MagCardMode))
+                        if (!Enum.IsDefined(typeof(MagneticCardReaderMode), MagCardMode))
                             throw new ArgumentException();
 
                         break;
@@ -109,19 +129,65 @@ namespace GTI.Modules.PlayerCenter.Business
                         break;
 
                     // Rally DE130
-                    case Setting.StripNonAlphanumeric:
-                        StripNonAlphanumeric = Convert.ToBoolean(setting.Value);
+                    case Setting.MSRReadTriggers: //for keyboard wedge MSR, these are the characters that indicate input is from the MSR and when the input stream has stopped
+                        CardReaderSettings.setReadTriggers(setting.Value);
                         break;
 
                     case Setting.VIPRequiresPIN:
                         PinRequired = Convert.ToBoolean(setting.Value);
                         break;
+
+                    case Setting.POSReceiptPrinterName:
+                        POSreceiptPrinterName = setting.Value.ToString();
+                        break;
+
+                    case Setting.RaffleDrawingSetting:
+                        RaffleDrawingSetting = Convert.ToInt32(setting.Value);
+                        break;
+
+                    case Setting.ReceiptHeaderLine1:
+                        ReceiptHeaderLine1 = setting.Value.ToString();
+                        break;
+
+                    case Setting.ReceiptHeaderLine2:
+                        ReceiptHeaderLine2 = setting.Value.ToString();
+                        break;
+
+                    case Setting.RaffleRunFromLocation:
+                        RaffleRunLocation = Convert.ToInt32(setting.Value);
+                        break;
+
+                    case Setting.PlayerPinLength: //US4147
+                        PlayerPinLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                        break;
+
+                    //US2100 if staff has permission to adjust points to a player then get this 2 setting.
+                    case Setting.ThirdPartyPlayerInterfaceNeedPINForRating:
+                        ThirdPartyPlayerInterfaceUsesPIN = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfacePINLength:
+                        ThirdPartyPlayerInterfaceUsesPINLength = Convert.ToInt32(setting.Value, CultureInfo.InvariantCulture);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfaceGetPINWhenCardSwiped:
+                        m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped = Convert.ToBoolean(setting.Value);
+                        break;
+                    case Setting.ThirdPartyPlayerInterfaceID:
+                        m_ThirdPartyPlayerInterfaceID = Convert.ToInt32(setting.Value);                       
+                        break;
+                  
+                    case Setting.ThirdPartyPlayerSyncMode:
+                        ThirdPartyPlayerSyncMode = Convert.ToInt32(setting.Value);
+                        break;
+                   
                 }
             }
             catch
             {
             }
         }
+
+     
+    
 
         // Rally TA7897
         /// <summary>
@@ -135,14 +201,23 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
-                switch(param)
+                switch (param)
                 {
                     case LicenseSetting.CreditEnabled:
                         CreditEnabled = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
                         break;
+
+                    //US4120
+                    case LicenseSetting.NDSalesMode:
+                        NDSalesMode = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
+                        break;
+
+                    case LicenseSetting.ForceWholeProductPoints:
+                        WholePoints = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
+                        break;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new PlayerCenterException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidSetting, setting.Id, setting.Value), e);
             }
@@ -150,6 +225,49 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Member Properties
+
+        public bool ThirdPartyPlayerInterfaceUsesPIN { get; set; }
+        public int ThirdPartyPlayerInterfaceUsesPINLength { get; set; }
+        public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
+        public int ThirdPartyPlayerInterfaceID { get; set; }
+        public int ThirdPartyPlayerSyncMode { get; set; }
+    
+        public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
+        {
+            get
+            {
+                return (m_ThirdPartyPlayerInterfaceID == 0 ? false : m_ThirdPartyPlayerInterfaceGetPINWhenCardSwiped);
+            }
+        }
+
+        public bool UsePlayerIdentityAsAccountNumber
+        {
+            get
+            {
+                return m_UsePlayerIdentityAsAccountNumber;
+            }
+        }
+
+        /// <summary>
+        /// Gets an instance to Player Center Settings
+        /// </summary>
+        public static PlayerCenterSettings Instance
+        {
+            get
+            {
+                if (m_instance == null)
+                {
+                    lock (m_sync)
+                    {
+                        if (m_instance == null)
+                            m_instance = new PlayerCenterSettings();
+                    }
+                }
+
+                return m_instance;
+            }
+        }
+
         /// <summary>
         /// Gets an object that can be used to synchronize access to 
         /// the settings.
@@ -160,11 +278,6 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets or sets the display mode to use for user interfaces.
         /// </summary>
         public DisplayMode DisplayMode { get; set; }
-
-        /// <summary>
-        /// Gets or sets the magnetic card sentinel character pairs.
-        /// </summary>
-        public SentinelPair[] Sentinels { get; protected set; }
 
         /// <summary>
         /// Gets or sets whether to show the mouse cursor.
@@ -237,12 +350,16 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public string MagCardModeSettings { get; set; }
 
-        // Rally DE130
         /// <summary>
-        /// Gets or sets whether to remove non-alphanumeric characters when a 
-        /// mag. card is swiped.
+        /// Gets the setting class for the MagneticCardReader.
         /// </summary>
-        public bool StripNonAlphanumeric { get; set; }
+        public MSRSettings MSRSettingsInfo
+        {
+            get
+            {
+                return CardReaderSettings;
+            }
+        }
 
         // TA1651
         /// <summary>
@@ -250,8 +367,50 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public bool PinRequired { get; set; }
 
+        public int PlayerPinLength { get; set; } //US4120
+
         // Rally TA7897
         public bool CreditEnabled { get; set; }
+
+        public bool NDSalesMode { get; set; } //US4147
+
+        public bool WholePoints { get; set; }
+        //ALL about raffle
+        public string POSreceiptPrinterName
+        {
+            get { return UI.raffle_Setting.posRafflePrinterName; }
+            set
+            { UI.raffle_Setting.posRafflePrinterName = value; }
+        }
+
+        //    RaffleDrawingSetting = 182,
+        public int RaffleDrawingSetting
+        {
+            get { return UI.raffle_Setting.RaffleTextSetting; }
+            set { UI.raffle_Setting.RaffleTextSetting = value; }
+
+        }
+
+        // ReceiptHeaderLine1 = 189,
+        public string ReceiptHeaderLine1
+        {
+            get { return UI.raffle_Setting.OperatorName; }
+            set { UI.raffle_Setting.OperatorName = value; }
+        }
+
+        // ReceiptHeaderLine2 = 190
+        public string ReceiptHeaderLine2
+        {
+            get { return UI.raffle_Setting.SponsoredBy; }
+            set { UI.raffle_Setting.SponsoredBy = value; }
+        }
+
+        public int RaffleRunLocation
+        {
+            get { return UI.raffle_Setting.RaffleRunLocation; }
+            set { UI.raffle_Setting.RaffleRunLocation = value; }
+        }
+
         #endregion
     }
 }

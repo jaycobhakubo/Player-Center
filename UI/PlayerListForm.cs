@@ -805,13 +805,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         break;
 
                     case (int)PlayerListSettingEnum.ProductPurchased://Product purchased.
-                        m_ProductCheckBox.Checked = true;
-                        string tempProduct = pls.SettingValue.ToString() + ",";
-                        tempProduct = tempProduct.Replace("/|\\", ",");
-                        tempIndexOf = tempProduct.IndexOf(",");
+                        m_ProductCheckBox.Checked = true;     
+                        string  tempProduct = pls.SettingValue.ToString();// = pls.SettingValue.ToString() + ",";
+                        if (tempProduct != "ALL")
+                        {
+                            //tempProduct = pls.SettingValue.ToString() + ",";
+                            tempProduct = tempProduct.Replace("/|\\", ",");
+                        }
+                   
+                       
+                        //tempIndexOf = tempProduct.IndexOf(",");
                         summary_ProductPurchase2.Text = tempProduct;
                         while (tempProduct.IndexOf(",") != -1)
-                        {                            //var indexof = m_ProductCheckBox2.Items.OfType<string>().;//IndexOf(Product);
+                        {
+                            tempIndexOf = tempProduct.IndexOf(",");
+                            //var indexof = m_ProductCheckBox2.Items.OfType<string>().;//IndexOf(Product);                           
                             string Product = tempProduct.Substring(0, tempIndexOf);
 
                             // int test3 =  m_ProductCheckBox2.FindString(Product); Not working
@@ -847,7 +855,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                 }
                             }
                             tempProduct = tempProduct.Substring(tempIndexOf + 1);
-                            tempIndexOf = tempProduct.IndexOf(",");
+               
                         }
                         break;
 

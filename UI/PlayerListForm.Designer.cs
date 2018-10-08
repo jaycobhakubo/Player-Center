@@ -58,6 +58,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_closeButton = new GTI.Controls.ImageButton();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.m_listCriteriaPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.m_lastVisitBetweenLabel = new System.Windows.Forms.Label();
             this.m_averageRadio = new System.Windows.Forms.CheckBox();
@@ -88,6 +89,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listReportRadio = new System.Windows.Forms.RadioButton();
             this.m_mailingLabelRadio = new System.Windows.Forms.RadioButton();
             this.m_locationPanel = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.m_findAllVIPCheckBox = new System.Windows.Forms.CheckBox();
             this.m_locListBoxSelected = new System.Windows.Forms.ListBox();
             this.m_addItemButton = new System.Windows.Forms.Button();
@@ -97,6 +99,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_locationTypeComboBox = new System.Windows.Forms.ComboBox();
             this.m_addressIsInLabel = new System.Windows.Forms.Label();
             this.m_playDatesPanel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.m_daysPlayedCheck = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.m_rangeOptionDPTextBox = new System.Windows.Forms.TextBox();
@@ -133,6 +136,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dateRangetoDPDatePicker = new System.Windows.Forms.DateTimePicker();
             this.m_toDateRangeDPLabel = new System.Windows.Forms.Label();
             this.m_spendPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.m_RangeOptionSAPanel = new System.Windows.Forms.GroupBox();
             this.m_rangeOptionPBPanel = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -169,12 +173,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NDaysVisitedFrom = new System.Windows.Forms.TextBox();
             this.summary_NSessionVisitedFrom = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.m_ProductCheckBox2 = new CheckComboBoxTest.CheckedComboBox();
-            this.m_statusCheckComboBox = new CheckComboBoxTest.CheckedComboBox();
             this.m_checkComboAllSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_checkComboSUNSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_checkComboSATSession = new CheckComboBoxTest.CheckedComboBox();
@@ -183,6 +181,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_checkComboTHURSSession = new CheckComboBoxTest.CheckedComboBox();
             this.m_checkComboTUESession = new CheckComboBoxTest.CheckedComboBox();
             this.m_checkComboWEDSession = new CheckComboBoxTest.CheckedComboBox();
+            this.m_ProductCheckBox2 = new CheckComboBoxTest.CheckedComboBox();
+            this.m_statusCheckComboBox = new CheckComboBoxTest.CheckedComboBox();
             this.m_locListBox = new GTI.Modules.PlayerCenter.Data.MyListBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
@@ -405,6 +405,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.Controls.Add(this.m_birthdayCheck);
             this.m_listCriteriaPanel.Controls.Add(this.m_genderCheck);
             this.m_listCriteriaPanel.Name = "m_listCriteriaPanel";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
             // 
             // label2
             // 
@@ -670,6 +675,11 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_locationPanel, "m_locationPanel");
             this.m_locationPanel.Name = "m_locationPanel";
             // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
             // m_findAllVIPCheckBox
             // 
             resources.ApplyResources(this.m_findAllVIPCheckBox, "m_findAllVIPCheckBox");
@@ -748,6 +758,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_playDatesPanel.Controls.Add(this.m_toDateRangeDPLabel);
             resources.ApplyResources(this.m_playDatesPanel, "m_playDatesPanel");
             this.m_playDatesPanel.Name = "m_playDatesPanel";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
             // m_daysPlayedCheck
             // 
@@ -1054,6 +1069,11 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_spendPanel, "m_spendPanel");
             this.m_spendPanel.Name = "m_spendPanel";
             // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // m_RangeOptionSAPanel
             // 
             this.m_RangeOptionSAPanel.BackColor = System.Drawing.Color.Transparent;
@@ -1353,51 +1373,6 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
-            // 
-            // m_ProductCheckBox2
-            // 
-            this.m_ProductCheckBox2.CheckOnClick = true;
-            this.m_ProductCheckBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_ProductCheckBox2.DropDownHeight = 1;
-            resources.ApplyResources(this.m_ProductCheckBox2, "m_ProductCheckBox2");
-            this.m_ProductCheckBox2.FormattingEnabled = true;
-            this.m_ProductCheckBox2.Name = "m_ProductCheckBox2";
-            this.m_ProductCheckBox2.ValueSeparator = ", ";
-            this.m_ProductCheckBox2.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            this.m_ProductCheckBox2.Validating += new System.ComponentModel.CancelEventHandler(this.m_ProductCheckBox2_Validating);
-            // 
-            // m_statusCheckComboBox
-            // 
-            resources.ApplyResources(this.m_statusCheckComboBox, "m_statusCheckComboBox");
-            this.m_statusCheckComboBox.CheckOnClick = true;
-            this.m_statusCheckComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.m_statusCheckComboBox.DropDownHeight = 1;
-            this.m_statusCheckComboBox.FormattingEnabled = true;
-            this.m_statusCheckComboBox.Name = "m_statusCheckComboBox";
-            this.m_statusCheckComboBox.Sorted = true;
-            this.m_statusCheckComboBox.ValueSeparator = ", ";
-            this.m_statusCheckComboBox.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
-            this.m_statusCheckComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.m_statusCheckComboBox_Validating);
-            // 
             // m_checkComboAllSession
             // 
             this.m_checkComboAllSession.CheckOnClick = true;
@@ -1486,6 +1461,31 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_checkComboWEDSession.ValueSeparator = ", ";
             this.m_checkComboWEDSession.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
             // 
+            // m_ProductCheckBox2
+            // 
+            this.m_ProductCheckBox2.CheckOnClick = true;
+            this.m_ProductCheckBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_ProductCheckBox2.DropDownHeight = 1;
+            resources.ApplyResources(this.m_ProductCheckBox2, "m_ProductCheckBox2");
+            this.m_ProductCheckBox2.FormattingEnabled = true;
+            this.m_ProductCheckBox2.Name = "m_ProductCheckBox2";
+            this.m_ProductCheckBox2.ValueSeparator = ", ";
+            this.m_ProductCheckBox2.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            this.m_ProductCheckBox2.Validating += new System.ComponentModel.CancelEventHandler(this.m_ProductCheckBox2_Validating);
+            // 
+            // m_statusCheckComboBox
+            // 
+            resources.ApplyResources(this.m_statusCheckComboBox, "m_statusCheckComboBox");
+            this.m_statusCheckComboBox.CheckOnClick = true;
+            this.m_statusCheckComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.m_statusCheckComboBox.DropDownHeight = 1;
+            this.m_statusCheckComboBox.FormattingEnabled = true;
+            this.m_statusCheckComboBox.Name = "m_statusCheckComboBox";
+            this.m_statusCheckComboBox.Sorted = true;
+            this.m_statusCheckComboBox.ValueSeparator = ", ";
+            this.m_statusCheckComboBox.TextChanged += new System.EventHandler(this.m_statusCheckComboBox_TextChanged);
+            this.m_statusCheckComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.m_statusCheckComboBox_Validating);
+            // 
             // m_locListBox
             // 
             this.m_locListBox.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -1507,11 +1507,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.btnSaveList);
             this.Controls.Add(this.m_closeButton);
-            this.Controls.Add(this.m_generateButton);
             this.Controls.Add(this.m_summaryPanel);
+            this.Controls.Add(this.m_playDatesPanel);
+            this.Controls.Add(this.m_generateButton);
             this.Controls.Add(this.m_spendPanel);
             this.Controls.Add(this.m_listCriteriaPanel);
-            this.Controls.Add(this.m_playDatesPanel);
             this.Controls.Add(this.m_locationPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

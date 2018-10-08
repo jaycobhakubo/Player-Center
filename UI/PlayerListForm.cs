@@ -768,7 +768,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                 {
                                     summary_DaysWeek2.AppendText(Environment.NewLine);
                                 }
-                                summary_DaysWeek2.AppendText(Days + "/ Session: ");
+                                summary_DaysWeek2.AppendText(Days + "/Session:");
                                 populateDays(Days, cSession);
 
                                 tempDays = tempDays.Substring(tempIndexOf + 1);
@@ -1093,7 +1093,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     bool result = Int32.TryParse(Sessions.Substring(0, TempIndexOf), out session);
                     if (trchTxtBxText.TextLength > 0)
                     {
-                        trchTxtBxText.AppendText(", ");
+                        trchTxtBxText.AppendText(",");
                     }
                     trchTxtBxText.AppendText(session.ToString());
                     if (result == true)
@@ -1113,7 +1113,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (Sessions != "ALL")
                 {
                     Sessions = Sessions.Remove(Sessions.Length - 1, 1);
-                    Sessions = Sessions.Replace(":", ", ");
+                    Sessions = Sessions.Replace(":", ",");
                 }
                 cmbx.SetItemChecked(0, true);            
                 summary_DaysWeek2.AppendText(Sessions);

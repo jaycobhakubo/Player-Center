@@ -801,29 +801,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         tempDateTime = Convert.ToDateTime(pls.SettingValue);
                         m_toSpendDate.Value = tempDateTime;
                         summary_SpendDateFrom.Text = t_summary_DateFrom_dt.ToString("MMM dd") + " to " + tempDateTime.ToString("MMM dd");
-                        //summary_spendDateFrom.Text = tempDateTime.ToString();
                         break;
 
                     case (int)PlayerListSettingEnum.ProductPurchased://Product purchased.
                         m_ProductCheckBox.Checked = true;     
-                        string  tempProduct = pls.SettingValue.ToString();// = pls.SettingValue.ToString() + ",";
+                        string  tempProduct = pls.SettingValue.ToString();
                         if (tempProduct != "ALL")
                         {
-                            //tempProduct = pls.SettingValue.ToString() + ",";
                             tempProduct = tempProduct.Replace("/|\\", ",");
-                        }
-                   
-                       
-                        //tempIndexOf = tempProduct.IndexOf(",");
+                        }                   
+                      
                         summary_ProductPurchase2.Text = tempProduct;
                         while (tempProduct.IndexOf(",") != -1)
                         {
-                            tempIndexOf = tempProduct.IndexOf(",");
-                            //var indexof = m_ProductCheckBox2.Items.OfType<string>().;//IndexOf(Product);                           
-                            string Product = tempProduct.Substring(0, tempIndexOf);
-
-                            // int test3 =  m_ProductCheckBox2.FindString(Product); Not working
-                            //I have to all of this trouble just to find the index of a certain item of a checkcombobox :(.
+                            tempIndexOf = tempProduct.IndexOf(",");                       
+                            string Product = tempProduct.Substring(0, tempIndexOf);       
                             foreach (object o in m_ProductCheckBox2.Items)
                             {
 

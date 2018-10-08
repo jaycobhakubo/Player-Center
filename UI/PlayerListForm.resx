@@ -1536,9 +1536,6 @@
   <data name="&gt;&gt;summary_NSpendFrom.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="summary_ProductPurchase2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="summary_ProductPurchase2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
@@ -1956,9 +1953,6 @@
   <data name="&gt;&gt;summary_lblLocation.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="summary_Location.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="summary_Location.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
@@ -1985,9 +1979,6 @@
   </data>
   <data name="&gt;&gt;summary_Location.ZOrder" xml:space="preserve">
     <value>18</value>
-  </data>
-  <data name="summary_DaysWeek2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="summary_DaysWeek2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -4688,6 +4679,9 @@
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

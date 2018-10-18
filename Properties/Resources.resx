@@ -644,4 +644,13 @@ Reason: {0}</value>
   <data name="ArrowUpRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ArrowUpRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GameTechLogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\GameTechLogo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GameTechLogo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\GameTechLogo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlayerScreenPOSPlayerManagement" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Res\PlayerScreenPOSPlayerManagement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

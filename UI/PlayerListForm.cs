@@ -1900,7 +1900,10 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
 
-            if (ActiveButton_ == 0) { ActiveButton_ = Convert.ToInt32(ActiveButton.Tag); }
+            if (ActiveButton_ == 0) 
+            { 
+                ActiveButton_ = Convert.ToInt32(ActiveButton.Tag); 
+            }
 
             if (ActiveButton_ == 1)
             {
@@ -2568,7 +2571,8 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (imgbtn.Enabled) imgbtn.Enabled = false;
                         if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                         if (imgbtn.Visible) imgbtn.Visible = false;
-                        if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+                        //if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+                        if (m_generateButton.Enabled) m_generateButton.Enabled = false;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
                         if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
@@ -2592,7 +2596,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
                         if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
                         imgbtn.Visible = false;
-                        if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
+                        if (m_generateButton.Enabled) m_generateButton.Enabled = false;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
                         if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;

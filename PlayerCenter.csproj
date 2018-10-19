@@ -125,7 +125,6 @@
     <Compile Include="Data\DataWheelRaffle.cs" />
     <Compile Include="Data\GetMonetaryRaffleDefinitions.cs" />
     <Compile Include="Data\GetPhotoMessage.cs" />
-    <Compile Include="Data\GetPlayerTierData.cs" />
     <Compile Include="Data\GetPlayerTierRules.cs" />
     <Compile Include="Data\GetPrizeWheelRaffleDefinitions.cs" />
     <Compile Include="Data\PlayerCardSwipeMessage.cs" />
@@ -136,8 +135,6 @@
     <Compile Include="Data\SetPhotoMessage.cs" />
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
-    <Compile Include="Data\SetPlayerTierData.cs" />
-    <Compile Include="Data\SetPlayerTierRules.cs" />
     <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
     <Compile Include="Data\TiersData.cs" />
     <Compile Include="UI\CCBoxItem.cs" />

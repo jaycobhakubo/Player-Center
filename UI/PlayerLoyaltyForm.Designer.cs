@@ -59,6 +59,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.imageButton1 = new GTI.Controls.ImageButton();
@@ -76,7 +77,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -143,6 +143,7 @@
             this.imageButtonEditTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButtonEditTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButtonEditTier.Name = "imageButtonEditTier";
+            this.imageButtonEditTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButtonEditTier.UseVisualStyleBackColor = false;
             this.imageButtonEditTier.Click += new System.EventHandler(this.imageButtonEditTier_Click);
             // 
@@ -166,6 +167,7 @@
             this.colorListBoxTiers.Name = "colorListBoxTiers";
             this.colorListBoxTiers.SuppressVerticalScroll = true;
             this.colorListBoxTiers.TabStop = false;
+            this.colorListBoxTiers.TopIndexForScroll = 0;
             this.colorListBoxTiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
             // 
             // imageButtonRemoveTier
@@ -176,6 +178,7 @@
             this.imageButtonRemoveTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButtonRemoveTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButtonRemoveTier.Name = "imageButtonRemoveTier";
+            this.imageButtonRemoveTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButtonRemoveTier.TabStop = false;
             this.imageButtonRemoveTier.UseVisualStyleBackColor = false;
             this.imageButtonRemoveTier.Click += new System.EventHandler(this.imageButtonRemoveTier_Click);
@@ -188,6 +191,7 @@
             this.imageButtonAddTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButtonAddTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButtonAddTier.Name = "imageButtonAddTier";
+            this.imageButtonAddTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButtonAddTier.UseVisualStyleBackColor = false;
             this.imageButtonAddTier.Click += new System.EventHandler(this.imageButtonAddTier_Click);
             // 
@@ -200,6 +204,7 @@
             this.m_closeButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_closeButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_closeButton.Name = "m_closeButton";
+            this.m_closeButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_closeButton.UseVisualStyleBackColor = false;
             this.m_closeButton.Click += new System.EventHandler(this.m_closeButton_Click);
             // 
@@ -224,6 +229,7 @@
             this.m_cancelButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_cancelButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_cancelButton.Name = "m_cancelButton";
+            this.m_cancelButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelButton.UseVisualStyleBackColor = false;
             this.m_cancelButton.Click += new System.EventHandler(this.m_cancelButton_Click);
             // 
@@ -235,6 +241,7 @@
             this.imageButtonSave.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButtonSave.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButtonSave.Name = "imageButtonSave";
+            this.imageButtonSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButtonSave.UseVisualStyleBackColor = false;
             this.imageButtonSave.Click += new System.EventHandler(this.imageButtonSave_Click);
             // 
@@ -391,6 +398,13 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
+            // checkBox1
+            // 
+            resources.ApplyResources(this.checkBox1, "checkBox1");
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
@@ -413,6 +427,7 @@
             this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButton1.Name = "imageButton1";
+            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton1.UseVisualStyleBackColor = false;
             this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
             // 
@@ -424,6 +439,7 @@
             this.imageButton3.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButton3.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButton3.Name = "imageButton3";
+            this.imageButton3.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton3.UseVisualStyleBackColor = false;
             this.imageButton3.Click += new System.EventHandler(this.imageButton3_Click);
             // 
@@ -435,6 +451,7 @@
             this.imageButton4.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButton4.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButton4.Name = "imageButton4";
+            this.imageButton4.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton4.UseVisualStyleBackColor = false;
             this.imageButton4.Click += new System.EventHandler(this.imageButton4_Click);
             // 
@@ -525,13 +542,6 @@
             // m_errorProvider
             // 
             this.m_errorProvider.ContainerControl = this;
-            // 
-            // checkBox1
-            // 
-            resources.ApplyResources(this.checkBox1, "checkBox1");
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // PlayerLoyaltyForm
             // 

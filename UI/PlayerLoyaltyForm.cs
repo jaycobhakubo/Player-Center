@@ -500,11 +500,55 @@ namespace GTI.Modules.PlayerCenter.UI
             m_cancelButton.Enabled = false;
         }
 
+
+        bool ContinueSave = false;
         private void imageButtonSave_Click(object sender, EventArgs e)
         {
-            saveTier();
-          
+            //VALIDATE USER INPUT (check for Empty String)
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                return;
 
+            TierData new_tierData = new TierData();
+            new_tierData.TierName = txtTierName.Text;
+            new_tierData.TierColor = cboColor.BackColor.ToArgb();
+            new_tierData.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
+            new_tierData.NbrPoints = (textBoxPointsStart.Text != string.Empty) ? Convert.ToDecimal(textBoxPointsStart.Text) : -1;
+            new_tierData.Multiplier = (textBoxAwardPoints.Text != string.Empty) ? Convert.ToDecimal(textBoxAwardPoints.Text) : Convert.ToDecimal("0.00"); 
+            new_tierData.isdelete = false;
+            new_tierData.TierID = (colorListBoxTiers.SelectedIndex != -1) ? m_TierID : 0;
+            new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+
+            //UPDATE
+            if (colorListBoxTiers.SelectedIndex != -1)//Existing Tier (update)
+            {
+                TierData current_tierData = GetPlayerTierData.getPlayerTierData.Single(l => l.TierID == new_tierData.TierID);
+                if (current_tierData.Equals(new_tierData))
+                {
+                    ContinueSave = false;
+                    return;
+                }
+            }
+            else
+            {
+                new_tierData.TierID = 0;
+
+                //CheckIf the tiername already exists
+                foreach (TierData vv in GetPlayerTierData.getPlayerTierData)
+                {
+                    if (vv.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        ContinueSave = false; //do not saved.
+                        if (colorListBoxTiers.SelectedIndex == -1)//Notify user that this new item exists and cannot be saved 
+                        {
+                            m_errorProvider.SetError(txtTierName, "Name already exists.");
+                        }
+                        return;
+                    }
+                }
+            }
+            //int TierID = SetPlayerTierData.Save(new_tierData);
+
+           // saveTier();
         }
 
         private void imageButton4_Click(object sender, EventArgs e)
@@ -1003,71 +1047,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
 
         private void txtTierName_Validating(object sender, CancelEventArgs e)
-        {
+        {     
             try
             {
+
+               var t_newTierName = txtTierName.Text; 
                 if (txtTierName.Text == string.Empty)
                 {
                     e.Cancel = true;
                     m_errorProvider.SetError(txtTierName, "Please enter a Tier Name.");
                 }
-                string NewTierName = txtTierName.Text;
-                string SelectedItem_ = "";// = colorListBoxTiers.SelectedItem.ToString();
 
-                if (colorListBoxTiers.SelectedIndex != -1)//New Entry
-                {
-                    SelectedItem_ = colorListBoxTiers.SelectedItem.ToString();
-                }
-
-                if (colorListBoxTiers.SelectedIndex == -1)//new insert
-                {
-                    foreach (TierData vv in GetPlayerTierData.getPlayerTierData)
-                    {
-     
-                        if (vv.TierName.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            e.Cancel = true;
-                            m_errorProvider.SetError(txtTierName, "Name already exists.");
-                        }
-                    }
-                }
-                else if (colorListBoxTiers.SelectedIndex != -1)//if (SelectedItem_.Equals(TierName, StringComparison.InvariantCultureIgnoreCase))//check if it exists 
-                {
-                    string currentTierName = colorListBoxTiers.SelectedItem.ToString();
-                    if (currentTierName.Contains(" (default)"))
-                    {
-                        currentTierName.Replace(" (default)", "");
-                    }
-
-
-                   if (!NewTierName.Equals(currentTierName, StringComparison.InvariantCultureIgnoreCase)) //check the rest of the name in the list box
-                   
-                    {                       
-                        foreach (string r in colorListBoxTiers.Items)
-                        {
-                            if (r.Contains(" (default)"))
-                            {
-                                string rr = r.Replace(" (default)", "");
-                                if (rr.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    e.Cancel = true;
-                                    m_errorProvider.SetError(txtTierName, "Name already exists.");
-                                }
-                            }
-
-                            if (r.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-                            {
-                                e.Cancel = true;
-                                m_errorProvider.SetError(txtTierName, "Name already exists.");
-                            }
-                        }
-                    }
-
-
-                    
-                }
-
-            }
+            }                                           
             catch
             {
                 e.Cancel = true;

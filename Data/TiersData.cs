@@ -51,16 +51,18 @@ namespace GTI.Modules.PlayerCenter.Data
                 return false;
 
             if (
-                TierID  != other.TierID ||
-                TierName != other.TierName ||
+                TierID != other.TierID ||
+                TierName != other.TierName || //!TierName.Equals(other.TierName, StringComparison.InvariantCultureIgnoreCase)||
                 TierColor != other.TierColor ||
                 AmntSpend != other.AmntSpend ||
                 NbrPoints != other.NbrPoints ||
                 Multiplier != other.Multiplier ||
                 isdelete != other.isdelete
                 )
-                return false;
+            {
 
+                return false;
+            }
             return true;
         }
 

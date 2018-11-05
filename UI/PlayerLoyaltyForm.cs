@@ -502,50 +502,41 @@ namespace GTI.Modules.PlayerCenter.UI
 
 
         bool ContinueSave = false;
+        TierData new_tierData;// = new TierData();
+        TierData current_tierData;
+
         private void imageButtonSave_Click(object sender, EventArgs e)
         {
-            //VALIDATE USER INPUT (check for Empty String)
-            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
-                return;
-
-            TierData new_tierData = new TierData();
+            new_tierData = new TierData();
+            current_tierData = new TierData();
             new_tierData.TierName = txtTierName.Text;
             new_tierData.TierColor = cboColor.BackColor.ToArgb();
             new_tierData.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
             new_tierData.NbrPoints = (textBoxPointsStart.Text != string.Empty) ? Convert.ToDecimal(textBoxPointsStart.Text) : -1;
-            new_tierData.Multiplier = (textBoxAwardPoints.Text != string.Empty) ? Convert.ToDecimal(textBoxAwardPoints.Text) : Convert.ToDecimal("0.00"); 
+            new_tierData.Multiplier = (textBoxAwardPoints.Text != string.Empty) ? Convert.ToDecimal(textBoxAwardPoints.Text) : Convert.ToDecimal("0.00");
             new_tierData.isdelete = false;
             new_tierData.TierID = (colorListBoxTiers.SelectedIndex != -1) ? m_TierID : 0;
             new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-
+           
             //UPDATE
             if (colorListBoxTiers.SelectedIndex != -1)//Existing Tier (update)
             {
-                TierData current_tierData = GetPlayerTierData.getPlayerTierData.Single(l => l.TierID == new_tierData.TierID);
+                current_tierData = GetPlayerTierData.getPlayerTierData.Single(l => l.TierID == new_tierData.TierID);
                 if (current_tierData.Equals(new_tierData))
                 {
                     ContinueSave = false;
                     return;
                 }
             }
-            else
+            else if (colorListBoxTiers.SelectedIndex == -1)
             {
                 new_tierData.TierID = 0;
-
-                //CheckIf the tiername already exists
-                foreach (TierData vv in GetPlayerTierData.getPlayerTierData)
-                {
-                    if (vv.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        ContinueSave = false; //do not saved.
-                        if (colorListBoxTiers.SelectedIndex == -1)//Notify user that this new item exists and cannot be saved 
-                        {
-                            m_errorProvider.SetError(txtTierName, "Name already exists.");
-                        }
-                        return;
-                    }
-                }
+               
             }
+
+            //VALIDATE USER INPUT (check for Empty String)
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                return;
             //int TierID = SetPlayerTierData.Save(new_tierData);
 
            // saveTier();
@@ -1046,16 +1037,37 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
+        #region VALIDATE USER INPUT
+        //TIERNAME
         private void txtTierName_Validating(object sender, CancelEventArgs e)
         {     
             try
             {
-
-               var t_newTierName = txtTierName.Text; 
-                if (txtTierName.Text == string.Empty)
+                if (new_tierData.TierName == string.Empty)
                 {
                     e.Cancel = true;
                     m_errorProvider.SetError(txtTierName, "Please enter a Tier Name.");
+                }
+
+                bool itExists = false;
+                if (colorListBoxTiers.SelectedIndex != -1)
+                {
+                    if (current_tierData.TierName != new_tierData.TierName)//Renaming existing tier. 
+                    {
+                      itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));                      
+                    }
+                }
+                else
+                {
+                   itExists = GetPlayerTierData.getPlayerTierData.Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));
+                
+                }
+
+                if (itExists)
+                {
+                    ContinueSave = false; //do not saved.
+                    m_errorProvider.SetError(txtTierName, "Name already exists.");
+                    return;
                 }
 
             }                                           
@@ -1096,9 +1108,9 @@ namespace GTI.Modules.PlayerCenter.UI
                         }
                         else if (colorListBoxTiers.SelectedIndex != -1)
                         {
-                            bool check = IstherAnyChangesmadeFromTheUser();
-                            if (check == true)//then lets save it
-                            {
+                            //bool check = IstherAnyChangesmadeFromTheUser();
+                            //if (check == true)//then lets save it
+                            //{
                                 //now lets check if it is being useed
                                 decimal NewAmountSpend = Convert.ToDecimal(textBoxSpendStart.Text); //textBoxPointsStart.Text);
                                 // int TierID = m_TierID;
@@ -1117,7 +1129,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                 }
                             }
  
-                        }
+                        //}
                             
                     }
                     else 
@@ -1125,9 +1137,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         e.Cancel = true;
                         m_errorProvider.SetError(textBoxSpendStart, "Not a valid decimal number.");
                     }
-
-                   
-
+                
                 }
             }
             catch
@@ -1235,74 +1245,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Cancel = true;
                 m_errorProvider.SetError(comboBoxSpend, "Atleast make one selection spend or points");
             }
-
-            //decimal ckDecimal = 0;
-
-            //if (textBoxSpendStart.Text != string.Empty)
-            //{
-            //    ckDecimal = Convert.ToDecimal(textBoxSpendStart.Text);
-            //}
-
-
-
-
-
-            //decimal ckPoints = 0;
-
-            //if (textBoxPointsStart.Text != string.Empty)
-            //{
-            //    ckPoints = Convert.ToDecimal(textBoxPointsStart.Text);
-            //}
-
-
-
-
-            //foreach (TierData CheckTier in GetPlayerTierData.getPlayerTierData)
-            //{
-
-      
-
-
-            //    string NewTierName = txtTierName.Text;
-            //    string SelectedItem_ = "";// = colorListBoxTiers.SelectedItem.ToString();
-
-
-            //    if (colorListBoxTiers.SelectedIndex != -1)
-            //    {
-            //        SelectedItem_ = colorListBoxTiers.SelectedItem.ToString();
-            //    }
-
-            //if (colorListBoxTiers.SelectedIndex == -1)//new data
-            //{
-            //    if (ckDecimal == CheckTier.AmntSpend && ckPoints == CheckTier.NbrPoints)
-            //    {
-            //        //if (vv.TierName.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-            //       // if (SelectedItem_.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-            //      //  {
-            //        MessageForm.Show("Rules already exists");
-            //        e.Cancel = true;
-
-            //      //  }
-            //    }
-            //}
-            //else if (colorListBoxTiers.SelectedIndex != -1) //what if its update 
-            //{
-            //    //Lets check if something change on the current Tier
-
-
-
-            //    if (ckDecimal == CheckTier.AmntSpend && ckPoints == CheckTier.NbrPoints)
-            //    {
-            //        //if (vv.TierName.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-            //        if (SelectedItem_.Equals(NewTierName, StringComparison.InvariantCultureIgnoreCase))
-            //        {
-            //            MessageForm.Show("Rules already exists");
-            //            e.Cancel = true;
-            //        }
-            //    }
-            //}
-
-            //}
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)

@@ -1095,49 +1095,37 @@ namespace GTI.Modules.PlayerCenter.UI
                     decimal checkinput;
                     if (Decimal.TryParse(textBoxSpendStart.Text, out checkinput))//if its a decimal
                     {
-                        //if its new insert
-                        if (colorListBoxTiers.SelectedIndex == -1)
+
+                        bool itExists = false;
+                        if (colorListBoxTiers.SelectedIndex != -1)
                         {
-                            var check = GetPlayerTierData.getPlayerTierData.Exists(p => p.AmntSpend == checkinput);
-                            if (check == true)
+
+                            if (current_tierData.AmntSpend != new_tierData.AmntSpend)
                             {
-                                //MessageBox.Show("It exists");
-                                e.Cancel = true;
-                                m_errorProvider.SetError(textBoxSpendStart, "Spend amount is being used by another Tier");
+                                itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
                             }
                         }
-                        else if (colorListBoxTiers.SelectedIndex != -1)
+                        else
                         {
-                            //bool check = IstherAnyChangesmadeFromTheUser();
-                            //if (check == true)//then lets save it
-                            //{
-                                //now lets check if it is being useed
-                                decimal NewAmountSpend = Convert.ToDecimal(textBoxSpendStart.Text); //textBoxPointsStart.Text);
-                                // int TierID = m_TierID;
-                                // exclude itself
-                                var old = GetPlayerTierData.getPlayerTierData.Where(l => l.TierID != m_TierID);
-                                //check if it exists
+                            itExists = GetPlayerTierData.getPlayerTierData.Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
 
-                                foreach (var old_ in old)
-                                {
-                                    if (old_.AmntSpend == NewAmountSpend)
-                                    {
-                                        // MessageBox.Show("It exists");
-                                        e.Cancel = true;
-                                        m_errorProvider.SetError(textBoxSpendStart, "Point amount is being used by another Tier");
-                                    }
-                                }
-                            }
- 
-                        //}
-                            
+                        }
+
+
+                        if (itExists)
+                        {
+                            e.Cancel = true;
+                            m_errorProvider.SetError(textBoxSpendStart, "Spend amount is being used by another Tier");
+                            return;
+                        }
+
                     }
-                    else 
+                    else
                     {
                         e.Cancel = true;
                         m_errorProvider.SetError(textBoxSpendStart, "Not a valid decimal number.");
                     }
-                
+
                 }
             }
             catch
@@ -1161,51 +1149,32 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
 
-
                     decimal checkinput;
-                    if (Decimal.TryParse(textBoxPointsStart.Text, out checkinput))//check if its decimal
+                    if (Decimal.TryParse(textBoxPointsStart.Text, out checkinput))//if its a decimal
                     {
 
-                       //for the new entry 
-                        if (colorListBoxTiers.SelectedIndex == -1)
+                        bool itExists = false;
+                        if (colorListBoxTiers.SelectedIndex != -1)
                         {
-                            var check = GetPlayerTierData.getPlayerTierData.Exists(p => p.NbrPoints == checkinput);//check if it already exists
-                            if (check == true)
-                            {
-                                //MessageBox.Show("It exists");
-                                e.Cancel = true;
-                                m_errorProvider.SetError(textBoxPointsStart, "Point amount is being used by another Tier");
-                            }
-                        }
-                        else if(colorListBoxTiers.SelectedIndex != -1)//means update
-                        {
-                            //Where going to stop if its being used by other tier
-                            //lets check if something change 
-                            bool check = IstherAnyChangesmadeFromTheUser();
-                            if (check == true)//then lets save it
-                            {
-                                
-                                //now lets check if it is being useed
-                               
-                                decimal NewPlayerPoints = Convert.ToDecimal(textBoxPointsStart.Text);
-                               // int TierID = m_TierID;
-                               // exclude itself
-                                var old = GetPlayerTierData.getPlayerTierData.Where(l => l.TierID != m_TierID);
-                                //check if it exists
 
-                                foreach (var old_ in old)
-                                {
-                                    if (old_.NbrPoints == NewPlayerPoints)
-                                    {
-                                       // MessageBox.Show("It exists");
-                                        e.Cancel = true;
-                                        m_errorProvider.SetError(textBoxPointsStart, "Point amount is being used by another Tier");
-                                    }
-                                }                                
-                            }
-                
+                            if (current_tierData.NbrPoints != new_tierData.NbrPoints)
+                            {
+                                itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.NbrPoints.Equals(new_tierData.NbrPoints));
+                            }                                                     
                         }
-                    
+                        else
+                        {
+                            itExists = GetPlayerTierData.getPlayerTierData.Exists(l => l.NbrPoints.Equals(new_tierData.NbrPoints));
+                             
+                        }
+
+
+                        if (itExists)
+                        {
+                            e.Cancel = true;
+                            m_errorProvider.SetError(textBoxPointsStart, "Point amount is being used by another Tier");
+                            return;
+                        }                   
                     }
                     else
                     {
@@ -1246,6 +1215,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(comboBoxSpend, "Atleast make one selection spend or points");
             }
         }
+        #endregion
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {

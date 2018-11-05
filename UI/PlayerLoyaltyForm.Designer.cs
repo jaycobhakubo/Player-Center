@@ -270,6 +270,7 @@
             resources.GetString("comboBoxPoints.Items1")});
             this.comboBoxPoints.Name = "comboBoxPoints";
             this.comboBoxPoints.SelectedIndexChanged += new System.EventHandler(this.comboBoxPoints_SelectedIndexChanged);
+            this.comboBoxPoints.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
             // comboBoxSpend
             // 

@@ -340,6 +340,27 @@ namespace GTI.Modules.PlayerCenter.UI
             m_errorProvider.SetError(comboBoxSpend, string.Empty);
         }
 
+        private void NoChangeSetControl()
+        {
+            // MessageForm.Show("No changes made.");
+            lbl_MessageSaved.Visible = true;
+            if (colorListBoxTiers.Items.Count > 0)
+            {
+                imageButtonRemoveTier.Enabled = true;
+                imageButtonEditTier.Enabled = true;
+                imageButtonAddTier.Enabled = true;
+                colorListBoxTiers.Enabled = true;
+            }
+            DisableControls();
+            int Color_ = cboColor.BackColor.ToArgb();
+            if (Color_ == -1)
+            {
+                cboColor.BackColor = SystemColors.Control;
+            }
+            imageButtonSave.Enabled = false;
+            m_cancelButton.Enabled = false;
+        }
+
         private void saveTier()
         {
             if (colorListBoxTiers.SelectedIndex != -1)
@@ -507,8 +528,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imageButtonSave_Click(object sender, EventArgs e)
         {
-            new_tierData = new TierData();
-            current_tierData = new TierData();
+            ClearALLError();
+            new_tierData = new TierData();      
             new_tierData.TierName = txtTierName.Text;
             new_tierData.TierColor = cboColor.BackColor.ToArgb();
             new_tierData.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
@@ -517,7 +538,7 @@ namespace GTI.Modules.PlayerCenter.UI
             new_tierData.isdelete = false;
             new_tierData.TierID = (colorListBoxTiers.SelectedIndex != -1) ? m_TierID : 0;
             new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-           
+            current_tierData = new TierData();
             //UPDATE
             if (colorListBoxTiers.SelectedIndex != -1)//Existing Tier (update)
             {
@@ -535,11 +556,80 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             //VALIDATE USER INPUT (check for Empty String)
+
+           // var testr = !ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible);
+
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
-            //int TierID = SetPlayerTierData.Save(new_tierData);
 
-           // saveTier();
+            int TierID = SetPlayerTierData.Save(new_tierData);//
+            if (m_TierID == 0)
+            {
+                colorListBoxTiers.Items.Add(txtTierName.Text);
+                new_tierData.TierID = TierID;
+                GetPlayerTierData.getPlayerTierData.Add(new_tierData);
+                cmbx_DefaultTier.Items.Add(txtTierName.Text);
+                ClearTiersTab();
+                DisableControls();
+                int countItem = colorListBoxTiers.Items.Count;
+                colorListBoxTiers.SelectedIndex = countItem - 1;
+
+            }
+            else if (m_TierID != 0)
+            {
+                int i = colorListBoxTiers.SelectedIndex;
+
+                string x = colorListBoxTiers.SelectedItem.ToString();
+                if (x.Contains(" (default)"))
+                {
+                    x = x.Replace(" (default)", "");
+                    colorListBoxTiers.Items[i] = txtTierName.Text + " (default)";//rename
+                }
+                else
+                {
+                    colorListBoxTiers.Items[i] = txtTierName.Text;
+                }
+
+                int ii = cmbx_DefaultTier.Items.IndexOf(x);
+                cmbx_DefaultTier.Items[ii] = txtTierName.Text;
+
+                TierData a = GetPlayerTierData.getPlayerTierData.Single(l => l.TierName == x);
+                if (a != null)
+                {
+                    a.TierName = txtTierName.Text;
+                    if (textBoxSpendStart.Text == string.Empty)
+                    {
+                        a.AmntSpend = -1;
+                    }
+                    else
+                    {
+                        a.AmntSpend = Convert.ToDecimal(textBoxSpendStart.Text);
+                    }
+
+                    if (textBoxPointsStart.Text == string.Empty)
+                    {
+                        a.NbrPoints = -1;
+                    }
+                    else
+                    {
+                        a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
+                    }
+                    // a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
+                }
+            }
+            lbl_MessageSaved.Visible = true;
+            if (colorListBoxTiers.Items.Count > 0)
+            {
+                imageButtonRemoveTier.Enabled = true;
+                imageButtonEditTier.Enabled = true;
+                imageButtonAddTier.Enabled = true;
+                colorListBoxTiers.Enabled = true;
+            }
+
+            imageButtonSave.Enabled = false;
+            m_cancelButton.Enabled = false;
+
+            //saveTier();
         }
 
         private void imageButton4_Click(object sender, EventArgs e)
@@ -1045,8 +1135,9 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (new_tierData.TierName == string.Empty)
                 {
-                    e.Cancel = true;
+                  
                     m_errorProvider.SetError(txtTierName, "Please enter a Tier Name.");
+                    e.Cancel = true;
                 }
 
                 bool itExists = false;
@@ -1054,7 +1145,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (current_tierData.TierName != new_tierData.TierName)//Renaming existing tier. 
                     {
-                      itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));                      
+                        itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));
+                    }
+                    else
+                    {
+                        e.Cancel = true;
                     }
                 }
                 else
@@ -1067,7 +1162,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     ContinueSave = false; //do not saved.
                     m_errorProvider.SetError(txtTierName, "Name already exists.");
-                    return;
+                    e.Cancel = true;
                 }
 
             }                                           
@@ -1103,6 +1198,10 @@ namespace GTI.Modules.PlayerCenter.UI
                             if (current_tierData.AmntSpend != new_tierData.AmntSpend)
                             {
                                 itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
+                            }
+                            else
+                            {
+                                e.Cancel = true;
                             }
                         }
                         else

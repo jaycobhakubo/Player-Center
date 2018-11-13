@@ -133,7 +133,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.txtTierName);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             // 
             // imageButtonEditTier
             // 

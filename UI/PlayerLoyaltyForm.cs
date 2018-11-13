@@ -351,6 +351,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 imageButtonAddTier.Enabled = true;
                 colorListBoxTiers.Enabled = true;
             }
+
             DisableControls();
             int Color_ = cboColor.BackColor.ToArgb();
             if (Color_ == -1)
@@ -361,172 +362,12 @@ namespace GTI.Modules.PlayerCenter.UI
             m_cancelButton.Enabled = false;
         }
 
-        private void saveTier()
-        {
-            if (colorListBoxTiers.SelectedIndex != -1)
-            {
-                bool check = false;
-                check = IstherAnyChangesmadeFromTheUser();
-                if (check == false)
-                {
-                    // MessageForm.Show("No changes made.");
-                    lbl_MessageSaved.Visible = true;
-                    if (colorListBoxTiers.Items.Count > 0)
-                    {
-                        imageButtonRemoveTier.Enabled = true;
-                        imageButtonEditTier.Enabled = true;
-                        imageButtonAddTier.Enabled = true;
-                        colorListBoxTiers.Enabled = true;
-                    }
-                    DisableControls();
-                    int Color_ = cboColor.BackColor.ToArgb();
-                    if (Color_ == -1)
-                    {
-                        cboColor.BackColor = SystemColors.Control;
-                    }
-                    imageButtonSave.Enabled = false;
-                    m_cancelButton.Enabled = false;
-                 
-                    return;
-                }
-            }
-
-
-            m_errorProvider.SetError(txtTierName, string.Empty);
-            m_errorProvider.SetError(textBoxSpendStart, string.Empty);
-            m_errorProvider.SetError(textBoxPointsStart, string.Empty);
-            m_errorProvider.SetError(textBoxAwardPoints, string.Empty);
-            m_errorProvider.SetError(comboBoxSpend, string.Empty);
-
-            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
-                return;
-
-            //bool QualifyingSpend = false;
-            //if (Convert.ToString(comboBoxSpend.SelectedItem) == "Yes")
-            //{ QualifyingSpend = true; }
-            //else { QualifyingSpend = false; }
-
-            //bool QualifyingPoints = false;
-            //if (Convert.ToString(comboBoxPoints.SelectedItem) == "Yes")
-            //{ QualifyingPoints = true; }
-            //else { QualifyingPoints = false; }
-
-            TierData Code1 = new TierData();
-
-            if (m_TierID != 0)
-            {
-                Code1.TierID = m_TierID;
-            }
-
-
-
-            Code1.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;//single row
-
-            if (txtTierName.Text.Contains(" (default)"))
-            {
-                string Test = txtTierName.Text;
-                Code1.TierName = txtTierName.Text.Replace(" (default)", "");
-            }
-            else
-            {
-                Code1.TierName = txtTierName.Text;
-            }
-
-            Code1.TierColor = cboColor.BackColor.ToArgb();
-            if (textBoxSpendStart.Text != string.Empty)
-            {
-                Code1.AmntSpend = Convert.ToDecimal(textBoxSpendStart.Text);
-            }
-            else { Code1.AmntSpend = -1; } //= Convert.ToDecimal("0.00");}//send a negative value or empty string will work this afternoon
-            if (textBoxPointsStart.Text != string.Empty)
-            {
-                Code1.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
-            }
-            else
-            { Code1.NbrPoints = -1; }//Convert.ToDecimal("0.00");}
-
-            if (textBoxAwardPoints.Text != string.Empty)
-            {
-                Code1.Multiplier = Convert.ToDecimal(textBoxAwardPoints.Text);
-            }
-            else
-            { Code1.Multiplier = Convert.ToDecimal("0.00"); }//error provider -> will not allow you enter a empty string
-            SetTiersData.tiersData = Code1;
-            Code1.isdelete = false;
-            int TierID = SetPlayerTierData.Save(Code1);//
-            if (m_TierID == 0)
-            {
-                colorListBoxTiers.Items.Add(txtTierName.Text);
-                Code1.TierID = TierID;
-                GetPlayerTierData.getPlayerTierData.Add(Code1);
-                cmbx_DefaultTier.Items.Add(txtTierName.Text);
-                ClearTiersTab();
-                DisableControls();
-                int countItem = colorListBoxTiers.Items.Count;
-                colorListBoxTiers.SelectedIndex = countItem - 1;
-
-            }
-            else if (m_TierID != 0)
-            {
-                int i = colorListBoxTiers.SelectedIndex;
-              
-                string x = colorListBoxTiers.SelectedItem.ToString();
-                if (x.Contains(" (default)"))
-                {
-                    x = x.Replace(" (default)", "");
-                    colorListBoxTiers.Items[i] = txtTierName.Text + " (default)";//rename
-                }
-                else
-                {
-                    colorListBoxTiers.Items[i] = txtTierName.Text;
-                }
-
-                int ii = cmbx_DefaultTier.Items.IndexOf(x);
-                cmbx_DefaultTier.Items[ii] = txtTierName.Text;
-
-                TierData a = GetPlayerTierData.getPlayerTierData.Single(l => l.TierName == x);
-                if (a != null)
-                {
-                    a.TierName = txtTierName.Text;
-                    if (textBoxSpendStart.Text == string.Empty)
-                    {
-                        a.AmntSpend = -1;
-                    }
-                    else
-                    {
-                        a.AmntSpend = Convert.ToDecimal(textBoxSpendStart.Text);
-                    }
-
-                    if (textBoxPointsStart.Text == string.Empty)
-                    {
-                        a.NbrPoints = -1;
-                    }
-                    else
-                    {
-                        a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
-                    }
-                    // a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
-                }
-            }
-            lbl_MessageSaved.Visible = true;
-            if (colorListBoxTiers.Items.Count > 0)
-            {
-                imageButtonRemoveTier.Enabled = true;
-                imageButtonEditTier.Enabled = true;
-                imageButtonAddTier.Enabled = true;
-                colorListBoxTiers.Enabled = true;
-            }
-
-            imageButtonSave.Enabled = false;
-            m_cancelButton.Enabled = false;
-        }
-
-
         bool ContinueSave = false;
         TierData new_tierData;// = new TierData();
         TierData current_tierData;
 
-        private void imageButtonSave_Click(object sender, EventArgs e)
+
+        private void imageButtonSave_Click(object sender, EventArgs e)//SAVED tier
         {
             ClearALLError();
             new_tierData = new TierData();      
@@ -539,7 +380,7 @@ namespace GTI.Modules.PlayerCenter.UI
             new_tierData.TierID = (colorListBoxTiers.SelectedIndex != -1) ? m_TierID : 0;
             new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
             current_tierData = new TierData();
-            //UPDATE
+  
             if (colorListBoxTiers.SelectedIndex != -1)//Existing Tier (update)
             {
                 current_tierData = GetPlayerTierData.getPlayerTierData.Single(l => l.TierID == new_tierData.TierID);
@@ -551,16 +392,11 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (colorListBoxTiers.SelectedIndex == -1)
             {
-                new_tierData.TierID = 0;
-               
+                new_tierData.TierID = 0;               
             }
 
-            //VALIDATE USER INPUT (check for Empty String)
-
-           // var testr = !ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible);
-
-            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
-                return;
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
+            return;
 
             int TierID = SetPlayerTierData.Save(new_tierData);//
             if (m_TierID == 0)
@@ -588,11 +424,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                 {
                     colorListBoxTiers.Items[i] = txtTierName.Text;
+                    colorListBoxTiers.Update();
+                    colorListBoxTiers.Refresh();
                 }
 
                 int ii = cmbx_DefaultTier.Items.IndexOf(x);
                 cmbx_DefaultTier.Items[ii] = txtTierName.Text;
 
+                
                 TierData a = GetPlayerTierData.getPlayerTierData.Single(l => l.TierName == x);
                 if (a != null)
                 {
@@ -628,8 +467,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
             imageButtonSave.Enabled = false;
             m_cancelButton.Enabled = false;
-
-            //saveTier();
         }
 
         private void imageButton4_Click(object sender, EventArgs e)
@@ -737,26 +574,26 @@ namespace GTI.Modules.PlayerCenter.UI
         private void colorListBoxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearALLError();
-            lbl_MessageSaved.Visible = false;
+            if (lbl_MessageSaved.Visible)lbl_MessageSaved.Visible = false;
            
-    
-
             if (colorListBoxTiers.SelectedIndex != -1)
             {
 
                 object tiername = colorListBoxTiers.SelectedItem;
                 string TierName = Convert.ToString(tiername);
+
                 if (TierName.Contains(" (default)"))
-                {
+                {                    
                     TierName = TierName.Replace(" (default)", string.Empty);
                 }
+
                 int TierID = 0;                         
                 var z = GetPlayerTierData.getPlayerTierData.Where(l => l.TierName == TierName);
+
                 foreach (var a in z)
                 {
                     TierID = a.TierID;
-                    m_TierID = a.TierID;
-                   
+                    m_TierID = a.TierID;                   
                 }
 
                 if (m_TierID != 0)
@@ -770,8 +607,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 foreach (TierData x in DTierData)
                 {
                     txtTierName.Text = x.TierName;
-                   // label2.Text = x.TierName;
-
                     cboColor.BackColor = Color.FromArgb(x.TierColor);
                     m_color = x.TierColor;
                     bool y = false;
@@ -808,15 +643,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     textBoxSpendStart.Text = "";
                     }
 
-
-                  
-               
-                    //string AmountSpend = Math.Round(double.Parse(x.AmntSpend.ToString()), 2).ToString();//= Convert.ToString(x.AmntSpend);
-                    //textBoxSpendStart.Text = string.Format("{0:0.##}", AmountSpend); //Convert.ToString(x.AmntSpend);
-                    //textBoxSpendStart.Text =  Math.Round(double.Parse(x.AmntSpend.ToString()), 2).ToString();
-
-                 
-
                     if (x.NbrPoints != -1)
                     {
                         comboBoxPoints.SelectedIndex = 0;
@@ -850,10 +676,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         comboBoxPoints.SelectedIndex = 1;//NO
                         textBoxPointsStart.Text = "";
                     }
-
-                    
-
-
+                  
                     y = x.Multiplier == (Int64)x.Multiplier;
                     if (y == true)
                     {
@@ -876,8 +699,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             textBoxPointsStart.Text = Convert.ToString(x.Multiplier);
                         }
-                    }
-                    
+                    }                  
                 }
 
                 textBoxSpendStart.Enabled = false;
@@ -894,21 +716,15 @@ namespace GTI.Modules.PlayerCenter.UI
             imageButtonEditTier.Enabled = true;
             imageButtonRemoveTier.Enabled = true;
             imageButtonAddTier.Enabled = true;
-            //if its a default color then disable
-           int Color_ = cboColor.BackColor.ToArgb();
+            int Color_ = cboColor.BackColor.ToArgb();
+
             if (Color_ == -1)
             {
                cboColor.BackColor = SystemColors.Control;
             }
 
-
-
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void imageButtonRemoveTier_Click(object sender, EventArgs e)
         {
@@ -918,30 +734,14 @@ namespace GTI.Modules.PlayerCenter.UI
             if (ItemSelected.Contains(" (default)"))
             {
                 ItemSelected = ItemSelected.Replace(" (default)", string.Empty);
-            }
-   
-            /*
-            if (MessageForm.Show("You are about to delete this " + ItemSelected + " Tier. \nDo you want to continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-
-            }*/
+            }     
 
             if (MessageForm.Show("Are you sure you want to permanently delete this " + ItemSelected + " Tier." , "Player Loyalty", MessageFormTypes.YesNo) == DialogResult.No)
             {
                 return;
             }
-
-
-           // return MessageForm.Show(Resources.Changes, Resources.PlayerCenterName, MessageFormTypes.YesNo) == DialogResult.Yes;
-
-            /*
-            if (MessageBox.Show("You are about to delete this " + ItemSelected + " Tier. \nDo you want to continue?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-
-            { return; }*/
  
-
-            lbl_MessageSaved.Visible = false;
-            
+            lbl_MessageSaved.Visible = false;           
             TierData code1 = new TierData();
             code1.TierID = m_TierID;
             code1.TierRulesID = 0;
@@ -952,19 +752,15 @@ namespace GTI.Modules.PlayerCenter.UI
             code1.Multiplier = 0;
             code1.isdelete = true;
             SetPlayerTierData.Save(code1);
-            
-           
-            colorListBoxTiers.Items.RemoveAt(CurrentIndex);
-
-           
+                   
+            colorListBoxTiers.Items.RemoveAt(CurrentIndex);          
             CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
             cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
-
             GetPlayerTierData.getPlayerTierData.RemoveAll(i => i.TierID == m_TierID);
-            GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;
-      
+            GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;     
             colorListBoxTiers.SelectedIndex = -1; 
             ClearTiersTab();
+
             if (colorListBoxTiers.Items.Count == 0)
             {
                 imageButtonRemoveTier.Enabled = false;
@@ -1146,16 +942,11 @@ namespace GTI.Modules.PlayerCenter.UI
                     if (current_tierData.TierName != new_tierData.TierName)//Renaming existing tier. 
                     {
                         itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                    }
+                    }             
                 }
                 else
                 {
-                   itExists = GetPlayerTierData.getPlayerTierData.Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));
-                
+                   itExists = GetPlayerTierData.getPlayerTierData.Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));                
                 }
 
                 if (itExists)

@@ -104,17 +104,13 @@ namespace GTI.Modules.PlayerCenter.Data
                     }
 
                     tierData.Add(code);
-                    //you can save it too 
+
                     if (TierID == 0)
                     {
                         GetPlayerTierData.getPlayerTierData.Add(code);
                     }
-                        //tempDec = m_params.FromSpend.ToString("N", CultureInfo.InvariantCulture);
-                    //requestWriter.Write((ushort)tempDec.Length);
-                    //requestWriter.Write(tempDec.ToCharArray());
                 }
 
-                //  code.TierID = responseReader]
             }
             catch (EndOfStreamException e)
             {

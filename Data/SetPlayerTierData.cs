@@ -13,18 +13,15 @@ namespace GTI.Modules.PlayerCenter.Data
 {
    public class SetPlayerTierData :  ServerMessage
     {
-       protected const int ResponseMessageLenght = 8;//4 or 8 or 6
-       
+       protected const int ResponseMessageLenght = 8;//4 or 8 or 6       
        private int TierID { get; set; }
        private int TierRulesID { get; set; }
        private string TierName { get; set; }
        private int TierColor { get; set; }
-       //are we sending decimal? Let us try
        private decimal AmntSpend { get; set; }
        private decimal NbrPoints { get; set; }
        private decimal PtsMultiplier { get; set; }
        private bool isdelete { get; set; }
-       //do we need an opewratorId? 
 
        public SetPlayerTierData(TierData td)//td is emtpy we can get the one that has data let us try this for now
        {
@@ -37,7 +34,6 @@ namespace GTI.Modules.PlayerCenter.Data
            NbrPoints = td.NbrPoints;
            PtsMultiplier = td.Multiplier;
            isdelete = td.isdelete;
-           //delete byte 
        }
 
        public static int Save(TierData td)
@@ -51,8 +47,6 @@ namespace GTI.Modules.PlayerCenter.Data
            {
                throw new Exception("SetPlayerTierData: " + ex.Message);
            }
-
-
            return msg.TierID;
        }
 

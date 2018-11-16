@@ -26,6 +26,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private int m_TierID = 0;
         private int m_color;
         int DefaultTierIndex = -2;
+        bool ContinueSave = false;
+        TierData new_tierData;// = new TierData();
+        TierData current_tierData;
+
 
         public PlayerLoyaltyForm()
         {
@@ -33,12 +37,12 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxSpend.SelectedIndex = 1;
             comboBoxPoints.SelectedIndex = 1;
             cmbx_DefaultTier.Items.Clear();
-            colorListBoxTiers.Items.Clear();
-            GetPlayerTierData.getPlayerTierData.Clear();
-            
+            colorListBoxTiers.Items.Clear();       
             dateTimePicker1.Value = DateTime.Now.AddYears(1); 
+
             GetPlayerTierRulesDatam.GetPlayerTierRules();
             DisplayPlayerRule();
+            GetPlayerTierData.getPlayerTierData.Clear();    
             List_PlayerTierData = GetPlayerTierDatam.getPlayertierData(0);
             DisplayTierName();
 
@@ -362,9 +366,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_cancelButton.Enabled = false;
         }
 
-        bool ContinueSave = false;
-        TierData new_tierData;// = new TierData();
-        TierData current_tierData;
 
 
         private void imageButtonSave_Click(object sender, EventArgs e)//SAVED tier

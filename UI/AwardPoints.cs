@@ -87,7 +87,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         IsPointsAwardedSuccess = true;
                         PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                        MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                       // MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                     }
                 }
                 catch
@@ -97,7 +97,7 @@ namespace GTI.Modules.PlayerCenter.UI
                
             }
 
-            DialogResult = DialogResult.OK;
+            //DialogResult = DialogResult.OK;
             Close();
         }
 

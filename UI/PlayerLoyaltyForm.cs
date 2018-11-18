@@ -12,7 +12,8 @@ using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.PlayerCenter;
 //using System.Globalization;
 //using GTI.Modules.PlayerCenter.Business;
-using GTI.Modules.PlayerCenter.Properties; 
+using GTI.Modules.PlayerCenter.Properties;
+using GTI.Modules.Shared.Business; 
 //using GTI.Modules.PlayerCenter.Data; //US2469    
 //using System.Collections.Generic;  //US2469
 
@@ -29,7 +30,9 @@ namespace GTI.Modules.PlayerCenter.UI
         bool ContinueSave = false;
         TierData new_tierData;// = new TierData();
         TierData current_tierData;
-
+        //************************************
+        private List<TierRule> m_listTierRule; 
+        //**************************************
 
         public PlayerLoyaltyForm()
         {
@@ -37,7 +40,7 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxSpend.SelectedIndex = 1;
             comboBoxPoints.SelectedIndex = 1;
             cmbx_DefaultTier.Items.Clear();
-            colorListBoxTiers.Items.Clear();       
+            listbox_Tiers.Items.Clear();       
             dateTimePicker1.Value = DateTime.Now.AddYears(1); 
 
             GetPlayerTierRulesDatam.GetPlayerTierRules();
@@ -46,9 +49,9 @@ namespace GTI.Modules.PlayerCenter.UI
             List_PlayerTierData = GetPlayerTierDatam.getPlayertierData(0);
             DisplayTierName();
 
-            if (colorListBoxTiers.Items.Count > 0)
+            if (listbox_Tiers.Items.Count > 0)
             {
-              colorListBoxTiers.SelectedIndex = 0;
+              listbox_Tiers.SelectedIndex = 0;
           }
           else
           {              
@@ -58,19 +61,19 @@ namespace GTI.Modules.PlayerCenter.UI
 
            DisableControls();
             DisableContorls_TierRules();
-            if (colorListBoxTiers.Items.Count > 0) 
+            if (listbox_Tiers.Items.Count > 0) 
             {
                 DiplayTierNameInTierRule();
             }
 
             //Lets check this out 
-            if (colorListBoxTiers.Items.Count == 0)
+            if (listbox_Tiers.Items.Count == 0)
             {
                 cboColor.BackColor = SystemColors.Control;
             }
 
             m_cancelButton.Enabled = false;
-            imageButtonSave.Enabled = false;
+            btn_Save.Enabled = false;
 
             
         }
@@ -102,23 +105,23 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxSpend.Enabled = false;
             textBoxSpendStart.Enabled = false;
             comboBoxPoints.Enabled = false;
-            textBoxPointsStart.Enabled = false;
-            textBoxAwardPoints.Enabled = false;
+            textbox_PointsStart.Enabled = false;
+            textbox_AwardPointsMultiplier.Enabled = false;
 
             txtTierName.BackColor = SystemColors.Control;
             //cboColor.BackColor = SystemColors.Control;
             comboBoxSpend.BackColor = SystemColors.Control;
             textBoxSpendStart.BackColor = SystemColors.Control;
             comboBoxPoints.BackColor = SystemColors.Control;
-            textBoxPointsStart.BackColor = SystemColors.Control;
-            textBoxAwardPoints.BackColor = SystemColors.Control;
+            textbox_PointsStart.BackColor = SystemColors.Control;
+            textbox_AwardPointsMultiplier.BackColor = SystemColors.Control;
 
 
         }
 
         private void DisableContorls_TierRules()
         {
-            dateTimePicker2.Enabled = false;
+            deytympiker_QualifyingPeriodStart.Enabled = false;
             dateTimePicker1.Enabled = false;
             cmbx_DefaultTier.Enabled = false;
             comboBoxRestart.Enabled = false;
@@ -130,7 +133,7 @@ namespace GTI.Modules.PlayerCenter.UI
             cboColor.Enabled = true;
             comboBoxSpend.Enabled = true;
             comboBoxPoints.Enabled = true;
-            textBoxAwardPoints.Enabled = true;
+            textbox_AwardPointsMultiplier.Enabled = true;
 
             txtTierName.BackColor = SystemColors.Window;
             //cboColor.BackColor = SystemColors.Window;
@@ -138,13 +141,13 @@ namespace GTI.Modules.PlayerCenter.UI
             //textBoxSpendStart.BackColor = SystemColors.Control;
             comboBoxPoints.BackColor = SystemColors.Window;
             //textBoxPointsStart.BackColor = SystemColors.Control;
-            textBoxAwardPoints.BackColor = SystemColors.Window;
+            textbox_AwardPointsMultiplier.BackColor = SystemColors.Window;
 
         }
 
         private void EnableContorls_TierRules()
         {
-            dateTimePicker2.Enabled = true;
+            deytympiker_QualifyingPeriodStart.Enabled = true;
             dateTimePicker1.Enabled = true;
             cmbx_DefaultTier.Enabled = true;
             comboBoxRestart.Enabled = true;
@@ -165,12 +168,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (TierName_.TierID == defaulttier)
                 {
                     
-                     colorListBoxTiers.Items.Add(TierName_.TierName + " (default)");
+                     listbox_Tiers.Items.Add(TierName_.TierName + " (default)");
                 }
                 else
                 {
-                    colorListBoxTiers.Items.Add(TierName_.TierName);
-                    colorListBoxTiers.Tag = TierName_.TierID;
+                    listbox_Tiers.Items.Add(TierName_.TierName);
+                    listbox_Tiers.Tag = TierName_.TierID;
                 }
 
                 i++;
@@ -186,7 +189,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (checkTierRulesID != 0)
             {
-                dateTimePicker2.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingStartDate;
+                deytympiker_QualifyingPeriodStart.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingStartDate;
                 dateTimePicker1.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingEndDate;
 
                 int checkDefaultTier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
@@ -214,11 +217,11 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             ClearALLError();
 
-            imageButtonSave.Enabled = true;
+            btn_Save.Enabled = true;
             m_cancelButton.Enabled = true;
 
             lbl_MessageSaved.Visible = false;
-            colorListBoxTiers.SelectedIndex = -1; 
+            listbox_Tiers.SelectedIndex = -1; 
             ClearTiersTab();
             comboBoxSpend.SelectedIndex = 1;
             comboBoxPoints.SelectedIndex = 1;
@@ -236,8 +239,8 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxSpend.SelectedIndex = 1;
             textBoxSpendStart.Text = "";
             comboBoxPoints.SelectedIndex = 1;
-            textBoxPointsStart.Text = "";
-            textBoxAwardPoints.Text = "1.00";
+            textbox_PointsStart.Text = "";
+            textbox_AwardPointsMultiplier.Text = "1.00";
             cboColor.BackColor = SystemColors.ButtonHighlight;
             //label2.Text = "";
             m_TierID = 0;
@@ -266,15 +269,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (comboBoxPoints.SelectedIndex == 0)
             {
-                textBoxPointsStart.Enabled = true;
-                textBoxPointsStart.BackColor = SystemColors.Window;
-                textBoxPointsStart.Text = "0.00";
+                textbox_PointsStart.Enabled = true;
+                textbox_PointsStart.BackColor = SystemColors.Window;
+                textbox_PointsStart.Text = "0.00";
             }
             else
             {
-                textBoxPointsStart.Enabled = false;
-                textBoxPointsStart.BackColor = SystemColors.Control;
-                textBoxPointsStart.Text = string.Empty;
+                textbox_PointsStart.Enabled = false;
+                textbox_PointsStart.BackColor = SystemColors.Control;
+                textbox_PointsStart.Text = string.Empty;
             }
         }
 
@@ -339,8 +342,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_errorProvider.SetError(txtTierName, string.Empty);
             m_errorProvider.SetError(textBoxSpendStart, string.Empty);
-            m_errorProvider.SetError(textBoxPointsStart, string.Empty);
-            m_errorProvider.SetError(textBoxAwardPoints, string.Empty);
+            m_errorProvider.SetError(textbox_PointsStart, string.Empty);
+            m_errorProvider.SetError(textbox_AwardPointsMultiplier, string.Empty);
             m_errorProvider.SetError(comboBoxSpend, string.Empty);
         }
 
@@ -348,12 +351,12 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             // MessageForm.Show("No changes made.");
             lbl_MessageSaved.Visible = true;
-            if (colorListBoxTiers.Items.Count > 0)
+            if (listbox_Tiers.Items.Count > 0)
             {
                 imageButtonRemoveTier.Enabled = true;
                 imageButtonEditTier.Enabled = true;
                 imageButtonAddTier.Enabled = true;
-                colorListBoxTiers.Enabled = true;
+                listbox_Tiers.Enabled = true;
             }
 
             DisableControls();
@@ -362,7 +365,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 cboColor.BackColor = SystemColors.Control;
             }
-            imageButtonSave.Enabled = false;
+            btn_Save.Enabled = false;
             m_cancelButton.Enabled = false;
         }
 
@@ -375,14 +378,14 @@ namespace GTI.Modules.PlayerCenter.UI
             new_tierData.TierName = txtTierName.Text;
             new_tierData.TierColor = cboColor.BackColor.ToArgb();
             new_tierData.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
-            new_tierData.NbrPoints = (textBoxPointsStart.Text != string.Empty) ? Convert.ToDecimal(textBoxPointsStart.Text) : -1;
-            new_tierData.Multiplier = (textBoxAwardPoints.Text != string.Empty) ? Convert.ToDecimal(textBoxAwardPoints.Text) : Convert.ToDecimal("0.00");
+            new_tierData.NbrPoints = (textbox_PointsStart.Text != string.Empty) ? Convert.ToDecimal(textbox_PointsStart.Text) : -1;
+            new_tierData.Multiplier = (textbox_AwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(textbox_AwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
             new_tierData.isdelete = false;
-            new_tierData.TierID = (colorListBoxTiers.SelectedIndex != -1) ? m_TierID : 0;
+            new_tierData.TierID = (listbox_Tiers.SelectedIndex != -1) ? m_TierID : 0;
             new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
             current_tierData = new TierData();
   
-            if (colorListBoxTiers.SelectedIndex != -1)//Existing Tier (update)
+            if (listbox_Tiers.SelectedIndex != -1)//Existing Tier (update)
             {
                 current_tierData = GetPlayerTierData.getPlayerTierData.Single(l => l.TierID == new_tierData.TierID);
                 if (current_tierData.Equals(new_tierData))
@@ -391,7 +394,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     return;
                 }
             }
-            else if (colorListBoxTiers.SelectedIndex == -1)
+            else if (listbox_Tiers.SelectedIndex == -1)
             {
                 new_tierData.TierID = 0;               
             }
@@ -402,32 +405,33 @@ namespace GTI.Modules.PlayerCenter.UI
             int TierID = SetPlayerTierData.Save(new_tierData);//
             if (m_TierID == 0)
             {
-                colorListBoxTiers.Items.Add(txtTierName.Text);
+                listbox_Tiers.Items.Add(txtTierName.Text);
                 new_tierData.TierID = TierID;
                 GetPlayerTierData.getPlayerTierData.Add(new_tierData);
                 cmbx_DefaultTier.Items.Add(txtTierName.Text);
                 ClearTiersTab();
                 DisableControls();
-                int countItem = colorListBoxTiers.Items.Count;
-                colorListBoxTiers.SelectedIndex = countItem - 1;
+                int countItem = listbox_Tiers.Items.Count;
+                listbox_Tiers.SelectedIndex = countItem - 1;
 
             }
             else if (m_TierID != 0)
             {
-                int i = colorListBoxTiers.SelectedIndex;
+                int i = listbox_Tiers.SelectedIndex;
 
-                string x = colorListBoxTiers.SelectedItem.ToString();
+                string x = listbox_Tiers.SelectedItem.ToString();
                 if (x.Contains(" (default)"))
                 {
                     x = x.Replace(" (default)", "");
-                    colorListBoxTiers.Items[i] = txtTierName.Text + " (default)";//rename
+                    listbox_Tiers.Items[i] = txtTierName.Text + " (default)";//rename
                 }
                 else
                 {
-                    colorListBoxTiers.Items[i] = txtTierName.Text;
-                    colorListBoxTiers.Update();
-                    colorListBoxTiers.Refresh();
+                    listbox_Tiers.Items[i] = txtTierName.Text;              
                 }
+
+                listbox_Tiers.Update();
+                listbox_Tiers.Refresh();
 
                 int ii = cmbx_DefaultTier.Items.IndexOf(x);
                 cmbx_DefaultTier.Items[ii] = txtTierName.Text;
@@ -446,27 +450,29 @@ namespace GTI.Modules.PlayerCenter.UI
                         a.AmntSpend = Convert.ToDecimal(textBoxSpendStart.Text);
                     }
 
-                    if (textBoxPointsStart.Text == string.Empty)
+                    if (textbox_PointsStart.Text == string.Empty)
                     {
                         a.NbrPoints = -1;
                     }
                     else
                     {
-                        a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
+                        a.NbrPoints = Convert.ToDecimal(textbox_PointsStart.Text);
                     }
+
+                    //a.Multiplier = Convert.ToDecimal(textbox_AwardPoints);
                     // a.NbrPoints = Convert.ToDecimal(textBoxPointsStart.Text);
                 }
             }
             lbl_MessageSaved.Visible = true;
-            if (colorListBoxTiers.Items.Count > 0)
+            if (listbox_Tiers.Items.Count > 0)
             {
                 imageButtonRemoveTier.Enabled = true;
                 imageButtonEditTier.Enabled = true;
                 imageButtonAddTier.Enabled = true;
-                colorListBoxTiers.Enabled = true;
+                listbox_Tiers.Enabled = true;
             }
 
-            imageButtonSave.Enabled = false;
+            btn_Save.Enabled = false;
             m_cancelButton.Enabled = false;
         }
 
@@ -474,7 +480,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
            
 
-            m_errorProvider.SetError(dateTimePicker2, string.Empty);
+            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
 
             DefaultTierIndex = cmbx_DefaultTier.SelectedIndex;
 
@@ -496,7 +502,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void savePlayerTierRules()
         {
-            m_errorProvider.SetError(dateTimePicker2, string.Empty);
+            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
 
 
 
@@ -506,7 +512,7 @@ namespace GTI.Modules.PlayerCenter.UI
             int TierRuleID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
             TierRulesData code1 = new TierRulesData();
             code1.TierRulesID = TierRuleID;
-            code1.QualifyingStartDate = DateTime.Parse(dateTimePicker2.Value.ToShortDateString());
+            code1.QualifyingStartDate = DateTime.Parse(deytympiker_QualifyingPeriodStart.Value.ToShortDateString());
             code1.QualifyingEndDate = DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
 
             if (cmbx_DefaultTier.Items.Count == 0)
@@ -550,11 +556,11 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 int n = -1;
                 string o = "";
-                foreach (string m in colorListBoxTiers.Items)
+                foreach (string m in listbox_Tiers.Items)
                 {
                     if (m.Contains(" (default)"))
                     {
-                        n = colorListBoxTiers.Items.IndexOf(m);
+                        n = listbox_Tiers.Items.IndexOf(m);
                         o = m.Replace(" (default)", "");
 
                     }
@@ -562,12 +568,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (n != -1)
                 {
-                    colorListBoxTiers.Items[n] = o;
+                    listbox_Tiers.Items[n] = o;
                 }
                 string items = cmbx_DefaultTier.SelectedItem.ToString();
-                int index = colorListBoxTiers.Items.IndexOf(items);
+                int index = listbox_Tiers.Items.IndexOf(items);
                 items = items + " (default)";
-                colorListBoxTiers.Items[index] = items;
+                listbox_Tiers.Items[index] = items;
 
             }
         }
@@ -577,10 +583,10 @@ namespace GTI.Modules.PlayerCenter.UI
             ClearALLError();
             if (lbl_MessageSaved.Visible)lbl_MessageSaved.Visible = false;
            
-            if (colorListBoxTiers.SelectedIndex != -1)
+            if (listbox_Tiers.SelectedIndex != -1)
             {
 
-                object tiername = colorListBoxTiers.SelectedItem;
+                object tiername = listbox_Tiers.SelectedItem;
                 string TierName = Convert.ToString(tiername);
 
                 if (TierName.Contains(" (default)"))
@@ -627,16 +633,16 @@ namespace GTI.Modules.PlayerCenter.UI
                             //if its only have 1 decimal places then lets add 1 more
                             if (count == 1)
                             {
-                                textBoxPointsStart.Text = Convert.ToString(x.AmntSpend) + "0";
+                                textbox_PointsStart.Text = Convert.ToString(x.AmntSpend) + "0";
                             }
                             //if its more than 2 then lets round it off
                             else if (count > 2)
                             {
-                                textBoxPointsStart.Text = Math.Round(x.AmntSpend, 2).ToString();
+                                textbox_PointsStart.Text = Math.Round(x.AmntSpend, 2).ToString();
                             }
                             else
                             {
-                                textBoxPointsStart.Text = Convert.ToString(x.AmntSpend);
+                                textbox_PointsStart.Text = Convert.ToString(x.AmntSpend);
                             }
                         }
                     }
@@ -650,7 +656,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         y = x.NbrPoints == (Int64)x.NbrPoints;
                         if (y == true)
                         {
-                            textBoxPointsStart.Text = Convert.ToString(x.NbrPoints) + ".00";
+                            textbox_PointsStart.Text = Convert.ToString(x.NbrPoints) + ".00";
                         }
                         else
                         {
@@ -659,29 +665,29 @@ namespace GTI.Modules.PlayerCenter.UI
                             //if its only have 1 decimal places then lets add 1 more
                             if (count == 1)
                             {
-                                textBoxPointsStart.Text = Convert.ToString(x.NbrPoints)+"0";
+                                textbox_PointsStart.Text = Convert.ToString(x.NbrPoints)+"0";
                             }
                                 //if its more than 2 then lets round it off
                             else if (count > 2)
                             {
-                                textBoxPointsStart.Text = Math.Round(x.NbrPoints, 2).ToString();
+                                textbox_PointsStart.Text = Math.Round(x.NbrPoints, 2).ToString();
                             }
                             else
                             {
-                                textBoxPointsStart.Text = Convert.ToString(x.NbrPoints);
+                                textbox_PointsStart.Text = Convert.ToString(x.NbrPoints);
                             }
                         }
                     }
                     else
                     {
                         comboBoxPoints.SelectedIndex = 1;//NO
-                        textBoxPointsStart.Text = "";
+                        textbox_PointsStart.Text = "";
                     }
                   
                     y = x.Multiplier == (Int64)x.Multiplier;
                     if (y == true)
                     {
-                        textBoxAwardPoints.Text = Convert.ToString(x.Multiplier) + ".00";
+                        textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + ".00";
                     }
                     else
                     {
@@ -689,27 +695,27 @@ namespace GTI.Modules.PlayerCenter.UI
                         //if its only have 1 decimal places then lets add 1 more
                         if (count == 1)
                         {
-                            textBoxPointsStart.Text = Convert.ToString(x.Multiplier) + "0";
+                            textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + "0";
                         }
                         //if its more than 2 then lets round it off
                         else if (count > 2)
                         {
-                            textBoxPointsStart.Text = Math.Round(x.Multiplier, 2).ToString();
+                            textbox_AwardPointsMultiplier.Text = Math.Round(x.Multiplier, 2).ToString();
                         }
                         else
                         {
-                            textBoxPointsStart.Text = Convert.ToString(x.Multiplier);
+                            textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier);
                         }
                     }                  
                 }
 
                 textBoxSpendStart.Enabled = false;
-                textBoxPointsStart.Enabled = false;
+                textbox_PointsStart.Enabled = false;
                 DisableControls();
 
-                if (colorListBoxTiers.SelectedIndex != -1)
+                if (listbox_Tiers.SelectedIndex != -1)
                 {
-                    imageButtonSave.Enabled = false;
+                    btn_Save.Enabled = false;
                     m_cancelButton.Enabled = false;
                 }
             }
@@ -729,8 +735,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imageButtonRemoveTier_Click(object sender, EventArgs e)
         {
-            int CurrentIndex = colorListBoxTiers.SelectedIndex;
-            string ItemSelected = colorListBoxTiers.SelectedItem.ToString();
+            int CurrentIndex = listbox_Tiers.SelectedIndex;
+            string ItemSelected = listbox_Tiers.SelectedItem.ToString();
 
             if (ItemSelected.Contains(" (default)"))
             {
@@ -754,31 +760,31 @@ namespace GTI.Modules.PlayerCenter.UI
             code1.isdelete = true;
             SetPlayerTierData.Save(code1);
                    
-            colorListBoxTiers.Items.RemoveAt(CurrentIndex);          
+            listbox_Tiers.Items.RemoveAt(CurrentIndex);          
             CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
             cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
             GetPlayerTierData.getPlayerTierData.RemoveAll(i => i.TierID == m_TierID);
             GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;     
-            colorListBoxTiers.SelectedIndex = -1; 
+            listbox_Tiers.SelectedIndex = -1; 
             ClearTiersTab();
 
-            if (colorListBoxTiers.Items.Count == 0)
+            if (listbox_Tiers.Items.Count == 0)
             {
                 imageButtonRemoveTier.Enabled = false;
                 imageButtonEditTier.Enabled = false;
                 cboColor.BackColor = SystemColors.Control;
             }
 
-            if (colorListBoxTiers.Items.Count > 0)
+            if (listbox_Tiers.Items.Count > 0)
             {
-                colorListBoxTiers.TopIndex = 0;
-                colorListBoxTiers.SelectedIndex = 0;
+                listbox_Tiers.TopIndex = 0;
+                listbox_Tiers.SelectedIndex = 0;
             }
         }
 
         private void imageButtonEditTier_Click(object sender, EventArgs e)
         {
-            imageButtonSave.Enabled = true;
+            btn_Save.Enabled = true;
             m_cancelButton.Enabled = true;
             imageButtonRemoveTier.Enabled = false;
             imageButtonAddTier.Enabled = false;
@@ -798,12 +804,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (comboBoxPoints.SelectedIndex == 0)
             {
-                textBoxPointsStart.Enabled = true;
-                textBoxPointsStart.BackColor = SystemColors.Window;
+                textbox_PointsStart.Enabled = true;
+                textbox_PointsStart.BackColor = SystemColors.Window;
             }
             else 
-            { textBoxPointsStart.Enabled = false;
-            textBoxPointsStart.BackColor = SystemColors.Control;
+            { textbox_PointsStart.Enabled = false;
+            textbox_PointsStart.BackColor = SystemColors.Control;
             }
 
 
@@ -821,7 +827,7 @@ namespace GTI.Modules.PlayerCenter.UI
             ClearALLError();
 
             lbl_MessageSaved.Visible = false;
-            colorListBoxTiers.SelectedIndex = -1;
+            listbox_Tiers.SelectedIndex = -1;
             ClearTiersTab();
             comboBoxSpend.SelectedIndex = 1;
             comboBoxPoints.SelectedIndex = 1;
@@ -831,13 +837,13 @@ namespace GTI.Modules.PlayerCenter.UI
             imageButtonEditTier.Enabled = false;
             imageButtonRemoveTier.Enabled = false;
 
-            if (colorListBoxTiers.SelectedIndex == -1)
+            if (listbox_Tiers.SelectedIndex == -1)
             {
                 cboColor.BackColor = SystemColors.Control;
             }
 
-            imageButtonSave.Enabled = false;
-            colorListBoxTiers.SelectedIndex = 0; 
+            btn_Save.Enabled = false;
+            listbox_Tiers.SelectedIndex = 0; 
 
         }
 
@@ -878,7 +884,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
 
 
-            m_errorProvider.SetError(dateTimePicker2, string.Empty);
+            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
             lbl_MessageSaved.Visible = false;
             label4.Visible = false;
         }
@@ -890,7 +896,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void TierRulesCancelButton()
         {
-            m_errorProvider.SetError(dateTimePicker2, string.Empty);
+            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
             label4.Visible = false;
             //DisplayPlayerRule();
             DisableContorls_TierRules();
@@ -900,6 +906,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             DisplayPlayerRule();
+            if (cmbx_DefaultTier.Items.Count != 0)
             cmbx_DefaultTier.SelectedIndex = DefaultTierIndex;
         }
 
@@ -938,7 +945,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 bool itExists = false;
-                if (colorListBoxTiers.SelectedIndex != -1)
+                if (listbox_Tiers.SelectedIndex != -1)
                 {
                     if (current_tierData.TierName != new_tierData.TierName)//Renaming existing tier. 
                     {
@@ -984,7 +991,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
 
                         bool itExists = false;
-                        if (colorListBoxTiers.SelectedIndex != -1)
+                        if (listbox_Tiers.SelectedIndex != -1)
                         {
 
                             if (current_tierData.AmntSpend != new_tierData.AmntSpend)
@@ -1032,20 +1039,20 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (comboBoxPoints.SelectedIndex == 0)//YES
                 {
-                    if (textBoxPointsStart.Text == string.Empty)
+                    if (textbox_PointsStart.Text == string.Empty)
                     {
                         e.Cancel = true;
-                        m_errorProvider.SetError(textBoxPointsStart, "Please enter a point start.");
+                        m_errorProvider.SetError(textbox_PointsStart, "Please enter a point start.");
 
                     }
 
 
                     decimal checkinput;
-                    if (Decimal.TryParse(textBoxPointsStart.Text, out checkinput))//if its a decimal
+                    if (Decimal.TryParse(textbox_PointsStart.Text, out checkinput))//if its a decimal
                     {
 
                         bool itExists = false;
-                        if (colorListBoxTiers.SelectedIndex != -1)
+                        if (listbox_Tiers.SelectedIndex != -1)
                         {
 
                             if (current_tierData.NbrPoints != new_tierData.NbrPoints)
@@ -1063,21 +1070,21 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (itExists)
                         {
                             e.Cancel = true;
-                            m_errorProvider.SetError(textBoxPointsStart, "Point amount is being used by another Tier");
+                            m_errorProvider.SetError(textbox_PointsStart, "Point amount is being used by another Tier");
                             return;
                         }                   
                     }
                     else
                     {
                         e.Cancel = true;
-                        m_errorProvider.SetError(textBoxPointsStart, "Not a valid decimal number.");
+                        m_errorProvider.SetError(textbox_PointsStart, "Not a valid decimal number.");
                     }
                 }
             }
             catch
             {
                 e.Cancel = true;
-                m_errorProvider.SetError(textBoxPointsStart, "Unknown error call Technician.");
+                m_errorProvider.SetError(textbox_PointsStart, "Unknown error call Technician.");
             }
         }
 
@@ -1085,16 +1092,16 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             try
             {
-                if (textBoxAwardPoints.Text == string.Empty)
+                if (textbox_AwardPointsMultiplier.Text == string.Empty)
                 {
                     e.Cancel = true;
-                    m_errorProvider.SetError(textBoxAwardPoints, "Please make an entry");
+                    m_errorProvider.SetError(textbox_AwardPointsMultiplier, "Please make an entry");
                 }
             }
             catch
             {
                 e.Cancel = true;
-                   m_errorProvider.SetError(textBoxAwardPoints, "Please make an entry");
+                   m_errorProvider.SetError(textbox_AwardPointsMultiplier, "Please make an entry");
             }
         }
 
@@ -1121,7 +1128,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imageButton1_Click(object sender, EventArgs e)
         {
-            m_errorProvider.SetError(dateTimePicker2, string.Empty);
+            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -1130,7 +1137,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             bool YesorNo = false;
 
-            DateTime NewQualifyingPeriodStart = Convert.ToDateTime(dateTimePicker2.Value);
+            DateTime NewQualifyingPeriodStart = Convert.ToDateTime(deytympiker_QualifyingPeriodStart.Value);
             DateTime NewQualifyingPeriodEnd = Convert.ToDateTime(dateTimePicker1.Value);//if it give you an error use toString
             string NewDefaultier = string.Empty;
 
@@ -1218,21 +1225,21 @@ namespace GTI.Modules.PlayerCenter.UI
             //    NewQualifyingPoints = true;
             //}
             decimal NewPointStart = -1;//it means its null
-            if (textBoxPointsStart.Text != string.Empty)
+            if (textbox_PointsStart.Text != string.Empty)
             {
-                NewPointStart = Convert.ToDecimal(textBoxPointsStart.Text);
+                NewPointStart = Convert.ToDecimal(textbox_PointsStart.Text);
             }
 
             decimal NewAwardsMultiplier = 0;
-            if (textBoxAwardPoints.Text != string.Empty)
+            if (textbox_AwardPointsMultiplier.Text != string.Empty)
             {
-             NewAwardsMultiplier = Convert.ToDecimal(textBoxAwardPoints.Text);
+             NewAwardsMultiplier = Convert.ToDecimal(textbox_AwardPointsMultiplier.Text);
             }
 
 
 
 
-            string current_TierName = colorListBoxTiers.SelectedItem.ToString();
+            string current_TierName = listbox_Tiers.SelectedItem.ToString();
             if (current_TierName.Contains(" (default)"))
             {
                 current_TierName = current_TierName.Replace(" (default)", "");
@@ -1282,11 +1289,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void dateTimePicker2_Validating(object sender, CancelEventArgs e)
         {
-            bool v = (dateTimePicker1.Value < dateTimePicker2.Value);
-            if (dateTimePicker1.Value < dateTimePicker2.Value)
+            bool v = (dateTimePicker1.Value < deytympiker_QualifyingPeriodStart.Value);
+            if (dateTimePicker1.Value < deytympiker_QualifyingPeriodStart.Value)
             {
                 e.Cancel = true;
-                m_errorProvider.SetError(dateTimePicker2, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
+                m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
             }
         }
 

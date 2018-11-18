@@ -33,19 +33,19 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.imageButtonEditTier = new GTI.Controls.ImageButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.colorListBoxTiers = new GTI.Controls.ColorListBox();
+            this.listbox_Tiers = new GTI.Controls.ColorListBox();
             this.imageButtonRemoveTier = new GTI.Controls.ImageButton();
             this.imageButtonAddTier = new GTI.Controls.ImageButton();
             this.m_closeButton = new GTI.Controls.ImageButton();
             this.lbl_MessageSaved = new System.Windows.Forms.Label();
             this.cboColor = new System.Windows.Forms.Label();
             this.m_cancelButton = new GTI.Controls.ImageButton();
-            this.imageButtonSave = new GTI.Controls.ImageButton();
-            this.textBoxAwardPoints = new System.Windows.Forms.TextBox();
+            this.btn_Save = new GTI.Controls.ImageButton();
+            this.textbox_AwardPointsMultiplier = new System.Windows.Forms.TextBox();
             this.labelAwardPoints = new System.Windows.Forms.Label();
             this.comboBoxPoints = new System.Windows.Forms.ComboBox();
             this.comboBoxSpend = new System.Windows.Forms.ComboBox();
-            this.textBoxPointsStart = new System.Windows.Forms.TextBox();
+            this.textbox_PointsStart = new System.Windows.Forms.TextBox();
             this.labelTierName = new System.Windows.Forms.Label();
             this.labelColor = new System.Windows.Forms.Label();
             this.textBoxSpendStart = new System.Windows.Forms.TextBox();
@@ -73,7 +73,7 @@
             this.labelRestart = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.deytympiker_QualifyingPeriodStart = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -116,12 +116,12 @@
             this.splitContainer1.Panel2.Controls.Add(this.lbl_MessageSaved);
             this.splitContainer1.Panel2.Controls.Add(this.cboColor);
             this.splitContainer1.Panel2.Controls.Add(this.m_cancelButton);
-            this.splitContainer1.Panel2.Controls.Add(this.imageButtonSave);
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxAwardPoints);
+            this.splitContainer1.Panel2.Controls.Add(this.btn_Save);
+            this.splitContainer1.Panel2.Controls.Add(this.textbox_AwardPointsMultiplier);
             this.splitContainer1.Panel2.Controls.Add(this.labelAwardPoints);
             this.splitContainer1.Panel2.Controls.Add(this.comboBoxPoints);
             this.splitContainer1.Panel2.Controls.Add(this.comboBoxSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxPointsStart);
+            this.splitContainer1.Panel2.Controls.Add(this.textbox_PointsStart);
             this.splitContainer1.Panel2.Controls.Add(this.labelTierName);
             this.splitContainer1.Panel2.Controls.Add(this.labelColor);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxSpendStart);
@@ -148,26 +148,26 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.colorListBoxTiers);
+            this.groupBox2.Controls.Add(this.listbox_Tiers);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // colorListBoxTiers
+            // listbox_Tiers
             // 
-            this.colorListBoxTiers.AllowDrop = true;
-            this.colorListBoxTiers.BackColor = System.Drawing.Color.White;
-            this.colorListBoxTiers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            resources.ApplyResources(this.colorListBoxTiers, "colorListBoxTiers");
-            this.colorListBoxTiers.ForeColor = System.Drawing.Color.Black;
-            this.colorListBoxTiers.FormattingEnabled = true;
-            this.colorListBoxTiers.HighlightColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.colorListBoxTiers.ImageList = null;
-            this.colorListBoxTiers.Name = "colorListBoxTiers";
-            this.colorListBoxTiers.SuppressVerticalScroll = true;
-            this.colorListBoxTiers.TabStop = false;
-            this.colorListBoxTiers.TopIndexForScroll = 0;
-            this.colorListBoxTiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
+            this.listbox_Tiers.AllowDrop = true;
+            this.listbox_Tiers.BackColor = System.Drawing.Color.White;
+            this.listbox_Tiers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            resources.ApplyResources(this.listbox_Tiers, "listbox_Tiers");
+            this.listbox_Tiers.ForeColor = System.Drawing.Color.Black;
+            this.listbox_Tiers.FormattingEnabled = true;
+            this.listbox_Tiers.HighlightColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.listbox_Tiers.ImageList = null;
+            this.listbox_Tiers.Name = "listbox_Tiers";
+            this.listbox_Tiers.SuppressVerticalScroll = true;
+            this.listbox_Tiers.TabStop = false;
+            this.listbox_Tiers.TopIndexForScroll = 0;
+            this.listbox_Tiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
             // 
             // imageButtonRemoveTier
             // 
@@ -232,25 +232,25 @@
             this.m_cancelButton.UseVisualStyleBackColor = false;
             this.m_cancelButton.Click += new System.EventHandler(this.m_cancelButton_Click);
             // 
-            // imageButtonSave
+            // btn_Save
             // 
-            this.imageButtonSave.BackColor = System.Drawing.Color.Transparent;
-            this.imageButtonSave.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButtonSave, "imageButtonSave");
-            this.imageButtonSave.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButtonSave.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButtonSave.Name = "imageButtonSave";
-            this.imageButtonSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButtonSave.UseVisualStyleBackColor = false;
-            this.imageButtonSave.Click += new System.EventHandler(this.imageButtonSave_Click);
+            this.btn_Save.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Save.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.btn_Save, "btn_Save");
+            this.btn_Save.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.btn_Save.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btn_Save.UseVisualStyleBackColor = false;
+            this.btn_Save.Click += new System.EventHandler(this.imageButtonSave_Click);
             // 
-            // textBoxAwardPoints
+            // textbox_AwardPointsMultiplier
             // 
-            this.textBoxAwardPoints.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.textBoxAwardPoints, "textBoxAwardPoints");
-            this.textBoxAwardPoints.Name = "textBoxAwardPoints";
-            this.textBoxAwardPoints.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAwardPoints_KeyPress);
-            this.textBoxAwardPoints.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAwardPoints_Validating);
+            this.textbox_AwardPointsMultiplier.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.textbox_AwardPointsMultiplier, "textbox_AwardPointsMultiplier");
+            this.textbox_AwardPointsMultiplier.Name = "textbox_AwardPointsMultiplier";
+            this.textbox_AwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAwardPoints_KeyPress);
+            this.textbox_AwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAwardPoints_Validating);
             // 
             // labelAwardPoints
             // 
@@ -284,13 +284,13 @@
             this.comboBoxSpend.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpend_SelectedIndexChanged);
             this.comboBoxSpend.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
-            // textBoxPointsStart
+            // textbox_PointsStart
             // 
-            this.textBoxPointsStart.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.textBoxPointsStart, "textBoxPointsStart");
-            this.textBoxPointsStart.Name = "textBoxPointsStart";
-            this.textBoxPointsStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPointsStart_KeyPress);
-            this.textBoxPointsStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPointsStart_Validating);
+            this.textbox_PointsStart.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.textbox_PointsStart, "textbox_PointsStart");
+            this.textbox_PointsStart.Name = "textbox_PointsStart";
+            this.textbox_PointsStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPointsStart_KeyPress);
+            this.textbox_PointsStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPointsStart_Validating);
             // 
             // labelTierName
             // 
@@ -466,7 +466,7 @@
             this.groupBox1.Controls.Add(this.labelRestart);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.deytympiker_QualifyingPeriodStart);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.groupBox1.Name = "groupBox1";
@@ -519,12 +519,12 @@
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
-            // dateTimePicker2
+            // deytympiker_QualifyingPeriodStart
             // 
-            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker2_Validating);
+            resources.ApplyResources(this.deytympiker_QualifyingPeriodStart, "deytympiker_QualifyingPeriodStart");
+            this.deytympiker_QualifyingPeriodStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.deytympiker_QualifyingPeriodStart.Name = "deytympiker_QualifyingPeriodStart";
+            this.deytympiker_QualifyingPeriodStart.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker2_Validating);
             // 
             // label9
             // 
@@ -589,7 +589,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker deytympiker_QualifyingPeriodStart;
         private System.Windows.Forms.Label labelRestart;
         private System.Windows.Forms.ComboBox comboBoxRestart;
         public System.Windows.Forms.Label label4;
@@ -597,19 +597,19 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Controls.ColorListBox colorListBoxTiers;
+        private Controls.ColorListBox listbox_Tiers;
         private Controls.ImageButton imageButtonAddTier;
         private Controls.ImageButton imageButtonEditTier;
         public System.Windows.Forms.Label lbl_MessageSaved;
         private System.Windows.Forms.Label cboColor;
         private Controls.ImageButton imageButtonRemoveTier;
         private Controls.ImageButton m_cancelButton;
-        private Controls.ImageButton imageButtonSave;
-        private System.Windows.Forms.TextBox textBoxAwardPoints;
+        private Controls.ImageButton btn_Save;
+        private System.Windows.Forms.TextBox textbox_AwardPointsMultiplier;
         private System.Windows.Forms.Label labelAwardPoints;
         private System.Windows.Forms.ComboBox comboBoxPoints;
         private System.Windows.Forms.ComboBox comboBoxSpend;
-        private System.Windows.Forms.TextBox textBoxPointsStart;
+        private System.Windows.Forms.TextBox textbox_PointsStart;
         private System.Windows.Forms.Label labelTierName;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.TextBox textBoxSpendStart;

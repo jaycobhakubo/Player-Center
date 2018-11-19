@@ -1,11 +1,11 @@
 USE [Daily]
 GO
 
-/****** Object:  UserDefinedFunction [dbo].[fnGetPointsPerPlayer]    Script Date: 11/19/2018 12:33:07 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetPointsPerPlayer]    Script Date: 11/19/2018 12:30:23 PM ******/
 DROP FUNCTION [dbo].[fnGetPointsPerPlayer]
 GO
 
-/****** Object:  UserDefinedFunction [dbo].[fnGetPointsPerPlayer]    Script Date: 11/19/2018 12:33:07 PM ******/
+/****** Object:  UserDefinedFunction [dbo].[fnGetPointsPerPlayer]    Script Date: 11/19/2018 12:30:23 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -90,6 +90,7 @@ begin
     
     union all
     
+	/*
     select sum(gtdDelta), PlayerID
      from Player p
     join History.dbo.GameTrans gt on p.PlayerID = gt.gtPlayerID 
@@ -105,10 +106,27 @@ begin
     ) 
     insert into @PointsPerPlayer (PlayerID, TotalPoints)
     select PlayerID, totalPtsEarned  from PlayerPoints order by PlayerID asc;
-    
+    */
+
+
+	select sum(gtdDelta), PlayerID
+     from Player p
+    join dbo.GameTrans gt on p.PlayerID = gt.gtPlayerID 
+    join dbo.GameTransDetail gtd on gt.gtGameTransID = gtdGameTransID
+    where 
+    (gt.gtGamingDate >= @StartDate and gt.gtGamingDate <= @EndDate)
+    and gt.gtOperatorID = @OperatorID 
+   -- and (@PlayerID = 0 or gt.gtPlayerID = @PlayerID)
+   and isnull(gt.gtRegisterReceiptID, 0) = 0 
+    and gt.gtTransactionTypeID = 9 
+    group by PlayerID
+    having sum(gtdDelta) > 0
+    ) 
+    insert into @PointsPerPlayer (PlayerID, TotalPoints)
+    select PlayerID, totalPtsEarned  from PlayerPoints order by PlayerID asc;
+
 	return 
-	
-	
+
 	end
 
 GO

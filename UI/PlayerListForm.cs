@@ -2609,8 +2609,12 @@ namespace GTI.Modules.PlayerCenter.UI
                     isNewList = false;
                     cmbxPlayerList2.SelectedIndex = -1;
                     ActiveButton_ = 0;
-                    if (!imgbtnNewList.Visible) imgbtnNewList.Visible = true;
-                    if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
+
+                    if (!imgbtnNewList.Visible) 
+                        imgbtnNewList.Visible = true;
+
+                    if (imgbtn_AwardPointsToListOfPlayer.Visible)
+                        imgbtn_AwardPointsToListOfPlayer.Visible = false;
 
                     return;
                 }
@@ -2669,17 +2673,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void imgbtn_AwardPointsToListOfPlayer_Click(object sender, EventArgs e)
         {
             m_isAwardPointToPlayerList = false;
-            m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer();
+            m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer(cmbxPlayerList2.SelectedItem.ToString());
             DialogResult result = DialogResult.OK;
             result = m_awardPointsToListOfPlayer.ShowDialog();
             m_isAwardPointToPlayerList = m_awardPointsToListOfPlayer.IsAwardPoints;
 
             if (m_isAwardPointToPlayerList)
             {
-                m_pointsAwarded = 0M;
                 m_pointsAwarded = m_awardPointsToListOfPlayer.PointsAwardedValue;
                 GenerateClick(sender, e);
-                m_parent.StartAwardPointsToPlayer(m_playerListParams, m_pointsAwarded);
+                m_parent.StartAwardPointsToPlayer(m_playerListParams, m_pointsAwarded, m_awardPointsToListOfPlayer.ReasonPointsWereAwarded);
                 m_isAwardPointToPlayerList = false;
             }
 
@@ -3273,8 +3276,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-                if (imgbtn_AwardPointsToListOfPlayer.Visible != false)
-                imgbtn_AwardPointsToListOfPlayer.Visible = false;
+                if (imgbtn_AwardPointsToListOfPlayer.Visible)
+                    imgbtn_AwardPointsToListOfPlayer.Visible = false;
             }
         }
 
@@ -3302,7 +3305,8 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
             if (!imgbtnCancel.Enabled) imgbtnCancel.Enabled = true;
             if (btnSaveList.Enabled) btnSaveList.Enabled = false;
-            if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
+            if (imgbtn_AwardPointsToListOfPlayer.Visible)
+                imgbtn_AwardPointsToListOfPlayer.Visible = false;
             //if (!lblListName.Visible) lblListName.Visible = true;
             //if (!txtbxDefinitionName.Visible) { txtbxDefinitionName.Visible = true; txtbxDefinitionName.Text = string.Empty; }
 
@@ -3361,7 +3365,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
             if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
-            if (imgbtn_AwardPointsToListOfPlayer.Visible) imgbtn_AwardPointsToListOfPlayer.Visible = false;
+            if (imgbtn_AwardPointsToListOfPlayer.Visible)
+                imgbtn_AwardPointsToListOfPlayer.Visible = false;
             ActiveButton_ = 3;
             m_listTypePanel.Enabled = false;
             m_playDatesPanel.Enabled = true;

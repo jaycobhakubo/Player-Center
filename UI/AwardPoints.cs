@@ -28,6 +28,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
+            lblPlayerNameIndicator.Text = playerCenterThirdPartyInterface.GetPlayerName();
             m_wholePoints = wholePoints;
             CheckForWholePoints();
         }
@@ -63,7 +64,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void acceptImageButton_Click(object sender, EventArgs e)
         {
-        
             if (CardNumber != string.Empty)
             {
                 m_playercenterThirdPartyInterface.GetPlayer(CardNumber);
@@ -79,15 +79,24 @@ namespace GTI.Modules.PlayerCenter.UI
                 try
                 {
                     PointsAwarded = 0M;
-                    var tempManualPlayerPoints = txtbxPointsAwarded.Text;
+                    decimal tempManualPlayerPoints = 0;
+                    decimal.TryParse(txtbxPointsAwarded.Text, out tempManualPlayerPoints);
+
+                    if (tempManualPlayerPoints == 0)
+                        return; //nothing to do
+                        
                     IsPointsAwardedSuccess = false;
-                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints);
+
+                    string reasonMessage = "Manual point award for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + tempManualPlayerPoints.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text)? "None" : txtManualPointAdjustReason.Text);
+                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints, reasonMessage);
+
                     msg.Send();
+
                     if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
                     {
                         IsPointsAwardedSuccess = true;
-                        PointsAwarded = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
-                       // MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                        PointsAwarded = tempManualPlayerPoints;
+                        MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                     }
                 }
                 catch
@@ -101,8 +110,38 @@ namespace GTI.Modules.PlayerCenter.UI
             Close();
         }
 
-
         public bool IsPointsAwardedSuccess { get; set; }
         public decimal PointsAwarded { get; set; }
-    }
+
+        private void txtbxPointsAwarded_TextChanged(object sender, EventArgs e)
+        {
+            decimal value;
+            if (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                acceptImageButton.Enabled = true;
+            else
+                acceptImageButton.Enabled = false;
+        }
+
+        private void txtManualPointAdjustReason_TextChanged(object sender, EventArgs e)
+        {
+            lblManualPointsAdjustReasonCharactersLeft.Text = (txtManualPointAdjustReason.MaxLength - txtManualPointAdjustReason.TextLength).ToString();
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Return)
+                return true;
+
+            return base.ProcessDialogKey(keyData);
+        }
+
+        private void txtbxPointsAwarded_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                txtManualPointAdjustReason.Focus();
+                return;
+            }
+        }
+   }
 }

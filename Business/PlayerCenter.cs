@@ -2274,9 +2274,8 @@ namespace GTI.Modules.PlayerCenter.Business
         #endregion
 
         #region Award Points To A List of Player
-        internal void StartAwardPointsToPlayer(PlayerListParams playerListFilters, decimal pointsAwarded)
+        internal void StartAwardPointsToPlayer(PlayerListParams playerListFilters, decimal pointsAwarded, string reason)
         {
-       
             // Set the wait message.
             m_waitForm.Message = Resources.WaitFormAwardPoints;
             m_waitForm.CancelButtonVisible = true;
@@ -2289,9 +2288,10 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.DoWork += new DoWorkEventHandler(AwardPointsToPlayerList);
             m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AwardPointsToPlayerListeComplete);
-            object[] workerArgs = new object[2];
+            object[] workerArgs = new object[3];
             workerArgs[0] = playerListFilters;
             workerArgs[1] = pointsAwarded;
+            workerArgs[2] = reason;
             m_worker.RunWorkerAsync(workerArgs);
         }
 
@@ -2300,9 +2300,9 @@ namespace GTI.Modules.PlayerCenter.Business
             object[] args = (object[])e.Argument;
             PlayerListParams listParams = (PlayerListParams)args[0];
             decimal t_pointsAwarded = (decimal)args[1];
-      
-
+            string reason = (string)args[2];
             GetPlayerListReportMessage listMsg = new GetPlayerListReportMessage(listParams);
+
             try
             {
                 listMsg.Send();
@@ -2321,7 +2321,7 @@ namespace GTI.Modules.PlayerCenter.Business
             if (m_worker.CancellationPending)
                 return;
 
-            decimal playerCount = listMsg.Players == null ? 0 : listMsg.Players.Length;
+            int playerCount = listMsg.Players == null ? 0 : listMsg.Players.Length;
 
             if (playerCount > 0)
             {
@@ -2331,14 +2331,18 @@ namespace GTI.Modules.PlayerCenter.Business
                     m_waitForm.ProgressBarVisible = true;
                 })));
 
+                int playersChanged= 0;
                 decimal progress = 0, percentage = 0;
+                
                 foreach (var player in listMsg.Players)
                 {
                     try
                     {
-                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded.ToString());
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded, "");
                         msg.Send();
-                       
+
+                        if (msg.ReturnCode == 0) //success
+                            playersChanged++;
                     }
                     catch (Exception ex)
                     {
@@ -2349,11 +2353,26 @@ namespace GTI.Modules.PlayerCenter.Business
                         //if (result == DialogResult.Cancel)
                         //    break;
                     }
-                    percentage = (++progress / playerCount) * 100.0m;
+
+                    percentage = (++progress / (decimal)playerCount) * 100.0m;
                     m_worker.ReportProgress((int)percentage);
                 }
+
+                if (playersChanged > 0)
+                {
+                    try
+                    {
+                        string reasonMessage = "Manual point award for player list " + listParams.ListName + ": Players changed= " + playersChanged.ToString() + " for " + t_pointsAwarded.ToString() + " point(s) each. Reason: " + (string.IsNullOrWhiteSpace(reason) ? "None" : reason);
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(0, 0, reasonMessage);
+                        msg.Send();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
-            e.Result = (int)playerCount;
+
+            e.Result = playerCount;
         }
 
 

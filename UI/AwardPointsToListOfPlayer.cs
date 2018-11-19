@@ -20,9 +20,13 @@ namespace GTI.Modules.PlayerCenter.UI
 {
    partial class AwardPointsToListOfPlayer : GradientForm
    {
-       public AwardPointsToListOfPlayer()
+       protected string m_reason = string.Empty;
+
+       public AwardPointsToListOfPlayer(string listName)
         {
-            InitializeComponent();
+           InitializeComponent();
+
+           lblPlayerNameIndicator.Text = listName;
         }
 
        private void acceptImageButton_Click(object sender, EventArgs e)
@@ -31,6 +35,7 @@ namespace GTI.Modules.PlayerCenter.UI
            PointsAwardedValue = 0M;
            var tempManualPlayerPoints = txtbxPointsAwarded.Text;
            PointsAwardedValue = decimal.Parse(tempManualPlayerPoints, CultureInfo.InvariantCulture);
+           m_reason = txtManualPointAdjustReason.Text;
            DialogResult = DialogResult.OK;
            Close();
        }
@@ -43,6 +48,45 @@ namespace GTI.Modules.PlayerCenter.UI
 
        public bool IsAwardPoints { get; set; }
        public decimal PointsAwardedValue { get; set; }
+       public string ReasonPointsWereAwarded
+       {
+           get
+           {
+               return m_reason;
+           }
+       }
+
+       private void txtManualPointAdjustReason_TextChanged(object sender, EventArgs e)
+       {
+           lblManualPointsAdjustReasonCharactersLeft.Text = (txtManualPointAdjustReason.MaxLength - txtManualPointAdjustReason.TextLength).ToString();
+       }
+
+       private void txtbxPointsAwarded_TextChanged(object sender, EventArgs e)
+       {
+           decimal value;
+
+           if (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+               acceptImageButton.Enabled = true;
+           else
+               acceptImageButton.Enabled = false;
+       }
+
+       protected override bool ProcessDialogKey(Keys keyData)
+       {
+           if (keyData == Keys.Return)
+               return true;
+
+           return base.ProcessDialogKey(keyData);
+       }
+       
+       private void txtbxPointsAwarded_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+       {
+           if (e.KeyCode == Keys.Return)
+           {
+               txtManualPointAdjustReason.Focus();
+               return;
+           }
+       }
     }
 }
 

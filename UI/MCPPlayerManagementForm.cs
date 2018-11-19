@@ -39,6 +39,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private string mstrComments = String.Empty;
         private PlayerCenterThirdPartyInterface m_playerCenterThirdPartyInterface;
         private AwardPoints ManualPointsAward;
+        private int m_staffID = 0;
 
         #endregion
 
@@ -118,6 +119,39 @@ namespace GTI.Modules.PlayerCenter.UI
                 RaffleToolStripMenuItem.Text = NewItem;
                 RaffleToolStripMenuItem.Click += new EventHandler(RaffleToolStripMenuItem_Click);
                 viewToolStripMenuItem.DropDownItems.Add(RaffleToolStripMenuItem);
+            }
+
+            //see if we can purge player points (must be internal system)
+            if (m_parent.Settings.ThirdPartyPlayerInterfaceID == 0)
+            {
+                ModuleComm modComm = null;
+                m_staffID = 0;
+
+                try
+                {
+                    modComm = new ModuleComm();
+                    m_staffID = modComm.GetStaffId();
+                }
+                catch (Exception)
+                {
+                }
+
+                if (m_staffID != 0)
+                {
+                    // Get the Purge Points feature permission for Player Center for the staff.
+                    GetStaffModuleFeaturesMessage permMsg = new GetStaffModuleFeaturesMessage(m_staffID, (int)EliteModule.PlayerCenter, (int)ModuleFeature.PurgePlayerPoints);
+
+                    try
+                    {
+                        permMsg.Send();
+
+                        if (permMsg.ModuleFeatureList.Length != 0)
+                            viewToolStripMenuItem.DropDown.Items[2].Visible = true;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
         }
     
@@ -271,13 +305,23 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        
+        
+        
+        private void playerPointPurgeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PointPurgeForm pf = new PointPurgeForm(m_staffID);
+
+            pf.ShowDialog(this);
+        }
+
         private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm();
             playerLoyalty.Show(this);
         }
 
-
+        
         #endregion
 
         private void SetCreditControls()
@@ -1127,7 +1171,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
-
     
     }
 }

@@ -20,16 +20,16 @@ namespace GTI.Modules.PlayerCenter.Data
     class SetPlayerPointsAwarded : ServerMessage
     {  
         private int m_playerID;
-        private string m_playerPointsAwarded;
+        private decimal m_playerPointsAwarded;
+        private string m_reason;
 
-        public SetPlayerPointsAwarded(int playerID, string playerPointsAwarded)
+        public SetPlayerPointsAwarded(int playerID, decimal playerPointsAwarded, string reason)
         {
             m_id = 8041;
             m_playerID = playerID;
             m_playerPointsAwarded = playerPointsAwarded;
+            m_reason = reason;
         }
-
-
      
         protected override void PackRequest()
         {
@@ -38,9 +38,13 @@ namespace GTI.Modules.PlayerCenter.Data
 
             requestWriter.Write(m_playerID); //PlayerId
 
-            requestWriter.Write((ushort)m_playerPointsAwarded.Length);//Player points awarded manually
-            requestWriter.Write(m_playerPointsAwarded.ToCharArray());
+            string tmp = m_playerPointsAwarded.ToString();
+            requestWriter.Write((ushort)tmp.Length);//Player points awarded manually
+            requestWriter.Write(tmp.ToCharArray());
 
+            requestWriter.Write((ushort)m_reason.Length);//Reason player points awarded manually
+            requestWriter.Write(m_reason.ToCharArray());
+            
             m_requestPayload = requestStream.ToArray();
             requestWriter.Close();
         }

@@ -46,7 +46,7 @@ namespace GTI.Modules.PlayerCenter.UI
             GetPlayerTierRulesDatam.GetPlayerTierRules();
             DisplayPlayerRule();
             GetPlayerTierData.getPlayerTierData.Clear();    
-            List_PlayerTierData = GetPlayerTierDatam.getPlayertierData(0);
+            List_PlayerTierData = GetPlayerTier.getAllTiers(0);
             DisplayTierName();
 
             if (listbox_Tiers.Items.Count > 0)
@@ -399,6 +399,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 new_tierData.TierID = 0;               
             }
 
+            var testx = ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible);
+
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
             return;
 
@@ -609,7 +611,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 List<TierData> DTierData = new List<TierData>();
-                DTierData = GetPlayerTierDatam.getPlayertierData(TierID);
+                DTierData = GetPlayerTier.getAllTiers(TierID);
 
                 foreach (TierData x in DTierData)
                 {
@@ -942,6 +944,7 @@ namespace GTI.Modules.PlayerCenter.UI
                   
                     m_errorProvider.SetError(txtTierName, "Please enter a Tier Name.");
                     e.Cancel = true;
+                    return;
                 }
 
                 bool itExists = false;
@@ -970,6 +973,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Cancel = true;
                 m_errorProvider.SetError(txtTierName, "Check your input");
             }
+            var testy = e.Cancel;
         }
 
 
@@ -998,10 +1002,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             {
                                 itExists = GetPlayerTierData.getPlayerTierData.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
                             }
-                            else
-                            {
-                                e.Cancel = true;
-                            }
+                         
                         }
                         else
                         {

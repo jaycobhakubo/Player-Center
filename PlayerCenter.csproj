@@ -129,7 +129,7 @@
     <Compile Include="Data\DataWheelRaffle.cs" />
     <Compile Include="Data\GetMonetaryRaffleDefinitions.cs" />
     <Compile Include="Data\GetPhotoMessage.cs" />
-    <Compile Include="Data\GetPlayerTierData.cs" />
+    <Compile Include="Data\GetPlayerTier.cs" />
     <Compile Include="Data\GetPlayerTierRulesDatam.cs" />
     <Compile Include="Data\GetPrizeWheelRaffleDefinitions.cs" />
     <Compile Include="Data\PlayerCardSwipeMessage.cs" />
@@ -462,19 +462,19 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sql\PlayerLoyalty\Programmability\fnGetPointsPerPlayer.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spGetPlayerData.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spGetPlayerTiersSEL.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierData.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierRule.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierData.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierRule.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spUpdatePlayerClubBalances.sql" />
-    <None Include="Sql\PlayerLoyalty\Programmability\spUpdatePlayerTier.sql" />
-    <Content Include="Sql\PlayerLoyalty\Schema\PlayerClubTier_PlayerClubTierRules.sql" />
-    <None Include="Sql\PlayerLoyalty\Data\ModuleFeatures.sql" />
-    <None Include="Sql\PlayerLoyalty\Data\AuditTypes.sql" />
-    <None Include="Sql\PlayerLoyalty\Data\PlayerClubTierRules.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\fnGetPointsPerPlayer.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerData.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerTiersSEL.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierData.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierRule.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierData.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierRule.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerClubBalances.sql" />
+    <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerTier.sql" />
+    <Content Include="_Sql\PlayerLoyalty\Schema\PlayerClubTier_PlayerClubTierRules.sql" />
+    <None Include="_Sql\PlayerLoyalty\Data\ModuleFeatures.sql" />
+    <None Include="_Sql\PlayerLoyalty\Data\AuditTypes.sql" />
+    <None Include="_Sql\PlayerLoyalty\Data\PlayerClubTierRules.sql" />
     <None Include="Resources\ArrowDownRed.png" />
     <None Include="Resources\ArrowUpRed.png" />
     <Content Include="Res\Players.ico" />

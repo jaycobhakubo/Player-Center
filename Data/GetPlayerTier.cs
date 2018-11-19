@@ -9,23 +9,23 @@ using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
-    public class GetPlayerTierDatam : ServerMessage
+    public class GetPlayerTier : ServerMessage
     {
         private const int MinResponseMessageLenght = 2;// Why is it 2//Will reasearch
         private List<TierData> tierData { get; set; }
         private int TierID { get; set; }
 
-        public GetPlayerTierDatam(int tierId)
+        public GetPlayerTier(int tierId)
         {
             m_id = 18072;
             TierID = tierId;
             tierData = new List<TierData>();
-        }
+        } 
 
         // public static void GetPlayerTierData()
         public static List<TierData> getPlayertierData(int tierID)//this can return set of list of data
         {
-            GetPlayerTierDatam msg = new GetPlayerTierDatam(tierID);
+            GetPlayerTier msg = new GetPlayerTier(tierID);
             try
             {
                 msg.Send();

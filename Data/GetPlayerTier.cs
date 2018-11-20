@@ -6,24 +6,27 @@ using System.IO;
 
 using System.Globalization;
 using GTI.Modules.Shared;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
     public class GetPlayerTier : ServerMessage
     {
         private const int MinResponseMessageLenght = 2;// Why is it 2//Will reasearch
-        private List<TierData> tierData { get; set; }
+       // private List<TierData> tierData { get; set; }
+        private List<Tier> Tiers; //{ get; set; }
         private int TierID { get; set; }
 
         public GetPlayerTier(int tierId)
         {
             m_id = 18072;
             TierID = tierId;
-            tierData = new List<TierData>();
+            Tiers = new List<Tier>();
         } 
 
         // public static void GetPlayerTierData()
-        public static List<TierData> getPlayertierData(int tierID)//this can return set of list of data
+       // public static List<TierData> Msg(int tierID)//this can return set of list of data
+              public static List<Tier> Msg(int tierID)//this can return set of list of data
         {
             GetPlayerTier msg = new GetPlayerTier(tierID);
             try
@@ -35,7 +38,7 @@ namespace GTI.Modules.PlayerCenter.Data
                 throw new Exception("GetPlayerTierData: " + ex.Message);
             }
 
-            return msg.tierData;
+            return msg.Tiers;
         }
 
         protected override void PackRequest()
@@ -75,7 +78,7 @@ namespace GTI.Modules.PlayerCenter.Data
                 
                 for (ushort x = 0; x < TierCount; x++)
                 {
-                    TierData code = new TierData();
+                   var code = new Tier();
                     code.TierID = responseReader.ReadInt32();
                     code.TierRulesID = responseReader.ReadInt32();
 
@@ -103,12 +106,13 @@ namespace GTI.Modules.PlayerCenter.Data
                         code.Multiplier = decimal.Parse(tempDec);
                     }
 
-                    tierData.Add(code);
+                    Tiers.Add(code);
 
-                    if (TierID == 0)
-                    {
-                        GetPlayerTierData.getPlayerTierData.Add(code);
-                    }
+                    //if (TierID == 0)
+                    //{
+                    //    GetPlayerTierData.getPlayerTierData.Add(code);
+                        
+                    //}
                 }
 
             }

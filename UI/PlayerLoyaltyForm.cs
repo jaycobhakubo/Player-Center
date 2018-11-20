@@ -59,7 +59,7 @@ namespace GTI.Modules.PlayerCenter.UI
                   imageButtonEditTier.Enabled = false;
           }
 
-           DisableControls();
+            DisableControls();
             DisableContorls_TierRules();
             if (listbox_Tiers.Items.Count > 0) 
             {
@@ -80,7 +80,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void DiplayTierNameInTierRule()
         {
-        int  defaulttier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
+        int  defaulttier = m_tierRule.DefaultTierID;
         int i = 0;
          foreach (TierData TierName in GetPlayerTierData.getPlayerTierData)
          {
@@ -156,8 +156,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void DisplayTierName()
         {
-         
-              int  defaulttier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
+
+            var defaulttier = m_tierRule.DefaultTierID;//GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
 
 
               int i = 0;

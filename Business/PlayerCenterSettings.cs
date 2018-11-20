@@ -12,7 +12,6 @@ using System;
 using System.Globalization;
 using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Properties;
-using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Business
 {

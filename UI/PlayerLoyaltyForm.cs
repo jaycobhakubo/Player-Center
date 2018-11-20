@@ -22,17 +22,16 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class PlayerLoyaltyForm : GradientForm
     {
 
-        //private string[] ColorNames;
-        //internal static List<TierData> List_PlayerTierData { get; private set; }
         private int m_TierID = 0;
         private int m_color;
         int DefaultTierIndex = -2;
         bool ContinueSave = false;
-        Tier new_tierData;// = new TierData();
-        Tier current_tierData;
+        
         //************************************
         private TierRule m_tierRule;
         private List<Tier> m_tiers;
+        private Tier new_tierData;
+        private Tier current_tierData;
         //**************************************
 
         public PlayerLoyaltyForm()
@@ -45,12 +44,9 @@ namespace GTI.Modules.PlayerCenter.UI
             dateTimePicker1.Value = DateTime.Now.AddYears(1);
             m_tierRule = new TierRule();
             m_tiers = new List<Tier>();
-
             m_tierRule = GetPlayerTierRule.Msg();
-            DisplayPlayerRule();
-
-            GetPlayerTierData.getPlayerTierData.Clear();
             m_tiers = GetPlayerTier.Msg(0);
+            DisplayPlayerRule();
             DisplayTierName();
 
             if (listbox_Tiers.Items.Count > 0)
@@ -539,7 +535,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 code1.DowngradeToDefault = true;
             }
 
-            SetPlayerTierRulesData.setPlayerTierRulesData = code1;
+            //SetPlayerTierRulesData.setPlayerTierRulesData = code1;
             m_tierRule = code1; //will replace the old 1 no need to clear it
 
             int x = SetPlayerTierRule.Save(code1);

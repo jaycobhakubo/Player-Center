@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using GTI.Modules.Shared;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
@@ -23,7 +24,7 @@ namespace GTI.Modules.PlayerCenter.Data
        private decimal PtsMultiplier { get; set; }
        private bool isdelete { get; set; }
 
-       public SetPlayerTierData(TierData td)//td is emtpy we can get the one that has data let us try this for now
+       public SetPlayerTierData(Tier td)//td is emtpy we can get the one that has data let us try this for now
        {
            m_id = 18073;
            TierID = td.TierID;
@@ -36,7 +37,7 @@ namespace GTI.Modules.PlayerCenter.Data
            isdelete = td.isdelete;
        }
 
-       public static int Save(TierData td)
+       public static int Save(Tier td)
        {
            SetPlayerTierData msg = new SetPlayerTierData(td);
            try

@@ -28,7 +28,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
         }
 
-        public static int Save(TierRule trd)
+        public static int Msg(TierRule trd)
         {
             SetPlayerTierRule msg = new SetPlayerTierRule(trd);
             try

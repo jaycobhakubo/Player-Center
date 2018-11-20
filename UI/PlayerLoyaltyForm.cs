@@ -538,7 +538,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //SetPlayerTierRulesData.setPlayerTierRulesData = code1;
             m_tierRule = code1; //will replace the old 1 no need to clear it
 
-            int x = SetPlayerTierRule.Save(code1);
+            int x = SetPlayerTierRule.Msg(code1);
 
             label4.Visible = true;
             imageButton4.Text = "&Edit";

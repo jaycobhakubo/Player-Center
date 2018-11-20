@@ -141,8 +141,8 @@
     <Compile Include="Data\SetPhotoMessage.cs" />
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
-    <Compile Include="Data\SetPlayerTierData.cs" />
-    <Compile Include="Data\SetPlayerTierRules.cs" />
+    <Compile Include="Data\SetPlayerTier.cs" />
+    <Compile Include="Data\SetPlayerTierRule.cs" />
     <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
     <Compile Include="Data\TiersData.cs" />
     <Compile Include="UI\CCBoxItem.cs" />

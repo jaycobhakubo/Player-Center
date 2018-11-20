@@ -12,7 +12,7 @@ using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
-   public class SetPlayerTierData :  ServerMessage
+   public class SetPlayerTier :  ServerMessage
     {
        protected const int ResponseMessageLenght = 8;//4 or 8 or 6       
        private int TierID { get; set; }
@@ -24,7 +24,7 @@ namespace GTI.Modules.PlayerCenter.Data
        private decimal PtsMultiplier { get; set; }
        private bool isdelete { get; set; }
 
-       public SetPlayerTierData(Tier td)//td is emtpy we can get the one that has data let us try this for now
+       public SetPlayerTier(Tier td)//td is emtpy we can get the one that has data let us try this for now
        {
            m_id = 18073;
            TierID = td.TierID;
@@ -37,9 +37,9 @@ namespace GTI.Modules.PlayerCenter.Data
            isdelete = td.isdelete;
        }
 
-       public static int Save(Tier td)
+       public static int Msg(Tier td)
        {
-           SetPlayerTierData msg = new SetPlayerTierData(td);
+           SetPlayerTier msg = new SetPlayerTier(td);
            try
            {
                msg.Send();

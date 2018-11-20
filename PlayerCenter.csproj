@@ -130,7 +130,7 @@
     <Compile Include="Data\GetMonetaryRaffleDefinitions.cs" />
     <Compile Include="Data\GetPhotoMessage.cs" />
     <Compile Include="Data\GetPlayerTier.cs" />
-    <Compile Include="Data\GetPlayerTierRulesDatam.cs" />
+    <Compile Include="Data\GetPlayerTierRule.cs" />
     <Compile Include="Data\GetPrizeWheelRaffleDefinitions.cs" />
     <Compile Include="Data\PlayerCardSwipeMessage.cs" />
     <Compile Include="Business\PlayerCenterThirdPartyInterface.cs" />

@@ -43,10 +43,10 @@ namespace GTI.Modules.PlayerCenter.UI
             listbox_Tiers.Items.Clear();       
             dateTimePicker1.Value = DateTime.Now.AddYears(1); 
 
-            GetPlayerTierRulesDatam.GetPlayerTierRules();
+            GetPlayerTierRule.GetPlayerTierRules();
             DisplayPlayerRule();
-            GetPlayerTierData.getPlayerTierData.Clear();    
-            List_PlayerTierData = GetPlayerTier.getAllTiers(0);
+            GetPlayerTierData.getPlayerTierData.Clear();
+            List_PlayerTierData = GetPlayerTier.getPlayertierData(0);
             DisplayTierName();
 
             if (listbox_Tiers.Items.Count > 0)
@@ -611,7 +611,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 List<TierData> DTierData = new List<TierData>();
-                DTierData = GetPlayerTier.getAllTiers(TierID);
+                DTierData = GetPlayerTier.getPlayertierData(TierID);
 
                 foreach (TierData x in DTierData)
                 {

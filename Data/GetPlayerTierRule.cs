@@ -9,13 +9,13 @@ using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
-    public class GetPlayerTierRulesDatam : ServerMessage
+    public class GetPlayerTierRule : ServerMessage
     {
         private const int MinResponseMessageLenght = 6;
         private TierRulesData tierRulesData { get; set; }
 
 
-            public GetPlayerTierRulesDatam()
+        public GetPlayerTierRule()
             {
                 m_id = 18207;
                 tierRulesData = new TierRulesData();
@@ -23,7 +23,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
             public static void GetPlayerTierRules()
             {
-                GetPlayerTierRulesDatam msg = new GetPlayerTierRulesDatam();
+                GetPlayerTierRule msg = new GetPlayerTierRule();
                 try
                 {
                     msg.Send();

@@ -15,10 +15,10 @@ namespace GTI.Modules.PlayerCenter.Data
     //}
 
 
-    public class GetPlayerTierData
-    {
-        public static List<TierData> getPlayerTierData = new List<TierData>();
-    }
+    //public class GetPlayerTierData
+    //{
+    //    public static List<TierData> getPlayerTierData = new List<TierData>();
+    //}
 
     public class SetPlayerTierRulesData
     {
@@ -34,7 +34,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
     public class TierData
     {
-        public int TierID {get;set;}//(int (4-bytes))
+        public int TierID { get; set; }//(int (4-bytes))
         public int TierRulesID { get; set; }//(int(4-bytes))
         public string TierName { get; set; }//()
         public int TierColor { get; set; }//(int(4-bytes))

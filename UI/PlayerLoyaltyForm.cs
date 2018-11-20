@@ -201,23 +201,32 @@ namespace GTI.Modules.PlayerCenter.UI
 
               int i = 0;
 
-            foreach (Tier TierName_ in m_tiers)
-            {
+              m_lstboxTiers.DataSource = m_tiers;
+              m_lstboxTiers.ValueMember = "TierID";
+              m_lstboxTiers.DisplayMember = "TierName";
+     
+              
+              
 
-                if (TierName_.TierID == defaulttier)
-                {
+
+
+            //foreach (Tier TierName_ in m_tiers)
+            //{
+
+            //    if (TierName_.TierID == defaulttier)
+            //    {
                     
-                     m_lstboxTiers.Items.Add(TierName_.TierName + " (default)");
-                }
-                else
-                {
-                    m_lstboxTiers.Items.Add(TierName_.TierName);
-                    m_lstboxTiers.Tag = TierName_.TierID;
-                }
+            //         m_lstboxTiers.Items.Add(TierName_.TierName + " (default)");
+            //    }
+            //    else
+            //    {
+            //        m_lstboxTiers.Items.Add(TierName_.TierName);
+            //        m_lstboxTiers.Tag = TierName_.TierID;
+            //    }
 
-                i++;
-            }
-            int z = i;
+            //    i++;
+            //}
+            //int z = i;
         }
 
         private void DisplayPlayerRule()

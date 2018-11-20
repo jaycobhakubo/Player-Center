@@ -22,16 +22,16 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class PlayerLoyaltyForm : GradientForm
     {
 
-        private int m_TierID = 0;
+        private int m_tierId = 0;
         private int m_color;
-        int DefaultTierIndex = -2;
-        bool ContinueSave = false;
+        private int DefaultTierIndex = -2;
+        private bool ContinueSave = false;
         
         //************************************
         private TierRule m_tierRule;
         private List<Tier> m_tiers;
-        private Tier new_tierData;
-        private Tier current_tierData;
+        private Tier m_tierNew;
+        private Tier m_tierCurrent;
         //**************************************
 
         public PlayerLoyaltyForm()
@@ -233,7 +233,7 @@ namespace GTI.Modules.PlayerCenter.UI
             textbox_AwardPointsMultiplier.Text = "1.00";
             cboColor.BackColor = SystemColors.ButtonHighlight;
             //label2.Text = "";
-            m_TierID = 0;
+            m_tierId = 0;
         }
 
 
@@ -335,6 +335,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_errorProvider.SetError(textbox_PointsStart, string.Empty);
             m_errorProvider.SetError(textbox_AwardPointsMultiplier, string.Empty);
             m_errorProvider.SetError(comboBoxSpend, string.Empty);
+
+            if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
         }
 
         private void NoChangeSetControl()
@@ -364,21 +366,21 @@ namespace GTI.Modules.PlayerCenter.UI
         private void imageButtonSave_Click(object sender, EventArgs e)//SAVED tier
         {
             ClearALLError();
-            new_tierData = new Tier();      
-            new_tierData.TierName = txtTierName.Text;
-            new_tierData.TierColor = cboColor.BackColor.ToArgb();
-            new_tierData.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
-            new_tierData.NbrPoints = (textbox_PointsStart.Text != string.Empty) ? Convert.ToDecimal(textbox_PointsStart.Text) : -1;
-            new_tierData.Multiplier = (textbox_AwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(textbox_AwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
-            new_tierData.isdelete = false;
-            new_tierData.TierID = (listbox_Tiers.SelectedIndex != -1) ? m_TierID : 0;
-            new_tierData.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-            current_tierData = new Tier();
+            m_tierNew = new Tier();      
+            m_tierNew.TierName = txtTierName.Text;
+            m_tierNew.TierColor = cboColor.BackColor.ToArgb();
+            m_tierNew.AmntSpend = (textBoxSpendStart.Text != string.Empty) ? Convert.ToDecimal(textBoxSpendStart.Text) : -1;
+            m_tierNew.NbrPoints = (textbox_PointsStart.Text != string.Empty) ? Convert.ToDecimal(textbox_PointsStart.Text) : -1;
+            m_tierNew.Multiplier = (textbox_AwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(textbox_AwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
+            m_tierNew.isdelete = false;
+            m_tierNew.TierID = (listbox_Tiers.SelectedIndex != -1) ? m_tierId : 0;
+            m_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+            m_tierCurrent = new Tier();
   
             if (listbox_Tiers.SelectedIndex != -1)//Existing Tier (update)
             {
-                current_tierData = m_tiers.Single(l => l.TierID == new_tierData.TierID);
-                if (current_tierData.Equals(new_tierData))
+                m_tierCurrent = m_tiers.Single(l => l.TierID == m_tierNew.TierID);
+                if (m_tierCurrent.Equals(m_tierNew))
                 {
                     ContinueSave = false;
                     return;
@@ -386,7 +388,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (listbox_Tiers.SelectedIndex == -1)
             {
-                new_tierData.TierID = 0;               
+                m_tierNew.TierID = 0;               
             }
 
             var testx = ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible);
@@ -394,12 +396,12 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
             return;
 
-           // int TierID = SetPlayerTierData.Save(new_tierData);//
-            if (m_TierID == 0)
+           // int TierID = SetPlayerTierData.Save(m_tierNew);//
+            if (m_tierId == 0)
             {
                 listbox_Tiers.Items.Add(txtTierName.Text);
-               // new_tierData.TierID = TierID;
-                m_tiers.Add(new_tierData);
+               // m_tierNew.TierID = TierID;
+                m_tiers.Add(m_tierNew);
                 cmbx_DefaultTier.Items.Add(txtTierName.Text);
                 ClearTiersTab();
                 DisableControls();
@@ -407,7 +409,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 listbox_Tiers.SelectedIndex = countItem - 1;
 
             }
-            else if (m_TierID != 0)
+            else if (m_tierId != 0)
             {
                 int i = listbox_Tiers.SelectedIndex;
 
@@ -573,35 +575,34 @@ namespace GTI.Modules.PlayerCenter.UI
         private void colorListBoxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClearALLError();
-            if (lbl_MessageSaved.Visible)lbl_MessageSaved.Visible = false;
+           
            
             if (listbox_Tiers.SelectedIndex != -1)
             {
-
-                object tiername = listbox_Tiers.SelectedItem;
-                string TierName = Convert.ToString(tiername);
+                var TierName = Convert.ToString(listbox_Tiers.SelectedItem);
 
                 if (TierName.Contains(" (default)"))
                 {                    
                     TierName = TierName.Replace(" (default)", string.Empty);
                 }
 
-                int TierID = 0;                         
-                var z = m_tiers.Where(l => l.TierName == TierName);
+               // int TierID = 0;                         
+                m_tierCurrent = m_tiers.Single(l => l.TierName == TierName);
+                m_tierId = m_tierCurrent.TierID;
 
-                foreach (var a in z)
-                {
-                    TierID = a.TierID;
-                    m_TierID = a.TierID;                   
-                }
+                //foreach (var a in z)
+                //{
+                //    TierID = a.TierID;
+                //    m_TierID = a.TierID;                   
+                //}
 
-                if (m_TierID != 0)
-                {
-                    TierID = m_TierID;
-                }
+                //if (m_TierID != 0)
+                //{
+                //    TierID = m_TierID;
+                //}
 
                 List<Tier> DTierData = new List<Tier>();
-                DTierData = GetPlayerTier.Msg(TierID);
+                DTierData = GetPlayerTier.Msg(m_tierId);
 
                 foreach (Tier x in DTierData)
                 {
@@ -742,7 +743,7 @@ namespace GTI.Modules.PlayerCenter.UI
  
             lbl_MessageSaved.Visible = false;           
             Tier code1 = new Tier();
-            code1.TierID = m_TierID;
+            code1.TierID = m_tierId;
             code1.TierRulesID = 0;
             code1.TierName = string.Empty;
             code1.TierColor = 0;
@@ -755,7 +756,7 @@ namespace GTI.Modules.PlayerCenter.UI
             listbox_Tiers.Items.RemoveAt(CurrentIndex);          
             CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
             cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
-            m_tiers.RemoveAll(i => i.TierID == m_TierID);
+            m_tiers.RemoveAll(i => i.TierID == m_tierId);
             m_tierRule.DefaultTierID = 0; //GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;   //???
             listbox_Tiers.SelectedIndex = -1; 
             ClearTiersTab();
@@ -929,7 +930,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {     
             try
             {
-                if (new_tierData.TierName == string.Empty)
+                if (m_tierNew.TierName == string.Empty)
                 {
                   
                     m_errorProvider.SetError(txtTierName, "Please enter a Tier Name.");
@@ -940,14 +941,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 bool itExists = false;
                 if (listbox_Tiers.SelectedIndex != -1)
                 {
-                    if (current_tierData.TierName != new_tierData.TierName)//Renaming existing tier. 
+                    if (m_tierCurrent.TierName != m_tierNew.TierName)//Renaming existing tier. 
                     {
-                        itExists = m_tiers.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));
+                        itExists = m_tiers.Where(p => p.TierID != m_tierNew.TierID).ToList().Exists(l => l.TierName.Equals(m_tierNew.TierName, StringComparison.InvariantCultureIgnoreCase));
                     }             
                 }
                 else
                 {
-                   itExists = m_tiers.Exists(l => l.TierName.Equals(new_tierData.TierName, StringComparison.InvariantCultureIgnoreCase));                
+                   itExists = m_tiers.Exists(l => l.TierName.Equals(m_tierNew.TierName, StringComparison.InvariantCultureIgnoreCase));                
                 }
 
                 if (itExists)
@@ -988,15 +989,15 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (listbox_Tiers.SelectedIndex != -1)
                         {
 
-                            if (current_tierData.AmntSpend != new_tierData.AmntSpend)
+                            if (m_tierCurrent.AmntSpend != m_tierNew.AmntSpend)
                             {
-                                itExists = m_tiers.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
+                                itExists = m_tiers.Where(p => p.TierID != m_tierNew.TierID).ToList().Exists(l => l.AmntSpend.Equals(m_tierNew.AmntSpend));
                             }
                          
                         }
                         else
                         {
-                            itExists = m_tiers.Exists(l => l.AmntSpend.Equals(new_tierData.AmntSpend));
+                            itExists = m_tiers.Exists(l => l.AmntSpend.Equals(m_tierNew.AmntSpend));
 
                         }
 
@@ -1046,14 +1047,14 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (listbox_Tiers.SelectedIndex != -1)
                         {
 
-                            if (current_tierData.NbrPoints != new_tierData.NbrPoints)
+                            if (m_tierCurrent.NbrPoints != m_tierNew.NbrPoints)
                             {
-                                itExists = m_tiers.Where(p => p.TierID != new_tierData.TierID).ToList().Exists(l => l.NbrPoints.Equals(new_tierData.NbrPoints));
+                                itExists = m_tiers.Where(p => p.TierID != m_tierNew.TierID).ToList().Exists(l => l.NbrPoints.Equals(m_tierNew.NbrPoints));
                             }                                                     
                         }
                         else
                         {
-                            itExists = m_tiers.Exists(l => l.NbrPoints.Equals(new_tierData.NbrPoints));
+                            itExists = m_tiers.Exists(l => l.NbrPoints.Equals(m_tierNew.NbrPoints));
                              
                         }
 

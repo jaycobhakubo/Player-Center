@@ -372,7 +372,7 @@ namespace GTI.Modules.PlayerCenter.UI
             new_tierData.Multiplier = (textbox_AwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(textbox_AwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
             new_tierData.isdelete = false;
             new_tierData.TierID = (listbox_Tiers.SelectedIndex != -1) ? m_TierID : 0;
-            new_tierData.TierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+            new_tierData.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
             current_tierData = new TierData();
   
             if (listbox_Tiers.SelectedIndex != -1)//Existing Tier (update)
@@ -501,8 +501,8 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
 
-            int TierRuleID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-            TierRulesData code1 = new TierRulesData();
+            int TierRuleID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+            TierRule code1 = new TierRule();
             code1.TierRulesID = TierRuleID;
             code1.QualifyingStartDate = DateTime.Parse(deytympiker_QualifyingPeriodStart.Value.ToShortDateString());
             code1.QualifyingEndDate = DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
@@ -536,7 +536,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             SetPlayerTierRulesData.setPlayerTierRulesData = code1;
-            GetPlayerTierRulesData.getPlayerTierRulesData = code1; //will replace the old 1 no need to clear it
+            m_tierRule = code1; //will replace the old 1 no need to clear it
 
             int x = SetPlayerTierRule.Save(code1);
 
@@ -756,7 +756,7 @@ namespace GTI.Modules.PlayerCenter.UI
             CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
             cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
             GetPlayerTierData.getPlayerTierData.RemoveAll(i => i.TierID == m_TierID);
-            GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;     
+            m_tierRule.DefaultTierID = 0; //GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;   //???
             listbox_Tiers.SelectedIndex = -1; 
             ClearTiersTab();
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using GTI.Modules.Shared;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
@@ -16,7 +17,7 @@ namespace GTI.Modules.PlayerCenter.Data
         private DateTime QualifyingStartDate {get; set;}
         private DateTime QualifyingEndDate {get; set;}
 
-        public SetPlayerTierRule(TierRulesData trd)
+        public SetPlayerTierRule(TierRule trd)
         {
             m_id = 18208;
             TierRuleID = trd.TierRulesID;
@@ -27,7 +28,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
         }
 
-        public static int Save(TierRulesData trd)
+        public static int Save(TierRule trd)
         {
             SetPlayerTierRule msg = new SetPlayerTierRule(trd);
             try

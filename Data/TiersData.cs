@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
 
 
 
-    public class GetPlayerTierRulesData
-    {
-        public static TierRulesData getPlayerTierRulesData = new TierRulesData();
-    }
+    //public class GetPlayerTierRulesData
+    //{
+    //    public static TierRulesData getPlayerTierRulesData = new TierRulesData();
+    //}
 
 
     public class GetPlayerTierData
@@ -21,7 +22,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
     public class SetPlayerTierRulesData
     {
-        public static TierRulesData setPlayerTierRulesData = new TierRulesData(); 
+        public static TierRule setPlayerTierRulesData = new TierRule(); 
     }
 
     public class SetTiersData
@@ -69,12 +70,12 @@ namespace GTI.Modules.PlayerCenter.Data
     }
 
 
-    public class TierRulesData
-    {
-        public int TierRulesID; //(int(4-bytes))
-        public int DefaultTierID; //(int(4-bytes))
-        public bool DowngradeToDefault;//(byte(1 byte))
-        public DateTime QualifyingStartDate; //(nvarchar(Qualifying Start Date Len))
-        public DateTime QualifyingEndDate;//(nvarchar(Qualifying End Date Len))
-    }
+    //public class TierRulesData
+    //{
+    //    public int TierRulesID; //(int(4-bytes))
+    //    public int DefaultTierID; //(int(4-bytes))
+    //    public bool DowngradeToDefault;//(byte(1 byte))
+    //    public DateTime QualifyingStartDate; //(nvarchar(Qualifying Start Date Len))
+    //    public DateTime QualifyingEndDate;//(nvarchar(Qualifying End Date Len))
+    //}
 }

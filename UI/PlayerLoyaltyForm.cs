@@ -107,7 +107,6 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxPoints.Enabled = false;
             textbox_PointsStart.Enabled = false;
             textbox_AwardPointsMultiplier.Enabled = false;
-
             txtTierName.BackColor = SystemColors.Control;
             //cboColor.BackColor = SystemColors.Control;
             comboBoxSpend.BackColor = SystemColors.Control;
@@ -115,8 +114,6 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxPoints.BackColor = SystemColors.Control;
             textbox_PointsStart.BackColor = SystemColors.Control;
             textbox_AwardPointsMultiplier.BackColor = SystemColors.Control;
-
-
         }
 
         private void DisableContorls_TierRules()
@@ -396,7 +393,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
             return;
 
-           // int TierID = SetPlayerTierData.Save(m_tierNew);//
+            int TierID = SetPlayerTier.Msg(m_tierNew);//
             if (m_tierId == 0)
             {
                 listbox_Tiers.Items.Add(txtTierName.Text);
@@ -572,157 +569,152 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void colorListBoxTiers_SelectedIndexChanged(object sender, EventArgs e)
+        private void PopulateTierIntoUI(Tier x)
         {
-            ClearALLError();
-           
-           
-            if (listbox_Tiers.SelectedIndex != -1)
-            {
-                var TierName = Convert.ToString(listbox_Tiers.SelectedItem);
+            //foreach (Tier x in DTierData)
+            //{
+                txtTierName.Text = x.TierName;
+                cboColor.BackColor = Color.FromArgb(x.TierColor);
+                m_color = x.TierColor;
+                bool y = false;
+                int count = 0;
 
-                if (TierName.Contains(" (default)"))
-                {                    
-                    TierName = TierName.Replace(" (default)", string.Empty);
-                }
-
-               // int TierID = 0;                         
-                m_tierCurrent = m_tiers.Single(l => l.TierName == TierName);
-                m_tierId = m_tierCurrent.TierID;
-
-                //foreach (var a in z)
-                //{
-                //    TierID = a.TierID;
-                //    m_TierID = a.TierID;                   
-                //}
-
-                //if (m_TierID != 0)
-                //{
-                //    TierID = m_TierID;
-                //}
-
-                List<Tier> DTierData = new List<Tier>();
-                DTierData = GetPlayerTier.Msg(m_tierId);
-
-                foreach (Tier x in DTierData)
+                if (x.AmntSpend != -1)
                 {
-                    txtTierName.Text = x.TierName;
-                    cboColor.BackColor = Color.FromArgb(x.TierColor);
-                    m_color = x.TierColor;
-                    bool y = false;
-                    int count = 0;
-
-                    if (x.AmntSpend != -1)
-                    {
-                        comboBoxSpend.SelectedIndex = 0;
-                        y = x.AmntSpend == (Int64)x.AmntSpend;//check if its a whole number or a decimal
-                        if (y == true)
-                        {
-                            textBoxSpendStart.Text = Convert.ToString(x.AmntSpend) + ".00";
-                        }
-                        else
-                        {
-                            count = BitConverter.GetBytes(decimal.GetBits(x.AmntSpend)[3])[2];
-                            //if its only have 1 decimal places then lets add 1 more
-                            if (count == 1)
-                            {
-                                textbox_PointsStart.Text = Convert.ToString(x.AmntSpend) + "0";
-                            }
-                            //if its more than 2 then lets round it off
-                            else if (count > 2)
-                            {
-                                textbox_PointsStart.Text = Math.Round(x.AmntSpend, 2).ToString();
-                            }
-                            else
-                            {
-                                textbox_PointsStart.Text = Convert.ToString(x.AmntSpend);
-                            }
-                        }
-                    }
-                    else { comboBoxSpend.SelectedIndex = 1;
-                    textBoxSpendStart.Text = "";
-                    }
-
-                    if (x.NbrPoints != -1)
-                    {
-                        comboBoxPoints.SelectedIndex = 0;
-                        y = x.NbrPoints == (Int64)x.NbrPoints;
-                        if (y == true)
-                        {
-                            textbox_PointsStart.Text = Convert.ToString(x.NbrPoints) + ".00";
-                        }
-                        else
-                        {
-                            //lets check how many decimal places is being use?
-                            count = BitConverter.GetBytes(decimal.GetBits(x.NbrPoints)[3])[2];
-                            //if its only have 1 decimal places then lets add 1 more
-                            if (count == 1)
-                            {
-                                textbox_PointsStart.Text = Convert.ToString(x.NbrPoints)+"0";
-                            }
-                                //if its more than 2 then lets round it off
-                            else if (count > 2)
-                            {
-                                textbox_PointsStart.Text = Math.Round(x.NbrPoints, 2).ToString();
-                            }
-                            else
-                            {
-                                textbox_PointsStart.Text = Convert.ToString(x.NbrPoints);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        comboBoxPoints.SelectedIndex = 1;//NO
-                        textbox_PointsStart.Text = "";
-                    }
-                  
-                    y = x.Multiplier == (Int64)x.Multiplier;
+                    comboBoxSpend.SelectedIndex = 0;
+                    y = x.AmntSpend == (Int64)x.AmntSpend;//check if its a whole number or a decimal
                     if (y == true)
                     {
-                        textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + ".00";
+                        textBoxSpendStart.Text = Convert.ToString(x.AmntSpend) + ".00";
                     }
                     else
                     {
-                        count = BitConverter.GetBytes(decimal.GetBits(x.Multiplier)[3])[2];
+                        count = BitConverter.GetBytes(decimal.GetBits(x.AmntSpend)[3])[2];
                         //if its only have 1 decimal places then lets add 1 more
                         if (count == 1)
                         {
-                            textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + "0";
+                            textbox_PointsStart.Text = Convert.ToString(x.AmntSpend) + "0";
                         }
                         //if its more than 2 then lets round it off
                         else if (count > 2)
                         {
-                            textbox_AwardPointsMultiplier.Text = Math.Round(x.Multiplier, 2).ToString();
+                            textbox_PointsStart.Text = Math.Round(x.AmntSpend, 2).ToString();
                         }
                         else
                         {
-                            textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier);
+                            textbox_PointsStart.Text = Convert.ToString(x.AmntSpend);
                         }
-                    }                  
+                    }
                 }
-
-                textBoxSpendStart.Enabled = false;
-                textbox_PointsStart.Enabled = false;
-                DisableControls();
-
-                if (listbox_Tiers.SelectedIndex != -1)
+                else
                 {
-                    btn_Save.Enabled = false;
-                    m_cancelButton.Enabled = false;
+                    comboBoxSpend.SelectedIndex = 1;
+                    textBoxSpendStart.Text = "";
                 }
-            }
 
-            imageButtonEditTier.Enabled = true;
-            imageButtonRemoveTier.Enabled = true;
-            imageButtonAddTier.Enabled = true;
-            int Color_ = cboColor.BackColor.ToArgb();
+                if (x.NbrPoints != -1)
+                {
+                    comboBoxPoints.SelectedIndex = 0;
+                    y = x.NbrPoints == (Int64)x.NbrPoints;
+                    if (y == true)
+                    {
+                        textbox_PointsStart.Text = Convert.ToString(x.NbrPoints) + ".00";
+                    }
+                    else
+                    {
+                        //lets check how many decimal places is being use?
+                        count = BitConverter.GetBytes(decimal.GetBits(x.NbrPoints)[3])[2];
+                        //if its only have 1 decimal places then lets add 1 more
+                        if (count == 1)
+                        {
+                            textbox_PointsStart.Text = Convert.ToString(x.NbrPoints) + "0";
+                        }
+                        //if its more than 2 then lets round it off
+                        else if (count > 2)
+                        {
+                            textbox_PointsStart.Text = Math.Round(x.NbrPoints, 2).ToString();
+                        }
+                        else
+                        {
+                            textbox_PointsStart.Text = Convert.ToString(x.NbrPoints);
+                        }
+                    }
+                }
+                else
+                {
+                    comboBoxPoints.SelectedIndex = 1;//NO
+                    textbox_PointsStart.Text = "";
+                }
 
-            if (Color_ == -1)
+                y = x.Multiplier == (Int64)x.Multiplier;
+                if (y == true)
+                {
+                    textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + ".00";
+                }
+                else
+                {
+                    count = BitConverter.GetBytes(decimal.GetBits(x.Multiplier)[3])[2];
+                    //if its only have 1 decimal places then lets add 1 more
+                    if (count == 1)
+                    {
+                        textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + "0";
+                    }
+                    //if its more than 2 then lets round it off
+                    else if (count > 2)
+                    {
+                        textbox_AwardPointsMultiplier.Text = Math.Round(x.Multiplier, 2).ToString();
+                    }
+                    else
+                    {
+                        textbox_AwardPointsMultiplier.Text = Convert.ToString(x.Multiplier);
+                    }
+                }
+            //}
+        }
+
+        private void ActivateDeactivateControl()
+        {
+            DisableControls();
+            textBoxSpendStart.Enabled = false;
+            textbox_PointsStart.Enabled = false;
+            btn_Save.Enabled = false;
+            m_cancelButton.Enabled = false;
+        }
+
+        private void colorListBoxTiers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            ClearALLError();
+            if (listbox_Tiers.SelectedIndex != -1)//Update
             {
-               cboColor.BackColor = SystemColors.Control;
+                var _tierName = Convert.ToString(listbox_Tiers.SelectedItem);
+
+                if (_tierName.Contains(" (default)"))
+                {
+                    _tierName = _tierName.Replace(" (default)", string.Empty);
+                }
+
+                m_tierCurrent = m_tiers.Single(l => l.TierName == _tierName);
+                m_tierId = m_tierCurrent.TierID;
+                PopulateTierIntoUI(m_tierCurrent);
+                //ActivateDeactivateControl();
+             
+            }
+            else //After saved and delete successfull
+            {
+                //int Color_ = cboColor.BackColor.ToArgb();
+
+                //if (Color_ == -1)
+                //{
+                //   cboColor.BackColor = SystemColors.Control;
+                //}
+                //cboColor.BackColor = SystemColors.Control;
             }
 
+            //imageButtonEditTier.Enabled = true;
+            //imageButtonRemoveTier.Enabled = true;
+            //imageButtonAddTier.Enabled = true;
+           
         }
 
 

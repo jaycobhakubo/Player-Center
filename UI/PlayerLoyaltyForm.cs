@@ -31,7 +31,7 @@ namespace GTI.Modules.PlayerCenter.UI
         TierData new_tierData;// = new TierData();
         TierData current_tierData;
         //************************************
-        private List<TierRule> m_listTierRule; 
+        private TierRule m_tierRule; 
         //**************************************
 
         public PlayerLoyaltyForm()
@@ -41,9 +41,9 @@ namespace GTI.Modules.PlayerCenter.UI
             comboBoxPoints.SelectedIndex = 1;
             cmbx_DefaultTier.Items.Clear();
             listbox_Tiers.Items.Clear();       
-            dateTimePicker1.Value = DateTime.Now.AddYears(1); 
-
-            GetPlayerTierRule.GetPlayerTierRules();
+            dateTimePicker1.Value = DateTime.Now.AddYears(1);
+            m_tierRule = new TierRule();
+            m_tierRule = GetPlayerTierRule.Msg();
             DisplayPlayerRule();
             GetPlayerTierData.getPlayerTierData.Clear();
             List_PlayerTierData = GetPlayerTier.getPlayertierData(0);
@@ -183,21 +183,14 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void DisplayPlayerRule()
         {
-           //if its null
-
-            int checkTierRulesID = GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID; 
+            int checkTierRulesID = m_tierRule.TierRulesID; 
 
             if (checkTierRulesID != 0)
             {
-                deytympiker_QualifyingPeriodStart.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingStartDate;
-                dateTimePicker1.Value = GetPlayerTierRulesData.getPlayerTierRulesData.QualifyingEndDate;
-
-                int checkDefaultTier = GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID;
-                //will work on this later on
-          
-
-
-                bool x = GetPlayerTierRulesData.getPlayerTierRulesData.DowngradeToDefault;
+                deytympiker_QualifyingPeriodStart.Value = m_tierRule.QualifyingStartDate;
+                dateTimePicker1.Value = m_tierRule.QualifyingEndDate;
+                int checkDefaultTier = m_tierRule.DefaultTierID;
+                bool x = m_tierRule.DowngradeToDefault;
 
                 if (x == false)
                 {
@@ -207,10 +200,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     comboBoxRestart.SelectedIndex = 0;
                 }
-
-
             }
-
         }
 
         private void imageButtonAddTier_Click(object sender, EventArgs e)
@@ -1154,7 +1144,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
 
-            TierRulesData t = GetPlayerTierRulesData.getPlayerTierRulesData;
+            TierRule t = m_tierRule;//GetPlayerTierRulesData.getPlayerTierRulesData;
             string currentDefaultTier = "";
             if (t.DefaultTierID != 0)//error here
             {

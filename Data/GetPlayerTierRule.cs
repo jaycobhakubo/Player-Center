@@ -6,22 +6,25 @@ using System.IO;
 
 using System.Globalization;
 using GTI.Modules.Shared;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
     public class GetPlayerTierRule : ServerMessage
     {
         private const int MinResponseMessageLenght = 6;
-        private TierRulesData tierRulesData { get; set; }
+        //private TierRulesData tierRulesData { get; set; }
 
+        private TierRule m_tierRule; 
 
-        public GetPlayerTierRule()
+            public GetPlayerTierRule()
             {
                 m_id = 18207;
-                tierRulesData = new TierRulesData();
+                m_tierRule  = new TierRule();
+                //tierRulesData = new TierRulesData();
             }
 
-            public static void GetPlayerTierRules()
+            public static TierRule Msg()
             {
                 GetPlayerTierRule msg = new GetPlayerTierRule();
                 try
@@ -32,7 +35,7 @@ namespace GTI.Modules.PlayerCenter.Data
                 {
                     throw new Exception("GetPlayerTierRules: " + ex.Message);
                 }
-
+                return msg.m_tierRule;
             }
 
             protected override void PackRequest()
@@ -56,26 +59,23 @@ namespace GTI.Modules.PlayerCenter.Data
                 {
                    
                     responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);//Maybe this is the return code
-                    TierRulesData code = new TierRulesData();
-                    code.TierRulesID = responseReader.ReadInt32();//0
-                    code.DefaultTierID = responseReader.ReadInt32();//0
-                    code.DowngradeToDefault = responseReader.ReadBoolean();//false ?
+
+                    m_tierRule.TierRulesID = responseReader.ReadInt32();//0
+                    m_tierRule.DefaultTierID = responseReader.ReadInt32();//0
+                    m_tierRule.DowngradeToDefault = responseReader.ReadBoolean();//false ?
                     
                     stringLen = responseReader.ReadUInt16();
                     string tempDate = new string(responseReader.ReadChars(stringLen));//"" 1/1/0001 12:00:00AM
                     if (!string.IsNullOrEmpty(tempDate))
-                    { code.QualifyingStartDate = DateTime.Parse(tempDate, CultureInfo.InvariantCulture); }//If its NULL it will set to 1/1/0001 12:00:00 AM automatically
+                    { m_tierRule.QualifyingStartDate = DateTime.Parse(tempDate, CultureInfo.InvariantCulture); }//If its NULL it will set to 1/1/0001 12:00:00 AM automatically
 
 
                     stringLen = responseReader.ReadUInt16();
                     tempDate = new string(responseReader.ReadChars(stringLen));
                     if (!string.IsNullOrEmpty(tempDate))
-                    { code.QualifyingEndDate = DateTime.Parse(tempDate, CultureInfo.InvariantCulture); }
+                    { m_tierRule.QualifyingEndDate = DateTime.Parse(tempDate, CultureInfo.InvariantCulture); }
 
-                    GetPlayerTierRulesData.getPlayerTierRulesData = code; //save it here
-
-         
-                    
+                    //GetPlayerTierRulesData.getPlayerTierRulesData = code; //save it here                    
                 }
                 catch(EndOfStreamException e)
                 {

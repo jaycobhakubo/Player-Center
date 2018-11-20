@@ -1,0 +1,44 @@
+﻿
+1.) (20181120)
+Tab Control -> When adding or editing  Tab Pages header should be look like disable.
+
+   private void DisableTierUIControl(bool _isEnable)//knc
+        {
+          
+            m_lstboxTiers.Enabled = _isEnable;
+            m_btnSave.Enabled = !_isEnable;
+            m_btnCancel.Enabled = !_isEnable;
+            m_btnClose.Enabled = _isEnable;
+            m_btnAdd.Enabled = _isEnable;
+            m_btnEdit.Enabled = _isEnable;
+            m_btnDelete.Enabled = _isEnable;
+
+            m_txtbxTierName.Enabled = !_isEnable;
+            m_lblTierColor.Enabled = !_isEnable;
+            m_cmbxQualfyingSpend.Enabled = !_isEnable;
+            m_txtbxSpendStart.Enabled = !_isEnable;
+            m_cmbxQualifyingpoints.Enabled = !_isEnable;
+            m_txtbxPointStart.Enabled = !_isEnable;
+            m_txtbxAwardPointsMultiplier.Enabled = !_isEnable;
+
+            if (_isEnable)
+            {
+                m_txtbxTierName.BackColor = SystemColors.Control;
+                m_txtbxSpendStart.BackColor = SystemColors.Control;
+                m_txtbxPointStart.BackColor = SystemColors.Control;
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;
+                m_cmbxQualifyingpoints.BackColor = SystemColors.Control;
+                m_cmbxQualfyingSpend.BackColor = SystemColors.Control;
+                m_lstboxTiers.BackColor = SystemColors.Window;
+            }
+            else
+            {
+                m_txtbxTierName.BackColor = SystemColors.Window;
+                m_txtbxSpendStart.BackColor = SystemColors.Window;
+                m_txtbxPointStart.BackColor = SystemColors.Window;
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Window;
+                m_cmbxQualifyingpoints.BackColor = SystemColors.Window;
+                m_cmbxQualfyingSpend.BackColor = SystemColors.Window;
+                m_lstboxTiers.BackColor = SystemColors.Control;
+            }
+        }

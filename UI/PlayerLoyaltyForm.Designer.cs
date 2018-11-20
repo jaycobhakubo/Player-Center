@@ -31,32 +31,32 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerLoyaltyForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.imageButtonEditTier = new GTI.Controls.ImageButton();
+            this.m_btnEdit = new GTI.Controls.ImageButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listbox_Tiers = new GTI.Controls.ColorListBox();
-            this.imageButtonRemoveTier = new GTI.Controls.ImageButton();
-            this.imageButtonAddTier = new GTI.Controls.ImageButton();
-            this.m_closeButton = new GTI.Controls.ImageButton();
+            this.m_lstboxTiers = new GTI.Controls.ColorListBox();
+            this.m_btnDelete = new GTI.Controls.ImageButton();
+            this.m_btnAdd = new GTI.Controls.ImageButton();
+            this.m_btnClose = new GTI.Controls.ImageButton();
             this.lbl_MessageSaved = new System.Windows.Forms.Label();
-            this.cboColor = new System.Windows.Forms.Label();
-            this.m_cancelButton = new GTI.Controls.ImageButton();
-            this.btn_Save = new GTI.Controls.ImageButton();
-            this.textbox_AwardPointsMultiplier = new System.Windows.Forms.TextBox();
+            this.m_lblTierColor = new System.Windows.Forms.Label();
+            this.m_btnCancel = new GTI.Controls.ImageButton();
+            this.m_btnSave = new GTI.Controls.ImageButton();
+            this.m_txtbxAwardPointsMultiplier = new System.Windows.Forms.TextBox();
             this.labelAwardPoints = new System.Windows.Forms.Label();
-            this.comboBoxPoints = new System.Windows.Forms.ComboBox();
-            this.comboBoxSpend = new System.Windows.Forms.ComboBox();
-            this.textbox_PointsStart = new System.Windows.Forms.TextBox();
+            this.m_cmbxQualifyingpoints = new System.Windows.Forms.ComboBox();
+            this.m_cmbxQualfyingSpend = new System.Windows.Forms.ComboBox();
+            this.m_txtbxPointStart = new System.Windows.Forms.TextBox();
             this.labelTierName = new System.Windows.Forms.Label();
             this.labelColor = new System.Windows.Forms.Label();
-            this.textBoxSpendStart = new System.Windows.Forms.TextBox();
+            this.m_txtbxSpendStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelPointsStart = new System.Windows.Forms.Label();
             this.labelPoints = new System.Windows.Forms.Label();
             this.labelSpendStart = new System.Windows.Forms.Label();
             this.labelSpend = new System.Windows.Forms.Label();
-            this.txtTierName = new System.Windows.Forms.TextBox();
+            this.m_txtbxTierName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -82,7 +82,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.m_tbctrlPlayerLoyalty.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -101,10 +101,10 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
-            this.splitContainer1.Panel1.Controls.Add(this.imageButtonEditTier);
+            this.splitContainer1.Panel1.Controls.Add(this.m_btnEdit);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
-            this.splitContainer1.Panel1.Controls.Add(this.imageButtonRemoveTier);
-            this.splitContainer1.Panel1.Controls.Add(this.imageButtonAddTier);
+            this.splitContainer1.Panel1.Controls.Add(this.m_btnDelete);
+            this.splitContainer1.Panel1.Controls.Add(this.m_btnAdd);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
@@ -112,145 +112,145 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
-            this.splitContainer1.Panel2.Controls.Add(this.m_closeButton);
+            this.splitContainer1.Panel2.Controls.Add(this.m_btnClose);
             this.splitContainer1.Panel2.Controls.Add(this.lbl_MessageSaved);
-            this.splitContainer1.Panel2.Controls.Add(this.cboColor);
-            this.splitContainer1.Panel2.Controls.Add(this.m_cancelButton);
-            this.splitContainer1.Panel2.Controls.Add(this.btn_Save);
-            this.splitContainer1.Panel2.Controls.Add(this.textbox_AwardPointsMultiplier);
+            this.splitContainer1.Panel2.Controls.Add(this.m_lblTierColor);
+            this.splitContainer1.Panel2.Controls.Add(this.m_btnCancel);
+            this.splitContainer1.Panel2.Controls.Add(this.m_btnSave);
+            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxAwardPointsMultiplier);
             this.splitContainer1.Panel2.Controls.Add(this.labelAwardPoints);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBoxPoints);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBoxSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.textbox_PointsStart);
+            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualifyingpoints);
+            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualfyingSpend);
+            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxPointStart);
             this.splitContainer1.Panel2.Controls.Add(this.labelTierName);
             this.splitContainer1.Panel2.Controls.Add(this.labelColor);
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxSpendStart);
+            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxSpendStart);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.labelPointsStart);
             this.splitContainer1.Panel2.Controls.Add(this.labelPoints);
             this.splitContainer1.Panel2.Controls.Add(this.labelSpendStart);
             this.splitContainer1.Panel2.Controls.Add(this.labelSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.txtTierName);
+            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxTierName);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
-            // imageButtonEditTier
+            // m_btnEdit
             // 
-            this.imageButtonEditTier.BackColor = System.Drawing.Color.Transparent;
-            this.imageButtonEditTier.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButtonEditTier, "imageButtonEditTier");
-            this.imageButtonEditTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButtonEditTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButtonEditTier.Name = "imageButtonEditTier";
-            this.imageButtonEditTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButtonEditTier.UseVisualStyleBackColor = false;
-            this.imageButtonEditTier.Click += new System.EventHandler(this.imageButtonEditTier_Click);
+            this.m_btnEdit.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnEdit.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnEdit, "m_btnEdit");
+            this.m_btnEdit.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnEdit.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnEdit.Name = "m_btnEdit";
+            this.m_btnEdit.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnEdit.UseVisualStyleBackColor = false;
+            this.m_btnEdit.Click += new System.EventHandler(this.imageButtonEditTier_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listbox_Tiers);
+            this.groupBox2.Controls.Add(this.m_lstboxTiers);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // listbox_Tiers
+            // m_lstboxTiers
             // 
-            this.listbox_Tiers.AllowDrop = true;
-            this.listbox_Tiers.BackColor = System.Drawing.Color.White;
-            this.listbox_Tiers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            resources.ApplyResources(this.listbox_Tiers, "listbox_Tiers");
-            this.listbox_Tiers.ForeColor = System.Drawing.Color.Black;
-            this.listbox_Tiers.FormattingEnabled = true;
-            this.listbox_Tiers.HighlightColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.listbox_Tiers.ImageList = null;
-            this.listbox_Tiers.Name = "listbox_Tiers";
-            this.listbox_Tiers.SuppressVerticalScroll = true;
-            this.listbox_Tiers.TabStop = false;
-            this.listbox_Tiers.TopIndexForScroll = 0;
-            this.listbox_Tiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
+            this.m_lstboxTiers.AllowDrop = true;
+            this.m_lstboxTiers.BackColor = System.Drawing.Color.White;
+            this.m_lstboxTiers.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            resources.ApplyResources(this.m_lstboxTiers, "m_lstboxTiers");
+            this.m_lstboxTiers.ForeColor = System.Drawing.Color.Black;
+            this.m_lstboxTiers.FormattingEnabled = true;
+            this.m_lstboxTiers.HighlightColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.m_lstboxTiers.ImageList = null;
+            this.m_lstboxTiers.Name = "m_lstboxTiers";
+            this.m_lstboxTiers.SuppressVerticalScroll = true;
+            this.m_lstboxTiers.TabStop = false;
+            this.m_lstboxTiers.TopIndexForScroll = 0;
+            this.m_lstboxTiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
             // 
-            // imageButtonRemoveTier
+            // m_btnDelete
             // 
-            this.imageButtonRemoveTier.BackColor = System.Drawing.Color.Transparent;
-            this.imageButtonRemoveTier.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButtonRemoveTier, "imageButtonRemoveTier");
-            this.imageButtonRemoveTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButtonRemoveTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButtonRemoveTier.Name = "imageButtonRemoveTier";
-            this.imageButtonRemoveTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButtonRemoveTier.TabStop = false;
-            this.imageButtonRemoveTier.UseVisualStyleBackColor = false;
-            this.imageButtonRemoveTier.Click += new System.EventHandler(this.imageButtonRemoveTier_Click);
+            this.m_btnDelete.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnDelete.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnDelete, "m_btnDelete");
+            this.m_btnDelete.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnDelete.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnDelete.Name = "m_btnDelete";
+            this.m_btnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnDelete.TabStop = false;
+            this.m_btnDelete.UseVisualStyleBackColor = false;
+            this.m_btnDelete.Click += new System.EventHandler(this.imageButtonRemoveTier_Click);
             // 
-            // imageButtonAddTier
+            // m_btnAdd
             // 
-            this.imageButtonAddTier.BackColor = System.Drawing.Color.Transparent;
-            this.imageButtonAddTier.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButtonAddTier, "imageButtonAddTier");
-            this.imageButtonAddTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButtonAddTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButtonAddTier.Name = "imageButtonAddTier";
-            this.imageButtonAddTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButtonAddTier.UseVisualStyleBackColor = false;
-            this.imageButtonAddTier.Click += new System.EventHandler(this.imageButtonAddTier_Click);
+            this.m_btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnAdd.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnAdd, "m_btnAdd");
+            this.m_btnAdd.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnAdd.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnAdd.Name = "m_btnAdd";
+            this.m_btnAdd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnAdd.UseVisualStyleBackColor = false;
+            this.m_btnAdd.Click += new System.EventHandler(this.imageButtonAddTier_Click);
             // 
-            // m_closeButton
+            // m_btnClose
             // 
-            this.m_closeButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.m_closeButton.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.m_closeButton, "m_closeButton");
-            this.m_closeButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.m_closeButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_closeButton.Name = "m_closeButton";
-            this.m_closeButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.m_closeButton.UseVisualStyleBackColor = false;
-            this.m_closeButton.Click += new System.EventHandler(this.m_closeButton_Click);
+            this.m_btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.m_btnClose.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnClose, "m_btnClose");
+            this.m_btnClose.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnClose.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnClose.Name = "m_btnClose";
+            this.m_btnClose.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnClose.UseVisualStyleBackColor = false;
+            this.m_btnClose.Click += new System.EventHandler(this.m_closeButton_Click);
             // 
             // lbl_MessageSaved
             // 
             resources.ApplyResources(this.lbl_MessageSaved, "lbl_MessageSaved");
             this.lbl_MessageSaved.Name = "lbl_MessageSaved";
             // 
-            // cboColor
+            // m_lblTierColor
             // 
-            this.cboColor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cboColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.cboColor, "cboColor");
-            this.cboColor.Name = "cboColor";
-            this.cboColor.Click += new System.EventHandler(this.cboColor_Click);
+            this.m_lblTierColor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.m_lblTierColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.m_lblTierColor, "m_lblTierColor");
+            this.m_lblTierColor.Name = "m_lblTierColor";
+            this.m_lblTierColor.Click += new System.EventHandler(this.cboColor_Click);
             // 
-            // m_cancelButton
+            // m_btnCancel
             // 
-            this.m_cancelButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_cancelButton.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.m_cancelButton, "m_cancelButton");
-            this.m_cancelButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.m_cancelButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_cancelButton.Name = "m_cancelButton";
-            this.m_cancelButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.m_cancelButton.UseVisualStyleBackColor = false;
-            this.m_cancelButton.Click += new System.EventHandler(this.m_cancelButton_Click);
+            this.m_btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnCancel.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnCancel, "m_btnCancel");
+            this.m_btnCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnCancel.Name = "m_btnCancel";
+            this.m_btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnCancel.UseVisualStyleBackColor = false;
+            this.m_btnCancel.Click += new System.EventHandler(this.m_cancelButton_Click);
             // 
-            // btn_Save
+            // m_btnSave
             // 
-            this.btn_Save.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Save.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btn_Save, "btn_Save");
-            this.btn_Save.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btn_Save.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btn_Save.UseVisualStyleBackColor = false;
-            this.btn_Save.Click += new System.EventHandler(this.imageButtonSave_Click);
+            this.m_btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnSave.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnSave, "m_btnSave");
+            this.m_btnSave.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnSave.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnSave.Name = "m_btnSave";
+            this.m_btnSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnSave.UseVisualStyleBackColor = false;
+            this.m_btnSave.Click += new System.EventHandler(this.imageButtonSave_Click);
             // 
-            // textbox_AwardPointsMultiplier
+            // m_txtbxAwardPointsMultiplier
             // 
-            this.textbox_AwardPointsMultiplier.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.textbox_AwardPointsMultiplier, "textbox_AwardPointsMultiplier");
-            this.textbox_AwardPointsMultiplier.Name = "textbox_AwardPointsMultiplier";
-            this.textbox_AwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAwardPoints_KeyPress);
-            this.textbox_AwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAwardPoints_Validating);
+            this.m_txtbxAwardPointsMultiplier.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxAwardPointsMultiplier, "m_txtbxAwardPointsMultiplier");
+            this.m_txtbxAwardPointsMultiplier.Name = "m_txtbxAwardPointsMultiplier";
+            this.m_txtbxAwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAwardPoints_KeyPress);
+            this.m_txtbxAwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAwardPoints_Validating);
             // 
             // labelAwardPoints
             // 
@@ -258,39 +258,39 @@
             this.labelAwardPoints.BackColor = System.Drawing.Color.Transparent;
             this.labelAwardPoints.Name = "labelAwardPoints";
             // 
-            // comboBoxPoints
+            // m_cmbxQualifyingpoints
             // 
-            this.comboBoxPoints.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxPoints.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxPoints, "comboBoxPoints");
-            this.comboBoxPoints.FormattingEnabled = true;
-            this.comboBoxPoints.Items.AddRange(new object[] {
-            resources.GetString("comboBoxPoints.Items"),
-            resources.GetString("comboBoxPoints.Items1")});
-            this.comboBoxPoints.Name = "comboBoxPoints";
-            this.comboBoxPoints.SelectedIndexChanged += new System.EventHandler(this.comboBoxPoints_SelectedIndexChanged);
-            this.comboBoxPoints.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
+            this.m_cmbxQualifyingpoints.BackColor = System.Drawing.SystemColors.Window;
+            this.m_cmbxQualifyingpoints.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.m_cmbxQualifyingpoints, "m_cmbxQualifyingpoints");
+            this.m_cmbxQualifyingpoints.FormattingEnabled = true;
+            this.m_cmbxQualifyingpoints.Items.AddRange(new object[] {
+            resources.GetString("m_cmbxQualifyingpoints.Items"),
+            resources.GetString("m_cmbxQualifyingpoints.Items1")});
+            this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
+            this.m_cmbxQualifyingpoints.SelectedIndexChanged += new System.EventHandler(this.comboBoxPoints_SelectedIndexChanged);
+            this.m_cmbxQualifyingpoints.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
-            // comboBoxSpend
+            // m_cmbxQualfyingSpend
             // 
-            this.comboBoxSpend.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxSpend.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxSpend, "comboBoxSpend");
-            this.comboBoxSpend.FormattingEnabled = true;
-            this.comboBoxSpend.Items.AddRange(new object[] {
-            resources.GetString("comboBoxSpend.Items"),
-            resources.GetString("comboBoxSpend.Items1")});
-            this.comboBoxSpend.Name = "comboBoxSpend";
-            this.comboBoxSpend.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpend_SelectedIndexChanged);
-            this.comboBoxSpend.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
+            this.m_cmbxQualfyingSpend.BackColor = System.Drawing.SystemColors.Window;
+            this.m_cmbxQualfyingSpend.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.m_cmbxQualfyingSpend, "m_cmbxQualfyingSpend");
+            this.m_cmbxQualfyingSpend.FormattingEnabled = true;
+            this.m_cmbxQualfyingSpend.Items.AddRange(new object[] {
+            resources.GetString("m_cmbxQualfyingSpend.Items"),
+            resources.GetString("m_cmbxQualfyingSpend.Items1")});
+            this.m_cmbxQualfyingSpend.Name = "m_cmbxQualfyingSpend";
+            this.m_cmbxQualfyingSpend.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpend_SelectedIndexChanged);
+            this.m_cmbxQualfyingSpend.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
-            // textbox_PointsStart
+            // m_txtbxPointStart
             // 
-            this.textbox_PointsStart.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.textbox_PointsStart, "textbox_PointsStart");
-            this.textbox_PointsStart.Name = "textbox_PointsStart";
-            this.textbox_PointsStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPointsStart_KeyPress);
-            this.textbox_PointsStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPointsStart_Validating);
+            this.m_txtbxPointStart.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxPointStart, "m_txtbxPointStart");
+            this.m_txtbxPointStart.Name = "m_txtbxPointStart";
+            this.m_txtbxPointStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPointsStart_KeyPress);
+            this.m_txtbxPointStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPointsStart_Validating);
             // 
             // labelTierName
             // 
@@ -304,14 +304,14 @@
             this.labelColor.BackColor = System.Drawing.Color.Transparent;
             this.labelColor.Name = "labelColor";
             // 
-            // textBoxSpendStart
+            // m_txtbxSpendStart
             // 
-            this.textBoxSpendStart.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.textBoxSpendStart, "textBoxSpendStart");
-            this.textBoxSpendStart.ForeColor = System.Drawing.Color.Black;
-            this.textBoxSpendStart.Name = "textBoxSpendStart";
-            this.textBoxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSpendStart_KeyPress);
-            this.textBoxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSpendStart_Validating);
+            this.m_txtbxSpendStart.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxSpendStart, "m_txtbxSpendStart");
+            this.m_txtbxSpendStart.ForeColor = System.Drawing.Color.Black;
+            this.m_txtbxSpendStart.Name = "m_txtbxSpendStart";
+            this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSpendStart_KeyPress);
+            this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSpendStart_Validating);
             // 
             // label2
             // 
@@ -343,12 +343,12 @@
             this.labelSpend.BackColor = System.Drawing.Color.Transparent;
             this.labelSpend.Name = "labelSpend";
             // 
-            // txtTierName
+            // m_txtbxTierName
             // 
-            this.txtTierName.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.txtTierName, "txtTierName");
-            this.txtTierName.Name = "txtTierName";
-            this.txtTierName.Validating += new System.ComponentModel.CancelEventHandler(this.txtTierName_Validating);
+            this.m_txtbxTierName.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxTierName, "m_txtbxTierName");
+            this.m_txtbxTierName.Name = "m_txtbxTierName";
+            this.m_txtbxTierName.Validating += new System.ComponentModel.CancelEventHandler(this.txtTierName_Validating);
             // 
             // groupBox3
             // 
@@ -357,21 +357,22 @@
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
-            // tabControl1
+            // m_tbctrlPlayerLoyalty
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Tag = "1";
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.m_tbctrlPlayerLoyalty.Controls.Add(this.tabPage1);
+            this.m_tbctrlPlayerLoyalty.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.m_tbctrlPlayerLoyalty, "m_tbctrlPlayerLoyalty");
+            this.m_tbctrlPlayerLoyalty.Name = "m_tbctrlPlayerLoyalty";
+            this.m_tbctrlPlayerLoyalty.SelectedIndex = 0;
+            this.m_tbctrlPlayerLoyalty.Tag = "1";
+            this.m_tbctrlPlayerLoyalty.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.splitContainer2);
             resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Tag = "1";
             // 
@@ -549,7 +550,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.m_tbctrlPlayerLoyalty);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -562,7 +563,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
@@ -578,7 +579,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl m_tbctrlPlayerLoyalty;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -597,31 +598,31 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Controls.ColorListBox listbox_Tiers;
-        private Controls.ImageButton imageButtonAddTier;
-        private Controls.ImageButton imageButtonEditTier;
+        private Controls.ColorListBox m_lstboxTiers;
+        private Controls.ImageButton m_btnAdd;
+        private Controls.ImageButton m_btnEdit;
         public System.Windows.Forms.Label lbl_MessageSaved;
-        private System.Windows.Forms.Label cboColor;
-        private Controls.ImageButton imageButtonRemoveTier;
-        private Controls.ImageButton m_cancelButton;
-        private Controls.ImageButton btn_Save;
-        private System.Windows.Forms.TextBox textbox_AwardPointsMultiplier;
+        private System.Windows.Forms.Label m_lblTierColor;
+        private Controls.ImageButton m_btnDelete;
+        private Controls.ImageButton m_btnCancel;
+        private Controls.ImageButton m_btnSave;
+        private System.Windows.Forms.TextBox m_txtbxAwardPointsMultiplier;
         private System.Windows.Forms.Label labelAwardPoints;
-        private System.Windows.Forms.ComboBox comboBoxPoints;
-        private System.Windows.Forms.ComboBox comboBoxSpend;
-        private System.Windows.Forms.TextBox textbox_PointsStart;
+        private System.Windows.Forms.ComboBox m_cmbxQualifyingpoints;
+        private System.Windows.Forms.ComboBox m_cmbxQualfyingSpend;
+        private System.Windows.Forms.TextBox m_txtbxPointStart;
         private System.Windows.Forms.Label labelTierName;
         private System.Windows.Forms.Label labelColor;
-        private System.Windows.Forms.TextBox textBoxSpendStart;
+        private System.Windows.Forms.TextBox m_txtbxSpendStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPointsStart;
         private System.Windows.Forms.Label labelPoints;
         private System.Windows.Forms.Label labelSpendStart;
         private System.Windows.Forms.Label labelSpend;
-        private System.Windows.Forms.TextBox txtTierName;
+        private System.Windows.Forms.TextBox m_txtbxTierName;
         private System.Windows.Forms.GroupBox groupBox3;
         private Controls.ImageButton imageButton1;
-        private Controls.ImageButton m_closeButton;
+        private Controls.ImageButton m_btnClose;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;

@@ -471,6 +471,7 @@
     <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierRule.sql" />
     <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerClubBalances.sql" />
     <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerTier.sql" />
+    <None Include="_Project\PlayerLoyalty\Need to find a solution.txt" />
     <Content Include="_Sql\PlayerLoyalty\Schema\PlayerClubTier_PlayerClubTierRules.sql" />
     <None Include="_Sql\PlayerLoyalty\Data\ModuleFeatures.sql" />
     <None Include="_Sql\PlayerLoyalty\Data\AuditTypes.sql" />

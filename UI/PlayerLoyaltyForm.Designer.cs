@@ -66,14 +66,14 @@
             this.imageButton3 = new GTI.Controls.ImageButton();
             this.imageButton4 = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxRestart = new System.Windows.Forms.ComboBox();
+            this.m_cmbxDowngradeToDefault = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cmbx_DefaultTier = new System.Windows.Forms.ComboBox();
+            this.m_cmbxDefaultTier = new System.Windows.Forms.ComboBox();
             this.labelRestart = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.m_datetimepickerQualifyingPeriodEnd = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.deytympiker_QualifyingPeriodStart = new System.Windows.Forms.DateTimePicker();
+            this.m_datetimepickerQualifyingPeriodStart = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -434,28 +434,28 @@
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
-            this.groupBox1.Controls.Add(this.comboBoxRestart);
+            this.groupBox1.Controls.Add(this.m_cmbxDowngradeToDefault);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cmbx_DefaultTier);
+            this.groupBox1.Controls.Add(this.m_cmbxDefaultTier);
             this.groupBox1.Controls.Add(this.labelRestart);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.m_datetimepickerQualifyingPeriodEnd);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.deytympiker_QualifyingPeriodStart);
+            this.groupBox1.Controls.Add(this.m_datetimepickerQualifyingPeriodStart);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // comboBoxRestart
+            // m_cmbxDowngradeToDefault
             // 
-            this.comboBoxRestart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxRestart, "comboBoxRestart");
-            this.comboBoxRestart.FormattingEnabled = true;
-            this.comboBoxRestart.Items.AddRange(new object[] {
-            resources.GetString("comboBoxRestart.Items"),
-            resources.GetString("comboBoxRestart.Items1")});
-            this.comboBoxRestart.Name = "comboBoxRestart";
+            this.m_cmbxDowngradeToDefault.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.m_cmbxDowngradeToDefault, "m_cmbxDowngradeToDefault");
+            this.m_cmbxDowngradeToDefault.FormattingEnabled = true;
+            this.m_cmbxDowngradeToDefault.Items.AddRange(new object[] {
+            resources.GetString("m_cmbxDowngradeToDefault.Items"),
+            resources.GetString("m_cmbxDowngradeToDefault.Items1")});
+            this.m_cmbxDowngradeToDefault.Name = "m_cmbxDowngradeToDefault";
             // 
             // label4
             // 
@@ -467,38 +467,38 @@
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
             // 
-            // cmbx_DefaultTier
+            // m_cmbxDefaultTier
             // 
-            this.cmbx_DefaultTier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cmbx_DefaultTier, "cmbx_DefaultTier");
-            this.cmbx_DefaultTier.FormattingEnabled = true;
-            this.cmbx_DefaultTier.Items.AddRange(new object[] {
-            resources.GetString("cmbx_DefaultTier.Items"),
-            resources.GetString("cmbx_DefaultTier.Items1"),
-            resources.GetString("cmbx_DefaultTier.Items2")});
-            this.cmbx_DefaultTier.Name = "cmbx_DefaultTier";
+            this.m_cmbxDefaultTier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.m_cmbxDefaultTier, "m_cmbxDefaultTier");
+            this.m_cmbxDefaultTier.FormattingEnabled = true;
+            this.m_cmbxDefaultTier.Items.AddRange(new object[] {
+            resources.GetString("m_cmbxDefaultTier.Items"),
+            resources.GetString("m_cmbxDefaultTier.Items1"),
+            resources.GetString("m_cmbxDefaultTier.Items2")});
+            this.m_cmbxDefaultTier.Name = "m_cmbxDefaultTier";
             // 
             // labelRestart
             // 
             resources.ApplyResources(this.labelRestart, "labelRestart");
             this.labelRestart.Name = "labelRestart";
             // 
-            // dateTimePicker1
+            // m_datetimepickerQualifyingPeriodEnd
             // 
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Name = "dateTimePicker1";
+            resources.ApplyResources(this.m_datetimepickerQualifyingPeriodEnd, "m_datetimepickerQualifyingPeriodEnd");
+            this.m_datetimepickerQualifyingPeriodEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.m_datetimepickerQualifyingPeriodEnd.Name = "m_datetimepickerQualifyingPeriodEnd";
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
             // 
-            // deytympiker_QualifyingPeriodStart
+            // m_datetimepickerQualifyingPeriodStart
             // 
-            resources.ApplyResources(this.deytympiker_QualifyingPeriodStart, "deytympiker_QualifyingPeriodStart");
-            this.deytympiker_QualifyingPeriodStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.deytympiker_QualifyingPeriodStart.Name = "deytympiker_QualifyingPeriodStart";
+            resources.ApplyResources(this.m_datetimepickerQualifyingPeriodStart, "m_datetimepickerQualifyingPeriodStart");
+            this.m_datetimepickerQualifyingPeriodStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.m_datetimepickerQualifyingPeriodStart.Name = "m_datetimepickerQualifyingPeriodStart";
             // 
             // label9
             // 
@@ -558,14 +558,14 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Controls.ImageButton imageButton3;
         private Controls.ImageButton imageButton4;
-        private System.Windows.Forms.ComboBox cmbx_DefaultTier;
+        private System.Windows.Forms.ComboBox m_cmbxDefaultTier;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker deytympiker_QualifyingPeriodStart;
+        private System.Windows.Forms.DateTimePicker m_datetimepickerQualifyingPeriodEnd;
+        private System.Windows.Forms.DateTimePicker m_datetimepickerQualifyingPeriodStart;
         private System.Windows.Forms.Label labelRestart;
-        private System.Windows.Forms.ComboBox comboBoxRestart;
+        private System.Windows.Forms.ComboBox m_cmbxDowngradeToDefault;
         public System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider m_errorProvider;
         private System.Windows.Forms.GroupBox groupBox1;

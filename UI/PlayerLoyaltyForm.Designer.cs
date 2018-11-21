@@ -106,7 +106,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.m_btnDelete);
             this.splitContainer1.Panel1.Controls.Add(this.m_btnAdd);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -144,7 +143,6 @@
             this.m_btnEdit.Name = "m_btnEdit";
             this.m_btnEdit.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnEdit.UseVisualStyleBackColor = false;
-            this.m_btnEdit.Click += new System.EventHandler(this.imageButtonEditTier_Click);
             // 
             // groupBox2
             // 
@@ -167,7 +165,6 @@
             this.m_lstboxTiers.SuppressVerticalScroll = true;
             this.m_lstboxTiers.TabStop = false;
             this.m_lstboxTiers.TopIndexForScroll = 0;
-            this.m_lstboxTiers.SelectedIndexChanged += new System.EventHandler(this.colorListBoxTiers_SelectedIndexChanged);
             // 
             // m_btnDelete
             // 
@@ -180,7 +177,6 @@
             this.m_btnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnDelete.TabStop = false;
             this.m_btnDelete.UseVisualStyleBackColor = false;
-            this.m_btnDelete.Click += new System.EventHandler(this.imageButtonRemoveTier_Click);
             // 
             // m_btnAdd
             // 
@@ -192,7 +188,6 @@
             this.m_btnAdd.Name = "m_btnAdd";
             this.m_btnAdd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnAdd.UseVisualStyleBackColor = false;
-            this.m_btnAdd.Click += new System.EventHandler(this.imageButtonAddTier_Click);
             // 
             // m_btnClose
             // 
@@ -205,7 +200,6 @@
             this.m_btnClose.Name = "m_btnClose";
             this.m_btnClose.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnClose.UseVisualStyleBackColor = false;
-            this.m_btnClose.Click += new System.EventHandler(this.m_closeButton_Click);
             // 
             // lbl_MessageSaved
             // 
@@ -218,7 +212,6 @@
             this.m_lblTierColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.m_lblTierColor, "m_lblTierColor");
             this.m_lblTierColor.Name = "m_lblTierColor";
-            this.m_lblTierColor.Click += new System.EventHandler(this.cboColor_Click);
             // 
             // m_btnCancel
             // 
@@ -230,7 +223,6 @@
             this.m_btnCancel.Name = "m_btnCancel";
             this.m_btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnCancel.UseVisualStyleBackColor = false;
-            this.m_btnCancel.Click += new System.EventHandler(this.m_cancelButton_Click);
             // 
             // m_btnSave
             // 
@@ -242,15 +234,12 @@
             this.m_btnSave.Name = "m_btnSave";
             this.m_btnSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnSave.UseVisualStyleBackColor = false;
-            this.m_btnSave.Click += new System.EventHandler(this.imageButtonSave_Click);
             // 
             // m_txtbxAwardPointsMultiplier
             // 
             this.m_txtbxAwardPointsMultiplier.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.m_txtbxAwardPointsMultiplier, "m_txtbxAwardPointsMultiplier");
             this.m_txtbxAwardPointsMultiplier.Name = "m_txtbxAwardPointsMultiplier";
-            this.m_txtbxAwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAwardPoints_KeyPress);
-            this.m_txtbxAwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAwardPoints_Validating);
             // 
             // labelAwardPoints
             // 
@@ -268,8 +257,6 @@
             resources.GetString("m_cmbxQualifyingpoints.Items"),
             resources.GetString("m_cmbxQualifyingpoints.Items1")});
             this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
-            this.m_cmbxQualifyingpoints.SelectedIndexChanged += new System.EventHandler(this.comboBoxPoints_SelectedIndexChanged);
-            this.m_cmbxQualifyingpoints.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
             // m_cmbxQualfyingSpend
             // 
@@ -281,16 +268,12 @@
             resources.GetString("m_cmbxQualfyingSpend.Items"),
             resources.GetString("m_cmbxQualfyingSpend.Items1")});
             this.m_cmbxQualfyingSpend.Name = "m_cmbxQualfyingSpend";
-            this.m_cmbxQualfyingSpend.SelectedIndexChanged += new System.EventHandler(this.comboBoxSpend_SelectedIndexChanged);
-            this.m_cmbxQualfyingSpend.Validating += new System.ComponentModel.CancelEventHandler(this.comboBoxSpend_Validating);
             // 
             // m_txtbxPointStart
             // 
             this.m_txtbxPointStart.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.m_txtbxPointStart, "m_txtbxPointStart");
             this.m_txtbxPointStart.Name = "m_txtbxPointStart";
-            this.m_txtbxPointStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPointsStart_KeyPress);
-            this.m_txtbxPointStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxPointsStart_Validating);
             // 
             // labelTierName
             // 
@@ -310,8 +293,6 @@
             resources.ApplyResources(this.m_txtbxSpendStart, "m_txtbxSpendStart");
             this.m_txtbxSpendStart.ForeColor = System.Drawing.Color.Black;
             this.m_txtbxSpendStart.Name = "m_txtbxSpendStart";
-            this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSpendStart_KeyPress);
-            this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxSpendStart_Validating);
             // 
             // label2
             // 
@@ -348,7 +329,6 @@
             this.m_txtbxTierName.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.m_txtbxTierName, "m_txtbxTierName");
             this.m_txtbxTierName.Name = "m_txtbxTierName";
-            this.m_txtbxTierName.Validating += new System.ComponentModel.CancelEventHandler(this.txtTierName_Validating);
             // 
             // groupBox3
             // 
@@ -365,7 +345,6 @@
             this.m_tbctrlPlayerLoyalty.Name = "m_tbctrlPlayerLoyalty";
             this.m_tbctrlPlayerLoyalty.SelectedIndex = 0;
             this.m_tbctrlPlayerLoyalty.Tag = "1";
-            this.m_tbctrlPlayerLoyalty.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -404,7 +383,6 @@
             resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button2
             // 
@@ -417,7 +395,6 @@
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // imageButton1
             // 
@@ -430,7 +407,6 @@
             this.imageButton1.Name = "imageButton1";
             this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton1.UseVisualStyleBackColor = false;
-            this.imageButton1.Click += new System.EventHandler(this.imageButton1_Click);
             // 
             // imageButton3
             // 
@@ -442,7 +418,6 @@
             this.imageButton3.Name = "imageButton3";
             this.imageButton3.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton3.UseVisualStyleBackColor = false;
-            this.imageButton3.Click += new System.EventHandler(this.imageButton3_Click);
             // 
             // imageButton4
             // 
@@ -454,7 +429,6 @@
             this.imageButton4.Name = "imageButton4";
             this.imageButton4.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imageButton4.UseVisualStyleBackColor = false;
-            this.imageButton4.Click += new System.EventHandler(this.imageButton4_Click);
             // 
             // groupBox1
             // 
@@ -525,7 +499,6 @@
             resources.ApplyResources(this.deytympiker_QualifyingPeriodStart, "deytympiker_QualifyingPeriodStart");
             this.deytympiker_QualifyingPeriodStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.deytympiker_QualifyingPeriodStart.Name = "deytympiker_QualifyingPeriodStart";
-            this.deytympiker_QualifyingPeriodStart.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker2_Validating);
             // 
             // label9
             // 

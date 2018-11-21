@@ -989,7 +989,7 @@
     <value>1014, 634</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>482</value>
+    <value>333</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>

@@ -35,7 +35,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
             m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
             if (m_tiers != null) PopulateTierList();
-           
+
+
+
+            DisableEnableControlDefaultTierRules(true);
             
         }
 
@@ -50,6 +53,14 @@ namespace GTI.Modules.PlayerCenter.UI
         //        m_lstboxTiers.SelectedIndex = 0;
         //    }
         //}
+
+        private void DisableEnableControlDefaultTierRules(bool IsDefault)
+        {
+            m_datetimepickerQualifyingPeriodStart.Enabled = !IsDefault;
+            m_datetimepickerQualifyingPeriodEnd.Enabled = !IsDefault;
+            m_cmbxDefaultTier.Enabled = !IsDefault;
+            m_cmbxDowngradeToDefault.Enabled = !IsDefault;
+        }
 
         private void DisplayTierRule()
         {                                                  
@@ -70,10 +81,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {      
                 m_lstboxTiers.ValueMember = "TierID";
                 m_lstboxTiers.DisplayMember = "TierName";
-                m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
+                m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0   
+
+                if (m_tierRule.DefaultTierID != 0)
+                {
+                    m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;
+                }
+
 
                 int itemCount = 0;
-
             
                     foreach (Tier TierName in m_tiers)
                     {

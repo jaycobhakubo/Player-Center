@@ -1111,97 +1111,97 @@
   <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="imageButton1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnCloseTierRule.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="imageButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnCloseTierRule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="imageButton1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnCloseTierRule.Location" type="System.Drawing.Point, System.Drawing">
     <value>851, 565</value>
   </data>
-  <data name="imageButton1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCloseTierRule.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="imageButton1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCloseTierRule.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="imageButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnCloseTierRule.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="imageButton1.Text" xml:space="preserve">
+  <data name="m_btnCloseTierRule.Text" xml:space="preserve">
     <value>&amp;Close</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Name" xml:space="preserve">
-    <value>imageButton1</value>
+  <data name="&gt;&gt;m_btnCloseTierRule.Name" xml:space="preserve">
+    <value>m_btnCloseTierRule</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTierRule.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;imageButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTierRule.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
   </data>
-  <data name="&gt;&gt;imageButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTierRule.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="imageButton3.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnCancelTierRule.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="imageButton3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnCancelTierRule.Location" type="System.Drawing.Point, System.Drawing">
     <value>723, 565</value>
   </data>
-  <data name="imageButton3.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCancelTierRule.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="imageButton3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCancelTierRule.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="imageButton3.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnCancelTierRule.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="imageButton3.Text" xml:space="preserve">
+  <data name="m_btnCancelTierRule.Text" xml:space="preserve">
     <value>&amp;Cancel</value>
   </data>
-  <data name="&gt;&gt;imageButton3.Name" xml:space="preserve">
-    <value>imageButton3</value>
+  <data name="&gt;&gt;m_btnCancelTierRule.Name" xml:space="preserve">
+    <value>m_btnCancelTierRule</value>
   </data>
-  <data name="&gt;&gt;imageButton3.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTierRule.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;imageButton3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTierRule.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
   </data>
-  <data name="&gt;&gt;imageButton3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTierRule.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="imageButton4.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnEditSaveTierRule.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="imageButton4.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnEditSaveTierRule.Location" type="System.Drawing.Point, System.Drawing">
     <value>595, 565</value>
   </data>
-  <data name="imageButton4.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnEditSaveTierRule.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="imageButton4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnEditSaveTierRule.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="imageButton4.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnEditSaveTierRule.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="imageButton4.Text" xml:space="preserve">
+  <data name="m_btnEditSaveTierRule.Text" xml:space="preserve">
     <value>&amp;Edit</value>
   </data>
-  <data name="&gt;&gt;imageButton4.Name" xml:space="preserve">
-    <value>imageButton4</value>
+  <data name="&gt;&gt;m_btnEditSaveTierRule.Name" xml:space="preserve">
+    <value>m_btnEditSaveTierRule</value>
   </data>
-  <data name="&gt;&gt;imageButton4.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditSaveTierRule.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;imageButton4.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditSaveTierRule.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
   </data>
-  <data name="&gt;&gt;imageButton4.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditSaveTierRule.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

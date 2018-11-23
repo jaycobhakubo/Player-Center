@@ -1476,7 +1476,7 @@ namespace GTI.Modules.PlayerCenter.UI
             isUpdate = false;
         }
 
-        private void SaveOrUpdateRaffleDefinitions(int saveorupdate, bool isdelete)//0 = insert; !0 = update ; -1 delete
+        private void SaveOrUpdateRaffleDefinitions(int saveorupdate, bool IsDelete)//0 = insert; !0 = update ; -1 delete
         {
             DataRafflePrizes drp = new DataRafflePrizes(); // RaffleDefinition rd = new RaffleDefinition();
             drp.RaffleID = saveorupdate;
@@ -1484,7 +1484,7 @@ namespace GTI.Modules.PlayerCenter.UI
             drp.NoOfRafflePrize = Convert.ToInt32(txtbxSetupNumberofWinners.Text);
             drp.RafflePrizeDescription = txtbxSetupPrizeDescription.Text;
             drp.RaffleDisclaimer = txtbxDisclaimer.Text;
-            int RaffleID = SetPlayerRaffleDefinitions.Set(drp, isdelete);
+            int RaffleID = SetPlayerRaffleDefinitions.Set(drp, IsDelete);
         }
 
         #endregion

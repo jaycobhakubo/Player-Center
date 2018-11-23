@@ -39,9 +39,9 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_cmbxQualfyingSpend.SelectedIndex = 1;
             m_cmbxQualifyingpoints.SelectedIndex = 1;DisplayPlayerRule
-            cmbx_DefaultTier.Items.Clear();
+            m_cmbxDefaultTier.Items.Clear();
             m_lstboxTiers.Items.Clear();       
-            dateTimePicker1.Value = DateTime.Now.AddYears(1);
+            m_datetimepickerQualifyingPeriodEnd.Value = DateTime.Now.AddYears(1);
             m_tierRule = new TierRule();
             m_tiers = new List<Tier>();
             m_tierRule = GetPlayerTierRule.Msg();
@@ -60,7 +60,7 @@ namespace GTI.Modules.PlayerCenter.UI
           }
 
             DisableControls();
-            DisableContorls_TierRules();
+            DisableEnableControlDefaultTierRules();
             if (m_lstboxTiers.Items.Count > 0) 
             {
                 DiplayTierNameInTierRule();
@@ -84,10 +84,10 @@ namespace GTI.Modules.PlayerCenter.UI
         int i = 0;
          foreach (Tier TierName in m_tiers)
          {
-                 cmbx_DefaultTier.Items.Add(TierName.TierName);
+                 m_cmbxDefaultTier.Items.Add(TierName.TierName);
                  if (defaulttier == TierName.TierID)
                  {
-                     cmbx_DefaultTier.SelectedIndex = i;
+                     m_cmbxDefaultTier.SelectedIndex = i;
                  }
 
                  i++;
@@ -158,12 +158,12 @@ namespace GTI.Modules.PlayerCenter.UI
             //m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;
         }
 
-        private void DisableContorls_TierRules()
+        private void DisableEnableControlDefaultTierRules()
         {
-            deytympiker_QualifyingPeriodStart.Enabled = false;
-            dateTimePicker1.Enabled = false;
-            cmbx_DefaultTier.Enabled = false;
-            comboBoxRestart.Enabled = false;
+            m_datetimepickerQualifyingPeriodStart.Enabled = false;
+            m_datetimepickerQualifyingPeriodEnd.Enabled = false;
+            m_cmbxDefaultTier.Enabled = false;
+            m_cmbxDowngradeToDefault.Enabled = false;
         }
 
         private void EnableControls()
@@ -186,10 +186,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void EnableContorls_TierRules()
         {
-            deytympiker_QualifyingPeriodStart.Enabled = true;
-            dateTimePicker1.Enabled = true;
-            cmbx_DefaultTier.Enabled = true;
-            comboBoxRestart.Enabled = true;
+            m_datetimepickerQualifyingPeriodStart.Enabled = true;
+            m_datetimepickerQualifyingPeriodEnd.Enabled = true;
+            m_cmbxDefaultTier.Enabled = true;
+            m_cmbxDowngradeToDefault.Enabled = true;
         }
 
 
@@ -235,18 +235,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (checkTierRulesID != 0)
             {
-                deytympiker_QualifyingPeriodStart.Value = m_tierRule.QualifyingStartDate;
-                dateTimePicker1.Value = m_tierRule.QualifyingEndDate;
+                m_datetimepickerQualifyingPeriodStart.Value = m_tierRule.QualifyingStartDate;
+                m_datetimepickerQualifyingPeriodEnd.Value = m_tierRule.QualifyingEndDate;
                 int checkDefaultTier = m_tierRule.DefaultTierID;
                 bool x = m_tierRule.DowngradeToDefault;
 
                 if (x == false)
                 {
-                    comboBoxRestart.SelectedIndex = 1;
+                    m_cmbxDowngradeToDefault.SelectedIndex = 1;
                 }
                 else
                 {
-                    comboBoxRestart.SelectedIndex = 0;
+                    m_cmbxDowngradeToDefault.SelectedIndex = 0;
                 }
             }
         }
@@ -430,7 +430,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.Items.Add(m_txtbxTierName.Text);
                // m_tierNew.TierID = TierID;
                 m_tiers.Add(m_tierNew);
-                cmbx_DefaultTier.Items.Add(m_txtbxTierName.Text);
+                m_cmbxDefaultTier.Items.Add(m_txtbxTierName.Text);
                 ClearTiersTab();
                 DisableControls();
                 int countItem = m_lstboxTiers.Items.Count;
@@ -455,8 +455,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.Update();
                 m_lstboxTiers.Refresh();
 
-                int ii = cmbx_DefaultTier.Items.IndexOf(x);
-                cmbx_DefaultTier.Items[ii] = m_txtbxTierName.Text;
+                int ii = m_cmbxDefaultTier.Items.IndexOf(x);
+                m_cmbxDefaultTier.Items[ii] = m_txtbxTierName.Text;
 
                 
                 Tier a = m_tiers.Single(l => l.TierName == x);
@@ -503,9 +503,9 @@ namespace GTI.Modules.PlayerCenter.UI
         {
            
 
-            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
+            m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
 
-            DefaultTierIndex = cmbx_DefaultTier.SelectedIndex;
+            DefaultTierIndex = m_cmbxDefaultTier.SelectedIndex;
 
             if (imageButton4.Text == "&Edit")
             {
@@ -525,7 +525,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void savePlayerTierRules()
         {
-            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
+            m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
 
 
 
@@ -535,18 +535,18 @@ namespace GTI.Modules.PlayerCenter.UI
             int TierRuleID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
             TierRule code1 = new TierRule();
             code1.TierRulesID = TierRuleID;
-            code1.QualifyingStartDate = DateTime.Parse(deytympiker_QualifyingPeriodStart.Value.ToShortDateString());
-            code1.QualifyingEndDate = DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
+            code1.QualifyingStartDate = DateTime.Parse(m_datetimepickerQualifyingPeriodStart.Value.ToShortDateString());
+            code1.QualifyingEndDate = DateTime.Parse(m_datetimepickerQualifyingPeriodEnd.Value.ToShortDateString());
 
-            if (cmbx_DefaultTier.Items.Count == 0)
+            if (m_cmbxDefaultTier.Items.Count == 0)
             {
                 code1.DefaultTierID = 0;
             }
             else
             {
-                if (cmbx_DefaultTier.SelectedIndex != -1)
+                if (m_cmbxDefaultTier.SelectedIndex != -1)
                 {
-                    string DefaultTierName = cmbx_DefaultTier.SelectedItem.ToString();
+                    string DefaultTierName = m_cmbxDefaultTier.SelectedItem.ToString();
                     var f = m_tiers.Exists(p => p.TierName == DefaultTierName);
                     bool cc = f;
 
@@ -556,7 +556,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-            string IsDownGradeTDefault = comboBoxRestart.SelectedItem.ToString();
+            string IsDownGradeTDefault = m_cmbxDowngradeToDefault.SelectedItem.ToString();
             if (IsDownGradeTDefault == "No")
             {
                 code1.DowngradeToDefault = false;
@@ -573,9 +573,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
             label4.Visible = true;
             imageButton4.Text = "&Edit";
-            DisableContorls_TierRules();
+            DisableEnableControlDefaultTierRules();
 
-            if (cmbx_DefaultTier.SelectedIndex != -1)
+            if (m_cmbxDefaultTier.SelectedIndex != -1)
             {
                 int n = -1;
                 string o = "";
@@ -593,7 +593,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     m_lstboxTiers.Items[n] = o;
                 }
-                string items = cmbx_DefaultTier.SelectedItem.ToString();
+                string items = m_cmbxDefaultTier.SelectedItem.ToString();
                 int index = m_lstboxTiers.Items.IndexOf(items);
                 items = items + " (default)";
                 m_lstboxTiers.Items[index] = items;
@@ -771,8 +771,8 @@ namespace GTI.Modules.PlayerCenter.UI
             SetPlayerTier.Msg(code1);
                    
             m_lstboxTiers.Items.RemoveAt(CurrentIndex);          
-            CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
-            cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
+            CurrentIndex = m_cmbxDefaultTier.Items.IndexOf(ItemSelected);
+            m_cmbxDefaultTier.Items.RemoveAt(CurrentIndex);
             m_tiers.RemoveAll(i => i.TierID == m_tierId);
             m_tierRule.DefaultTierID = 0; //GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;   //???
             //m_lstboxTiers.SelectedIndex = -1; 
@@ -860,7 +860,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
 
 
-            //m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
+            //m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             //lbl_MessageSaved.Visible = false;
             //label4.Visible = false;
         }
@@ -872,18 +872,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void TierRulesCancelButton()
         {
-            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
+            m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             label4.Visible = false;
             //DisplayPlayerRule();
-            DisableContorls_TierRules();
+            DisableEnableControlDefaultTierRules();
             if (imageButton4.Text == "&Save")
             {
                 imageButton4.Text = "&Edit";
             }
 
             DisplayPlayerRule();
-            if (cmbx_DefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
-                cmbx_DefaultTier.SelectedIndex = DefaultTierIndex;
+            if (m_cmbxDefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
+                m_cmbxDefaultTier.SelectedIndex = DefaultTierIndex;
         }
 
         private void textBoxAwardPoints_KeyPress(object sender, KeyPressEventArgs e)
@@ -1103,7 +1103,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imageButton1_Click(object sender, EventArgs e)
         {
-            m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, string.Empty);
+            m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -1112,17 +1112,17 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             bool YesorNo = false;
 
-            DateTime NewQualifyingPeriodStart = Convert.ToDateTime(deytympiker_QualifyingPeriodStart.Value);
-            DateTime NewQualifyingPeriodEnd = Convert.ToDateTime(dateTimePicker1.Value);//if it give you an error use toString
+            DateTime NewQualifyingPeriodStart = Convert.ToDateTime(m_datetimepickerQualifyingPeriodStart.Value);
+            DateTime NewQualifyingPeriodEnd = Convert.ToDateTime(m_datetimepickerQualifyingPeriodEnd.Value);//if it give you an error use toString
             string NewDefaultier = string.Empty;
 
-            if (cmbx_DefaultTier.SelectedIndex != -1)//its been set to default
+            if (m_cmbxDefaultTier.SelectedIndex != -1)//its been set to default
             {
-                NewDefaultier = cmbx_DefaultTier.SelectedItem.ToString();
+                NewDefaultier = m_cmbxDefaultTier.SelectedItem.ToString();
             }
 
             bool NewDownGradeToDefault = false;
-            if (comboBoxRestart.SelectedIndex == 0)//YES
+            if (m_cmbxDowngradeToDefault.SelectedIndex == 0)//YES
             {
                 NewDownGradeToDefault = true;
             }
@@ -1264,11 +1264,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void dateTimePicker2_Validating(object sender, CancelEventArgs e)
         {
-            bool v = (dateTimePicker1.Value < deytympiker_QualifyingPeriodStart.Value);
-            if (dateTimePicker1.Value < deytympiker_QualifyingPeriodStart.Value)
+            bool v = (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value);
+            if (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value)
             {
                 e.Cancel = true;
-                m_errorProvider.SetError(deytympiker_QualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
+                m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
             }
         }
 

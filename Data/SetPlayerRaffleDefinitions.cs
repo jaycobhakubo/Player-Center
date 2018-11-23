@@ -16,20 +16,20 @@ namespace GTI.Modules.PlayerCenter.Data
         private string RaffleDefinition { get; set; }
         private string RaffleDisclaimer { get; set; }
 
-        public SetPlayerRaffleDefinitions(DataRafflePrizes rd, bool isdelete)
+        public SetPlayerRaffleDefinitions(DataRafflePrizes rd, bool IsDelete)
         {
             m_id = 18210;
             RaffleDefID = rd.RaffleID;
-            isDelete = isdelete;
+            isDelete = IsDelete;
             NumberOfPlayersToDraw = rd.NoOfRafflePrize;
             RaffleName = rd.RaffleName;
             RaffleDefinition = rd.RafflePrizeDescription;
             RaffleDisclaimer = rd.RaffleDisclaimer;
         }
 
-        public static int Set(DataRafflePrizes rd, bool isdelete)
+        public static int Set(DataRafflePrizes rd, bool IsDelete)
         {
-            SetPlayerRaffleDefinitions msg = new SetPlayerRaffleDefinitions(rd, isdelete);
+            SetPlayerRaffleDefinitions msg = new SetPlayerRaffleDefinitions(rd, IsDelete);
             try
             {
                 msg.Send();

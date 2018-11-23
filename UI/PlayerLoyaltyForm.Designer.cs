@@ -62,9 +62,9 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.imageButton1 = new GTI.Controls.ImageButton();
-            this.imageButton3 = new GTI.Controls.ImageButton();
-            this.imageButton4 = new GTI.Controls.ImageButton();
+            this.m_btnCloseTierRule = new GTI.Controls.ImageButton();
+            this.m_btnCancelTierRule = new GTI.Controls.ImageButton();
+            this.m_btnEditSaveTierRule = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_cmbxDowngradeToDefault = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -373,9 +373,9 @@
             this.splitContainer2.Panel2.Controls.Add(this.checkBox1);
             this.splitContainer2.Panel2.Controls.Add(this.button2);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Panel2.Controls.Add(this.imageButton1);
-            this.splitContainer2.Panel2.Controls.Add(this.imageButton3);
-            this.splitContainer2.Panel2.Controls.Add(this.imageButton4);
+            this.splitContainer2.Panel2.Controls.Add(this.m_btnCloseTierRule);
+            this.splitContainer2.Panel2.Controls.Add(this.m_btnCancelTierRule);
+            this.splitContainer2.Panel2.Controls.Add(this.m_btnEditSaveTierRule);
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
@@ -397,39 +397,39 @@
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // imageButton1
+            // m_btnCloseTierRule
             // 
-            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.imageButton1.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
-            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButton1.UseVisualStyleBackColor = false;
+            this.m_btnCloseTierRule.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnCloseTierRule.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.m_btnCloseTierRule.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnCloseTierRule, "m_btnCloseTierRule");
+            this.m_btnCloseTierRule.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnCloseTierRule.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnCloseTierRule.Name = "m_btnCloseTierRule";
+            this.m_btnCloseTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnCloseTierRule.UseVisualStyleBackColor = false;
             // 
-            // imageButton3
+            // m_btnCancelTierRule
             // 
-            this.imageButton3.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton3.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton3, "imageButton3");
-            this.imageButton3.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton3.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton3.Name = "imageButton3";
-            this.imageButton3.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButton3.UseVisualStyleBackColor = false;
+            this.m_btnCancelTierRule.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnCancelTierRule.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnCancelTierRule, "m_btnCancelTierRule");
+            this.m_btnCancelTierRule.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnCancelTierRule.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnCancelTierRule.Name = "m_btnCancelTierRule";
+            this.m_btnCancelTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnCancelTierRule.UseVisualStyleBackColor = false;
             // 
-            // imageButton4
+            // m_btnEditSaveTierRule
             // 
-            this.imageButton4.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton4.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton4, "imageButton4");
-            this.imageButton4.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton4.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton4.Name = "imageButton4";
-            this.imageButton4.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButton4.UseVisualStyleBackColor = false;
+            this.m_btnEditSaveTierRule.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnEditSaveTierRule.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnEditSaveTierRule, "m_btnEditSaveTierRule");
+            this.m_btnEditSaveTierRule.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnEditSaveTierRule.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnEditSaveTierRule.Name = "m_btnEditSaveTierRule";
+            this.m_btnEditSaveTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnEditSaveTierRule.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
@@ -473,10 +473,6 @@
             this.m_cmbxDefaultTier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.m_cmbxDefaultTier, "m_cmbxDefaultTier");
             this.m_cmbxDefaultTier.FormattingEnabled = true;
-            this.m_cmbxDefaultTier.Items.AddRange(new object[] {
-            resources.GetString("m_cmbxDefaultTier.Items"),
-            resources.GetString("m_cmbxDefaultTier.Items1"),
-            resources.GetString("m_cmbxDefaultTier.Items2")});
             this.m_cmbxDefaultTier.Name = "m_cmbxDefaultTier";
             // 
             // labelRestart
@@ -557,8 +553,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private Controls.ImageButton imageButton3;
-        private Controls.ImageButton imageButton4;
+        private Controls.ImageButton m_btnCancelTierRule;
+        private Controls.ImageButton m_btnEditSaveTierRule;
         private System.Windows.Forms.ComboBox m_cmbxDefaultTier;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -595,7 +591,7 @@
         private System.Windows.Forms.Label labelSpend;
         private System.Windows.Forms.TextBox m_txtbxTierName;
         private System.Windows.Forms.GroupBox groupBox3;
-        private Controls.ImageButton imageButton1;
+        private Controls.ImageButton m_btnCloseTierRule;
         private Controls.ImageButton m_btnClose;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;

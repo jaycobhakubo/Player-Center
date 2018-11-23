@@ -74,16 +74,16 @@ namespace GTI.Modules.PlayerCenter.Data
                 responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
                 ushort TierCount = responseReader.ReadUInt16();
 
-                
+
                 for (ushort x = 0; x < TierCount; x++)
                 {
-                   var code = new Tier();
+                    var code = new Tier();
                     code.TierID = responseReader.ReadInt32();
                     code.TierRulesID = responseReader.ReadInt32();
 
-                    ushort stringLen = responseReader.ReadUInt16(); 
-                    code.TierName = new string(responseReader.ReadChars(stringLen));                   
-                    
+                    ushort stringLen = responseReader.ReadUInt16();
+                    code.TierName = new string(responseReader.ReadChars(stringLen));
+
                     code.TierColor = responseReader.ReadInt32();
 
                     stringLen = responseReader.ReadUInt16();
@@ -106,12 +106,6 @@ namespace GTI.Modules.PlayerCenter.Data
                     }
 
                     Tiers.Add(code);
-
-                    //if (TierID == 0)
-                    //{
-                    //    GetPlayerTierData.getPlayerTierData.Add(code);
-                        
-                    //}
                 }
 
             }

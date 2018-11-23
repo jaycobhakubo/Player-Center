@@ -165,6 +165,7 @@
             this.m_lstboxTiers.SuppressVerticalScroll = true;
             this.m_lstboxTiers.TabStop = false;
             this.m_lstboxTiers.TopIndexForScroll = 0;
+            this.m_lstboxTiers.SelectedIndexChanged += new System.EventHandler(this.m_lstboxTiers_SelectedIndexChanged);
             // 
             // m_btnDelete
             // 

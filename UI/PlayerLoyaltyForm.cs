@@ -255,6 +255,13 @@ namespace GTI.Modules.PlayerCenter.UI
             //if (m_cmbxDefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
             //    m_cmbxDefaultTier.SelectedIndex = DefaultTierIndex;
         }
+
+        private void m_btnCloseTierRule_Click(object sender, EventArgs e)
+        {
+           // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }   
 }
 

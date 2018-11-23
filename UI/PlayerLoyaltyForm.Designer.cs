@@ -408,6 +408,7 @@
             this.m_btnCloseTierRule.Name = "m_btnCloseTierRule";
             this.m_btnCloseTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnCloseTierRule.UseVisualStyleBackColor = false;
+            this.m_btnCloseTierRule.Click += new System.EventHandler(this.m_btnCloseTierRule_Click);
             // 
             // m_btnCancelTierRule
             // 

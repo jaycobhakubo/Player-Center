@@ -18,7 +18,6 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class PlayerLoyaltyForm : GradientForm
     {
         private TierRule m_tierRule;
-        private int m_tierIdDefault;
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
         private int m_color;//?
@@ -26,33 +25,34 @@ namespace GTI.Modules.PlayerCenter.UI
         public PlayerLoyaltyForm()
         {
             InitializeComponent();
+
             m_datetimepickerQualifyingPeriodEnd.Value = DateTime.Now.AddYears(1);
             m_tierRule = new TierRule();
-            m_tierRule = GetPlayerTierRule.Msg();
             m_tiers = new List<Tier>();
-            m_tiers = GetPlayerTier.Msg(0);
-            DisplayTierRule();
-            PopulateTierList();
 
+            m_tierRule = GetPlayerTierRule.Msg();
+            if (m_tierRule != null) DisplayTierRule();
+
+            m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
+            if (m_tiers != null) PopulateTierList();
+           
+            
         }
 
-        private void SelectTierDefault()
-        {
-            if (m_tierIdDefault != 0)      //Always select the default tier if no default first tier             
-            {
-                m_lstboxTiers.SelectedValue = m_tierIdDefault;
-            }
-            else
-            {
-                m_lstboxTiers.SelectedIndex = 0;
-            }
-        }
+        //private void SelectTierDefault()
+        //{
+        //    if (m_tierIdDefault != 0)      //Always select the default tier if no default first tier             
+        //    {
+        //        m_lstboxTiers.SelectedValue = m_tierIdDefault;
+        //    }
+        //    else
+        //    {
+        //        m_lstboxTiers.SelectedIndex = 0;
+        //    }
+        //}
 
         private void DisplayTierRule()
-        {
-            if (m_tierRule != null)            //If tier rule is not null
-            {
-                m_tierIdDefault = m_tierRule.DefaultTierID;//If not 0 then it has a default tier -> need to  test wit == 0.
+        {                                                  
                 m_datetimepickerQualifyingPeriodStart.Value  = m_tierRule.QualifyingStartDate;
                 m_datetimepickerQualifyingPeriodEnd.Value = m_tierRule.QualifyingEndDate;
              
@@ -64,17 +64,27 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     m_cmbxDowngradeToDefault.SelectedIndex = 0;
                 }
-            }
         }
 
         private void PopulateTierList()
-        {
-            if (m_lstboxTiers != null)
-            {
+        {      
                 m_lstboxTiers.ValueMember = "TierID";
                 m_lstboxTiers.DisplayMember = "TierName";
-                m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0              
-            }              
+                m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
+
+                int itemCount = 0;
+
+            
+                    foreach (Tier TierName in m_tiers)
+                    {
+                        m_cmbxDefaultTier.Items.Add(TierName.TierName);
+                        if (m_tierRule.DefaultTierID == TierName.TierID)
+                        {
+                            m_cmbxDefaultTier.SelectedIndex = itemCount;
+                        }
+                        itemCount++;
+                    }
+                
         }
 
         private void DisplayTier(Tier x)
@@ -85,30 +95,30 @@ namespace GTI.Modules.PlayerCenter.UI
             bool y = false;
             int count = 0;
 
-            if (x.AmntSpend != -1)
+            if (x.QualifyingSpend != -1)
             {
                 m_cmbxQualfyingSpend.SelectedIndex = 0;
-                y = x.AmntSpend == (Int64)x.AmntSpend;//check if its a whole number or a decimal
+                y = x.QualifyingSpend == (Int64)x.QualifyingSpend;//check if its a whole number or a decimal
                 if (y == true)
                 {
-                    m_txtbxSpendStart.Text = Convert.ToString(x.AmntSpend) + ".00";
+                    m_txtbxSpendStart.Text = Convert.ToString(x.QualifyingSpend) + ".00";
                 }
                 else
                 {
-                    count = BitConverter.GetBytes(decimal.GetBits(x.AmntSpend)[3])[2];
+                    count = BitConverter.GetBytes(decimal.GetBits(x.QualifyingSpend)[3])[2];
                     //if its only have 1 decimal places then lets add 1 more
                     if (count == 1)
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.AmntSpend) + "0";
+                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingSpend) + "0";
                     }
                     //if its more than 2 then lets round it off
                     else if (count > 2)
                     {
-                        m_txtbxPointStart.Text = Math.Round(x.AmntSpend, 2).ToString();
+                        m_txtbxPointStart.Text = Math.Round(x.QualifyingSpend, 2).ToString();
                     }
                     else
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.AmntSpend);
+                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingSpend);
                     }
                 }
             }
@@ -118,31 +128,31 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxSpendStart.Text = "";
             }
 
-            if (x.NbrPoints != -1)
+            if (x.QualifyingPoints != -1)
             {
                 m_cmbxQualifyingpoints.SelectedIndex = 0;
-                y = x.NbrPoints == (Int64)x.NbrPoints;
+                y = x.QualifyingPoints == (Int64)x.QualifyingPoints;
                 if (y == true)
                 {
-                    m_txtbxPointStart.Text = Convert.ToString(x.NbrPoints) + ".00";
+                    m_txtbxPointStart.Text = Convert.ToString(x.QualifyingPoints) + ".00";
                 }
                 else
                 {
                     //lets check how many decimal places is being use?
-                    count = BitConverter.GetBytes(decimal.GetBits(x.NbrPoints)[3])[2];
+                    count = BitConverter.GetBytes(decimal.GetBits(x.QualifyingPoints)[3])[2];
                     //if its only have 1 decimal places then lets add 1 more
                     if (count == 1)
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.NbrPoints) + "0";
+                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingPoints) + "0";
                     }
                     //if its more than 2 then lets round it off
                     else if (count > 2)
                     {
-                        m_txtbxPointStart.Text = Math.Round(x.NbrPoints, 2).ToString();
+                        m_txtbxPointStart.Text = Math.Round(x.QualifyingPoints, 2).ToString();
                     }
                     else
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.NbrPoints);
+                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingPoints);
                     }
                 }
             }
@@ -152,42 +162,34 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = "";
             }
 
-            y = x.Multiplier == (Int64)x.Multiplier;
+            y = x.AwardPointsMultiplier == (Int64)x.AwardPointsMultiplier;
             if (y == true)
             {
-                m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + ".00";
+                m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.AwardPointsMultiplier) + ".00";
             }
             else
             {
-                count = BitConverter.GetBytes(decimal.GetBits(x.Multiplier)[3])[2];
+                count = BitConverter.GetBytes(decimal.GetBits(x.AwardPointsMultiplier)[3])[2];
                 //if its only have 1 decimal places then lets add 1 more
                 if (count == 1)
                 {
-                    m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.Multiplier) + "0";
+                    m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.AwardPointsMultiplier) + "0";
                 }
                 //if its more than 2 then lets round it off
                 else if (count > 2)
                 {
-                    m_txtbxAwardPointsMultiplier.Text = Math.Round(x.Multiplier, 2).ToString();
+                    m_txtbxAwardPointsMultiplier.Text = Math.Round(x.AwardPointsMultiplier, 2).ToString();
                 }
                 else
                 {
-                    m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.Multiplier);
+                    m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.AwardPointsMultiplier);
                 }
             }
         }
 
-        private void DisplayTier()
-        {         
-            if (m_lstboxTiers != null)
-            {
-                PopulateTierList();             
-            }         
-        }
-
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (m_lstboxTiers.SelectedIndex != -1)// Update
+            if (m_lstboxTiers.SelectedIndex != -1)//If item is being selected
             {
                 m_tierSelected = new Tier();
                 m_tierSelected = (Tier)m_lstboxTiers.SelectedItem;

@@ -524,13 +524,13 @@
     <value>68, 299</value>
   </data>
   <data name="labelAwardPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 22</value>
+    <value>282, 22</value>
   </data>
   <data name="labelAwardPoints.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
   <data name="labelAwardPoints.Text" xml:space="preserve">
-    <value>Award Points Multiplier</value>
+    <value>Award Points AwardPointsMultiplier</value>
   </data>
   <data name="&gt;&gt;labelAwardPoints.Name" xml:space="preserve">
     <value>labelAwardPoints</value>
@@ -1327,15 +1327,6 @@
   </data>
   <data name="m_cmbxDefaultTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_cmbxDefaultTier.Items" xml:space="preserve">
-    <value>Platinum</value>
-  </data>
-  <data name="m_cmbxDefaultTier.Items1" xml:space="preserve">
-    <value>Gold</value>
-  </data>
-  <data name="m_cmbxDefaultTier.Items2" xml:space="preserve">
-    <value>Silver</value>
   </data>
   <data name="m_cmbxDefaultTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>442, 137</value>

@@ -19,10 +19,10 @@ namespace GTI.Modules.PlayerCenter.Data
        private int TierRulesID { get; set; }
        private string TierName { get; set; }
        private int TierColor { get; set; }
-       private decimal AmntSpend { get; set; }
-       private decimal NbrPoints { get; set; }
+       private decimal QualifyingSpend { get; set; }
+       private decimal QualifyingPoints { get; set; }
        private decimal PtsMultiplier { get; set; }
-       private bool isdelete { get; set; }
+       private bool IsDelete { get; set; }
 
        public SetPlayerTier(Tier td)//td is emtpy we can get the one that has data let us try this for now
        {
@@ -31,10 +31,10 @@ namespace GTI.Modules.PlayerCenter.Data
            TierRulesID = td.TierRulesID;
            TierName = td.TierName;
            TierColor = td.TierColor;
-           AmntSpend = td.AmntSpend;
-           NbrPoints = td.NbrPoints;
-           PtsMultiplier = td.Multiplier;
-           isdelete = td.isdelete;
+           QualifyingSpend = td.QualifyingSpend;
+           QualifyingPoints = td.QualifyingPoints;
+           PtsMultiplier = td.AwardPointsMultiplier;
+           IsDelete = td.IsDelete;
        }
 
        public static int Msg(Tier td)
@@ -62,20 +62,20 @@ namespace GTI.Modules.PlayerCenter.Data
            requestWriter.Write((ushort)TierName.Length);
            requestWriter.Write(TierName.ToCharArray());
            requestWriter.Write(TierColor);
-           string tempDec = AmntSpend.ToString();//what is this Cultureinfo.Invariant Culture
+           string tempDec = QualifyingSpend.ToString();//what is this Cultureinfo.Invariant Culture
            //Amount Spend
            requestWriter.Write((ushort)tempDec.Length);
            requestWriter.Write(tempDec.ToCharArray());
            //Points 
-           tempDec = NbrPoints.ToString();
+           tempDec = QualifyingPoints.ToString();
            requestWriter.Write((ushort)tempDec.Length);
            requestWriter.Write(tempDec.ToCharArray());
-           //Multiplier
+           //AwardPointsMultiplier
            tempDec = PtsMultiplier.ToString();
            requestWriter.Write((ushort)tempDec.Length);
            requestWriter.Write(tempDec.ToCharArray());
 
-           requestWriter.Write(isdelete);//
+           requestWriter.Write(IsDelete);//
 
            m_requestPayload = requestStream.ToArray();
            requestWriter.Close();

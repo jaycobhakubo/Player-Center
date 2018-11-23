@@ -11,23 +11,23 @@ namespace GTI.Modules.PlayerCenter.Data
 {
     public class GetPlayerTier : ServerMessage
     {
-        private const int MinResponseMessageLenght = 2;// Why is it 2//Will reasearch
-       // private List<TierData> tierData { get; set; }
-        private List<Tier> Tiers; //{ get; set; }
-        private int TierID { get; set; }
+        private const int MinResponseMessageLenght = 2;
+        private List<Tier> m_tiers;
+        private int m_tierID;
+        private int m_tierDefaultId;
+
 
         public GetPlayerTier(int tierId)
         {
             m_id = 18072;
-            TierID = tierId;
-            Tiers = new List<Tier>();
+            m_tierID = tierId;
+            m_tiers = new List<Tier>();
         } 
 
-        // public static void GetPlayerTierData()
-       // public static List<TierData> Msg(int tierID)//this can return set of list of data
-              public static List<Tier> Msg(int tierID)//this can return set of list of data
+        public static List<Tier> Msg(int tierID, int TierDefaultId)//this can return set of list of data
         {
             GetPlayerTier msg = new GetPlayerTier(tierID);
+            msg.m_tierDefaultId = TierDefaultId;
             try
             {
                 msg.Send();
@@ -37,7 +37,7 @@ namespace GTI.Modules.PlayerCenter.Data
                 throw new Exception("GetPlayerTierData: " + ex.Message);
             }
 
-            return msg.Tiers;
+            return msg.m_tiers;
         }
 
         protected override void PackRequest()
@@ -47,7 +47,7 @@ namespace GTI.Modules.PlayerCenter.Data
             MemoryStream requestStream = new MemoryStream();
             BinaryWriter requestWriter = new BinaryWriter(requestStream, Encoding.Unicode);
 
-            requestWriter.Write(TierID);
+            requestWriter.Write(m_tierID);
 
             // Set the bytes to be sent.
             m_requestPayload = requestStream.ToArray();
@@ -81,31 +81,40 @@ namespace GTI.Modules.PlayerCenter.Data
                     code.TierID = responseReader.ReadInt32();
                     code.TierRulesID = responseReader.ReadInt32();
 
+      
+
                     ushort stringLen = responseReader.ReadUInt16();
-                    code.TierName = new string(responseReader.ReadChars(stringLen));
+                    if (m_tierDefaultId == code.TierID)
+                    {
+                        code.TierName = new string(responseReader.ReadChars(stringLen)) + " (default)";
+                    }
+                    else
+                    {
+                        code.TierName = new string(responseReader.ReadChars(stringLen));
+                    }
 
                     code.TierColor = responseReader.ReadInt32();
 
                     stringLen = responseReader.ReadUInt16();
                     string tempDec = new string(responseReader.ReadChars(stringLen));
                     if (!string.IsNullOrEmpty(tempDec))
-                    { code.AmntSpend = decimal.Parse(tempDec); }
+                    { code.QualifyingSpend = decimal.Parse(tempDec); }
 
                     stringLen = responseReader.ReadUInt16();
                     tempDec = new string(responseReader.ReadChars(stringLen));
                     if (!string.IsNullOrEmpty(tempDec))
                     {
-                        code.NbrPoints = decimal.Parse(tempDec);
+                        code.QualifyingPoints = decimal.Parse(tempDec);
                     }
 
                     stringLen = responseReader.ReadUInt16();
                     tempDec = new string(responseReader.ReadChars(stringLen));
                     if (!string.IsNullOrEmpty(tempDec))
                     {
-                        code.Multiplier = decimal.Parse(tempDec);
+                        code.AwardPointsMultiplier = decimal.Parse(tempDec);
                     }
 
-                    Tiers.Add(code);
+                    m_tiers.Add(code);
                 }
 
             }

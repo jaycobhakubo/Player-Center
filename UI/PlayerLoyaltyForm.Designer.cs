@@ -67,7 +67,7 @@
             this.m_btnEditSaveTierRule = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_cmbxDowngradeToDefault = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.m_lblSavedSuccessNotification = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.m_cmbxDefaultTier = new System.Windows.Forms.ComboBox();
             this.labelRestart = new System.Windows.Forms.Label();
@@ -419,6 +419,7 @@
             this.m_btnCancelTierRule.Name = "m_btnCancelTierRule";
             this.m_btnCancelTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnCancelTierRule.UseVisualStyleBackColor = false;
+            this.m_btnCancelTierRule.Click += new System.EventHandler(this.m_btnCancelTierRule_Click);
             // 
             // m_btnEditSaveTierRule
             // 
@@ -430,13 +431,14 @@
             this.m_btnEditSaveTierRule.Name = "m_btnEditSaveTierRule";
             this.m_btnEditSaveTierRule.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnEditSaveTierRule.UseVisualStyleBackColor = false;
+            this.m_btnEditSaveTierRule.Click += new System.EventHandler(this.m_btnEditSaveTierRule_Click);
             // 
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             this.groupBox1.Controls.Add(this.m_cmbxDowngradeToDefault);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.m_lblSavedSuccessNotification);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.m_cmbxDefaultTier);
             this.groupBox1.Controls.Add(this.labelRestart);
@@ -458,10 +460,10 @@
             resources.GetString("m_cmbxDowngradeToDefault.Items1")});
             this.m_cmbxDowngradeToDefault.Name = "m_cmbxDowngradeToDefault";
             // 
-            // label4
+            // m_lblSavedSuccessNotification
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.m_lblSavedSuccessNotification, "m_lblSavedSuccessNotification");
+            this.m_lblSavedSuccessNotification.Name = "m_lblSavedSuccessNotification";
             // 
             // label8
             // 
@@ -563,7 +565,7 @@
         private System.Windows.Forms.DateTimePicker m_datetimepickerQualifyingPeriodStart;
         private System.Windows.Forms.Label labelRestart;
         private System.Windows.Forms.ComboBox m_cmbxDowngradeToDefault;
-        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label m_lblSavedSuccessNotification;
         private System.Windows.Forms.ErrorProvider m_errorProvider;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;

@@ -52,7 +52,7 @@ namespace GTI.Modules.PlayerCenter.UI
         //    {
         //        m_lstboxTiers.SelectedIndex = 0;
         //    }
-        //}
+        
 
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {
@@ -60,6 +60,17 @@ namespace GTI.Modules.PlayerCenter.UI
             m_datetimepickerQualifyingPeriodEnd.Enabled = !IsDefault;
             m_cmbxDefaultTier.Enabled = !IsDefault;
             m_cmbxDowngradeToDefault.Enabled = !IsDefault;
+
+            if (IsDefault == true)
+            {
+                m_btnEditSaveTierRule.Text = "&Edit";
+            }
+            else
+            {
+                m_btnEditSaveTierRule.Text = "&Save";
+            }
+
+            if (m_lblSavedSuccessNotification.Visible == true) m_lblSavedSuccessNotification.Visible = false;
         }
 
         private void DisplayTierRule()
@@ -75,6 +86,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     m_cmbxDowngradeToDefault.SelectedIndex = 0;
                 }
+
+        
         }
 
         private void PopulateTierList()
@@ -83,24 +96,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.DisplayMember = "TierName";
                 m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0   
 
+                m_cmbxDefaultTier.ValueMember = "TierID";
+                m_cmbxDefaultTier.DisplayMember = "TierName";
+                m_cmbxDefaultTier.DataSource = m_tiers;//Will fire selected index = 0   
+
                 if (m_tierRule.DefaultTierID != 0)
                 {
                     m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;
-                }
-
-
-                int itemCount = 0;
-            
-                    foreach (Tier TierName in m_tiers)
-                    {
-                        m_cmbxDefaultTier.Items.Add(TierName.TierName);
-                        if (m_tierRule.DefaultTierID == TierName.TierID)
-                        {
-                            m_cmbxDefaultTier.SelectedIndex = itemCount;
-                        }
-                        itemCount++;
-                    }
-                
+                    m_cmbxDefaultTier.SelectedValue = m_tierRule.DefaultTierID;
+                }                       
         }
 
         private void DisplayTier(Tier x)
@@ -211,6 +215,45 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tierSelected = (Tier)m_lstboxTiers.SelectedItem;
                 DisplayTier(m_tierSelected);             
             }
+        }
+
+        private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
+        {
+           // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
+
+
+
+            if (m_btnEditSaveTierRule.Text == "&Edit")
+            {
+                DisableEnableControlDefaultTierRules(false);
+                m_btnEditSaveTierRule.Text = "&Save";
+            
+                // tabControl1.TabPages.
+
+            }
+            else if (m_btnEditSaveTierRule.Text == "&Save")
+            {
+                //savePlayerTierRules();
+                m_btnEditSaveTierRule.Text = "&Edit";
+                DisableEnableControlDefaultTierRules(true);
+                m_lblSavedSuccessNotification.Visible = true;
+               
+
+            }
+        }
+
+        private void m_btnCancelTierRule_Click(object sender, EventArgs e)
+        {
+            //m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
+            //label4.Visible = false;
+            //DisplayPlayerRule();
+            DisableEnableControlDefaultTierRules(true);
+            DisplayTierRule();
+            if (m_tierRule.DefaultTierID != 0)
+            m_cmbxDefaultTier.SelectedValue = m_tierRule.DefaultTierID;
+            //DisplayPlayerRule();
+            //if (m_cmbxDefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
+            //    m_cmbxDefaultTier.SelectedIndex = DefaultTierIndex;
         }
     }   
 }

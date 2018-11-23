@@ -524,13 +524,13 @@
     <value>68, 299</value>
   </data>
   <data name="labelAwardPoints.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 22</value>
+    <value>186, 22</value>
   </data>
   <data name="labelAwardPoints.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
   </data>
   <data name="labelAwardPoints.Text" xml:space="preserve">
-    <value>Award Points AwardPointsMultiplier</value>
+    <value>Award Points Multiplier</value>
   </data>
   <data name="&gt;&gt;labelAwardPoints.Name" xml:space="preserve">
     <value>labelAwardPoints</value>
@@ -1001,7 +1001,7 @@
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+    <value>m_tabPageTier</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1551,69 +1551,69 @@
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>m_tabPage_TierRule</value>
   </data>
   <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_tabPage_TierRule.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_tabPage_TierRule.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 44</value>
   </data>
-  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="m_tabPage_TierRule.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_tabPage_TierRule.Size" type="System.Drawing.Size, System.Drawing">
     <value>1010, 630</value>
   </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_tabPage_TierRule.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
+  <data name="m_tabPage_TierRule.Text" xml:space="preserve">
     <value>Rules</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;m_tabPage_TierRule.Name" xml:space="preserve">
+    <value>m_tabPage_TierRule</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPage_TierRule.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPage_TierRule.Parent" xml:space="preserve">
     <value>m_tbctrlPlayerLoyalty</value>
   </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPage_TierRule.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_tabPageTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
   </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_tabPageTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 44</value>
   </data>
-  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="m_tabPageTier.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_tabPageTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>1010, 630</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_tabPageTier.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
+  <data name="m_tabPageTier.Text" xml:space="preserve">
     <value>Tiers</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;m_tabPageTier.Name" xml:space="preserve">
+    <value>m_tabPageTier</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPageTier.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPageTier.Parent" xml:space="preserve">
     <value>m_tbctrlPlayerLoyalty</value>
   </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_tabPageTier.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="m_tbctrlPlayerLoyalty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

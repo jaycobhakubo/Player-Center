@@ -34,25 +34,58 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_tierRule != null) DisplayTierRule();
 
             m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
-            if (m_tiers != null) PopulateTierList();
-
-
+            if (m_tiers.Count != 0)
+            {
+                PopulateTierList();
+                PopulateTierRuleTierNameDefault();
+            }
 
             DisableEnableControlDefaultTierRules(true);
-            
+            DisableEnableControlDefaultTier(true);
         }
 
-        //private void SelectTierDefault()
-        //{
-        //    if (m_tierIdDefault != 0)      //Always select the default tier if no default first tier             
-        //    {
-        //        m_lstboxTiers.SelectedValue = m_tierIdDefault;
-        //    }
-        //    else
-        //    {
-        //        m_lstboxTiers.SelectedIndex = 0;
-        //    }
-        
+
+        private void DisableEnableControlDefaultTier(bool _isEnable)
+        {
+            //m_tbctrlPlayerLoyalty.Enabled = _isEnable;       
+            m_lstboxTiers.Enabled = _isEnable;
+            m_btnSave.Enabled = !_isEnable;
+            m_btnCancel.Enabled = !_isEnable;
+            m_btnClose.Enabled = _isEnable;
+            m_btnAdd.Enabled = _isEnable;
+            m_btnEdit.Enabled = _isEnable;
+            m_btnDelete.Enabled = _isEnable;
+
+            m_txtbxTierName.Enabled = !_isEnable;
+            m_lblTierColor.Enabled = !_isEnable;
+            m_cmbxQualfyingSpend.Enabled = !_isEnable;
+            m_txtbxSpendStart.Enabled = !_isEnable;
+            m_cmbxQualifyingpoints.Enabled = !_isEnable;
+            m_txtbxPointStart.Enabled = !_isEnable;
+            m_txtbxAwardPointsMultiplier.Enabled = !_isEnable;
+
+            if (_isEnable)
+            {
+                m_txtbxTierName.BackColor = SystemColors.Control;
+                m_txtbxSpendStart.BackColor = SystemColors.Control;
+                m_txtbxPointStart.BackColor = SystemColors.Control;
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;
+                m_cmbxQualifyingpoints.BackColor = SystemColors.Control;
+                m_cmbxQualfyingSpend.BackColor = SystemColors.Control;
+                m_lstboxTiers.BackColor = SystemColors.Window;
+                //m_lblTierColor.BackColor = SystemColors.Control;
+            }
+            else
+            {
+                m_txtbxTierName.BackColor = SystemColors.Window;
+                m_txtbxSpendStart.BackColor = SystemColors.Window;
+                m_txtbxPointStart.BackColor = SystemColors.Window;
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Window;
+                m_cmbxQualifyingpoints.BackColor = SystemColors.Window;
+                m_cmbxQualfyingSpend.BackColor = SystemColors.Window;
+                m_lstboxTiers.BackColor = SystemColors.Control;
+            }
+        }
 
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {
@@ -60,6 +93,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_datetimepickerQualifyingPeriodEnd.Enabled = !IsDefault;
             m_cmbxDefaultTier.Enabled = !IsDefault;
             m_cmbxDowngradeToDefault.Enabled = !IsDefault;
+            //m_tbctrlPlayerLoyalty.Enabled = !IsDefault; -- need to work on this Do ot change tab while editing
 
             if (IsDefault == true)
             {
@@ -87,7 +121,27 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_cmbxDowngradeToDefault.SelectedIndex = 0;
                 }
 
+                if (m_tiers.Count != 0)
+                {
+                    PopulateTierRuleTierNameDefault();
+
+                }
         
+        }
+
+        private void PopulateTierRuleTierNameDefault()
+        {
+            int itemCount = 0;
+
+            foreach (Tier TierName in m_tiers)
+            {
+                m_cmbxDefaultTier.Items.Add(TierName.TierName);
+                if (m_tierRule.DefaultTierID != 0 && m_tierRule.DefaultTierID == TierName.TierID)
+                {
+                    m_cmbxDefaultTier.SelectedIndex = itemCount;
+                }
+                itemCount++;
+            }        
         }
 
         private void PopulateTierList()
@@ -95,16 +149,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.ValueMember = "TierID";
                 m_lstboxTiers.DisplayMember = "TierName";
                 m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0   
-
-                m_cmbxDefaultTier.ValueMember = "TierID";
-                m_cmbxDefaultTier.DisplayMember = "TierName";
-                m_cmbxDefaultTier.DataSource = m_tiers;//Will fire selected index = 0   
-
+          
                 if (m_tierRule.DefaultTierID != 0)
                 {
-                    m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;
-                    m_cmbxDefaultTier.SelectedValue = m_tierRule.DefaultTierID;
-                }                       
+                    m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;                  
+                }    //else select the lowest one                                                                           
         }
 
         private void DisplayTier(Tier x)

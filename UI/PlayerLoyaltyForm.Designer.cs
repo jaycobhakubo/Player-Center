@@ -57,7 +57,7 @@
             this.m_txtbxTierName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.m_tabPage_TierRule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.m_datetimepickerQualifyingPeriodStart = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -83,12 +83,12 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.m_tbctrlPlayerLoyalty.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.m_tabPage_TierRule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.m_tabPageTier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -340,21 +340,21 @@
             // 
             // m_tbctrlPlayerLoyalty
             // 
-            this.m_tbctrlPlayerLoyalty.Controls.Add(this.tabPage1);
-            this.m_tbctrlPlayerLoyalty.Controls.Add(this.tabPage2);
+            this.m_tbctrlPlayerLoyalty.Controls.Add(this.m_tabPage_TierRule);
+            this.m_tbctrlPlayerLoyalty.Controls.Add(this.m_tabPageTier);
             resources.ApplyResources(this.m_tbctrlPlayerLoyalty, "m_tbctrlPlayerLoyalty");
             this.m_tbctrlPlayerLoyalty.Name = "m_tbctrlPlayerLoyalty";
             this.m_tbctrlPlayerLoyalty.SelectedIndex = 0;
             this.m_tbctrlPlayerLoyalty.Tag = "1";
             // 
-            // tabPage1
+            // m_tabPage_TierRule
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.splitContainer2);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Tag = "1";
+            this.m_tabPage_TierRule.BackColor = System.Drawing.Color.Transparent;
+            this.m_tabPage_TierRule.Controls.Add(this.splitContainer2);
+            resources.ApplyResources(this.m_tabPage_TierRule, "m_tabPage_TierRule");
+            this.m_tabPage_TierRule.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_tabPage_TierRule.Name = "m_tabPage_TierRule";
+            this.m_tabPage_TierRule.Tag = "1";
             // 
             // splitContainer2
             // 
@@ -505,13 +505,13 @@
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // tabPage2
+            // m_tabPageTier
             // 
-            this.tabPage2.Controls.Add(this.splitContainer1);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Tag = "2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.m_tabPageTier.Controls.Add(this.splitContainer1);
+            resources.ApplyResources(this.m_tabPageTier, "m_tabPageTier");
+            this.m_tabPageTier.Name = "m_tabPageTier";
+            this.m_tabPageTier.Tag = "2";
+            this.m_tabPageTier.UseVisualStyleBackColor = true;
             // 
             // m_errorProvider
             // 
@@ -537,14 +537,14 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.m_tabPage_TierRule.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.m_tabPageTier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
             this.ResumeLayout(false);
 
@@ -553,8 +553,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl m_tbctrlPlayerLoyalty;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage m_tabPageTier;
+        private System.Windows.Forms.TabPage m_tabPage_TierRule;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Controls.ImageButton m_btnCancelTierRule;
         private Controls.ImageButton m_btnEditSaveTierRule;

@@ -121,39 +121,39 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="m_btnEdit.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnEditTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_btnEdit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnEditTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnEdit.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnEditTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 521</value>
   </data>
-  <data name="m_btnEdit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnEditTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
   </data>
-  <data name="m_btnEdit.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnEditTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 38</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_btnEdit.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnEditTier.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="m_btnEdit.Text" xml:space="preserve">
+  <data name="m_btnEditTier.Text" xml:space="preserve">
     <value>&amp;Edit Tier</value>
   </data>
-  <data name="&gt;&gt;m_btnEdit.Name" xml:space="preserve">
-    <value>m_btnEdit</value>
+  <data name="&gt;&gt;m_btnEditTier.Name" xml:space="preserve">
+    <value>m_btnEditTier</value>
   </data>
-  <data name="&gt;&gt;m_btnEdit.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnEdit.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;m_btnEdit.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnEditTier.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="m_lstboxTiers.Font" type="System.Drawing.Font, System.Drawing">
@@ -213,70 +213,70 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="m_btnDelete.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnDeleteTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="m_btnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnDeleteTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnDelete.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnDeleteTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 565</value>
   </data>
-  <data name="m_btnDelete.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnDeleteTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
   </data>
-  <data name="m_btnDelete.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnDeleteTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 38</value>
   </data>
-  <data name="m_btnDelete.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnDeleteTier.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="m_btnDelete.Text" xml:space="preserve">
+  <data name="m_btnDeleteTier.Text" xml:space="preserve">
     <value>&amp;Delete Tier</value>
   </data>
-  <data name="&gt;&gt;m_btnDelete.Name" xml:space="preserve">
-    <value>m_btnDelete</value>
+  <data name="&gt;&gt;m_btnDeleteTier.Name" xml:space="preserve">
+    <value>m_btnDeleteTier</value>
   </data>
-  <data name="&gt;&gt;m_btnDelete.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnDeleteTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnDelete.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnDeleteTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;m_btnDelete.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnDeleteTier.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="m_btnAdd.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnAddTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="m_btnAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnAddTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnAdd.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnAddTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 477</value>
   </data>
-  <data name="m_btnAdd.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnAddTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
   </data>
-  <data name="m_btnAdd.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnAddTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 38</value>
   </data>
-  <data name="m_btnAdd.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnAddTier.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="m_btnAdd.Text" xml:space="preserve">
+  <data name="m_btnAddTier.Text" xml:space="preserve">
     <value>&amp;Add Tier</value>
   </data>
-  <data name="&gt;&gt;m_btnAdd.Name" xml:space="preserve">
-    <value>m_btnAdd</value>
+  <data name="&gt;&gt;m_btnAddTier.Name" xml:space="preserve">
+    <value>m_btnAddTier</value>
   </data>
-  <data name="&gt;&gt;m_btnAdd.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnAddTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnAdd.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnAddTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;m_btnAdd.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnAddTier.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="splitContainer1.Panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -297,37 +297,37 @@
   <data name="splitContainer1.Panel2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
-  <data name="m_btnClose.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnCloseTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="m_btnClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnCloseTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnClose.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnCloseTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>515, 565</value>
   </data>
-  <data name="m_btnClose.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCloseTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="m_btnClose.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCloseTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="m_btnClose.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnCloseTier.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
-  <data name="m_btnClose.Text" xml:space="preserve">
+  <data name="m_btnCloseTier.Text" xml:space="preserve">
     <value>&amp;Close</value>
   </data>
-  <data name="&gt;&gt;m_btnClose.Name" xml:space="preserve">
-    <value>m_btnClose</value>
+  <data name="&gt;&gt;m_btnCloseTier.Name" xml:space="preserve">
+    <value>m_btnCloseTier</value>
   </data>
-  <data name="&gt;&gt;m_btnClose.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnClose.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;m_btnClose.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCloseTier.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="lbl_MessageSaved.AutoSize" type="System.Boolean, mscorlib">
@@ -409,70 +409,70 @@
   <data name="&gt;&gt;m_lblTierColor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="m_btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnCancelTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="m_btnCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnCancelTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnCancelTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 565</value>
   </data>
-  <data name="m_btnCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCancelTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="m_btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnCancelTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="m_btnCancel.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnCancelTier.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="m_btnCancel.Text" xml:space="preserve">
+  <data name="m_btnCancelTier.Text" xml:space="preserve">
     <value>&amp;Cancel</value>
   </data>
-  <data name="&gt;&gt;m_btnCancel.Name" xml:space="preserve">
-    <value>m_btnCancel</value>
+  <data name="&gt;&gt;m_btnCancelTier.Name" xml:space="preserve">
+    <value>m_btnCancelTier</value>
   </data>
-  <data name="&gt;&gt;m_btnCancel.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnCancel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;m_btnCancel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnCancelTier.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="m_btnSave.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_btnSaveTier.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="m_btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_btnSaveTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_btnSave.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_btnSaveTier.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 565</value>
   </data>
-  <data name="m_btnSave.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnSaveTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="m_btnSave.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_btnSaveTier.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 38</value>
   </data>
-  <data name="m_btnSave.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_btnSaveTier.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="m_btnSave.Text" xml:space="preserve">
+  <data name="m_btnSaveTier.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
-  <data name="&gt;&gt;m_btnSave.Name" xml:space="preserve">
-    <value>m_btnSave</value>
+  <data name="&gt;&gt;m_btnSaveTier.Name" xml:space="preserve">
+    <value>m_btnSaveTier</value>
   </data>
-  <data name="&gt;&gt;m_btnSave.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_btnSaveTier.Type" xml:space="preserve">
     <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;m_btnSave.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_btnSaveTier.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;m_btnSave.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_btnSaveTier.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="m_txtbxAwardPointsMultiplier.Font" type="System.Drawing.Font, System.Drawing">

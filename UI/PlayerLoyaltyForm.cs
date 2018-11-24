@@ -36,7 +36,22 @@ namespace GTI.Modules.PlayerCenter.UI
             DisableEnableControlDefaultTier(true);
         }
 
+        #region METHOD
 
+        #region CLEAR CONTROL FOR NEW TIER
+        private void ClearTiersTab()
+        {
+            m_txtbxTierName.Text = "";
+            m_cmbxQualfyingSpend.SelectedIndex = 1;
+            m_txtbxSpendStart.Text = "";
+            m_cmbxQualifyingpoints.SelectedIndex = 1;
+            m_txtbxPointStart.Text = "";
+            m_txtbxAwardPointsMultiplier.Text = "1.00";
+            m_lblTierColor.BackColor = SystemColors.ButtonHighlight;
+            //m_tierId = 0;
+        }
+        #endregion
+        #region DISABLE OR ENABLE CONTROL BASE ON ADD, EDIT CANCEL SAVE .. TIER
         private void DisableEnableControlDefaultTier(bool _isEnable)
         {
             //m_tbctrlPlayerLoyalty.Enabled = _isEnable;       
@@ -80,7 +95,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
            if (lbl_MessageSaved.Visible == true) lbl_MessageSaved.Visible = false;
         }
-
+        #endregion
+        #region DISABLE OR ENABLE CONTROL BASE ON  EDIT  CANCEL SAVE.. TIER RULE
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {
             m_datetimepickerQualifyingPeriodStart.Enabled = !IsDefault;
@@ -100,7 +116,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_lblSavedSuccessNotification.Visible == true) m_lblSavedSuccessNotification.Visible = false;
         }
-
+        #endregion
+        #region DISLAY TIER RULE ON TAB PAGE UI
         private void DisplayTierRule()
         {
             if (m_tierRule != null)
@@ -138,8 +155,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_datetimepickerQualifyingPeriodEnd.Value = DateTime.Now.AddYears(1);
             }
         }
-        
-    
+        #endregion
+        #region SELECT DEFAULT TIER IF NONE THEN SELECT THE LOWEST TIER
+
         private void SelectDefaultOrFirstRowTier()
         {
             if (m_tierRule.DefaultTierID != 0 && m_tiers.Count != 0)
@@ -148,6 +166,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }    
         }
 
+        #endregion
+        #region DISPLAY TIER NAME IN THE LIST BOX
         private void PopulateTierList()
         {      
                 m_lstboxTiers.ValueMember = "TierID";
@@ -155,7 +175,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
                 SelectDefaultOrFirstRowTier();                                            
         }
-
+        #endregion
+        #region DISPLAY TIER FOR ALL CONTROL
         private void DisplayTier(Tier x)
         {
             m_txtbxTierName.Text = x.TierName;
@@ -255,7 +276,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
+        #endregion
+        #endregion
 
+        #region EVENT
+
+        #region  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (m_lstboxTiers.SelectedIndex != -1)//If item is being selected
@@ -265,7 +291,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 DisplayTier(m_tierSelected);             
             }
         }
-
+        #endregion
+        #region EDIT TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
            // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
@@ -290,7 +317,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             }
         }
-
+        #endregion
+        #region CANCEL TIER RULE
         private void m_btnCancelTierRule_Click(object sender, EventArgs e)
         {
             //m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
@@ -304,25 +332,16 @@ namespace GTI.Modules.PlayerCenter.UI
             //if (m_cmbxDefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
             //    m_cmbxDefaultTier.SelectedIndex = DefaultTierIndex;
         }
-
+        #endregion 
+        #region CLOSE TIER RULE
         private void m_btnCloseTierRule_Click(object sender, EventArgs e)
         {
            // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
-        private void ClearTiersTab()
-        {
-            m_txtbxTierName.Text = "";
-            m_cmbxQualfyingSpend.SelectedIndex = 1;
-            m_txtbxSpendStart.Text = "";
-            m_cmbxQualifyingpoints.SelectedIndex = 1;
-            m_txtbxPointStart.Text = "";
-            m_txtbxAwardPointsMultiplier.Text = "1.00";
-            m_lblTierColor.BackColor = SystemColors.ButtonHighlight;
-            //m_tierId = 0;
-        }
+        #endregion
+        #region ADD TIER
 
         private void m_btnAddTier_Click(object sender, EventArgs e)
         {
@@ -333,6 +352,9 @@ namespace GTI.Modules.PlayerCenter.UI
             DisableEnableControlDefaultTier(false);
         }
 
+        #endregion
+        #region EDIT TIER
+
         private void m_btnEditTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(false);
@@ -341,8 +363,8 @@ namespace GTI.Modules.PlayerCenter.UI
             
         }
 
-     
-   
+        #endregion
+        #region DELETE TIER
 
         private void m_btnDeleteTier_Click(object sender, EventArgs e)
         {
@@ -400,6 +422,8 @@ namespace GTI.Modules.PlayerCenter.UI
         */
         }
 
+        #endregion
+        #region SAVED TIER
         private void m_btnSaveTier_Click(object sender, EventArgs e)
         {
         
@@ -512,17 +536,25 @@ namespace GTI.Modules.PlayerCenter.UI
             */
         }
 
+        #endregion
+        #region CANCEL TIER
+
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(true);
             SelectDefaultOrFirstRowTier();
         }
 
+        #endregion
+        #region CLOSE TIER
         private void m_btnCloseTier_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        #endregion
+
+        #endregion
 
     }   
 }

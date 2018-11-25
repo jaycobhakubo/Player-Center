@@ -24,10 +24,10 @@ namespace GTI.Modules.PlayerCenter.Data
             m_tiers = new List<Tier>();
         } 
 
-        public static List<Tier> Msg(int tierID, int TierDefaultId)//this can return set of list of data
+        public static List<Tier> Msg(int _tierID, int _tierDefaultId)//this can return set of list of data
         {
-            GetPlayerTier msg = new GetPlayerTier(tierID);
-            msg.m_tierDefaultId = TierDefaultId;
+            GetPlayerTier msg = new GetPlayerTier(_tierID);
+            msg.m_tierDefaultId = _tierDefaultId;
             try
             {
                 msg.Send();
@@ -81,18 +81,10 @@ namespace GTI.Modules.PlayerCenter.Data
                     code.TierID = responseReader.ReadInt32();
                     code.TierRulesID = responseReader.ReadInt32();
 
-      
 
                     ushort stringLen = responseReader.ReadUInt16();
-                    if (m_tierDefaultId == code.TierID)
-                    {
-                        code.TierName = new string(responseReader.ReadChars(stringLen)) + " (default)";
-                    }
-                    else
-                    {
-                        code.TierName = new string(responseReader.ReadChars(stringLen));
-                    }
-
+                    code.TierName = new string(responseReader.ReadChars(stringLen));   
+            
                     code.TierColor = responseReader.ReadInt32();
 
                     stringLen = responseReader.ReadUInt16();
@@ -112,6 +104,15 @@ namespace GTI.Modules.PlayerCenter.Data
                     if (!string.IsNullOrEmpty(tempDec))
                     {
                         code.AwardPointsMultiplier = decimal.Parse(tempDec);
+                    }
+
+                    if (m_tierDefaultId == code.TierID)
+                    {
+                        code.IsDefaultTier = true; //code.TierName = new string(responseReader.ReadChars(stringLen)) + " (default)";
+                    }
+                    else
+                    {
+                        code.IsDefaultTier = false; //code.TierName = new string(responseReader.ReadChars(stringLen));
                     }
 
                     m_tiers.Add(code);

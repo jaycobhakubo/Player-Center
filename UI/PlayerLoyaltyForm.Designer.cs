@@ -67,7 +67,7 @@
             this.m_btnEditSaveTierRule = new GTI.Controls.ImageButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_cmbxDowngradeToDefault = new System.Windows.Forms.ComboBox();
-            this.m_lblSavedSuccessNotification = new System.Windows.Forms.Label();
+            this.m_lblTierRuleSavedSuccessNotification = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.m_cmbxDefaultTier = new System.Windows.Forms.ComboBox();
             this.labelRestart = new System.Windows.Forms.Label();
@@ -445,7 +445,7 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             this.groupBox1.Controls.Add(this.m_cmbxDowngradeToDefault);
-            this.groupBox1.Controls.Add(this.m_lblSavedSuccessNotification);
+            this.groupBox1.Controls.Add(this.m_lblTierRuleSavedSuccessNotification);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.m_cmbxDefaultTier);
             this.groupBox1.Controls.Add(this.labelRestart);
@@ -467,10 +467,10 @@
             resources.GetString("m_cmbxDowngradeToDefault.Items1")});
             this.m_cmbxDowngradeToDefault.Name = "m_cmbxDowngradeToDefault";
             // 
-            // m_lblSavedSuccessNotification
+            // m_lblTierRuleSavedSuccessNotification
             // 
-            resources.ApplyResources(this.m_lblSavedSuccessNotification, "m_lblSavedSuccessNotification");
-            this.m_lblSavedSuccessNotification.Name = "m_lblSavedSuccessNotification";
+            resources.ApplyResources(this.m_lblTierRuleSavedSuccessNotification, "m_lblTierRuleSavedSuccessNotification");
+            this.m_lblTierRuleSavedSuccessNotification.Name = "m_lblTierRuleSavedSuccessNotification";
             // 
             // label8
             // 
@@ -494,6 +494,7 @@
             resources.ApplyResources(this.m_datetimepickerQualifyingPeriodEnd, "m_datetimepickerQualifyingPeriodEnd");
             this.m_datetimepickerQualifyingPeriodEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.m_datetimepickerQualifyingPeriodEnd.Name = "m_datetimepickerQualifyingPeriodEnd";
+            this.m_datetimepickerQualifyingPeriodEnd.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateTierRuleQualifyingPeriodDate);
             // 
             // label10
             // 
@@ -572,7 +573,7 @@
         private System.Windows.Forms.DateTimePicker m_datetimepickerQualifyingPeriodStart;
         private System.Windows.Forms.Label labelRestart;
         private System.Windows.Forms.ComboBox m_cmbxDowngradeToDefault;
-        public System.Windows.Forms.Label m_lblSavedSuccessNotification;
+        public System.Windows.Forms.Label m_lblTierRuleSavedSuccessNotification;
         private System.Windows.Forms.ErrorProvider m_errorProvider;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;

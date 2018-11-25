@@ -113,7 +113,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_btnEditSaveTierRule.Text = "&Save";
             }
 
-            if (m_lblSavedSuccessNotification.Visible == true) m_lblSavedSuccessNotification.Visible = false;
+            if (m_lblTierRuleSavedSuccessNotification.Visible == true) m_lblTierRuleSavedSuccessNotification.Visible = false;
         }
         #endregion
         #region DISLAY TIER RULE ON TAB PAGE UI
@@ -276,10 +276,107 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
-        #endregion
+        #region NOTIFICATION 
+        private void ClearUserNotification()
+        {
+            m_errorProvider.SetError(m_txtbxTierName, string.Empty);
+            m_errorProvider.SetError(m_txtbxSpendStart, string.Empty);
+            m_errorProvider.SetError(m_txtbxPointStart, string.Empty);
+            m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, string.Empty);
+            m_errorProvider.SetError(m_cmbxQualfyingSpend, string.Empty);                  
 
+            //Tab Page Tier Rule
+            m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
+            if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
+            if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
+        }
+        #endregion
+        #region SAVE TIER RULE
+
+        private void SaveTierRule()
+        {
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                return;
+
+            TierRule NewTierRule = new TierRule();
+            NewTierRule.QualifyingStartDate = DateTime.Parse(m_datetimepickerQualifyingPeriodStart.Value.ToShortDateString());
+            NewTierRule.QualifyingEndDate = DateTime.Parse(m_datetimepickerQualifyingPeriodEnd.Value.ToShortDateString());
+            if (m_cmbxDefaultTier.Items.Count == 0)
+            {
+                NewTierRule.DefaultTierID = 0;
+            }
+            else
+            {
+                if (m_cmbxDefaultTier.SelectedIndex != -1)
+                {
+                    string DefaultTierName = m_cmbxDefaultTier.SelectedItem.ToString();
+                    var f = m_tiers.Exists(p => p.TierName == DefaultTierName);
+                    bool cc = f;
+
+                    var DefaultTierID = m_tiers.Where(l => l.TierName == DefaultTierName);
+                    foreach (var c in DefaultTierID)                   
+                    { 
+                        int y = c.TierID; 
+                        NewTierRule.DefaultTierID = y; 
+                    }
+                }
+            }
+
+            string IsDownGradeTDefault = m_cmbxDowngradeToDefault.SelectedItem.ToString();
+            if (IsDownGradeTDefault == "No")
+            {
+                NewTierRule.DowngradeToDefault = false;
+            }
+            else
+            {
+                NewTierRule.DowngradeToDefault = true;
+            }
+            //Check If theres any changes
+            int t_tierRuleId = 0;
+            if (m_tierRule.Equals(NewTierRule))//true = no changes
+            {
+                 return;
+             
+            }
+            else
+            {
+                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
+            }
+            m_tierRule = NewTierRule; 
+
+
+
+
+
+            //if (m_cmbxDefaultTier.SelectedIndex != -1)
+            //{
+            //    int n = -1;
+            //    string o = "";
+            //    foreach (string m in listbox_Tiers.Items)
+            //    {
+            //        if (m.Contains(" (default)"))
+            //        {
+            //            n = listbox_Tiers.Items.IndexOf(m);
+            //            o = m.Replace(" (default)", "");
+
+            //        }
+            //    }
+
+            //    if (n != -1)
+            //    {
+            //        listbox_Tiers.Items[n] = o;
+            //    }
+            //    string items = m_cmbxDefaultTier.SelectedItem.ToString();
+            //    int index = listbox_Tiers.Items.IndexOf(items);
+            //    items = items + " (default)";
+            //    listbox_Tiers.Items[index] = items;
+
+            //}*/
+        }
+        #endregion
+        #endregion
         #region EVENT
-       
+
         #region  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -306,10 +403,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (m_btnEditSaveTierRule.Text == "&Save")
             {
-                //savePlayerTierRules();
+                SaveTierRule();
                 m_btnEditSaveTierRule.Text = "&Edit";
                 DisableEnableControlDefaultTierRules(true);
-                m_lblSavedSuccessNotification.Visible = true;
+                m_lblTierRuleSavedSuccessNotification.Visible = true;
             }
         }
         #endregion
@@ -399,8 +496,8 @@ namespace GTI.Modules.PlayerCenter.UI
             //SetPlayerTierData.Save(code1);
 
             listbox_Tiers.Items.RemoveAt(CurrentIndex);
-            CurrentIndex = cmbx_DefaultTier.Items.IndexOf(ItemSelected);
-            cmbx_DefaultTier.Items.RemoveAt(CurrentIndex);
+            CurrentIndex = m_cmbxDefaultTier.Items.IndexOf(ItemSelected);
+            m_cmbxDefaultTier.Items.RemoveAt(CurrentIndex);
             m_tiers.RemoveAll(i => i.TierID == m_tierId);
             m_tierRule.DefaultTierID = 0; //GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;   //???
             listbox_Tiers.SelectedIndex = -1;
@@ -466,7 +563,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 listbox_Tiers.Items.Add(txtTierName.Text);
                 // m_tierNew.TierID = TierID;
                 m_tiers.Add(m_tierNew);
-                cmbx_DefaultTier.Items.Add(txtTierName.Text);
+                m_cmbxDefaultTier.Items.Add(txtTierName.Text);
                 ClearTiersTab();
                 DisableControls();
                 int countItem = listbox_Tiers.Items.Count;
@@ -491,8 +588,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 listbox_Tiers.Update();
                 listbox_Tiers.Refresh();
 
-                int ii = cmbx_DefaultTier.Items.IndexOf(x);
-                cmbx_DefaultTier.Items[ii] = txtTierName.Text;
+                int ii = m_cmbxDefaultTier.Items.IndexOf(x);
+                m_cmbxDefaultTier.Items[ii] = txtTierName.Text;
 
 
                 Tier a = m_tiers.Single(l => l.TierName == x);
@@ -554,9 +651,26 @@ namespace GTI.Modules.PlayerCenter.UI
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        #endregion     
+       
+        #endregion  
+        #region EVENT VALIDATION
+
+        #region VALIDATE USER INPUT
+        //Check if the ending date is > than the starting date.
+        private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
+        {
+            bool v = (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value);
+            if (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value)
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
+            }
+        }
         #endregion
 
         #endregion
+
 
     }   
 }

@@ -341,12 +341,29 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);              
-                  m_tierRule = NewTierRule;
+                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
+                //  UpdateTierList(NewTierRule);   
+                  Tier t_testD = m_tiers.Single(l => l.TierID == m_tierRule.DefaultTierID);
+                  t_testD.IsDefaultTier = false;
+                  t_testD = m_tiers.Single(l => l.TierID == NewTierRule.DefaultTierID);
+                  t_testD.IsDefaultTier = true;
+                  m_tierRule = NewTierRule;       
                   DisplayTierRule();
-            }
-                
+                  PopulateTierList();                               
+            }                
         }
+
+        private void UpdateTierList(TierRule _newTierRule)
+        {
+            Tier t_testD = m_tiers.Single(l => l.TierID == m_tierRule.DefaultTierID);
+            t_testD.IsDefaultTier = false;
+            t_testD = m_tiers.Single(l => l.TierID == _newTierRule.DefaultTierID);
+            t_testD.IsDefaultTier = true;
+            m_tierRule = _newTierRule;
+            PopulateTierList();
+        }
+
+
         #endregion
         #endregion
         #region EVENT

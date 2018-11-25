@@ -87,9 +87,6 @@ namespace GTI.Modules.PlayerCenter.Data
                 }
 
                 responseReader.Close();
-
             }
-
-
     }
 }

@@ -299,9 +299,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
 
             TierRule NewTierRule = new TierRule();
+            NewTierRule.TierRulesID = m_tierRule.TierRulesID;
             NewTierRule.QualifyingStartDate = DateTime.Parse(m_datetimepickerQualifyingPeriodStart.Value.ToShortDateString());
             NewTierRule.QualifyingEndDate = DateTime.Parse(m_datetimepickerQualifyingPeriodEnd.Value.ToShortDateString());
-            if (m_cmbxDefaultTier.Items.Count == 0)
+
+            if (m_cmbxDefaultTier.Items.Count == 0)//New default tier; this code will never be executed; Not sure If we want to support multiple Tier Rule  just put this one just in case
             {
                 NewTierRule.DefaultTierID = 0;
             }
@@ -335,43 +337,15 @@ namespace GTI.Modules.PlayerCenter.UI
             int t_tierRuleId = 0;
             if (m_tierRule.Equals(NewTierRule))//true = no changes
             {
-                 return;
-             
+                 return;            
             }
             else
             {
-                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
+                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);              
+                  m_tierRule = NewTierRule;
+                  DisplayTierRule();
             }
-            m_tierRule = NewTierRule; 
-
-
-
-
-
-            //if (m_cmbxDefaultTier.SelectedIndex != -1)
-            //{
-            //    int n = -1;
-            //    string o = "";
-            //    foreach (string m in listbox_Tiers.Items)
-            //    {
-            //        if (m.Contains(" (default)"))
-            //        {
-            //            n = listbox_Tiers.Items.IndexOf(m);
-            //            o = m.Replace(" (default)", "");
-
-            //        }
-            //    }
-
-            //    if (n != -1)
-            //    {
-            //        listbox_Tiers.Items[n] = o;
-            //    }
-            //    string items = m_cmbxDefaultTier.SelectedItem.ToString();
-            //    int index = listbox_Tiers.Items.IndexOf(items);
-            //    items = items + " (default)";
-            //    listbox_Tiers.Items[index] = items;
-
-            //}*/
+                
         }
         #endregion
         #endregion

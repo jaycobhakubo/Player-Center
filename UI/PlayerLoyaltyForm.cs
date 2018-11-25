@@ -102,6 +102,9 @@ namespace GTI.Modules.PlayerCenter.UI
             m_datetimepickerQualifyingPeriodEnd.Enabled = !IsDefault;
             m_cmbxDefaultTier.Enabled = !IsDefault;
             m_cmbxDowngradeToDefault.Enabled = !IsDefault;
+            m_btnCancelTierRule.Enabled = !IsDefault;
+            m_btnCloseTierRule.Enabled = IsDefault;
+
             //m_tbctrlPlayerLoyalty.Enabled = !IsDefault; -- need to work on this Do ot change tab while editing
 
             if (IsDefault == true)

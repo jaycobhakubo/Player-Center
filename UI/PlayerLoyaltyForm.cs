@@ -27,7 +27,6 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_tierRule = new TierRule();
             m_tiers = new List<Tier>();
-
             m_tierRule = GetPlayerTierRule.Msg();
             m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
             DisplayTierRule();
@@ -280,7 +279,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region EVENT
-
+       
         #region  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -296,20 +295,14 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
-        #region EDIT TIER RULE
+        #region EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
-           // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
-
-
-
+            // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             if (m_btnEditSaveTierRule.Text == "&Edit")
             {
                 DisableEnableControlDefaultTierRules(false);
                 m_btnEditSaveTierRule.Text = "&Save";
-            
-                // tabControl1.TabPages.
-
             }
             else if (m_btnEditSaveTierRule.Text == "&Save")
             {
@@ -317,8 +310,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_btnEditSaveTierRule.Text = "&Edit";
                 DisableEnableControlDefaultTierRules(true);
                 m_lblSavedSuccessNotification.Visible = true;
-               
-
             }
         }
         #endregion
@@ -344,7 +335,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-        #endregion
+        #endregion        
         #region ADD TIER
 
         private void m_btnAddTier_Click(object sender, EventArgs e)

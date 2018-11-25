@@ -288,7 +288,11 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_tierSelected = new Tier();
                 m_tierSelected = (Tier)m_lstboxTiers.SelectedItem;
-                DisplayTier(m_tierSelected);             
+                DisplayTier(m_tierSelected);
+            }
+            else
+            {
+                ClearTiersTab();
             }
         }
         #endregion
@@ -346,10 +350,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnAddTier_Click(object sender, EventArgs e)
         {
             //ClearALLError();
-            lbl_MessageSaved.Visible = false;
+            if (!lbl_MessageSaved.Visible) lbl_MessageSaved.Visible  = false;
             m_lstboxTiers.SelectedIndex = -1;
-            ClearTiersTab();
             DisableEnableControlDefaultTier(false);
+            m_tierSelected = new Tier();
         }
 
         #endregion
@@ -372,6 +376,10 @@ namespace GTI.Modules.PlayerCenter.UI
             if (MessageForm.Show("Are you sure you want to permanently delete this " + m_tierSelected.TierName + " Tier.", "Player Loyalty", MessageFormTypes.YesNo) == DialogResult.No)
             {
                 return;
+            }
+            else
+            {
+                SelectDefaultOrFirstRowTier();
             }
         /*
             int CurrentIndex = listbox_Tiers.SelectedIndex;
@@ -542,7 +550,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(true);
-            SelectDefaultOrFirstRowTier();
+            if (m_tierSelected.TierID == 0)
+            {
+                SelectDefaultOrFirstRowTier();
+            }
         }
 
         #endregion

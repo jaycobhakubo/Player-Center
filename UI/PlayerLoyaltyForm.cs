@@ -391,6 +391,41 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
+        #region SELECTED QUALIFYING SPEND
+        private void m_cmbxQualfyingSpend_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
+            {
+                m_txtbxSpendStart.Enabled = true;
+                m_txtbxSpendStart.BackColor = SystemColors.Window;
+                m_txtbxSpendStart.Text = "0.00";
+            }
+            else
+            {
+                m_txtbxSpendStart.Enabled = false;
+                m_txtbxSpendStart.BackColor = SystemColors.Control;
+                m_txtbxSpendStart.Text = string.Empty;
+            }
+        }
+        #endregion
+        #region SELECTED QUALIFYING POINTS
+        private void m_cmbxQualifyingpoints_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
+            {
+                m_txtbxPointStart.Enabled = true;
+                m_txtbxPointStart.BackColor = SystemColors.Window;
+                m_txtbxPointStart.Text = "0.00";
+            }
+            else
+            {
+                m_txtbxPointStart.Enabled = false;
+                m_txtbxPointStart.BackColor = SystemColors.Control;
+                m_txtbxPointStart.Text = string.Empty;
+            }
+        }
+        #endregion
+
         #region EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
@@ -659,10 +694,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Close();
         }
         #endregion     
-       
-        #endregion  
 
-        #region EVENT VALIDATION
+        #region EVENT validation
         #region Qualifying period date
         //Check if the ending date is > than the starting date.
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
@@ -719,7 +752,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_txtbxTierName, "Check your input");
                 return;
             }
-        }     
+        }
 
         #endregion
         #region Spend Start
@@ -781,7 +814,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
-        #endregion       
+        #endregion
         #region Point Start
 
         private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
@@ -870,7 +903,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
-        #endregion       
+        #endregion
         #region Spend/Points Combobox
 
         private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
@@ -889,6 +922,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
+        #endregion
+        #region EVENT keypress
         private void m_txtbxAwardPointsMultiplier_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -911,6 +946,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
         #endregion
+
+        #endregion  
+        
+
+       
+
+      
     }   
 }
 

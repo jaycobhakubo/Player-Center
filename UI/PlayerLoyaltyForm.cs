@@ -661,8 +661,8 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion     
        
         #endregion  
-        #region EVENT VALIDATION
 
+        #region EVENT VALIDATION
         #region Qualifying period date
         //Check if the ending date is > than the starting date.
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
@@ -674,6 +674,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
             }
         }
+        #endregion
+        #region Tier Name
 
         private void m_txtbxTierName_Validating(object sender, CancelEventArgs e)
         {
@@ -715,29 +717,12 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 e.Cancel = true;
                 m_errorProvider.SetError(m_txtbxTierName, "Check your input");
+                return;
             }
-        }
+        }     
 
         #endregion
-
-      
-
-        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
-        {
-            if (m_cmbxQualifyingpoints.SelectedIndex == 1 && m_cmbxQualfyingSpend.SelectedIndex == 1)
-            {
-                e.Cancel = true;
-                m_errorProvider.SetError(m_cmbxQualfyingSpend, "Need one selection spend or points");
-            }
-        }
-
-        private void m_cmbxQualifyingpoints_Validating(object sender, CancelEventArgs e)
-        {
-            //MessageBox.Show("Hello");
-        }
-
-        #endregion
-
+        #region Spend Start
         private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -787,7 +772,6 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_errorProvider.SetError(m_txtbxSpendStart, "Not a valid decimal number.");
                         return;
                     }
-
                 }
             }
             catch
@@ -797,8 +781,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
-
-       
+        #endregion       
+        #region Point Start
 
         private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
         {
@@ -855,6 +839,9 @@ namespace GTI.Modules.PlayerCenter.UI
             //MessageBox.Show("Hello");
         }
 
+        #endregion
+        #region Award Points Multiplier
+
         private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -864,18 +851,17 @@ namespace GTI.Modules.PlayerCenter.UI
                     e.Cancel = true;
                     m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Please make an entry");
                     return;
-                }                
-                    decimal checkinput;
-                    if (Decimal.TryParse(m_txtbxAwardPointsMultiplier.Text , out checkinput))//if its a decimal
-                    {
-                    }
-                    else
-                    {
-                        e.Cancel = true;
-                        m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Not a valid decimal number.");
-                        return;
-                    }
-
+                }
+                decimal checkinput;
+                if (Decimal.TryParse(m_txtbxAwardPointsMultiplier.Text, out checkinput))//if its a decimal
+                {
+                }
+                else
+                {
+                    e.Cancel = true;
+                    m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Not a valid decimal number.");
+                    return;
+                }
             }
             catch
             {
@@ -884,6 +870,47 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
+        #endregion       
+        #region Spend/Points Combobox
+
+        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
+        {
+            if (m_cmbxQualifyingpoints.SelectedIndex == 1 && m_cmbxQualfyingSpend.SelectedIndex == 1)
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_cmbxQualfyingSpend, "Need one selection spend or points");
+            }
+        }
+
+        private void m_cmbxQualifyingpoints_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+        #endregion
+
+        private void m_txtbxAwardPointsMultiplier_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            bool result = false;
+            if (!char.IsControl(e.KeyChar)
+                && !char.IsDigit(e.KeyChar)
+                && e.KeyChar != '.')
+            {
+                e.Handled = true;
+                result = e.Handled;
+            }
+
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+                result = e.Handled;
+            }
+            e.Handled = result;
+
+        }
+        #endregion
     }   
 }
 

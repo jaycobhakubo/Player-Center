@@ -247,6 +247,7 @@
             this.m_txtbxAwardPointsMultiplier.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.m_txtbxAwardPointsMultiplier, "m_txtbxAwardPointsMultiplier");
             this.m_txtbxAwardPointsMultiplier.Name = "m_txtbxAwardPointsMultiplier";
+            this.m_txtbxAwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
             this.m_txtbxAwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxAwardPointsMultiplier_Validating);
             // 
             // labelAwardPoints
@@ -284,6 +285,7 @@
             this.m_txtbxPointStart.BackColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.m_txtbxPointStart, "m_txtbxPointStart");
             this.m_txtbxPointStart.Name = "m_txtbxPointStart";
+            this.m_txtbxPointStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
             this.m_txtbxPointStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxPointStart_Validating);
             // 
             // labelTierName
@@ -304,6 +306,7 @@
             resources.ApplyResources(this.m_txtbxSpendStart, "m_txtbxSpendStart");
             this.m_txtbxSpendStart.ForeColor = System.Drawing.Color.Black;
             this.m_txtbxSpendStart.Name = "m_txtbxSpendStart";
+            this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
             this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxSpendStart_Validating);
             // 
             // label2

@@ -296,75 +296,83 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
         #region SAVE TIER RULE
 
-        private void SaveTierRule()
+        private bool SaveTierRule()
         {
+            ClearUserNotification();
+
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
-                return;
-
-            TierRule NewTierRule = new TierRule();
-            NewTierRule.TierRulesID = m_tierRule.TierRulesID;
-            NewTierRule.QualifyingStartDate = DateTime.Parse(m_datetimepickerQualifyingPeriodStart.Value.ToShortDateString());
-            NewTierRule.QualifyingEndDate = DateTime.Parse(m_datetimepickerQualifyingPeriodEnd.Value.ToShortDateString());
-
-            if (m_cmbxDefaultTier.Items.Count == 0)//New default tier; this code will never be executed; Not sure If we want to support multiple Tier Rule  just put this one just in case
             {
-                NewTierRule.DefaultTierID = 0;
+                return false;
             }
             else
             {
-                if (m_cmbxDefaultTier.SelectedIndex != -1)
-                {
-                    string DefaultTierName = m_cmbxDefaultTier.SelectedItem.ToString();
-                    var f = m_tiers.Exists(p => p.TierName == DefaultTierName);
-                    bool cc = f;
+                TierRule NewTierRule = new TierRule();
+                NewTierRule.TierRulesID = m_tierRule.TierRulesID;
+                NewTierRule.QualifyingStartDate = DateTime.Parse(m_datetimepickerQualifyingPeriodStart.Value.ToShortDateString());
+                NewTierRule.QualifyingEndDate = DateTime.Parse(m_datetimepickerQualifyingPeriodEnd.Value.ToShortDateString());
 
-                    var DefaultTierID = m_tiers.Where(l => l.TierName == DefaultTierName);
-                    foreach (var c in DefaultTierID)                   
-                    { 
-                        int y = c.TierID; 
-                        NewTierRule.DefaultTierID = y; 
+                if (m_cmbxDefaultTier.Items.Count == 0)//New default tier; this code will never be executed; Not sure If we want to support multiple Tier Rule  just put this one just in case
+                {
+                    NewTierRule.DefaultTierID = 0;
+                }
+                else
+                {
+                    if (m_cmbxDefaultTier.SelectedIndex != -1)
+                    {
+                        string DefaultTierName = m_cmbxDefaultTier.SelectedItem.ToString();
+                        var f = m_tiers.Exists(p => p.TierName == DefaultTierName);
+                        bool cc = f;
+
+                        var DefaultTierID = m_tiers.Where(l => l.TierName == DefaultTierName);
+                        foreach (var c in DefaultTierID)
+                        {
+                            int y = c.TierID;
+                            NewTierRule.DefaultTierID = y;
+                        }
                     }
                 }
-            }
 
-            string IsDownGradeTDefault = m_cmbxDowngradeToDefault.SelectedItem.ToString();
-            if (IsDownGradeTDefault == "No")
-            {
-                NewTierRule.DowngradeToDefault = false;
+                string IsDownGradeTDefault = m_cmbxDowngradeToDefault.SelectedItem.ToString();
+                if (IsDownGradeTDefault == "No")
+                {
+                    NewTierRule.DowngradeToDefault = false;
+                }
+                else
+                {
+                    NewTierRule.DowngradeToDefault = true;
+                }
+                //Check If theres any changes
+                int t_tierRuleId = 0;
+                if (m_tierRule.Equals(NewTierRule))//true = no changes
+                {
+                    return false;
+                }
+                else
+                {
+                    t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
+                    //  UpdateTierList(NewTierRule);  
+                    if (NewTierRule.DefaultTierID != m_tierRule.DefaultTierID)
+                    {
+                        Tier t_testD = m_tiers.Single(l => l.TierID == m_tierRule.DefaultTierID);
+                        t_testD.IsDefaultTier = false;
+                        t_testD = m_tiers.Single(l => l.TierID == NewTierRule.DefaultTierID);
+                        t_testD.IsDefaultTier = true;
+                        m_tierRule = NewTierRule;
+                        DisplayTierRule();
+                        PopulateTierList();
+                    }
+                    else
+                    {
+                        m_tierRule = NewTierRule;
+                        DisplayTierRule();
+                    }
+                }
+                return true;
             }
-            else
-            {
-                NewTierRule.DowngradeToDefault = true;
-            }
-            //Check If theres any changes
-            int t_tierRuleId = 0;
-            if (m_tierRule.Equals(NewTierRule))//true = no changes
-            {
-                 return;            
-            }
-            else
-            {
-                  t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
-                //  UpdateTierList(NewTierRule);  
-                  if (NewTierRule.DefaultTierID != m_tierRule.DefaultTierID)
-                  {
-                      Tier t_testD = m_tiers.Single(l => l.TierID == m_tierRule.DefaultTierID);
-                      t_testD.IsDefaultTier = false;
-                      t_testD = m_tiers.Single(l => l.TierID == NewTierRule.DefaultTierID);
-                      t_testD.IsDefaultTier = true;
-                      m_tierRule = NewTierRule;
-                      DisplayTierRule();
-                      PopulateTierList();
-                  }
-                  else
-                  {
-                      m_tierRule = NewTierRule;
-                      DisplayTierRule();
-                  }
-            }                
         }
 
         #endregion
+
         #endregion
         #region EVENT
 
@@ -394,10 +402,12 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (m_btnEditSaveTierRule.Text == "&Save")
             {
-                SaveTierRule();
-                m_btnEditSaveTierRule.Text = "&Edit";
-                DisableEnableControlDefaultTierRules(true);
-                m_lblTierRuleSavedSuccessNotification.Visible = true;
+                if (SaveTierRule())
+                {
+                    m_btnEditSaveTierRule.Text = "&Edit";
+                    DisableEnableControlDefaultTierRules(true);
+                    m_lblTierRuleSavedSuccessNotification.Visible = true;
+                }
             }
         }
         #endregion
@@ -514,6 +524,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnSaveTier_Click(object sender, EventArgs e)
         {
         
+           
+           
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
+                return;
+
             DisableEnableControlDefaultTier(true);
             lbl_MessageSaved.Visible = true;
             /*
@@ -629,6 +644,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(true);
+            ClearUserNotification();
             if (m_tierSelected.TierID == 0)
             {
                 SelectDefaultOrFirstRowTier();
@@ -647,7 +663,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion  
         #region EVENT VALIDATION
 
-        #region VALIDATE USER INPUT
+        #region Qualifying period date
         //Check if the ending date is > than the starting date.
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
         {
@@ -658,9 +674,85 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
             }
         }
-        #endregion
 
         #endregion
+
+        private void m_txtbxTierName_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (m_txtbxTierName.Text == string.Empty)
+                {
+
+                    m_errorProvider.SetError(m_txtbxTierName, "Please enter a Tier Name.");
+                    e.Cancel = true;
+                    return;
+                }
+
+                bool itExists = false;
+                if (m_lstboxTiers.SelectedIndex != -1)
+                {
+                    if (m_tierSelected.TierName != m_txtbxTierName.Text)//Renaming existing tier. 
+                    {
+                        itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.TierName.Equals(m_txtbxTierName.Text, StringComparison.InvariantCultureIgnoreCase));
+                    }
+                    else
+                    {
+                        itExists = true;
+                    }
+
+                }
+                else
+                {
+                    itExists = m_tiers.Exists(l => l.TierName.Equals(m_txtbxTierName.Text, StringComparison.InvariantCultureIgnoreCase));
+                }
+
+                if (itExists)
+                {
+                    // ContinueSave = false; //do not saved.
+                    m_errorProvider.SetError(m_txtbxTierName, "Name already exists.");
+                    e.Cancel = true;
+                }
+
+            }
+            catch
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_txtbxTierName, "Check your input");
+            }
+            var testy = e.Cancel;
+        }
+
+        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
+        {
+           // MessageBox.Show("Hello");
+        }
+
+        #endregion
+
+        private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+        private void m_cmbxQualifyingpoints_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+        private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+        private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
+
+       
+
+        
 
 
     }   

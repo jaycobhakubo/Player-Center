@@ -675,15 +675,12 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        #endregion
-
         private void m_txtbxTierName_Validating(object sender, CancelEventArgs e)
         {
             try
             {
                 if (m_txtbxTierName.Text == string.Empty)
                 {
-
                     m_errorProvider.SetError(m_txtbxTierName, "Please enter a Tier Name.");
                     e.Cancel = true;
                     return;
@@ -713,26 +710,25 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_errorProvider.SetError(m_txtbxTierName, "Name already exists.");
                     e.Cancel = true;
                 }
-
             }
             catch
             {
                 e.Cancel = true;
                 m_errorProvider.SetError(m_txtbxTierName, "Check your input");
             }
-            var testy = e.Cancel;
-        }
-
-        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
-        {
-           // MessageBox.Show("Hello");
         }
 
         #endregion
 
-        private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
+      
+
+        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
         {
-            //MessageBox.Show("Hello");
+            if (m_cmbxQualifyingpoints.SelectedIndex == 1 && m_cmbxQualfyingSpend.SelectedIndex == 1)
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_cmbxQualfyingSpend, "Need one selection spend or points");
+            }
         }
 
         private void m_cmbxQualifyingpoints_Validating(object sender, CancelEventArgs e)
@@ -740,21 +736,154 @@ namespace GTI.Modules.PlayerCenter.UI
             //MessageBox.Show("Hello");
         }
 
+        #endregion
+
+        private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (m_cmbxQualfyingSpend.SelectedIndex == 0)//YES
+                {
+                    if (m_txtbxSpendStart.Text == string.Empty)
+                    {
+                        e.Cancel = true;
+                        m_errorProvider.SetError(m_txtbxSpendStart, "Please enter a Spend start.");
+                        return;
+
+                    }
+
+                    decimal checkinput;
+                    if (Decimal.TryParse(m_txtbxSpendStart.Text, out checkinput))//if its a decimal
+                    {
+
+                        bool itExists = false;
+                        var newQualifyingSpend = decimal.Parse(m_txtbxSpendStart.Text);
+                        if (m_lstboxTiers.SelectedIndex != -1)
+                        {
+
+                            if (m_tierSelected.QualifyingSpend != newQualifyingSpend)
+                            {
+                                itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.QualifyingSpend.Equals(newQualifyingSpend));
+                            }
+
+                        }
+                        else
+                        {
+                            itExists = m_tiers.Exists(l => l.QualifyingSpend.Equals(newQualifyingSpend));
+                        }
+
+
+                        if (itExists)
+                        {
+                            e.Cancel = true;
+                            m_errorProvider.SetError(m_txtbxSpendStart, "Spend amount is being used by another Tier");
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                        m_errorProvider.SetError(m_txtbxSpendStart, "Not a valid decimal number.");
+                        return;
+                    }
+
+                }
+            }
+            catch
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_txtbxSpendStart, "Unknown error call Technician.");
+                return;
+            }
+        }
+
+       
+
         private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
         {
+            try
+            {
+                if (m_cmbxQualifyingpoints.SelectedIndex == 0)//YES
+                {
+                    if (m_txtbxPointStart.Text == string.Empty)
+                    {
+                        e.Cancel = true;
+                        m_errorProvider.SetError(m_txtbxPointStart, "Please enter a point start.");
+                        return;
+                    }
+
+
+                    decimal checkinput;
+                    if (Decimal.TryParse(m_txtbxPointStart.Text, out checkinput))//if its a decimal
+                    {
+
+                        bool itExists = false;
+                        var newQualifyingPoints = decimal.Parse(m_txtbxPointStart.Text);
+                        if (m_lstboxTiers.SelectedIndex != -1)
+                        {
+                            if (m_tierSelected.QualifyingPoints != newQualifyingPoints)
+                            {
+                                itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.QualifyingPoints.Equals(newQualifyingPoints));
+                            }
+                        }
+                        else
+                        {
+                            itExists = m_tiers.Exists(l => l.QualifyingPoints.Equals(newQualifyingPoints));
+                        }
+
+                        if (itExists)
+                        {
+                            e.Cancel = true;
+                            m_errorProvider.SetError(m_txtbxPointStart, "Point amount is being used by another Tier");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                        m_errorProvider.SetError(m_txtbxPointStart, "Not a valid decimal number.");
+                    }
+                }
+            }
+            catch
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_txtbxPointStart, "Unknown error call Technician.");
+                return;
+            }
             //MessageBox.Show("Hello");
         }
 
         private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
         {
-            //MessageBox.Show("Hello");
+            try
+            {
+                if (m_txtbxAwardPointsMultiplier.Text == string.Empty)
+                {
+                    e.Cancel = true;
+                    m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Please make an entry");
+                    return;
+                }                
+                    decimal checkinput;
+                    if (Decimal.TryParse(m_txtbxAwardPointsMultiplier.Text , out checkinput))//if its a decimal
+                    {
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                        m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Not a valid decimal number.");
+                        return;
+                    }
+
+            }
+            catch
+            {
+                e.Cancel = true;
+                m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, "Please make an entry");
+                return;
+            }
         }
-
-       
-
-        
-
-
     }   
 }
 

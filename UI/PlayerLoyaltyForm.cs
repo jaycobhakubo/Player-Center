@@ -196,8 +196,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 y = x.QualifyingSpend == (Int64)x.QualifyingSpend;//check if its a whole number or a decimal
                 if (y == true)
                 {
-                    int t_wholeNumber = (int)x.QualifyingSpend;
-                    m_txtbxSpendStart.Text = Convert.ToString(x.QualifyingSpend) + ".00";
+                    int convertedToWholeNumber = (int)x.QualifyingSpend;
+                    m_txtbxSpendStart.Text = Convert.ToString(convertedToWholeNumber) + ".00";
                 }
                 else
                 {
@@ -230,7 +230,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 y = x.QualifyingPoints == (Int64)x.QualifyingPoints;
                 if (y == true)
                 {
-                    m_txtbxPointStart.Text = Convert.ToString(x.QualifyingPoints) + ".00";
+                    int convertedToWholeNumber = (int)x.QualifyingPoints;
+                    m_txtbxPointStart.Text = Convert.ToString(convertedToWholeNumber) + ".00";
                 }
                 else
                 {
@@ -261,7 +262,8 @@ namespace GTI.Modules.PlayerCenter.UI
             y = x.AwardPointsMultiplier == (Int64)x.AwardPointsMultiplier;
             if (y == true)
             {
-                m_txtbxAwardPointsMultiplier.Text = Convert.ToString(x.AwardPointsMultiplier) + ".00";
+                int convertedToWholeNumber = (int)x.AwardPointsMultiplier;
+                m_txtbxAwardPointsMultiplier.Text = Convert.ToString(convertedToWholeNumber) + ".00";
             }
             else
             {
@@ -384,6 +386,8 @@ namespace GTI.Modules.PlayerCenter.UI
         #region  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
+
             if (m_lstboxTiers.SelectedIndex != -1)//If item is being selected
             {
                 m_tierSelected = new Tier();
@@ -399,35 +403,35 @@ namespace GTI.Modules.PlayerCenter.UI
         #region SELECTED QUALIFYING SPEND
         private void m_cmbxQualfyingSpend_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
-            {
-                m_txtbxSpendStart.Enabled = true;
-                m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = "0.00";
-            }
-            else
-            {
-                m_txtbxSpendStart.Enabled = false;
-                m_txtbxSpendStart.BackColor = SystemColors.Control;
-                m_txtbxSpendStart.Text = string.Empty;
-            }
+            //if (m_cmbxQualfyingSpend.SelectedIndex == 0)
+            //{
+            //    m_txtbxSpendStart.Enabled = true;
+            //    m_txtbxSpendStart.BackColor = SystemColors.Window;
+            //    m_txtbxSpendStart.Text = "0.00";
+            //}
+            //else
+            //{
+            //    m_txtbxSpendStart.Enabled = false;
+            //    m_txtbxSpendStart.BackColor = SystemColors.Control;
+            //    m_txtbxSpendStart.Text = string.Empty;
+            //}
         }
         #endregion
         #region SELECTED QUALIFYING POINTS
         private void m_cmbxQualifyingpoints_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
-            {
-                m_txtbxPointStart.Enabled = true;
-                m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = "0.00";
-            }
-            else
-            {
-                m_txtbxPointStart.Enabled = false;
-                m_txtbxPointStart.BackColor = SystemColors.Control;
-                m_txtbxPointStart.Text = string.Empty;
-            }
+            //if (m_cmbxQualifyingpoints.SelectedIndex == 0)
+            //{
+            //    m_txtbxPointStart.Enabled = true;
+            //    m_txtbxPointStart.BackColor = SystemColors.Window;
+            //    m_txtbxPointStart.Text = "0.00";
+            //}
+            //else
+            //{
+            //    m_txtbxPointStart.Enabled = false;
+            //    m_txtbxPointStart.BackColor = SystemColors.Control;
+            //    m_txtbxPointStart.Text = string.Empty;
+            //}
         }
         #endregion
 
@@ -508,7 +512,13 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
+                m_tierSelected.IsDelete = true;
+                SetPlayerTier.Msg(m_tierSelected);
+                m_tiers.Remove(m_tierSelected);
+                PopulateTierList();
+                DisableEnableControlDefaultTier(true);
                 SelectDefaultOrFirstRowTier();
+                
             }
         /*
             int CurrentIndex = listbox_Tiers.SelectedIndex;
@@ -572,7 +582,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 var t_tierNew = new Tier();
                 t_tierNew.TierName = m_txtbxTierName.Text;
                 t_tierNew.TierColor =  m_lblTierColor.BackColor.ToArgb();
-                t_tierNew.QualifyingSpend = ( m_txtbxTierName.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
+                t_tierNew.QualifyingSpend = (  m_txtbxSpendStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
                 t_tierNew.QualifyingPoints = (m_txtbxPointStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxPointStart.Text) : -1;
                 t_tierNew.AwardPointsMultiplier = ( m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
                 t_tierNew.IsDelete = false;
@@ -602,7 +612,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
 
-
+                ClearUserNotification();
                 DisableEnableControlDefaultTier(true);
                 lbl_MessageSaved.Visible = true;
             }

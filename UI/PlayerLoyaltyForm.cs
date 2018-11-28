@@ -30,7 +30,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_tierRule = GetPlayerTierRule.Msg();
             m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
             DisplayTierRule();
-            PopulateTierList();    
+            PopulateTierList();
+            SelectDefaultOrFirstRowTier();          
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
         }
@@ -171,11 +172,13 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
         #region DISPLAY TIER NAME IN THE LIST BOX
         private void PopulateTierList()
-        {      
+        {
+                m_lstboxTiers.DataSource = null;
+                m_lstboxTiers.Items.Clear();
                 m_lstboxTiers.ValueMember = "TierID";
                 m_lstboxTiers.DisplayMember = "TierName";
                 m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
-                SelectDefaultOrFirstRowTier();                                            
+                m_lstboxTiers.Update();                                                
         }
         #endregion
         #region DISPLAY TIER FOR ALL CONTROL
@@ -201,16 +204,16 @@ namespace GTI.Modules.PlayerCenter.UI
                     //if its only have 1 decimal places then lets add 1 more
                     if (count == 1)
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingSpend) + "0";
+                        m_txtbxSpendStart.Text = Convert.ToString(x.QualifyingSpend) + "0";
                     }
                     //if its more than 2 then lets round it off
                     else if (count > 2)
                     {
-                        m_txtbxPointStart.Text = Math.Round(x.QualifyingSpend, 2).ToString();
+                        m_txtbxSpendStart.Text = Math.Round(x.QualifyingSpend, 2).ToString();
                     }
                     else
                     {
-                        m_txtbxPointStart.Text = Convert.ToString(x.QualifyingSpend);
+                        m_txtbxSpendStart.Text = Convert.ToString(x.QualifyingSpend);
                     }
                 }
             }
@@ -343,6 +346,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 //Check If theres any changes
                 int t_tierRuleId = 0;
+
                 if (m_tierRule.Equals(NewTierRule))//true = no changes
                 {
                     return false;
@@ -558,14 +562,50 @@ namespace GTI.Modules.PlayerCenter.UI
         #region SAVED TIER
         private void m_btnSaveTier_Click(object sender, EventArgs e)
         {
-        
-           
-           
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
+            {
                 return;
+            }
+            else
+            {
 
-            DisableEnableControlDefaultTier(true);
-            lbl_MessageSaved.Visible = true;
+                var t_tierNew = new Tier();
+                t_tierNew.TierName = m_txtbxTierName.Text;
+                t_tierNew.TierColor =  m_lblTierColor.BackColor.ToArgb();
+                t_tierNew.QualifyingSpend = ( m_txtbxTierName.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
+                t_tierNew.QualifyingPoints = (m_txtbxPointStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxPointStart.Text) : -1;
+                t_tierNew.AwardPointsMultiplier = ( m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
+                t_tierNew.IsDelete = false;
+                t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
+                t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+
+                if (m_tierSelected.Equals(t_tierNew))
+                {
+                    return;
+                }                
+                
+                int t_tierID = SetPlayerTier.Msg(t_tierNew);
+                if (t_tierID == t_tierNew.TierID)
+                {               
+                    Tier t_testD = m_tiers.Single(l => l.TierID == m_tierSelected.TierID);
+                    m_tiers.Remove(t_testD);
+                    m_tiers.Add(t_tierNew);
+                    PopulateTierList();
+                }
+                else
+                {
+                    t_tierNew.TierID = t_tierID;
+                    m_tiers.Add(t_tierNew);
+                    PopulateTierList();
+                    m_lstboxTiers.SelectedValue = t_tierID;
+                }
+
+
+
+                DisableEnableControlDefaultTier(true);
+                lbl_MessageSaved.Visible = true;
+            }
+
             /*
             ClearALLError();
             m_tierNew = new Tier();

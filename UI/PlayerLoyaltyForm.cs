@@ -196,6 +196,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 y = x.QualifyingSpend == (Int64)x.QualifyingSpend;//check if its a whole number or a decimal
                 if (y == true)
                 {
+                    int t_wholeNumber = (int)x.QualifyingSpend;
                     m_txtbxSpendStart.Text = Convert.ToString(x.QualifyingSpend) + ".00";
                 }
                 else
@@ -568,7 +569,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-
                 var t_tierNew = new Tier();
                 t_tierNew.TierName = m_txtbxTierName.Text;
                 t_tierNew.TierColor =  m_lblTierColor.BackColor.ToArgb();
@@ -769,10 +769,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.TierName.Equals(m_txtbxTierName.Text, StringComparison.InvariantCultureIgnoreCase));
                     }
-                    else
-                    {
-                        itExists = true;
-                    }
+                    //else
+                    //{
+                    //    itExists = true;
+                    //}
 
                 }
                 else

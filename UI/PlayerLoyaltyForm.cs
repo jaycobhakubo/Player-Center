@@ -591,6 +591,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_tiers.Remove(t_testD);
                     m_tiers.Add(t_tierNew);
                     PopulateTierList();
+                    m_lstboxTiers.SelectedValue = t_tierID;
                 }
                 else
                 {

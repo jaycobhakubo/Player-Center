@@ -377,9 +377,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
-
-
-
         #region EVENT
 
         //  SELECTED TIER

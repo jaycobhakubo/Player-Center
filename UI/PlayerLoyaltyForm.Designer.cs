@@ -217,6 +217,7 @@
             this.m_lblTierColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.m_lblTierColor, "m_lblTierColor");
             this.m_lblTierColor.Name = "m_lblTierColor";
+            this.m_lblTierColor.Click += new System.EventHandler(this.m_lblTierColor_Click);
             // 
             // m_btnCancelTier
             // 
@@ -266,7 +267,6 @@
             resources.GetString("m_cmbxQualifyingpoints.Items"),
             resources.GetString("m_cmbxQualifyingpoints.Items1")});
             this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
-            this.m_cmbxQualifyingpoints.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChanged);
             this.m_cmbxQualifyingpoints.SelectionChangeCommitted += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectionChangeCommitted);
             this.m_cmbxQualifyingpoints.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualifyingpoints_Validating);
             // 
@@ -280,7 +280,6 @@
             resources.GetString("m_cmbxQualfyingSpend.Items"),
             resources.GetString("m_cmbxQualfyingSpend.Items1")});
             this.m_cmbxQualfyingSpend.Name = "m_cmbxQualfyingSpend";
-            this.m_cmbxQualfyingSpend.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChanged);
             this.m_cmbxQualfyingSpend.SelectionChangeCommitted += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectionChangeCommitted);
             this.m_cmbxQualfyingSpend.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpend_Validating);
             // 

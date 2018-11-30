@@ -661,6 +661,19 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Close();
         }
         #endregion     
+        #region COLOR FORM SHOW
+        private void m_lblTierColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog frmColor = new ColorDialog { Color = m_lblTierColor.BackColor };
+            if (frmColor.ShowDialog(this) == DialogResult.OK)
+            {
+                m_lblTierColor.BackColor = frmColor.Color;
+                m_lblTierColor.Invalidate();
+            }
+            frmColor.Dispose();
+        }
+
+        #endregion
 
         #region EVENT validation
         #region Qualifying period date
@@ -914,6 +927,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
+       
        
 
         #endregion  

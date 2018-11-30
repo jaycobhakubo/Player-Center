@@ -192,7 +192,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (x.QualifyingSpend != -1)
             {
-                m_cmbxQualfyingSpend.SelectedIndex = 0;
+                //m_cmbxQualfyingSpend.SelectedIndex = 0;
+                m_cmbxQualfyingSpend.SelectedItem = "Yes";
                 y = x.QualifyingSpend == (Int64)x.QualifyingSpend;//check if its a whole number or a decimal
                 if (y == true)
                 {
@@ -226,7 +227,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (x.QualifyingPoints != -1)
             {
-                m_cmbxQualifyingpoints.SelectedIndex = 0;
+                //m_cmbxQualifyingpoints.SelectedIndex = 0;
+                m_cmbxQualifyingpoints.SelectedItem = "Yes";
                 y = x.QualifyingPoints == (Int64)x.QualifyingPoints;
                 if (y == true)
                 {
@@ -380,6 +382,35 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
+        private void EnableDisableSpendPoints()
+        {
+            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
+            {
+                m_txtbxSpendStart.Enabled = true;
+                m_txtbxSpendStart.BackColor = SystemColors.Window;
+               // m_txtbxSpendStart.Text = "0.00";
+            }
+            else
+            {
+                m_txtbxSpendStart.Enabled = false;
+                m_txtbxSpendStart.BackColor = SystemColors.Control;
+                m_txtbxSpendStart.Text = string.Empty;
+            }
+
+            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
+            {
+                m_txtbxPointStart.Enabled = true;
+                m_txtbxPointStart.BackColor = SystemColors.Window;
+              //  m_txtbxPointStart.Text = "0.00";
+            }
+            else
+            {
+                m_txtbxPointStart.Enabled = false;
+                m_txtbxPointStart.BackColor = SystemColors.Control;
+                m_txtbxPointStart.Text = string.Empty;
+            }
+        }
+
         #endregion
         #region EVENT
 
@@ -401,23 +432,36 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
         #region SELECTED QUALIFYING SPEND
+
+
         private void m_cmbxQualfyingSpend_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (m_cmbxQualfyingSpend.SelectedIndex == 0)
-            //{
-            //    m_txtbxSpendStart.Enabled = true;
-            //    m_txtbxSpendStart.BackColor = SystemColors.Window;
-            //    m_txtbxSpendStart.Text = "0.00";
-            //}
-            //else
-            //{
-            //    m_txtbxSpendStart.Enabled = false;
-            //    m_txtbxSpendStart.BackColor = SystemColors.Control;
-            //    m_txtbxSpendStart.Text = string.Empty;
-            //}
+           
+
+
         }
+
+        private void m_cmbxQualfyingSpend_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
+            {
+                m_txtbxSpendStart.Enabled = true;
+                m_txtbxSpendStart.BackColor = SystemColors.Window;
+                m_txtbxSpendStart.Text = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+
+            }
+            else
+            {
+                m_txtbxSpendStart.Enabled = false;
+                m_txtbxSpendStart.BackColor = SystemColors.Control;
+                m_txtbxSpendStart.Text = string.Empty;
+            }
+        }
+      
         #endregion
         #region SELECTED QUALIFYING POINTS
+
+      
         private void m_cmbxQualifyingpoints_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (m_cmbxQualifyingpoints.SelectedIndex == 0)
@@ -433,6 +477,23 @@ namespace GTI.Modules.PlayerCenter.UI
             //    m_txtbxPointStart.Text = string.Empty;
             //}
         }
+
+        private void m_cmbxQualifyingpoints_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
+            {
+                m_txtbxPointStart.Enabled = true;
+                m_txtbxPointStart.BackColor = SystemColors.Window;
+                m_txtbxPointStart.Text = "0.00";
+            }
+            else
+            {
+                m_txtbxPointStart.Enabled = false;
+                m_txtbxPointStart.BackColor = SystemColors.Control;
+                m_txtbxPointStart.Text = string.Empty;
+            }
+        }
+        
         #endregion
 
         #region EDIT SAVED TIER RULE
@@ -495,6 +556,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnEditTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(false);
+            EnableDisableSpendPoints();
          //   lbl_MessageSaved.Visible = false;
            
             
@@ -998,8 +1060,11 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
+       
+
         #endregion  
-        
+
+      
 
        
 

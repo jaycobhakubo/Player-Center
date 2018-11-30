@@ -267,6 +267,7 @@
             resources.GetString("m_cmbxQualifyingpoints.Items1")});
             this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
             this.m_cmbxQualifyingpoints.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChanged);
+            this.m_cmbxQualifyingpoints.SelectionChangeCommitted += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectionChangeCommitted);
             this.m_cmbxQualifyingpoints.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualifyingpoints_Validating);
             // 
             // m_cmbxQualfyingSpend
@@ -280,6 +281,7 @@
             resources.GetString("m_cmbxQualfyingSpend.Items1")});
             this.m_cmbxQualfyingSpend.Name = "m_cmbxQualfyingSpend";
             this.m_cmbxQualfyingSpend.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChanged);
+            this.m_cmbxQualfyingSpend.SelectionChangeCommitted += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectionChangeCommitted);
             this.m_cmbxQualfyingSpend.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpend_Validating);
             // 
             // m_txtbxPointStart

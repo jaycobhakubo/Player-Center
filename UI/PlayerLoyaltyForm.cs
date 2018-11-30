@@ -99,11 +99,7 @@ namespace GTI.Modules.PlayerCenter.UI
           
 
         }
-        #endregion
-
-
-                      
-
+        #endregion                      
         #region DISABLE OR ENABLE CONTROL BASE ON  EDIT  CANCEL SAVE.. TIER RULE
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {

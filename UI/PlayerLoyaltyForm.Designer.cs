@@ -268,7 +268,6 @@
             resources.GetString("m_cmbxQualifyingpoints.Items1")});
             this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
             this.m_cmbxQualifyingpoints.SelectionChangeCommitted += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectionChangeCommitted);
-            this.m_cmbxQualifyingpoints.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualifyingpoints_Validating);
             // 
             // m_cmbxQualfyingSpend
             // 

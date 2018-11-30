@@ -833,7 +833,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             // END: DE6690
 
-            m_playerTier.Text = m_player.LoyaltyTier != null ? m_player.LoyaltyTier.Name : string.Empty;//knc
+            m_playerTier.Text = m_player.LoyaltyTier != null ? m_player.LoyaltyTier.Name : string.Empty;
 
             m_playerPicture.Image = m_player.Image;
 

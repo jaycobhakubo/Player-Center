@@ -461,28 +461,6 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="_Sql\PlayerLoyalty\Programmability\fnGetPointsPerPlayer.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerData.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerTiersSEL.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierData.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierRule.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierData.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierRule.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerClubBalances.sql" />
-    <None Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerTier.sql" />
-    <None Include="_Project\PlayerLoyalty\Need to find a solution.txt" />
-    <None Include="_Ref\Awardpoints_orig.txt" />
-    <None Include="_Ref\DBSupport.txt" />
-    <None Include="_Ref\Messages.txt" />
-    <None Include="_Ref\MPCPlayerManagementFormcs20170825.txt" />
-    <None Include="_Ref\PlayerLoyaltyFormCS.txt" />
-    <None Include="_Ref\Ref.txt" />
-    <None Include="_Ref\UI.txt" />
-    <None Include="_Ref\US2100.txt" />
-    <Content Include="_Sql\PlayerLoyalty\Schema\PlayerClubTier_PlayerClubTierRules.sql" />
-    <None Include="_Sql\PlayerLoyalty\Data\ModuleFeatures.sql" />
-    <None Include="_Sql\PlayerLoyalty\Data\AuditTypes.sql" />
-    <None Include="_Sql\PlayerLoyalty\Data\PlayerClubTierRules.sql" />
     <None Include="Resources\ArrowDownRed.png" />
     <None Include="Resources\ArrowUpRed.png" />
     <Content Include="Res\Players.ico" />

@@ -96,7 +96,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         IsPointsAwardedSuccess = true;
                         PointsAwarded = tempManualPlayerPoints;
-                        MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
+                       // MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                     }
                 }
                 catch

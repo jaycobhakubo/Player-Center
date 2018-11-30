@@ -40,17 +40,17 @@
             this.dtpSinceDate = new System.Windows.Forms.DateTimePicker();
             this.lblLastPurgeInfo = new System.Windows.Forms.Label();
             this.gbLastPurge = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lblManualPointsAdjustReasonCharactersLeft = new System.Windows.Forms.Label();
             this.lblManualPointAdjustReasonCharactersLeftTitle = new System.Windows.Forms.Label();
             this.txtManualPointAdjustReason = new System.Windows.Forms.TextBox();
             this.gbReason = new System.Windows.Forms.GroupBox();
             this.gbMethod = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nudPeriodNumber)).BeginInit();
             this.gbLastPurge.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.gbReason.SuspendLayout();
             this.gbMethod.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -230,6 +230,15 @@
             this.gbLastPurge.TabStop = false;
             this.gbLastPurge.Text = "Last Expiring";
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.lblLastPurgeInfo);
+            this.panel1.Location = new System.Drawing.Point(6, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(570, 121);
+            this.panel1.TabIndex = 0;
+            // 
             // lblManualPointsAdjustReasonCharactersLeft
             // 
             this.lblManualPointsAdjustReasonCharactersLeft.BackColor = System.Drawing.Color.Transparent;
@@ -277,7 +286,7 @@
             this.gbReason.Size = new System.Drawing.Size(582, 154);
             this.gbReason.TabIndex = 2;
             this.gbReason.TabStop = false;
-            this.gbReason.Text = "Reason for expiring points";
+            this.gbReason.Text = "Reason for points change";
             // 
             // gbMethod
             // 
@@ -295,15 +304,6 @@
             this.gbMethod.TabIndex = 1;
             this.gbMethod.TabStop = false;
             this.gbMethod.Text = "Method";
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.lblLastPurgeInfo);
-            this.panel1.Location = new System.Drawing.Point(6, 22);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(570, 121);
-            this.panel1.TabIndex = 0;
             // 
             // PointPurgeForm
             // 
@@ -324,11 +324,11 @@
             this.Text = "Player Point Expiring";
             ((System.ComponentModel.ISupportInitialize)(this.nudPeriodNumber)).EndInit();
             this.gbLastPurge.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.gbReason.ResumeLayout(false);
             this.gbReason.PerformLayout();
             this.gbMethod.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

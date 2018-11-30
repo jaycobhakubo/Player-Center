@@ -66,6 +66,28 @@ namespace GTI.Modules.PlayerCenter.UI
                 work1 = work1.Substring(0, work1.Length - work2.Length - 1);
                 int.TryParse(work1, out number);
 
+                if (m_lastPurgeReason == "Automated" && m_lastPurgeBy == "Server") //this is the number of days
+                {
+                    if (number > nudPeriodNumber.Maximum) //we can't use this as days
+                    {
+                        if (number % 30 == 0) //we can use months
+                        {
+                            work2 = "m";
+                            number /= 30;
+                        }
+                        else if (number % 365 == 0) //we can use years
+                        {
+                            work2 = "y";
+                            number /= 365;
+                        }
+                        else //we can't use anything here, default to 1 year
+                        {
+                            work2 = "y";
+                            number = 1;
+                        }
+                    }
+                }
+                
                 nudPeriodNumber.Value = number;
 
                 switch (work2[0])
@@ -118,7 +140,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lastPurgeDate = message.LastPurgeDate;
 
             //update the last purge info
-            lblLastPurgeInfo.Text = m_lastPurgePlayersChanged.ToString() + " players\r\n" + m_lastPurgeMethod + "\r\n" + "Performed on " + m_lastPurgeDate.ToShortDateString() + " at " + m_lastPurgeDate.ToShortTimeString() + "\r\nBy " + m_lastPurgeBy + "\r\nReason: " + m_lastPurgeReason;
+            lblLastPurgeInfo.Text = "Players = " + m_lastPurgePlayersChanged.ToString() + "\r\n" + m_lastPurgeMethod + "\r\n" + "Performed on " + m_lastPurgeDate.ToShortDateString() + " at " + m_lastPurgeDate.ToShortTimeString() + "\r\nBy " + m_lastPurgeBy + "\r\nReason: " + m_lastPurgeReason;
             gbLastPurge.Visible = m_lastPurgePlayersChanged != 0;
             btnUndo.Enabled = m_lastPurgePlayersChanged != 0;
             btnPurge.Enabled = true;
@@ -160,6 +182,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             SendPurgeMessage(ppm);
             GTI.Modules.Shared.MessageForm.Show(this, m_playersChanged == 0 ? "No players found with points to expire." : "Players with points expired: " + m_playersChanged.ToString(), "Expiring Results");
+            txtManualPointAdjustReason.Clear();
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -170,6 +193,7 @@ namespace GTI.Modules.PlayerCenter.UI
             ppm.ReasonForPurge = string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) ? "None" : txtManualPointAdjustReason.Text;
             SendPurgeMessage(ppm);
             GTI.Modules.Shared.MessageForm.Show(this, m_playersChanged == 0 ? "No players affected by undo." : "Players affected by undo: " + m_playersChanged.ToString(), "Results for Expiring Undo");
+            txtManualPointAdjustReason.Clear();
         }
 
         private void SelectPurgeByPeriod(object sender, EventArgs e)

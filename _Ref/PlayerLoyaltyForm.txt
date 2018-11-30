@@ -17,14 +17,11 @@ namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class PlayerLoyaltyForm : GradientForm
     {
-        #region MEMBER VARIABLE
         private TierRule m_tierRule;
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
         private int m_color;//?
-        #endregion
 
-        #region CONSTRUCTOR
         public PlayerLoyaltyForm()
         {
             InitializeComponent();
@@ -38,11 +35,10 @@ namespace GTI.Modules.PlayerCenter.UI
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
         }
-        #endregion
 
         #region METHOD
 
-       // CLEAR CONTROL FOR NEW TIER
+        #region CLEAR CONTROL FOR NEW TIER
         private void ClearTiersTab()
         {
             m_txtbxTierName.Text = "";
@@ -54,8 +50,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lblTierColor.BackColor = SystemColors.ButtonHighlight;
             //m_tierId = 0;
         }
-
-      //DISABLE OR ENABLE CONTROL BASE ON ADD, EDIT CANCEL SAVE .. TIER
+        #endregion
+        #region DISABLE OR ENABLE CONTROL BASE ON ADD, EDIT CANCEL SAVE .. TIER
         private void DisableEnableControlDefaultTier(bool _isEnable)
         {
             //m_tbctrlPlayerLoyalty.Enabled = _isEnable;       
@@ -103,8 +99,8 @@ namespace GTI.Modules.PlayerCenter.UI
           
 
         }
-                   
-      // DISABLE OR ENABLE CONTROL BASE ON  EDIT  CANCEL SAVE.. TIER RULE
+        #endregion                      
+        #region DISABLE OR ENABLE CONTROL BASE ON  EDIT  CANCEL SAVE.. TIER RULE
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {
             m_datetimepickerQualifyingPeriodStart.Enabled = !IsDefault;
@@ -130,8 +126,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_lblTierRuleSavedSuccessNotification.Visible == true) m_lblTierRuleSavedSuccessNotification.Visible = false;
         }
-    
-       // DISABLE OR ENABLE SPEND/POINTS CONTROL
+        #endregion
+        #region DISABLE OR ENABLE SPEND/POINTS CONTROL
         private void EnableDisableSpendPoints()
         {
             if (m_cmbxQualfyingSpend.SelectedIndex == 0)
@@ -160,8 +156,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty;
             }
         }
- 
-       // DISLAY TIER RULE ON TAB PAGE UI
+        #endregion
+        #region DISLAY TIER RULE ON TAB PAGE UI
         private void DisplayTierRule()
         {
             if (m_tierRule != null)
@@ -199,8 +195,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_datetimepickerQualifyingPeriodEnd.Value = DateTime.Now.AddYears(1);
             }
         }
-        
-      // DISPLAY TIER NAME IN  LIST BOX
+        #endregion      
+        #region DISPLAY TIER NAME IN THE LIST BOX
         private void PopulateTierList()
         {
                 m_lstboxTiers.DataSource = null;
@@ -210,8 +206,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
                 m_lstboxTiers.Update();                                                
         }
-  
-       //DISPLAY TIER FOR ALL CONTROL
+        #endregion
+        #region DISPLAY TIER FOR ALL CONTROL
         private void DisplayTier(Tier x)
         {
             m_txtbxTierName.Text = x.TierName;
@@ -241,8 +237,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             FixedDecimalUserInput(x.AwardPointsMultiplier, m_txtbxAwardPointsMultiplier);
         }
-
-     // NOTIFICATION 
+        #endregion
+        #region NOTIFICATION 
         private void ClearUserNotification()
         {
             m_errorProvider.SetError(m_txtbxTierName, string.Empty);
@@ -256,8 +252,9 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
             if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
         }
-      
-       // SAVE TIER RULE
+        #endregion
+        #region SAVE TIER RULE
+
         private bool SaveTierRule()
         {
             ClearUserNotification();
@@ -334,8 +331,9 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-      
-      // SELECT DEFAULT TIER IF NONE THEN SELECT THE LOWEST TIER
+        #endregion
+        #region SELECT DEFAULT TIER IF NONE THEN SELECT THE LOWEST TIER
+
         private void SelectDefaultOrFirstRowTier()
         {
             if (m_tierRule.DefaultTierID != 0 && m_tiers.Count != 0)
@@ -344,7 +342,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        // CORRECT USER INPUT FOR DECIMAL VALUE
+        #endregion
+
+        #endregion
+
         private void FixedDecimalUserInput(decimal decimalValue_, TextBox txtbxDecimal_)
         {
             bool y = false;
@@ -375,14 +376,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
-        #endregion
-
 
 
 
         #region EVENT
 
-        //  SELECTED TIER
+        #region  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
@@ -398,8 +397,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 ClearTiersTab();
             }
         }
-    
-        // SELECTED QUALIFYING SPEND
+        #endregion
+        #region SELECTED QUALIFYING SPEND
+
+
         private void m_cmbxQualfyingSpend_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
@@ -418,8 +419,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
       
-      
-        // SELECTED QUALIFYING POINTS
+        #endregion
+        #region SELECTED QUALIFYING POINTS
+
+
         private void m_cmbxQualifyingpoints_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (m_cmbxQualifyingpoints.SelectedIndex == 0)
@@ -436,8 +439,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         
-       
-        // EDIT SAVED TIER RULE
+        #endregion
+        #region EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
             // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
@@ -456,24 +459,32 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
-       
-        //CANCEL TIER RULE
+        #endregion
+        #region CANCEL TIER RULE
         private void m_btnCancelTierRule_Click(object sender, EventArgs e)
         {
+            //m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
+            //label4.Visible = false;
+            //DisplayPlayerRule();
             DisableEnableControlDefaultTierRules(true);
             DisplayTierRule();
             if (m_tierRule.DefaultTierID != 0)
             m_cmbxDefaultTier.SelectedValue = m_tierRule.DefaultTierID;
+            //DisplayPlayerRule();
+            //if (m_cmbxDefaultTier.Items.Count != 0 && DefaultTierIndex != -2)
+            //    m_cmbxDefaultTier.SelectedIndex = DefaultTierIndex;
         }
-        
-        // CLOSE TIER RULE
+        #endregion 
+        #region CLOSE TIER RULE
         private void m_btnCloseTierRule_Click(object sender, EventArgs e)
         {
+           // m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-             
-       // ADD TIER
+        #endregion        
+        #region ADD TIER
+
         private void m_btnAddTier_Click(object sender, EventArgs e)
         {
             //ClearALLError();
@@ -483,15 +494,24 @@ namespace GTI.Modules.PlayerCenter.UI
             m_tierSelected = new Tier();
         }
 
-        // EDIT TIER
+        #endregion
+        #region EDIT TIER
+
         private void m_btnEditTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(false);
-            EnableDisableSpendPoints();                           
+            EnableDisableSpendPoints();
+            //m_tbctrlPlayerLoyalty
+         //(Control).this.m_tabPage_TierRule. = false;
+                //   lbl_MessageSaved.Visible = false;
+          
+           
+            
         }
 
-  
-       // DELETE TIER
+        #endregion
+        #region DELETE TIER
+
         private void m_btnDeleteTier_Click(object sender, EventArgs e)
         {
 
@@ -506,11 +526,60 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tiers.Remove(m_tierSelected);
                 PopulateTierList();
                 DisableEnableControlDefaultTier(true);
-                SelectDefaultOrFirstRowTier();               
-            }       
+                SelectDefaultOrFirstRowTier();
+                
+            }
+        /*
+            int CurrentIndex = listbox_Tiers.SelectedIndex;
+            string ItemSelected = listbox_Tiers.SelectedItem.ToString();
+
+            if (ItemSelected.Contains(" (default)"))
+            {
+                ItemSelected = ItemSelected.Replace(" (default)", string.Empty);
+            }
+
+            if (MessageForm.Show("Are you sure you want to permanently delete this " + ItemSelected + " Tier.", "Player Loyalty", MessageFormTypes.YesNo) == DialogResult.No)
+            {
+                return;
+            }
+
+            lbl_MessageSaved.Visible = false;
+            Tier code1 = new Tier();
+            code1.TierID = m_tierId;
+            code1.TierRulesID = 0;
+            code1.TierName = string.Empty;
+            code1.TierColor = 0;
+            code1.AmntSpend = 0;
+            code1.NbrPoints = 0;
+            code1.Multiplier = 0;
+            code1.isdelete = true;
+            //SetPlayerTierData.Save(code1);
+
+            listbox_Tiers.Items.RemoveAt(CurrentIndex);
+            CurrentIndex = m_cmbxDefaultTier.Items.IndexOf(ItemSelected);
+            m_cmbxDefaultTier.Items.RemoveAt(CurrentIndex);
+            m_tiers.RemoveAll(i => i.TierID == m_tierId);
+            m_tierRule.DefaultTierID = 0; //GetPlayerTierRulesData.getPlayerTierRulesData.DefaultTierID = 0 ;   //???
+            listbox_Tiers.SelectedIndex = -1;
+            ClearTiersTab();
+
+            if (listbox_Tiers.Items.Count == 0)
+            {
+                imageButtonRemoveTier.Enabled = false;
+                imageButtonEditTier.Enabled = false;
+                cboColor.BackColor = SystemColors.Control;
+            }
+
+            if (listbox_Tiers.Items.Count > 0)
+            {
+                listbox_Tiers.TopIndex = 0;
+                listbox_Tiers.SelectedIndex = 0;
+            }
+        */
         }
 
-        // SAVED TIER
+        #endregion
+        #region SAVED TIER
         private void m_btnSaveTier_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))           //VALIDATE USER INPUT (check for Empty String)
@@ -560,8 +629,9 @@ namespace GTI.Modules.PlayerCenter.UI
           
         }
 
-      
-      // CANCEL TIER
+        #endregion
+        #region CANCEL TIER
+
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(true);
@@ -592,15 +662,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
-     
-        // CLOSE TIER
+
+        #endregion
+        #region CLOSE TIER
         private void m_btnCloseTier_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-       
-        //COLOR FORM SHOW
+        #endregion     
+        #region COLOR FORM SHOW
         private void m_lblTierColor_Click(object sender, EventArgs e)
         {
             ColorDialog frmColor = new ColorDialog { Color = m_lblTierColor.BackColor };
@@ -612,8 +683,11 @@ namespace GTI.Modules.PlayerCenter.UI
             frmColor.Dispose();
         }
 
+        #endregion
 
-        //Qualifying period date
+        #region EVENT validation
+        #region Qualifying period date
+        //Check if the ending date is > than the starting date.
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
         {
             bool v = (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value);
@@ -623,8 +697,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, "Qualify Period Start is after Qualifying Period End");//Resources.InvalidPlayerListLastVisit);
             }
         }
- 
-        //Tier Name
+        #endregion
+        #region Tier Name
+
         private void m_txtbxTierName_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -643,6 +718,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.TierName.Equals(m_txtbxTierName.Text, StringComparison.InvariantCultureIgnoreCase));
                     }
+                    //else
+                    //{
+                    //    itExists = true;
+                    //}
 
                 }
                 else
@@ -652,6 +731,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (itExists)
                 {
+                    // ContinueSave = false; //do not saved.
                     m_errorProvider.SetError(m_txtbxTierName, "Name already exists.");
                     e.Cancel = true;
                 }
@@ -664,7 +744,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        // Spend Start
+        #endregion
+        #region Spend Start
         private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -723,8 +804,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
+        #endregion
+        #region Point Start
 
-       //Point Start
         private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -777,10 +859,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_txtbxPointStart, "Unknown error call Technician.");
                 return;
             }
+            //MessageBox.Show("Hello");
         }
 
+        #endregion
+        #region Award Points Multiplier
 
-        // Award Points Multiplier
         private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -809,8 +893,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
+        #endregion
+        #region Spend/Points Combobox
 
-        //Spend/Points Combobox
         private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
         {
             if (m_cmbxQualifyingpoints.SelectedIndex == 1 && m_cmbxQualfyingSpend.SelectedIndex == 1)
@@ -820,8 +905,15 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        private void m_cmbxQualifyingpoints_Validating(object sender, CancelEventArgs e)
+        {
+            //MessageBox.Show("Hello");
+        }
 
+        #endregion
 
+        #endregion
+        #region EVENT keypress
         private void m_txtbxAwardPointsMultiplier_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -843,8 +935,8 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = result;
 
         }
+        #endregion
 
-        //PREVENT NAVIGATING TO OTHER TAB PAG WHILE CREATING/UPDATING TIER OR TIER RULE
         private void m_tbctrlPlayerLoyalty_Selecting(object sender, TabControlCancelEventArgs e)
         {
   
@@ -856,8 +948,30 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (e.TabPageIndex == 1)
                 {
                     e.Cancel = true;
-                }           
+                }
+            
         }
-        #endregion       
+
+       
+       
+
+        #endregion  
+
+      
+
+       
+
+      
     }   
 }
+
+/*/
+  private void UpdateTierList(TierRule _newTierRule)
+        {
+            Tier t_testD = m_tiers.Single(l => l.TierID == m_tierRule.DefaultTierID);
+            t_testD.IsDefaultTier = false;
+            t_testD = m_tiers.Single(l => l.TierID == _newTierRule.DefaultTierID);
+            t_testD.IsDefaultTier = true;
+            m_tierRule = _newTierRule;
+            PopulateTierList();
+        }*/

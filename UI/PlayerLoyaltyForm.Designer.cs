@@ -364,6 +364,7 @@
             this.m_tbctrlPlayerLoyalty.Name = "m_tbctrlPlayerLoyalty";
             this.m_tbctrlPlayerLoyalty.SelectedIndex = 0;
             this.m_tbctrlPlayerLoyalty.Tag = "1";
+            this.m_tbctrlPlayerLoyalty.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.m_tbctrlPlayerLoyalty_Selecting);
             // 
             // m_tabPage_TierRule
             // 

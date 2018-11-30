@@ -81,6 +81,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_cmbxQualfyingSpend.BackColor = SystemColors.Control;
                 m_lstboxTiers.BackColor = SystemColors.Window;
                 //m_lblTierColor.BackColor = SystemColors.Control;
+                m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
             }
             else
             {
@@ -91,11 +92,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_cmbxQualifyingpoints.BackColor = SystemColors.Window;
                 m_cmbxQualfyingSpend.BackColor = SystemColors.Window;
                 m_lstboxTiers.BackColor = SystemColors.Control;
+                m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
             }
 
            if (lbl_MessageSaved.Visible == true) lbl_MessageSaved.Visible = false;
+          
+
         }
         #endregion
+
+
+                      
+
         #region DISABLE OR ENABLE CONTROL BASE ON  EDIT  CANCEL SAVE.. TIER RULE
         private void DisableEnableControlDefaultTierRules(bool IsDefault)
         {
@@ -107,14 +115,17 @@ namespace GTI.Modules.PlayerCenter.UI
             m_btnCloseTierRule.Enabled = IsDefault;
 
             //m_tbctrlPlayerLoyalty.Enabled = !IsDefault; -- need to work on this Do ot change tab while editing
-
+           
+           
             if (IsDefault == true)
             {
                 m_btnEditSaveTierRule.Text = "&Edit";
+                m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
             }
             else
             {
                 m_btnEditSaveTierRule.Text = "&Save";
+                m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
             }
 
             if (m_lblTierRuleSavedSuccessNotification.Visible == true) m_lblTierRuleSavedSuccessNotification.Visible = false;
@@ -494,7 +505,10 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             DisableEnableControlDefaultTier(false);
             EnableDisableSpendPoints();
-         //   lbl_MessageSaved.Visible = false;
+            //m_tbctrlPlayerLoyalty
+         //(Control).this.m_tabPage_TierRule. = false;
+                //   lbl_MessageSaved.Visible = false;
+          
            
             
         }
@@ -926,6 +940,21 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
         #endregion
+
+        private void m_tbctrlPlayerLoyalty_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+  
+                if (e.TabPageIndex == 0)
+                {
+                    e.Cancel = true;
+                }
+                else
+                if (e.TabPageIndex == 1)
+                {
+                    e.Cancel = true;
+                }
+            
+        }
 
        
        

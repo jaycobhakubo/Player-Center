@@ -186,6 +186,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (m_tiers.Count != 0)
                 {
+                    m_cmbxDefaultTier.Items.Clear();
                     foreach (Tier TierName in m_tiers)
                     {
                         m_cmbxDefaultTier.Items.Add(TierName.TierName);
@@ -195,6 +196,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         }
                         itemCount++;
                     }
+                    m_cmbxDefaultTier.Update();
                 }
             }
             else
@@ -525,6 +527,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+                t_tierNew.IsDefaultTier = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.IsDefaultTier : false;
 
                 if (m_tierSelected.Equals(t_tierNew))
                 {

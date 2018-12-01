@@ -318,7 +318,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiersN, m_parent.PlayerTierRule);
+            PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiers, m_parent.PlayerTierRule);
             playerLoyalty.Show(this);
         }
 

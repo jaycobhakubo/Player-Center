@@ -330,13 +330,13 @@
   <data name="&gt;&gt;m_btnCloseTier.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lbl_MessageSaved.AutoSize" type="System.Boolean, mscorlib">
+  <data name="m_lblTierSavedSuccessNotification.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lbl_MessageSaved.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_lblTierSavedSuccessNotification.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
-  <data name="lbl_MessageSaved.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="m_lblTierSavedSuccessNotification.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAkxJREFUOE+Vkl1oUmEYx882tlaUGtLFqIuCNWpB2mo5Jqak9GFdVDdFUIwuVtEn
@@ -352,37 +352,37 @@
         iF9Ndzdgf+TwuAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="lbl_MessageSaved.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="m_lblTierSavedSuccessNotification.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="lbl_MessageSaved.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_lblTierSavedSuccessNotification.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lbl_MessageSaved.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="m_lblTierSavedSuccessNotification.Location" type="System.Drawing.Point, System.Drawing">
     <value>423, 51</value>
   </data>
-  <data name="lbl_MessageSaved.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_lblTierSavedSuccessNotification.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 18</value>
   </data>
-  <data name="lbl_MessageSaved.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_lblTierSavedSuccessNotification.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
-  <data name="lbl_MessageSaved.Text" xml:space="preserve">
+  <data name="m_lblTierSavedSuccessNotification.Text" xml:space="preserve">
     <value>       Saved Successfully</value>
   </data>
-  <data name="lbl_MessageSaved.Visible" type="System.Boolean, mscorlib">
+  <data name="m_lblTierSavedSuccessNotification.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;lbl_MessageSaved.Name" xml:space="preserve">
-    <value>lbl_MessageSaved</value>
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Name" xml:space="preserve">
+    <value>m_lblTierSavedSuccessNotification</value>
   </data>
-  <data name="&gt;&gt;lbl_MessageSaved.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lbl_MessageSaved.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;lbl_MessageSaved.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="m_lblTierColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">

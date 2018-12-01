@@ -102,7 +102,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_cmbxQualifyingpoints.SelectedIndexChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
             }
 
-           if (lbl_MessageSaved.Visible == true) lbl_MessageSaved.Visible = false;
+           if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
           
 
         }
@@ -259,7 +259,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //Tab Page Tier Rule
             m_errorProvider.SetError(m_datetimepickerQualifyingPeriodStart, string.Empty);
             if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
-            if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
+            if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
         }
       
        // SAVE TIER RULE
@@ -388,7 +388,7 @@ namespace GTI.Modules.PlayerCenter.UI
         //  SELECTED TIER
         private void m_lstboxTiers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbl_MessageSaved.Visible) lbl_MessageSaved.Visible = false;
+            if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
 
             if (m_lstboxTiers.SelectedIndex != -1)//If item is being selected
             {
@@ -477,7 +477,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnAddTier_Click(object sender, EventArgs e)
         {
             //ClearALLError();
-            if (!lbl_MessageSaved.Visible) lbl_MessageSaved.Visible  = false;
+            if (!m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible  = false;
             m_lstboxTiers.SelectedIndex = -1;
             DisableEnableControlDefaultTier(false);
             m_tierSelected = new Tier();
@@ -554,7 +554,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ClearUserNotification();
                 DisableEnableControlDefaultTier(true);
-                lbl_MessageSaved.Visible = true;
+                m_lblTierSavedSuccessNotification.Visible = true;
             }
 
           
@@ -856,5 +856,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 }           
         }
         #endregion            
+
+        private void m_tbctrlPlayerLoyalty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
+            if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
+        }
     }   
 }

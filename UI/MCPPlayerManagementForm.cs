@@ -84,7 +84,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 // Do they have a player already selected?
                 if (m_parent.CurrentPlayer != null)
                 {
-                    m_player = m_parent.CurrentPlayer;//knc
+                    m_player = m_parent.CurrentPlayer;
 
                     // Fill in the default player values.
                     SetPlayerValues(false);//RALLY DE8358
@@ -443,7 +443,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     Application.DoEvents();
-                    m_player = findForm.SelectedPlayer;//knc
+                    m_player = findForm.SelectedPlayer;
                     SetPlayerValues(false);//RALLY DE8358
                     m_dataChanged = false;
 

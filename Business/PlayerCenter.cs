@@ -74,7 +74,6 @@ namespace GTI.Modules.PlayerCenter.Business
         private List<Tier> m_playerTiers;
 
 
-
         #endregion
 
         #region Constructors
@@ -846,36 +845,11 @@ namespace GTI.Modules.PlayerCenter.Business
             m_playerTiers =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
         }
 
-        public List<Tier> PlayerTiers
+        public void GetPlayerTierRule()
         {
-            get
-            {
-                return m_playerTiers;
-            }
-            set
-            {
-                m_playerTiers = value;
-            }
-        }
-
-
-        public TierRule PlayerTierRule
-        {
-            get 
-            {
-                return m_playerTierRule;
-            }
-            set
-            {
-                m_playerTierRule = value;
-            }
-        }
-
-       public void GetPlayerTierRule()
-        {  
             m_playerTierRule = new TierRule();
             m_playerTierRule = Data.GetPlayerTierRule.Msg();
-        }
+        }  
 
         // PDTS 1064
         /// <summary>
@@ -1023,12 +997,11 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
-                player = new Player(playerId, OperatorID, -1);//knc
+                player = new Player(playerId, OperatorID, -1);
                 if (m_playerTiers.Count != 0)
                 {
                     player.PlayerTier = m_playerTiers.Single(l => l.TierID == player.TierID);
                 }
-               // player.PlayerTier 
                
             }
             catch (ServerCommException)
@@ -2613,6 +2586,31 @@ namespace GTI.Modules.PlayerCenter.Business
         internal MagneticCardReader MagCardReader { get; private set; }
 
         internal int OperatorID { get; private set; }
+
+        public List<Tier> PlayerTiers
+        {
+            get
+            {
+                return m_playerTiers;
+            }
+            set
+            {
+                m_playerTiers = value;
+            }
+        }
+
+
+        public TierRule PlayerTierRule
+        {
+            get
+            {
+                return m_playerTierRule;
+            }
+            set
+            {
+                m_playerTierRule = value;
+            }
+        }
 
         // Rally US144
         /// <summary>

@@ -161,13 +161,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.playerListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerPointPurgeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerLoyaltyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loyalityGroupBox = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.m_TierPointSpend = new GTI.Controls.ImageLabel();
-            this.m_TierPointBalance = new GTI.Controls.ImageLabel();
-            this.label1 = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.lvActiveStatus = new System.Windows.Forms.ListView();
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -194,7 +191,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.playerLoyaltyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -676,6 +672,12 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.playerPointPurgeToolStripMenuItem, "playerPointPurgeToolStripMenuItem");
             this.playerPointPurgeToolStripMenuItem.Click += new System.EventHandler(this.playerPointPurgeToolStripMenuItem_Click);
             // 
+            // playerLoyaltyToolStripMenuItem
+            // 
+            this.playerLoyaltyToolStripMenuItem.Name = "playerLoyaltyToolStripMenuItem";
+            resources.ApplyResources(this.playerLoyaltyToolStripMenuItem, "playerLoyaltyToolStripMenuItem");
+            this.playerLoyaltyToolStripMenuItem.Click += new System.EventHandler(this.playerLoyaltyToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -693,10 +695,6 @@ namespace GTI.Modules.PlayerCenter.UI
             // loyalityGroupBox
             // 
             this.loyalityGroupBox.BackColor = System.Drawing.Color.Transparent;
-            this.loyalityGroupBox.Controls.Add(this.label2);
-            this.loyalityGroupBox.Controls.Add(this.m_TierPointSpend);
-            this.loyalityGroupBox.Controls.Add(this.m_TierPointBalance);
-            this.loyalityGroupBox.Controls.Add(this.label1);
             this.loyalityGroupBox.Controls.Add(this.statusLabel);
             this.loyalityGroupBox.Controls.Add(this.lvActiveStatus);
             this.loyalityGroupBox.Controls.Add(this.m_IsLogInStatusImageLabel);
@@ -719,37 +717,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.loyalityGroupBox.ForeColor = System.Drawing.Color.Black;
             this.loyalityGroupBox.Name = "loyalityGroupBox";
             this.loyalityGroupBox.TabStop = false;
-
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(183)))), ((int)(((byte)(201)))));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Name = "label2";
-            // 
-            // m_TierPointSpend
-            // 
-            this.m_TierPointSpend.BackColor = System.Drawing.Color.Transparent;
-            this.m_TierPointSpend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.m_TierPointSpend, "m_TierPointSpend");
-            this.m_TierPointSpend.ForeColor = System.Drawing.Color.Black;
-            this.m_TierPointSpend.Name = "m_TierPointSpend";
-            // 
-            // m_TierPointBalance
-            // 
-            this.m_TierPointBalance.BackColor = System.Drawing.Color.Transparent;
-            this.m_TierPointBalance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.m_TierPointBalance, "m_TierPointBalance");
-            this.m_TierPointBalance.ForeColor = System.Drawing.Color.Black;
-            this.m_TierPointBalance.Name = "m_TierPointBalance";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(183)))), ((int)(((byte)(201)))));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Name = "label1";
             // 
             // statusLabel
             // 
@@ -974,12 +941,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
             this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 
-            // playerLoyaltyToolStripMenuItem
-            // 
-            this.playerLoyaltyToolStripMenuItem.Name = "playerLoyaltyToolStripMenuItem";
-            resources.ApplyResources(this.playerLoyaltyToolStripMenuItem, "playerLoyaltyToolStripMenuItem");
-            this.playerLoyaltyToolStripMenuItem.Click += new System.EventHandler(this.playerLoyaltyToolStripMenuItem_Click);
-            // 
             // MCPPlayerManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1038,11 +999,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.TextBox txtMagCard;
         private Controls.ImageButton m_btnImgAwardPointManual;
         private System.Windows.Forms.ToolStripMenuItem playerPointPurgeToolStripMenuItem;
-         private System.Windows.Forms.ToolStripMenuItem playerLoyaltyToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private Controls.ImageLabel m_TierPointSpend;
-        private Controls.ImageLabel m_TierPointBalance;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem playerLoyaltyToolStripMenuItem;
 
        
        

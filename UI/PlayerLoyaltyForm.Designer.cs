@@ -37,7 +37,7 @@
             this.m_btnDeleteTier = new GTI.Controls.ImageButton();
             this.m_btnAddTier = new GTI.Controls.ImageButton();
             this.m_btnCloseTier = new GTI.Controls.ImageButton();
-            this.lbl_MessageSaved = new System.Windows.Forms.Label();
+            this.m_lblTierSavedSuccessNotification = new System.Windows.Forms.Label();
             this.m_lblTierColor = new System.Windows.Forms.Label();
             this.m_btnCancelTier = new GTI.Controls.ImageButton();
             this.m_btnSaveTier = new GTI.Controls.ImageButton();
@@ -112,7 +112,7 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCloseTier);
-            this.splitContainer1.Panel2.Controls.Add(this.lbl_MessageSaved);
+            this.splitContainer1.Panel2.Controls.Add(this.m_lblTierSavedSuccessNotification);
             this.splitContainer1.Panel2.Controls.Add(this.m_lblTierColor);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCancelTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnSaveTier);
@@ -206,10 +206,10 @@
             this.m_btnCloseTier.UseVisualStyleBackColor = false;
             this.m_btnCloseTier.Click += new System.EventHandler(this.m_btnCloseTier_Click);
             // 
-            // lbl_MessageSaved
+            // m_lblTierSavedSuccessNotification
             // 
-            resources.ApplyResources(this.lbl_MessageSaved, "lbl_MessageSaved");
-            this.lbl_MessageSaved.Name = "lbl_MessageSaved";
+            resources.ApplyResources(this.m_lblTierSavedSuccessNotification, "m_lblTierSavedSuccessNotification");
+            this.m_lblTierSavedSuccessNotification.Name = "m_lblTierSavedSuccessNotification";
             // 
             // m_lblTierColor
             // 
@@ -363,6 +363,7 @@
             this.m_tbctrlPlayerLoyalty.Name = "m_tbctrlPlayerLoyalty";
             this.m_tbctrlPlayerLoyalty.SelectedIndex = 0;
             this.m_tbctrlPlayerLoyalty.Tag = "1";
+            this.m_tbctrlPlayerLoyalty.SelectedIndexChanged += new System.EventHandler(this.m_tbctrlPlayerLoyalty_SelectedIndexChanged);
             this.m_tbctrlPlayerLoyalty.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.m_tbctrlPlayerLoyalty_Selecting);
             // 
             // m_tabPage_TierRule
@@ -593,7 +594,7 @@
         private Controls.ColorListBox m_lstboxTiers;
         private Controls.ImageButton m_btnAddTier;
         private Controls.ImageButton m_btnEditTier;
-        public System.Windows.Forms.Label lbl_MessageSaved;
+        public System.Windows.Forms.Label m_lblTierSavedSuccessNotification;
         private System.Windows.Forms.Label m_lblTierColor;
         private Controls.ImageButton m_btnDeleteTier;
         private Controls.ImageButton m_btnCancelTier;

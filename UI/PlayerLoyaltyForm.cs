@@ -321,6 +321,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         t_testD = m_tiers.Single(l => l.TierID == NewTierRule.DefaultTierID);
                         t_testD.IsDefaultTier = true;
                         m_tierRule = NewTierRule;
+                        m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;
                         DisplayTierRule();
                         PopulateTierList();
                     }

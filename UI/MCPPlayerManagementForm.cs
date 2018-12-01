@@ -57,13 +57,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent = parent;
                 InitializeComponent();
 
+                
                 if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
                     lblPlayerIdentLabel.Text = "Player Identity/Account";
 
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
                 //ApplyDisplayMode();
                 SetMaxTextLengths();
-                
+               
                 m_playerStatusList = new List<PlayerStatus>();//RALLY DE8358
 
                 // Rally TA7897
@@ -83,7 +84,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 // Do they have a player already selected?
                 if (m_parent.CurrentPlayer != null)
                 {
-                    m_player = m_parent.CurrentPlayer;
+                    m_player = m_parent.CurrentPlayer;//knc
 
                     // Fill in the default player values.
                     SetPlayerValues(false);//RALLY DE8358
@@ -442,7 +443,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     Application.DoEvents();
-                    m_player = findForm.SelectedPlayer;
+                    m_player = findForm.SelectedPlayer;//knc
                     SetPlayerValues(false);//RALLY DE8358
                     m_dataChanged = false;
 
@@ -833,7 +834,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             // END: DE6690
 
-            m_playerTier.Text = m_player.LoyaltyTier != null ? m_player.LoyaltyTier.Name : string.Empty;
+            m_playerTier.Text = m_player.PlayerTier != null ? m_player.PlayerTier.TierName : string.Empty;//knc
+           // m_playerTier.Text = m_parent.Pla
 
             m_playerPicture.Image = m_player.Image;
 

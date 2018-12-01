@@ -71,6 +71,9 @@ namespace GTI.Modules.PlayerCenter.Business
         private int m_machineId = 0;
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
+        private TierRule m_playerTierRule;
+        private List<Tier> m_playerTiersN;
+
 
 
         #endregion
@@ -232,6 +235,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     strErr = "get tiers.";
                     GetPlayerTiers();
+                    GetPlayerTierRule();
+                    GetPlayerTiersN();
                 }
                 catch (Exception e)
                 {
@@ -852,7 +857,34 @@ namespace GTI.Modules.PlayerCenter.Business
                 ReformatException(e);
             }
 
-            m_playerTiers = tierMsg.Tiers;
+            m_playerTiers = tierMsg.Tiers;//knc
+        }
+
+
+
+        public void GetPlayerTiersN()
+        {
+            m_playerTiersN = new List<Tier>();
+            m_playerTiersN =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
+        }
+
+        public List<Tier> PlayerTierN
+        {
+            get
+            {
+                return m_playerTiersN;
+            }
+            set
+            {
+                m_playerTiersN = value;
+            }
+        }
+
+
+       public void GetPlayerTierRule()
+        {  
+            m_playerTierRule = new TierRule();
+            m_playerTierRule = Data.GetPlayerTierRule.Msg();
         }
 
         // PDTS 1064
@@ -1001,7 +1033,13 @@ namespace GTI.Modules.PlayerCenter.Business
 
             try
             {
-                player = new Player(playerId, OperatorID, -1);
+                player = new Player(playerId, OperatorID, -1);//knc
+                if (m_playerTiersN.Count != 0)
+                {
+                    player.PlayerTier = m_playerTiersN.Single(l => l.TierID == player.TierID);
+                }
+               // player.PlayerTier 
+               
             }
             catch (ServerCommException)
             {

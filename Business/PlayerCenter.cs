@@ -52,7 +52,6 @@ namespace GTI.Modules.PlayerCenter.Business
         private PlayerCenterModule m_module = null;        // System Related
         private BackgroundWorker m_worker = null;
         private Exception m_asyncException = null;
-        private PlayerLoyaltyTier[] m_playerTiers = null;
         private PlayerListItem[] m_lastFindPlayersResults = null;
         private Player m_lastPlayerFromServer = null;        // TTP 50067
         private Bitmap m_lastPlayerPic = null;
@@ -72,7 +71,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
         private TierRule m_playerTierRule;
-        private List<Tier> m_playerTiersN;
+        private List<Tier> m_playerTiers;
 
 
 
@@ -234,9 +233,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get tiers.";
-                    GetPlayerTiers();//removed this 
                     GetPlayerTierRule();
-                    GetPlayerTiersN();
+                    GetPlayerTiers();
                 }
                 catch (Exception e)
                 {
@@ -841,42 +839,22 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-        /// <summary>
-        /// Retrieves the Player Loyalty Tiers from the server.
-        /// </summary>
-        private void GetPlayerTiers()
+
+        public void GetPlayerTiers()
         {
-            GetPlayerTierListMessage tierMsg = new GetPlayerTierListMessage(OperatorID);
-
-            try
-            {
-                tierMsg.Send();
-            }
-            catch (Exception e)
-            {
-                ReformatException(e);
-            }
-
-            m_playerTiers = tierMsg.Tiers;//knc
+            m_playerTiers = new List<Tier>();
+            m_playerTiers =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
         }
 
-
-
-        public void GetPlayerTiersN()
-        {
-            m_playerTiersN = new List<Tier>();
-            m_playerTiersN =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
-        }
-
-        public List<Tier> PlayerTiersN
+        public List<Tier> PlayerTiers
         {
             get
             {
-                return m_playerTiersN;
+                return m_playerTiers;
             }
             set
             {
-                m_playerTiersN = value;
+                m_playerTiers = value;
             }
         }
 
@@ -1046,9 +1024,9 @@ namespace GTI.Modules.PlayerCenter.Business
             try
             {
                 player = new Player(playerId, OperatorID, -1);//knc
-                if (m_playerTiersN.Count != 0)
+                if (m_playerTiers.Count != 0)
                 {
-                    player.PlayerTier = m_playerTiersN.Single(l => l.TierID == player.TierID);
+                    player.PlayerTier = m_playerTiers.Single(l => l.TierID == player.TierID);
                 }
                // player.PlayerTier 
                

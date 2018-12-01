@@ -834,8 +834,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             // END: DE6690
 
-            m_playerTier.Text = m_player.PlayerTier != null ? m_player.PlayerTier.TierName : string.Empty;//knc
-           // m_playerTier.Text = m_parent.Pla
+            m_playerTier.Text = m_player.PlayerTier != null ? m_player.PlayerTier.TierName : string.Empty;
 
             m_playerPicture.Image = m_player.Image;
 

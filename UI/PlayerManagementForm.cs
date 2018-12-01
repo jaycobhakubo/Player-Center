@@ -966,8 +966,13 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             // END: DE6690
 
-            if(m_player.LoyaltyTier != null)
-                m_playerTier.Text = m_player.LoyaltyTier.Name;
+            //if (m_player.LoyaltyTier != null)
+            //    m_playerTier.Text = m_player.LoyaltyTier.Name;              
+            //else
+            //    m_playerTier.Text = string.Empty;
+
+            if (m_player.PlayerTier != null)
+                m_playerTier.Text = m_player.PlayerTier.TierName;
             else
                 m_playerTier.Text = string.Empty;
 

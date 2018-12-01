@@ -25,13 +25,11 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region CONSTRUCTOR
-        public PlayerLoyaltyForm()
+        public PlayerLoyaltyForm(List<Tier>tiers_ , TierRule tierRule_)
         {
             InitializeComponent();
-            m_tierRule = new TierRule();
-            m_tiers = new List<Tier>();
-            m_tierRule = GetPlayerTierRule.Msg();
-            m_tiers = GetPlayerTier.Msg(0, m_tierRule.DefaultTierID);//if 0,0 then no default tier
+            m_tiers = tiers_;
+            m_tierRule = tierRule_;
             DisplayTierRule();
             PopulateTierList();
             SelectDefaultOrFirstRowTier();          
@@ -86,6 +84,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_lstboxTiers.BackColor = SystemColors.Window;
                 //m_lblTierColor.BackColor = SystemColors.Control;
                 m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
+                m_cmbxQualfyingSpend.SelectedIndexChanged -=new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
+                m_cmbxQualifyingpoints.SelectedIndexChanged -=new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
+       
             }
             else
             {
@@ -97,6 +98,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_cmbxQualfyingSpend.BackColor = SystemColors.Window;
                 m_lstboxTiers.BackColor = SystemColors.Control;
                 m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
+                m_cmbxQualfyingSpend.SelectedIndexChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
+                m_cmbxQualifyingpoints.SelectedIndexChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
             }
 
            if (lbl_MessageSaved.Visible == true) lbl_MessageSaved.Visible = false;
@@ -220,24 +223,24 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (x.QualifyingSpend != -1)
             {
-                m_cmbxQualfyingSpend.SelectedItem = "Yes";
+                m_cmbxQualfyingSpend.SelectedIndex = 0;
                 FixedDecimalUserInput(x.QualifyingSpend, m_txtbxSpendStart);             
             }
             else
             {
                 m_cmbxQualfyingSpend.SelectedIndex = 1;
-                m_txtbxSpendStart.Text = "";
+                m_txtbxSpendStart.Text = string.Empty;
             }
 
             if (x.QualifyingPoints != -1)
             {
-                m_cmbxQualifyingpoints.SelectedItem = "Yes";
+                m_cmbxQualifyingpoints.SelectedIndex = 0;
                 FixedDecimalUserInput(x.QualifyingPoints, m_txtbxPointStart);
             }
             else
             {
                 m_cmbxQualifyingpoints.SelectedIndex = 1;//NO
-                m_txtbxPointStart.Text = "";
+                m_txtbxPointStart.Text = string.Empty; ;
             }
             FixedDecimalUserInput(x.AwardPointsMultiplier, m_txtbxAwardPointsMultiplier);
         }
@@ -398,14 +401,13 @@ namespace GTI.Modules.PlayerCenter.UI
         }
     
         // SELECTED QUALIFYING SPEND
-        private void m_cmbxQualfyingSpend_SelectionChangeCommitted(object sender, EventArgs e)
+        private void m_cmbxQualfyingSpend_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (m_cmbxQualfyingSpend.SelectedIndex == 0)
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
 
             }
             else
@@ -415,16 +417,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxSpendStart.Text = string.Empty;
             }
         }
-      
-      
+            
         // SELECTED QUALIFYING POINTS
-        private void m_cmbxQualifyingpoints_SelectionChangeCommitted(object sender, EventArgs e)
+        private void m_cmbxQualifyingpoints_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (m_cmbxQualifyingpoints.SelectedIndex == 0)
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = "0.00";
+                m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
             }
             else
             {
@@ -433,8 +434,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty;
             }
         }
-        
-       
+             
         // EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
@@ -488,8 +488,7 @@ namespace GTI.Modules.PlayerCenter.UI
             EnableDisableSpendPoints();                           
         }
 
-  
-       // DELETE TIER
+        /* DELETE TIER*/
         private void m_btnDeleteTier_Click(object sender, EventArgs e)
         {
 
@@ -557,8 +556,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
           
         }
-
-      
+     
       // CANCEL TIER
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
@@ -609,7 +607,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             frmColor.Dispose();
         }
-
 
         //Qualifying period date
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
@@ -777,7 +774,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
         // Award Points Multiplier
         private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
         {
@@ -856,6 +852,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     e.Cancel = true;
                 }           
         }
-        #endregion       
+        #endregion            
     }   
 }

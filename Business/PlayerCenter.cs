@@ -234,7 +234,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get tiers.";
-                    GetPlayerTiers();
+                    GetPlayerTiers();//removed this 
                     GetPlayerTierRule();
                     GetPlayerTiersN();
                 }
@@ -868,7 +868,7 @@ namespace GTI.Modules.PlayerCenter.Business
             m_playerTiersN =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
         }
 
-        public List<Tier> PlayerTierN
+        public List<Tier> PlayerTiersN
         {
             get
             {
@@ -880,6 +880,18 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
+
+        public TierRule PlayerTierRule
+        {
+            get 
+            {
+                return m_playerTierRule;
+            }
+            set
+            {
+                m_playerTierRule = value;
+            }
+        }
 
        public void GetPlayerTierRule()
         {  

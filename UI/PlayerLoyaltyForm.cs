@@ -86,6 +86,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpend.SelectedIndexChanged -=new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
                 m_cmbxQualifyingpoints.SelectedIndexChanged -=new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
+                m_pctbxTierIcon.Click -= new EventHandler(m_pctbxTierIcon_Click);
        
             }
             else
@@ -100,6 +101,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpend.SelectedIndexChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
                 m_cmbxQualifyingpoints.SelectedIndexChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
+                m_pctbxTierIcon.Click += new EventHandler(m_pctbxTierIcon_Click);
             }
 
            if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
@@ -874,6 +876,10 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion            
 
+        private void m_pctbxTierIcon_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test");
+        }
        
     }   
 }

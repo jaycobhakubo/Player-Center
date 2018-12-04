@@ -56,6 +56,9 @@
             this.labelSpend = new System.Windows.Forms.Label();
             this.m_txtbxTierName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
             this.m_tabPage_TierRule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -82,6 +85,9 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).BeginInit();
             this.m_tbctrlPlayerLoyalty.SuspendLayout();
             this.m_tabPage_TierRule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -350,10 +356,33 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.m_pctbxTierIcon);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // m_pctbxTierIcon
+            // 
+            this.m_pctbxTierIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
+            resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
+            this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
+            this.m_pctbxTierIcon.TabStop = false;
+            this.m_pctbxTierIcon.Click += new System.EventHandler(this.m_pctbxTierIcon_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Name = "label1";
             // 
             // m_tbctrlPlayerLoyalty
             // 
@@ -556,6 +585,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).EndInit();
             this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
             this.m_tabPage_TierRule.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -619,6 +652,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox m_pctbxTierIcon;
 
 
 

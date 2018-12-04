@@ -129,7 +129,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_btnEditTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 521</value>
+    <value>22, 521</value>
   </data>
   <data name="m_btnEditTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
@@ -190,7 +190,7 @@
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 17</value>
+    <value>14, 17</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>274, 439</value>
@@ -220,7 +220,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_btnDeleteTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 565</value>
+    <value>22, 565</value>
   </data>
   <data name="m_btnDeleteTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
@@ -253,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_btnAddTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 477</value>
+    <value>22, 477</value>
   </data>
   <data name="m_btnAddTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>38, 38</value>
@@ -359,7 +359,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lblTierSavedSuccessNotification.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 51</value>
+    <value>479, 51</value>
   </data>
   <data name="m_lblTierSavedSuccessNotification.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 18</value>
@@ -389,7 +389,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lblTierColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 119</value>
+    <value>347, 119</value>
   </data>
   <data name="m_lblTierColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 25</value>
@@ -479,7 +479,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_txtbxAwardPointsMultiplier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 299</value>
+    <value>347, 299</value>
   </data>
   <data name="m_txtbxAwardPointsMultiplier.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -554,7 +554,7 @@
     <value>No</value>
   </data>
   <data name="m_cmbxQualifyingpoints.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 227</value>
+    <value>347, 227</value>
   </data>
   <data name="m_cmbxQualifyingpoints.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -587,7 +587,7 @@
     <value>No</value>
   </data>
   <data name="m_cmbxQualfyingSpend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 155</value>
+    <value>347, 155</value>
   </data>
   <data name="m_cmbxQualfyingSpend.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -617,7 +617,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_txtbxPointStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 263</value>
+    <value>347, 263</value>
   </data>
   <data name="m_txtbxPointStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -719,7 +719,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_txtbxSpendStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 191</value>
+    <value>347, 191</value>
   </data>
   <data name="m_txtbxSpendStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -920,7 +920,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_txtbxTierName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 83</value>
+    <value>347, 83</value>
   </data>
   <data name="m_txtbxTierName.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -968,7 +968,7 @@
     <value>0</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>288, 324</value>
+    <value>345, 321</value>
   </data>
   <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1031,7 +1031,7 @@
     <value>3, 17</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>634, 439</value>
+    <value>690, 439</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1070,7 +1070,7 @@
     <value>1014, 634</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>333</value>
+    <value>297</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>

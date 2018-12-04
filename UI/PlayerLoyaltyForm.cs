@@ -163,7 +163,27 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty;
             }
         }
- 
+
+        private void UpdateTierRuleDefaulTier()
+        {
+            int itemCount = 0;
+
+            if (m_tiers.Count != 0)
+            {
+                m_cmbxDefaultTier.Items.Clear();
+                foreach (Tier TierName in m_tiers)
+                {
+                    m_cmbxDefaultTier.Items.Add(TierName.TierName);
+                    if (m_tierRule.DefaultTierID != 0 && m_tierRule.DefaultTierID == TierName.TierID)
+                    {
+                        m_cmbxDefaultTier.SelectedIndex = itemCount;
+                    }
+                    itemCount++;
+                }
+                m_cmbxDefaultTier.Update();
+            }
+        }
+
        // DISLAY TIER RULE ON TAB PAGE UI
         private void DisplayTierRule()
         {
@@ -181,23 +201,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_cmbxDowngradeToDefault.SelectedIndex = 0;
                 }
 
-
-                int itemCount = 0;
-
-                if (m_tiers.Count != 0)
-                {
-                    m_cmbxDefaultTier.Items.Clear();
-                    foreach (Tier TierName in m_tiers)
-                    {
-                        m_cmbxDefaultTier.Items.Add(TierName.TierName);
-                        if (m_tierRule.DefaultTierID != 0 && m_tierRule.DefaultTierID == TierName.TierID)
-                        {
-                            m_cmbxDefaultTier.SelectedIndex = itemCount;
-                        }
-                        itemCount++;
-                    }
-                    m_cmbxDefaultTier.Update();
-                }
+                UpdateTierRuleDefaulTier();
             }
             else
             {
@@ -503,6 +507,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tierSelected.IsDelete = true;
                 SetPlayerTier.Msg(m_tierSelected);
                 m_tiers.Remove(m_tierSelected);
+                UpdateTierRuleDefaulTier();
                 PopulateTierList();
                 DisableEnableControlDefaultTier(true);
                 SelectDefaultOrFirstRowTier();               
@@ -540,6 +545,11 @@ namespace GTI.Modules.PlayerCenter.UI
                     Tier t_testD = m_tiers.Single(l => l.TierID == m_tierSelected.TierID);
                     m_tiers.Remove(t_testD);
                     m_tiers.Add(t_tierNew);
+
+                    if (t_tierNew.TierName != m_tierSelected.TierName)
+                    {
+                        UpdateTierRuleDefaulTier();
+                    }
                     PopulateTierList();
                     m_lstboxTiers.SelectedValue = t_tierID;
                 }
@@ -547,6 +557,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     t_tierNew.TierID = t_tierID;
                     m_tiers.Add(t_tierNew);
+                    UpdateTierRuleDefaulTier();
                     PopulateTierList();
                     m_lstboxTiers.SelectedValue = t_tierID;
                 }
@@ -855,12 +866,14 @@ namespace GTI.Modules.PlayerCenter.UI
                     e.Cancel = true;
                 }           
         }
-        #endregion            
 
         private void m_tbctrlPlayerLoyalty_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
             if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
         }
+        #endregion            
+
+       
     }   
 }

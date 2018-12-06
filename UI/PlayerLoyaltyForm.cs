@@ -29,12 +29,13 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             m_tiers = tiers_;
-            m_tierRule = tierRule_;
+            m_tierRule = tierRule_;         
             DisplayTierRule();
             PopulateTierList();
-            SelectDefaultOrFirstRowTier();          
+            SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
+           
         }
         #endregion
 
@@ -878,7 +879,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_pctbxTierIcon_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Test");
+            PlayerLoyaltyTierIcon iconTier = new PlayerLoyaltyTierIcon();
+            iconTier.Show(this);
         }
        
     }   

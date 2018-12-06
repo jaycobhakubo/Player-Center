@@ -12,13 +12,13 @@ using System.Globalization;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-    public partial class PlayerLoyaltyTierIcon : EliteGradientForm
+    public partial class PlayerLoyaltyTierIcon : GradientForm//EliteGradientForm
     {
         #region Member Variables
          //imageList1.ImageSize = new System.Drawing.Size(16, 16);
          //   imageList1.TransparentColor = System.Drawing.Color.Transparent;
         private int currentImage = 0;
-        protected Graphics myGraphics;
+        //protected Graphics myGraphics;
         #endregion
 
 
@@ -26,20 +26,29 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             DrawGradient = true;
-            GradientBeginColor = SetColor("#FF0A223C");
-            GradientEndColor = SetColor("#FF5072A0");
-            imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            //GradientBeginColor = SetColor("#FF0A223C");
+            //GradientEndColor = SetColor("#FF5072A0");
+            //imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            //imageList1.TransparentColor = System.Drawing.Color.Transparent;
 
-            imageList1.ImageSize = new Size(255, 255);
-            imageList1.TransparentColor = Color.White;
+            //imageList1.ImageSize = new Size(255, 255);
+            //imageList1.TransparentColor = Color.White;
 
             // Assigns the graphics object to use in the draw options.
-            myGraphics = Graphics.FromHwnd(splitContainer1.Panel1.Handle);
+        //    myGraphics = Graphics.FromHwnd(splitContainer1.Panel1.Handle);
+            LoadPictureBoxTest();
 	
         
         }
 
+
+        private void LoadPictureBoxTest()
+        {
+            pictureBox1.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
+            pictureBox2.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\2.jpg");
+            pictureBox3.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\3.jpg");
+            pictureBox4.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\4.jpg");
+        }
 
         private Color SetColor( string _hexColor)
         {
@@ -59,18 +68,18 @@ namespace GTI.Modules.PlayerCenter.UI
         //[Description("Whether to draw the gradient background.")]
         //[Category("Appearance")]
         //[DefaultValue(true)]
-        public bool DrawGradient
-        {
-            get
-            {
-                return m_drawGradient;
-            }
-            set
-            {
-                m_drawGradient = value;
-                Invalidate();
-            }
-        }
+        //public bool DrawGradient
+        //{
+        //    get
+        //    {
+        //        return m_drawGradient;
+        //    }
+        //    set
+        //    {
+        //        m_drawGradient = value;
+        //        Invalidate();
+        //    }
+        //}
 
         private void imageButton1_Click(object sender, EventArgs e)
         {
@@ -95,9 +104,9 @@ namespace GTI.Modules.PlayerCenter.UI
             if (imageToLoad != "")
             {
                 imageList1.Images.Add(Image.FromFile(imageToLoad));
-                listBox1.BeginUpdate();
-                listBox1.Items.Add(imageToLoad);
-                listBox1.EndUpdate();
+                //listBox1.BeginUpdate();
+                //listBox1.Items.Add(imageToLoad);
+                //listBox1.EndUpdate();
             }
         }
 
@@ -116,13 +125,13 @@ namespace GTI.Modules.PlayerCenter.UI
   
 
                 // Draw the image in the panel.
-                imageList1.Draw(myGraphics, 10, 10, currentImage);
+               // imageList1.Draw(myGraphics, 10, 10, currentImage);
 
                 // Show the image in the PictureBox.
                 pictureBox1.Image = imageList1.Images[currentImage];
-                label3.Text = "Current image is " + currentImage;
-                listBox1.SelectedIndex = currentImage;
-                label5.Text = "Image is " + listBox1.Text;
+                //label3.Text = "Current image is " + currentImage;
+                //listBox1.SelectedIndex = currentImage;
+                //label5.Text = "Image is " + listBox1.Text;
             }
         }
 

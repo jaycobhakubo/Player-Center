@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerLoyaltyForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.m_btnEditTier = new GTI.Controls.ImageButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.m_btnEditTier = new GTI.Controls.ImageButton();
             this.m_lstboxTiers = new GTI.Controls.ColorListBox();
-            this.m_btnDeleteTier = new GTI.Controls.ImageButton();
             this.m_btnAddTier = new GTI.Controls.ImageButton();
+            this.m_btnDeleteTier = new GTI.Controls.ImageButton();
             this.m_btnCloseTier = new GTI.Controls.ImageButton();
             this.m_lblTierSavedSuccessNotification = new System.Windows.Forms.Label();
             this.m_lblTierColor = new System.Windows.Forms.Label();
@@ -136,6 +136,16 @@
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.m_btnEditTier);
+            this.groupBox2.Controls.Add(this.m_lstboxTiers);
+            this.groupBox2.Controls.Add(this.m_btnAddTier);
+            this.groupBox2.Controls.Add(this.m_btnDeleteTier);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
             // m_btnEditTier
             // 
             this.m_btnEditTier.BackColor = System.Drawing.Color.Transparent;
@@ -147,16 +157,6 @@
             this.m_btnEditTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnEditTier.UseVisualStyleBackColor = false;
             this.m_btnEditTier.Click += new System.EventHandler(this.m_btnEditTier_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.m_btnEditTier);
-            this.groupBox2.Controls.Add(this.m_lstboxTiers);
-            this.groupBox2.Controls.Add(this.m_btnAddTier);
-            this.groupBox2.Controls.Add(this.m_btnDeleteTier);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
             // 
             // m_lstboxTiers
             // 
@@ -174,6 +174,18 @@
             this.m_lstboxTiers.TopIndexForScroll = 0;
             this.m_lstboxTiers.SelectedIndexChanged += new System.EventHandler(this.m_lstboxTiers_SelectedIndexChanged);
             // 
+            // m_btnAddTier
+            // 
+            this.m_btnAddTier.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnAddTier.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnAddTier, "m_btnAddTier");
+            this.m_btnAddTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnAddTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnAddTier.Name = "m_btnAddTier";
+            this.m_btnAddTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnAddTier.UseVisualStyleBackColor = false;
+            this.m_btnAddTier.Click += new System.EventHandler(this.m_btnAddTier_Click);
+            // 
             // m_btnDeleteTier
             // 
             this.m_btnDeleteTier.BackColor = System.Drawing.Color.Transparent;
@@ -186,18 +198,6 @@
             this.m_btnDeleteTier.TabStop = false;
             this.m_btnDeleteTier.UseVisualStyleBackColor = false;
             this.m_btnDeleteTier.Click += new System.EventHandler(this.m_btnDeleteTier_Click);
-            // 
-            // m_btnAddTier
-            // 
-            this.m_btnAddTier.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnAddTier.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.m_btnAddTier, "m_btnAddTier");
-            this.m_btnAddTier.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.m_btnAddTier.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_btnAddTier.Name = "m_btnAddTier";
-            this.m_btnAddTier.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.m_btnAddTier.UseVisualStyleBackColor = false;
-            this.m_btnAddTier.Click += new System.EventHandler(this.m_btnAddTier_Click);
             // 
             // m_btnCloseTier
             // 

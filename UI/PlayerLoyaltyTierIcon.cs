@@ -44,10 +44,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void LoadPictureBoxTest()
         {
-            pictureBox1.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
-            pictureBox2.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\2.jpg");
-            pictureBox3.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\3.jpg");
-            pictureBox4.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\4.jpg");
+            //pictureBox1.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
+            //pictureBox2.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\2.jpg");
+            //pictureBox3.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\3.jpg");
+            //pictureBox4.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\4.jpg");
         }
 
         private Color SetColor( string _hexColor)
@@ -128,7 +128,7 @@ namespace GTI.Modules.PlayerCenter.UI
                // imageList1.Draw(myGraphics, 10, 10, currentImage);
 
                 // Show the image in the PictureBox.
-                pictureBox1.Image = imageList1.Images[currentImage];
+                //pictureBox1.Image = imageList1.Images[currentImage];
                 //label3.Text = "Current image is " + currentImage;
                 //listBox1.SelectedIndex = currentImage;
                 //label5.Text = "Image is " + listBox1.Text;

@@ -95,8 +95,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_searchButton.ImageNormal")));
             this.m_searchButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_searchButton.ImagePressed")));
             this.m_searchButton.Name = "m_searchButton";
-            this.m_searchButton.RepeatRate = 150;
-            this.m_searchButton.RepeatWhenHeldFor = 750;
             this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.ShowFocus = false;
             this.m_searchButton.TabStop = false;
@@ -128,8 +126,6 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_resultsListUp, "m_resultsListUp");
             this.m_resultsListUp.Name = "m_resultsListUp";
             this.m_resultsListUp.RepeatingIfHeld = true;
-            this.m_resultsListUp.RepeatRate = 150;
-            this.m_resultsListUp.RepeatWhenHeldFor = 750;
             this.m_resultsListUp.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_resultsListUp.ShowFocus = false;
             this.m_resultsListUp.TabStop = false;
@@ -146,8 +142,6 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_resultsListDown, "m_resultsListDown");
             this.m_resultsListDown.Name = "m_resultsListDown";
             this.m_resultsListDown.RepeatingIfHeld = true;
-            this.m_resultsListDown.RepeatRate = 150;
-            this.m_resultsListDown.RepeatWhenHeldFor = 750;
             this.m_resultsListDown.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_resultsListDown.ShowFocus = false;
             this.m_resultsListDown.TabStop = false;
@@ -162,8 +156,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectPlayerButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_selectPlayerButton.ImageNormal")));
             this.m_selectPlayerButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_selectPlayerButton.ImagePressed")));
             this.m_selectPlayerButton.Name = "m_selectPlayerButton";
-            this.m_selectPlayerButton.RepeatRate = 150;
-            this.m_selectPlayerButton.RepeatWhenHeldFor = 750;
             this.m_selectPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_selectPlayerButton.ShowFocus = false;
             this.m_selectPlayerButton.TabStop = false;
@@ -178,8 +170,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_cancelButton.ImageNormal")));
             this.m_cancelButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_cancelButton.ImagePressed")));
             this.m_cancelButton.Name = "m_cancelButton";
-            this.m_cancelButton.RepeatRate = 150;
-            this.m_cancelButton.RepeatWhenHeldFor = 750;
             this.m_cancelButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelButton.ShowFocus = false;
             this.m_cancelButton.TabStop = false;
@@ -194,8 +184,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchByCardButton.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_searchByCardButton.ImageNormal")));
             this.m_searchByCardButton.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_searchByCardButton.ImagePressed")));
             this.m_searchByCardButton.Name = "m_searchByCardButton";
-            this.m_searchByCardButton.RepeatRate = 150;
-            this.m_searchByCardButton.RepeatWhenHeldFor = 750;
             this.m_searchByCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchByCardButton.ShowFocus = false;
             this.m_searchByCardButton.TabStop = false;

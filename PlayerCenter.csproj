@@ -243,6 +243,12 @@
     <Compile Include="UI\PlayerLoyaltyForm.designer.cs">
       <DependentUpon>PlayerLoyaltyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\PlayerLoyaltyTierIcon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PlayerLoyaltyTierIcon.Designer.cs">
+      <DependentUpon>PlayerLoyaltyTierIcon.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\PlayerManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,12 @@
     </Compile>
     <Compile Include="UI\TakePIN.Designer.cs">
       <DependentUpon>TakePIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TierLoyaltyIcon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\TierLoyaltyIcon.Designer.cs">
+      <DependentUpon>TierLoyaltyIcon.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ViewRaffleWinnerForm.cs">
       <SubType>Form</SubType>
@@ -340,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PlayerLoyaltyForm.resx">
       <DependentUpon>PlayerLoyaltyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PlayerLoyaltyTierIcon.resx">
+      <DependentUpon>PlayerLoyaltyTierIcon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PlayerManagementForm.es.resx">
       <DependentUpon>PlayerManagementForm.cs</DependentUpon>

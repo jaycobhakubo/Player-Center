@@ -36,7 +36,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// Initalizes a new instance of the POSForm class.
         /// Required method for Designer support.
         /// </summary>
-        private PlayerForm()
+       public PlayerForm()
         {
         }
 

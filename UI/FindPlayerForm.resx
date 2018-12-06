@@ -135,7 +135,7 @@
     <value>m_virtualKeyboard</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.Type" xml:space="preserve">
-    <value>GTI.Controls.VirtualKeyboard, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.VirtualKeyboard, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.Parent" xml:space="preserve">
     <value>$this</value>
@@ -420,7 +420,7 @@
     <value>m_searchButton</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -447,7 +447,7 @@
     <value>m_resultsList</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Type" xml:space="preserve">
-    <value>GTI.Controls.ColorListBox, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ColorListBox, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -471,7 +471,7 @@
     <value>m_resultsListUp</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.Parent" xml:space="preserve">
     <value>$this</value>
@@ -499,7 +499,7 @@
     <value>m_resultsListDown</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.Parent" xml:space="preserve">
     <value>$this</value>
@@ -739,7 +739,7 @@
     <value>m_selectPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -979,7 +979,7 @@
     <value>m_cancelButton</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1219,7 +1219,7 @@
     <value>m_searchByCardButton</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.844, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1309,6 +1309,6 @@
     <value>FindPlayerForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.UI.PlayerForm, PlayerCenter, Version=1.9.0.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>GTI.Modules.PlayerCenter.UI.PlayerForm, PlayerCenter, Version=1.14.0.1, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
 </root>

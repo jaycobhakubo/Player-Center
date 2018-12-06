@@ -107,10 +107,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
-            this.splitContainer1.Panel1.Controls.Add(this.m_btnEditTier);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
-            this.splitContainer1.Panel1.Controls.Add(this.m_btnDeleteTier);
-            this.splitContainer1.Panel1.Controls.Add(this.m_btnAddTier);
             resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             // 
             // splitContainer1.Panel2
@@ -153,7 +150,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.m_btnEditTier);
             this.groupBox2.Controls.Add(this.m_lstboxTiers);
+            this.groupBox2.Controls.Add(this.m_btnAddTier);
+            this.groupBox2.Controls.Add(this.m_btnDeleteTier);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;

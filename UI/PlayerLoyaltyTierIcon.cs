@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using GTI.Modules.Shared;
 using System.Drawing.Drawing2D;
 using System.Globalization;
+using GTI.Modules.PlayerCenter.Data;
+using System.IO;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -19,6 +21,7 @@ namespace GTI.Modules.PlayerCenter.UI
          //   imageList1.TransparentColor = System.Drawing.Color.Transparent;
         private int currentImage = 0;
         protected Graphics myGraphics;
+
         #endregion
 
         #region CONSTRUCTOR
@@ -30,12 +33,26 @@ namespace GTI.Modules.PlayerCenter.UI
             imageList1.TransparentColor = Color.White;
             myGraphics = Graphics.FromHwnd(groupBox1.Handle);
           //  LoadPictureBoxTest();
-	
-        
+            LoadIcontTest();
         }
         #endregion
 
         #region POPULATE ICON
+
+        private void LoadIcontTest()
+        {
+         var xy =   GetPlayerTierIcon.Msg(13);
+         MemoryStream mStream = new MemoryStream(xy);
+         PictureBox pb = new PictureBox();
+         Size _size = new Size(60,60);
+         pb.Size = _size;
+         pb.Location = new Point(_widthDistance, _heightDistance);
+         pb.SizeMode = PictureBoxSizeMode.StretchImage;
+         pb.Image = Image.FromStream(mStream);
+         m_pnlIconTier.Controls.Add(pb);
+        }
+
+
         private void LoadPictureBoxTest()
         {
             //pictureBox1.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
@@ -56,66 +73,122 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
-    
 
-        private void addImage(string imageToLoad)
+        private void ReLoadUI()
         {
-            if (imageToLoad != "")
-            {
-                imageList1.Images.Add(Image.FromFile(imageToLoad));              
-            }
+
         }
 
-        private void showImage()
-        {
-            if (imageList1.Images.Empty != true)
-            {
-                if (imageList1.Images.Count - 1 > currentImage)
-                {
-                    currentImage++;
-                }
-                else
-                {
-                    currentImage = 0;
-                }
 
-                imageList1.Draw(myGraphics, 5, 5, currentImage);
-                pictureBox1.Image = imageList1.Images[currentImage];
-            }
-        }
+        //private void addImage(string imageToLoad)
+        //{
+        //    if (imageToLoad != "")
+        //    {
+        //        imageList1.Images.Add(Image.FromFile(imageToLoad));              
+        //    }
+        //}
+
+        //private void showImage()
+        //{
+        //    if (imageList1.Images.Empty != true)
+        //    {
+        //        if (imageList1.Images.Count - 1 > currentImage)
+        //        {
+        //            currentImage++;
+        //        }
+        //        else
+        //        {
+        //            currentImage = 0;
+        //        }
+
+        //        imageList1.Draw(myGraphics, 5, 5, currentImage);
+        //       // pictureBox1.Image = imageList1.Images[currentImage];
+        //    }
+        //}
 
         private void imageButton4_Click(object sender, EventArgs e)
         {
                      
         }
+        /*x*/
+        int _widthDistance = 10;
+        /*y*/
+        int _heightDistance = 2;
+        List<string> files = new List<string>();
+
+
 
 
         private void m_imgbtnImport_Click(object sender, EventArgs e)
         {
-          OpenFileDialog  openFileDialog1= new OpenFileDialog();
-             openFileDialog1.Multiselect = true;
-             openFileDialog1.Filter = "JPG|*.jpg|JPEG|*.jpeg|GIF|*.gif|PNG|*.png";
+            //Varx = getCurrentIconTier();
+            OpenFileDialog  openFileDialog1= new OpenFileDialog();
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.Filter = "JPG|*.jpg|JPEG|*.jpeg|GIF|*.gif|PNG|*.png";
+         
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string[] files = openFileDialog1.FileNames;
-                int x_ = 20;
-                int y_ = 20;
-                int maxHeight = -1;
 
-                foreach (string img in files)
+                string[] TestFiles = openFileDialog1.FileNames;
+
+                PictureBox pic = new PictureBox();
+                foreach(string x in TestFiles)
                 {
-                    PictureBox pic = new PictureBox();
-                    pic.Image = Image.FromFile(img);
-                    pic.Location = new Point(x_, y_);
-                    x_ += pic.Width + 10;
-                    maxHeight = Math.Max(pic.Height, maxHeight);
-                    if (x_ > this.ClientSize.Width - 100)
-                    {
-                        x_ = 20;
-                        y_ += maxHeight + 10;
-                    }
-                    groupBox1.Controls.Add(pic);
+                    byte[] imageData;
+                    pic.Image = Image.FromFile(x);
+                    MemoryStream mStream = new MemoryStream();
+                    pic.Image.Save(mStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    imageData = mStream.ToArray();
+                    SetPlayerTierIcon.Msg(imageData);
                 }
+                
+                //files = openFileDialog1.FileNames.ToList();
+               // foreach (string x in openFileDialog1.FileNames)
+               // {
+               //     files.Add(x);
+               // }
+
+               // // m_files = files;
+               //// var count = m_files.Count();
+           
+               // int maxHeight = -1;
+
+               // if (files.Count() > 20)
+               // {
+               //     Size _size = new Size(383, 301);
+               //     groupBox1.Size = _size;
+               //     groupBox1.Location = new Point(5, 3);
+               //     _size = new Size(377, 282);
+               //     m_pnlIconTier.Size = _size;
+               // }
+               // else
+               // {
+               //     Size _size = new Size(366, 301);
+               //     groupBox1.Size = _size;
+               //     groupBox1.Location = new Point(15, 3);
+               //     _size = new Size(360, 282);
+               //     m_pnlIconTier.Size = _size;
+               // }
+
+               // foreach (string img in files)
+               // {
+               //     PictureBox pic = new PictureBox();
+               //     pic.Click += new EventHandler(pictureBox1_Click);
+               //     Size _size = new Size(60,60);
+               //     pic.Size = _size;
+               //     pic.Image = Image.FromFile(img);
+               //     pic.Location = new Point(_widthDistance, _heightDistance);
+               //     pic.SizeMode = PictureBoxSizeMode.StretchImage;
+               //     _widthDistance += pic.Width + 10;
+               //     maxHeight = Math.Max(pic.Height, maxHeight);
+               //     if (_widthDistance > this.ClientSize.Width - 60)
+               //     {
+               //         _widthDistance = 10;
+               //         _heightDistance += maxHeight + 10;
+               //     }
+               //     m_pnlIconTier.Controls.Add(pic);
+               // }
             }
 
 
@@ -134,6 +207,17 @@ namespace GTI.Modules.PlayerCenter.UI
             //        addImage(openFileDialog1.FileName);
             //}
             //showImage();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            PictureBox pctbx = (PictureBox)sender;
+           
+        }
+
+        private void imgbtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

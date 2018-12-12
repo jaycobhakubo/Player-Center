@@ -36,9 +36,8 @@
             this.imgbtnCancel = new GTI.Controls.ImageButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.m_pnlIconTier = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // m_imgbtnImport
@@ -85,6 +84,7 @@
             this.imgbtnCancel.Name = "imgbtnCancel";
             this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnCancel.UseVisualStyleBackColor = false;
+            this.imgbtnCancel.Click += new System.EventHandler(this.imgbtnCancel_Click);
             // 
             // imageList1
             // 
@@ -95,16 +95,15 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.m_pnlIconTier);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox1
+            // m_pnlIconTier
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
+            resources.ApplyResources(this.m_pnlIconTier, "m_pnlIconTier");
+            this.m_pnlIconTier.Name = "m_pnlIconTier";
             // 
             // PlayerLoyaltyTierIcon
             // 
@@ -122,7 +121,6 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -135,6 +133,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private Controls.ImageButton imgbtnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel m_pnlIconTier;
     }
 }

@@ -63,6 +63,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 PictureBox pb = new PictureBox();
                 Size _size = new Size(60, 60);
                 pb.Size = _size;
+                pb.Click += new EventHandler(pictureBox1_Click);
                 pb.Location = new Point(m_widthIconDistance, m_heightIconDistance);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Image = Image.FromStream(mStream);
@@ -102,6 +103,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     pic.Location = new Point(m_widthIconDistance, m_heightIconDistance);
                     pic.SizeMode = PictureBoxSizeMode.StretchImage;
                     pic.Image = Image.FromFile(_imgIcon);
+                    pic.Click += new EventHandler(pictureBox1_Click);
 
                     MemoryStream mStream = new MemoryStream();
                     pic.Image.Save(mStream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -144,14 +146,32 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
+        PictureBox m_pctbxSelected = new PictureBox();
+        PictureBox m_pctbxPreviousSelected = new PictureBox();
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            m_pctbxPreviousSelected.BorderStyle = BorderStyle.None;
+            m_pctbxPreviousSelected.Width -= 2;
+            m_pctbxPreviousSelected.Height -= 2;
+
             PictureBox pctbx = (PictureBox)sender;
+            pctbx.BorderStyle = BorderStyle.FixedSingle;
+            pctbx.Width += 2;
+            pctbx.Height +=  2;
+            m_pctbxPreviousSelected = pctbx;
            
         }
 
         private void imgbtnCancel_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void m_imgbtnSelect_Click(object sender, EventArgs e)
+        {
+
+
             this.Close();
         }
     }

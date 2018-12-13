@@ -73,6 +73,7 @@
             this.m_imgbtnSelect.Name = "m_imgbtnSelect";
             this.m_imgbtnSelect.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_imgbtnSelect.UseVisualStyleBackColor = false;
+            this.m_imgbtnSelect.Click += new System.EventHandler(this.m_imgbtnSelect_Click);
             // 
             // imgbtnCancel
             // 

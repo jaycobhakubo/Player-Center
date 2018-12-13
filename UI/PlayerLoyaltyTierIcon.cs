@@ -177,11 +177,13 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        public PictureBox SelectedImage
+        
+
+        public Image SelectedImage
         {
             get 
             { 
-                return m_pctbxSelected; 
+                return m_pctbxSelected.Image; 
             }
         }
     }

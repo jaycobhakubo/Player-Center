@@ -366,17 +366,15 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.m_pctbxTierIcon);
             resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.m_pctbxTierIcon);
             this.panel1.Name = "panel1";
             // 
             // m_pctbxTierIcon
             // 
-            this.m_pctbxTierIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
             this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
             this.m_pctbxTierIcon.TabStop = false;
-            this.m_pctbxTierIcon.Click += new System.EventHandler(this.m_pctbxTierIcon_Click);
             // 
             // label1
             // 

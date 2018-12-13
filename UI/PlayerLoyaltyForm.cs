@@ -35,7 +35,6 @@ namespace GTI.Modules.PlayerCenter.UI
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
-            TestIconImage();
            
         }
         #endregion
@@ -884,20 +883,13 @@ namespace GTI.Modules.PlayerCenter.UI
             DialogResult result = DialogResult.OK;
             result = iconTier.ShowDialog();
             //  iconTier.Show(this);
-            //m_pctbxTierIcon = iconTier.SelectedImage;
-            //PictureBox pctbxTest = new PictureBox();
+            m_pctbxTierIcon.Image = iconTier.SelectedImage;
+           // PictureBox pctbxTest = new PictureBox();
             //pctbxTest.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
             //panel1.Controls.Add(pctbxTest);
-            //  m_pctbxTierIcon.Controls.Add(m_pctbxTierIcon);
+             // m_pctbxTierIcon.Controls.Add(m_pctbxTierIcon);
         }
 
-        private void TestIconImage()
-        {
-            PictureBox pctbxTest = new PictureBox();
-            pctbxTest.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
-            m_pctbxTierIcon = pctbxTest;
-            //panel1.Controls.Add(pctbxTest);
-        }
-       
+
     }   
 }

@@ -480,6 +480,7 @@
   <ItemGroup>
     <None Include="Resources\ArrowDownRed.png" />
     <None Include="Resources\ArrowUpRed.png" />
+    <None Include="Resources\1.png" />
     <Content Include="Res\Players.ico" />
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>

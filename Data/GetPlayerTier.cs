@@ -81,7 +81,6 @@ namespace GTI.Modules.PlayerCenter.Data
                     code.TierID = responseReader.ReadInt32();
                     code.TierRulesID = responseReader.ReadInt32();
 
-
                     ushort stringLen = responseReader.ReadUInt16();
                     code.TierName = new string(responseReader.ReadChars(stringLen));   
             
@@ -105,6 +104,8 @@ namespace GTI.Modules.PlayerCenter.Data
                     {
                         code.AwardPointsMultiplier = decimal.Parse(tempDec);
                     }
+
+                    code.IconTierId = responseReader.ReadInt32();
 
                     if (m_tierDefaultId == code.TierID)
                     {

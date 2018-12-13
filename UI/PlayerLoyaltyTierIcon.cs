@@ -82,7 +82,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }    
         #endregion
-
   
         #region IMPORT IMAGE
         private void m_imgbtnImport_Click(object sender, EventArgs e)
@@ -185,6 +184,14 @@ namespace GTI.Modules.PlayerCenter.UI
             { 
                 return m_pctbxSelected.Image; 
             }
+        }
+
+        private void m_imgbtnDelete_Click(object sender, EventArgs e)
+        {
+            m_pnlIconTier.Controls.Remove(m_pctbxSelected);
+            //m_pnlIconTier.Controls.Add(pic);
+            //SetPlayerTierIcon.Msg(imageData);
+            //m_lstbyteIconList.Add(imageData);
         }
     }
 }

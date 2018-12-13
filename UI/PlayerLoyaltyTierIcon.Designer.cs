@@ -62,6 +62,7 @@
             this.m_imgbtnDelete.Name = "m_imgbtnDelete";
             this.m_imgbtnDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_imgbtnDelete.UseVisualStyleBackColor = false;
+            this.m_imgbtnDelete.Click += new System.EventHandler(this.m_imgbtnDelete_Click);
             // 
             // m_imgbtnSelect
             // 

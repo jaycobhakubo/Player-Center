@@ -478,27 +478,6 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_Sql\PlayerLoyalty\Data\AuditTypes.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Data\ModuleFeatures.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Data\PlayerClubTierRules.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\fnGetPointsPerPlayer.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerData.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spGetPlayerTiersSEL.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierData.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_GetTierRule.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierData.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spPlayerClub_SetTierRule.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spSetConfigPhoto.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerClubBalances.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\spUpdatePlayerTier.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Programmability\SQLSOURCECONTROL_POPULATETABLE_PhotoType.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Schema\PlayerClubTier.sql" />
-    <Content Include="_Sql\PlayerLoyalty\Schema\PlayerClubTier_PlayerClubTierRules.sql" />
-    <Content Include="_Sql\PlayerLoyalty\_SQL\Add Module Feature Allow User To Award Points Manually.sql" />
-    <Content Include="_Sql\PlayerLoyalty\_SQL\Schema\Table_PlayerRafflePrizesHistoryLog.sql" />
-    <Content Include="_Sql\PlayerLoyalty\_SQL\Schema\Table_PlayerRafflesPrizes.sql" />
-    <Content Include="_Sql\PlayerLoyalty\_SQL\Schema\Trigger_trigLogRafflePrize.sql" />
-    <Content Include="_Sql\PlayerLoyalty\_SQL\spDeltaPlayerPoints_Manual.sql" />
     <None Include="Resources\ArrowDownRed.png" />
     <None Include="Resources\ArrowUpRed.png" />
     <None Include="Resources\1.png" />

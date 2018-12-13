@@ -138,10 +138,21 @@ BEGIN
 		UPDATE [PhotoType] SET [ptyPhotoTypeDesc] = 'CBB Printer Attract' WHERE [ptyPhotoTypeID] = 12;
 	END
 
+	IF NOT EXISTS (SELECT 1 FROM [PhotoType] WHERE [ptyPhotoTypeID] = 13)
+	BEGIN
+		INSERT INTO [PhotoType] ([ptyPhotoTypeID],[ptyPhotoTypeDesc])VALUES(13,'Icon Player Tier')
+	END
+	ELSE
+	BEGIN
+		UPDATE [PhotoType] SET [ptyPhotoTypeDesc] = 'Icon Player Tier' WHERE [ptyPhotoTypeID] = 13;
+	END
 
 	SET IDENTITY_INSERT [dbo].[PhotoType] OFF
 END
 
+
 GO
+
+
 
 

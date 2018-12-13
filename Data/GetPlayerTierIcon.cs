@@ -17,7 +17,7 @@ namespace GTI.Modules.PlayerCenter.Data
             m_photoTypeId = photoTypeId_;
         }
 
-        public static byte[] Msg(int photoTypeId_)
+        public static List<byte[]> Msg(int photoTypeId_)
         {
             GetPlayerTierIcon msg = new GetPlayerTierIcon(photoTypeId_);
             try
@@ -43,7 +43,7 @@ namespace GTI.Modules.PlayerCenter.Data
         protected byte[] mbyteResponsePayload = null;
         protected byte[] mbytResponse = null;
         private int mintReturnCode;
-        private byte[] ImageData = null;
+        private List<byte[]> ImageData = null;
 
         public int pReturnCode
         {
@@ -51,7 +51,7 @@ namespace GTI.Modules.PlayerCenter.Data
             //set { mintReturnCode = value; }
         }
 
-        public byte[] pImageData
+        public List<byte[]> pImageData
         {
             get { return ImageData; }
         }
@@ -89,20 +89,24 @@ namespace GTI.Modules.PlayerCenter.Data
                 MemoryStream responseStream = new MemoryStream(mbytResponse);
                 BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 
-                responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
-
-                // Try to unpack the data.
                 try
                 {
-                    //Get Photo Field Length
-                    intPhotoFieldLength = responseReader.ReadInt32();
-                    if (intPhotoFieldLength > 0)
+
+                    responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
+                    ushort _count = responseReader.ReadUInt16();
+                    ImageData = new List<byte[]>();
+                    for (ushort x = 0; x < _count; x++)
                     {
-                        ImageData = responseReader.ReadBytes(intPhotoFieldLength);
-                    }
-                    else
-                    {
-                        ImageData = null;
+                        //Get Photo Field Length
+                        intPhotoFieldLength = responseReader.ReadInt32();
+                        if (intPhotoFieldLength > 0)
+                        {
+                            ImageData.Add(responseReader.ReadBytes(intPhotoFieldLength));
+                        }
+                        else
+                        {
+                            ImageData = null;
+                        }
                     }
                 }
                 catch (EndOfStreamException e)

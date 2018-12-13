@@ -34,22 +34,35 @@ namespace GTI.Modules.PlayerCenter.UI
             myGraphics = Graphics.FromHwnd(groupBox1.Handle);
           //  LoadPictureBoxTest();
             LoadIcontTest();
+            PopulateTierIcon();
         }
         #endregion
 
         #region POPULATE ICON
 
+        private List<byte[]> m_lstbyteIconList = new List<byte[]>();
+        
+        private void PopulateTierIcon()
+        {
+            foreach (byte[] data_ in m_lstbyteIconList)
+            {
+
+                MemoryStream mStream = new MemoryStream(data_);
+                PictureBox pb = new PictureBox();
+                Size _size = new Size(60, 60);
+                pb.Size = _size;
+                pb.Location = new Point(_widthDistance, _heightDistance);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Image = Image.FromStream(mStream);
+                m_pnlIconTier.Controls.Add(pb);
+                _widthDistance += pb.Width + 10;
+            }
+        }
+
+
         private void LoadIcontTest()
         {
-         var xy =   GetPlayerTierIcon.Msg(13);
-         MemoryStream mStream = new MemoryStream(xy);
-         PictureBox pb = new PictureBox();
-         Size _size = new Size(60,60);
-         pb.Size = _size;
-         pb.Location = new Point(_widthDistance, _heightDistance);
-         pb.SizeMode = PictureBoxSizeMode.StretchImage;
-         pb.Image = Image.FromStream(mStream);
-         m_pnlIconTier.Controls.Add(pb);
+            m_lstbyteIconList = GetPlayerTierIcon.Msg(13);
         }
 
 
@@ -115,10 +128,10 @@ namespace GTI.Modules.PlayerCenter.UI
         /*y*/
         int _heightDistance = 2;
         List<string> files = new List<string>();
+        int maxHeight = -1;
 
 
-
-
+        #region IMPORT
         private void m_imgbtnImport_Click(object sender, EventArgs e)
         {
             //Varx = getCurrentIconTier();
@@ -133,14 +146,69 @@ namespace GTI.Modules.PlayerCenter.UI
                 string[] TestFiles = openFileDialog1.FileNames;
 
                 PictureBox pic = new PictureBox();
-                foreach(string x in TestFiles)
+                foreach(string img in TestFiles)
                 {
                     byte[] imageData;
-                    pic.Image = Image.FromFile(x);
+                    pic.Image = Image.FromFile(img);
                     MemoryStream mStream = new MemoryStream();
                     pic.Image.Save(mStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    imageData = mStream.ToArray();
+                    imageData = mStream.ToArray();   
+                    Size _size = new Size(60, 60);
+                    pic.Size = _size;
+                    pic.Image = Image.FromStream(mStream);
+                    //pic.Image = Image.FromFile(img);
+                    pic.Location = new Point(_widthDistance, _heightDistance);
+                    pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                    _widthDistance += pic.Width + 10;
+                    maxHeight = Math.Max(pic.Height, maxHeight);
+                    if (_widthDistance > this.ClientSize.Width - 60)
+                    {
+                        _widthDistance = 10;
+                        _heightDistance += maxHeight + 10;
+                    }
+                    m_pnlIconTier.Controls.Add(pic);
+
                     SetPlayerTierIcon.Msg(imageData);
+                    m_lstbyteIconList.Add(imageData);
+                }
+
+                if (TestFiles.Count() > 0)
+                {
+                    if (m_lstbyteIconList.Count() > 20)
+                    {
+                        Size _size = new Size(383, 301);
+                        groupBox1.Size = _size;
+                        groupBox1.Location = new Point(5, 3);
+                        _size = new Size(377, 282);
+                        m_pnlIconTier.Size = _size;
+                    }
+                    else
+                    {
+                        Size _size = new Size(366, 301);
+                        groupBox1.Size = _size;
+                        groupBox1.Location = new Point(15, 3);
+                        _size = new Size(360, 282);
+                        m_pnlIconTier.Size = _size;
+                    }
+
+                    //foreach (string img in files)
+                    //{
+                    //    PictureBox pic = new PictureBox();
+                    //    pic.Click += new EventHandler(pictureBox1_Click);
+                    //    Size _size = new Size(60, 60);
+                    //    pic.Size = _size;
+                    //    pic.Image = Image.FromFile(img);
+                    //    pic.Location = new Point(_widthDistance, _heightDistance);
+                    //    pic.SizeMode = PictureBoxSizeMode.StretchImage;
+                    //    _widthDistance += pic.Width + 10;
+                    //    maxHeight = Math.Max(pic.Height, maxHeight);
+                    //    if (_widthDistance > this.ClientSize.Width - 60)
+                    //    {
+                    //        _widthDistance = 10;
+                    //        _heightDistance += maxHeight + 10;
+                    //    }
+                    //    m_pnlIconTier.Controls.Add(pic);
+                    //}
                 }
                 
                 //files = openFileDialog1.FileNames.ToList();
@@ -171,24 +239,7 @@ namespace GTI.Modules.PlayerCenter.UI
                //     m_pnlIconTier.Size = _size;
                // }
 
-               // foreach (string img in files)
-               // {
-               //     PictureBox pic = new PictureBox();
-               //     pic.Click += new EventHandler(pictureBox1_Click);
-               //     Size _size = new Size(60,60);
-               //     pic.Size = _size;
-               //     pic.Image = Image.FromFile(img);
-               //     pic.Location = new Point(_widthDistance, _heightDistance);
-               //     pic.SizeMode = PictureBoxSizeMode.StretchImage;
-               //     _widthDistance += pic.Width + 10;
-               //     maxHeight = Math.Max(pic.Height, maxHeight);
-               //     if (_widthDistance > this.ClientSize.Width - 60)
-               //     {
-               //         _widthDistance = 10;
-               //         _heightDistance += maxHeight + 10;
-               //     }
-               //     m_pnlIconTier.Controls.Add(pic);
-               // }
+              
             }
 
 
@@ -208,6 +259,8 @@ namespace GTI.Modules.PlayerCenter.UI
             //}
             //showImage();
         }
+
+        #endregion
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

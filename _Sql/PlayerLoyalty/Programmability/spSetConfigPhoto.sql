@@ -28,8 +28,8 @@ SET NOCOUNT ON
 
 Declare @ConfigPhotoID int
 
-if exists (select 1 from ConfigPhoto (nolock) where cpOperatorID = @OperatorID
-			and cpPhotoTypeID = @PhotoTypeID)
+if exists (select 1 from ConfigPhoto (nolock) where (cpOperatorID = @OperatorID
+			and cpPhotoTypeID = @PhotoTypeID)and cpPhotoTypeID != 13 )
 begin
 	update ConfigPhoto
 	set cpPhotoBLOB = @PhotoBLOB
@@ -60,28 +60,6 @@ end
 select ConfigPhotoID = @ConfigPhotoID
 
 SET NOCOUNT OFF
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

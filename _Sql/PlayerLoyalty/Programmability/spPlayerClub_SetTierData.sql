@@ -17,6 +17,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 CREATE procedure [dbo].[spPlayerClub_SetTierData]
 	@tierId int
 	, @tierRuleId int
@@ -29,6 +30,7 @@ CREATE procedure [dbo].[spPlayerClub_SetTierData]
 	, @staffId int
 	, @machineId int
 	, @operatorId int
+	, @imgId int
 as
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 -- Description: Sets/Updates the Player Club Tier data
@@ -37,7 +39,7 @@ as
 -- 2014.06.18 jkn: Adding support for deleting a tier and auditing changes
 --  that are made to tiers
 -- 2014.06.20 knc(DE11809): update the PlayerClubTierRule table when a default tier is being deleted
-
+-- 2018.12.13 knc: Added ImageId to save into the PlayerClubTier table.
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 SET NOCOUNT ON
@@ -53,16 +55,23 @@ begin
         , Name
         , MinSpend
         , MinPoints
-        , PointsMultiplier)
+        , PointsMultiplier
+        ,TierImgId)
     values
         (@tierRuleId
         , @color
         , @tierName
         , @minSpend
         , @minPoints
-        , @multiplier)
+        , @multiplier
+        ,@imgId)
         
     set @tierId = scope_identity()
+    
+
+    
+   -- select * from PlayerClubTier
+    
 end
 else
 begin
@@ -70,11 +79,13 @@ begin
         , @prevMinSpend money
         , @prevMinPoints money
         , @prevMultiplier money
+        , @prevImageId int
         
     select @prevTierName = Name
         , @prevMinSpend = MinSpend
         , @prevMinPoints = MinPoints
         , @prevMultiplier = PointsMultiplier
+        , @prevImageId = TierImgId
     from PlayerClubTier
     where PlayerClubTierId = @tierId
 
@@ -114,6 +125,7 @@ begin
             , MinSpend = @minSpend
             , MinPoints = @minPoints
             , PointsMultiplier = @multiplier
+            , TierImgId = @imgId
         where PlayerClubTierId = @tierId
         
         -- Name changed?
@@ -157,12 +169,24 @@ begin
             exec spAddAuditLogEntry 13, @staffId, @machineId, @operatorId, @log;
         end
         
+          -- Icon Tier Image changed?
+        if (@prevImageId != @imgId)
+        begin
+            set @log = N'The player tier Icon was changed from '
+                     + cast(@prevImageId as nvarchar)
+                     + N' to '
+                     + cast(@imgId as nvarchar)
+                     + N' for ' + @tierName;
+            exec spAddAuditLogEntry 13, @staffId, @machineId, @operatorId, @log;
+        end
+        
     end
 end
 
 select @tierId
 
 SET NOCOUNT OFF
+
 
 GO
 

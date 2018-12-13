@@ -39,22 +39,7 @@ namespace GTI.Modules.PlayerCenter.UI
         
         private void PopulateTierIcon()
         {
-            if (m_lstbyteIconList.Count() > 20)
-            {
-                Size _size = new Size(383, 301);
-                groupBox1.Size = _size;
-                groupBox1.Location = new Point(5, 3);
-                _size = new Size(377, 282);
-                m_pnlIconTier.Size = _size;
-            }
-            else
-            {
-                Size _size = new Size(366, 301);
-                groupBox1.Size = _size;
-                groupBox1.Location = new Point(15, 3);
-                _size = new Size(360, 282);
-                m_pnlIconTier.Size = _size;
-            }
+           
 
 
             foreach (byte[] data_ in m_lstbyteIconList)
@@ -77,6 +62,23 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 m_pnlIconTier.Controls.Add(pb);
                
+            }
+
+            if (m_lstbyteIconList.Count() > 20)
+            {
+                Size _size = new Size(383, 301);
+                groupBox1.Size = _size;
+                groupBox1.Location = new Point(5, 3);
+                _size = new Size(377, 282);
+                m_pnlIconTier.Size = _size;
+            }
+            else
+            {
+                Size _size = new Size(366, 301);
+                groupBox1.Size = _size;
+                groupBox1.Location = new Point(15, 3);
+                _size = new Size(360, 282);
+                m_pnlIconTier.Size = _size;
             }
         }    
         #endregion
@@ -147,19 +149,19 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         PictureBox m_pctbxSelected = new PictureBox();
-        PictureBox m_pctbxPreviousSelected = new PictureBox();
+        //PictureBox m_pctbxPreviousSelected = new PictureBox();
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            m_pctbxPreviousSelected.BorderStyle = BorderStyle.None;
-            m_pctbxPreviousSelected.Width -= 2;
-            m_pctbxPreviousSelected.Height -= 2;
+            m_pctbxSelected.BorderStyle = BorderStyle.None;
+            m_pctbxSelected.Width -= 2;
+            m_pctbxSelected.Height -= 2;
 
             PictureBox pctbx = (PictureBox)sender;
             pctbx.BorderStyle = BorderStyle.FixedSingle;
             pctbx.Width += 2;
             pctbx.Height +=  2;
-            m_pctbxPreviousSelected = pctbx;
+            m_pctbxSelected = pctbx;
            
         }
 
@@ -171,8 +173,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_imgbtnSelect_Click(object sender, EventArgs e)
         {
 
-
             this.Close();
+        }
+
+
+        public PictureBox SelectedImage
+        {
+            get 
+            { 
+                return m_pctbxSelected; 
+            }
         }
     }
 }

@@ -105,7 +105,7 @@ namespace GTI.Modules.PlayerCenter.Data
                         code.AwardPointsMultiplier = decimal.Parse(tempDec);
                     }
 
-                    code.IconTierId = responseReader.ReadInt32();
+                    code.TierIconId = responseReader.ReadInt32();
 
                     if (m_tierDefaultId == code.TierID)
                     {

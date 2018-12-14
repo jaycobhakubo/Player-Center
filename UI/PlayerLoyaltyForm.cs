@@ -535,7 +535,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
                 t_tierNew.IsDefaultTier = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.IsDefaultTier : false;
+  
 
                 if (m_tierSelected.Equals(t_tierNew))
                 {
@@ -883,7 +885,8 @@ namespace GTI.Modules.PlayerCenter.UI
             DialogResult result = DialogResult.OK;
             result = iconTierUI.ShowDialog();
             m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
-            m_tierSelected.IconTierId = iconTierUI.TierIconId;
+            m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
+            //m_tierSelected.TierIconId = iconTierUI.TierIconId;
     
         }
 

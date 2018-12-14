@@ -22,6 +22,7 @@ namespace GTI.Modules.PlayerCenter.Data
        private decimal QualifyingSpend { get; set; }
        private decimal QualifyingPoints { get; set; }
        private decimal PtsMultiplier { get; set; }
+       private int TierIconId { get; set; }
        private bool IsDelete { get; set; }
 
        public SetPlayerTier(Tier td)//td is emtpy we can get the one that has data let us try this for now
@@ -34,6 +35,7 @@ namespace GTI.Modules.PlayerCenter.Data
            QualifyingSpend = td.QualifyingSpend;
            QualifyingPoints = td.QualifyingPoints;
            PtsMultiplier = td.AwardPointsMultiplier;
+           TierIconId = td.TierIconId;
            IsDelete = td.IsDelete;
        }
 
@@ -74,7 +76,7 @@ namespace GTI.Modules.PlayerCenter.Data
            tempDec = PtsMultiplier.ToString();
            requestWriter.Write((ushort)tempDec.Length);
            requestWriter.Write(tempDec.ToCharArray());
-
+           requestWriter.Write(TierIconId); 
            requestWriter.Write(IsDelete);//
 
            m_requestPayload = requestStream.ToArray();

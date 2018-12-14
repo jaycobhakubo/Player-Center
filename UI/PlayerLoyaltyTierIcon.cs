@@ -32,7 +32,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             DrawGradient = true;
-            m_tierIcon = GetPlayerTierIcon.Msg(13);
+           // m_tierIcon = GetPlayerTierIcon.Msg(13);
             PopulateTierIcon();
         }
         #endregion
@@ -40,10 +40,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #region POPULATE ICON     
         
         private void PopulateTierIcon()
-        {
-           
-
-
+        {         
             foreach (TierIcon data_ in m_tierIcon)
             {
                 MemoryStream mStream = new MemoryStream(data_.ImgData);

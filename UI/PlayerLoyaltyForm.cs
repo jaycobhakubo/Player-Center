@@ -22,14 +22,17 @@ namespace GTI.Modules.PlayerCenter.UI
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
         private int m_color;//?
+        private List<TierIcon> m_tiericon;
+        private TierIcon m_icon;
         #endregion
 
         #region CONSTRUCTOR
-        public PlayerLoyaltyForm(List<Tier>tiers_ , TierRule tierRule_)
+        public PlayerLoyaltyForm(List<Tier>tiers_ , TierRule tierRule_, List<TierIcon> tierIcon_)
         {
             InitializeComponent();
             m_tiers = tiers_;
-            m_tierRule = tierRule_;         
+            m_tierRule = tierRule_;
+            m_tiericon = tierIcon_;
             DisplayTierRule();
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
@@ -252,6 +255,19 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty; ;
             }
             FixedDecimalUserInput(x.AwardPointsMultiplier, m_txtbxAwardPointsMultiplier);
+
+            if (x.TierIconId != 0)
+            {
+                m_icon = m_tiericon.Single(l => l.TierIconId == x.TierIconId);
+                m_pctbxTierIcon.Tag = x.TierIconId;
+                m_pctbxTierIcon.Image = m_icon.TierIconImage;
+            }
+            else
+            {
+                m_pctbxTierIcon.Image = null;
+                m_pctbxTierIcon.Update();
+            }
+
         }
 
      // NOTIFICATION 
@@ -595,6 +611,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.AwardPointsMultiplier = (m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
+                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
 
                 if (m_tierSelected.Equals(t_tierNew))

@@ -72,6 +72,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private MagneticCardReader m_magCardReader;
         private TierRule m_playerTierRule;
         private List<Tier> m_playerTiers;
+        private List<TierIcon> m_tierIcon;
 
 
         #endregion
@@ -234,6 +235,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     strErr = "get tiers.";
                     GetPlayerTierRule();
                     GetPlayerTiers();
+                    GetTierIcon();
                 }
                 catch (Exception e)
                 {
@@ -849,7 +851,12 @@ namespace GTI.Modules.PlayerCenter.Business
         {
             m_playerTierRule = new TierRule();
             m_playerTierRule = Data.GetPlayerTierRule.Msg();
-        }  
+        }
+
+        public void GetTierIcon()
+        {
+            m_tierIcon = GetPlayerTierIcon.Msg(13);
+        }
 
         // PDTS 1064
         /// <summary>
@@ -2610,6 +2617,12 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 m_playerTierRule = value;
             }
+        }
+
+        public List<TierIcon> TierIcon
+        {
+            get { return m_tierIcon; }
+            set { m_tierIcon = value; }
         }
 
         // Rally US144

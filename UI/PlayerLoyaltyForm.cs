@@ -22,7 +22,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
         private int m_color;//?
-        private List<TierIcon> m_tiericon;
+        private List<TierIcon> m_tierIcon;
         private TierIcon m_icon;
         #endregion
 
@@ -32,7 +32,7 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_tiers = tiers_;
             m_tierRule = tierRule_;
-            m_tiericon = tierIcon_;
+            m_tierIcon = tierIcon_;
             DisplayTierRule();
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
@@ -68,6 +68,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_btnAddTier.Enabled = _isEnable;
             m_btnEditTier.Enabled = _isEnable;
             m_btnDeleteTier.Enabled = _isEnable;
+            m_btnTierIcon.Visible = !_isEnable;
 
             m_txtbxTierName.Enabled = !_isEnable;
             m_lblTierColor.Enabled = !_isEnable;
@@ -90,7 +91,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpend.SelectedIndexChanged -=new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
                 m_cmbxQualifyingpoints.SelectedIndexChanged -=new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
-                m_pctbxTierIcon.Click -= new EventHandler(m_pctbxTierIcon_Click);
+              //  m_pctbxTierIcon.Click -= new EventHandler(m_pctbxTierIcon_Click);
        
             }
             else
@@ -105,7 +106,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpend.SelectedIndexChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
                 m_cmbxQualifyingpoints.SelectedIndexChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
-                m_pctbxTierIcon.Click += new EventHandler(m_pctbxTierIcon_Click);
+             //   m_pctbxTierIcon.Click += new EventHandler(m_pctbxTierIcon_Click);
             }
 
            if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
@@ -258,7 +259,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (x.TierIconId != 0)
             {
-                m_icon = m_tiericon.Single(l => l.TierIconId == x.TierIconId);
+                m_icon = m_tierIcon.Single(l => l.TierIconId == x.TierIconId);
                 m_pctbxTierIcon.Tag = x.TierIconId;
                 m_pctbxTierIcon.Image = m_icon.TierIconImage;
             }
@@ -898,7 +899,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_pctbxTierIcon_Click(object sender, EventArgs e)
         {
-            PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon();
+            PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);
             DialogResult result = DialogResult.OK;
             result = iconTierUI.ShowDialog();
             m_pctbxTierIcon.Image = iconTierUI.SelectedImage;

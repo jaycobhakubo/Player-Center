@@ -28,11 +28,11 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region CONSTRUCTOR
-        public PlayerLoyaltyTierIcon()
+        public PlayerLoyaltyTierIcon(List<TierIcon> tierIcon_)
         {
             InitializeComponent();
             DrawGradient = true;
-           // m_tierIcon = GetPlayerTierIcon.Msg(13);
+            m_tierIcon = tierIcon_;
             PopulateTierIcon();
         }
         #endregion

@@ -80,6 +80,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.m_btnTierIcon = new GTI.Controls.ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -116,7 +117,6 @@
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCloseTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_lblTierSavedSuccessNotification);
-            this.splitContainer1.Panel2.Controls.Add(this.m_lblTierColor);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCancelTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnSaveTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_txtbxAwardPointsMultiplier);
@@ -125,7 +125,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualfyingSpend);
             this.splitContainer1.Panel2.Controls.Add(this.m_txtbxPointStart);
             this.splitContainer1.Panel2.Controls.Add(this.labelTierName);
-            this.splitContainer1.Panel2.Controls.Add(this.labelColor);
             this.splitContainer1.Panel2.Controls.Add(this.m_txtbxSpendStart);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.labelPointsStart);
@@ -356,8 +355,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.m_btnTierIcon);
             this.groupBox3.Controls.Add(this.panel1);
+            this.groupBox3.Controls.Add(this.m_lblTierColor);
             this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.labelColor);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
@@ -564,6 +566,18 @@
             // 
             this.m_errorProvider.ContainerControl = this;
             // 
+            // m_btnTierIcon
+            // 
+            this.m_btnTierIcon.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnTierIcon.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnTierIcon, "m_btnTierIcon");
+            this.m_btnTierIcon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnTierIcon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnTierIcon.Name = "m_btnTierIcon";
+            this.m_btnTierIcon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnTierIcon.UseVisualStyleBackColor = false;
+            this.m_btnTierIcon.Click += new System.EventHandler(this.m_pctbxTierIcon_Click);
+            // 
             // PlayerLoyaltyForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -653,6 +667,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox m_pctbxTierIcon;
+        private Controls.ImageButton m_btnTierIcon;
 
 
 

@@ -4,20 +4,28 @@ using System.Linq;
 using System.Text;
 using GTI.Modules.Shared;
 using System.IO;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.Data
 {
     class GetPlayerTierIcon : ServerMessage
     {
         private int m_photoTypeId;
+        private List<TierIcon> m_tierIcon;
+        protected byte[] mbyteResponsePayload = null;
+        protected byte[] mbytResponse = null;
+        private int mintReturnCode;
+        private List<byte[]> ImageData = null;
+
 
         public GetPlayerTierIcon(int photoTypeId_)
         {
             m_id = 18159;
             m_photoTypeId = photoTypeId_;
+            m_tierIcon = new List<TierIcon>();
         }
 
-        public static List<byte[]> Msg(int photoTypeId_)
+        public static List<TierIcon> Msg(int photoTypeId_)
         {
             GetPlayerTierIcon msg = new GetPlayerTierIcon(photoTypeId_);
             try
@@ -28,7 +36,7 @@ namespace GTI.Modules.PlayerCenter.Data
             {
                 throw new Exception("GetPlayerTierIcon: " + ex.Message);
             }
-            return msg.ImageData;
+            return msg.m_tierIcon;
         }
 
         protected override void PackRequest()
@@ -40,10 +48,6 @@ namespace GTI.Modules.PlayerCenter.Data
             requestWriter.Close();
         }
 
-        protected byte[] mbyteResponsePayload = null;
-        protected byte[] mbytResponse = null;
-        private int mintReturnCode;
-        private List<byte[]> ImageData = null;
 
         public int pReturnCode
         {
@@ -58,7 +62,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
         protected override void UnpackResponse()
         {
-            int intPhotoFieldLength;
+            //int intPhotoFieldLength;
 
             try
             {
@@ -92,21 +96,27 @@ namespace GTI.Modules.PlayerCenter.Data
                 try
                 {
 
+               
                     responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
                     ushort _count = responseReader.ReadUInt16();
                     ImageData = new List<byte[]>();
                     for (ushort x = 0; x < _count; x++)
                     {
+                        var data = new TierIcon();
+                        data.TierIconId = responseReader.ReadInt32();
+
                         //Get Photo Field Length
-                        intPhotoFieldLength = responseReader.ReadInt32();
+                       int intPhotoFieldLength = responseReader.ReadInt32();
                         if (intPhotoFieldLength > 0)
                         {
-                            ImageData.Add(responseReader.ReadBytes(intPhotoFieldLength));
+                            data.ImgData = responseReader.ReadBytes(intPhotoFieldLength);
+                           // ImageData.Add(responseReader.ReadBytes(intPhotoFieldLength));
                         }
                         else
                         {
-                            ImageData = null;
+                            data.ImgData = null;
                         }
+                        m_tierIcon.Add(data);
                     }
                 }
                 catch (EndOfStreamException e)

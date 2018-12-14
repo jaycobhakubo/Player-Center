@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;
 using System.Globalization;
 using GTI.Modules.PlayerCenter.Data;
 using System.IO;
+using GTI.Modules.Shared.Business;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -22,6 +23,7 @@ namespace GTI.Modules.PlayerCenter.UI
         List<string> files = new List<string>();
         int maxHeight = -1;
         private List<byte[]> m_lstbyteIconList = new List<byte[]>();
+        private List<TierIcon> m_tierIcon;
 
         #endregion
 
@@ -29,8 +31,8 @@ namespace GTI.Modules.PlayerCenter.UI
         public PlayerLoyaltyTierIcon()
         {
             InitializeComponent();
-            DrawGradient = true;                 
-            m_lstbyteIconList = GetPlayerTierIcon.Msg(13);
+            DrawGradient = true;
+            m_tierIcon = GetPlayerTierIcon.Msg(13);
             PopulateTierIcon();
         }
         #endregion
@@ -42,9 +44,9 @@ namespace GTI.Modules.PlayerCenter.UI
            
 
 
-            foreach (byte[] data_ in m_lstbyteIconList)
+            foreach (TierIcon data_ in m_tierIcon)
             {
-                MemoryStream mStream = new MemoryStream(data_);
+                MemoryStream mStream = new MemoryStream(data_.ImgData);
                 PictureBox pb = new PictureBox();
                 Size _size = new Size(60, 60);
                 pb.Size = _size;

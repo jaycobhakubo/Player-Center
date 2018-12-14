@@ -879,15 +879,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_pctbxTierIcon_Click(object sender, EventArgs e)
         {
-            PlayerLoyaltyTierIcon iconTier = new PlayerLoyaltyTierIcon();
+            PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon();
             DialogResult result = DialogResult.OK;
-            result = iconTier.ShowDialog();
-            //  iconTier.Show(this);
-            m_pctbxTierIcon.Image = iconTier.SelectedImage;
-           // PictureBox pctbxTest = new PictureBox();
-            //pctbxTest.Image = Image.FromFile("C:\\Users\\Administrator\\Downloads\\icon\\1.png");
-            //panel1.Controls.Add(pctbxTest);
-             // m_pctbxTierIcon.Controls.Add(m_pctbxTierIcon);
+            result = iconTierUI.ShowDialog();
+            m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
+            m_tierSelected.IconTierId = iconTierUI.TierIconId;
+    
         }
 
 

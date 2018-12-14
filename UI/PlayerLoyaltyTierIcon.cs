@@ -48,6 +48,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 MemoryStream mStream = new MemoryStream(data_.ImgData);
                 PictureBox pb = new PictureBox();
+                pb.Tag = data_.TierIconId;
                 Size _size = new Size(60, 60);
                 pb.Size = _size;
                 pb.Click += new EventHandler(pictureBox1_Click);
@@ -178,7 +179,12 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        
+        public int TierIconId
+        {
+            get { return (int)m_pctbxSelected.Tag; }
+        }
+
+
 
         public Image SelectedImage
         {

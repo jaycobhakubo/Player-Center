@@ -38,6 +38,7 @@ namespace GTI.Modules.PlayerCenter.UI
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
+            imageButton2.TextAlign = ContentAlignment.BottomLeft;
            
         }
         #endregion
@@ -68,7 +69,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_btnAddTier.Enabled = _isEnable;
             m_btnEditTier.Enabled = _isEnable;
             m_btnDeleteTier.Enabled = _isEnable;
-            m_btnTierIcon.Visible = !_isEnable;
+           // m_btnTierIcon.Visible = !_isEnable;
 
             m_txtbxTierName.Enabled = !_isEnable;
             m_lblTierColor.Enabled = !_isEnable;
@@ -906,6 +907,11 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
             //m_tierSelected.TierIconId = iconTierUI.TierIconId;
     
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
 
 

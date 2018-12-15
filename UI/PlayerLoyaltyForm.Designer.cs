@@ -47,7 +47,6 @@
             this.m_cmbxQualfyingSpend = new System.Windows.Forms.ComboBox();
             this.m_txtbxPointStart = new System.Windows.Forms.TextBox();
             this.labelTierName = new System.Windows.Forms.Label();
-            this.labelColor = new System.Windows.Forms.Label();
             this.m_txtbxSpendStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.labelPointsStart = new System.Windows.Forms.Label();
@@ -56,9 +55,7 @@
             this.labelSpend = new System.Windows.Forms.Label();
             this.m_txtbxTierName = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
             this.m_tabPage_TierRule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -80,14 +77,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.m_btnTierIcon = new GTI.Controls.ImageButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.imageButton2 = new GTI.Controls.ImageButton();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.imageButton3 = new GTI.Controls.ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).BeginInit();
             this.m_tbctrlPlayerLoyalty.SuspendLayout();
             this.m_tabPage_TierRule.SuspendLayout();
@@ -97,6 +97,9 @@
             this.groupBox1.SuspendLayout();
             this.m_tabPageTier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -116,22 +119,8 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
             resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCloseTier);
-            this.splitContainer1.Panel2.Controls.Add(this.m_lblTierSavedSuccessNotification);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCancelTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnSaveTier);
-            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxAwardPointsMultiplier);
-            this.splitContainer1.Panel2.Controls.Add(this.labelAwardPoints);
-            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualifyingpoints);
-            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualfyingSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxPointStart);
-            this.splitContainer1.Panel2.Controls.Add(this.labelTierName);
-            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxSpendStart);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2.Controls.Add(this.labelPointsStart);
-            this.splitContainer1.Panel2.Controls.Add(this.labelPoints);
-            this.splitContainer1.Panel2.Controls.Add(this.labelSpendStart);
-            this.splitContainer1.Panel2.Controls.Add(this.labelSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.m_txtbxTierName);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
@@ -258,8 +247,8 @@
             // 
             // labelAwardPoints
             // 
-            resources.ApplyResources(this.labelAwardPoints, "labelAwardPoints");
             this.labelAwardPoints.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelAwardPoints, "labelAwardPoints");
             this.labelAwardPoints.Name = "labelAwardPoints";
             // 
             // m_cmbxQualifyingpoints
@@ -297,15 +286,9 @@
             // 
             // labelTierName
             // 
-            resources.ApplyResources(this.labelTierName, "labelTierName");
             this.labelTierName.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelTierName, "labelTierName");
             this.labelTierName.Name = "labelTierName";
-            // 
-            // labelColor
-            // 
-            resources.ApplyResources(this.labelColor, "labelColor");
-            this.labelColor.BackColor = System.Drawing.Color.Transparent;
-            this.labelColor.Name = "labelColor";
             // 
             // m_txtbxSpendStart
             // 
@@ -324,26 +307,26 @@
             // 
             // labelPointsStart
             // 
-            resources.ApplyResources(this.labelPointsStart, "labelPointsStart");
             this.labelPointsStart.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelPointsStart, "labelPointsStart");
             this.labelPointsStart.Name = "labelPointsStart";
             // 
             // labelPoints
             // 
-            resources.ApplyResources(this.labelPoints, "labelPoints");
             this.labelPoints.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelPoints, "labelPoints");
             this.labelPoints.Name = "labelPoints";
             // 
             // labelSpendStart
             // 
-            resources.ApplyResources(this.labelSpendStart, "labelSpendStart");
             this.labelSpendStart.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelSpendStart, "labelSpendStart");
             this.labelSpendStart.Name = "labelSpendStart";
             // 
             // labelSpend
             // 
-            resources.ApplyResources(this.labelSpend, "labelSpend");
             this.labelSpend.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelSpend, "labelSpend");
             this.labelSpend.Name = "labelSpend";
             // 
             // m_txtbxTierName
@@ -355,34 +338,33 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.m_btnTierIcon);
-            this.groupBox3.Controls.Add(this.panel1);
-            this.groupBox3.Controls.Add(this.m_lblTierColor);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.labelColor);
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.m_cmbxQualifyingpoints);
+            this.groupBox3.Controls.Add(this.m_lblTierSavedSuccessNotification);
+            this.groupBox3.Controls.Add(this.labelAwardPoints);
+            this.groupBox3.Controls.Add(this.m_txtbxAwardPointsMultiplier);
+            this.groupBox3.Controls.Add(this.m_cmbxQualfyingSpend);
+            this.groupBox3.Controls.Add(this.m_txtbxPointStart);
+            this.groupBox3.Controls.Add(this.labelTierName);
+            this.groupBox3.Controls.Add(this.m_txtbxSpendStart);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.labelPointsStart);
+            this.groupBox3.Controls.Add(this.labelPoints);
+            this.groupBox3.Controls.Add(this.labelSpendStart);
+            this.groupBox3.Controls.Add(this.labelSpend);
+            this.groupBox3.Controls.Add(this.m_txtbxTierName);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Controls.Add(this.m_pctbxTierIcon);
-            this.panel1.Name = "panel1";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // m_pctbxTierIcon
             // 
+            this.m_pctbxTierIcon.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
             this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
             this.m_pctbxTierIcon.TabStop = false;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Name = "label1";
             // 
             // m_tbctrlPlayerLoyalty
             // 
@@ -566,17 +548,45 @@
             // 
             this.m_errorProvider.ContainerControl = this;
             // 
-            // m_btnTierIcon
+            // groupBox4
             // 
-            this.m_btnTierIcon.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnTierIcon.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.m_btnTierIcon, "m_btnTierIcon");
-            this.m_btnTierIcon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.m_btnTierIcon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_btnTierIcon.Name = "m_btnTierIcon";
-            this.m_btnTierIcon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.m_btnTierIcon.UseVisualStyleBackColor = false;
-            this.m_btnTierIcon.Click += new System.EventHandler(this.m_pctbxTierIcon_Click);
+            this.groupBox4.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox4.Controls.Add(this.tableLayoutPanel1);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.imageButton2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.m_lblTierColor, 1, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // imageButton2
+            // 
+            resources.ApplyResources(this.imageButton2, "imageButton2");
+            this.imageButton2.FocusColor = System.Drawing.Color.Black;
+            this.imageButton2.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imageButton2.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imageButton2.Name = "imageButton2";
+            this.imageButton2.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            // 
+            // tableLayoutPanel2
+            // 
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
+            this.tableLayoutPanel2.Controls.Add(this.imageButton3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.m_pctbxTierIcon, 1, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            // 
+            // imageButton3
+            // 
+            resources.ApplyResources(this.imageButton3, "imageButton3");
+            this.imageButton3.FocusColor = System.Drawing.Color.Black;
+            this.imageButton3.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imageButton3.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imageButton3.Name = "imageButton3";
+            this.imageButton3.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             // 
             // PlayerLoyaltyForm
             // 
@@ -593,13 +603,11 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).EndInit();
             this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
             this.m_tabPage_TierRule.ResumeLayout(false);
@@ -611,6 +619,9 @@
             this.groupBox1.PerformLayout();
             this.m_tabPageTier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -650,7 +661,6 @@
         private System.Windows.Forms.ComboBox m_cmbxQualfyingSpend;
         private System.Windows.Forms.TextBox m_txtbxPointStart;
         private System.Windows.Forms.Label labelTierName;
-        private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.TextBox m_txtbxSpendStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPointsStart;
@@ -664,10 +674,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox m_pctbxTierIcon;
-        private Controls.ImageButton m_btnTierIcon;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Controls.ImageButton imageButton2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Controls.ImageButton imageButton3;
 
 
 

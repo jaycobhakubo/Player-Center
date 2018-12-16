@@ -11,7 +11,8 @@ using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.PlayerCenter;
 using GTI.Modules.PlayerCenter.Properties;
-using GTI.Modules.Shared.Business; 
+using GTI.Modules.Shared.Business;
+using GTI.Controls; 
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -24,6 +25,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private int m_color;//?
         private List<TierIcon> m_tierIcon;
         private TierIcon m_icon;
+        //private Label m_lblTierColor = new Label();
+        //private Label m_lblTiericon = new Label();
+        //private ImageButton m_imgbtnTierColor = new ImageButton();
+        //private ImageButton m_imgbtnTierIcon = new ImageButton();
+
         #endregion
 
         #region CONSTRUCTOR
@@ -38,12 +44,26 @@ namespace GTI.Modules.PlayerCenter.UI
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
-            imageButton2.TextAlign = ContentAlignment.BottomLeft;
+
+            //m_imgbtnTierColor.TextAlign = ContentAlignment.BottomLeft;
+            //m_imgbtnTierIcon.TextAlign = ContentAlignment.BottomLeft;
            
         }
         #endregion
 
         #region METHOD
+
+        //private void SetControlPropertyManually(object control_)
+        //{
+        //    if (control_ is Label)
+        //    {
+        //         var tcurrentControl = (Label)control_;
+        //         FontFamily tfamily = new FontFamily("Trebuchet MS");
+        //         Font tfont = new Font(tfamily, 12.0f,FontStyle.Bold );  
+        //         tcurrentControl.Font = tfont;
+        //         tcurrentControl.TextAlign = ContentAlignment.BottomLeft;
+        //    }
+        //}
 
        // CLEAR CONTROL FOR NEW TIER
         private void ClearTiersTab()
@@ -54,7 +74,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_cmbxQualifyingpoints.SelectedIndex = 1;
             m_txtbxPointStart.Text = "";
             m_txtbxAwardPointsMultiplier.Text = "1.00";
-            m_lblTierColor.BackColor = SystemColors.ButtonHighlight;
+            m_tierColor.BackColor = SystemColors.ButtonHighlight;
             //m_tierId = 0;
         }
 
@@ -72,7 +92,7 @@ namespace GTI.Modules.PlayerCenter.UI
            // m_btnTierIcon.Visible = !_isEnable;
 
             m_txtbxTierName.Enabled = !_isEnable;
-            m_lblTierColor.Enabled = !_isEnable;
+            m_tierColor.Enabled = !_isEnable;
             m_cmbxQualfyingSpend.Enabled = !_isEnable;
             m_txtbxSpendStart.Enabled = !_isEnable;
             m_cmbxQualifyingpoints.Enabled = !_isEnable;
@@ -232,7 +252,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void DisplayTier(Tier x)
         {
             m_txtbxTierName.Text = x.TierName;
-            m_lblTierColor.BackColor = Color.FromArgb(x.TierColor);
+            m_tierColor.BackColor = Color.FromArgb(x.TierColor);
             m_color = x.TierColor;
 
             if (x.QualifyingSpend != -1)
@@ -546,7 +566,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var t_tierNew = new Tier();
                 t_tierNew.TierName = m_txtbxTierName.Text;
-                t_tierNew.TierColor =  m_lblTierColor.BackColor.ToArgb();
+                t_tierNew.TierColor =  m_tierColor.BackColor.ToArgb();
                 t_tierNew.QualifyingSpend = (  m_txtbxSpendStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
                 t_tierNew.QualifyingPoints = (m_txtbxPointStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxPointStart.Text) : -1;
                 t_tierNew.AwardPointsMultiplier = ( m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
@@ -607,7 +627,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var t_tierNew = new Tier();
                 t_tierNew.TierName = m_txtbxTierName.Text;
-                t_tierNew.TierColor = m_lblTierColor.BackColor.ToArgb();
+                t_tierNew.TierColor = m_tierColor.BackColor.ToArgb();
                 t_tierNew.QualifyingSpend = (m_txtbxSpendStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
                 t_tierNew.QualifyingPoints = (m_txtbxPointStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxPointStart.Text) : -1;
                 t_tierNew.AwardPointsMultiplier = (m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
@@ -637,11 +657,11 @@ namespace GTI.Modules.PlayerCenter.UI
         //COLOR FORM SHOW
         private void m_lblTierColor_Click(object sender, EventArgs e)
         {
-            ColorDialog frmColor = new ColorDialog { Color = m_lblTierColor.BackColor };
+            ColorDialog frmColor = new ColorDialog { Color = m_tierColor.BackColor };
             if (frmColor.ShowDialog(this) == DialogResult.OK)
             {
-                m_lblTierColor.BackColor = frmColor.Color;
-                m_lblTierColor.Invalidate();
+                m_tierColor.BackColor = frmColor.Color;
+                m_tierColor.Invalidate();
             }
             frmColor.Dispose();
         }

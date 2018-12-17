@@ -81,6 +81,10 @@
             this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.imageButton1 = new GTI.Controls.ImageButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +100,8 @@
             this.groupBox1.SuspendLayout();
             this.m_tabPageTier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -118,6 +124,10 @@
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCancelTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnSaveTier);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel2.Controls.Add(this.labelSpend);
+            this.splitContainer1.Panel2.Controls.Add(this.labelPoints);
+            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualfyingSpend);
+            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualifyingpoints);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
             // groupBox2
@@ -222,25 +232,19 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.groupBox5);
+            this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.imageButton1);
             this.groupBox3.Controls.Add(this.m_imgbtnTierColor);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.m_pctbxTierIcon);
             this.groupBox3.Controls.Add(this.m_tierColor);
-            this.groupBox3.Controls.Add(this.m_cmbxQualifyingpoints);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.m_lblTierSavedSuccessNotification);
             this.groupBox3.Controls.Add(this.labelAwardPoints);
             this.groupBox3.Controls.Add(this.m_txtbxAwardPointsMultiplier);
-            this.groupBox3.Controls.Add(this.m_cmbxQualfyingSpend);
-            this.groupBox3.Controls.Add(this.m_txtbxPointStart);
             this.groupBox3.Controls.Add(this.labelTierName);
-            this.groupBox3.Controls.Add(this.m_txtbxSpendStart);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.labelPointsStart);
-            this.groupBox3.Controls.Add(this.labelPoints);
-            this.groupBox3.Controls.Add(this.labelSpendStart);
-            this.groupBox3.Controls.Add(this.labelSpend);
             this.groupBox3.Controls.Add(this.m_txtbxTierName);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
@@ -576,6 +580,36 @@
             this.imageButton1.Name = "imageButton1";
             this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.checkBox3);
+            this.groupBox4.Controls.Add(this.labelSpendStart);
+            this.groupBox4.Controls.Add(this.m_txtbxSpendStart);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // checkBox3
+            // 
+            resources.ApplyResources(this.checkBox3, "checkBox3");
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            resources.ApplyResources(this.checkBox4, "checkBox4");
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.checkBox4);
+            this.groupBox5.Controls.Add(this.labelPointsStart);
+            this.groupBox5.Controls.Add(this.m_txtbxPointStart);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
             // PlayerLoyaltyForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -607,6 +641,10 @@
             this.groupBox1.PerformLayout();
             this.m_tabPageTier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -664,6 +702,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private Controls.ImageButton imageButton1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
 
 
 

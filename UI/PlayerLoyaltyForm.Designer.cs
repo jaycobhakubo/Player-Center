@@ -82,9 +82,11 @@
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.imageButton1 = new GTI.Controls.ImageButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.m_cmbxQualfyingSpendN = new System.Windows.Forms.CheckBox();
+            this.m_cmbxQualifyingpointsN = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -232,6 +234,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.imageButton1);
@@ -304,8 +308,8 @@
             // 
             // labelAwardPoints
             // 
-            this.labelAwardPoints.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.labelAwardPoints, "labelAwardPoints");
+            this.labelAwardPoints.BackColor = System.Drawing.Color.Transparent;
             this.labelAwardPoints.Name = "labelAwardPoints";
             // 
             // m_txtbxAwardPointsMultiplier
@@ -582,33 +586,47 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.checkBox3);
+            this.groupBox4.Controls.Add(this.m_cmbxQualfyingSpendN);
             this.groupBox4.Controls.Add(this.labelSpendStart);
             this.groupBox4.Controls.Add(this.m_txtbxSpendStart);
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // checkBox3
+            // m_cmbxQualfyingSpendN
             // 
-            resources.ApplyResources(this.checkBox3, "checkBox3");
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.m_cmbxQualfyingSpendN, "m_cmbxQualfyingSpendN");
+            this.m_cmbxQualfyingSpendN.Name = "m_cmbxQualfyingSpendN";
+            this.m_cmbxQualfyingSpendN.UseVisualStyleBackColor = true;
+            this.m_cmbxQualfyingSpendN.CheckedChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChangedN);
             // 
-            // checkBox4
+            // m_cmbxQualifyingpointsN
             // 
-            resources.ApplyResources(this.checkBox4, "checkBox4");
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.m_cmbxQualifyingpointsN, "m_cmbxQualifyingpointsN");
+            this.m_cmbxQualifyingpointsN.Name = "m_cmbxQualifyingpointsN";
+            this.m_cmbxQualifyingpointsN.UseVisualStyleBackColor = true;
+            this.m_cmbxQualifyingpointsN.CheckedChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChangedN);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBox4);
+            this.groupBox5.Controls.Add(this.m_cmbxQualifyingpointsN);
             this.groupBox5.Controls.Add(this.labelPointsStart);
             this.groupBox5.Controls.Add(this.m_txtbxPointStart);
             resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
             // 
             // PlayerLoyaltyForm
             // 
@@ -703,9 +721,11 @@
         private System.Windows.Forms.Label label1;
         private Controls.ImageButton imageButton1;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox m_cmbxQualifyingpointsN;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox m_cmbxQualfyingSpendN;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
 
 
 

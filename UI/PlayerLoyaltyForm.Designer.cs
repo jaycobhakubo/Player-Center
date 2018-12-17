@@ -40,24 +40,27 @@
             this.m_btnCancelTier = new GTI.Controls.ImageButton();
             this.m_btnSaveTier = new GTI.Controls.ImageButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.m_tierColor = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.m_cmbxQualifyingpointsN = new System.Windows.Forms.CheckBox();
+            this.labelPointsStart = new System.Windows.Forms.Label();
+            this.m_txtbxPointStart = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.m_cmbxQualfyingSpendN = new System.Windows.Forms.CheckBox();
+            this.labelSpendStart = new System.Windows.Forms.Label();
+            this.m_txtbxSpendStart = new System.Windows.Forms.TextBox();
+            this.m_imgbtnTierIcon = new GTI.Controls.ImageButton();
             this.m_imgbtnTierColor = new GTI.Controls.ImageButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
+            this.m_tierColor = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.m_cmbxQualifyingpoints = new System.Windows.Forms.ComboBox();
             this.m_lblTierSavedSuccessNotification = new System.Windows.Forms.Label();
             this.labelAwardPoints = new System.Windows.Forms.Label();
             this.m_txtbxAwardPointsMultiplier = new System.Windows.Forms.TextBox();
-            this.m_cmbxQualfyingSpend = new System.Windows.Forms.ComboBox();
-            this.m_txtbxPointStart = new System.Windows.Forms.TextBox();
             this.labelTierName = new System.Windows.Forms.Label();
-            this.m_txtbxSpendStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.labelPointsStart = new System.Windows.Forms.Label();
-            this.labelPoints = new System.Windows.Forms.Label();
-            this.labelSpendStart = new System.Windows.Forms.Label();
-            this.labelSpend = new System.Windows.Forms.Label();
             this.m_txtbxTierName = new System.Windows.Forms.TextBox();
             this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
             this.m_tabPage_TierRule = new System.Windows.Forms.TabPage();
@@ -80,19 +83,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.imageButton1 = new GTI.Controls.ImageButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.m_cmbxQualfyingSpendN = new System.Windows.Forms.CheckBox();
-            this.m_cmbxQualifyingpointsN = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).BeginInit();
             this.m_tbctrlPlayerLoyalty.SuspendLayout();
             this.m_tabPage_TierRule.SuspendLayout();
@@ -102,8 +100,6 @@
             this.groupBox1.SuspendLayout();
             this.m_tabPageTier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -126,10 +122,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.m_btnCancelTier);
             this.splitContainer1.Panel2.Controls.Add(this.m_btnSaveTier);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.labelSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.labelPoints);
-            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualfyingSpend);
-            this.splitContainer1.Panel2.Controls.Add(this.m_cmbxQualifyingpoints);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             // 
             // groupBox2
@@ -234,14 +226,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.m_pctbxTierIcon);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.imageButton1);
+            this.groupBox3.Controls.Add(this.m_imgbtnTierIcon);
             this.groupBox3.Controls.Add(this.m_imgbtnTierColor);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.m_pctbxTierIcon);
             this.groupBox3.Controls.Add(this.m_tierColor);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.m_lblTierSavedSuccessNotification);
@@ -254,26 +246,94 @@
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // m_pctbxTierIcon
+            // label5
             // 
-            this.m_pctbxTierIcon.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
-            this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
-            this.m_pctbxTierIcon.TabStop = false;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            this.label5.EnabledChanged += new System.EventHandler(this.label5_EnabledChanged);
+            this.label5.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpendN_Validating);
             // 
-            // label3
+            // label4
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            this.label4.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpendN_Validating);
             // 
-            // m_tierColor
+            // groupBox5
             // 
-            this.m_tierColor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            resources.ApplyResources(this.m_tierColor, "m_tierColor");
-            this.m_tierColor.Name = "m_tierColor";
-            this.m_tierColor.Click += new System.EventHandler(this.m_lblTierColor_Click);
+            this.groupBox5.Controls.Add(this.m_cmbxQualifyingpointsN);
+            this.groupBox5.Controls.Add(this.labelPointsStart);
+            this.groupBox5.Controls.Add(this.m_txtbxPointStart);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // m_cmbxQualifyingpointsN
+            // 
+            resources.ApplyResources(this.m_cmbxQualifyingpointsN, "m_cmbxQualifyingpointsN");
+            this.m_cmbxQualifyingpointsN.Name = "m_cmbxQualifyingpointsN";
+            this.m_cmbxQualifyingpointsN.UseVisualStyleBackColor = true;
+            this.m_cmbxQualifyingpointsN.CheckedChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChangedN);
+            this.m_cmbxQualifyingpointsN.EnabledChanged += new System.EventHandler(this.m_cmbxQualifyingpointsN_EnabledChanged);
+            // 
+            // labelPointsStart
+            // 
+            this.labelPointsStart.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelPointsStart, "labelPointsStart");
+            this.labelPointsStart.Name = "labelPointsStart";
+            // 
+            // m_txtbxPointStart
+            // 
+            this.m_txtbxPointStart.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxPointStart, "m_txtbxPointStart");
+            this.m_txtbxPointStart.Name = "m_txtbxPointStart";
+            this.m_txtbxPointStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
+            this.m_txtbxPointStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxPointStart_Validating);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.m_cmbxQualfyingSpendN);
+            this.groupBox4.Controls.Add(this.labelSpendStart);
+            this.groupBox4.Controls.Add(this.m_txtbxSpendStart);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // m_cmbxQualfyingSpendN
+            // 
+            resources.ApplyResources(this.m_cmbxQualfyingSpendN, "m_cmbxQualfyingSpendN");
+            this.m_cmbxQualfyingSpendN.Name = "m_cmbxQualfyingSpendN";
+            this.m_cmbxQualfyingSpendN.UseVisualStyleBackColor = true;
+            this.m_cmbxQualfyingSpendN.CheckedChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChangedN);
+            this.m_cmbxQualfyingSpendN.EnabledChanged += new System.EventHandler(this.m_cmbxQualfyingSpendN_EnabledChanged);
+            // 
+            // labelSpendStart
+            // 
+            this.labelSpendStart.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.labelSpendStart, "labelSpendStart");
+            this.labelSpendStart.Name = "labelSpendStart";
+            // 
+            // m_txtbxSpendStart
+            // 
+            this.m_txtbxSpendStart.BackColor = System.Drawing.SystemColors.Window;
+            resources.ApplyResources(this.m_txtbxSpendStart, "m_txtbxSpendStart");
+            this.m_txtbxSpendStart.ForeColor = System.Drawing.Color.Black;
+            this.m_txtbxSpendStart.Name = "m_txtbxSpendStart";
+            this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
+            this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxSpendStart_Validating);
+            // 
+            // m_imgbtnTierIcon
+            // 
+            this.m_imgbtnTierIcon.FocusColor = System.Drawing.Color.Black;
+            this.m_imgbtnTierIcon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_imgbtnTierIcon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.m_imgbtnTierIcon, "m_imgbtnTierIcon");
+            this.m_imgbtnTierIcon.Name = "m_imgbtnTierIcon";
+            this.m_imgbtnTierIcon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_imgbtnTierIcon.Click += new System.EventHandler(this.m_imgbtnTierIcon_Click);
             // 
             // m_imgbtnTierColor
             // 
@@ -283,23 +343,32 @@
             resources.ApplyResources(this.m_imgbtnTierColor, "m_imgbtnTierColor");
             this.m_imgbtnTierColor.Name = "m_imgbtnTierColor";
             this.m_imgbtnTierColor.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_imgbtnTierColor.Click += new System.EventHandler(this.m_imgbtnTierColor_Click);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // m_pctbxTierIcon
+            // 
+            this.m_pctbxTierIcon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
+            this.m_pctbxTierIcon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
+            this.m_pctbxTierIcon.TabStop = false;
+            // 
+            // m_tierColor
+            // 
+            this.m_tierColor.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.m_tierColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.m_tierColor, "m_tierColor");
+            this.m_tierColor.Name = "m_tierColor";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // m_cmbxQualifyingpoints
-            // 
-            this.m_cmbxQualifyingpoints.BackColor = System.Drawing.SystemColors.Window;
-            this.m_cmbxQualifyingpoints.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.m_cmbxQualifyingpoints, "m_cmbxQualifyingpoints");
-            this.m_cmbxQualifyingpoints.FormattingEnabled = true;
-            this.m_cmbxQualifyingpoints.Items.AddRange(new object[] {
-            resources.GetString("m_cmbxQualifyingpoints.Items"),
-            resources.GetString("m_cmbxQualifyingpoints.Items1")});
-            this.m_cmbxQualifyingpoints.Name = "m_cmbxQualifyingpoints";
-            this.m_cmbxQualifyingpoints.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChanged);
             // 
             // m_lblTierSavedSuccessNotification
             // 
@@ -320,71 +389,17 @@
             this.m_txtbxAwardPointsMultiplier.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
             this.m_txtbxAwardPointsMultiplier.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxAwardPointsMultiplier_Validating);
             // 
-            // m_cmbxQualfyingSpend
-            // 
-            this.m_cmbxQualfyingSpend.BackColor = System.Drawing.SystemColors.Window;
-            this.m_cmbxQualfyingSpend.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.m_cmbxQualfyingSpend, "m_cmbxQualfyingSpend");
-            this.m_cmbxQualfyingSpend.FormattingEnabled = true;
-            this.m_cmbxQualfyingSpend.Items.AddRange(new object[] {
-            resources.GetString("m_cmbxQualfyingSpend.Items"),
-            resources.GetString("m_cmbxQualfyingSpend.Items1")});
-            this.m_cmbxQualfyingSpend.Name = "m_cmbxQualfyingSpend";
-            this.m_cmbxQualfyingSpend.SelectedIndexChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChanged);
-            this.m_cmbxQualfyingSpend.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpend_Validating);
-            // 
-            // m_txtbxPointStart
-            // 
-            this.m_txtbxPointStart.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.m_txtbxPointStart, "m_txtbxPointStart");
-            this.m_txtbxPointStart.Name = "m_txtbxPointStart";
-            this.m_txtbxPointStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
-            this.m_txtbxPointStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxPointStart_Validating);
-            // 
             // labelTierName
             // 
             this.labelTierName.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.labelTierName, "labelTierName");
             this.labelTierName.Name = "labelTierName";
             // 
-            // m_txtbxSpendStart
-            // 
-            this.m_txtbxSpendStart.BackColor = System.Drawing.SystemColors.Window;
-            resources.ApplyResources(this.m_txtbxSpendStart, "m_txtbxSpendStart");
-            this.m_txtbxSpendStart.ForeColor = System.Drawing.Color.Black;
-            this.m_txtbxSpendStart.Name = "m_txtbxSpendStart";
-            this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
-            this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxSpendStart_Validating);
-            // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Name = "label2";
-            // 
-            // labelPointsStart
-            // 
-            this.labelPointsStart.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.labelPointsStart, "labelPointsStart");
-            this.labelPointsStart.Name = "labelPointsStart";
-            // 
-            // labelPoints
-            // 
-            this.labelPoints.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.labelPoints, "labelPoints");
-            this.labelPoints.Name = "labelPoints";
-            // 
-            // labelSpendStart
-            // 
-            this.labelSpendStart.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.labelSpendStart, "labelSpendStart");
-            this.labelSpendStart.Name = "labelSpendStart";
-            // 
-            // labelSpend
-            // 
-            this.labelSpend.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.labelSpend, "labelSpend");
-            this.labelSpend.Name = "labelSpend";
             // 
             // m_txtbxTierName
             // 
@@ -575,59 +590,6 @@
             // 
             this.m_errorProvider.ContainerControl = this;
             // 
-            // imageButton1
-            // 
-            this.imageButton1.FocusColor = System.Drawing.Color.Black;
-            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.m_cmbxQualfyingSpendN);
-            this.groupBox4.Controls.Add(this.labelSpendStart);
-            this.groupBox4.Controls.Add(this.m_txtbxSpendStart);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // m_cmbxQualfyingSpendN
-            // 
-            resources.ApplyResources(this.m_cmbxQualfyingSpendN, "m_cmbxQualfyingSpendN");
-            this.m_cmbxQualfyingSpendN.Name = "m_cmbxQualfyingSpendN";
-            this.m_cmbxQualfyingSpendN.UseVisualStyleBackColor = true;
-            this.m_cmbxQualfyingSpendN.CheckedChanged += new System.EventHandler(this.m_cmbxQualfyingSpend_SelectedIndexChangedN);
-            // 
-            // m_cmbxQualifyingpointsN
-            // 
-            resources.ApplyResources(this.m_cmbxQualifyingpointsN, "m_cmbxQualifyingpointsN");
-            this.m_cmbxQualifyingpointsN.Name = "m_cmbxQualifyingpointsN";
-            this.m_cmbxQualifyingpointsN.UseVisualStyleBackColor = true;
-            this.m_cmbxQualifyingpointsN.CheckedChanged += new System.EventHandler(this.m_cmbxQualifyingpoints_SelectedIndexChangedN);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.m_cmbxQualifyingpointsN);
-            this.groupBox5.Controls.Add(this.labelPointsStart);
-            this.groupBox5.Controls.Add(this.m_txtbxPointStart);
-            resources.ApplyResources(this.groupBox5, "groupBox5");
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
             // PlayerLoyaltyForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -648,6 +610,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).EndInit();
             this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
             this.m_tabPage_TierRule.ResumeLayout(false);
@@ -659,10 +625,6 @@
             this.groupBox1.PerformLayout();
             this.m_tabPageTier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -698,16 +660,12 @@
         private Controls.ImageButton m_btnSaveTier;
         private System.Windows.Forms.TextBox m_txtbxAwardPointsMultiplier;
         private System.Windows.Forms.Label labelAwardPoints;
-        private System.Windows.Forms.ComboBox m_cmbxQualifyingpoints;
-        private System.Windows.Forms.ComboBox m_cmbxQualfyingSpend;
         private System.Windows.Forms.TextBox m_txtbxPointStart;
         private System.Windows.Forms.Label labelTierName;
         private System.Windows.Forms.TextBox m_txtbxSpendStart;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelPointsStart;
-        private System.Windows.Forms.Label labelPoints;
         private System.Windows.Forms.Label labelSpendStart;
-        private System.Windows.Forms.Label labelSpend;
         private System.Windows.Forms.TextBox m_txtbxTierName;
         private System.Windows.Forms.GroupBox groupBox3;
         private Controls.ImageButton m_btnCloseTierRule;
@@ -719,7 +677,7 @@
         private Controls.ImageButton m_imgbtnTierColor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private Controls.ImageButton imageButton1;
+        private Controls.ImageButton m_imgbtnTierIcon;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckBox m_cmbxQualifyingpointsN;
         private System.Windows.Forms.GroupBox groupBox4;

@@ -22,7 +22,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private TierRule m_tierRule;
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
-        private int m_color;//?
         private List<TierIcon> m_tierIcon;
         private TierIcon m_icon;
         //private Label m_lblTierColor = new Label();
@@ -43,11 +42,7 @@ namespace GTI.Modules.PlayerCenter.UI
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
-            DisableEnableControlDefaultTier(true);
-
-            //m_imgbtnTierColor.TextAlign = ContentAlignment.BottomLeft;
-            //m_imgbtnTierIcon.TextAlign = ContentAlignment.BottomLeft;
-           
+            DisableEnableControlDefaultTier(true);          
         }
         #endregion
 
@@ -59,15 +54,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void ClearTiersTab()
         {
             m_txtbxTierName.Text = "";
-            m_cmbxQualfyingSpend.SelectedIndex = 1;
             m_cmbxQualfyingSpendN.Checked = false;
-            m_txtbxSpendStart.Text = "";
-            m_cmbxQualifyingpoints.SelectedIndex = 1;
+            m_txtbxSpendStart.Text = "";      
             m_cmbxQualifyingpointsN.Checked = false;
             m_txtbxPointStart.Text = "";
             m_txtbxAwardPointsMultiplier.Text = "1.00";
             m_tierColor.BackColor = SystemColors.ButtonHighlight;
-            //m_tierId = 0;
+            m_pctbxTierIcon.Image = null;
+            m_pctbxTierIcon.BackColor = SystemColors.ButtonHighlight;
+            m_pctbxTierIcon.Update();
+            m_pctbxTierIcon.Tag = (object)0;
         }
 
       //DISABLE OR ENABLE CONTROL BASE ON ADD, EDIT CANCEL SAVE .. TIER
@@ -84,31 +80,25 @@ namespace GTI.Modules.PlayerCenter.UI
            // m_btnTierIcon.Visible = !_isEnable;
 
             m_txtbxTierName.Enabled = !_isEnable;
-            m_tierColor.Enabled = !_isEnable;
-            m_cmbxQualfyingSpend.Enabled = !_isEnable;
+            m_tierColor.Enabled = !_isEnable;       
             m_cmbxQualfyingSpendN.Enabled = !_isEnable;
-            m_txtbxSpendStart.Enabled = !_isEnable;
-            m_cmbxQualifyingpoints.Enabled = !_isEnable;
+            m_txtbxSpendStart.Enabled = !_isEnable;         
             m_cmbxQualifyingpointsN.Enabled = !_isEnable;
             m_txtbxPointStart.Enabled = !_isEnable;
             m_txtbxAwardPointsMultiplier.Enabled = !_isEnable;
+            m_imgbtnTierColor.Visible = !_isEnable;
+            m_imgbtnTierIcon.Visible = !_isEnable;
 
             if (_isEnable)
             {
                 m_txtbxTierName.BackColor = SystemColors.Control;
                 m_txtbxSpendStart.BackColor = SystemColors.Control;
                 m_txtbxPointStart.BackColor = SystemColors.Control;
-                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;
-                m_cmbxQualifyingpoints.BackColor = SystemColors.Control;
-                m_cmbxQualfyingSpend.BackColor = SystemColors.Control;
-                m_lstboxTiers.BackColor = SystemColors.Window;
-                //m_lblTierColor.BackColor = SystemColors.Control;
-                m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
-                m_cmbxQualfyingSpend.SelectedIndexChanged -=new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
-                m_cmbxQualfyingSpendN.CheckedChanged -= new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);
-                m_cmbxQualifyingpoints.SelectedIndexChanged -=new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;             
+                m_lstboxTiers.BackColor = SystemColors.Window;               
+                m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);              
+                m_cmbxQualfyingSpendN.CheckedChanged -= new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);           
                 m_cmbxQualifyingpointsN.CheckedChanged -= new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
-              //  m_pctbxTierIcon.Click -= new EventHandler(m_pctbxTierIcon_Click);
        
             }
             else
@@ -116,18 +106,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxTierName.BackColor = SystemColors.Window;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Window;
-                m_cmbxQualifyingpoints.BackColor = SystemColors.Window;
-                m_cmbxQualifyingpointsN.BackColor = SystemColors.Window;
-                m_cmbxQualfyingSpend.BackColor = SystemColors.Window;
+                m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Window;             
+                m_cmbxQualifyingpointsN.BackColor = SystemColors.Window;            
                 m_cmbxQualfyingSpendN.BackColor = SystemColors.Window;
                 m_lstboxTiers.BackColor = SystemColors.Control;
-                m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
-                m_cmbxQualfyingSpend.SelectedIndexChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChanged);
-                m_cmbxQualfyingSpendN.CheckedChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);
-                m_cmbxQualifyingpoints.SelectedIndexChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChanged);
+                m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);            
+                m_cmbxQualfyingSpendN.CheckedChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);              
                 m_cmbxQualifyingpointsN.CheckedChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
-             //   m_pctbxTierIcon.Click += new EventHandler(m_pctbxTierIcon_Click);
             }
 
            if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
@@ -188,34 +173,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Enabled = false;
                 m_txtbxPointStart.BackColor = SystemColors.Control;
                 m_txtbxPointStart.Text = string.Empty;
-            }
-
-
-            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
-            {
-                m_txtbxSpendStart.Enabled = true;
-                m_txtbxSpendStart.BackColor = SystemColors.Window;
-                // m_txtbxSpendStart.Text = "0.00";
-            }
-            else
-            {
-                m_txtbxSpendStart.Enabled = false;
-                m_txtbxSpendStart.BackColor = SystemColors.Control;
-                m_txtbxSpendStart.Text = string.Empty;
-            }
-
-            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
-            {
-                m_txtbxPointStart.Enabled = true;
-                m_txtbxPointStart.BackColor = SystemColors.Window;
-                //  m_txtbxPointStart.Text = "0.00";
-            }
-            else
-            {
-                m_txtbxPointStart.Enabled = false;
-                m_txtbxPointStart.BackColor = SystemColors.Control;
-                m_txtbxPointStart.Text = string.Empty;
-            }
+            }      
         }
 
         private void UpdateTierRuleDefaulTier()
@@ -278,17 +236,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void DisplayTier(Tier x)
         {
             m_txtbxTierName.Text = x.TierName;
-            m_tierColor.BackColor = Color.FromArgb(x.TierColor);
-            m_color = x.TierColor;
+            m_tierColor.BackColor = (x.TierColor != -1) ? Color.FromArgb(x.TierColor) : SystemColors.Control;
 
             if (x.QualifyingSpend != -1)
             {
-                m_cmbxQualfyingSpendN.Checked = false;
+                m_cmbxQualfyingSpendN.Checked = true;
                 FixedDecimalUserInput(x.QualifyingSpend, m_txtbxSpendStart);
             }
             else
             {
-                m_cmbxQualfyingSpendN.Checked = true;
+                m_cmbxQualfyingSpendN.Checked = false;
                 m_txtbxSpendStart.Text = string.Empty;
             }
 
@@ -303,28 +260,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty; ;
             }
 
-
-            if (x.QualifyingSpend != -1)
-            {
-                m_cmbxQualfyingSpend.SelectedIndex = 0;
-                FixedDecimalUserInput(x.QualifyingSpend, m_txtbxSpendStart);             
-            }
-            else
-            {
-                m_cmbxQualfyingSpend.SelectedIndex = 1;
-                m_txtbxSpendStart.Text = string.Empty;
-            }
-
-            if (x.QualifyingPoints != -1)
-            {
-                m_cmbxQualifyingpoints.SelectedIndex = 0;
-                FixedDecimalUserInput(x.QualifyingPoints, m_txtbxPointStart);
-            }
-            else
-            {
-                m_cmbxQualifyingpoints.SelectedIndex = 1;//NO
-                m_txtbxPointStart.Text = string.Empty; ;
-            }
+       
             FixedDecimalUserInput(x.AwardPointsMultiplier, m_txtbxAwardPointsMultiplier);
 
             if (x.TierIconId != 0)
@@ -336,6 +272,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 m_pctbxTierIcon.Image = null;
+                m_pctbxTierIcon.BackColor = SystemColors.Control;
                 m_pctbxTierIcon.Update();
             }
 
@@ -348,7 +285,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_errorProvider.SetError(m_txtbxSpendStart, string.Empty);
             m_errorProvider.SetError(m_txtbxPointStart, string.Empty);
             m_errorProvider.SetError(m_txtbxAwardPointsMultiplier, string.Empty);
-            m_errorProvider.SetError(m_cmbxQualfyingSpend, string.Empty);
             m_errorProvider.SetError(m_cmbxQualfyingSpendN, string.Empty);                       
 
             //Tab Page Tier Rule
@@ -434,8 +370,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 return true;
             }
         }
-
-      
+   
       // SELECT DEFAULT TIER IF NONE THEN SELECT THE LOWEST TIER
         private void SelectDefaultOrFirstRowTier()
         {
@@ -498,7 +433,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
     
         // SELECTED QUALIFYING SPEND
-
         private void m_cmbxQualfyingSpend_SelectedIndexChangedN(object sender, EventArgs e)
         {
             if (m_cmbxQualfyingSpendN.Checked == true)
@@ -506,7 +440,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
                 m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
-
             }
             else
             {
@@ -516,14 +449,13 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void m_cmbxQualfyingSpend_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_cmbxQualfyingSpendN_EnabledChanged(object sender, EventArgs e)
         {
-            if (m_cmbxQualfyingSpend.SelectedIndex == 0)
+            if (m_cmbxQualfyingSpendN.Checked == true)
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
                 m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
-
             }
             else
             {
@@ -534,7 +466,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
             
         // SELECTED QUALIFYING POINTS
-
         private void m_cmbxQualifyingpoints_SelectedIndexChangedN(object sender, EventArgs e)
         {
             if (m_cmbxQualifyingpointsN.Checked == true)
@@ -551,9 +482,9 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void m_cmbxQualifyingpoints_SelectedIndexChanged(object sender, EventArgs e)
+        private void m_cmbxQualifyingpointsN_EnabledChanged(object sender, EventArgs e)
         {
-            if (m_cmbxQualifyingpoints.SelectedIndex == 0)
+            if (m_cmbxQualifyingpointsN.Checked == true)
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
@@ -566,7 +497,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty;
             }
         }
-             
+
+               
         // EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
@@ -738,9 +670,40 @@ namespace GTI.Modules.PlayerCenter.UI
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-       
-        //COLOR FORM SHOW
-        private void m_lblTierColor_Click(object sender, EventArgs e)
+
+        //PREVENT NAVIGATING TO OTHER TAB PAG WHILE CREATING/UPDATING TIER OR TIER RULE
+        private void m_tbctrlPlayerLoyalty_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+
+            if (e.TabPageIndex == 0)
+            {
+                e.Cancel = true;
+            }
+            else
+                if (e.TabPageIndex == 1)
+                {
+                    e.Cancel = true;
+                }
+        }
+
+        private void m_tbctrlPlayerLoyalty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
+            if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
+        }
+
+        //SHOW UI FOR SELECTING ICON IMAGE
+        private void m_imgbtnTierIcon_Click(object sender, EventArgs e)
+        {
+            PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);
+            DialogResult result = DialogResult.OK;
+            result = iconTierUI.ShowDialog();
+            m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
+            m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
+        }
+
+        //SHOW COLOR UI
+        private void m_imgbtnTierColor_Click(object sender, EventArgs e)
         {
             ColorDialog frmColor = new ColorDialog { Color = m_tierColor.BackColor };
             if (frmColor.ShowDialog(this) == DialogResult.OK)
@@ -751,7 +714,7 @@ namespace GTI.Modules.PlayerCenter.UI
             frmColor.Dispose();
         }
 
-        //Qualifying period date
+        //VALIDATE Qualifying period date
         private void ValidateTierRuleQualifyingPeriodDate(object sender, CancelEventArgs e)
         {
             bool v = (m_datetimepickerQualifyingPeriodEnd.Value < m_datetimepickerQualifyingPeriodStart.Value);
@@ -762,7 +725,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
  
-        //Tier Name
+        //VALIDATE Tier Name
         private void m_txtbxTierName_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -802,7 +765,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        // Spend Start
+        // VALIDATE Spend Start
         private void m_txtbxSpendStart_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -860,67 +823,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_errorProvider.SetError(m_txtbxSpendStart, "Unknown error call Technician.");
                 return;
             }
-
-
-
-            //try
-            //{
-            //    if (m_cmbxQualfyingSpend.SelectedIndex == 0)//YES
-            //    {
-            //        if (m_txtbxSpendStart.Text == string.Empty)
-            //        {
-            //            e.Cancel = true;
-            //            m_errorProvider.SetError(m_txtbxSpendStart, "Please enter a Spend start.");
-            //            return;
-
-            //        }
-
-            //        decimal checkinput;
-            //        if (Decimal.TryParse(m_txtbxSpendStart.Text, out checkinput))//if its a decimal
-            //        {
-
-            //            bool itExists = false;
-            //            var newQualifyingSpend = decimal.Parse(m_txtbxSpendStart.Text);
-            //            if (m_lstboxTiers.SelectedIndex != -1)
-            //            {
-
-            //                if (m_tierSelected.QualifyingSpend != newQualifyingSpend)
-            //                {
-            //                    itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.QualifyingSpend.Equals(newQualifyingSpend));
-            //                }
-
-            //            }
-            //            else
-            //            {
-            //                itExists = m_tiers.Exists(l => l.QualifyingSpend.Equals(newQualifyingSpend));
-            //            }
-
-
-            //            if (itExists)
-            //            {
-            //                e.Cancel = true;
-            //                m_errorProvider.SetError(m_txtbxSpendStart, "Spend amount is being used by another Tier");
-            //                return;
-            //            }
-
-            //        }
-            //        else
-            //        {
-            //            e.Cancel = true;
-            //            m_errorProvider.SetError(m_txtbxSpendStart, "Not a valid decimal number.");
-            //            return;
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //    e.Cancel = true;
-            //    m_errorProvider.SetError(m_txtbxSpendStart, "Unknown error call Technician.");
-            //    return;
-            //}
         }
 
-       //Point Start
+       //VALIDATE Point Start
         private void m_txtbxPointStart_Validating(object sender, CancelEventArgs e)
         {
 
@@ -973,61 +878,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Cancel = true;
                 m_errorProvider.SetError(m_txtbxPointStart, "Unknown error call Technician.");
                 return;
-            }
-
-            //try
-            //{
-            //    if (m_cmbxQualifyingpoints.SelectedIndex == 0)//YES
-            //    {
-            //        if (m_txtbxPointStart.Text == string.Empty)
-            //        {
-            //            e.Cancel = true;
-            //            m_errorProvider.SetError(m_txtbxPointStart, "Please enter a point start.");
-            //            return;
-            //        }
-
-
-            //        decimal checkinput;
-            //        if (Decimal.TryParse(m_txtbxPointStart.Text, out checkinput))//if its a decimal
-            //        {
-
-            //            bool itExists = false;
-            //            var newQualifyingPoints = decimal.Parse(m_txtbxPointStart.Text);
-            //            if (m_lstboxTiers.SelectedIndex != -1)
-            //            {
-            //                if (m_tierSelected.QualifyingPoints != newQualifyingPoints)
-            //                {
-            //                    itExists = m_tiers.Where(p => p.TierID != m_tierSelected.TierID).ToList().Exists(l => l.QualifyingPoints.Equals(newQualifyingPoints));
-            //                }
-            //            }
-            //            else
-            //            {
-            //                itExists = m_tiers.Exists(l => l.QualifyingPoints.Equals(newQualifyingPoints));
-            //            }
-
-            //            if (itExists)
-            //            {
-            //                e.Cancel = true;
-            //                m_errorProvider.SetError(m_txtbxPointStart, "Point amount is being used by another Tier");
-            //                return;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            e.Cancel = true;
-            //            m_errorProvider.SetError(m_txtbxPointStart, "Not a valid decimal number.");
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //    e.Cancel = true;
-            //    m_errorProvider.SetError(m_txtbxPointStart, "Unknown error call Technician.");
-            //    return;
-            //}
+            }        
         }
 
-        // Award Points Multiplier
+        // VALIDATE Award Points Multiplier
         private void m_txtbxAwardPointsMultiplier_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -1057,16 +911,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        //Spend/Points Combobox
-        private void m_cmbxQualfyingSpend_Validating(object sender, CancelEventArgs e)
-        {
-            if (m_cmbxQualifyingpoints.SelectedIndex == 1 && m_cmbxQualfyingSpend.SelectedIndex == 1)
-            {
-                e.Cancel = true;
-                m_errorProvider.SetError(m_cmbxQualfyingSpend, "Need one selection spend or points");
-            }
-        }
-
+        //Validate Spend/Points Combobox      
         private void m_cmbxQualfyingSpendN_Validating(object sender, CancelEventArgs e)
         {
             if (m_cmbxQualifyingpointsN.Checked == false && m_cmbxQualfyingSpendN.Checked == false)
@@ -1076,8 +921,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
-
+        //Handles data input for points multiplier
         private void m_txtbxAwardPointsMultiplier_KeyPress(object sender, KeyPressEventArgs e)
         {
 
@@ -1100,48 +944,17 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        //PREVENT NAVIGATING TO OTHER TAB PAG WHILE CREATING/UPDATING TIER OR TIER RULE
-        private void m_tbctrlPlayerLoyalty_Selecting(object sender, TabControlCancelEventArgs e)
-        {
-  
-                if (e.TabPageIndex == 0)
-                {
-                    e.Cancel = true;
-                }
-                else
-                if (e.TabPageIndex == 1)
-                {
-                    e.Cancel = true;
-                }           
-        }
-
-        private void m_tbctrlPlayerLoyalty_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (m_lblTierRuleSavedSuccessNotification.Visible) m_lblTierRuleSavedSuccessNotification.Visible = false;
-            if (m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
-        }
+                     
         #endregion            
 
-        private void m_pctbxTierIcon_Click(object sender, EventArgs e)
-        {
-            PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);
-            DialogResult result = DialogResult.OK;
-            result = iconTierUI.ShowDialog();
-            m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
-            m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
-            //m_tierSelected.TierIconId = iconTierUI.TierIconId;
-    
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void label5_EnabledChanged(object sender, EventArgs e)
         {
 
         }
 
-        
+       
+       
 
       
-
-
     }   
 }

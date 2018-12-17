@@ -122,6 +122,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_pnlIconTier.Controls.Add(pic);
                     SetPlayerTierIcon.Msg(imageData);
                     m_lstbyteIconList.Add(imageData);
+
                 }
 
 
@@ -166,12 +167,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void imgbtnCancel_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
         private void m_imgbtnSelect_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -193,10 +195,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_imgbtnDelete_Click(object sender, EventArgs e)
         {
-            m_pnlIconTier.Controls.Remove(m_pctbxSelected);
-            //m_pnlIconTier.Controls.Add(pic);
-            //SetPlayerTierIcon.Msg(imageData);
-            //m_lstbyteIconList.Add(imageData);
+            m_pnlIconTier.Controls.Remove(m_pctbxSelected);       
         }
     }
 }

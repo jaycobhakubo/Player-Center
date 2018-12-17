@@ -497,8 +497,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxPointStart.Text = string.Empty;
             }
         }
-
-               
+              
         // EDIT SAVED TIER RULE
         private void m_btnEditSaveTierRule_Click(object sender, EventArgs e)
         {
@@ -698,8 +697,16 @@ namespace GTI.Modules.PlayerCenter.UI
             PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);
             DialogResult result = DialogResult.OK;
             result = iconTierUI.ShowDialog();
-            m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
-            m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
+
+            if (result == DialogResult.OK)
+            {
+                m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
+                m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
+            }
+            else
+            {
+
+            }
         }
 
         //SHOW COLOR UI

@@ -24,11 +24,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private Tier m_tierSelected;
         private List<TierIcon> m_tierIcon;
         private TierIcon m_icon;
-        //private Label m_lblTierColor = new Label();
-        //private Label m_lblTiericon = new Label();
-        //private ImageButton m_imgbtnTierColor = new ImageButton();
-        //private ImageButton m_imgbtnTierIcon = new ImageButton();
-
         #endregion
 
         #region CONSTRUCTOR
@@ -46,9 +41,14 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
-        #region METHOD
+        //public TierRule TierRule_p
+        //{
+        //    get { return m_tierRule; }
+        //    set { m_tierRule = value; }
+        //}
 
-       
+
+        #region METHOD      
 
        // CLEAR CONTROL FOR NEW TIER
         private void ClearTiersTab()
@@ -363,7 +363,18 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     else
                     {
-                        m_tierRule = NewTierRule;
+                       //
+                        //TierRule_p  = NewTierRule;
+                        //solA
+                        m_tierRule = new TierRule(NewTierRule);
+
+                        //solB         
+                        //m_tierRule.DefaultTierID = NewTierRule.DefaultTierID;
+                        //m_tierRule.DowngradeToDefault = NewTierRule.DowngradeToDefault;
+                        //m_tierRule.QualifyingEndDate = NewTierRule.QualifyingEndDate;
+                        //m_tierRule.QualifyingStartDate = NewTierRule.QualifyingStartDate;
+                        //m_tierRule.TierRulesID = NewTierRule.TierRulesID;
+
                         DisplayTierRule();
                     }
                 }

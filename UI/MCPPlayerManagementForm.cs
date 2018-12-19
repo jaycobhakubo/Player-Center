@@ -319,9 +319,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiers, m_parent.PlayerTierRule, m_parent.TierIcon);
-            playerLoyalty.Show(this);
-            //PlayerLoyaltyTierIcon iconTier = new PlayerLoyaltyTierIcon();
-            //iconTier.Show(this);
+            DialogResult result = DialogResult.OK;
+            result = playerLoyalty.ShowDialog();
+           // m_parent.PlayerTierRule = playerLoyalty.TierRule_p;   //m_parent.PlayerTierRule does not update automatically.
+            var kk1 = m_parent.PlayerTierRule; 
+            var kk = m_parent.PlayerTiers;
         }
 
         
@@ -390,9 +392,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.MagCardReader
                 );
         }
-
-   
-
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {

@@ -15,7 +15,7 @@ namespace GTI.Modules.PlayerCenter.Data
         protected byte[] mbyteResponsePayload = null;
         protected byte[] mbytResponse = null;
         private int mintReturnCode;
-        private List<byte[]> ImageData = null;
+        //private List<byte[]> ImageData = null;
 
 
         public GetPlayerTierIcon(int photoTypeId_)
@@ -55,10 +55,10 @@ namespace GTI.Modules.PlayerCenter.Data
             //set { mintReturnCode = value; }
         }
 
-        public List<byte[]> pImageData
-        {
-            get { return ImageData; }
-        }
+        //public List<byte[]> pImageData
+        //{
+        //    get { return ImageData; }
+        //}
 
         protected override void UnpackResponse()
         {
@@ -94,12 +94,10 @@ namespace GTI.Modules.PlayerCenter.Data
                 BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
 
                 try
-                {
-
-               
+                {              
                     responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
                     ushort _count = responseReader.ReadUInt16();
-                    ImageData = new List<byte[]>();
+                    //ImageData = new List<byte[]>();
                     for (ushort x = 0; x < _count; x++)
                     {
                         var data = new TierIcon();
@@ -116,6 +114,8 @@ namespace GTI.Modules.PlayerCenter.Data
                         {
                             data.ImgData = null;
                         }
+
+
                         m_tierIcon.Add(data);
                     }
                 }

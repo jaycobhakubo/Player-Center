@@ -22,8 +22,8 @@ namespace GTI.Modules.PlayerCenter.UI
         int m_heightIconDistance = 2;
         List<string> files = new List<string>();
         int maxHeight = -1;
-        private List<byte[]> m_lstbyteIconList = new List<byte[]>();
-        private List<TierIcon> m_tierIcon;
+        //private List<byte[]> m_lstbyteIconList = new List<byte[]>();
+        private List<TierIcon> m_lstTierIcon;
 
         #endregion
 
@@ -32,39 +32,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             DrawGradient = true;
-            m_tierIcon = tierIcon_;
+            m_lstTierIcon = tierIcon_;
             PopulateTierIcon();
         }
-        #endregion
 
-        #region POPULATE ICON     
+
         
-        private void PopulateTierIcon()
-        {         
-            foreach (TierIcon data_ in m_tierIcon)
-            {
-                MemoryStream mStream = new MemoryStream(data_.ImgData);
-                PictureBox pb = new PictureBox();
-                pb.Tag = data_.TierIconId;
-                Size _size = new Size(60, 60);
-                pb.Size = _size;
-                pb.Click += new EventHandler(pictureBox1_Click);
-                pb.Location = new Point(m_widthIconDistance, m_heightIconDistance);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Image = Image.FromStream(mStream);
-                maxHeight = Math.Max(pb.Height, maxHeight);
-                m_widthIconDistance += pb.Width + 10;
-                if (m_widthIconDistance > this.ClientSize.Width - 60)
-                {
-                    m_widthIconDistance = 10;
-                    m_heightIconDistance += maxHeight + 10;
-                }
-
-                m_pnlIconTier.Controls.Add(pb);
-               
-            }
-
-            if (m_lstbyteIconList.Count() > 20)
+        private void UpdateUIIconImageLocation()
+        {
+            if (m_lstTierIcon.Count > 20 /*m_lstbyteIconList.Count() > 20*/)
             {
                 Size _size = new Size(383, 301);
                 groupBox1.Size = _size;
@@ -80,6 +56,34 @@ namespace GTI.Modules.PlayerCenter.UI
                 _size = new Size(360, 282);
                 m_pnlIconTier.Size = _size;
             }
+        }
+
+
+        #endregion
+        #region POPULATE ICON     
+        
+        private void PopulateTierIcon()
+        {
+            foreach (TierIcon data_ in m_lstTierIcon)
+            {
+                PictureBox pb = new PictureBox();
+                pb.Tag = data_.TierIconId;
+                Size _size = new Size(60, 60);
+                pb.Size = _size;
+                pb.Click += new EventHandler(pictureBox1_Click);
+                pb.Location = new Point(m_widthIconDistance, m_heightIconDistance);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Image = data_.TierIconImage;
+                maxHeight = Math.Max(pb.Height, maxHeight);
+                m_widthIconDistance += pb.Width + 10;
+                if (m_widthIconDistance > this.ClientSize.Width - 60)
+                {
+                    m_widthIconDistance = 10;
+                    m_heightIconDistance += maxHeight + 10;
+                }
+                m_pnlIconTier.Controls.Add(pb);               
+            }
+            UpdateUIIconImageLocation();           
         }    
         #endregion
   
@@ -120,36 +124,16 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     m_pnlIconTier.Controls.Add(pic);
-                    SetPlayerTierIcon.Msg(imageData);
-                    m_lstbyteIconList.Add(imageData);
-
+                    m_lstTierIcon.Add(SetPlayerTierIcon.Msg(imageData));          
                 }
-
-
-                if (m_lstbyteIconList.Count() > 20)
-                {
-                    Size _size = new Size(383, 301);
-                    groupBox1.Size = _size;
-                    groupBox1.Location = new Point(5, 3);
-                    _size = new Size(377, 282);
-                    m_pnlIconTier.Size = _size;
-                }
-                else
-                {
-                    Size _size = new Size(366, 301);
-                    groupBox1.Size = _size;
-                    groupBox1.Location = new Point(15, 3);
-                    _size = new Size(360, 282);
-                    m_pnlIconTier.Size = _size;
-                }
-         
+               UpdateUIIconImageLocation();            
             }
         }
 
         #endregion
 
         PictureBox m_pctbxSelected = new PictureBox();
-        //PictureBox m_pctbxPreviousSelected = new PictureBox();
+        //PictureBox m_pctbxPreviousSelectd e= new PictureBox();
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {

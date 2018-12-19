@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GTI.Modules.Shared;
 using System.IO;
+using GTI.Modules.Shared.Business;
 
 
 namespace GTI.Modules.PlayerCenter.Data
@@ -12,20 +13,23 @@ namespace GTI.Modules.PlayerCenter.Data
     {
         private int m_photoTypeId = 0;
         private int m_photoLength = 0;
-        private byte[] m_imageData = null;
+        private TierIcon m_tierIcon; 
 
         public SetPlayerTierIcon(byte[] photo_)
         {
+            m_tierIcon = new TierIcon();
             m_id = 18160;
             m_photoTypeId = 13;
             if (photo_ != null)
             {
-                m_imageData = photo_;
-                m_photoLength = photo_.Length;
-            }            
+                m_tierIcon.ImgData = photo_;
+                m_photoLength = m_tierIcon.ImgData.Length;
+
+            } 
+           
         }
 
-        public static void Msg(byte[] photo_)
+        public static TierIcon Msg(byte[] photo_)
         {
             SetPlayerTierIcon msg = new SetPlayerTierIcon(photo_);
             try
@@ -36,6 +40,7 @@ namespace GTI.Modules.PlayerCenter.Data
             {
                 throw new Exception("SetPlayerTierIcon: " + ex.Message);
             }
+            return msg.m_tierIcon;
         }
 
         protected override void PackRequest()
@@ -46,7 +51,7 @@ namespace GTI.Modules.PlayerCenter.Data
             requestWriter.Write(m_photoLength);
             if (m_photoLength > 0)
             {
-                requestWriter.Write(m_imageData);
+                requestWriter.Write(m_tierIcon.ImgData);
             }
             m_requestPayload = requestStream.ToArray();
             requestWriter.Close();
@@ -56,6 +61,8 @@ namespace GTI.Modules.PlayerCenter.Data
 
         protected override void UnpackResponse()
         {
+
+
             try
             {
                 m_bytResponse = m_responsePayload;
@@ -71,13 +78,15 @@ namespace GTI.Modules.PlayerCenter.Data
                 if (m_intReturnCode != (int)GTIServerReturnCode.Success)
                     throw new ServerException("SetPlayerTierIcon.UnpackResponse()..Server Error Code: " + m_intReturnCode.ToString());
 
+              
+
                 MemoryStream responseStream = new MemoryStream(m_bytResponse);
                 BinaryReader responseReader = new BinaryReader(responseStream, Encoding.Unicode);
                 responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
-
+            
                 try
                 {
-
+                    m_tierIcon.TierIconId = responseReader.ReadInt32();
                 }
                 catch (EndOfStreamException e)
                 {

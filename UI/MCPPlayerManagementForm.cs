@@ -318,12 +318,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var originalTierIcon = m_parent.TierIcon;
             PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiers, m_parent.PlayerTierRule, m_parent.TierIcon);
             DialogResult result = DialogResult.OK;
             result = playerLoyalty.ShowDialog();
-           // m_parent.PlayerTierRule = playerLoyalty.TierRule_p;   //m_parent.PlayerTierRule does not update automatically.
             var kk1 = m_parent.PlayerTierRule; 
             var kk = m_parent.PlayerTiers;
+            var testTierIcon = m_parent.TierIcon;
         }
 
         

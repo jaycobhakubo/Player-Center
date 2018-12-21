@@ -251,8 +251,7 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            this.label5.EnabledChanged += new System.EventHandler(this.label5_EnabledChanged);
+            this.label5.Name = "label5";          
             this.label5.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpendN_Validating);
             // 
             // label4

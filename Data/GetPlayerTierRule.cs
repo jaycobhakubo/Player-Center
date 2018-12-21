@@ -62,7 +62,7 @@ namespace GTI.Modules.PlayerCenter.Data
 
                     m_tierRule.TierRulesID = responseReader.ReadInt32();//0
                     m_tierRule.DefaultTierID = responseReader.ReadInt32();//0
-                    m_tierRule.DowngradeToDefault = responseReader.ReadBoolean();//false ?
+                    m_tierRule.DowngradeToDefault = responseReader.ReadBoolean();//false ???ISSUE Not returning true value.
                     
                     stringLen = responseReader.ReadUInt16();
                     string tempDate = new string(responseReader.ReadChars(stringLen));//"" 1/1/0001 12:00:00AM

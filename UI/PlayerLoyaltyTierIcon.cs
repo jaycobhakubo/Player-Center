@@ -85,8 +85,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             UpdateUIIconImageLocation();           
         }    
-        #endregion
-  
+        #endregion  
+
         #region IMPORT IMAGE
         private void m_imgbtnImport_Click(object sender, EventArgs e)
         {
@@ -122,15 +122,19 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_widthIconDistance = 10;
                         m_heightIconDistance += maxHeight + 10;
                     }
-
+                    var tTierIcon = SetPlayerTierIcon.Msg(imageData);
+                    pic.Tag = tTierIcon.TierIconId;
+                    m_lstTierIcon.Add(tTierIcon);      
                     m_pnlIconTier.Controls.Add(pic);
-                    m_lstTierIcon.Add(SetPlayerTierIcon.Msg(imageData));          
+         
                 }
                UpdateUIIconImageLocation();            
             }
         }
 
-        #endregion
+        private TierIcon m_tierIcon;
+
+        #endregion   
 
         PictureBox m_pctbxSelected = new PictureBox();
         //PictureBox m_pctbxPreviousSelectd e= new PictureBox();
@@ -146,6 +150,8 @@ namespace GTI.Modules.PlayerCenter.UI
             pctbx.Width += 2;
             pctbx.Height +=  2;
             m_pctbxSelected = pctbx;
+
+            m_tierIcon = m_lstTierIcon.Single(l => l.TierIconId == (int)pctbx.Tag);
            
         }
 
@@ -162,10 +168,19 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        public int TierIconId
-        {
-            get { return (int)m_pctbxSelected.Tag; }
+        public TierIcon SelectedTierIcon 
+        { 
+            get {return m_tierIcon;}  
+            //set; 
         }
+
+        //public int TierIconId
+        //{
+        //    get 
+        //    {
+        //        return m_tierIconId;// return (int)m_pctbxSelected.Tag; 
+        //    }
+        //}
 
 
 

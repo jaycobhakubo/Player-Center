@@ -23,7 +23,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private List<Tier> m_tiers;
         private Tier m_tierSelected;
         private List<TierIcon> m_tierIcon;
-        private TierIcon m_icon;
+
         #endregion
 
         #region CONSTRUCTOR
@@ -150,6 +150,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (x.TierIconId != 0)
             {
+                var m_icon = new TierIcon();
                 m_icon = m_tierIcon.Single(l => l.TierIconId == x.TierIconId);
                 m_pctbxTierIcon.Tag = x.TierIconId;
                 m_pctbxTierIcon.Image = m_icon.TierIconImage;
@@ -160,7 +161,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_pctbxTierIcon.Image = null;
                 m_pctbxTierIcon.BackColor = SystemColors.Control;
                 m_pctbxTierIcon.Update();
-
             }
 
         }
@@ -636,9 +636,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
-
-
-       
     
         // SELECTED QUALIFYING SPEND
         private void m_cmbxQualfyingSpend_SelectedIndexChangedN(object sender, EventArgs e)
@@ -706,7 +703,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
         //PREVENT NAVIGATING TO OTHER TAB PAG WHILE CREATING/UPDATING TIER OR TIER RULE
         private void m_tbctrlPlayerLoyalty_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -737,14 +733,21 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (result == DialogResult.OK)
             {
-                m_pctbxTierIcon.Image = iconTierUI.SelectedImage;
-                m_pctbxTierIcon.Tag = (object)iconTierUI.TierIconId;
+                var selectedIcon =  iconTierUI.SelectedTierIcon;
+                m_pctbxTierIcon.Tag = selectedIcon.TierIconId;
+                m_pctbxTierIcon.Image = selectedIcon.TierIconImage;
             }
             else
             {
 
             }
         }
+
+        private void SetSelectedTierImage()
+        {
+
+        }
+
 
         //SHOW COLOR UI
         private void m_imgbtnTierColor_Click(object sender, EventArgs e)

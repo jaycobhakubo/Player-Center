@@ -206,11 +206,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_txtbxSpendStart.BackColor = SystemColors.Control;
                 m_txtbxPointStart.BackColor = SystemColors.Control;
                 m_txtbxAwardPointsMultiplier.BackColor = SystemColors.Control;             
-                m_lstboxTiers.BackColor = SystemColors.Window;               
+                m_lstboxTiers.BackColor = SystemColors.Window;                  
                 m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);              
                 m_cmbxQualfyingSpendN.CheckedChanged -= new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);           
                 m_cmbxQualifyingpointsN.CheckedChanged -= new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
-       
+                if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Control; }
+                if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Control; }
             }
             else
             {
@@ -224,6 +225,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);            
                 m_cmbxQualfyingSpendN.CheckedChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);              
                 m_cmbxQualifyingpointsN.CheckedChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
+                if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Window; }
+                if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Window; }
             }
 
            if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
@@ -513,7 +516,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void m_btnEditTier_Click(object sender, EventArgs e)
         {
             DisableEnableControlDefaultTier(false);
-            EnableDisableSpendPoints();
+            EnableDisableSpendPoints();                       
         }
 
         /* DELETE TIER*/
@@ -725,6 +728,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         //SHOW UI FOR SELECTING ICON IMAGE
+        //DefaultId of IconId = 0
         private void m_imgbtnTierIcon_Click(object sender, EventArgs e)
         {
             PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);
@@ -741,15 +745,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
 
             }
-        }
-
-        private void SetSelectedTierImage()
-        {
-
-        }
-
+        }    
 
         //SHOW COLOR UI
+        //Default Id of ColorId of IconId = -1
         private void m_imgbtnTierColor_Click(object sender, EventArgs e)
         {
             ColorDialog frmColor = new ColorDialog { Color = m_tierColor.BackColor };

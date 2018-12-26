@@ -322,9 +322,9 @@ namespace GTI.Modules.PlayerCenter.UI
             PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiers, m_parent.PlayerTierRule, m_parent.TierIcon);
             DialogResult result = DialogResult.OK;
             result = playerLoyalty.ShowDialog();
-            var kk1 = m_parent.PlayerTierRule; 
-            var kk = m_parent.PlayerTiers;
-            var testTierIcon = m_parent.TierIcon;
+            //var kk1 = m_parent.PlayerTierRule; 
+            //var kk = m_parent.PlayerTiers;
+            //var testTierIcon = m_parent.TierIcon;
         }
 
         

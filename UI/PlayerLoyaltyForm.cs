@@ -365,6 +365,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     t_tierRuleId = SetPlayerTierRule.Msg(NewTierRule);
                     //  UpdateTierList(NewTierRule);  
+                 //   if (NewTierRule.DefaultTierID != m_tierRule.DefaultTierID)
+                    var ff = m_tiers.Single(l => l.IsDefaultTier == true).TierID;
+                    var ss = m_tierRule.DefaultTierID;
+
                     if (NewTierRule.DefaultTierID != m_tierRule.DefaultTierID)
                     {
                         //set the previous tier with defaul tier to false
@@ -373,27 +377,16 @@ namespace GTI.Modules.PlayerCenter.UI
 
                         //set change default tier on the list
                         var tierNewDefaultTier  = m_tiers.Single(l => l.TierID == NewTierRule.DefaultTierID);
-                        tierNewDefaultTier.IsDefaultTier = true;
+                        tierNewDefaultTier.IsDefaultTier = true;                                                              
+                        m_tierRule.UpdateValueTierRule(NewTierRule);
 
-                        m_tierRule = new TierRule(NewTierRule);
                         m_lstboxTiers.SelectedValue = m_tierRule.DefaultTierID;
                         DisplayTierRule();
                         PopulateTierList();
                     }
                     else
                     {
-                       //
-                        //TierRule_p  = NewTierRule;
-                        //solA
-                        m_tierRule = new TierRule(NewTierRule);
-
-                        //solB         
-                        //m_tierRule.DefaultTierID = NewTierRule.DefaultTierID;
-                        //m_tierRule.DowngradeToDefault = NewTierRule.DowngradeToDefault;
-                        //m_tierRule.QualifyingEndDate = NewTierRule.QualifyingEndDate;
-                        //m_tierRule.QualifyingStartDate = NewTierRule.QualifyingStartDate;
-                        //m_tierRule.TierRulesID = NewTierRule.TierRulesID;
-
+                        m_tierRule.UpdateValueTierRule(NewTierRule);
                         DisplayTierRule();
                     }
                 }

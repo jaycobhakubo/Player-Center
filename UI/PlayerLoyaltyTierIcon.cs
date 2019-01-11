@@ -33,7 +33,7 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             DrawGradient = true;
             m_lstTierIcon = tierIcon_;
-            PopulateTierIcon();
+            PopulateTierIcon();       
         }
 
 
@@ -81,6 +81,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_widthIconDistance = 10;
                     m_heightIconDistance += maxHeight + 10;
                 }
+
                 m_pnlIconTier.Controls.Add(pb);               
             }
             UpdateUIIconImageLocation();           

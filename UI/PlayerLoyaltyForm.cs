@@ -313,7 +313,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             ClearUserNotification();
 
-            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
             {
                 return false;
             }
@@ -730,9 +730,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (result == DialogResult.OK)
             {
-                var selectedIcon =  iconTierUI.SelectedTierIcon;
-                m_pctbxTierIcon.Tag = selectedIcon.TierIconId;
-                m_pctbxTierIcon.Image = selectedIcon.TierIconImage;
+                if (iconTierUI.SelectedTierIcon != null)
+                {
+                    var selectedIcon = iconTierUI.SelectedTierIcon;
+                    m_pctbxTierIcon.Tag = selectedIcon.TierIconId;
+                    m_pctbxTierIcon.Image = selectedIcon.TierIconImage;
+                }
             }
             else
             {

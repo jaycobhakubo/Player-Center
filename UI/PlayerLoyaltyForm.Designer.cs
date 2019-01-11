@@ -40,6 +40,7 @@
             this.m_btnCancelTier = new GTI.Controls.ImageButton();
             this.m_btnSaveTier = new GTI.Controls.ImageButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@
             this.m_imgbtnTierIcon = new GTI.Controls.ImageButton();
             this.m_imgbtnTierColor = new GTI.Controls.ImageButton();
             this.label3 = new System.Windows.Forms.Label();
-            this.m_pctbxTierIcon = new System.Windows.Forms.PictureBox();
             this.m_tierColor = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.m_lblTierSavedSuccessNotification = new System.Windows.Forms.Label();
@@ -89,9 +89,9 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).BeginInit();
             this.m_tbctrlPlayerLoyalty.SuspendLayout();
             this.m_tabPage_TierRule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -231,7 +231,6 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.m_imgbtnTierIcon);
             this.groupBox3.Controls.Add(this.m_imgbtnTierColor);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.m_tierColor);
@@ -242,16 +241,25 @@
             this.groupBox3.Controls.Add(this.labelTierName);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.m_txtbxTierName);
+            this.groupBox3.Controls.Add(this.m_imgbtnTierIcon);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
+            // m_pctbxTierIcon
+            // 
+            this.m_pctbxTierIcon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
+            this.m_pctbxTierIcon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
+            this.m_pctbxTierIcon.TabStop = false;
+            // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";          
+            this.label5.Name = "label5";
             this.label5.Validating += new System.ComponentModel.CancelEventHandler(this.m_cmbxQualfyingSpendN_Validating);
             // 
             // label4
@@ -348,14 +356,6 @@
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
-            // m_pctbxTierIcon
-            // 
-            this.m_pctbxTierIcon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            resources.ApplyResources(this.m_pctbxTierIcon, "m_pctbxTierIcon");
-            this.m_pctbxTierIcon.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.m_pctbxTierIcon.Name = "m_pctbxTierIcon";
-            this.m_pctbxTierIcon.TabStop = false;
             // 
             // m_tierColor
             // 
@@ -609,11 +609,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.m_pctbxTierIcon)).EndInit();
             this.m_tbctrlPlayerLoyalty.ResumeLayout(false);
             this.m_tabPage_TierRule.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);

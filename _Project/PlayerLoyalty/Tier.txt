@@ -1,0 +1,86 @@
+﻿@@ -2,6 +2,8 @@
+ using System.Collections.Generic;
+ using System.Linq;
+ using System.Text;
++using System.Drawing;
++using System.IO;
+ 
+ namespace GTI.Modules.Shared.Business
+ {
+@@ -12,6 +14,7 @@
+         private int m_tierId;
+         private string m_tierName;
+         private bool m_isDefaultTier;
++  
+ 
+         public override bool Equals(object obj)
+         {
+@@ -27,7 +30,8 @@
+                 QualifyingSpend != other.QualifyingSpend ||
+                 QualifyingPoints != other.QualifyingPoints ||
+                 AwardPointsMultiplier != other.AwardPointsMultiplier ||
+-                IsDelete != other.IsDelete
++                IsDelete != other.IsDelete ||
++                TierIconId != other.TierIconId
+                 )
+             {
+ 
+@@ -65,6 +69,7 @@
+         public decimal QualifyingPoints { get; set; } //Same as AmntSpend  Number of Points 
+         public decimal AwardPointsMultiplier { get; set; } //nvarchar(Points AwardPointsMultiplier Len)) 
+         public bool IsDelete { get; set; }
++        public int TierIconId { get; set; }
+         public bool IsDefaultTier 
+         { 
+             get 
+@@ -76,6 +81,8 @@
+                 m_isDefaultTier = value;
+             } 
+         }
++
++       
+     }
+ 
+     public class TierRule
+@@ -104,5 +111,41 @@
+             }
+             return true;
+         }
++
++        public void UpdateValueTierRule(TierRule newTierRule)
++        {
++
++        }
++    }
++
++    public class TierIcon
++    {
++
++        private byte[] m_imgData; 
++
++
++        public int TierIconId { get; set; }         
++        
++        public byte[] ImgData 
++        {
++            get
++            {
++                return m_imgData;
++            }
++            set 
++            {
++                m_imgData = value;
++            }
++        }
++       
++
++        public Image TierIconImage
++        {
++            get
++            {
++                MemoryStream mStream = new MemoryStream(m_imgData);
++                return Image.FromStream(mStream);
++            }
++        }
+     }
+ }

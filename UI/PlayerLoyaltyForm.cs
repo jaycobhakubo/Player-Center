@@ -113,7 +113,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lstboxTiers.Items.Clear();
             m_lstboxTiers.ValueMember = "TierID";
             m_lstboxTiers.DisplayMember = "TierName";
-            m_lstboxTiers.DataSource = m_tiers;//Will fire selected index = 0      
+            m_lstboxTiers.DataSource = m_tiers.OrderByDescending(l => l.IsDefaultTier).ThenBy(l => l.TierName).ToList();//Will fire selected index = 0      
             m_lstboxTiers.Update();
         }
 

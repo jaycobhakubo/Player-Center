@@ -36,7 +36,6 @@ namespace GTI.Modules.PlayerCenter.Data
             {
                 throw new Exception("GetPlayerTierData: " + ex.Message);
             }
-
             return msg.m_tiers;
         }
 
@@ -73,7 +72,6 @@ namespace GTI.Modules.PlayerCenter.Data
                 //let us try one data for now
                 responseReader.BaseStream.Seek(sizeof(int), SeekOrigin.Begin);
                 ushort TierCount = responseReader.ReadUInt16();
-
 
                 for (ushort x = 0; x < TierCount; x++)
                 {
@@ -115,10 +113,8 @@ namespace GTI.Modules.PlayerCenter.Data
                     {
                         code.IsDefaultTier = false; //code.TierName = new string(responseReader.ReadChars(stringLen));
                     }
-
                     m_tiers.Add(code);
                 }
-
             }
             catch (EndOfStreamException e)
             {

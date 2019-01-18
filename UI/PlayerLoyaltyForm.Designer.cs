@@ -51,7 +51,6 @@
             this.m_cmbxQualfyingSpendN = new System.Windows.Forms.CheckBox();
             this.labelSpendStart = new System.Windows.Forms.Label();
             this.m_txtbxSpendStart = new System.Windows.Forms.TextBox();
-            this.m_imgbtnTierIcon = new GTI.Controls.ImageButton();
             this.m_imgbtnTierColor = new GTI.Controls.ImageButton();
             this.label3 = new System.Windows.Forms.Label();
             this.m_tierColor = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.labelTierName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.m_txtbxTierName = new System.Windows.Forms.TextBox();
+            this.m_imgbtnTierIcon = new GTI.Controls.ImageButton();
             this.m_tbctrlPlayerLoyalty = new System.Windows.Forms.TabControl();
             this.m_tabPage_TierRule = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -332,16 +332,6 @@
             this.m_txtbxSpendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxAwardPointsMultiplier_KeyPress);
             this.m_txtbxSpendStart.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxSpendStart_Validating);
             // 
-            // m_imgbtnTierIcon
-            // 
-            this.m_imgbtnTierIcon.FocusColor = System.Drawing.Color.Black;
-            this.m_imgbtnTierIcon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.m_imgbtnTierIcon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.m_imgbtnTierIcon, "m_imgbtnTierIcon");
-            this.m_imgbtnTierIcon.Name = "m_imgbtnTierIcon";
-            this.m_imgbtnTierIcon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.m_imgbtnTierIcon.Click += new System.EventHandler(this.m_imgbtnTierIcon_Click);
-            // 
             // m_imgbtnTierColor
             // 
             this.m_imgbtnTierColor.FocusColor = System.Drawing.Color.Black;
@@ -406,6 +396,16 @@
             resources.ApplyResources(this.m_txtbxTierName, "m_txtbxTierName");
             this.m_txtbxTierName.Name = "m_txtbxTierName";
             this.m_txtbxTierName.Validating += new System.ComponentModel.CancelEventHandler(this.m_txtbxTierName_Validating);
+            // 
+            // m_imgbtnTierIcon
+            // 
+            this.m_imgbtnTierIcon.FocusColor = System.Drawing.Color.Black;
+            this.m_imgbtnTierIcon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_imgbtnTierIcon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.m_imgbtnTierIcon, "m_imgbtnTierIcon");
+            this.m_imgbtnTierIcon.Name = "m_imgbtnTierIcon";
+            this.m_imgbtnTierIcon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_imgbtnTierIcon.Click += new System.EventHandler(this.m_imgbtnTierIcon_Click);
             // 
             // m_tbctrlPlayerLoyalty
             // 

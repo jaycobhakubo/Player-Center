@@ -1,7 +1,7 @@
 ﻿USE [Daily]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 12/13/2018 14:38:56 ******/
+/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 01/21/2019 06:17:17 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[spSetConfigPhoto]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[spSetConfigPhoto]
 GO
@@ -9,12 +9,13 @@ GO
 USE [Daily]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 12/13/2018 14:38:56 ******/
+/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 01/21/2019 06:17:17 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE procedure [dbo].[spSetConfigPhoto]
 	@PhotoTypeID int,
@@ -29,7 +30,7 @@ SET NOCOUNT ON
 Declare @ConfigPhotoID int
 
 if exists (select 1 from ConfigPhoto (nolock) where (cpOperatorID = @OperatorID
-			and cpPhotoTypeID = @PhotoTypeID)and cpPhotoTypeID != 13 )
+			and cpPhotoTypeID = @PhotoTypeID)/*and cpPhotoTypeID != 13 */)
 begin
 	update ConfigPhoto
 	set cpPhotoBLOB = @PhotoBLOB
@@ -60,6 +61,38 @@ end
 select ConfigPhotoID = @ConfigPhotoID
 
 SET NOCOUNT OFF
+
+--select * from ConfigPhoto
+--select * from PhotoType
+
+--delete from ConfigPhoto
+--where cpPhotoTypeID = 13 --cpConfigPhotoID = 9
+
+--exec spSetConfigPhoto 13, 1
+
+--insert into ConfigPhoto(cpConfigPhotoID, cpOperatorID, cpPhotoTypeID, cpPhotoBLOB)
+--values (10, 1, 13, null)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

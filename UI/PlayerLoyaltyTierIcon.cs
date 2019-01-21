@@ -195,7 +195,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_imgbtnDelete_Click(object sender, EventArgs e)
         {
-            m_pnlIconTier.Controls.Remove(m_pctbxSelected);       
+            //get the tiericon base on tag
+            var testxy = m_lstTierIcon.Single(l => l.TierIconId == (int)m_pctbxSelected.Tag);
+             var tTierIcon = SetPlayerTierIcon.Msg(testxy.ImgData);
+            m_pnlIconTier.Controls.Remove(m_pctbxSelected);
+   
         }
     }
 }

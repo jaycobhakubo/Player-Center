@@ -1,7 +1,7 @@
 USE [Daily]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spPlayerClub_GetTierRule]    Script Date: 06/04/2014 09:35:54 ******/
+/****** Object:  StoredProcedure [dbo].[spPlayerClub_GetTierRule]    Script Date: 01/21/2019 04:36:44 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[spPlayerClub_GetTierRule]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [dbo].[spPlayerClub_GetTierRule]
 GO
@@ -9,12 +9,13 @@ GO
 USE [Daily]
 GO
 
-/****** Object:  StoredProcedure [dbo].[spPlayerClub_GetTierRule]    Script Date: 06/04/2014 09:35:54 ******/
+/****** Object:  StoredProcedure [dbo].[spPlayerClub_GetTierRule]    Script Date: 01/21/2019 04:36:44 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 CREATE procedure [dbo].[spPlayerClub_GetTierRule]
 	@operatorId int
@@ -36,6 +37,7 @@ from PlayerClubTierRules
 where OperatorId = @operatorId
 
 SET NOCOUNT OFF
+
 GO
 
 

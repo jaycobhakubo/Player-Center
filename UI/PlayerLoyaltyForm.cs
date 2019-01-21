@@ -72,10 +72,11 @@ namespace GTI.Modules.PlayerCenter.UI
             m_txtbxPointStart.Text = "";
             m_txtbxAwardPointsMultiplier.Text = "1.00";
             m_tierColor.BackColor = SystemColors.ButtonHighlight;
-            m_pctbxTierIcon.Image = null;
-            m_pctbxTierIcon.BackColor = SystemColors.ButtonHighlight;
-            m_pctbxTierIcon.Update();
-            m_pctbxTierIcon.Tag = (object)0;
+            m_pctbxTierIcon2.BackgroundImage = null;
+           // m_pctbxTierIcon2.BackColor = SystemColors.ButtonHighlight;
+
+            m_pctbxTierIcon2.Update();
+            m_pctbxTierIcon2.Tag = (object)0;
         }
 
         //UPDATE UI TO SELECT THE DEFAULT TIER
@@ -170,15 +171,15 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var m_icon = new TierIcon();
                 m_icon = m_tierIcon.Single(l => l.TierIconId == x.TierIconId);
-                m_pctbxTierIcon.Tag = x.TierIconId;
-                m_pctbxTierIcon.Image = m_icon.TierIconImage;
+                m_pctbxTierIcon2.Tag = x.TierIconId;
+                m_pctbxTierIcon2.BackgroundImage = m_icon.TierIconImage;
             }
             else
             {
-                m_pctbxTierIcon.Tag = 0;
-                m_pctbxTierIcon.Image = null;
-                m_pctbxTierIcon.BackColor = SystemColors.Control;
-                m_pctbxTierIcon.Update();
+                m_pctbxTierIcon2.Tag = 0;
+                m_pctbxTierIcon2.BackgroundImage = null;
+             //   m_pctbxTierIcon2.BackColor = SystemColors.Control;
+                m_pctbxTierIcon2.Update();
             }
 
         }
@@ -231,12 +232,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (m_tierSelected != null)
                 {
                     if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Control; }
-                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Control; }
+                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon2.BackColor = SystemColors.Control; }
                 }
                 else
                 {
                     m_tierColor.BackColor = SystemColors.Control;
-                    m_pctbxTierIcon.BackColor = SystemColors.Control;
+                  //  m_pctbxTierIcon2.BackColor = SystemColors.Control;
                 }
             }
             else
@@ -254,12 +255,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (m_tierSelected != null)
                 {
                     if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Window; }
-                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Window; }
+                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon2.BackColor = SystemColors.Window; }
                 }
                 else
                 {
                     m_tierColor.BackColor = SystemColors.Window;
-                    m_pctbxTierIcon.BackColor = SystemColors.Window;
+                   // m_pctbxTierIcon2.BackColor = SystemColors.Window;
                 }
             }
 
@@ -590,7 +591,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
+                t_tierNew.TierIconId = (int)m_pctbxTierIcon2.Tag;
                 t_tierNew.IsDefaultTier = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.IsDefaultTier : false;
 
 
@@ -646,7 +647,7 @@ namespace GTI.Modules.PlayerCenter.UI
                  m_txtbxSpendStart.BackColor = SystemColors.Control;
                  m_txtbxPointStart.BackColor = SystemColors.Control;
                  m_tierColor.BackColor = SystemColors.Control;
-                 m_pctbxTierIcon.BackColor = SystemColors.Control;
+                // m_pctbxTierIcon2.BackColor = SystemColors.Control;
                  return;
              }
 
@@ -666,7 +667,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.AwardPointsMultiplier = (m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
-                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
+                t_tierNew.TierIconId = (int)m_pctbxTierIcon2.Tag;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
 
                 if (m_tierSelected.Equals(t_tierNew))
@@ -707,7 +708,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxSpendStart.Text = "0.00";
+                }
             }
             else
             {
@@ -723,7 +731,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxSpendStart.Text = "0.00";
+                }
             }
             else
             {
@@ -740,7 +755,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxPointStart.Text = "0.00";
+                }
             }
             else
             {
@@ -756,7 +778,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxPointStart.Text = "0.00";
+                }
             }
             else
             {
@@ -800,8 +829,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (iconTierUI.SelectedTierIcon != null)
                 {
                     var selectedIcon = iconTierUI.SelectedTierIcon;
-                    m_pctbxTierIcon.Tag = selectedIcon.TierIconId;
-                    m_pctbxTierIcon.Image = selectedIcon.TierIconImage;
+                    m_pctbxTierIcon2.Tag = selectedIcon.TierIconId;
+                    m_pctbxTierIcon2.BackgroundImage = selectedIcon.TierIconImage;
                 }
             }
             else

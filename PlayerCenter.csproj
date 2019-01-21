@@ -478,6 +478,13 @@
     <None Include="Res\TouchBlueButtonUp.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bronze-image_orig.png" />
+    <None Include="Resources\NoBackgroundTest.jpg" />
+    <None Include="Resources\MyCapSuleLOL.png" />
+    <None Include="Resources\MyCapSuleLOL1.png" />
+    <None Include="Resources\ButtonKeyBoard.png" />
+    <None Include="Resources\NoBackgroundTest1.jpg" />
+    <None Include="Resources\NoBackgroundTest2.jpg" />
     <Content Include="_Project\PlayerLoyalty\Need to find a solution.txt" />
     <Content Include="_Project\PlayerLoyalty\Sql__\Data\AuditTypes.sql" />
     <Content Include="_Project\PlayerLoyalty\Sql__\Data\ModuleFeatures.sql" />

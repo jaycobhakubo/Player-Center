@@ -396,6 +396,39 @@
   <data name="&gt;&gt;m_btnSaveTier.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="groupBox3.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="m_pctbxTierIcon2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="m_pctbxTierIcon2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="m_pctbxTierIcon2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_pctbxTierIcon2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 44</value>
+  </data>
+  <data name="m_pctbxTierIcon2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 36</value>
+  </data>
+  <data name="m_pctbxTierIcon2.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon2.Name" xml:space="preserve">
+    <value>m_pctbxTierIcon2</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon2.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="labelTierName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -433,39 +466,6 @@
     <value>groupBox6</value>
   </data>
   <data name="&gt;&gt;labelTierName.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_pctbxTierIcon.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="m_pctbxTierIcon.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_pctbxTierIcon.Location" type="System.Drawing.Point, System.Drawing">
-    <value>393, 46</value>
-  </data>
-  <data name="m_pctbxTierIcon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="m_pctbxTierIcon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 29</value>
-  </data>
-  <data name="m_pctbxTierIcon.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="m_pctbxTierIcon.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;m_pctbxTierIcon.Name" xml:space="preserve">
-    <value>m_pctbxTierIcon</value>
-  </data>
-  <data name="&gt;&gt;m_pctbxTierIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_pctbxTierIcon.Parent" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;m_pctbxTierIcon.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="m_txtbxTierName.Font" type="System.Drawing.Font, System.Drawing">
@@ -1097,7 +1097,7 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_txtbxAwardPointsMultiplier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>373, 419</value>
+    <value>366, 419</value>
   </data>
   <data name="m_txtbxAwardPointsMultiplier.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>

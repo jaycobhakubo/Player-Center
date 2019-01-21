@@ -245,6 +245,26 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bronze_image_orig {
+            get {
+                object obj = ResourceManager.GetObject("bronze-image_orig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ButtonKeyBoard {
+            get {
+                object obj = ResourceManager.GetObject("ButtonKeyBoard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to record the attendance of the player.
         ///
         ///Reason: {0}.
@@ -1039,11 +1059,61 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MyCapSuleLOL {
+            get {
+                object obj = ResourceManager.GetObject("MyCapSuleLOL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MyCapSuleLOL1 {
+            get {
+                object obj = ResourceManager.GetObject("MyCapSuleLOL1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         internal static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoBackgroundTest {
+            get {
+                object obj = ResourceManager.GetObject("NoBackgroundTest", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoBackgroundTest1 {
+            get {
+                object obj = ResourceManager.GetObject("NoBackgroundTest1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NoBackgroundTest2 {
+            get {
+                object obj = ResourceManager.GetObject("NoBackgroundTest2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

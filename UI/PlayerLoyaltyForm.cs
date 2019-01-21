@@ -34,20 +34,34 @@ namespace GTI.Modules.PlayerCenter.UI
             m_tierRule = tierRule_;
             m_tierIcon = tierIcon_;
             DisplayTierRule();
-            //m_datetimepickerQualifyingPeriodStart.Format = DateTimePickerFormat.Custom;
-            //m_datetimepickerQualifyingPeriodStart.CustomFormat = "MMMM d";
-            //m_datetimepickerQualifyingPeriodEnd.Format = DateTimePickerFormat.Custom;
-            //m_datetimepickerQualifyingPeriodEnd.CustomFormat = "MMMM d";
+            m_datetimepickerQualifyingPeriodStart.Format = DateTimePickerFormat.Custom;
+            m_datetimepickerQualifyingPeriodStart.CustomFormat = "MMMM d";
+            m_datetimepickerQualifyingPeriodEnd.Format = DateTimePickerFormat.Custom;
+            m_datetimepickerQualifyingPeriodEnd.CustomFormat = "MMMM d";
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
             DisableEnableControlDefaultTier(true);
+            HandledNoTierItem();
+           
         }
         #endregion
 
         #region METHOD
 
         #region DATA TO UI CHANGE
+
+        private void HandledNoTierItem()
+        {
+            if (m_tierSelected == null)
+            {
+                m_btnEditTier.Enabled = false;
+                m_btnDeleteTier.Enabled = false;
+
+              
+            }
+        }
+
         // CLEAR CONTROL FOR NEW TIER
         private void ClearTiersTab()
         {
@@ -214,8 +228,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting -= new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpendN.CheckedChanged -= new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);
                 m_cmbxQualifyingpointsN.CheckedChanged -= new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
-                if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Control; }
-                if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Control; }
+                if (m_tierSelected != null)
+                {
+                    if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Control; }
+                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Control; }
+                }
+                else
+                {
+                    m_tierColor.BackColor = SystemColors.Control;
+                    m_pctbxTierIcon.BackColor = SystemColors.Control;
+                }
             }
             else
             {
@@ -229,8 +251,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_tbctrlPlayerLoyalty.Selecting += new TabControlCancelEventHandler(m_tbctrlPlayerLoyalty_Selecting);
                 m_cmbxQualfyingSpendN.CheckedChanged += new EventHandler(m_cmbxQualfyingSpend_SelectedIndexChangedN);
                 m_cmbxQualifyingpointsN.CheckedChanged += new EventHandler(m_cmbxQualifyingpoints_SelectedIndexChangedN);
-                if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Window; }
-                if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Window; }
+                if (m_tierSelected != null)
+                {
+                    if (m_tierSelected.TierColor == -1) { m_tierColor.BackColor = SystemColors.Window; }
+                    if (m_tierSelected.TierIconId == 0) { m_pctbxTierIcon.BackColor = SystemColors.Window; }
+                }
+                else
+                {
+                    m_tierColor.BackColor = SystemColors.Window;
+                    m_pctbxTierIcon.BackColor = SystemColors.Window;
+                }
             }
 
             if (m_lblTierSavedSuccessNotification.Visible == true) m_lblTierSavedSuccessNotification.Visible = false;
@@ -506,7 +536,13 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
             m_lstboxTiers.SelectedIndex = -1;
             DisableEnableControlDefaultTier(false);
-            m_tierSelected = new Tier();
+            //m_tierSelected = new Tier();
+            m_txtbxSpendStart.Enabled = false;
+            m_txtbxPointStart.Enabled = false;
+            m_txtbxSpendStart.BackColor = SystemColors.Control;
+            m_txtbxPointStart.BackColor = SystemColors.Control;
+
+
         }
 
         // EDIT TIER
@@ -598,8 +634,24 @@ namespace GTI.Modules.PlayerCenter.UI
         // CANCEL TIER
         private void m_btnCancelTier_Click(object sender, EventArgs e)
         {
-            DisableEnableControlDefaultTier(true);
             ClearUserNotification();
+             DisableEnableControlDefaultTier(true);
+
+             if (m_tierSelected == null)
+             {
+                 ClearTiersTab();
+                 HandledNoTierItem();
+                 m_txtbxSpendStart.Enabled = false;
+                 m_txtbxPointStart.Enabled = false;
+                 m_txtbxSpendStart.BackColor = SystemColors.Control;
+                 m_txtbxPointStart.BackColor = SystemColors.Control;
+                 m_tierColor.BackColor = SystemColors.Control;
+                 m_pctbxTierIcon.BackColor = SystemColors.Control;
+                 return;
+             }
+
+             
+  
             if (m_tierSelected.TierID == 0)
             {
                 SelectDefaultOrFirstRowTier();
@@ -623,7 +675,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    DisplayTier(m_tierSelected);
+                    //if (m_tierSelected != null)
+                    //{
+                        DisplayTier(m_tierSelected);
+                    //}
+                    //else
+                    //{
+                    //    ClearTiersTab();
+                    //    m_txtbxSpendStart.Enabled = false;
+                    //    m_txtbxPointStart.Enabled = false;
+                    //    m_txtbxSpendStart.BackColor = SystemColors.Control;
+                    //    m_txtbxPointStart.BackColor = SystemColors.Control;
+                    //}
                 }
             }
         }

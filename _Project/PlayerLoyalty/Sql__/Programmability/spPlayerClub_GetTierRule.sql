@@ -29,7 +29,7 @@ SET NOCOUNT ON
 select PlayerClubTierRuleId
     , OperatorId
     , DefaultTierId
-    , DowngradeToDefault
+    , CONVERT(int, DowngradeToDefault) DowngradeToDefault
     , CONVERT(nvarchar(24),StartDate,101) as StartDate
     , CONVERT(nvarchar(24),EndDate,101) as EndDate
 from PlayerClubTierRules

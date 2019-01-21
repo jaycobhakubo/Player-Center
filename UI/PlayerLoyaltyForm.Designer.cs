@@ -83,6 +83,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.m_tabPageTier = new System.Windows.Forms.TabPage();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -100,6 +101,7 @@
             this.groupBox1.SuspendLayout();
             this.m_tabPageTier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -226,22 +228,15 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.m_pctbxTierIcon);
+            this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
-            this.groupBox3.Controls.Add(this.m_imgbtnTierColor);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.m_tierColor);
-            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.m_lblTierSavedSuccessNotification);
             this.groupBox3.Controls.Add(this.labelAwardPoints);
             this.groupBox3.Controls.Add(this.m_txtbxAwardPointsMultiplier);
-            this.groupBox3.Controls.Add(this.labelTierName);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.m_txtbxTierName);
-            this.groupBox3.Controls.Add(this.m_imgbtnTierIcon);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
@@ -353,6 +348,7 @@
             this.m_tierColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.m_tierColor, "m_tierColor");
             this.m_tierColor.Name = "m_tierColor";
+            //this.m_tierColor.Click += new System.EventHandler(this.m_tierColor_Click);
             // 
             // label1
             // 
@@ -380,8 +376,8 @@
             // 
             // labelTierName
             // 
-            this.labelTierName.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.labelTierName, "labelTierName");
+            this.labelTierName.BackColor = System.Drawing.Color.Transparent;
             this.labelTierName.Name = "labelTierName";
             // 
             // label2
@@ -589,6 +585,20 @@
             // 
             this.m_errorProvider.ContainerControl = this;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.labelTierName);
+            this.groupBox6.Controls.Add(this.m_pctbxTierIcon);
+            this.groupBox6.Controls.Add(this.m_txtbxTierName);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.m_tierColor);
+            this.groupBox6.Controls.Add(this.m_imgbtnTierColor);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.m_imgbtnTierIcon);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
             // PlayerLoyaltyForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -624,6 +634,8 @@
             this.groupBox1.PerformLayout();
             this.m_tabPageTier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -683,6 +695,7 @@
         private System.Windows.Forms.CheckBox m_cmbxQualfyingSpendN;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox6;
 
 
 

@@ -34,6 +34,10 @@ namespace GTI.Modules.PlayerCenter.UI
             m_tierRule = tierRule_;
             m_tierIcon = tierIcon_;
             DisplayTierRule();
+            //m_datetimepickerQualifyingPeriodStart.Format = DateTimePickerFormat.Custom;
+            //m_datetimepickerQualifyingPeriodStart.CustomFormat = "MMMM d";
+            //m_datetimepickerQualifyingPeriodEnd.Format = DateTimePickerFormat.Custom;
+            //m_datetimepickerQualifyingPeriodEnd.CustomFormat = "MMMM d";
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);

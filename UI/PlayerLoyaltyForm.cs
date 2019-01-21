@@ -707,7 +707,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxSpendStart.Text = "0.00";
+                }
             }
             else
             {
@@ -723,7 +730,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxSpendStart.Enabled = true;
                 m_txtbxSpendStart.BackColor = SystemColors.Window;
-                m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxSpendStart.Text = (m_tierSelected.QualifyingSpend != -1) ? m_tierSelected.QualifyingSpend.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxSpendStart.Text = "0.00";
+                }
             }
             else
             {
@@ -740,7 +754,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxPointStart.Text = "0.00";
+                }
             }
             else
             {
@@ -756,7 +777,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_txtbxPointStart.Enabled = true;
                 m_txtbxPointStart.BackColor = SystemColors.Window;
-                m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                if (m_tierSelected != null)
+                {
+                    m_txtbxPointStart.Text = (m_tierSelected.QualifyingPoints != -1) ? m_tierSelected.QualifyingPoints.ToString() : "0.00";
+                }
+                else
+                {
+                    m_txtbxPointStart.Text = "0.00";
+                }
             }
             else
             {

@@ -121,29 +121,6 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="m_btnEditTier.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_btnEditTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_btnEditTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 511</value>
-  </data>
-  <data name="m_btnEditTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>38, 38</value>
-  </data>
-  <data name="m_btnEditTier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 38</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_btnEditTier.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="m_btnEditTier.Text" xml:space="preserve">
-    <value>&amp;Edit Tier</value>
-  </data>
   <data name="&gt;&gt;m_btnEditTier.Name" xml:space="preserve">
     <value>m_btnEditTier</value>
   </data>
@@ -155,24 +132,6 @@
   </data>
   <data name="&gt;&gt;m_btnEditTier.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="m_lstboxTiers.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_lstboxTiers.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_lstboxTiers.ItemHeight" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="m_lstboxTiers.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 25</value>
-  </data>
-  <data name="m_lstboxTiers.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 434</value>
-  </data>
-  <data name="m_lstboxTiers.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
   </data>
   <data name="&gt;&gt;m_lstboxTiers.Name" xml:space="preserve">
     <value>m_lstboxTiers</value>
@@ -186,27 +145,6 @@
   <data name="&gt;&gt;m_lstboxTiers.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="m_btnAddTier.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="m_btnAddTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_btnAddTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 467</value>
-  </data>
-  <data name="m_btnAddTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>38, 38</value>
-  </data>
-  <data name="m_btnAddTier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 38</value>
-  </data>
-  <data name="m_btnAddTier.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="m_btnAddTier.Text" xml:space="preserve">
-    <value>&amp;Add Tier</value>
-  </data>
   <data name="&gt;&gt;m_btnAddTier.Name" xml:space="preserve">
     <value>m_btnAddTier</value>
   </data>
@@ -218,27 +156,6 @@
   </data>
   <data name="&gt;&gt;m_btnAddTier.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="m_btnDeleteTier.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="m_btnDeleteTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="m_btnDeleteTier.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 555</value>
-  </data>
-  <data name="m_btnDeleteTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>38, 38</value>
-  </data>
-  <data name="m_btnDeleteTier.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 38</value>
-  </data>
-  <data name="m_btnDeleteTier.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="m_btnDeleteTier.Text" xml:space="preserve">
-    <value>&amp;Delete Tier</value>
   </data>
   <data name="&gt;&gt;m_btnDeleteTier.Name" xml:space="preserve">
     <value>m_btnDeleteTier</value>
@@ -261,6 +178,7 @@
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>274, 601</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
@@ -279,6 +197,7 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
@@ -395,6 +314,429 @@
   </data>
   <data name="&gt;&gt;m_btnSaveTier.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Name" xml:space="preserve">
+    <value>m_lblTierSavedSuccessNotification</value>
+  </data>
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;m_lblTierSavedSuccessNotification.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;labelAwardPoints.Name" xml:space="preserve">
+    <value>labelAwardPoints</value>
+  </data>
+  <data name="&gt;&gt;labelAwardPoints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAwardPoints.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;labelAwardPoints.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxAwardPointsMultiplier.Name" xml:space="preserve">
+    <value>m_txtbxAwardPointsMultiplier</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxAwardPointsMultiplier.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxAwardPointsMultiplier.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxAwardPointsMultiplier.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>690, 564</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="splitContainer1.Panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1014, 634</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>297</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>m_tabPageTier</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_btnEditTier.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_btnEditTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_btnEditTier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 511</value>
+  </data>
+  <data name="m_btnEditTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="m_btnEditTier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 38</value>
+  </data>
+  <data name="m_btnEditTier.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="m_btnEditTier.Text" xml:space="preserve">
+    <value>&amp;Edit Tier</value>
+  </data>
+  <data name="&gt;&gt;m_btnEditTier.Name" xml:space="preserve">
+    <value>m_btnEditTier</value>
+  </data>
+  <data name="&gt;&gt;m_btnEditTier.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_btnEditTier.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_btnEditTier.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_lstboxTiers.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt</value>
+  </data>
+  <data name="m_lstboxTiers.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_lstboxTiers.ItemHeight" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="m_lstboxTiers.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 25</value>
+  </data>
+  <data name="m_lstboxTiers.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 434</value>
+  </data>
+  <data name="m_lstboxTiers.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;m_lstboxTiers.Name" xml:space="preserve">
+    <value>m_lstboxTiers</value>
+  </data>
+  <data name="&gt;&gt;m_lstboxTiers.Type" xml:space="preserve">
+    <value>GTI.Controls.ColorListBox, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_lstboxTiers.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_lstboxTiers.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_btnAddTier.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_btnAddTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_btnAddTier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 467</value>
+  </data>
+  <data name="m_btnAddTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="m_btnAddTier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 38</value>
+  </data>
+  <data name="m_btnAddTier.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="m_btnAddTier.Text" xml:space="preserve">
+    <value>&amp;Add Tier</value>
+  </data>
+  <data name="&gt;&gt;m_btnAddTier.Name" xml:space="preserve">
+    <value>m_btnAddTier</value>
+  </data>
+  <data name="&gt;&gt;m_btnAddTier.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_btnAddTier.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_btnAddTier.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_btnDeleteTier.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="m_btnDeleteTier.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_btnDeleteTier.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 555</value>
+  </data>
+  <data name="m_btnDeleteTier.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>38, 38</value>
+  </data>
+  <data name="m_btnDeleteTier.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 38</value>
+  </data>
+  <data name="m_btnDeleteTier.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="m_btnDeleteTier.Text" xml:space="preserve">
+    <value>&amp;Delete Tier</value>
+  </data>
+  <data name="&gt;&gt;m_btnDeleteTier.Name" xml:space="preserve">
+    <value>m_btnDeleteTier</value>
+  </data>
+  <data name="&gt;&gt;m_btnDeleteTier.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_btnDeleteTier.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;m_btnDeleteTier.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;labelTierName.Name" xml:space="preserve">
+    <value>labelTierName</value>
+  </data>
+  <data name="&gt;&gt;labelTierName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelTierName.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;labelTierName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon.Name" xml:space="preserve">
+    <value>m_pctbxTierIcon</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_pctbxTierIcon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxTierName.Name" xml:space="preserve">
+    <value>m_txtbxTierName</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxTierName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxTierName.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxTierName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;m_tierColor.Name" xml:space="preserve">
+    <value>m_tierColor</value>
+  </data>
+  <data name="&gt;&gt;m_tierColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_tierColor.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_tierColor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierColor.Name" xml:space="preserve">
+    <value>m_imgbtnTierColor</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierColor.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierColor.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierColor.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierIcon.Name" xml:space="preserve">
+    <value>m_imgbtnTierIcon</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierIcon.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1236, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierIcon.Parent" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;m_imgbtnTierIcon.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
+  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 76</value>
+  </data>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>483, 86</value>
+  </data>
+  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Tier</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
+    <value>groupBox6</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="labelTierName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -669,33 +1011,6 @@
   <data name="&gt;&gt;m_imgbtnTierIcon.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="groupBox6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt, style=Bold</value>
-  </data>
-  <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 76</value>
-  </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 86</value>
-  </data>
-  <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>Tier</value>
-  </data>
-  <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
-    <value>groupBox6</value>
-  </data>
-  <data name="&gt;&gt;groupBox6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox6.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
@@ -761,6 +1076,63 @@
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualifyingpointsN.Name" xml:space="preserve">
+    <value>m_cmbxQualifyingpointsN</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualifyingpointsN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualifyingpointsN.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualifyingpointsN.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelPointsStart.Name" xml:space="preserve">
+    <value>labelPointsStart</value>
+  </data>
+  <data name="&gt;&gt;labelPointsStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelPointsStart.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;labelPointsStart.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPointStart.Name" xml:space="preserve">
+    <value>m_txtbxPointStart</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPointStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPointStart.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPointStart.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 304</value>
+  </data>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>483, 59</value>
+  </data>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="m_cmbxQualifyingpointsN.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
@@ -858,26 +1230,62 @@
   <data name="&gt;&gt;m_txtbxPointStart.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 304</value>
+  <data name="&gt;&gt;m_cmbxQualfyingSpendN.Name" xml:space="preserve">
+    <value>m_cmbxQualfyingSpendN</value>
   </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;m_cmbxQualfyingSpendN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualfyingSpendN.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;m_cmbxQualfyingSpendN.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;labelSpendStart.Name" xml:space="preserve">
+    <value>labelSpendStart</value>
+  </data>
+  <data name="&gt;&gt;labelSpendStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSpendStart.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;labelSpendStart.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxSpendStart.Name" xml:space="preserve">
+    <value>m_txtbxSpendStart</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxSpendStart.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxSpendStart.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxSpendStart.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 202</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>483, 59</value>
   </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="m_cmbxQualfyingSpendN.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -977,27 +1385,6 @@
   </data>
   <data name="&gt;&gt;m_txtbxSpendStart.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 202</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>483, 59</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="m_lblTierSavedSuccessNotification.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1164,69 +1551,6 @@
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>690, 564</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="splitContainer1.Panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1014, 634</value>
-  </data>
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>297</value>
-  </data>
-  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>m_tabPageTier</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="splitContainer2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -1668,7 +1992,10 @@
     <value>442, 66</value>
   </data>
   <data name="m_datetimepickerQualifyingPeriodStart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="m_datetimepickerQualifyingPeriodStart.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
   </data>
   <data name="m_datetimepickerQualifyingPeriodStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 26</value>

@@ -35,9 +35,9 @@ namespace GTI.Modules.PlayerCenter.UI
             m_tierIcon = tierIcon_;
             DisplayTierRule();
             m_datetimepickerQualifyingPeriodStart.Format = DateTimePickerFormat.Custom;
-            m_datetimepickerQualifyingPeriodStart.CustomFormat = "MMMM d";
+            m_datetimepickerQualifyingPeriodStart.CustomFormat = "MMM dd";
             m_datetimepickerQualifyingPeriodEnd.Format = DateTimePickerFormat.Custom;
-            m_datetimepickerQualifyingPeriodEnd.CustomFormat = "MMMM d";
+            m_datetimepickerQualifyingPeriodEnd.CustomFormat = "MMM dd";
             PopulateTierList();
             SelectDefaultOrFirstRowTier();
             DisableEnableControlDefaultTierRules(true);
@@ -75,7 +75,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pctbxTierIcon.Image = null;
             m_pctbxTierIcon.BackColor = SystemColors.ButtonHighlight;
             m_pctbxTierIcon.Update();
-            m_pctbxTierIcon.Tag = (object)0;
+            m_pctbxTierIcon.Tag = (object)-1;
         }
 
         //UPDATE UI TO SELECT THE DEFAULT TIER
@@ -131,6 +131,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lstboxTiers.Items.Clear();
             m_lstboxTiers.ValueMember = "TierID";
             m_lstboxTiers.DisplayMember = "TierName";
+            //m_lstboxTiers.SelectedValue = 
             m_lstboxTiers.DataSource = m_tiers.OrderByDescending(l => l.IsDefaultTier).ThenBy(l => l.TierName).ToList();//Will fire selected index = 0      
             m_lstboxTiers.Update();
         }
@@ -175,7 +176,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-                m_pctbxTierIcon.Tag = 0;
+                m_pctbxTierIcon.Tag = -1;
                 m_pctbxTierIcon.Image = null;
                 m_pctbxTierIcon.BackColor = SystemColors.Control;
                 m_pctbxTierIcon.Update();
@@ -535,6 +536,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //ClearALLError();
             if (!m_lblTierSavedSuccessNotification.Visible) m_lblTierSavedSuccessNotification.Visible = false;
             m_lstboxTiers.SelectedIndex = -1;
+            m_tierSelected = null;
             DisableEnableControlDefaultTier(false);
             //m_tierSelected = new Tier();
             m_txtbxSpendStart.Enabled = false;
@@ -590,13 +592,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
                 t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
-                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
+
+                t_tierNew.TierIconId = (m_pctbxTierIcon.Tag != null ? (int)m_pctbxTierIcon.Tag : -1);//-1 is the default?
                 t_tierNew.IsDefaultTier = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.IsDefaultTier : false;
 
-
-                if (m_tierSelected.Equals(t_tierNew))
+                if (m_tierSelected != null)
                 {
-                    return;
+                    if (m_tierSelected.Equals(t_tierNew))
+                    {
+                        return;
+                    }
                 }
 
                 int t_tierID = SetPlayerTier.Msg(t_tierNew);
@@ -619,7 +624,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_tiers.Add(t_tierNew);
                     UpdateTierRuleDefaulTier();
                     PopulateTierList();
-                    m_lstboxTiers.SelectedValue = t_tierID;
+                    //m_lstboxTiers.SelectedValue = t_tierID;
                 }
 
 
@@ -674,19 +679,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     return;
                 }
                 else
-                {
-                    //if (m_tierSelected != null)
-                    //{
+                {               
                         DisplayTier(m_tierSelected);
-                    //}
-                    //else
-                    //{
-                    //    ClearTiersTab();
-                    //    m_txtbxSpendStart.Enabled = false;
-                    //    m_txtbxPointStart.Enabled = false;
-                    //    m_txtbxSpendStart.BackColor = SystemColors.Control;
-                    //    m_txtbxPointStart.BackColor = SystemColors.Control;
-                    //}
                 }
             }
         }

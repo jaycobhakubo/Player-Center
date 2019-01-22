@@ -6,12 +6,15 @@ set @EndDate = '1/1/' + cast ((YEAR(GETDATE()) + 1 ) as varchar(4))
 declare @operatorID int = 0;
 select @operatorID = OperatorID from Operator where IsActive = 1
 
-if not exists (select 1 from PlayerClubTierRules)
+
+
+if exists (select 1 from PlayerClubTierRules)
 begin
-INSERT INTO [PlayerClubTierRules] ([OperatorId],[StartDate],[EndDate],[DefaultTierId],[DowngradeToDefault])
-VALUES(@operatorID,@startDate,@EndDate,NULL,0) 
+--truncate table player
+delete  PlayerClubTierRules
 end
 
 
-
+INSERT INTO [PlayerClubTierRules] ([OperatorId],[StartDate],[EndDate],[DefaultTierId],[DowngradeToDefault])
+VALUES(@operatorID,@startDate,@EndDate,NULL,0) 
 

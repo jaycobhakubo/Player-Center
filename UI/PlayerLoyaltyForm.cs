@@ -167,7 +167,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             FixedDecimalUserInput(x.AwardPointsMultiplier, m_txtbxAwardPointsMultiplier);
 
-            if (x.TierIconId != 0)
+           // if (x.TierIconId != 0)
+            if (x.TierIconId != -1)
             {
                 var m_icon = new TierIcon();
                 m_icon = m_tierIcon.Single(l => l.TierIconId == x.TierIconId);

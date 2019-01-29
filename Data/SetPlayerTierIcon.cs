@@ -49,7 +49,7 @@ namespace GTI.Modules.PlayerCenter.Data
             MemoryStream requestStream = new MemoryStream();
             BinaryWriter requestWriter = new BinaryWriter(requestStream, Encoding.Unicode);
             requestWriter.Write(m_photoTypeId);                 //PhotoType(int)
-            requestWriter.Write(78910);                             // Config Photo Id (int)
+            requestWriter.Write(0);                             // Config Photo Id (int)
             requestWriter.Write(m_photoLength);                 //  Photo Field Length (int)
             if (m_photoLength > 0)
             {

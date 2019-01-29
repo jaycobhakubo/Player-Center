@@ -812,6 +812,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         //SHOW UI FOR SELECTING ICON IMAGE
         //DefaultId of IconId = 0
+        //Once the image is shown into the UI it will automatically saved it on the database even if the user press cancel.
         private void m_imgbtnTierIcon_Click(object sender, EventArgs e)
         {
             PlayerLoyaltyTierIcon iconTierUI = new PlayerLoyaltyTierIcon(m_tierIcon);

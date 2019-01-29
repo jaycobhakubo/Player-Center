@@ -15,11 +15,12 @@ namespace GTI.Modules.PlayerCenter.Data
         private int m_photoLength = 0;
         private TierIcon m_tierIcon; 
 
-        public SetPlayerTierIcon(byte[] photo_)
+        public SetPlayerTierIcon(byte[] photo_, int configPhotoID)
         {
             m_tierIcon = new TierIcon();
             m_id = 18160;
             m_photoTypeId = 13;
+            m_tierIcon.TierIconId = configPhotoID;//0 if new
             if (photo_ != null)
             {
                 m_tierIcon.ImgData = photo_;
@@ -29,9 +30,9 @@ namespace GTI.Modules.PlayerCenter.Data
            
         }
 
-        public static TierIcon Msg(byte[] photo_)
+        public static TierIcon Msg(byte[] photo_, int configPhotoID_)
         {
-            SetPlayerTierIcon msg = new SetPlayerTierIcon(photo_);
+            SetPlayerTierIcon msg = new SetPlayerTierIcon(photo_, configPhotoID_);
             try
             {
                 msg.Send();
@@ -47,11 +48,12 @@ namespace GTI.Modules.PlayerCenter.Data
         {
             MemoryStream requestStream = new MemoryStream();
             BinaryWriter requestWriter = new BinaryWriter(requestStream, Encoding.Unicode);
-            requestWriter.Write(m_photoTypeId);
-            requestWriter.Write(m_photoLength);
+            requestWriter.Write(m_photoTypeId);                 //PhotoType(int)
+            requestWriter.Write(78910);                             // Config Photo Id (int)
+            requestWriter.Write(m_photoLength);                 //  Photo Field Length (int)
             if (m_photoLength > 0)
             {
-                requestWriter.Write(m_tierIcon.ImgData);
+                requestWriter.Write(m_tierIcon.ImgData);         //(BYTE [Photo Field Length]):
             }
             m_requestPayload = requestStream.ToArray();
             requestWriter.Close();

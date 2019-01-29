@@ -123,7 +123,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_widthIconDistance = 10;
                         m_heightIconDistance += maxHeight + 10;
                     }
-                    var tTierIcon = SetPlayerTierIcon.Msg(imageData);
+                    var tTierIcon = SetPlayerTierIcon.Msg(imageData, 0);
                     pic.Tag = tTierIcon.TierIconId;
                     m_lstTierIcon.Add(tTierIcon);      
                     m_pnlIconTier.Controls.Add(pic);
@@ -197,7 +197,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             //get the tiericon base on tag
             var testxy = m_lstTierIcon.Single(l => l.TierIconId == (int)m_pctbxSelected.Tag);
-             var tTierIcon = SetPlayerTierIcon.Msg(testxy.ImgData);
+             var tTierIcon = SetPlayerTierIcon.Msg(testxy.ImgData, -1);
             m_pnlIconTier.Controls.Remove(m_pctbxSelected);
    
         }

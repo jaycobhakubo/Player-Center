@@ -1,4 +1,4 @@
-﻿USE [Daily]
+﻿=USE [Daily]
 GO
 
 /****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 01/29/2019 13:32:09 ******/

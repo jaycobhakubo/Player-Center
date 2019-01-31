@@ -1005,9 +1005,13 @@ namespace GTI.Modules.PlayerCenter.Business
             try
             {
                 player = new Player(playerId, OperatorID, -1);
-                if (m_playerTiers.Count != 0)
+
+                if (player.TierID != 0)
                 {
-                    player.PlayerTier = m_playerTiers.Single(l => l.TierID == player.TierID);
+                    if (m_playerTiers.Count != 0)
+                    {
+                        player.PlayerTier = m_playerTiers.Single(l => l.TierID == player.TierID);
+                    }
                 }
                
             }

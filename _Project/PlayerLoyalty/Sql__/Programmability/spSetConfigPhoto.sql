@@ -1,102 +1,63 @@
-﻿USE [Daily]
-GO
+﻿/*    ==Scripting Parameters==
 
-/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 01/21/2019 06:17:17 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[spSetConfigPhoto]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [dbo].[spSetConfigPhoto]
-GO
+    Source Server Version : SQL Server 2008 R2 (10.50.2500)
+    Source Database Engine Edition : Microsoft SQL Server Enterprise Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2017
+    Target Database Engine Edition : Microsoft SQL Server Standard Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
 
 USE [Daily]
 GO
-
-/****** Object:  StoredProcedure [dbo].[spSetConfigPhoto]    Script Date: 01/21/2019 06:17:17 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-CREATE procedure [dbo].[spSetConfigPhoto]
-	@PhotoTypeID int,
-	@OperatorID int,
-	@PhotoBLOB varbinary(max) = NULL
+ALTER procedure [dbo].[spSetConfigPhoto]
+--=============================================================================
+-- ????.??.?? - Initial implementation
+-- 2019.01.23 jkn: Adding support for using the config photo id 
+--
+-- In order for C++ to handle the varbinary(max) field, the server will first 
+-- insert or update a record making cpPhotoBLOB equal to NULL, then the binary value
+-- for the photo will be entered through a secondary C++ routine.
+--=============================================================================
+	@PhotoTypeId int,
+    @ConfigPhotoId int,
+	@OperatorId int
 as
---In order for C++ to handle the varbinary(max) field, the server will first 
---insert or update a record making cpPhotoBLOB equal to NULL, then the binary value
---for the photo will be entered through a secondary C++ routine.
 SET NOCOUNT ON
 
-Declare @ConfigPhotoID int
+IF EXISTS (SELECT 1 FROM ConfigPhoto (NOLOCK) WHERE cpOperatorID = @OperatorId
+			AND cpPhotoTypeID = @PhotoTypeId
+            AND cpConfigPhotoID = @ConfigPhotoId)
+BEGIN
+	UPDATE ConfigPhoto
+	SET cpPhotoBLOB = NULL
+	WHERE cpOperatorId = @OperatorId
+	    AND cpPhotoTypeId = @PhotoTypeId
+        AND cpConfigPhotoId = @ConfigPhotoId
+END
+ELSE
+BEGIN
+	-- This is being done due to the ConfigPhoto table not having an autoincrement setting
+    --  on the PK_ConfigPhoto constraint
+    SELECT @ConfigPhotoID = ISNULL(MAX(cpConfigPhotoID), 0) + 1 FROM ConfigPhoto (NOLOCK) 
 
-if exists (select 1 from ConfigPhoto (nolock) where (cpOperatorID = @OperatorID
-			and cpPhotoTypeID = @PhotoTypeID)/*and cpPhotoTypeID != 13 */)
-begin
-	update ConfigPhoto
-	set cpPhotoBLOB = @PhotoBLOB
-	where cpOperatorID = @OperatorID
-	and cpPhotoTypeID = @PhotoTypeID
-
-	select @ConfigPhotoID = cpConfigPhotoID
-	from ConfigPhoto (nolock)
-	where cpOperatorID = @OperatorID
-	and cpPhotoTypeID = @PhotoTypeID
-end
-else
-begin
-	select @ConfigPhotoID = ISNULL(MAX(cpConfigPhotoID), 0) + 1 from ConfigPhoto (nolock) 
-
-	insert ConfigPhoto (
+	INSERT ConfigPhoto (
 		cpConfigPhotoID,
 		cpOperatorID,
 		cpPhotoTypeID,
 		cpPhotoBLOB)
-	values (
-		@ConfigPhotoID,
-		@OperatorID,
-		@PhotoTypeID,
-		@PhotoBLOB)
-end
+	VALUES (
+		@ConfigPhotoId,
+		@OperatorId,
+		@PhotoTypeId,
+		NULL)
+END
 
-select ConfigPhotoID = @ConfigPhotoID
+SELECT ConfigPhotoID = @ConfigPhotoId
 
 SET NOCOUNT OFF
-
---select * from ConfigPhoto
---select * from PhotoType
-
---delete from ConfigPhoto
---where cpPhotoTypeID = 13 --cpConfigPhotoID = 9
-
---exec spSetConfigPhoto 13, 1
-
---insert into ConfigPhoto(cpConfigPhotoID, cpOperatorID, cpPhotoTypeID, cpPhotoBLOB)
---values (10, 1, 13, null)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GO
-
-

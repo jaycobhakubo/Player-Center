@@ -666,14 +666,22 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var t_tierNew = new Tier();
                 t_tierNew.TierName = m_txtbxTierName.Text;
-                t_tierNew.TierColor = m_tierColor.BackColor.ToArgb();
+                  t_tierNew.TierColor = m_tierColor.BackColor.ToArgb();
                 t_tierNew.QualifyingSpend = (m_txtbxSpendStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxSpendStart.Text) : -1;
                 t_tierNew.QualifyingPoints = (m_txtbxPointStart.Text != string.Empty) ? Convert.ToDecimal(m_txtbxPointStart.Text) : -1;
                 t_tierNew.AwardPointsMultiplier = (m_txtbxAwardPointsMultiplier.Text != string.Empty) ? Convert.ToDecimal(m_txtbxAwardPointsMultiplier.Text) : Convert.ToDecimal("0.00");
                 t_tierNew.IsDelete = false;
                 t_tierNew.TierID = (m_lstboxTiers.SelectedIndex != -1) ? m_tierSelected.TierID : 0;
-                t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
-                t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
+                if (m_pctbxTierIcon.Tag != null || (int)m_pctbxTierIcon.Tag != -1)
+                {
+                     t_tierNew.TierIconId = (int)m_pctbxTierIcon.Tag;
+                }
+                else
+                {
+                    t_tierNew.TierIconId = -1;
+                }
+
+                    t_tierNew.TierRulesID = m_tierRule.TierRulesID;//GetPlayerTierRulesData.getPlayerTierRulesData.TierRulesID;
 
                 if (m_tierSelected.Equals(t_tierNew))
                 {

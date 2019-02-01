@@ -144,6 +144,11 @@ namespace GTI.Modules.PlayerCenter.Business
             System.Windows.Forms.Application.DoEvents();
         }
 
+        internal decimal GetPlayerPointBalance()
+        {
+            var PlayerPoints = m_player.PointsBalance;
+            return PlayerPoints;
+        }
 
         internal string GetPlayerName()
         {

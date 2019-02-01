@@ -40,7 +40,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPointsSubtracted = new System.Windows.Forms.Label();
             this.txtbxPointsSubtracted = new GTI.Controls.TextBoxNumeric2();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblPlayerCurrentPoint = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelImageButton
@@ -193,15 +193,15 @@ namespace GTI.Modules.PlayerCenter.UI
             this.label1.TabIndex = 11;
             this.label1.Text = "Current points:";
             // 
-            // label3
+            // lblPlayerCurrentPoint
             // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(256, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 20);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "55555";
+            this.lblPlayerCurrentPoint.BackColor = System.Drawing.Color.Transparent;
+            this.lblPlayerCurrentPoint.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerCurrentPoint.Location = new System.Drawing.Point(256, 55);
+            this.lblPlayerCurrentPoint.Name = "lblPlayerCurrentPoint";
+            this.lblPlayerCurrentPoint.Size = new System.Drawing.Size(137, 20);
+            this.lblPlayerCurrentPoint.TabIndex = 12;
+            this.lblPlayerCurrentPoint.Text = "55555";
             // 
             // AwardPoints
             // 
@@ -212,7 +212,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.CancelButton = this.cancelImageButton;
             this.ClientSize = new System.Drawing.Size(402, 440);
             this.ControlBox = false;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblPlayerCurrentPoint);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbxPointsSubtracted);
             this.Controls.Add(this.lblPointsSubtracted);
@@ -257,6 +257,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label lblPointsSubtracted;
         private Controls.TextBoxNumeric2 txtbxPointsSubtracted;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPlayerCurrentPoint;
     }
 }

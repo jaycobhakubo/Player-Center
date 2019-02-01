@@ -24,11 +24,12 @@ namespace GTI.Modules.PlayerCenter.UI
        private WaitForm m_waitForm = null;
        private bool m_wholePoints = false;
 
-       public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface,  bool wholePoints)
+       public AwardPoints(PlayerCenterThirdPartyInterface playerCenterThirdPartyInterface,  bool wholePoints, decimal currentPlayerpoints_)
         {
             InitializeComponent();
             m_playercenterThirdPartyInterface = playerCenterThirdPartyInterface;
             lblPlayerNameIndicator.Text = playerCenterThirdPartyInterface.GetPlayerName();
+            lblPlayerCurrentPoint.Text = playerCenterThirdPartyInterface.GetPlayerPointBalance().ToString("N2");
             m_wholePoints = wholePoints;
             CheckForWholePoints();
         }

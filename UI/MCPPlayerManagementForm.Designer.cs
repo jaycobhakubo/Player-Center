@@ -161,7 +161,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.playerListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playerPointPurgeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerLoyaltyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loyalityGroupBox = new System.Windows.Forms.GroupBox();
@@ -648,8 +647,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.playerListToolStripMenuItem,
             this.playerStatusToolStripMenuItem,
-            this.playerPointPurgeToolStripMenuItem,
-            this.playerLoyaltyToolStripMenuItem});
+            this.playerPointPurgeToolStripMenuItem});
             this.viewToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlText;
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             resources.ApplyResources(this.viewToolStripMenuItem, "viewToolStripMenuItem");
@@ -671,12 +669,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.playerPointPurgeToolStripMenuItem.Name = "playerPointPurgeToolStripMenuItem";
             resources.ApplyResources(this.playerPointPurgeToolStripMenuItem, "playerPointPurgeToolStripMenuItem");
             this.playerPointPurgeToolStripMenuItem.Click += new System.EventHandler(this.playerPointPurgeToolStripMenuItem_Click);
-            // 
-            // playerLoyaltyToolStripMenuItem
-            // 
-            this.playerLoyaltyToolStripMenuItem.Name = "playerLoyaltyToolStripMenuItem";
-            resources.ApplyResources(this.playerLoyaltyToolStripMenuItem, "playerLoyaltyToolStripMenuItem");
-            this.playerLoyaltyToolStripMenuItem.Click += new System.EventHandler(this.playerLoyaltyToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -999,7 +991,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.TextBox txtMagCard;
         private Controls.ImageButton m_btnImgAwardPointManual;
         private System.Windows.Forms.ToolStripMenuItem playerPointPurgeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playerLoyaltyToolStripMenuItem;
 
        
        

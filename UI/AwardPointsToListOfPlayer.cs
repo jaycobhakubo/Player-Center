@@ -59,13 +59,28 @@ namespace GTI.Modules.PlayerCenter.UI
        private void txtManualPointAdjustReason_TextChanged(object sender, EventArgs e)
        {
            lblManualPointsAdjustReasonCharactersLeft.Text = (txtManualPointAdjustReason.MaxLength - txtManualPointAdjustReason.TextLength).ToString();
+
+           decimal value;
+
+           if (
+               (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                 &&
+                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+               )
+               acceptImageButton.Enabled = true;
+           else
+               acceptImageButton.Enabled = false;
        }
 
        private void txtbxPointsAwarded_TextChanged(object sender, EventArgs e)
        {
            decimal value;
 
-           if (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+           if (
+               (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                 &&
+                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+               )
                acceptImageButton.Enabled = true;
            else
                acceptImageButton.Enabled = false;

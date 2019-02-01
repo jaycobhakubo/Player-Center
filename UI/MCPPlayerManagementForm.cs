@@ -57,14 +57,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent = parent;
                 InitializeComponent();
 
-                
                 if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
                     lblPlayerIdentLabel.Text = "Player Identity/Account";
 
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
                 //ApplyDisplayMode();
                 SetMaxTextLengths();
-               
+                
                 m_playerStatusList = new List<PlayerStatus>();//RALLY DE8358
 
                 // Rally TA7897
@@ -306,9 +305,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        
-        
-        
         private void playerPointPurgeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PointPurgeForm pf = new PointPurgeForm(m_staffID);
@@ -316,18 +312,6 @@ namespace GTI.Modules.PlayerCenter.UI
             pf.ShowDialog(this);
         }
 
-        private void playerLoyaltyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var originalTierIcon = m_parent.TierIcon;
-            PlayerLoyaltyForm playerLoyalty = new PlayerLoyaltyForm(m_parent.PlayerTiers, m_parent.PlayerTierRule, m_parent.TierIcon);
-            DialogResult result = DialogResult.OK;
-            result = playerLoyalty.ShowDialog();
-            //var kk1 = m_parent.PlayerTierRule; 
-            //var kk = m_parent.PlayerTiers;
-            //var testTierIcon = m_parent.TierIcon;
-        }
-
-        
         #endregion
 
         private void SetCreditControls()
@@ -393,6 +377,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_parent.MagCardReader
                 );
         }
+
+   
+
         //US2100
         private void AwardPointsImageButton_Click(object sender, EventArgs e)
         {
@@ -836,7 +823,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             // END: DE6690
 
-            m_playerTier.Text = m_player.PlayerTier != null ? m_player.PlayerTier.TierName : string.Empty;
+            m_playerTier.Text = m_player.LoyaltyTier != null ? m_player.LoyaltyTier.Name : string.Empty;
 
             m_playerPicture.Image = m_player.Image;
 
@@ -1174,6 +1161,5 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
-    
     }
 }

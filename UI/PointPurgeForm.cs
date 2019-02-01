@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using GTI.Modules.PlayerCenter.Data;
+using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -70,21 +71,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (number > nudPeriodNumber.Maximum) //we can't use this as days
                     {
-                        if (number % 30 == 0) //we can use months
-                        {
-                            work2 = "m";
-                            number /= 30;
-                        }
-                        else if (number % 365 == 0) //we can use years
-                        {
-                            work2 = "y";
-                            number /= 365;
-                        }
-                        else //we can't use anything here, default to 1 year
-                        {
-                            work2 = "y";
-                            number = 1;
-                        }
+                        rbNoVisitsInPreviousPeriod.Checked = false;
+                        rbNoVisitsSince.Checked = true;
+                        dtpSinceDate.Value = DateTime.Now - TimeSpan.FromDays(number);
+                        return;
                     }
                 }
                 
@@ -169,7 +159,66 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else //no visits in previous period
             {
-                dt = dt - (TimeSpan.FromDays((int)nudPeriodNumber.Value * (cbPeriodType.SelectedIndex == 0 ? 1 : cbPeriodType.SelectedIndex == 1 ? 30 : 365))) + TimeSpan.FromDays(1);
+                switch (cbPeriodType.SelectedIndex)
+                {
+                    case 0: //days
+                    {
+                        dt = dt - TimeSpan.FromDays((int)nudPeriodNumber.Value) + TimeSpan.FromDays(1);
+                        break;
+                    }
+
+                    case 1: //months
+                    {
+                        int y = dt.Year;
+                        int m = dt.Month;
+                        int d = dt.Day;
+
+                        int n = (int)nudPeriodNumber.Value;
+
+                        while( n > 12)
+                        {
+                            n -= 12;
+                            y--;
+                        }
+
+                        m -= n;
+
+                        if (m < 1)
+                        {
+                            m += 12;
+                            y--;
+                        }
+
+                        int dim = DateTime.DaysInMonth(y, m);
+
+                        if (d > dim)
+                            d = dim;
+
+                        dt = new DateTime(y, m, d) + TimeSpan.FromDays(1);
+                        break;
+                    }
+
+                    case 2: //years
+                    {
+                        int y = dt.Year;
+                        int m = dt.Month;
+                        int d = dt.Day;
+
+                        int n = (int)nudPeriodNumber.Value;
+
+                        y -= n;
+
+                        int dim = DateTime.DaysInMonth(y, m);
+
+                        if (d > dim)
+                            d = dim;
+
+                        dt = new DateTime(y, m, d) + TimeSpan.FromDays(1);
+                        break;
+                    }
+
+                }
+
                 method = "Players who had not visited in the previous " + ((int)nudPeriodNumber.Value).ToString() + " " + cbPeriodType.SelectedItem.ToString();
             }
             

@@ -483,26 +483,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap GameTechLogo1 {
-            get {
-                object obj = ResourceManager.GetObject("GameTechLogo1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap GameTechLogo2 {
-            get {
-                object obj = ResourceManager.GetObject("GameTechLogo2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Gender.
         /// </summary>
         internal static string Gender {
@@ -1247,16 +1227,6 @@ namespace GTI.Modules.PlayerCenter.Properties {
         internal static System.Drawing.Bitmap PlayerScreenCredits1024 {
             get {
                 object obj = ResourceManager.GetObject("PlayerScreenCredits1024", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PlayerScreenPOSPlayerManagement {
-            get {
-                object obj = ResourceManager.GetObject("PlayerScreenPOSPlayerManagement", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

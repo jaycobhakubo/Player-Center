@@ -52,6 +52,7 @@ namespace GTI.Modules.PlayerCenter.Business
         private PlayerCenterModule m_module = null;        // System Related
         private BackgroundWorker m_worker = null;
         private Exception m_asyncException = null;
+        private PlayerLoyaltyTier[] m_playerTiers = null;
         private PlayerListItem[] m_lastFindPlayersResults = null;
         private Player m_lastPlayerFromServer = null;        // TTP 50067
         private Bitmap m_lastPlayerPic = null;
@@ -70,9 +71,6 @@ namespace GTI.Modules.PlayerCenter.Business
         private int m_machineId = 0;
         private bool m_needPlayerCardPIN;
         private MagneticCardReader m_magCardReader;
-        private TierRule m_playerTierRule;
-        private List<Tier> m_playerTiers;
-        private List<TierIcon> m_tierIcon;
 
 
         #endregion
@@ -233,9 +231,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get tiers.";
-                    GetPlayerTierRule();
                     GetPlayerTiers();
-                    GetTierIcon();
                 }
                 catch (Exception e)
                 {
@@ -840,22 +836,23 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
-
-        public void GetPlayerTiers()
+        /// <summary>
+        /// Retrieves the Player Loyalty Tiers from the server.
+        /// </summary>
+        private void GetPlayerTiers()
         {
-            m_playerTiers = new List<Tier>();
-            m_playerTiers =  GetPlayerTier.Msg(0, m_playerTierRule.DefaultTierID);
-        }
+            GetPlayerTierListMessage tierMsg = new GetPlayerTierListMessage(OperatorID);
 
-        public void GetPlayerTierRule()
-        {
-            m_playerTierRule = new TierRule();
-            m_playerTierRule = Data.GetPlayerTierRule.Msg();
-        }
+            try
+            {
+                tierMsg.Send();
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
 
-        public void GetTierIcon()
-        {
-            m_tierIcon = GetPlayerTierIcon.Msg(13);
+            m_playerTiers = tierMsg.Tiers;
         }
 
         // PDTS 1064
@@ -1005,15 +1002,6 @@ namespace GTI.Modules.PlayerCenter.Business
             try
             {
                 player = new Player(playerId, OperatorID, -1);
-
-                if (player.TierID != 0)
-                {
-                    if (m_playerTiers.Count != 0)
-                    {
-                        player.PlayerTier = m_playerTiers.Single(l => l.TierID == player.TierID);
-                    }
-                }
-               
             }
             catch (ServerCommException)
             {
@@ -2597,37 +2585,6 @@ namespace GTI.Modules.PlayerCenter.Business
         internal MagneticCardReader MagCardReader { get; private set; }
 
         internal int OperatorID { get; private set; }
-
-        public List<Tier> PlayerTiers
-        {
-            get
-            {
-                return m_playerTiers;
-            }
-            set
-            {
-                m_playerTiers = value;
-            }
-        }
-
-
-        public TierRule PlayerTierRule
-        {
-            get
-            {
-                return m_playerTierRule;
-            }
-            set
-            {
-                m_playerTierRule = value;
-            }
-        }
-
-        public List<TierIcon> TierIcon
-        {
-            get { return m_tierIcon; }
-            set { m_tierIcon = value; }
-        }
 
         // Rally US144
         /// <summary>

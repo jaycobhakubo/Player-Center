@@ -25,14 +25,14 @@
 			<name>Build Player Center (Buddy Build)</name>
 		</step>
 		<step action='Delete Folder'>
-			<Path>%BUILD_PATH%\Client\Player Center\Latest</Path>
+			<Path>%BUILD_PATH%\Client\PlayerCenter\Latest</Path>
 			<Recurse type='11'>-1</Recurse>
 			<name>Delete Latest Folder</name>
 		</step>
 		<step action='Copy Files'>
 			<Converted type='11'>-1</Converted>
 			<Delay>15</Delay>
-			<DestDir>%BUILD_PATH%\Client\Player Center\Latest</DestDir>
+			<DestDir>%BUILD_PATH%\Client\PlayerCenter\Latest</DestDir>
 			<ExclExt>EliteMCPLib.dll</ExclExt>
 			<Ext>*.dll</Ext>
 			<LogCopied type='11'>-1</LogCopied>
@@ -46,7 +46,7 @@
 		<step action='Copy Files'>
 			<Converted type='11'>-1</Converted>
 			<Delay>15</Delay>
-			<DestDir>%BUILD_PATH%\Client\Player Center\Latest\PDB</DestDir>
+			<DestDir>%BUILD_PATH%\Client\PlayerCenter\Latest\PDB</DestDir>
 			<Ext>*.PDB</Ext>
 			<LogCopied type='11'>-1</LogCopied>
 			<ReadOnly type='11'>-1</ReadOnly>
@@ -65,7 +65,7 @@
 		<step action='Copy Files'>
 			<Converted type='11'>-1</Converted>
 			<Delay>15</Delay>
-			<DestDir>%BUILD_PATH%\Client\Player Center\Latest</DestDir>
+			<DestDir>%BUILD_PATH%\Client\PlayerCenter\Latest</DestDir>
 			<Ext>*.gtipackage</Ext>
 			<LogCopied type='11'>-1</LogCopied>
 			<Move type='11'>-1</Move>
@@ -82,12 +82,12 @@
 		<step action='Copy Files'>
 			<Converted type='11'>-1</Converted>
 			<Delay>15</Delay>
-			<DestDir>%BUILD_PATH%\Client\Player Center\%VSNET_ASSEM_VER%</DestDir>
+			<DestDir>%BUILD_PATH%\Client\PlayerCenter\%VSNET_ASSEM_VER%</DestDir>
 			<LogCopied type='11'>-1</LogCopied>
 			<ReadOnly type='11'>-1</ReadOnly>
 			<Recurse type='11'>-1</Recurse>
 			<Retries>10</Retries>
-			<SourceDir>%BUILD_PATH%\Client\Player Center\Latest</SourceDir>
+			<SourceDir>%BUILD_PATH%\Client\PlayerCenter\Latest</SourceDir>
 			<TBD type='11'>-1</TBD>
 			<name>Copy Files To Version Folder</name>
 		</step></steps>

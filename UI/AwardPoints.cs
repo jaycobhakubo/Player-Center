@@ -79,23 +79,23 @@ namespace GTI.Modules.PlayerCenter.UI
                 try
                 {
                     PointsAwarded = 0M;
-                    decimal tempManualPlayerPoints = 0;
-                    decimal.TryParse(txtbxPointsAwarded.Text, out tempManualPlayerPoints);
+                    decimal tPlayerPointsAdded = 0;
+                    decimal.TryParse(txtbxPointsAwarded.Text, out tPlayerPointsAdded);
 
-                    if (tempManualPlayerPoints == 0)
+                    if (tPlayerPointsAdded == 0)
                         return; //nothing to do
                         
                     IsPointsAwardedSuccess = false;
 
-                    string reasonMessage = "Manual point award for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + tempManualPlayerPoints.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text)? "None" : txtManualPointAdjustReason.Text);
-                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tempManualPlayerPoints, reasonMessage);
+                    string reasonMessage = "Manual point award for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + tPlayerPointsAdded.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) ? "None" : txtManualPointAdjustReason.Text);
+                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tPlayerPointsAdded, reasonMessage);
 
                     msg.Send();
 
                     if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
                     {
                         IsPointsAwardedSuccess = true;
-                        PointsAwarded = tempManualPlayerPoints;
+                        PointsAwarded = tPlayerPointsAdded;
                         MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                     }
                 }

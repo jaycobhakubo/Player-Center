@@ -114,13 +114,34 @@ namespace GTI.Modules.PlayerCenter.UI
         public bool IsPointsAwardedSuccess { get; set; }
         public decimal PointsAwarded { get; set; }
 
+        private void txtbxPointsSubtracted_TextChanged(object sender, EventArgs e)
+        {
+            decimal value;
+            if (
+                (
+                    (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                    ||
+                    (!string.IsNullOrWhiteSpace(txtbxPointsSubtracted.Text) && decimal.TryParse(txtbxPointsSubtracted.Text, out value) && value != 0)
+                )
+                &&
+                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) /*&& decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0*/)
+                )
+                acceptImageButton.Enabled = true;
+            else
+                acceptImageButton.Enabled = false;
+        }
+
         private void txtbxPointsAwarded_TextChanged(object sender, EventArgs e)
         {
             decimal value;
             if (
-                (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                (
+                    (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                    ||
+                    (!string.IsNullOrWhiteSpace(txtbxPointsSubtracted.Text) && decimal.TryParse(txtbxPointsSubtracted.Text, out value) && value != 0)
+                )
                 &&
-                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) /*&& decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0*/)
                 )
                 acceptImageButton.Enabled = true;
             else
@@ -133,9 +154,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
             decimal value;
             if (
-                (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                (
+                    (!string.IsNullOrWhiteSpace(txtbxPointsAwarded.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                    ||
+                    (!string.IsNullOrWhiteSpace(txtbxPointsSubtracted.Text) && decimal.TryParse(txtbxPointsSubtracted.Text, out value) && value != 0)
+                )
                 &&
-                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) && decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0)
+                (!string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) /*&& decimal.TryParse(txtbxPointsAwarded.Text, out value) && value != 0*/)
                 )
                 acceptImageButton.Enabled = true;
             else
@@ -159,5 +184,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
         }
+
+  
    }
 }

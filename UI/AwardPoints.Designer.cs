@@ -182,6 +182,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsSubtracted.Precision = 2;
             this.txtbxPointsSubtracted.Size = new System.Drawing.Size(133, 26);
             this.txtbxPointsSubtracted.TabIndex = 10;
+            this.txtbxPointsSubtracted.TextChanged += new System.EventHandler(this.txtbxPointsSubtracted_TextChanged);
             // 
             // label1
             // 

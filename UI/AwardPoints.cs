@@ -75,7 +75,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
 
-            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text))
+            if (!string.IsNullOrEmpty(txtbxPointsAwarded.Text) || !string.IsNullOrEmpty(txtbxPointsSubtracted.Text))
             {
                 try
                 {
@@ -83,20 +83,25 @@ namespace GTI.Modules.PlayerCenter.UI
                     decimal tPlayerPointsAdded = 0;
                     decimal.TryParse(txtbxPointsAwarded.Text, out tPlayerPointsAdded);
 
-                    if (tPlayerPointsAdded == 0)
-                        return; //nothing to do
-                        
+                    decimal tPlayerPointsSubtracted = 0;
+                    decimal.TryParse(txtbxPointsSubtracted.Text, out tPlayerPointsSubtracted);
+
+                    //if (tPlayerPointsAdded == 0)
+                    //    return; //nothing to do
+
+                    tPlayerPointsSubtracted = tPlayerPointsSubtracted * -1;
+
                     IsPointsAwardedSuccess = false;
 
                     string reasonMessage = "Manual point award for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + tPlayerPointsAdded.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) ? "None" : txtManualPointAdjustReason.Text);
-                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, tPlayerPointsAdded, reasonMessage);
+                    SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, (tPlayerPointsAdded + tPlayerPointsSubtracted), reasonMessage);
 
                     msg.Send();
 
                     if (msg.ReturnCode == (int)GTIServerReturnCode.Success)
                     {
                         IsPointsAwardedSuccess = true;
-                        PointsAwarded = tPlayerPointsAdded;
+                        PointsAwarded = tPlayerPointsAdded + tPlayerPointsSubtracted;
                         MessageForm.Show(Resources.InfoPointsAwardSuccessed, Resources.PlayerCenterName);
                     }
                 }

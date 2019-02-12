@@ -13,6 +13,7 @@ namespace GTI.Modules.PlayerCenter.Data
         private string StatusName { get; set; }
         private bool IsActive { get; set; }
         private bool IsAlert { get; set; }
+        private bool Banned { get; set; }
 
         public SetOperatorPlayerStatus(int operatorId, PlayerStatus ps)
         {
@@ -22,6 +23,7 @@ namespace GTI.Modules.PlayerCenter.Data
             StatusName = ps.Name;
             IsAlert = ps.IsAlert;
             IsActive = ps.IsActive;
+            Banned = ps.Banned;
         }
 
         public static int Save(int operatorId, PlayerStatus ps)
@@ -60,6 +62,9 @@ namespace GTI.Modules.PlayerCenter.Data
             // Alert flag
             requestWriter.Write(IsAlert);
 
+            // Banned flag
+            requestWriter.Write(Banned);
+            
             // Set the bytes to be sent.
             m_requestPayload = requestStream.ToArray();
 

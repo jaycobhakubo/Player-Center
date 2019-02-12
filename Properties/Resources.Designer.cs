@@ -629,7 +629,7 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Points Award Successfully..
+        ///   Looks up a localized string similar to Points successfully adjusted..
         /// </summary>
         internal static string InfoPointsAwardSuccessed {
             get {

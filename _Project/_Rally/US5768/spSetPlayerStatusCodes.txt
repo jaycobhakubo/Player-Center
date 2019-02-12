@@ -1,0 +1,91 @@
+﻿USE [Daily]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spSetPlayerStatusCodes]    Script Date: 2/12/2019 2:30:57 PM ******/
+DROP PROCEDURE [dbo].[spSetPlayerStatusCodes]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spSetPlayerStatusCodes]    Script Date: 2/12/2019 2:30:57 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+--=============================================================================
+-- 2019.02.12 JKN US5768 Adding support for banned flag on player status'
+--=============================================================================
+CREATE PROCEDURE [dbo].[spSetPlayerStatusCodes]
+	@PlayerStatusCodeID	int,
+	@OperatorID	int,
+	@StatusName	nvarchar(64),
+	@IsActive bit,
+	@Alert bit,
+	@IsBanned bit
+AS
+SET NOCOUNT ON
+	
+if @PlayerStatusCodeID = 0
+BEGIN
+	INSERT PlayerStatusCode (
+		OperatorID,
+		StatusName,
+		IsActive,
+		Alert,
+        Banned)
+	VALUES (
+		@OperatorID,
+		@StatusName,
+		@IsActive,
+		@Alert,
+        @IsBanned)
+		 
+	SET @PlayerStatusCodeID	= SCOPE_IDENTITY()
+
+END
+ELSE
+BEGIN
+	UPDATE PlayerStatusCode
+	SET OperatorID = @OperatorID,
+		StatusName = @StatusName,
+		IsActive = @IsActive,
+		Alert = @Alert,
+        Banned = @IsBanned
+	WHERE PlayerStatusCodeID = @PlayerStatusCodeID
+END
+
+SELECT @PlayerStatusCodeID AS PlayerStatusCodeID
+
+SET NOCOUNT OFF
+
+RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+
+

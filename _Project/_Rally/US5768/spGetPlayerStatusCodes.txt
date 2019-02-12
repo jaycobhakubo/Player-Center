@@ -1,0 +1,60 @@
+﻿USE [Daily]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spGetPlayerStatusCodes]    Script Date: 2/12/2019 2:29:38 PM ******/
+DROP PROCEDURE [dbo].[spGetPlayerStatusCodes]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spGetPlayerStatusCodes]    Script Date: 2/12/2019 2:29:38 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+--=============================================================================
+-- 2019.02.12 US5768 Support for banned flag on status code
+--=============================================================================
+CREATE PROCEDURE [dbo].[spGetPlayerStatusCodes]
+	@OperatorID int
+AS
+SET NOCOUNT ON
+	
+SELECT PlayerStatusCodeID,
+	StatusName,
+	IsActive = CONVERT(int, IsActive),
+	Alert = CONVERT(int, Alert),
+    Banned = CONVERT(int, ISNULL(Banned, 0))
+FROM PlayerStatusCode WITH (NOLOCK)
+WHERE OperatorID = @OperatorID
+
+SET NOCOUNT OFF
+
+RETURN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GO
+
+

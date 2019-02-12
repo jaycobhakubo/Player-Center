@@ -1,0 +1,76 @@
+﻿USE [Daily]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spSetPlayerStatusCode]    Script Date: 2/12/2019 2:30:21 PM ******/
+DROP PROCEDURE [dbo].[spSetPlayerStatusCode]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spSetPlayerStatusCode]    Script Date: 2/12/2019 2:30:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[spSetPlayerStatusCode]
+	@PlayerID			AS	int,
+	@OperatorID			AS	int,
+	@PlayerStatusCodeID	AS	int,
+	@Remove             AS  int = 0
+AS
+	SET NOCOUNT ON
+	
+	DECLARE @Status			AS int --1 = PlayerStatusCodeID was invalid
+	SET @Status	= 1
+	
+	IF EXISTS (SELECT
+					PlayerStatusCodeID
+				FROM
+					PlayerStatusCode WITH (NOLOCK)
+				WHERE
+					PlayerStatusCodeID	= @PlayerStatusCodeID
+					AND OperatorID	= @OperatorID)
+		SET @Status	= 0 --code is valid
+
+	IF (@Status = 0) --code is valid, do something with it
+	BEGIN
+		DECLARE @PlayerStatusID	AS int
+		
+		SET	@PlayerStatusID	=	(SELECT
+									PlayerStatusID
+								FROM
+									PlayerStatus WITH (NOLOCK)
+								WHERE
+									PlayerID	= @PlayerID
+								AND PlayerStatusCodeID = @PlayerStatusCodeID)
+
+		IF 	(@PlayerStatusID IS NULL) --code is not used for player
+		BEGIN
+			IF @Remove = 0 --need to add it
+			BEGIN 
+				INSERT INTO	PlayerStatus
+					(PlayerStatusCodeID,
+					PlayerID)
+				VALUES
+					(@PlayerStatusCodeID,
+					@PlayerID)
+			END
+		END
+		ELSE --code is already used for player
+		BEGIN
+			IF @Remove != 0 --need to remove it
+			BEGIN 
+				DELETE FROM PlayerStatus
+				WHERE PlayerID = @PlayerID and PlayerStatusCodeID = @PlayerStatusCodeID
+			END
+		END	
+	END
+	
+	SELECT	@Status	
+	
+	RETURN
+
+
+GO
+
+

@@ -1189,6 +1189,13 @@ end
 
 
 
+select tmp.* into #tempTable 
+from #TempPlayer tmp 
+left join PlayerStatus ps on ps.PlayerID =tmp.PlayerID
+left join PlayerStatusCode psc on psc.PlayerStatusCodeID = ps.PlayerStatusCodeID
+where  psc.Banned is null or psc.Banned != 1
+drop table #TempPlayer
+
 if (@Spend = 1 and   @SAOption = 0)
  select  
     PlayerID, FirstName, MiddleInitial, LastName, BirthDate
@@ -1198,7 +1205,7 @@ if (@Spend = 1 and   @SAOption = 0)
   , StatusName, OperatorID, GovIssuedIdNum, PlayerIdent, Phone
   , JoinDate, Comment, MagCardNo,   NDaysPlayed , NSessionPlayed, GamingDate, SessionNbr, [Days]   
  from  
-  #TempPlayer
+#tempTable
  where  
   Spend >= @AmountFrom AND  
   Spend <= @AmountTo  
@@ -1217,7 +1224,7 @@ begin
   , StatusName, OperatorID, GovIssuedIdNum, PlayerIdent, Phone
   , JoinDate, Comment, MagCardNo  ,   NDaysPlayed ,NSessionPlayed , GamingDate, SessionNbr, [Days]   
  from  
-  #TempPlayer
+#tempTable
  where  
   AvgSpend >= @AmountFrom AND  
   AvgSpend <= @AmountTo  
@@ -1235,12 +1242,12 @@ else
   , StatusName, OperatorID, GovIssuedIdNum, PlayerIdent, Phone
   , JoinDate, Comment, MagCardNo  ,   NDaysPlayed , NSessionPlayed , GamingDate, SessionNbr, [Days]   
  from  
-  #TempPlayer
+#tempTable
  order by  
   LastName 
  desc
 
- drop table #TempPlayer 
+ drop table #tempTable
 
 
 

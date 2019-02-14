@@ -30,7 +30,7 @@ namespace GTI.Modules.PlayerCenter.UI
             workList.Clear();
             foreach (PlayerStatus status in PlayerManager.OperatorPlayerStatusList)
             {
-                string name = (string.IsNullOrEmpty(status.Name)) ? UnNamed : status.Name;
+                string name = (string.IsNullOrEmpty(status.Name)) ? UnNamed : status.Name;//knc
                 workList.Add(new ExtendedStatus
                              {
                                  Id = status.Id,
@@ -40,7 +40,12 @@ namespace GTI.Modules.PlayerCenter.UI
                                  Name = name,
                                  OrigName = name,
                                  OrigAlert = status.IsAlert,
-                                 OrigActive = status.IsActive
+                                 OrigActive = status.IsActive,
+                                 OrigIsBannedstring = status.Banned_string,
+                                 IsBannedstring = status.Banned_string,
+                                 OrigIsBannedbool = status.Banned,
+                                 IsBannedbool = status.Banned
+
                              });
             }
 
@@ -54,8 +59,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (!string.IsNullOrEmpty(status.Name))
                 {
-                    ListViewItem lvi = new ListViewItem() {Checked = status.IsAlert, Tag = status};
+                    ListViewItem lvi = new ListViewItem() { Checked = status.IsAlert,  Tag = status};//knc
                     lvi.SubItems.Add(status.Name);
+                    lvi.SubItems.Add(status.IsBannedstring); 
+
                     listViewStatus.Items.Add(lvi);
                     lvi.ForeColor = (status.IsActive) ? SystemColors.WindowText : SystemColors.GrayText;
                 }
@@ -73,8 +80,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // FIX: DE2791 - Add new player status loses status name if New isn't pressed or a row isn't highlighted.
             if(listViewStatus.SelectedItems.Count == 0 && !string.IsNullOrEmpty(textBoxName.Text))
-                status.Name = textBoxName.Text;
-            
+            status.Name = textBoxName.Text;
+            status.IsBannedbool = chkbxBanned.Checked;
+            status.IsBannedstring = chkbxBanned.Checked == true ? "TRUE" : "FALSE";
 
             workList.Add(status);
             LoadListBox(-1);
@@ -134,6 +142,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                       Id = status.Id,
                                       IsActive = status.IsActive,
                                       IsAlert = status.IsAlert,
+                                      Banned = status.IsBannedbool,
                                       Name = status.Name
                                   };
                 try
@@ -156,6 +165,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 textBoxName.Text = e.Item.SubItems[1].Text;
                 ExtendedStatus es = (ExtendedStatus)e.Item.Tag;
+                chkbxBanned.Checked = es.IsBannedbool;
                 btnActive.Text = es.IsActive ? Resources.Deactivate : Resources.Activate;
                 btnActive.Enabled = true;
             }
@@ -181,13 +191,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 lvi.SubItems[1].Text = ((ExtendedStatus)lvi.Tag).OrigName;
                 textBoxName.Text = ((ExtendedStatus)lvi.Tag).OrigName;
                 lvi.Checked = ((ExtendedStatus)lvi.Tag).OrigAlert;
-                
+                chkbxBanned.Checked = ((ExtendedStatus)lvi.Tag).OrigIsBannedbool;
                 textBoxName.Select(textBoxName.Text.Length, 0);
             }
         }
 
         #region Nested type: ExtendedStatus
-        public class ExtendedStatus
+        public class ExtendedStatus//knc
         {
             public int Id { get; set; }
             public string Name { get; set; }
@@ -197,7 +207,23 @@ namespace GTI.Modules.PlayerCenter.UI
             public string OrigName { get; set; }
             public bool OrigAlert { get; set; }
             public bool OrigActive { get; set; }
+            public string IsBannedstring { get; set; }
+            public string OrigIsBannedstring { get; set; }
+            public bool IsBannedbool { get; set; }
+            public bool OrigIsBannedbool { get; set; }
         }
         #endregion
+
+        private void chkbxBanned_CheckedChanged(object sender, EventArgs e)
+        {
+            if (listViewStatus.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = listViewStatus.SelectedItems[0];
+                lvi.SubItems[2].Text = chkbxBanned.Checked == true ? "TRUE" : "FALSE";
+                ((ExtendedStatus)lvi.Tag).IsBannedstring = chkbxBanned.Checked == true ? "TRUE" : "FALSE";
+                ((ExtendedStatus)lvi.Tag).IsBannedbool = chkbxBanned.Checked;
+            }
+            chkbxBanned.Focus();   
+        }
     }
 }

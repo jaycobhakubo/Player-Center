@@ -34,13 +34,15 @@
             this.btnSave = new GTI.Controls.ImageButton();
             this.btnCancel = new GTI.Controls.ImageButton();
             this.listViewStatus = new System.Windows.Forms.ListView();
-            this.m_alertColumn = new System.Windows.Forms.ColumnHeader();
-            this.m_nameColumn = new System.Windows.Forms.ColumnHeader();
+            this.m_alertColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.m_nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.m_bannedColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.btnUndo = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lblInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkbxBanned = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnAdd
@@ -52,9 +54,10 @@
             this.btnAdd.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnAdd.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAdd.Location = new System.Drawing.Point(12, 383);
+            this.btnAdd.Location = new System.Drawing.Point(14, 409);
             this.btnAdd.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnAdd.Name = "btnAdd";
+            this.btnAdd.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnAdd.Size = new System.Drawing.Size(67, 30);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "&Add";
@@ -71,9 +74,10 @@
             this.btnActive.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnActive.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnActive.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnActive.Location = new System.Drawing.Point(85, 383);
+            this.btnActive.Location = new System.Drawing.Point(87, 409);
             this.btnActive.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnActive.Name = "btnActive";
+            this.btnActive.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnActive.Size = new System.Drawing.Size(91, 30);
             this.btnActive.TabIndex = 3;
             this.btnActive.Text = "Dea&ctivate";
@@ -90,10 +94,11 @@
             this.btnSave.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnSave.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSave.Location = new System.Drawing.Point(235, 383);
+            this.btnSave.Location = new System.Drawing.Point(231, 386);
             this.btnSave.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(79, 30);
+            this.btnSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnSave.Size = new System.Drawing.Size(79, 53);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "&Save";
             this.toolTip1.SetToolTip(this.btnSave, "Saves the Operator Player Status list and exits.");
@@ -110,10 +115,11 @@
             this.btnCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnCancel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCancel.Location = new System.Drawing.Point(320, 383);
+            this.btnCancel.Location = new System.Drawing.Point(318, 386);
             this.btnCancel.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(79, 30);
+            this.btnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Size = new System.Drawing.Size(79, 53);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.toolTip1.SetToolTip(this.btnCancel, "Exits without saving the Operator Player Status list.");
@@ -125,7 +131,8 @@
             this.listViewStatus.CheckBoxes = true;
             this.listViewStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.m_alertColumn,
-            this.m_nameColumn});
+            this.m_nameColumn,
+            this.m_bannedColumn});
             this.listViewStatus.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.listViewStatus.FullRowSelect = true;
             this.listViewStatus.GridLines = true;
@@ -140,8 +147,8 @@
             this.listViewStatus.UseCompatibleStateImageBehavior = false;
             this.listViewStatus.View = System.Windows.Forms.View.Details;
             this.listViewStatus.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listViewStatus_ItemChecked);
-            this.listViewStatus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewStatus_MouseUp);
             this.listViewStatus.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewStatus_ItemSelectionChanged);
+            this.listViewStatus.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listViewStatus_MouseUp);
             // 
             // m_alertColumn
             // 
@@ -151,15 +158,20 @@
             // m_nameColumn
             // 
             this.m_nameColumn.Text = "Name";
-            this.m_nameColumn.Width = 310;
+            this.m_nameColumn.Width = 250;
+            // 
+            // m_bannedColumn
+            // 
+            this.m_bannedColumn.Text = "Banned";
+            this.m_bannedColumn.Width = 65;
             // 
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.HideSelection = false;
-            this.textBoxName.Location = new System.Drawing.Point(12, 346);
+            this.textBoxName.Location = new System.Drawing.Point(11, 346);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(302, 26);
+            this.textBoxName.Size = new System.Drawing.Size(303, 26);
             this.textBoxName.TabIndex = 0;
             this.toolTip1.SetToolTip(this.textBoxName, "Make changes to the Status here.");
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
@@ -172,9 +184,10 @@
             this.btnUndo.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnUndo.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnUndo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnUndo.Location = new System.Drawing.Point(320, 344);
+            this.btnUndo.Location = new System.Drawing.Point(320, 345);
             this.btnUndo.MinimumSize = new System.Drawing.Size(30, 30);
             this.btnUndo.Name = "btnUndo";
+            this.btnUndo.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnUndo.Size = new System.Drawing.Size(79, 30);
             this.btnUndo.TabIndex = 1;
             this.btnUndo.Text = "&Undo";
@@ -201,8 +214,21 @@
             this.label1.Size = new System.Drawing.Size(387, 38);
             this.label1.TabIndex = 7;
             this.label1.Text = "Select an Alert check box to display the corresponding status on the main POS scr" +
-                "een when the player\'s card is swiped.";
+    "een when the player\'s card is swiped.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // chkbxBanned
+            // 
+            this.chkbxBanned.AutoSize = true;
+            this.chkbxBanned.BackColor = System.Drawing.Color.Transparent;
+            this.chkbxBanned.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Bold);
+            this.chkbxBanned.Location = new System.Drawing.Point(14, 378);
+            this.chkbxBanned.Name = "chkbxBanned";
+            this.chkbxBanned.Size = new System.Drawing.Size(74, 22);
+            this.chkbxBanned.TabIndex = 9;
+            this.chkbxBanned.Text = "Banned";
+            this.chkbxBanned.UseVisualStyleBackColor = false;
+            this.chkbxBanned.CheckedChanged += new System.EventHandler(this.chkbxBanned_CheckedChanged);
             // 
             // ActiveStatusEditor
             // 
@@ -210,8 +236,9 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(411, 425);
+            this.ClientSize = new System.Drawing.Size(413, 447);
             this.ControlBox = false;
+            this.Controls.Add(this.chkbxBanned);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnUndo);
@@ -246,5 +273,7 @@
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.ColumnHeader m_nameColumn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader m_bannedColumn;
+        private System.Windows.Forms.CheckBox chkbxBanned;
     }
 }

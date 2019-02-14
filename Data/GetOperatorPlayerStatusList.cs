@@ -100,6 +100,17 @@ namespace GTI.Modules.PlayerCenter.Data
                     code.Name = new string(responseReader.ReadChars(stringLen));
                     code.IsActive = responseReader.ReadBoolean();
                     code.IsAlert = responseReader.ReadBoolean();
+                    code.Banned = responseReader.ReadBoolean();
+
+                    if (code.Banned == true)
+                    {
+                        code.Banned_string = "TRUE";
+                    }
+                    else
+                    {
+                        code.Banned_string = "FALSE";
+                    }
+
                     StatusCodes.Add(code);
                 }
             }

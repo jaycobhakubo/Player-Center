@@ -312,7 +312,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// </summary>
         public static void GetStatusCode()
         {
-            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);//knc
+            OperatorPlayerStatusList = GetOperatorPlayerStatusList.GetOperatorPlayerStatus(GetOperatorID.operatorID);
         }
 
         //US2649

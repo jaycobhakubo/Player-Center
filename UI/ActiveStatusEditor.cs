@@ -30,7 +30,7 @@ namespace GTI.Modules.PlayerCenter.UI
             workList.Clear();
             foreach (PlayerStatus status in PlayerManager.OperatorPlayerStatusList)
             {
-                string name = (string.IsNullOrEmpty(status.Name)) ? UnNamed : status.Name;//knc
+                string name = (string.IsNullOrEmpty(status.Name)) ? UnNamed : status.Name;
                 workList.Add(new ExtendedStatus
                              {
                                  Id = status.Id,
@@ -59,7 +59,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (!string.IsNullOrEmpty(status.Name))
                 {
-                    ListViewItem lvi = new ListViewItem() { Checked = status.IsAlert,  Tag = status};//knc
+                    ListViewItem lvi = new ListViewItem() { Checked = status.IsAlert,  Tag = status};
                     lvi.SubItems.Add(status.Name);
                     lvi.SubItems.Add(status.IsBannedstring); 
 
@@ -197,7 +197,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #region Nested type: ExtendedStatus
-        public class ExtendedStatus//knc
+        public class ExtendedStatus
         {
             public int Id { get; set; }
             public string Name { get; set; }

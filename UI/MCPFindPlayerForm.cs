@@ -144,8 +144,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private void SearchByCardClick(object sender, EventArgs e)
         {
             // PDTS 1064
-            GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);
-            magForm.ClearCardButtonVisible = false;
+            GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);            
+            magForm.ClearCardButtonVisible = true; //magForm.ClearCardButtonVisible = false;
+            magForm.RedesignUI();
 
             if(magForm.ShowDialog() == DialogResult.OK)
             {

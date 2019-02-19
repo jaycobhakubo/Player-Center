@@ -844,13 +844,13 @@
     <value>m_generateButton</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_generateButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="m_closeButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
@@ -877,7 +877,7 @@
     <value>m_closeButton</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1060,7 +1060,7 @@
     <value>m_spendBotton</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1093,7 +1093,7 @@
     <value>imgbtnNewList</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1153,7 +1153,7 @@
     <value>imgbtn</value>
   </data>
   <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1183,7 +1183,7 @@
     <value>m_playDatesButton</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1219,7 +1219,7 @@
     <value>imgbtnDelete</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1249,7 +1249,7 @@
     <value>m_locationButton</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1279,7 +1279,7 @@
     <value>m_listCriteriaButton1</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -1336,7 +1336,7 @@
     <value>imgbtn_AwardPointsToListOfPlayer</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1372,7 +1372,7 @@
     <value>imgbtnCancel</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1408,136 +1408,13 @@
     <value>btnSaveList</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1324, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1228, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSaveList.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 15.75pt, style=Bold</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 5</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 27</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 11.25pt</value>
-  </data>
-  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 106</value>
-  </data>
-  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 26</value>
-  </data>
-  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
-    <value>m_statusCheckComboBox</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 165</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Between</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 2</value>
-  </data>
-  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>817, 562</value>
-  </data>
-  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
-    <value>m_listCriteriaPanel</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2419,7 +2296,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_summaryPanel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3106,7 +2983,7 @@
     <value>m_checkComboAllSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3202,7 +3079,7 @@
     <value>m_checkComboSUNSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboSUNSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboSUNSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3331,7 +3208,7 @@
     <value>m_checkComboSATSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboSATSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboSATSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3427,7 +3304,7 @@
     <value>m_checkComboFRISession</value>
   </data>
   <data name="&gt;&gt;m_checkComboFRISession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboFRISession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3490,7 +3367,7 @@
     <value>m_checkComboMONSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboMONSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboMONSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3520,7 +3397,7 @@
     <value>m_checkComboTHURSSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboTHURSSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboTHURSSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3550,7 +3427,7 @@
     <value>m_checkComboTUESession</value>
   </data>
   <data name="&gt;&gt;m_checkComboTUESession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboTUESession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3580,7 +3457,7 @@
     <value>m_checkComboWEDSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboWEDSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboWEDSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -3799,7 +3676,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_playDatesPanel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4294,7 +4171,7 @@
     <value>m_ProductCheckBox2</value>
   </data>
   <data name="&gt;&gt;m_ProductCheckBox2.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_ProductCheckBox2.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -4345,6 +4222,129 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_spendPanel.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="m_listCriteriaPanel.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 15.75pt, style=Bold</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 5</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 27</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="m_statusCheckComboBox.AccessibleName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="m_statusCheckComboBox.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 11.25pt</value>
+  </data>
+  <data name="m_statusCheckComboBox.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_statusCheckComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 106</value>
+  </data>
+  <data name="m_statusCheckComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 26</value>
+  </data>
+  <data name="m_statusCheckComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Name" xml:space="preserve">
+    <value>m_statusCheckComboBox</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_statusCheckComboBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 165</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 22</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_listCriteriaPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="m_listCriteriaPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 2</value>
+  </data>
+  <data name="m_listCriteriaPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>817, 562</value>
+  </data>
+  <data name="m_listCriteriaPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Name" xml:space="preserve">
+    <value>m_listCriteriaPanel</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_listCriteriaPanel.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
@@ -4402,7 +4402,7 @@
     <value>m_locListBox</value>
   </data>
   <data name="&gt;&gt;m_locListBox.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.14.2.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.14.0.0, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_locListBox.Parent" xml:space="preserve">
     <value>m_locationPanel</value>
@@ -4696,6 +4696,6 @@
     <value>PlayerListForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1325, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1229, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

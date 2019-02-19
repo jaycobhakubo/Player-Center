@@ -1507,11 +1507,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.btnSaveList);
             this.Controls.Add(this.m_closeButton);
-            this.Controls.Add(this.m_listCriteriaPanel);
             this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_playDatesPanel);
             this.Controls.Add(this.m_generateButton);
             this.Controls.Add(this.m_spendPanel);
+            this.Controls.Add(this.m_listCriteriaPanel);
             this.Controls.Add(this.m_locationPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

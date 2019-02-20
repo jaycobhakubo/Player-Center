@@ -55,6 +55,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectPlayerButton = new GTI.Controls.ImageButton();
             this.m_resultsList = new System.Windows.Forms.ListBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
+            this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.SuspendLayout();
             // 
             // m_lastNameLabel
@@ -92,33 +94,36 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_searchByCardButton
             // 
             this.m_searchByCardButton.BackColor = System.Drawing.Color.Transparent;
+            this.m_searchByCardButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchByCardButton, "m_searchByCardButton");
             this.m_searchByCardButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_searchByCardButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_searchByCardButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_searchByCardButton.Name = "m_searchByCardButton";
+            this.m_searchByCardButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchByCardButton.UseVisualStyleBackColor = false;
             this.m_searchByCardButton.Click += new System.EventHandler(this.SearchByCardClick);
             // 
             // m_cancelButton
             // 
             this.m_cancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.m_cancelButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_cancelButton, "m_cancelButton");
             this.m_cancelButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_cancelButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_cancelButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_cancelButton.Name = "m_cancelButton";
+            this.m_cancelButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_cancelButton.UseVisualStyleBackColor = false;
             this.m_cancelButton.Click += new System.EventHandler(this.CancelClick);
             // 
             // m_selectPlayerButton
             // 
             this.m_selectPlayerButton.BackColor = System.Drawing.Color.Transparent;
+            this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_selectPlayerButton, "m_selectPlayerButton");
             this.m_selectPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_selectPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_selectPlayerButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_selectPlayerButton.Name = "m_selectPlayerButton";
+            this.m_selectPlayerButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_selectPlayerButton.UseVisualStyleBackColor = false;
             this.m_selectPlayerButton.Click += new System.EventHandler(this.SelectPlayerClick);
             // 
@@ -135,19 +140,27 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_searchButton
             // 
             this.m_searchButton.BackColor = System.Drawing.Color.Transparent;
+            this.m_searchButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchButton, "m_searchButton");
             this.m_searchButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_searchButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.m_searchButton.MinimumSize = new System.Drawing.Size(30, 30);
             this.m_searchButton.Name = "m_searchButton";
+            this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.UseVisualStyleBackColor = false;
             this.m_searchButton.Click += new System.EventHandler(this.SearchClick);
+            // 
+            // m_dgvResultsList
+            // 
+            this.m_dgvResultsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.m_dgvResultsList, "m_dgvResultsList");
+            this.m_dgvResultsList.Name = "m_dgvResultsList";
             // 
             // MCPFindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.m_dgvResultsList);
             this.Controls.Add(this.m_lastNameLabel);
             this.Controls.Add(this.m_firstNameLabel);
             this.Controls.Add(this.m_searchByCardButton);
@@ -162,6 +175,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.MaximizeBox = false;
             this.Name = "MCPFindPlayerForm";
             this.ShowInTaskbar = false;
+            ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +184,8 @@ namespace GTI.Modules.PlayerCenter.UI
         
 
         #endregion
+
+        private System.Windows.Forms.DataGridView m_dgvResultsList;
 
        
     }

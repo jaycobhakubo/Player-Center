@@ -189,12 +189,14 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_dgvResultsList, "m_dgvResultsList");
             this.m_dgvResultsList.MultiSelect = false;
             this.m_dgvResultsList.Name = "m_dgvResultsList";
+            this.m_dgvResultsList.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // m_clmnhdrFirstName
             // 
-            this.m_clmnhdrFirstName.DataPropertyName = "m_clmnhdrFirstName";
+            this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
@@ -203,7 +205,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_clmnhdrLastName
             // 
-            this.m_clmnhdrLastName.DataPropertyName = "m_clmnhdrLastName";
+            this.m_clmnhdrLastName.DataPropertyName = "LastName";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;

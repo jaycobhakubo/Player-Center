@@ -120,6 +120,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (players != null && players.Length > 0)
                 {
                     m_resultsList.Items.AddRange(players);
+                    LoadPlayerListDataGrid(players);
 
                     // Rally DE1889 - If only one player, automatically select.
                     if(m_resultsList.Items.Count > 0)
@@ -133,6 +134,22 @@ namespace GTI.Modules.PlayerCenter.UI
                     MessageForm.Show(Properties.Resources.InfoPlayerNotFound, Properties.Resources.PlayerCenterName);
                 }
             }
+        }
+
+
+
+        private void LoadPlayerListDataGrid(PlayerListItem[] players)
+        {
+
+
+            m_dgvResultsList.DataSource = null;
+            m_dgvResultsList.Rows.Clear();
+            m_dgvResultsList.AutoGenerateColumns = false;
+            m_dgvResultsList.AllowUserToAddRows = false;
+            m_dgvResultsList.DataSource = players;
+            //Sort("ReportDisplayName", SortOrder.Ascending);
+            m_dgvResultsList.ClearSelection();
+
         }
 
         /// <summary>

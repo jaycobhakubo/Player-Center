@@ -1086,7 +1086,7 @@ namespace GTI.Modules.PlayerCenter.Business
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">The DoWorkEventArgs object that 
         /// contains the event data.</param>
-        private void GetPlayerList(object sender, DoWorkEventArgs e)
+        private void GetPlayerList(object sender, DoWorkEventArgs e)//knc
         {
             // Set the language.
             lock (Settings.SyncRoot)
@@ -1105,7 +1105,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (parameters[0] != string.Empty) // Mag. Card
             {
-                FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();
+                FindPlayerByCardMessage cardMsg = new FindPlayerByCardMessage();//knc
                 cardMsg.MagCardNumber = parameters[0];
 
                 // Send the message.
@@ -1172,7 +1172,7 @@ namespace GTI.Modules.PlayerCenter.Business
             if (e.Error == null)
             {
                 // Set the results of the search.
-                LastFindPlayersResults = (PlayerListItem[])e.Result;
+                LastFindPlayersResults = (PlayerListItem[])e.Result;//knc
             }
             else
             {

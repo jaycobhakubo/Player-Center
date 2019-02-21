@@ -46,6 +46,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MCPFindPlayerForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_lastNameLabel = new System.Windows.Forms.Label();
             this.m_firstNameLabel = new System.Windows.Forms.Label();
             this.m_lastName = new System.Windows.Forms.TextBox();
@@ -56,6 +61,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_resultsList = new System.Windows.Forms.ListBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
+            this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,9 +158,57 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // m_dgvResultsList
             // 
+            this.m_dgvResultsList.AllowUserToAddRows = false;
+            this.m_dgvResultsList.AllowUserToDeleteRows = false;
+            this.m_dgvResultsList.AllowUserToResizeColumns = false;
+            this.m_dgvResultsList.AllowUserToResizeRows = false;
+            this.m_dgvResultsList.BackgroundColor = System.Drawing.Color.White;
+            this.m_dgvResultsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.m_dgvResultsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.m_dgvResultsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.m_dgvResultsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.m_dgvResultsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.m_clmnhdrFirstName,
+            this.m_clmnhdrLastName});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.m_dgvResultsList.DefaultCellStyle = dataGridViewCellStyle4;
+            this.m_dgvResultsList.GridColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.m_dgvResultsList, "m_dgvResultsList");
+            this.m_dgvResultsList.MultiSelect = false;
             this.m_dgvResultsList.Name = "m_dgvResultsList";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            // 
+            // m_clmnhdrFirstName
+            // 
+            this.m_clmnhdrFirstName.DataPropertyName = "m_clmnhdrFirstName";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
+            this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
+            // 
+            // m_clmnhdrLastName
+            // 
+            this.m_clmnhdrLastName.DataPropertyName = "m_clmnhdrLastName";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
+            this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
             // 
             // MCPFindPlayerForm
             // 
@@ -186,6 +241,8 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         private System.Windows.Forms.DataGridView m_dgvResultsList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrLastName;
 
        
     }

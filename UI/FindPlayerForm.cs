@@ -104,10 +104,11 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             // Remove the previous results.
             m_resultsList.Items.Clear();
+            //knc
 
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
-            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());
+            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -126,8 +127,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 if(players != null && players.Length > 0)
                 {
                     m_resultsList.Items.AddRange(players);
+                    //knc
 
-                    // Rally DE1889
+                    // Rally DE1889//knc
                     if(m_resultsList.Items.Count > 0)
                         m_resultsList.SelectedIndex = 0;
 
@@ -156,6 +158,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(magForm.ShowDialog() == DialogResult.OK)
             {
                 // Remove the previous results.
+                //knc
                 m_resultsList.Items.Clear();
 
                 // Spawn a new thread to find players and wait until done.
@@ -178,6 +181,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (players != null && players.Length > 0)
                     {
+                        //knc
                         m_resultsList.Items.AddRange(players);
                         m_resultsList.SelectedIndex = 0;
 

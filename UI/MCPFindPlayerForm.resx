@@ -393,14 +393,11 @@
   <data name="&gt;&gt;m_searchButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <metadata name="m_clmnhdrFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="PlayerId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="m_clmnhdrFirstName.HeaderText" xml:space="preserve">
-    <value>First Name</value>
-  </data>
-  <data name="m_clmnhdrFirstName.Width" type="System.Int32, mscorlib">
-    <value>150</value>
+  <data name="PlayerId.HeaderText" xml:space="preserve">
+    <value>Player Id</value>
   </data>
   <metadata name="m_clmnhdrLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -409,6 +406,15 @@
     <value>Last Name</value>
   </data>
   <data name="m_clmnhdrLastName.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="m_clmnhdrFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnhdrFirstName.HeaderText" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="m_clmnhdrFirstName.Width" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
   <data name="m_dgvResultsList.Location" type="System.Drawing.Point, System.Drawing">
@@ -706,16 +712,22 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Player Center -- FortuNet, Inc.</value>
   </data>
-  <data name="&gt;&gt;m_clmnhdrFirstName.Name" xml:space="preserve">
-    <value>m_clmnhdrFirstName</value>
+  <data name="&gt;&gt;PlayerId.Name" xml:space="preserve">
+    <value>PlayerId</value>
   </data>
-  <data name="&gt;&gt;m_clmnhdrFirstName.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlayerId.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;m_clmnhdrLastName.Name" xml:space="preserve">
     <value>m_clmnhdrLastName</value>
   </data>
   <data name="&gt;&gt;m_clmnhdrLastName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnhdrFirstName.Name" xml:space="preserve">
+    <value>m_clmnhdrFirstName</value>
+  </data>
+  <data name="&gt;&gt;m_clmnhdrFirstName.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

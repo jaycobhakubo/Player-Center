@@ -88,6 +88,9 @@ namespace GTI.Modules.PlayerCenter.UI
         #region Button Events
 
         
+  
+
+
         /// <summary>
         /// Handles the search button click.
         /// </summary>
@@ -97,7 +100,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void SearchClick(object sender, EventArgs e)
         {
             // Remove the previous results.
-            m_resultsList.Items.Clear();
+            //m_resultsList.Items.Clear();
+            //No need to clear our previous result in datagridlist
 
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
@@ -119,15 +123,25 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (players != null && players.Length > 0)
                 {
-                    m_resultsList.Items.AddRange(players);
-                    LoadPlayerListDataGrid(players);
+                  //  m_resultsList.Items.AddRange(players);
+                    LoadPlayerListDataGrid(players);//add our list into the datagrid
 
                     // Rally DE1889 - If only one player, automatically select.
-                    if(m_resultsList.Items.Count > 0)
-                        m_resultsList.SelectedIndex = 0;
+                    //if(m_resultsList.Items.Count > 0)
+                    //    m_resultsList.SelectedIndex = 0;
 
-                    if(m_resultsList.Items.Count == 1)
+                    if (m_dgvResultsList.Rows.Count > 0)
+                    {
+                        m_dgvResultsList.Rows[0].Selected = true;
+                    }
+
+                    //if(m_resultsList.Items.Count == 1)
+                    //    m_selectPlayerButton.PerformClick();
+
+                    if (m_dgvResultsList.Rows.Count == 1)
+                    {
                         m_selectPlayerButton.PerformClick();
+                    }
                 }
                 else
                 {
@@ -168,7 +182,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(magForm.ShowDialog() == DialogResult.OK)
             {
                 // Remove the previous results.
-                m_resultsList.Items.Clear();
+                //m_resultsList.Items.Clear();
 
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
@@ -187,15 +201,27 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     // Add the player(s) to the result list.
                     PlayerListItem[] players = m_parent.LastFindPlayersResults;
+                   
 
                     if (players != null && players.Length > 0)
                     {
-                        m_resultsList.Items.AddRange(players);
+                        //m_resultsList.Items.AddRange(players);
                         m_resultsList.SelectedIndex = 0;
 
+                        LoadPlayerListDataGrid(players);//add our list into the datagrid
+                        if (m_dgvResultsList.Rows.Count > 0)
+                        {
+                            m_dgvResultsList.Rows[0].Selected = true;
+                        }
+
                         // Rally DE1889 - If only one player, automatically select.
-                        if(m_resultsList.Items.Count == 1)
+                        //if(m_resultsList.Items.Count == 1)
+                        //    m_selectPlayerButton.PerformClick();
+
+                        if (m_dgvResultsList.Rows.Count == 1)
+                        {
                             m_selectPlayerButton.PerformClick();
+                        }
                     }
                     else
                     {
@@ -216,13 +242,21 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             int intPlayerID = 0;
             Application.DoEvents();
-            if(m_resultsList.SelectedIndex == -1)
+            //if(m_resultsList.SelectedIndex == -1)
+            //{
+            //    MessageForm.Show(Resources.FindPlayerFormNoPlayer);
+            //    return;
+            //}
+
+            if (m_dgvResultsList.CurrentCell.RowIndex == -1)
             {
                 MessageForm.Show(Resources.FindPlayerFormNoPlayer);
                 return;
             }
 
-            intPlayerID = ((PlayerListItem)m_resultsList.SelectedItem).Id;
+            //intPlayerID = ((PlayerListItem)m_resultsList.SelectedItem).Id;
+            intPlayerID = (int)m_dgvResultsList.SelectedRows[0].Cells[0].Value;
+            
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
@@ -280,18 +314,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void ResultsListUpClick(object sender, EventArgs e)
         {
-            if (m_resultsList.Items.Count > 0)
-            {
-                if (m_resultsList.SelectedIndices.Count == 0)
-                    m_resultsList.SelectedIndex = 0;
-                else
-                {
-                    int newIndex = m_resultsList.SelectedIndex - 1;
 
-                    if (newIndex >= 0)
-                        m_resultsList.SelectedIndex = newIndex;
-                }
-            }
         }
 
         /// <summary>
@@ -302,19 +325,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void ResultsListDownClick(object sender, EventArgs e)
         {
-            Application.DoEvents();
-            if (m_resultsList.Items.Count > 0)
-            {
-                if (m_resultsList.SelectedIndices.Count == 0)
-                    m_resultsList.SelectedIndex = 0;
-                else
-                {
-                    int newIndex = m_resultsList.SelectedIndex + 1;
 
-                    if (newIndex < m_resultsList.Items.Count)
-                        m_resultsList.SelectedIndex = newIndex;
-                }
-            }
         }
 
 
@@ -351,7 +362,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void FocusChanged(object sender, EventArgs e)
         {
             if (sender is Control) //&& (sender != m_virtualKeyboard))
+            {
                 m_lastFocus = sender;
+            }
+
         }
 
 

@@ -64,7 +64,22 @@ namespace GTI.Modules.PlayerCenter.UI
             this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_lastNameLabel
@@ -102,8 +117,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_searchByCardButton
             // 
             this.m_searchByCardButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_searchByCardButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchByCardButton, "m_searchByCardButton");
+            this.m_searchByCardButton.FocusColor = System.Drawing.Color.Black;
             this.m_searchByCardButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_searchByCardButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_searchByCardButton.Name = "m_searchByCardButton";
@@ -114,8 +129,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_cancelButton
             // 
             this.m_cancelButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_cancelButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_cancelButton, "m_cancelButton");
+            this.m_cancelButton.FocusColor = System.Drawing.Color.Black;
             this.m_cancelButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_cancelButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_cancelButton.Name = "m_cancelButton";
@@ -126,8 +141,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_selectPlayerButton
             // 
             this.m_selectPlayerButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_selectPlayerButton, "m_selectPlayerButton");
+            this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             this.m_selectPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_selectPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_selectPlayerButton.Name = "m_selectPlayerButton";
@@ -148,8 +163,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_searchButton
             // 
             this.m_searchButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_searchButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_searchButton, "m_searchButton");
+            this.m_searchButton.FocusColor = System.Drawing.Color.Black;
             this.m_searchButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_searchButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_searchButton.Name = "m_searchButton";
@@ -224,19 +239,56 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
             this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
+            // 
+            // splitContainer2
+            // 
+            resources.ApplyResources(this.splitContainer2, "splitContainer2");
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.m_searchButton);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.m_searchByCardButton);
+            // 
+            // splitContainer3
+            // 
+            resources.ApplyResources(this.splitContainer3, "splitContainer3");
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.m_selectPlayerButton);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.m_cancelButton);
+            // 
             // MCPFindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.m_dgvResultsList);
             this.Controls.Add(this.m_lastNameLabel);
             this.Controls.Add(this.m_firstNameLabel);
-            this.Controls.Add(this.m_searchByCardButton);
-            this.Controls.Add(this.m_cancelButton);
-            this.Controls.Add(this.m_selectPlayerButton);
             this.Controls.Add(this.m_resultsList);
-            this.Controls.Add(this.m_searchButton);
             this.Controls.Add(this.m_lastName);
             this.Controls.Add(this.m_firstName);
             this.DoubleBuffered = true;
@@ -245,6 +297,18 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Name = "MCPFindPlayerForm";
             this.ShowInTaskbar = false;
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +322,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
 
        
     }

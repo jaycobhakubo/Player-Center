@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lastNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 28</value>
+    <value>31, 9</value>
   </data>
   <data name="m_lastNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 22</value>
@@ -162,8 +162,11 @@
   <data name="m_firstNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
+  <data name="m_firstNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="m_firstNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>544, 28</value>
+    <value>286, 9</value>
   </data>
   <data name="m_firstNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 22</value>
@@ -193,10 +196,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_lastName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 24</value>
+    <value>24, 33</value>
   </data>
   <data name="m_lastName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
+    <value>249, 26</value>
   </data>
   <data name="m_lastName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -217,10 +220,10 @@
     <value>Trebuchet MS, 12pt</value>
   </data>
   <data name="m_firstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>639, 24</value>
+    <value>286, 33</value>
   </data>
   <data name="m_firstName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 26</value>
+    <value>284, 26</value>
   </data>
   <data name="m_firstName.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -253,7 +256,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchByCardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 46</value>
+    <value>170, 30</value>
   </data>
   <data name="m_searchByCardButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -289,7 +292,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 46</value>
+    <value>167, 30</value>
   </data>
   <data name="m_cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -325,7 +328,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_selectPlayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 46</value>
+    <value>173, 30</value>
   </data>
   <data name="m_selectPlayerButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -388,7 +391,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 46</value>
+    <value>174, 30</value>
   </data>
   <data name="m_searchButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -414,6 +417,9 @@
   <data name="PlayerId.HeaderText" xml:space="preserve">
     <value>Player Id</value>
   </data>
+  <data name="PlayerId.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
   <metadata name="m_clmnhdrLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -432,11 +438,29 @@
   <data name="m_clmnhdrFirstName.Width" type="System.Int32, mscorlib">
     <value>150</value>
   </data>
+  <metadata name="m_dgvclmnBirthDay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_dgvclmnBirthDay.HeaderText" xml:space="preserve">
+    <value>Birthdate</value>
+  </data>
+  <data name="m_dgvclmnBirthDay.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
+  <metadata name="m_dgvclmnLastVisitDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_dgvclmnLastVisitDate.HeaderText" xml:space="preserve">
+    <value>Last Visit Date</value>
+  </data>
+  <data name="m_dgvclmnLastVisitDate.Width" type="System.Int32, mscorlib">
+    <value>150</value>
+  </data>
   <data name="m_dgvResultsList.Location" type="System.Drawing.Point, System.Drawing">
     <value>24, 82</value>
   </data>
   <data name="m_dgvResultsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>953, 473</value>
+    <value>684, 473</value>
   </data>
   <data name="m_dgvResultsList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -454,7 +478,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 595</value>
+    <value>18, 574</value>
   </data>
   <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -487,10 +511,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 46</value>
+    <value>348, 30</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>240</value>
+    <value>174</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -550,10 +574,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>476, 46</value>
+    <value>344, 30</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>240</value>
+    <value>173</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -583,10 +607,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>960, 46</value>
+    <value>696, 30</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>480</value>
+    <value>348</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -610,7 +634,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1001, 650</value>
+    <value>737, 627</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>
@@ -893,6 +917,18 @@
     <value>m_clmnhdrFirstName</value>
   </data>
   <data name="&gt;&gt;m_clmnhdrFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_dgvclmnBirthDay.Name" xml:space="preserve">
+    <value>m_dgvclmnBirthDay</value>
+  </data>
+  <data name="&gt;&gt;m_dgvclmnBirthDay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_dgvclmnLastVisitDate.Name" xml:space="preserve">
+    <value>m_dgvclmnLastVisitDate</value>
+  </data>
+  <data name="&gt;&gt;m_dgvclmnLastVisitDate.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

@@ -1078,6 +1078,31 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FindPlayersComplete);
             m_worker.RunWorkerAsync(parameters);
         }
+
+
+        internal void FindPlayers(string magCardNumber, string categorySearchString)
+        {
+            // Set the wait message.
+            m_waitForm.Message = Resources.WaitFormFindingPlayers;
+
+            // Set the search params.
+            string[] parameters = new string[2];
+            parameters[0] = magCardNumber;
+            parameters[1] = categorySearchString;
+    
+            //parameters[0] = magCardNumber;
+            //parameters[1] = firstName;
+            //parameters[2] = lastName;
+
+            // Create the worker thread and run it.
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(GetPlayerList);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FindPlayersComplete);
+            m_worker.RunWorkerAsync(parameters);
+        }
         // END: DE2476
 
         /// <summary>
@@ -1132,7 +1157,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     e.Result = new PlayerListItem[] { temp };
                 }
             }
-            else // First and Last Name
+            else  //Search string category  // First and Last Name
             {
                 GetPlayerListMessage listMsg = new GetPlayerListMessage();
                 //listMsg.FirstName = parameters[1];

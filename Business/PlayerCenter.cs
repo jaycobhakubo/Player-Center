@@ -1129,15 +1129,15 @@ namespace GTI.Modules.PlayerCenter.Business
                     temp.FirstName = cardMsg.FirstName;
                     temp.LastName = cardMsg.LastName;
                     temp.MiddleInitial = cardMsg.MiddleInitial;
-
                     e.Result = new PlayerListItem[] { temp };
                 }
             }
             else // First and Last Name
             {
                 GetPlayerListMessage listMsg = new GetPlayerListMessage();
-                listMsg.FirstName = parameters[1];
-                listMsg.LastName = parameters[2];
+                //listMsg.FirstName = parameters[1];
+                //listMsg.LastName = parameters[2];
+                listMsg.SearchCategory = parameters[1];
 
                 // Send the message.
                 try

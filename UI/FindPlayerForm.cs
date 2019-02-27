@@ -107,7 +107,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
-            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());
+            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 

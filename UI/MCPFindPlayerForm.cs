@@ -60,6 +60,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_parent = parent;
             InitializeComponent();
             //ApplyDisplayMode();
+            
             Application.DoEvents();
             Application.DoEvents();
             // Set the last focused control to the first field.
@@ -105,7 +106,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
-            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());
+            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
+            //m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -186,7 +188,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
-                m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);
+                m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);//
                 m_parent.ShowWaitForm(this); // Block until we are done.
                 // END: DE2476
 

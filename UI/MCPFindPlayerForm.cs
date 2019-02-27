@@ -69,7 +69,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // Set the max text lengths.
             m_firstName.MaxLength = StringSizes.MaxNameLength;
             m_lastName.MaxLength = StringSizes.MaxNameLength;
-
+            m_cmbxFilterSearchResult.SelectedIndex = 0;
             // Which keyboard do we need to use?
             //switch(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
             //{
@@ -189,6 +189,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
                 m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);//
+                m_parent.FindPlayers(magForm.MagCardNumber, string.Empty);//
                 m_parent.ShowWaitForm(this); // Block until we are done.
                 // END: DE2476
 
@@ -208,9 +209,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     if (players != null && players.Length > 0)
                     {
                         //m_resultsList.Items.AddRange(players);
-                        m_resultsList.SelectedIndex = 0;
-
                         LoadPlayerListDataGrid(players);//add our list into the datagrid
+                        //m_resultsList.SelectedIndex = 0;
+
+                      
                         if (m_dgvResultsList.Rows.Count > 0)
                         {
                             m_dgvResultsList.Rows[0].Selected = true;

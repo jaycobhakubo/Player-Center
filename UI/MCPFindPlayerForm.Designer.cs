@@ -45,16 +45,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MCPFindPlayerForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.m_cmbxFilterSearchResult = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -91,7 +91,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -141,21 +140,21 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // splitContainer4.Panel1
             // 
-            this.splitContainer4.Panel1.Controls.Add(this.comboBox1);
+            this.splitContainer4.Panel1.Controls.Add(this.m_cmbxFilterSearchResult);
             // 
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
             // 
-            // comboBox1
+            // m_cmbxFilterSearchResult
             // 
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2")});
-            this.comboBox1.Name = "comboBox1";
+            resources.ApplyResources(this.m_cmbxFilterSearchResult, "m_cmbxFilterSearchResult");
+            this.m_cmbxFilterSearchResult.FormattingEnabled = true;
+            this.m_cmbxFilterSearchResult.Items.AddRange(new object[] {
+            resources.GetString("m_cmbxFilterSearchResult.Items"),
+            resources.GetString("m_cmbxFilterSearchResult.Items1"),
+            resources.GetString("m_cmbxFilterSearchResult.Items2")});
+            this.m_cmbxFilterSearchResult.Name = "m_cmbxFilterSearchResult";
             // 
             // label1
             // 
@@ -185,17 +184,13 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.imageButton1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.m_searchByCardButton);
+            this.splitContainer2.Panel1.Controls.Add(this.m_searchByCardButton);
             // 
             // imageButton1
             // 
             this.imageButton1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
             this.imageButton1.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.imageButton1, "imageButton1");
             this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.imageButton1.Name = "imageButton1";
@@ -260,14 +255,14 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.BackgroundColor = System.Drawing.Color.White;
             this.m_dgvResultsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_dgvResultsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.m_dgvResultsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.m_dgvResultsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.m_dgvResultsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_dgvResultsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerId,
@@ -278,21 +273,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity,
             this.m_dgvclmnBirthDay,
             this.m_dgvclmnLastVisitDate});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.m_dgvResultsList.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.m_dgvResultsList.DefaultCellStyle = dataGridViewCellStyle9;
             this.m_dgvResultsList.GridColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.m_dgvResultsList, "m_dgvResultsList");
             this.m_dgvResultsList.MultiSelect = false;
             this.m_dgvResultsList.Name = "m_dgvResultsList";
             this.m_dgvResultsList.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.m_dgvResultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
             // 
@@ -350,9 +345,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_clmnhdrFirstName
             // 
             this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
             this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
             // 
@@ -365,9 +360,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_clmnhdrLastName
             // 
             this.m_clmnhdrLastName.DataPropertyName = "LastName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
             this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
             // 
@@ -400,6 +395,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.splitContainer4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
@@ -428,7 +424,6 @@ namespace GTI.Modules.PlayerCenter.UI
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
@@ -452,7 +447,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.TextBox m_firstName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox m_txtbxSearchCategory;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox m_cmbxFilterSearchResult;
         private Controls.ImageButton imageButton1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;

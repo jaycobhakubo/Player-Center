@@ -50,11 +50,11 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -64,24 +64,27 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectPlayerButton = new GTI.Controls.ImageButton();
             this.m_cancelButton = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
-            this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m_clmnhdrLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_lastNameLabel = new System.Windows.Forms.Label();
             this.m_firstNameLabel = new System.Windows.Forms.Label();
             this.m_resultsList = new System.Windows.Forms.ListBox();
             this.m_lastName = new System.Windows.Forms.TextBox();
             this.m_firstName = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
+            this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrMagCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnhdrPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
             this.splitContainer5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,30 +99,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.splitContainer4, "splitContainer4");
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.comboBox1);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox1, "comboBox1");
-            this.comboBox1.Items.AddRange(new object[] {
-            resources.GetString("comboBox1.Items"),
-            resources.GetString("comboBox1.Items1"),
-            resources.GetString("comboBox1.Items2")});
-            this.comboBox1.Name = "comboBox1";
             // 
             // splitContainer5
             // 
@@ -153,6 +132,30 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.UseVisualStyleBackColor = false;
             this.m_searchButton.Click += new System.EventHandler(this.SearchClick);
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.splitContainer4, "splitContainer4");
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.comboBox1);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
+            // 
+            // comboBox1
+            // 
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1"),
+            resources.GetString("comboBox1.Items2")});
+            this.comboBox1.Name = "comboBox1";
             // 
             // label1
             // 
@@ -268,8 +271,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_dgvResultsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerId,
-            this.m_clmnhdrLastName,
             this.m_clmnhdrFirstName,
+            this.m_clmnhdrMiddleName,
+            this.m_clmnhdrLastName,
+            this.m_clmnhdrMagCard,
+            this.m_clmnhdrPlayerIdentity,
             this.m_dgvclmnBirthDay,
             this.m_dgvclmnLastVisitDate});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -289,45 +295,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.m_dgvResultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
-            // 
-            // PlayerId
-            // 
-            this.PlayerId.DataPropertyName = "Id";
-            resources.ApplyResources(this.PlayerId, "PlayerId");
-            this.PlayerId.Name = "PlayerId";
-            this.PlayerId.ReadOnly = true;
-            this.PlayerId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // m_clmnhdrLastName
-            // 
-            this.m_clmnhdrLastName.DataPropertyName = "LastName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
-            this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
-            // 
-            // m_clmnhdrFirstName
-            // 
-            this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
-            this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
-            // 
-            // m_dgvclmnBirthDay
-            // 
-            this.m_dgvclmnBirthDay.DataPropertyName = "BirthDate";
-            resources.ApplyResources(this.m_dgvclmnBirthDay, "m_dgvclmnBirthDay");
-            this.m_dgvclmnBirthDay.Name = "m_dgvclmnBirthDay";
-            // 
-            // m_dgvclmnLastVisitDate
-            // 
-            this.m_dgvclmnLastVisitDate.DataPropertyName = "LastVisitDate";
-            resources.ApplyResources(this.m_dgvclmnLastVisitDate, "m_dgvclmnLastVisitDate");
-            this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
             // 
             // m_lastNameLabel
             // 
@@ -371,6 +338,63 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_firstName.Enter += new System.EventHandler(this.FocusChanged);
             this.m_firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameKeyDown);
             // 
+            // PlayerId
+            // 
+            this.PlayerId.DataPropertyName = "Id";
+            resources.ApplyResources(this.PlayerId, "PlayerId");
+            this.PlayerId.Name = "PlayerId";
+            this.PlayerId.ReadOnly = true;
+            this.PlayerId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // m_clmnhdrFirstName
+            // 
+            this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
+            this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
+            // 
+            // m_clmnhdrMiddleName
+            // 
+            this.m_clmnhdrMiddleName.DataPropertyName = "MiddleInitial";
+            resources.ApplyResources(this.m_clmnhdrMiddleName, "m_clmnhdrMiddleName");
+            this.m_clmnhdrMiddleName.Name = "m_clmnhdrMiddleName";
+            // 
+            // m_clmnhdrLastName
+            // 
+            this.m_clmnhdrLastName.DataPropertyName = "LastName";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
+            this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
+            // 
+            // m_clmnhdrMagCard
+            // 
+            this.m_clmnhdrMagCard.DataPropertyName = "MagCard";
+            resources.ApplyResources(this.m_clmnhdrMagCard, "m_clmnhdrMagCard");
+            this.m_clmnhdrMagCard.Name = "m_clmnhdrMagCard";
+            // 
+            // m_clmnhdrPlayerIdentity
+            // 
+            this.m_clmnhdrPlayerIdentity.DataPropertyName = "PlayerIdentity";
+            resources.ApplyResources(this.m_clmnhdrPlayerIdentity, "m_clmnhdrPlayerIdentity");
+            this.m_clmnhdrPlayerIdentity.Name = "m_clmnhdrPlayerIdentity";
+            // 
+            // m_dgvclmnBirthDay
+            // 
+            this.m_dgvclmnBirthDay.DataPropertyName = "BirthDate";
+            resources.ApplyResources(this.m_dgvclmnBirthDay, "m_dgvclmnBirthDay");
+            this.m_dgvclmnBirthDay.Name = "m_dgvclmnBirthDay";
+            // 
+            // m_dgvclmnLastVisitDate
+            // 
+            this.m_dgvclmnLastVisitDate.DataPropertyName = "LastVisitDate";
+            resources.ApplyResources(this.m_dgvclmnLastVisitDate, "m_dgvclmnLastVisitDate");
+            this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
+            // 
             // MCPFindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -390,15 +414,15 @@ namespace GTI.Modules.PlayerCenter.UI
             this.MaximizeBox = false;
             this.Name = "MCPFindPlayerForm";
             this.ShowInTaskbar = false;
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
             this.splitContainer5.Panel1.ResumeLayout(false);
             this.splitContainer5.Panel1.PerformLayout();
             this.splitContainer5.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
             this.splitContainer5.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -425,11 +449,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnBirthDay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnLastVisitDate;
         private System.Windows.Forms.TextBox m_firstName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox m_txtbxSearchCategory;
@@ -437,6 +456,14 @@ namespace GTI.Modules.PlayerCenter.UI
         private Controls.ImageButton imageButton1;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrMiddleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrMagCard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrPlayerIdentity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnBirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnLastVisitDate;
 
        
     }

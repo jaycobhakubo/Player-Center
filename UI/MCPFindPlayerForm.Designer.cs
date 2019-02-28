@@ -45,11 +45,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MCPFindPlayerForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
@@ -58,11 +58,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.imageButton1 = new GTI.Controls.ImageButton();
             this.m_searchByCardButton = new GTI.Controls.ImageButton();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.m_selectPlayerButton = new GTI.Controls.ImageButton();
             this.m_cancelButton = new GTI.Controls.ImageButton();
+            this.imageButton1 = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
             this.m_lastNameLabel = new System.Windows.Forms.Label();
             this.m_firstNameLabel = new System.Windows.Forms.Label();
@@ -186,17 +186,6 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.splitContainer2.Panel1.Controls.Add(this.m_searchByCardButton);
             // 
-            // imageButton1
-            // 
-            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton1.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
-            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButton1.UseVisualStyleBackColor = false;
-            // 
             // m_searchByCardButton
             // 
             this.m_searchByCardButton.BackColor = System.Drawing.Color.Transparent;
@@ -246,6 +235,17 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelButton.UseVisualStyleBackColor = false;
             this.m_cancelButton.Click += new System.EventHandler(this.CancelClick);
             // 
+            // imageButton1
+            // 
+            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.imageButton1.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.imageButton1, "imageButton1");
+            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imageButton1.Name = "imageButton1";
+            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imageButton1.UseVisualStyleBackColor = false;
+            // 
             // m_dgvResultsList
             // 
             this.m_dgvResultsList.AllowUserToAddRows = false;
@@ -255,14 +255,14 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.BackgroundColor = System.Drawing.Color.White;
             this.m_dgvResultsList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.m_dgvResultsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.m_dgvResultsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.m_dgvResultsList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.m_dgvResultsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.m_dgvResultsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PlayerId,
@@ -273,21 +273,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity,
             this.m_dgvclmnBirthDay,
             this.m_dgvclmnLastVisitDate});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.m_dgvResultsList.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkSlateBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.m_dgvResultsList.DefaultCellStyle = dataGridViewCellStyle4;
             this.m_dgvResultsList.GridColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.m_dgvResultsList, "m_dgvResultsList");
             this.m_dgvResultsList.MultiSelect = false;
             this.m_dgvResultsList.Name = "m_dgvResultsList";
             this.m_dgvResultsList.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.m_dgvResultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
             // 
@@ -345,9 +345,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_clmnhdrFirstName
             // 
             this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
             this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
             // 
@@ -360,9 +360,9 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_clmnhdrLastName
             // 
             this.m_clmnhdrLastName.DataPropertyName = "LastName";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
             this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
             // 

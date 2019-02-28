@@ -139,7 +139,7 @@
     <value>True</value>
   </data>
   <data name="m_txtbxSearchCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>480, 30</value>
+    <value>460, 30</value>
   </data>
   <data name="m_txtbxSearchCategory.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -187,7 +187,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 30</value>
+    <value>202, 30</value>
   </data>
   <data name="m_searchButton.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -220,10 +220,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 30</value>
+    <value>676, 30</value>
   </data>
   <data name="splitContainer5.SplitterDistance" type="System.Int32, mscorlib">
-    <value>490</value>
+    <value>470</value>
   </data>
   <data name="splitContainer5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -265,7 +265,7 @@
     <value>0, 0</value>
   </data>
   <data name="m_cmbxFilterSearchResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 30</value>
+    <value>268, 30</value>
   </data>
   <data name="m_cmbxFilterSearchResult.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -307,10 +307,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>988, 30</value>
+    <value>948, 30</value>
   </data>
   <data name="splitContainer4.SplitterDistance" type="System.Int32, mscorlib">
-    <value>280</value>
+    <value>268</value>
   </data>
   <data name="splitContainer4.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -388,7 +388,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchByCardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 43</value>
+    <value>230, 43</value>
   </data>
   <data name="m_searchByCardButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -433,10 +433,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>497, 43</value>
+    <value>462, 43</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>248</value>
+    <value>230</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -487,7 +487,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_selectPlayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 43</value>
+    <value>229, 43</value>
   </data>
   <data name="m_selectPlayerButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -535,7 +535,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 43</value>
+    <value>225, 43</value>
   </data>
   <data name="m_cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -568,10 +568,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 43</value>
+    <value>458, 43</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>247</value>
+    <value>229</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -601,10 +601,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>994, 43</value>
+    <value>924, 43</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>497</value>
+    <value>462</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -678,6 +678,9 @@
   <data name="m_clmnhdrMiddleName.HeaderText" xml:space="preserve">
     <value>Middle Name</value>
   </data>
+  <data name="m_clmnhdrMiddleName.Width" type="System.Int32, mscorlib">
+    <value>65</value>
+  </data>
   <metadata name="m_clmnhdrLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -721,7 +724,7 @@
     <value>24, 82</value>
   </data>
   <data name="m_dgvResultsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>988, 473</value>
+    <value>945, 473</value>
   </data>
   <data name="m_dgvResultsList.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -895,7 +898,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1035, 627</value>
+    <value>998, 627</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>

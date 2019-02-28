@@ -55,32 +55,17 @@ namespace GTI.Modules.PlayerCenter.UI
         /// belongs.</param>
         /// <param name="displayMode">The display mode used to show this 
         /// form.</param>
-        public MCPFindPlayerForm(PlayerManager parent) // DisplayMode displayMode) : base(parent, displayMode)
+        public MCPFindPlayerForm(PlayerManager parent) 
         {
             m_parent = parent;
-            InitializeComponent();
-            //ApplyDisplayMode();
-            
+            InitializeComponent();           
             Application.DoEvents();
             Application.DoEvents();
-            // Set the last focused control to the first field.
             m_lastFocus = m_firstName;
-
-            // Set the max text lengths.
             m_firstName.MaxLength = StringSizes.MaxNameLength;
             m_lastName.MaxLength = StringSizes.MaxNameLength;
             m_cmbxFilterSearchResult.SelectedIndex = 0;
-            // Which keyboard do we need to use?
-            //switch(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName)
-            //{
-            //    case "es":
-            //        m_virtualKeyboard.KeyLayout = VirtualKeyboard.KeyboardLayout.Spanish;
-            //        m_virtualKeyboard.ShiftImageIcon = Resources.ArrowUp;
-            //        break;
-
-            //    default: // Use the default.
-            //        break;
-            //}
+          
             Application.DoEvents();
            
         }
@@ -99,15 +84,8 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
         private void SearchClick(object sender, EventArgs e)
-        {
-            // Remove the previous results.
-            //m_resultsList.Items.Clear();
-            //No need to clear our previous result in datagridlist
-
-            // Spawn a new thread to find players and wait until done.
-            // FIX: DE2476
+        {                    
             m_parent.FindPlayers(string.Empty, m_txtbxSearchCategory.Text.Trim());//knc
-           // m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -178,8 +156,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             // PDTS 1064
             GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);            
-             magForm.ClearCardButtonVisible = false;
-            magForm.RedesignUI();
+             //magForm.ClearCardButtonVisible = false;
+            //magForm.RedesignUI();
 
             if(magForm.ShowDialog() == DialogResult.OK)
             {

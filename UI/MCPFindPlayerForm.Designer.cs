@@ -64,11 +64,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelButton = new GTI.Controls.ImageButton();
             this.imageButton1 = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
-            this.m_lastNameLabel = new System.Windows.Forms.Label();
-            this.m_firstNameLabel = new System.Windows.Forms.Label();
-            this.m_resultsList = new System.Windows.Forms.ListBox();
-            this.m_lastName = new System.Windows.Forms.TextBox();
-            this.m_firstName = new System.Windows.Forms.TextBox();
             this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +72,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_lastNameLabel = new System.Windows.Forms.Label();
+            this.m_firstNameLabel = new System.Windows.Forms.Label();
+            this.m_resultsList = new System.Windows.Forms.ListBox();
+            this.m_lastName = new System.Windows.Forms.TextBox();
+            this.m_firstName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
             this.splitContainer5.Panel1.SuspendLayout();
             this.splitContainer5.Panel2.SuspendLayout();
@@ -291,48 +291,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.m_dgvResultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
             // 
-            // m_lastNameLabel
-            // 
-            resources.ApplyResources(this.m_lastNameLabel, "m_lastNameLabel");
-            this.m_lastNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.m_lastNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.m_lastNameLabel.Name = "m_lastNameLabel";
-            // 
-            // m_firstNameLabel
-            // 
-            resources.ApplyResources(this.m_firstNameLabel, "m_firstNameLabel");
-            this.m_firstNameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.m_firstNameLabel.ForeColor = System.Drawing.Color.Black;
-            this.m_firstNameLabel.Name = "m_firstNameLabel";
-            // 
-            // m_resultsList
-            // 
-            this.m_resultsList.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.m_resultsList, "m_resultsList");
-            this.m_resultsList.ForeColor = System.Drawing.Color.Black;
-            this.m_resultsList.FormattingEnabled = true;
-            this.m_resultsList.Name = "m_resultsList";
-            this.m_resultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
-            this.m_resultsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerResultsEnter);
-            // 
-            // m_lastName
-            // 
-            this.m_lastName.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.m_lastName, "m_lastName");
-            this.m_lastName.ForeColor = System.Drawing.Color.Black;
-            this.m_lastName.Name = "m_lastName";
-            this.m_lastName.Enter += new System.EventHandler(this.FocusChanged);
-            this.m_lastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameKeyDown);
-            // 
-            // m_firstName
-            // 
-            this.m_firstName.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.m_firstName, "m_firstName");
-            this.m_firstName.ForeColor = System.Drawing.Color.Black;
-            this.m_firstName.Name = "m_firstName";
-            this.m_firstName.Enter += new System.EventHandler(this.FocusChanged);
-            this.m_firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameKeyDown);
-            // 
             // PlayerId
             // 
             this.PlayerId.DataPropertyName = "Id";
@@ -389,6 +347,48 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvclmnLastVisitDate.DataPropertyName = "LastVisitDate";
             resources.ApplyResources(this.m_dgvclmnLastVisitDate, "m_dgvclmnLastVisitDate");
             this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
+            // 
+            // m_lastNameLabel
+            // 
+            resources.ApplyResources(this.m_lastNameLabel, "m_lastNameLabel");
+            this.m_lastNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.m_lastNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.m_lastNameLabel.Name = "m_lastNameLabel";
+            // 
+            // m_firstNameLabel
+            // 
+            resources.ApplyResources(this.m_firstNameLabel, "m_firstNameLabel");
+            this.m_firstNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.m_firstNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.m_firstNameLabel.Name = "m_firstNameLabel";
+            // 
+            // m_resultsList
+            // 
+            this.m_resultsList.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.m_resultsList, "m_resultsList");
+            this.m_resultsList.ForeColor = System.Drawing.Color.Black;
+            this.m_resultsList.FormattingEnabled = true;
+            this.m_resultsList.Name = "m_resultsList";
+            this.m_resultsList.DoubleClick += new System.EventHandler(this.FocusChanged);
+            this.m_resultsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PlayerResultsEnter);
+            // 
+            // m_lastName
+            // 
+            this.m_lastName.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.m_lastName, "m_lastName");
+            this.m_lastName.ForeColor = System.Drawing.Color.Black;
+            this.m_lastName.Name = "m_lastName";
+            this.m_lastName.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_lastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameKeyDown);
+            // 
+            // m_firstName
+            // 
+            this.m_firstName.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.m_firstName, "m_firstName");
+            this.m_firstName.ForeColor = System.Drawing.Color.Black;
+            this.m_firstName.Name = "m_firstName";
+            this.m_firstName.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameKeyDown);
             // 
             // MCPFindPlayerForm
             // 

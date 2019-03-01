@@ -388,7 +388,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchByCardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 43</value>
+    <value>236, 43</value>
   </data>
   <data name="m_searchByCardButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -433,10 +433,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>462, 43</value>
+    <value>475, 43</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>230</value>
+    <value>236</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -487,7 +487,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_selectPlayerButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 43</value>
+    <value>236, 43</value>
   </data>
   <data name="m_selectPlayerButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -535,7 +535,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 43</value>
+    <value>232, 43</value>
   </data>
   <data name="m_cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -568,10 +568,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>458, 43</value>
+    <value>472, 43</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>229</value>
+    <value>236</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -601,10 +601,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>924, 43</value>
+    <value>951, 43</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>462</value>
+    <value>475</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -898,7 +898,7 @@
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>998, 627</value>
+    <value>992, 627</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt</value>

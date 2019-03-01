@@ -72,11 +72,6 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Button Events
-
-        
-  
-
-
         /// <summary>
         /// Handles the search button click.
         /// </summary>
@@ -85,7 +80,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void SearchClick(object sender, EventArgs e)
         {                    
-            m_parent.FindPlayers(string.Empty, m_txtbxSearchCategory.Text.Trim());//knc
+            m_parent.FindPlayers2(string.Empty, m_txtbxSearchCategory.Text.Trim());//knc
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -134,8 +129,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void LoadPlayerListDataGrid(PlayerListItem[] players)
         {
-
-
             m_dgvResultsList.DataSource = null;
             m_dgvResultsList.Rows.Clear();
             m_dgvResultsList.AutoGenerateColumns = false;
@@ -143,7 +136,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_dgvResultsList.DataSource = players;
             //Sort("ReportDisplayName", SortOrder.Ascending);
             m_dgvResultsList.ClearSelection();
-
         }
 
         /// <summary>
@@ -166,8 +158,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
-                m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);//
-                m_parent.FindPlayers(magForm.MagCardNumber, string.Empty);//
+                //m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);//
+                m_parent.FindPlayers2(magForm.MagCardNumber, string.Empty);//
                 m_parent.ShowWaitForm(this); // Block until we are done.
                 // END: DE2476
 

@@ -1080,7 +1080,7 @@ namespace GTI.Modules.PlayerCenter.Business
         }
 
 
-        internal void FindPlayers(string magCardNumber, string categorySearchString)
+        internal void FindPlayers2(string magCardNumber, string categorySearchString)
         {
             // Set the wait message.
             m_waitForm.Message = Resources.WaitFormFindingPlayers;
@@ -1089,7 +1089,7 @@ namespace GTI.Modules.PlayerCenter.Business
             string[] parameters = new string[2];
             parameters[0] = magCardNumber;
             parameters[1] = categorySearchString;
-    
+
             //parameters[0] = magCardNumber;
             //parameters[1] = firstName;
             //parameters[2] = lastName;

@@ -29,6 +29,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindPlayerForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_virtualKeyboard = new GTI.Controls.VirtualKeyboard();
             this.m_firstName = new System.Windows.Forms.TextBox();
             this.m_lastName = new System.Windows.Forms.TextBox();
@@ -41,6 +43,16 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchByCardButton = new GTI.Controls.ImageButton();
             this.m_firstNameLabel = new System.Windows.Forms.Label();
             this.m_lastNameLabel = new System.Windows.Forms.Label();
+            this.m_dgvPlayerList = new System.Windows.Forms.DataGridView();
+            this.m_clmnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnMagCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_clmnLastVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.m_dgvPlayerList)).BeginInit();
             this.SuspendLayout();
             // 
             // m_virtualKeyboard
@@ -204,11 +216,94 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_lastNameLabel.ForeColor = System.Drawing.Color.White;
             this.m_lastNameLabel.Name = "m_lastNameLabel";
             // 
+            // m_dgvPlayerList
+            // 
+            this.m_dgvPlayerList.AllowUserToAddRows = false;
+            this.m_dgvPlayerList.AllowUserToDeleteRows = false;
+            this.m_dgvPlayerList.AllowUserToResizeColumns = false;
+            this.m_dgvPlayerList.AllowUserToResizeRows = false;
+            this.m_dgvPlayerList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(53)))));
+            this.m_dgvPlayerList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.m_dgvPlayerList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.m_dgvPlayerList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.m_dgvPlayerList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.m_clmnID,
+            this.m_clmnFirstName,
+            this.m_clmnMiddleName,
+            this.m_clmnLastName,
+            this.m_clmnMagCard,
+            this.m_clmnPlayerIdentity,
+            this.m_clmnBirthDay,
+            this.m_clmnLastVisit});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.m_dgvPlayerList.DefaultCellStyle = dataGridViewCellStyle1;
+            this.m_dgvPlayerList.GridColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.m_dgvPlayerList, "m_dgvPlayerList");
+            this.m_dgvPlayerList.Name = "m_dgvPlayerList";
+            this.m_dgvPlayerList.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_dgvPlayerList.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            // 
+            // m_clmnID
+            // 
+            this.m_clmnID.DataPropertyName = "Id";
+            resources.ApplyResources(this.m_clmnID, "m_clmnID");
+            this.m_clmnID.Name = "m_clmnID";
+            // 
+            // m_clmnFirstName
+            // 
+            this.m_clmnFirstName.DataPropertyName = "FirstName";
+            resources.ApplyResources(this.m_clmnFirstName, "m_clmnFirstName");
+            this.m_clmnFirstName.Name = "m_clmnFirstName";
+            // 
+            // m_clmnMiddleName
+            // 
+            this.m_clmnMiddleName.DataPropertyName = "MidlleInitial";
+            resources.ApplyResources(this.m_clmnMiddleName, "m_clmnMiddleName");
+            this.m_clmnMiddleName.Name = "m_clmnMiddleName";
+            // 
+            // m_clmnLastName
+            // 
+            this.m_clmnLastName.DataPropertyName = "LastName";
+            resources.ApplyResources(this.m_clmnLastName, "m_clmnLastName");
+            this.m_clmnLastName.Name = "m_clmnLastName";
+            // 
+            // m_clmnMagCard
+            // 
+            this.m_clmnMagCard.DataPropertyName = "MagCard";
+            resources.ApplyResources(this.m_clmnMagCard, "m_clmnMagCard");
+            this.m_clmnMagCard.Name = "m_clmnMagCard";
+            // 
+            // m_clmnPlayerIdentity
+            // 
+            this.m_clmnPlayerIdentity.DataPropertyName = "PlayerIdentity";
+            resources.ApplyResources(this.m_clmnPlayerIdentity, "m_clmnPlayerIdentity");
+            this.m_clmnPlayerIdentity.Name = "m_clmnPlayerIdentity";
+            // 
+            // m_clmnBirthDay
+            // 
+            this.m_clmnBirthDay.DataPropertyName = "BirthDate";
+            resources.ApplyResources(this.m_clmnBirthDay, "m_clmnBirthDay");
+            this.m_clmnBirthDay.Name = "m_clmnBirthDay";
+            // 
+            // m_clmnLastVisit
+            // 
+            this.m_clmnLastVisit.DataPropertyName = "LastVisitDate";
+            resources.ApplyResources(this.m_clmnLastVisit, "m_clmnLastVisit");
+            this.m_clmnLastVisit.Name = "m_clmnLastVisit";
+            // 
             // FindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.m_dgvPlayerList);
             this.Controls.Add(this.m_lastNameLabel);
             this.Controls.Add(this.m_firstNameLabel);
             this.Controls.Add(this.m_searchByCardButton);
@@ -216,17 +311,18 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_selectPlayerButton);
             this.Controls.Add(this.m_resultsListDown);
             this.Controls.Add(this.m_resultsListUp);
-            this.Controls.Add(this.m_resultsList);
             this.Controls.Add(this.m_searchButton);
             this.Controls.Add(this.m_lastName);
             this.Controls.Add(this.m_firstName);
             this.Controls.Add(this.m_virtualKeyboard);
+            this.Controls.Add(this.m_resultsList);
             this.DrawBorderOuterEdge = true;
             this.DrawRounded = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FindPlayerForm";
             this.OuterBorderEdgeColor = System.Drawing.Color.DimGray;
             this.ShowInTaskbar = false;
+            ((System.ComponentModel.ISupportInitialize)(this.m_dgvPlayerList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +342,14 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageButton m_searchByCardButton;
         private System.Windows.Forms.Label m_firstNameLabel;
         private System.Windows.Forms.Label m_lastNameLabel;
+        private System.Windows.Forms.DataGridView m_dgvPlayerList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnMiddleName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnMagCard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnPlayerIdentity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnBirthDay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnLastVisit;
     }
 }

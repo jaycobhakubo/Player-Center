@@ -71,6 +71,21 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
+
+        private void LoadPlayerListDataGrid(PlayerListItem[] players)
+        {
+            m_dgvResultsList.DataSource = null;
+            m_dgvResultsList.Rows.Clear();
+            m_dgvResultsList.AutoGenerateColumns = false;
+            m_dgvResultsList.AllowUserToAddRows = false;
+            m_dgvResultsList.DataSource = players;
+            //Sort("ReportDisplayName", SortOrder.Ascending);
+            m_dgvResultsList.ClearSelection();
+        }
+
+
+
+
         #region Button Events
         /// <summary>
         /// Handles the search button click.
@@ -93,25 +108,16 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-                // Add the player(s) to the result list.
                 PlayerListItem[] players = m_parent.LastFindPlayersResults;
 
                 if (players != null && players.Length > 0)
                 {
-                  //  m_resultsList.Items.AddRange(players);
-                    LoadPlayerListDataGrid(players);//add our list into the datagrid
 
-                    // Rally DE1889 - If only one player, automatically select.
-                    //if(m_resultsList.Items.Count > 0)
-                    //    m_resultsList.SelectedIndex = 0;
-
+                    LoadPlayerListDataGrid(players);
                     if (m_dgvResultsList.Rows.Count > 0)
                     {
                         m_dgvResultsList.Rows[0].Selected = true;
                     }
-
-                    //if(m_resultsList.Items.Count == 1)
-                    //    m_selectPlayerButton.PerformClick();
 
                     if (m_dgvResultsList.Rows.Count == 1)
                     {
@@ -123,19 +129,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     MessageForm.Show(Properties.Resources.InfoPlayerNotFound, Properties.Resources.PlayerCenterName);
                 }
             }
-        }
-
-
-
-        private void LoadPlayerListDataGrid(PlayerListItem[] players)
-        {
-            m_dgvResultsList.DataSource = null;
-            m_dgvResultsList.Rows.Clear();
-            m_dgvResultsList.AutoGenerateColumns = false;
-            m_dgvResultsList.AllowUserToAddRows = false;
-            m_dgvResultsList.DataSource = players;
-            //Sort("ReportDisplayName", SortOrder.Ascending);
-            m_dgvResultsList.ClearSelection();
         }
 
         /// <summary>
@@ -178,19 +171,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (players != null && players.Length > 0)
                     {
-                        //m_resultsList.Items.AddRange(players);
-                        LoadPlayerListDataGrid(players);//add our list into the datagrid
-                        //m_resultsList.SelectedIndex = 0;
 
+                        LoadPlayerListDataGrid(players);
                       
                         if (m_dgvResultsList.Rows.Count > 0)
                         {
                             m_dgvResultsList.Rows[0].Selected = true;
                         }
-
-                        // Rally DE1889 - If only one player, automatically select.
-                        //if(m_resultsList.Items.Count == 1)
-                        //    m_selectPlayerButton.PerformClick();
 
                         if (m_dgvResultsList.Rows.Count == 1)
                         {
@@ -216,27 +203,21 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             int intPlayerID = 0;
             Application.DoEvents();
-            //if(m_resultsList.SelectedIndex == -1)
-            //{
-            //    MessageForm.Show(Resources.FindPlayerFormNoPlayer);
-            //    return;
-            //}
-
+          
             if (m_dgvResultsList.CurrentCell.RowIndex == -1)
             {
                 MessageForm.Show(Resources.FindPlayerFormNoPlayer);
                 return;
             }
 
-            //intPlayerID = ((PlayerListItem)m_resultsList.SelectedItem).Id;
             intPlayerID = (int)m_dgvResultsList.SelectedRows[0].Cells[0].Value;
             
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
             m_parent.GetPlayer(intPlayerID);
-            m_parent.ShowWaitForm(this); // Block until we are done.
-            // END: DE2476
+            m_parent.ShowWaitForm(this); // Block until we are done.        // END: DE2476
+    
             Application.DoEvents();
 
             if(m_parent.LastAsyncException != null)

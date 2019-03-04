@@ -147,7 +147,7 @@
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
   <data name="m_firstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>372, 19</value>
+    <value>23, 19</value>
   </data>
   <data name="m_firstName.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 20</value>
@@ -174,10 +174,13 @@
     <value>23, 19</value>
   </data>
   <data name="m_lastName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 20</value>
+    <value>326, 20</value>
   </data>
   <data name="m_lastName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="m_lastName.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;m_lastName.Name" xml:space="preserve">
     <value>m_lastName</value>
@@ -414,7 +417,7 @@
     <value>0</value>
   </data>
   <data name="m_searchButton.Text" xml:space="preserve">
-    <value>Search By Name</value>
+    <value>Search</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Name" xml:space="preserve">
     <value>m_searchButton</value>
@@ -435,13 +438,16 @@
     <value>False</value>
   </data>
   <data name="m_resultsList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 74</value>
+    <value>36, 744</value>
   </data>
   <data name="m_resultsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>682, 154</value>
+    <value>103, 23</value>
   </data>
   <data name="m_resultsList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="m_resultsList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Name" xml:space="preserve">
     <value>m_resultsList</value>
@@ -453,7 +459,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsList.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>12</value>
   </data>
   <data name="m_resultsListUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>711, 65</value>
@@ -477,7 +483,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_resultsListDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -505,7 +511,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="m_selectPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -745,7 +751,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="m_cancelButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -985,7 +991,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="m_searchByCardButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -1213,7 +1219,7 @@
     <value>0</value>
   </data>
   <data name="m_searchByCardButton.Text" xml:space="preserve">
-    <value>Search By Player Card</value>
+    <value>Swipe Player Card</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Name" xml:space="preserve">
     <value>m_searchByCardButton</value>
@@ -1225,22 +1231,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="m_firstNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
   </data>
   <data name="m_firstNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 47</value>
+    <value>156, 744</value>
   </data>
   <data name="m_firstNameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 15</value>
   </data>
   <data name="m_firstNameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="m_firstNameLabel.Text" xml:space="preserve">
-    <value>First Name</value>
   </data>
   <data name="m_firstNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1255,7 +1258,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_firstNameLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="m_lastNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
@@ -1273,7 +1276,7 @@
     <value>0</value>
   </data>
   <data name="m_lastNameLabel.Text" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Player Search</value>
   </data>
   <data name="m_lastNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1288,6 +1291,84 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_lastNameLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="m_clmnID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnID.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="m_clmnID.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <metadata name="m_clmnFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnFirstName.HeaderText" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <metadata name="m_clmnMiddleName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnMiddleName.HeaderText" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="m_clmnMiddleName.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="m_clmnLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnLastName.HeaderText" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <metadata name="m_clmnMagCard.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnMagCard.HeaderText" xml:space="preserve">
+    <value>Mag Card</value>
+  </data>
+  <metadata name="m_clmnPlayerIdentity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnPlayerIdentity.HeaderText" xml:space="preserve">
+    <value>Player Identity</value>
+  </data>
+  <data name="m_clmnPlayerIdentity.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <metadata name="m_clmnBirthDay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnBirthDay.HeaderText" xml:space="preserve">
+    <value>Birth Day</value>
+  </data>
+  <metadata name="m_clmnLastVisit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="m_clmnLastVisit.HeaderText" xml:space="preserve">
+    <value>Last Visit</value>
+  </data>
+  <data name="m_dgvPlayerList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 68</value>
+  </data>
+  <data name="m_dgvPlayerList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>676, 164</value>
+  </data>
+  <data name="m_dgvPlayerList.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;m_dgvPlayerList.Name" xml:space="preserve">
+    <value>m_dgvPlayerList</value>
+  </data>
+  <data name="&gt;&gt;m_dgvPlayerList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_dgvPlayerList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_dgvPlayerList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1304,6 +1385,54 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Find Player</value>
+  </data>
+  <data name="&gt;&gt;m_clmnID.Name" xml:space="preserve">
+    <value>m_clmnID</value>
+  </data>
+  <data name="&gt;&gt;m_clmnID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnFirstName.Name" xml:space="preserve">
+    <value>m_clmnFirstName</value>
+  </data>
+  <data name="&gt;&gt;m_clmnFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnMiddleName.Name" xml:space="preserve">
+    <value>m_clmnMiddleName</value>
+  </data>
+  <data name="&gt;&gt;m_clmnMiddleName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnLastName.Name" xml:space="preserve">
+    <value>m_clmnLastName</value>
+  </data>
+  <data name="&gt;&gt;m_clmnLastName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnMagCard.Name" xml:space="preserve">
+    <value>m_clmnMagCard</value>
+  </data>
+  <data name="&gt;&gt;m_clmnMagCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnPlayerIdentity.Name" xml:space="preserve">
+    <value>m_clmnPlayerIdentity</value>
+  </data>
+  <data name="&gt;&gt;m_clmnPlayerIdentity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnBirthDay.Name" xml:space="preserve">
+    <value>m_clmnBirthDay</value>
+  </data>
+  <data name="&gt;&gt;m_clmnBirthDay.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_clmnLastVisit.Name" xml:space="preserve">
+    <value>m_clmnLastVisit</value>
+  </data>
+  <data name="&gt;&gt;m_clmnLastVisit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FindPlayerForm</value>

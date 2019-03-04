@@ -17,6 +17,7 @@ using GTI.Modules.PlayerCenter.Properties;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
+
     /// <summary>
     /// A form that allows the searching of players.
     /// </summary>
@@ -82,6 +83,18 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        private void LoadPlayerListDataGrid(PlayerListItem[] players)
+        {
+
+            m_dgvPlayerList.DataSource = null;
+            m_dgvPlayerList.Rows.Clear();
+            m_dgvPlayerList.AutoGenerateColumns = false;
+            m_dgvPlayerList.AllowUserToAddRows = false;
+            m_dgvPlayerList.DataSource = players;
+            //Sort("ReportDisplayName", SortOrder.Ascending);
+            m_dgvPlayerList.ClearSelection();
+        }
+
         /// <summary>
         /// Handles when the focus changes on a form.
         /// </summary>
@@ -108,7 +121,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
             //m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());//knc
-            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), m_lastName.Text.Trim());
+            m_parent.FindPlayers2(string.Empty, m_firstName.Text.Trim());
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -125,14 +138,21 @@ namespace GTI.Modules.PlayerCenter.UI
                 PlayerListItem[] players = m_parent.LastFindPlayersResults;
 
                 if(players != null && players.Length > 0)
+              
                 {
-                    m_resultsList.Items.AddRange(players);
+                     LoadPlayerListDataGrid(players);
+                    if (      m_dgvPlayerList.Rows.Count > 0)
+                    {
+                              m_dgvPlayerList.Rows[0].Selected = true;
+                    }
 
-                    // Rally DE1889
-                    if(m_resultsList.Items.Count > 0)
-                        m_resultsList.SelectedIndex = 0;
+                    if (      m_dgvPlayerList.Rows.Count == 1)
+                    {
+                        m_selectPlayerButton.PerformClick();
+                    }
 
-                    if(m_resultsList.Items.Count == 1)
+
+                    if (m_dgvPlayerList.Rows.Count == 1)
                         m_selectPlayerButton.PerformClick();
                 }
                 else
@@ -174,17 +194,21 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    // Add the player(s) to the result list.
                     PlayerListItem[] players = m_parent.LastFindPlayersResults;
 
                     if (players != null && players.Length > 0)
                     {
-                        m_resultsList.Items.AddRange(players);
-                        m_resultsList.SelectedIndex = 0;
+                        LoadPlayerListDataGrid(players);
 
-                        // Rally DE1889 - If only one player, automatically select.
-                        if(m_resultsList.Items.Count == 1)
+                        if (m_dgvPlayerList.Rows.Count > 0)
+                        {
+                            m_dgvPlayerList.Rows[0].Selected = true;
+                        }
+
+                        if (m_dgvPlayerList.Rows.Count == 1)
+                        {
                             m_selectPlayerButton.PerformClick();
+                        }
                     }
                     else
                     {
@@ -246,16 +270,20 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void SelectPlayerClick(object sender, EventArgs e)
         {
-            if(m_resultsList.SelectedIndex == -1)
+
+            int intPlayerID = 0;
+            if (m_dgvPlayerList.CurrentCell.RowIndex == -1)
             {
-                MessageForm.Show(m_displayMode, Resources.FindPlayerFormNoPlayer);
+                MessageForm.Show(Resources.FindPlayerFormNoPlayer);
                 return;
             }
+
+            intPlayerID = (int)m_dgvPlayerList.SelectedRows[0].Cells[0].Value;
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
             // TTP 50067
-            m_parent.GetPlayer(((PlayerListItem)m_resultsList.SelectedItem).Id);
+            m_parent.GetPlayer(intPlayerID);
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -318,3 +346,5 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
     }
 }
+
+//DELETE THE LIST CONTROLS AFTER WORK IS COMPLETE

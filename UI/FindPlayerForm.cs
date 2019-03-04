@@ -44,10 +44,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Set the last focused control to the first field.
             m_lastFocus = m_firstName;
+            //m_lastFocus = m_lastName;
 
             // Set the max text lengths.
             m_firstName.MaxLength = StringSizes.MaxNameLength;
-            m_lastName.MaxLength = StringSizes.MaxNameLength;
+            //m_lastName.MaxLength = StringSizes.MaxNameLength;
 
             // Which keyboard do we need to use?
             // PDTS 964
@@ -83,17 +84,17 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void LoadPlayerListDataGrid(PlayerListItem[] players)
-        {
+        //private void LoadPlayerListDataGrid(PlayerListItem[] players)
+        //{
 
-            m_dgvPlayerList.DataSource = null;
-            m_dgvPlayerList.Rows.Clear();
-            m_dgvPlayerList.AutoGenerateColumns = false;
-            m_dgvPlayerList.AllowUserToAddRows = false;
-            m_dgvPlayerList.DataSource = players;
-            //Sort("ReportDisplayName", SortOrder.Ascending);
-            m_dgvPlayerList.ClearSelection();
-        }
+        //    m_dgvPlayerList.DataSource = null;
+        //    m_dgvPlayerList.Rows.Clear();
+        //    m_dgvPlayerList.AutoGenerateColumns = false;
+        //    m_dgvPlayerList.AllowUserToAddRows = false;
+        //    m_dgvPlayerList.DataSource = players;
+        //    //Sort("ReportDisplayName", SortOrder.Ascending);
+        //    m_dgvPlayerList.ClearSelection();
+        //}
 
         /// <summary>
         /// Handles when the focus changes on a form.
@@ -140,6 +141,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 if(players != null && players.Length > 0)
               
                 {
+
+                    m_resultsList.Items.AddRange(players);
+
+                    if (m_resultsList.Items.Count > 0)
+                        m_resultsList.SelectedIndex = 0;
+
+                    if (m_resultsList.Items.Count == 1)
+                        m_selectPlayerButton.PerformClick();
+                    /*
                      LoadPlayerListDataGrid(players);
                     if (      m_dgvPlayerList.Rows.Count > 0)
                     {
@@ -154,6 +164,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (m_dgvPlayerList.Rows.Count == 1)
                         m_selectPlayerButton.PerformClick();
+                      */  
                 }
                 else
                 {
@@ -198,17 +209,23 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (players != null && players.Length > 0)
                     {
-                        LoadPlayerListDataGrid(players);
+                        m_resultsList.Items.AddRange(players);
+                        m_resultsList.SelectedIndex = 0;
 
-                        if (m_dgvPlayerList.Rows.Count > 0)
-                        {
-                            m_dgvPlayerList.Rows[0].Selected = true;
-                        }
-
-                        if (m_dgvPlayerList.Rows.Count == 1)
-                        {
+                        if(m_resultsList.Items.Count == 1)
                             m_selectPlayerButton.PerformClick();
-                        }
+
+                        //LoadPlayerListDataGrid(players);
+
+                        //if (m_dgvPlayerList.Rows.Count > 0)
+                        //{
+                        //    m_dgvPlayerList.Rows[0].Selected = true;
+                        //}
+
+                        //if (m_dgvPlayerList.Rows.Count == 1)
+                        //{
+                        //    m_selectPlayerButton.PerformClick();
+                        //}
                     }
                     else
                     {
@@ -272,18 +289,26 @@ namespace GTI.Modules.PlayerCenter.UI
         {
 
             int intPlayerID = 0;
-            if (m_dgvPlayerList.CurrentCell.RowIndex == -1)
+            //if (m_dgvPlayerList.CurrentCell.RowIndex == -1)
+            //{
+            //    MessageForm.Show(Resources.FindPlayerFormNoPlayer);
+            //    return;
+            //}
+
+            if (m_resultsList.SelectedIndex == -1)
             {
                 MessageForm.Show(Resources.FindPlayerFormNoPlayer);
                 return;
             }
 
-            intPlayerID = (int)m_dgvPlayerList.SelectedRows[0].Cells[0].Value;
+
+            //intPlayerID = (int)m_dgvPlayerList.SelectedRows[0].Cells[0].Value;
 
             // Spawn a new thread to get the player's data and wait until done.
             // FIX: DE2476
             // TTP 50067
-            m_parent.GetPlayer(intPlayerID);
+            //m_parent.GetPlayer(intPlayerID);
+            m_parent.GetPlayer(((PlayerListItem)m_resultsList.SelectedItem).Id);
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 

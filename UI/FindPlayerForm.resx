@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="m_firstName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
@@ -150,7 +150,7 @@
     <value>23, 19</value>
   </data>
   <data name="m_firstName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 20</value>
+    <value>676, 20</value>
   </data>
   <data name="m_firstName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -165,16 +165,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_firstName.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="m_lastName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
   <data name="m_lastName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 19</value>
+    <value>174, 82</value>
   </data>
   <data name="m_lastName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 20</value>
+    <value>371, 20</value>
   </data>
   <data name="m_lastName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -192,7 +192,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_lastName.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="m_searchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -429,7 +429,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_searchButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="m_resultsList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14pt, style=Bold</value>
@@ -438,16 +438,13 @@
     <value>False</value>
   </data>
   <data name="m_resultsList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 744</value>
+    <value>23, 68</value>
   </data>
   <data name="m_resultsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 23</value>
+    <value>676, 164</value>
   </data>
   <data name="m_resultsList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="m_resultsList.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Name" xml:space="preserve">
     <value>m_resultsList</value>
@@ -459,7 +456,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsList.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>10</value>
   </data>
   <data name="m_resultsListUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>711, 65</value>
@@ -483,7 +480,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_resultsListDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -511,7 +508,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="m_selectPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -751,7 +748,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="m_cancelButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -991,7 +988,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="m_searchByCardButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -1231,7 +1228,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="m_firstNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
@@ -1258,7 +1255,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_firstNameLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="m_lastNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
@@ -1291,7 +1288,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_lastNameLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="m_clmnID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1359,6 +1356,9 @@
   <data name="m_dgvPlayerList.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="m_dgvPlayerList.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;m_dgvPlayerList.Name" xml:space="preserve">
     <value>m_dgvPlayerList</value>
   </data>
@@ -1369,7 +1369,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_dgvPlayerList.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>11</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1381,7 +1381,7 @@
     <value>800, 600</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Find Player</value>

@@ -1090,10 +1090,6 @@ namespace GTI.Modules.PlayerCenter.Business
             parameters[0] = magCardNumber;
             parameters[1] = categorySearchString;
 
-            //parameters[0] = magCardNumber;
-            //parameters[1] = firstName;
-            //parameters[2] = lastName;
-
             // Create the worker thread and run it.
             m_worker = new BackgroundWorker();
             m_worker.WorkerReportsProgress = true;

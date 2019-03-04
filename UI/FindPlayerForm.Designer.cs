@@ -301,9 +301,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // FindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800;
+            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800b;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.m_dgvPlayerList);
             this.Controls.Add(this.m_lastNameLabel);
             this.Controls.Add(this.m_firstNameLabel);
             this.Controls.Add(this.m_searchByCardButton);
@@ -312,10 +311,11 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_resultsListDown);
             this.Controls.Add(this.m_resultsListUp);
             this.Controls.Add(this.m_searchButton);
-            this.Controls.Add(this.m_lastName);
             this.Controls.Add(this.m_firstName);
             this.Controls.Add(this.m_virtualKeyboard);
             this.Controls.Add(this.m_resultsList);
+            this.Controls.Add(this.m_dgvPlayerList);
+            this.Controls.Add(this.m_lastName);
             this.DrawBorderOuterEdge = true;
             this.DrawRounded = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

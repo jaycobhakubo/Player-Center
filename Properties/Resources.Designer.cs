@@ -465,6 +465,16 @@ namespace GTI.Modules.PlayerCenter.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FindPlayerBack800b {
+            get {
+                object obj = ResourceManager.GetObject("FindPlayerBack800b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No player is selected..
         /// </summary>
         internal static string FindPlayerFormNoPlayer {

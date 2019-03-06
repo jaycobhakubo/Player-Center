@@ -190,6 +190,9 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.imageButton1 = new GTI.Controls.ImageButton();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -198,6 +201,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.menuStrip1.SuspendLayout();
             this.loyalityGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // m_findPlayerButton
@@ -933,10 +937,38 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual.UseVisualStyleBackColor = false;
             this.m_btnImgAwardPointManual.Click += new System.EventHandler(this.AwardPointsImageButton_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.imageButton1);
+            this.groupBox2.Controls.Add(this.listBox1);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.listBox1, "listBox1");
+            this.listBox1.Name = "listBox1";
+            // 
+            // imageButton1
+            // 
+            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.imageButton1.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.imageButton1, "imageButton1");
+            this.imageButton1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imageButton1.Name = "imageButton1";
+            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imageButton1.UseVisualStyleBackColor = false;
+            // 
             // MCPPlayerManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.m_saveChangesButton);
             this.Controls.Add(this.takePINImageButton);
@@ -970,6 +1002,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.loyalityGroupBox.ResumeLayout(false);
             this.loyalityGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -991,6 +1024,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.TextBox txtMagCard;
         private Controls.ImageButton m_btnImgAwardPointManual;
         private System.Windows.Forms.ToolStripMenuItem playerPointPurgeToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private Controls.ImageButton imageButton1;
 
        
        

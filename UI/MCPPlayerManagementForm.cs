@@ -96,7 +96,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 ChkSystemCamera();
                 AddToolStripMenuItem();
-               
+
+                //Get player permission to removed coupon
+                if (GetStaffPermissionToRemovedCoupon())
+                {
+                    m_btnRemovedCoupon.Visible = true;
+                    m_lstComps.Size = new Size(319, 94);
+                }
+                else
+                {
+                    m_btnRemovedCoupon.Visible = false;
+                    m_lstComps.Size = new Size(385, 94);
+                }
             }
             catch (Exception)
             {
@@ -187,13 +198,11 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void LoadGenders()
         {
-            m_genderList.Items.Clear();
-            
+            m_genderList.Items.Clear();           
             m_genderList.Items.Add(string.Empty);
             m_genderList.Items.Add(Resources.GenderMale);
             m_genderList.Items.Add(Resources.GenderFemale);
             m_genderList.Items.Add(Resources.GenderOther);
-
             m_genderList.SelectedIndex = 0;
         }
         // END: DE1891
@@ -851,6 +860,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
+            //Populate the players coupon 
+            m_lstComps.Items.Clear();
+            if (m_player.Comps != null)
+            {
+
+                foreach (var comps in m_player.Comps)
+                {
+                    m_lstComps.Items.Add(comps.Name);
+                }
+            }
+
+
             //START RALLY DE8358
             if (canceled)
             {
@@ -1037,6 +1058,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool GetThisStaffPermissionToAwardPoints()
         {
             return m_parent.StaffHasPermissionToAwardPoints;//.StaffHasPermissionToAdjustPointsManually;
+        }
+
+        private bool GetStaffPermissionToRemovedCoupon()
+        {
+            return m_parent.StaffHasPermissionToRemovedCoupon;
         }
        
         #endregion

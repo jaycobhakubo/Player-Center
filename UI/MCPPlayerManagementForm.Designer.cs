@@ -191,8 +191,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnImgAwardPointManual = new GTI.Controls.ImageButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.imageButton1 = new GTI.Controls.ImageButton();
+            this.m_btnRemovedCoupon = new GTI.Controls.ImageButton();
+            this.m_lstComps = new System.Windows.Forms.ListBox();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -940,29 +940,30 @@ namespace GTI.Modules.PlayerCenter.UI
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.imageButton1);
-            this.groupBox2.Controls.Add(this.listBox1);
+            this.groupBox2.Controls.Add(this.m_btnRemovedCoupon);
+            this.groupBox2.Controls.Add(this.m_lstComps);
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // listBox1
+            // m_btnRemovedCoupon
             // 
-            this.listBox1.FormattingEnabled = true;
-            resources.ApplyResources(this.listBox1, "listBox1");
-            this.listBox1.Name = "listBox1";
+            this.m_btnRemovedCoupon.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnRemovedCoupon.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnRemovedCoupon, "m_btnRemovedCoupon");
+            this.m_btnRemovedCoupon.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_btnRemovedCoupon.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnRemovedCoupon.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnRemovedCoupon.Name = "m_btnRemovedCoupon";
+            this.m_btnRemovedCoupon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnRemovedCoupon.UseVisualStyleBackColor = false;
             // 
-            // imageButton1
+            // m_lstComps
             // 
-            this.imageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.imageButton1.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.imageButton1, "imageButton1");
-            this.imageButton1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.imageButton1.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.imageButton1.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imageButton1.Name = "imageButton1";
-            this.imageButton1.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imageButton1.UseVisualStyleBackColor = false;
+            this.m_lstComps.FormattingEnabled = true;
+            resources.ApplyResources(this.m_lstComps, "m_lstComps");
+            this.m_lstComps.Name = "m_lstComps";
             // 
             // MCPPlayerManagementForm
             // 
@@ -1025,8 +1026,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private Controls.ImageButton m_btnImgAwardPointManual;
         private System.Windows.Forms.ToolStripMenuItem playerPointPurgeToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private Controls.ImageButton imageButton1;
+        private System.Windows.Forms.ListBox m_lstComps;
+        private Controls.ImageButton m_btnRemovedCoupon;
 
        
        

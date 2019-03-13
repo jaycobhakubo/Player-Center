@@ -162,7 +162,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     strErr = "get workstation settings.";
-                    GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674
+                    StaffHasPermissionToAwardPoints =  GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.ManualPointsAwardtoPlayer);//US2100/TA15674//
+                    StaffHasPermissionToRemovedCoupon = GetStaffModulePermission(modComm.GetStaffId(), (int)EliteModule.PlayerCenter, (int)ModuleFeature.RemovedCouponToPlayer);
                     GetWorkstationSettings();
                     m_magCardReader = new MagneticCardReader(Settings.MSRSettingsInfo);
 
@@ -335,17 +336,22 @@ namespace GTI.Modules.PlayerCenter.Business
             }
         }
 
+
+
         //US2100
-        private void GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
+        private bool GetStaffModulePermission(int staffId, int moduleId, int moduleFeatureId)
         {
-            StaffHasPermissionToAwardPoints = false;
+            
+            StaffHasPermission = false;
             var message = new GetStaffModuleFeaturesMessage(staffId, moduleId, moduleFeatureId);
             message.Send();
 
             if (message.ReturnCode == (int)GTIServerReturnCode.Success)
             {
-                StaffHasPermissionToAwardPoints = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
+                //StaffHasPermissionToAwardPoints = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
+                StaffHasPermission = (message.ModuleFeatureList.ToList().Count != 0) ? true : false;
             }
+            return StaffHasPermission;
         }
 
         public static void RunGetPlayerLocation()
@@ -2488,7 +2494,10 @@ namespace GTI.Modules.PlayerCenter.Business
         /// Gets the Player Center's current settings.
         /// </summary>
 
+
+        public bool StaffHasPermission{get; set;}
         public bool StaffHasPermissionToAwardPoints { get; set; }       //US2001
+        public bool StaffHasPermissionToRemovedCoupon { get; set; }
 
         /// <summary>
         /// Gets whether to allow picture capturing.

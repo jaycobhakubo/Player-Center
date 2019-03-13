@@ -203,7 +203,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             int intPlayerID = 0;
             Application.DoEvents();
-          
+
+            //var testr = m_dgvResultsList.CurrentCell.RowIndex;
+
+            if (m_dgvResultsList.CurrentCell == null)
+            {
+                MessageForm.Show(Resources.FindPlayerFormNoPlayer);
+                return;               
+            }
+
             if (m_dgvResultsList.CurrentCell.RowIndex == -1)
             {
                 MessageForm.Show(Resources.FindPlayerFormNoPlayer);

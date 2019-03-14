@@ -139,6 +139,7 @@
     <Compile Include="Data\SetPhotoMessage.cs" />
     <Compile Include="Data\SetPlayerPointsAwarded.cs" />
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
+    <Compile Include="Data\SetPlayersCouponMessage.cs" />
     <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">

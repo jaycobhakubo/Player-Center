@@ -237,13 +237,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     MessageForm.Show(m_parent.LastAsyncException.Message);
                     Application.DoEvents();
                 }
-
                 return;
             }
             else
                 m_selectedPlayer = m_parent.LastPlayerFromServer; // TTP 50067
-
-
 
             DialogResult = DialogResult.OK;
             Close();

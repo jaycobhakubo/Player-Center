@@ -958,12 +958,14 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_btnRemovedCoupon.Name = "m_btnRemovedCoupon";
             this.m_btnRemovedCoupon.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_btnRemovedCoupon.UseVisualStyleBackColor = false;
+            this.m_btnRemovedCoupon.Click += new System.EventHandler(this.m_btnRemovedCoupon_Click);
             // 
             // m_lstComps
             // 
             this.m_lstComps.FormattingEnabled = true;
             resources.ApplyResources(this.m_lstComps, "m_lstComps");
             this.m_lstComps.Name = "m_lstComps";
+            this.m_lstComps.SelectedIndexChanged += new System.EventHandler(this.m_lstComps_SelectedIndexChanged);
             // 
             // MCPPlayerManagementForm
             // 

@@ -363,6 +363,13 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Events
+
+
+        private void m_lstComps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
+        }
+
         /// <summary>
         /// Handles when the focus changes on a form.
         /// </summary>
@@ -864,11 +871,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_lstComps.Items.Clear();
             if (m_player.Comps != null)
             {
-
-                foreach (var comps in m_player.Comps)
-                {
-                    m_lstComps.Items.Add(comps.Name);
-                }
+                m_lstComps.DataSource = m_player.Comps;
+                m_lstComps.ValueMember = "Name";
             }
 
 
@@ -1057,7 +1061,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private bool GetThisStaffPermissionToAwardPoints()
         {
-            return m_parent.StaffHasPermissionToAwardPoints;//.StaffHasPermissionToAdjustPointsManually;
+            return m_parent.StaffHasPermissionToAwardPoints;
         }
 
         private bool GetStaffPermissionToRemovedCoupon()
@@ -1187,5 +1191,18 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
+
+        private void m_btnRemovedCoupon_Click(object sender, EventArgs e)
+        {
+            if (m_lstComps.SelectedIndex != -1)
+            {
+                PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
+                int CompId = selectedCoupon.CompAwardId;
+                int PlayerId = m_player.Id;
+                SetPlayersCouponMessage msg = new SetPlayersCouponMessage(PlayerId, CompId);
+                msg.Send();
+
+            }
+        }      
     }
 }

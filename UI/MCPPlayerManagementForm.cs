@@ -1202,6 +1202,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetPlayersCouponMessage msg = new SetPlayersCouponMessage(PlayerId, CompId);
                 msg.Send();
 
+                if (msg.ReturnCode == 0)
+                {
+                    m_lstComps.Items.Remove(selectedCoupon);
+                    m_lstComps.Update();
+                }
+
             }
         }      
     }

@@ -141,8 +141,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             // PDTS 1064
             GTI.Modules.Shared.MagCardForm magForm = new GTI.Modules.Shared.MagCardForm(m_parent.MagCardReader);            
-             //magForm.ClearCardButtonVisible = false;
-            //magForm.RedesignUI();
+             magForm.ClearCardButtonVisible = false;
 
             if(magForm.ShowDialog() == DialogResult.OK)
             {

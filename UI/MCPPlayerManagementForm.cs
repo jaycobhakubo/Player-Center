@@ -237,7 +237,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// Selects the player status values in the listview that are in
         /// the current players list.
         /// </summary>
-        private void SelectPlayersStatusInListBox()
+        private void SelectPlayersStatusInListBox()//knc
         {
             listViewSetup = true;
             m_playerStatusList.Clear();//RALLY DE8358
@@ -868,11 +868,15 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             //Populate the players coupon 
-            m_lstComps.Items.Clear();
+
             if (m_player.Comps != null)
             {
-                m_lstComps.DataSource = m_player.Comps;
-                m_lstComps.ValueMember = "Name";
+                if (m_lstComps.Items.Count != 0)
+                {
+                    m_lstComps.Items.Clear();
+                    m_lstComps.DataSource = m_player.Comps;
+                    m_lstComps.ValueMember = "Name";
+                }
             }
 
 

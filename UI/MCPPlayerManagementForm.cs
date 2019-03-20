@@ -602,7 +602,22 @@ namespace GTI.Modules.PlayerCenter.UI
                 // save teh active status list for the current player
                 //SetPlayerStatusCode.Save(PlayerManager.OperatorID, m_player.Id, m_player.ActiveStatusList);
 
+                if (listCouponToBeRemoved.Count != 0)
+                {
+                    foreach (PlayerComp playerComp in listCouponToBeRemoved)
+                    {
+                        SetPlayersCouponMessage msg = new SetPlayersCouponMessage(m_player.Id, playerComp.CompAwardId);
+                        msg.Send();
+                        m_player.Comps.Remove(playerComp);
+                    }
+                    listCouponToBeRemoved = new List<PlayerComp>();
+
+                }
+
                 m_parent.SavePlayer(m_player);
+
+                
+
                 m_parent.ShowWaitForm(this); // Block until we are done.
                 // END: DE2476
                 Application.DoEvents();
@@ -659,6 +674,11 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 Application.DoEvents();
 
+                foreach (PlayerComp playerComp in listCouponToBeRemoved)
+                {
+                    m_player.Comps.Add(playerComp);
+                }
+                listCouponToBeRemoved = new List<PlayerComp>();
                 SetPlayerValues(true);//RALLY DE8358
                 m_dataChanged = false;
             }
@@ -868,17 +888,16 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             //Populate the players coupon 
-
             if (m_player.Comps != null)
             {
-                if (m_lstComps.Items.Count != 0)
+                if (m_player.Comps.Count != 0)
                 {
+                    m_lstComps.DataSource = null;
                     m_lstComps.Items.Clear();
                     m_lstComps.DataSource = m_player.Comps;
                     m_lstComps.ValueMember = "Name";
                 }
             }
-
 
             //START RALLY DE8358
             if (canceled)
@@ -888,7 +907,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 SelectPlayersStatusInListBox();
-            }
+            } 
             //END RALLY DE8358
         }
 
@@ -1203,16 +1222,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
                 int CompId = selectedCoupon.CompAwardId;
                 int PlayerId = m_player.Id;
-                SetPlayersCouponMessage msg = new SetPlayersCouponMessage(PlayerId, CompId);
-                msg.Send();
-
-                if (msg.ReturnCode == 0)
-                {
-                    m_lstComps.Items.Remove(selectedCoupon);
-                    m_lstComps.Update();
-                }
-
+                var testd = m_player.Comps;
+                listCouponToBeRemoved.Add(selectedCoupon);
+                testd.Remove(selectedCoupon);
+                m_lstComps.DataSource = null;
+                m_lstComps.DataSource = testd;
+                m_lstComps.Update();
             }
-        }      
+        }
+
+        List<PlayerComp> listCouponToBeRemoved = new List<PlayerComp>();
     }
 }

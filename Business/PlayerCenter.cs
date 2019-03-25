@@ -1429,7 +1429,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
 
             e.Result = reloadPlayer;
-        }//knc
+        }
 
         /// <summary>
         /// Handles the event when the player BackgroundWorker is complete.

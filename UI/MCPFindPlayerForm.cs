@@ -95,7 +95,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void SearchClick(object sender, EventArgs e)
         {                    
-            m_parent.FindPlayers2(string.Empty, m_txtbxSearchCategory.Text.Trim());//knc
+            m_parent.FindPlayers2(string.Empty, m_txtbxSearchCategory.Text.Trim());
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 

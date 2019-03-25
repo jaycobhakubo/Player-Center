@@ -104,6 +104,8 @@ namespace GTI.Modules.PlayerCenter.UI
             cmbxPlayerList2.ContextMenuStrip = contextMenuStrip1;
             cmbxPlayerList2.MouseUp += new MouseEventHandler(listBox_Usernames_MouseUp);
             LoadPlayerListSettingComboBox(); //Load the Player List Setting combo box.
+            LoadSelectedOption(m_cmbxAge);
+            m_cmbxAge.SelectedIndex = 0;
             DisableAllControl();
             DisableAllPanel();
             m_listCriteriaPanel.Visible = false;
@@ -1253,6 +1255,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 currentRadioButton = (RadioButton)sender;
             }
 
+            if (sender == m_chkbxAge)
+            {
+                m_cmbxAge.Enabled = m_chkbxAge.Checked;
+                m_txtbxAgeValue.Enabled = m_chkbxAge.Checked;             
+            }
+            else
             if (sender == m_findAllVIPCheckBox)
             {
                 m_locationTypeComboBox.Enabled = m_findAllVIPCheckBox.Checked;

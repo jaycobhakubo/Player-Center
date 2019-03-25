@@ -237,7 +237,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// Selects the player status values in the listview that are in
         /// the current players list.
         /// </summary>
-        private void SelectPlayersStatusInListBox()//knc
+        private void SelectPlayersStatusInListBox()
         {
             listViewSetup = true;
             m_playerStatusList.Clear();//RALLY DE8358

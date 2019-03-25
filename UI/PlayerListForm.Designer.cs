@@ -58,6 +58,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_closeButton = new GTI.Controls.ImageButton();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.m_listCriteriaPanel = new System.Windows.Forms.Panel();
+            this.m_cmbxAge = new System.Windows.Forms.ComboBox();
+            this.m_chkbxAge = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.m_statusCheckComboBox = new CheckComboBoxTest.CheckedComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -184,6 +186,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NDaysVisitedFrom = new System.Windows.Forms.TextBox();
             this.summary_NSessionVisitedFrom = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
             this.m_selectionPanel.SuspendLayout();
@@ -199,6 +202,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_rangeOptionPBPanel.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.m_summaryPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // m_genderList
@@ -392,6 +396,9 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.m_listCriteriaPanel, "m_listCriteriaPanel");
             this.m_listCriteriaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_listCriteriaPanel.Controls.Add(this.numericUpDown1);
+            this.m_listCriteriaPanel.Controls.Add(this.m_cmbxAge);
+            this.m_listCriteriaPanel.Controls.Add(this.m_chkbxAge);
             this.m_listCriteriaPanel.Controls.Add(this.label7);
             this.m_listCriteriaPanel.Controls.Add(this.m_statusCheckComboBox);
             this.m_listCriteriaPanel.Controls.Add(this.label2);
@@ -405,6 +412,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.Controls.Add(this.m_birthdayCheck);
             this.m_listCriteriaPanel.Controls.Add(this.m_genderCheck);
             this.m_listCriteriaPanel.Name = "m_listCriteriaPanel";
+            // 
+            // m_cmbxAge
+            // 
+            this.m_cmbxAge.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.m_cmbxAge, "m_cmbxAge");
+            this.m_cmbxAge.FormattingEnabled = true;
+            this.m_cmbxAge.Name = "m_cmbxAge";
+            this.m_cmbxAge.Tag = "9";
+            // 
+            // m_chkbxAge
+            // 
+            resources.ApplyResources(this.m_chkbxAge, "m_chkbxAge");
+            this.m_chkbxAge.Name = "m_chkbxAge";
+            this.m_chkbxAge.UseVisualStyleBackColor = true;
+            this.m_chkbxAge.CheckedChanged += new System.EventHandler(this.OptionChanged);
             // 
             // label7
             // 
@@ -1165,13 +1187,13 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.m_spendPanel.BackColor = System.Drawing.Color.Transparent;
             this.m_spendPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_spendPanel.Controls.Add(this.m_ProductCheckBox);
+            this.m_spendPanel.Controls.Add(this.m_pointBalanceCheck);
+            this.m_spendPanel.Controls.Add(this.m_averageRadio);
             this.m_spendPanel.Controls.Add(this.label6);
             this.m_spendPanel.Controls.Add(this.m_spendCheck);
-            this.m_spendPanel.Controls.Add(this.m_averageRadio);
-            this.m_spendPanel.Controls.Add(this.m_pointBalanceCheck);
             this.m_spendPanel.Controls.Add(this.m_RangeOptionSAPanel);
             this.m_spendPanel.Controls.Add(this.m_rangeOptionPBPanel);
-            this.m_spendPanel.Controls.Add(this.m_ProductCheckBox);
             this.m_spendPanel.Controls.Add(this.m_fromSpendDate);
             this.m_spendPanel.Controls.Add(this.m_toSpendDate);
             this.m_spendPanel.Controls.Add(this.m_spendAndLabel);
@@ -1496,23 +1518,33 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
+            // numericUpDown1
+            // 
+            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Value = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
+            // 
             // PlayerListForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.m_listTypePanel);
+            this.Controls.Add(this.m_listCriteriaPanel);
+            this.Controls.Add(this.m_spendPanel);
+            this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_selectionPanel);
+            this.Controls.Add(this.m_listTypePanel);
+            this.Controls.Add(this.m_locationPanel);
+            this.Controls.Add(this.m_playDatesPanel);
             this.Controls.Add(this.imgbtn_AwardPointsToListOfPlayer);
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.btnSaveList);
             this.Controls.Add(this.m_closeButton);
-            this.Controls.Add(this.m_summaryPanel);
-            this.Controls.Add(this.m_playDatesPanel);
             this.Controls.Add(this.m_generateButton);
-            this.Controls.Add(this.m_spendPanel);
-            this.Controls.Add(this.m_listCriteriaPanel);
-            this.Controls.Add(this.m_locationPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1547,6 +1579,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox5.ResumeLayout(false);
             this.m_summaryPanel.ResumeLayout(false);
             this.m_summaryPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1707,5 +1740,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox m_cmbxAge;
+        private System.Windows.Forms.CheckBox m_chkbxAge;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
     }
 }

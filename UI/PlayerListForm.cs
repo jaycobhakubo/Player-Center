@@ -183,7 +183,7 @@ namespace GTI.Modules.PlayerCenter.UI
         protected void PlayerListDefault2()
         {
             if (m_findAllVIPCheckBox.Checked != false) m_findAllVIPCheckBox.Checked = false;
-            if (m_chkbxAge.Checked != false) m_genderCheck.Checked = false;
+            if (m_chkbxAge.Checked != false) m_chkbxAge.Checked = false;
             if (m_genderCheck.Checked != false) m_genderCheck.Checked = false;
             if (m_statusCheck.Checked != false) m_statusCheck.Checked = false;
             if (m_birthdayCheck.Checked) m_birthdayCheck.Checked = false;
@@ -509,7 +509,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_chkbxAge.Checked = true;
                         m_cmbxAge.SelectedIndex = 4;
                         m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
-                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                       m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
                         break;
 
                     case (int)PlayerListSettingEnum.Gender://Gender
@@ -1319,8 +1319,12 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_cmbxAge.Enabled = m_chkbxAge.Checked;
                 m_txtbxAgeValue.Enabled = m_chkbxAge.Checked;
-
                 if (isNewList == true) EnableOrDisableSavedButton(currentCheckbox);
+                if (m_chkbxAge.Checked == false)
+                {
+                    m_txtbxAgeValue.Value = 18;
+                    m_cmbxAge.SelectedIndex = 2;
+                }
             }
             else
 
@@ -1973,7 +1977,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_chkbxAge.Checked)
             {
-                args.UseAge = true;//knc
+                args.UseAge = true;
                 args.Age = (int)m_txtbxAgeValue.Value;
                 if (m_cmbxAge.SelectedIndex == 0)
                 {

@@ -2652,6 +2652,8 @@ namespace GTI.Modules.PlayerCenter.Business
     /// </summary>
     internal struct PlayerListParams
     {
+        public bool UseAge;
+        public int Age;
         public bool UseBirthday;
         public DateTime FromBirthday;
         public DateTime ToBirthday;

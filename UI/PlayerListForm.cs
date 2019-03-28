@@ -101,8 +101,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_locationTypeComboBox.Items.Add(name);
             }
 
-            cmbxPlayerList2.ContextMenuStrip = contextMenuStrip1;
-            cmbxPlayerList2.MouseUp += new MouseEventHandler(listBox_Usernames_MouseUp);
+            m_cmbxPlayerList.ContextMenuStrip = contextMenuStrip1;
+            m_cmbxPlayerList.MouseUp += new MouseEventHandler(listBox_Usernames_MouseUp);
             LoadPlayerListSettingComboBox(); //Load the Player List Setting combo box.
             LoadSelectedOption(m_cmbxAge);
             m_cmbxAge.SelectedIndex = 0;
@@ -140,9 +140,9 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         protected void LoadPlayerListSettingComboBox()
         {
-            if (cmbxPlayerList2.Items.Count > 0)
+            if (m_cmbxPlayerList.Items.Count > 0)
             {
-                cmbxPlayerList2.Items.Clear();
+                m_cmbxPlayerList.Items.Clear();
             }
 
             if (IndexToDefID.Count > 0)
@@ -156,10 +156,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (List_pld.Count > 0)
             {
-                var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);
+                var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);//Populate our existing player list.
                 foreach (PlayerListDefinition pld in sortPlayerListDef)
                 {
-                    cmbxPlayerList2.Items.Add(pld.DefinitionName);
+                    m_cmbxPlayerList.Items.Add(pld.DefinitionName);
                     IndexToDefID.Add(indexOf, pld.DefId);
                     indexOf = indexOf + 1;
                 }
@@ -183,6 +183,7 @@ namespace GTI.Modules.PlayerCenter.UI
         protected void PlayerListDefault2()
         {
             if (m_findAllVIPCheckBox.Checked != false) m_findAllVIPCheckBox.Checked = false;
+            if (m_chkbxAge.Checked != false) m_genderCheck.Checked = false;
             if (m_genderCheck.Checked != false) m_genderCheck.Checked = false;
             if (m_statusCheck.Checked != false) m_statusCheck.Checked = false;
             if (m_birthdayCheck.Checked) m_birthdayCheck.Checked = false;
@@ -196,13 +197,13 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_averageRadio.Checked) m_averageRadio.Checked = false;
             m_dateRangefromDPDatePicker.Value = DateTime.Now.AddMonths(-1);
 
-            if (cmbxPlayerList2.SelectedIndex > -1)
+            if (m_cmbxPlayerList.SelectedIndex > -1)
             {
                 if (!imgbtnDelete.Enabled) imgbtnDelete.Enabled = true;
                 if (!imgbtn.Enabled) imgbtn.Enabled = true;
                 if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                 if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-                if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+                if (!m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = true;
                 if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
             }
 
@@ -472,7 +473,7 @@ namespace GTI.Modules.PlayerCenter.UI
             string t_summary_value = "";
             string t_summary_Option = "";
 
-            foreach (PlayerListSetting pls in PlyrActListSetting.Settings)
+            foreach (PlayerListSetting pls in PlyrActListSetting.Settings)//Im getting 0 here
             {
                 DateTime tempDateTime;
                 int tempIndexOf = 0; ;
@@ -480,6 +481,37 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 switch (pls.SettingID)
                 {
+                    case (int)PlayerListSettingEnum.AgeGreaterThan://Gender
+                        m_chkbxAge.Checked = true;
+                        m_cmbxAge.SelectedIndex = 0;                       
+                        m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
+                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                        break;
+                    case (int)PlayerListSettingEnum.AgeGreaterThanOrEqualTo://Gender
+                        m_chkbxAge.Checked = true;
+                        m_cmbxAge.SelectedIndex = 1;
+                        m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
+                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                        break;
+                    case (int)PlayerListSettingEnum.AgeEqualTo://Gender
+                        m_chkbxAge.Checked = true;
+                        m_cmbxAge.SelectedIndex = 2;
+                        m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
+                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                        break;
+                    case (int)PlayerListSettingEnum.AgeLessThanOrEqualTo://Gender
+                        m_chkbxAge.Checked = true;
+                        m_cmbxAge.SelectedIndex = 3;
+                        m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
+                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                        break;
+                    case (int)PlayerListSettingEnum.AgeLessThan://Gender
+                        m_chkbxAge.Checked = true;
+                        m_cmbxAge.SelectedIndex = 4;
+                        m_txtbxAgeValue.Value = Convert.ToDecimal(pls.SettingValue);
+                        m_txtbxSummaryAge.Text = m_cmbxAge.SelectedItem.ToString() + " " + pls.SettingValue;
+                        break;
+
                     case (int)PlayerListSettingEnum.Gender://Gender
                         m_genderCheck.Checked = true;
                         m_genderList.SelectedIndex = m_genderList.Items.IndexOf(pls.SettingValue);
@@ -1255,12 +1287,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 currentRadioButton = (RadioButton)sender;
             }
 
-            if (sender == m_chkbxAge)
-            {
-                m_cmbxAge.Enabled = m_chkbxAge.Checked;
-                m_txtbxAgeValue.Enabled = m_chkbxAge.Checked;             
-            }
-            else
+          
             if (sender == m_findAllVIPCheckBox)
             {
                 m_locationTypeComboBox.Enabled = m_findAllVIPCheckBox.Checked;
@@ -1287,6 +1314,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_locationTypeComboBox.SelectedIndex = -1;
                 }
             }
+
+            if (sender == m_chkbxAge)
+            {
+                m_cmbxAge.Enabled = m_chkbxAge.Checked;
+                m_txtbxAgeValue.Enabled = m_chkbxAge.Checked;
+
+                if (isNewList == true) EnableOrDisableSavedButton(currentCheckbox);
+            }
+            else
 
             if (sender == m_birthdayCheck)
             {
@@ -1918,7 +1954,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 PlyrActListSetting = new PlayerActualListSetting();
                 isSavedList = true;
 
-                cmbxPlayerList2.Items.Remove(cmbxPlayerList2.SelectedItem);
+                m_cmbxPlayerList.Items.Remove(m_cmbxPlayerList.SelectedItem);
             }
             else if (ActiveButton_ == 3)
             {
@@ -1934,6 +1970,33 @@ namespace GTI.Modules.PlayerCenter.UI
             // Send the arguments to the parent.
             PlayerListParams args = new PlayerListParams();
             args.ListName = m_ListName;
+
+            if (m_chkbxAge.Checked)
+            {
+                args.UseAge = true;//knc
+                args.Age = (int)m_txtbxAgeValue.Value;
+                if (m_cmbxAge.SelectedIndex == 0)
+                {
+                    SetListOfSetting((int)PlayerListSettingEnum.AgeGreaterThan, args.Age.ToString());
+                }
+                else if (m_cmbxAge.SelectedIndex == 1)
+                {
+                    SetListOfSetting((int)PlayerListSettingEnum.AgeGreaterThanOrEqualTo, args.Age.ToString());
+                }
+                else if (m_cmbxAge.SelectedIndex == 2)
+                {
+                    SetListOfSetting((int)PlayerListSettingEnum.AgeEqualTo, args.Age.ToString());
+                }
+                else if (m_cmbxAge.SelectedIndex == 3)
+                {
+                    SetListOfSetting((int)PlayerListSettingEnum.AgeLessThanOrEqualTo, args.Age.ToString());
+                }
+                else if (m_cmbxAge.SelectedIndex == 4)
+                {
+                    SetListOfSetting((int)PlayerListSettingEnum.AgeLessThan, args.Age.ToString());
+                }              
+            }
+
 
             if (m_birthdayCheck.Checked)
             {
@@ -1969,7 +2032,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 string statusID = m_statusCheckComboBox.Text;
                 statusID = statusID.Replace(@", ", "/|\\");
                 args.Status = statusID;
-
                 SetListOfSetting((int)PlayerListSettingEnum.Status, args.Status);
             }
 
@@ -2495,10 +2557,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 SelectedProductPar = SelectedProductPar.Replace(@", ", "/|\\");
                 args.SelectedProduct = SelectedProductPar;
                 SetListOfSetting((int)PlayerListSettingEnum.ProductPurchased, args.SelectedProduct);
-
                 args.FromSpendDate = m_fromSpendDate.Value;
                 args.ToSpendDate = m_toSpendDate.Value;
-
                 SetListOfSetting((int)PlayerListSettingEnum.SpendFrom, args.FromSpendDate.ToString());
                 SetListOfSetting((int)PlayerListSettingEnum.SpendTo, args.ToSpendDate.ToString());
             }
@@ -2517,7 +2577,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (isSavedList == true || isDeleteList == true)//SaveList
                 {
-                    if (cmbxPlayerList2.SelectedIndex == -1)//New
+                    if (m_cmbxPlayerList.SelectedIndex == -1)//New
                     {
                         PlyrActListSetting.DefID = 0;
                         PlyrActListSetting.Definition = m_ListName; //txtbxDefinitionName.Text;
@@ -2527,7 +2587,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         PlyrActListSetting.DefID = DefID;
                         if (isDeleteList == true)
                         {
-                            PlyrActListSetting.Definition = cmbxPlayerList2.SelectedItem.ToString();
+                            PlyrActListSetting.Definition = m_cmbxPlayerList.SelectedItem.ToString();
                         }
                         else//Update player definition name.
                         {
@@ -2582,7 +2642,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         //if (!m_generateButton.Enabled) m_generateButton.Enabled = true;
                         if (m_generateButton.Enabled) m_generateButton.Enabled = false;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-                        if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+                        if (!m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
                         if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
                         if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
@@ -2590,7 +2650,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
                        
 
-                        cmbxPlayerList2.SelectedIndex = -1;
+                        m_cmbxPlayerList.SelectedIndex = -1;
                     }
                     else if (setPlayerList_.IsSuccess == true && isDeleteList == true) //(SetPlayerList.IsSuccess_static == true && isDeleteList == true)
                     {
@@ -2606,7 +2666,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         imgbtn.Visible = false;
                         if (m_generateButton.Enabled) m_generateButton.Enabled = false;
                         if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-                        if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+                        if (!m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = true;
                         if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
                         if (!m_playDatesButton.Enabled) m_playDatesPanel.Enabled = true;
                         if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
@@ -2615,7 +2675,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     isNewList = false;
-                    cmbxPlayerList2.SelectedIndex = -1;
+                    m_cmbxPlayerList.SelectedIndex = -1;
                     ActiveButton_ = 0;
 
                     if (!imgbtnNewList.Visible) 
@@ -2681,7 +2741,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void imgbtn_AwardPointsToListOfPlayer_Click(object sender, EventArgs e)
         {
             m_isAwardPointToPlayerList = false;
-            m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer(cmbxPlayerList2.SelectedItem.ToString());
+            m_awardPointsToListOfPlayer = new AwardPointsToListOfPlayer(m_cmbxPlayerList.SelectedItem.ToString());
             DialogResult result = DialogResult.OK;
             result = m_awardPointsToListOfPlayer.ShowDialog();
             m_isAwardPointToPlayerList = m_awardPointsToListOfPlayer.IsAwardPoints;
@@ -3254,7 +3314,7 @@ namespace GTI.Modules.PlayerCenter.UI
             PlayerListDefault2();
             clearErrorProvider();
 
-            if (cmbxPlayerList2.SelectedIndex != -1)
+            if (m_cmbxPlayerList.SelectedIndex != -1)
             {
                 DisableAllPanel();
                 m_summaryPanel.Visible = true;
@@ -3264,13 +3324,13 @@ namespace GTI.Modules.PlayerCenter.UI
                     imgbtn_AwardPointsToListOfPlayer.Enabled = true;
                 }
 
-                DefID = IndexToDefID[cmbxPlayerList2.SelectedIndex];
+                DefID = IndexToDefID[m_cmbxPlayerList.SelectedIndex];
                 PlyrActListSetting = new PlayerActualListSetting();
                 GetPlayerListDetail gpld = new GetPlayerListDetail(DefID);
                 //gpld.GetPlayerListDetailSQL(DefID);
                 PlyrActListSetting = gpld.pals;
-                PlyrActListSetting.Definition = cmbxPlayerList2.SelectedItem.ToString();
-                m_ListName = cmbxPlayerList2.SelectedItem.ToString();
+                PlyrActListSetting.Definition = m_cmbxPlayerList.SelectedItem.ToString();
+                m_ListName = m_cmbxPlayerList.SelectedItem.ToString();
                 PopulateDataIntoControls();
 
                 if (btnSaveList.Enabled) btnSaveList.Enabled = false;
@@ -3294,7 +3354,7 @@ namespace GTI.Modules.PlayerCenter.UI
             PlayerListDefault2();
             isNewList = true; 
             ActiveButton_ = 1;
-            if (cmbxPlayerList2.Items.Count > 0) cmbxPlayerList2.SelectedIndex = -1;
+            if (m_cmbxPlayerList.Items.Count > 0) m_cmbxPlayerList.SelectedIndex = -1;
 
             if (m_summaryPanel.Visible != false) m_summaryPanel.Visible = false;
             if (m_listCriteriaPanel.Visible != true) m_listCriteriaPanel.Visible = true;
@@ -3305,7 +3365,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (imgbtn.Visible) imgbtn.Visible = false;
             if (m_generateButton.Enabled) m_generateButton.Enabled = false;
             if (m_closeButton.Enabled) m_closeButton.Enabled = false;
-            if (cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = false;
+            if (m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = false;
             if (m_listTypePanel.Enabled) m_listTypePanel.Enabled = false;
             if (!m_playDatesPanel.Enabled) m_playDatesPanel.Enabled = true;
             if (!m_locationPanel.Enabled) m_locationPanel.Enabled = true;
@@ -3328,8 +3388,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             m_ListName = pgl.ListName;
-            cmbxPlayerList2.Items.Add(m_ListName);
-            cmbxPlayerList2.SelectedIndex = cmbxPlayerList2.Items.Count - 1;
+            m_cmbxPlayerList.Items.Add(m_ListName);
+            m_cmbxPlayerList.SelectedIndex = m_cmbxPlayerList.Items.Count - 1;
             clearErrorProvider();
         }
         
@@ -3340,7 +3400,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (isNewList == true)
             {
-                cmbxPlayerList2.Items.Remove(cmbxPlayerList2.SelectedItem);//Remove select item.
+                m_cmbxPlayerList.Items.Remove(m_cmbxPlayerList.SelectedItem);//Remove select item.
             }
 
             isNewList = false;
@@ -3353,7 +3413,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_generateButton.Enabled) m_generateButton.Enabled = false;
             if (!m_closeButton.Enabled) m_closeButton.Enabled = true;
-            if (!cmbxPlayerList2.Enabled) cmbxPlayerList2.Enabled = true;
+            if (!m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = true;
             if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
 
             if (!m_playDatesPanel.Enabled) m_playDatesPanel.Enabled = true;
@@ -3361,7 +3421,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!m_spendPanel.Enabled) m_spendPanel.Enabled = true;
             if (!m_listCriteriaPanel.Enabled) m_listCriteriaPanel.Enabled = true;
 
-            if (cmbxPlayerList2.SelectedIndex != -1) cmbxPlayerList2.SelectedIndex = -1;
+            if (m_cmbxPlayerList.SelectedIndex != -1) m_cmbxPlayerList.SelectedIndex = -1;
             if (imgbtnDelete.Visible) imgbtnDelete.Visible = false;
             if (imgbtn.Visible) imgbtn.Visible = false;
             if (!imgbtnNewList.Enabled) imgbtnNewList.Enabled = true;
@@ -3382,7 +3442,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_spendPanel.Enabled = true;
             m_listCriteriaPanel.Enabled = true;
             imgbtnNewList.Enabled = false;
-            cmbxPlayerList2.Enabled = false;
+            m_cmbxPlayerList.Enabled = false;
             imgbtn.Enabled = false;
             imgbtnDelete.Enabled = false;
             m_closeButton.Enabled = false;
@@ -3660,7 +3720,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e"></param>
         void listBox_Usernames_MouseUp(object sender, MouseEventArgs e)
         {
-            int index = cmbxPlayerList2.IndexFromPoint(e.Location);
+            int index = m_cmbxPlayerList.IndexFromPoint(e.Location);
 
             if (contextMenuStrip1.Items.Count > 0)
             {
@@ -3671,27 +3731,27 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (index != ListBox.NoMatches)
                 {
-                    if (cmbxPlayerList2.SelectedIndex == index)
+                    if (m_cmbxPlayerList.SelectedIndex == index)
                     {
 
                         ToolStripItem item = contextMenuStrip1.Items.Add("Rename");
                         item.Click += new EventHandler(item_Click);
-                        cmbxPlayerList2.ContextMenuStrip.Visible = true;
+                        m_cmbxPlayerList.ContextMenuStrip.Visible = true;
                     }
                     else
                     {
-                        cmbxPlayerList2.ContextMenuStrip.Visible = false;
+                        m_cmbxPlayerList.ContextMenuStrip.Visible = false;
 
                     }
                 }
                 else
                 {
-                    cmbxPlayerList2.ContextMenuStrip.Visible = false;
+                    m_cmbxPlayerList.ContextMenuStrip.Visible = false;
                 }
             }
             else
             {
-                cmbxPlayerList2.ContextMenuStrip.Visible = false;
+                m_cmbxPlayerList.ContextMenuStrip.Visible = false;
             }
         }
 
@@ -4097,7 +4157,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-       
 
         
         
@@ -4181,5 +4240,10 @@ namespace GTI.Modules.PlayerCenter.UI
         AverageEqualTo = 49,
         AverageLessThanOrEqualTo = 50,
         AverageLessThan = 51,
+        AgeGreaterThan = 52,
+        AgeGreaterThanOrEqualTo = 53,
+        AgeEqualTo = 54,
+        AgeLessThanOrEqualTo = 55,
+        AgeLessThan = 56,
     }
 }

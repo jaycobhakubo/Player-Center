@@ -58,6 +58,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_closeButton = new GTI.Controls.ImageButton();
             this.m_errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.m_listCriteriaPanel = new System.Windows.Forms.Panel();
+            this.m_txtbxAgeValue = new System.Windows.Forms.NumericUpDown();
             this.m_cmbxAge = new System.Windows.Forms.ComboBox();
             this.m_chkbxAge = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,7 +81,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectionPanel = new System.Windows.Forms.Panel();
             this.m_spendBotton = new GTI.Controls.ImageButton();
             this.imgbtnNewList = new GTI.Controls.ImageButton();
-            this.cmbxPlayerList2 = new System.Windows.Forms.ListBox();
+            this.m_cmbxPlayerList = new System.Windows.Forms.ListBox();
             this.imgbtn = new GTI.Controls.ImageButton();
             this.m_playDatesButton = new GTI.Controls.ImageButton();
             this.imgbtnDelete = new GTI.Controls.ImageButton();
@@ -157,6 +158,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtnCancel = new GTI.Controls.ImageButton();
             this.imgbtn_AwardPointsToListOfPlayer = new GTI.Controls.ImageButton();
             this.m_summaryPanel = new System.Windows.Forms.Panel();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.m_txtbxSummaryAge = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.summary_NAverageFrom = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -186,9 +189,9 @@ namespace GTI.Modules.PlayerCenter.UI
             this.summary_NDaysVisitedFrom = new System.Windows.Forms.TextBox();
             this.summary_NSessionVisitedFrom = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).BeginInit();
             this.m_listCriteriaPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_txtbxAgeValue)).BeginInit();
             this.m_selectionPanel.SuspendLayout();
             this.m_listTypePanel.SuspendLayout();
             this.m_locationPanel.SuspendLayout();
@@ -202,7 +205,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_rangeOptionPBPanel.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.m_summaryPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // m_genderList
@@ -396,7 +398,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.m_listCriteriaPanel, "m_listCriteriaPanel");
             this.m_listCriteriaPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.m_listCriteriaPanel.Controls.Add(this.numericUpDown1);
+            this.m_listCriteriaPanel.Controls.Add(this.m_txtbxAgeValue);
             this.m_listCriteriaPanel.Controls.Add(this.m_cmbxAge);
             this.m_listCriteriaPanel.Controls.Add(this.m_chkbxAge);
             this.m_listCriteriaPanel.Controls.Add(this.label7);
@@ -412,6 +414,16 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_listCriteriaPanel.Controls.Add(this.m_birthdayCheck);
             this.m_listCriteriaPanel.Controls.Add(this.m_genderCheck);
             this.m_listCriteriaPanel.Name = "m_listCriteriaPanel";
+            // 
+            // m_txtbxAgeValue
+            // 
+            resources.ApplyResources(this.m_txtbxAgeValue, "m_txtbxAgeValue");
+            this.m_txtbxAgeValue.Name = "m_txtbxAgeValue";
+            this.m_txtbxAgeValue.Value = new decimal(new int[] {
+            18,
+            0,
+            0,
+            0});
             // 
             // m_cmbxAge
             // 
@@ -559,7 +571,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectionPanel.BackColor = System.Drawing.Color.Transparent;
             this.m_selectionPanel.Controls.Add(this.m_spendBotton);
             this.m_selectionPanel.Controls.Add(this.imgbtnNewList);
-            this.m_selectionPanel.Controls.Add(this.cmbxPlayerList2);
+            this.m_selectionPanel.Controls.Add(this.m_cmbxPlayerList);
             this.m_selectionPanel.Controls.Add(this.imgbtn);
             this.m_selectionPanel.Controls.Add(this.m_playDatesButton);
             this.m_selectionPanel.Controls.Add(this.imgbtnDelete);
@@ -591,12 +603,12 @@ namespace GTI.Modules.PlayerCenter.UI
             this.imgbtnNewList.UseVisualStyleBackColor = false;
             this.imgbtnNewList.Click += new System.EventHandler(this.imgbtnNewList_Click);
             // 
-            // cmbxPlayerList2
+            // m_cmbxPlayerList
             // 
-            this.cmbxPlayerList2.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbxPlayerList2, "cmbxPlayerList2");
-            this.cmbxPlayerList2.Name = "cmbxPlayerList2";
-            this.cmbxPlayerList2.SelectedIndexChanged += new System.EventHandler(this.cmbxPlayerList_SelectedIndexChanged);
+            this.m_cmbxPlayerList.FormattingEnabled = true;
+            resources.ApplyResources(this.m_cmbxPlayerList, "m_cmbxPlayerList");
+            this.m_cmbxPlayerList.Name = "m_cmbxPlayerList";
+            this.m_cmbxPlayerList.SelectedIndexChanged += new System.EventHandler(this.cmbxPlayerList_SelectedIndexChanged);
             // 
             // imgbtn
             // 
@@ -1299,6 +1311,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             this.m_summaryPanel.BackColor = System.Drawing.Color.Transparent;
             this.m_summaryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.m_summaryPanel.Controls.Add(this.lblAge);
+            this.m_summaryPanel.Controls.Add(this.m_txtbxSummaryAge);
             this.m_summaryPanel.Controls.Add(this.label19);
             this.m_summaryPanel.Controls.Add(this.summary_NAverageFrom);
             this.m_summaryPanel.Controls.Add(this.label16);
@@ -1330,6 +1344,19 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_summaryPanel.Controls.Add(this.label9);
             resources.ApplyResources(this.m_summaryPanel, "m_summaryPanel");
             this.m_summaryPanel.Name = "m_summaryPanel";
+            // 
+            // lblAge
+            // 
+            resources.ApplyResources(this.lblAge, "lblAge");
+            this.lblAge.Name = "lblAge";
+            // 
+            // m_txtbxSummaryAge
+            // 
+            this.m_txtbxSummaryAge.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.m_txtbxSummaryAge, "m_txtbxSummaryAge");
+            this.m_txtbxSummaryAge.Name = "m_txtbxSummaryAge";
+            this.m_txtbxSummaryAge.ReadOnly = true;
+            this.m_txtbxSummaryAge.TabStop = false;
             // 
             // label19
             // 
@@ -1518,24 +1545,14 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // numericUpDown1
-            // 
-            resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Value = new decimal(new int[] {
-            18,
-            0,
-            0,
-            0});
-            // 
             // PlayerListForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_listCriteriaPanel);
             this.Controls.Add(this.m_spendPanel);
-            this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_selectionPanel);
             this.Controls.Add(this.m_listTypePanel);
             this.Controls.Add(this.m_locationPanel);
@@ -1555,6 +1572,7 @@ namespace GTI.Modules.PlayerCenter.UI
             ((System.ComponentModel.ISupportInitialize)(this.m_errorProvider)).EndInit();
             this.m_listCriteriaPanel.ResumeLayout(false);
             this.m_listCriteriaPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.m_txtbxAgeValue)).EndInit();
             this.m_selectionPanel.ResumeLayout(false);
             this.m_listTypePanel.ResumeLayout(false);
             this.m_listTypePanel.PerformLayout();
@@ -1579,7 +1597,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox5.ResumeLayout(false);
             this.m_summaryPanel.ResumeLayout(false);
             this.m_summaryPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1701,7 +1718,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private Controls.ImageButton imgbtn;
         private Controls.ImageButton imgbtnNewList;
         private Controls.ImageButton imgbtnCancel;
-        private System.Windows.Forms.ListBox cmbxPlayerList2;
+        private System.Windows.Forms.ListBox m_cmbxPlayerList;
         private CheckComboBoxTest.CheckedComboBox m_checkComboAllSession;
         private System.Windows.Forms.CheckBox m_allDaysVisitCheck;
         private System.Windows.Forms.RadioButton m_printRaffleRadio;
@@ -1742,6 +1759,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox m_cmbxAge;
         private System.Windows.Forms.CheckBox m_chkbxAge;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown m_txtbxAgeValue;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.TextBox m_txtbxSummaryAge;
     }
 }

@@ -611,7 +611,6 @@ namespace GTI.Modules.PlayerCenter.UI
                         m_player.Comps.Remove(playerComp);
                     }
                     listCouponToBeRemoved = new List<PlayerComp>();
-
                 }
 
                 m_parent.SavePlayer(m_player);
@@ -809,9 +808,9 @@ namespace GTI.Modules.PlayerCenter.UI
             txtMiddleInitial.Text = m_player.MiddleInitial;
             txtLastName.Text = m_player.LastName;
             txtSocialSecurityNum.Text = m_player.GovIssuedIdNumber;
-
+            //m_txtbxAgeValue.Text = 
             txtBirthDate.Text = m_player.BirthDate != DateTime.MinValue ? m_player.BirthDate.ToShortDateString() : string.Empty;
-
+            
             txtEmail.Text = m_player.Email;
             txtPlayerIdent.Text = m_player.PlayerIdentity;
             txtPhoneNum.Text = m_player.PhoneNumber;

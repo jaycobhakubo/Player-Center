@@ -169,6 +169,30 @@
     <Compile Include="UI\AwardPointsToListOfPlayer.Designer.cs">
       <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventsTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventsTestForm.Designer.cs">
+      <DependentUpon>GeneralPlayerDrawingEventsTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventView.Designer.cs">
+      <DependentUpon>GeneralPlayerDrawingEventView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingEventViewForm.Designer.cs">
+      <DependentUpon>GeneralPlayerDrawingEventViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingForm.Designer.cs">
+      <DependentUpon>GeneralPlayerDrawingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ListBoxSearchType.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -299,6 +323,18 @@
     <EmbeddedResource Include="UI\AwardPointsToListOfPlayer.resx">
       <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralPlayerDrawingEventsTestForm.resx">
+      <DependentUpon>GeneralPlayerDrawingEventsTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralPlayerDrawingEventView.resx">
+      <DependentUpon>GeneralPlayerDrawingEventView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralPlayerDrawingEventViewForm.resx">
+      <DependentUpon>GeneralPlayerDrawingEventViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralPlayerDrawingForm.resx">
+      <DependentUpon>GeneralPlayerDrawingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MCPFindPlayerForm.es.resx">
       <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>

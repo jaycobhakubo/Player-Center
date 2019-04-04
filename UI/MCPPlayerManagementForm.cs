@@ -132,6 +132,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 viewToolStripMenuItem.DropDownItems.Add(RaffleToolStripMenuItem);
             }
 
+            var generalDrawingTSMI = new ToolStripMenuItem();
+            generalDrawingTSMI.Text = "General Drawing...";
+            generalDrawingTSMI.Click += generalDrawingTSMI_Click;
+            viewToolStripMenuItem.DropDownItems.Add(generalDrawingTSMI);
+
             //see if we can purge player points (must be internal system)
             if (m_parent.Settings.ThirdPartyPlayerInterfaceID == 0)
             {
@@ -164,6 +169,12 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                 }
             }
+        }
+
+        void generalDrawingTSMI_Click(object sender, EventArgs e)
+        {
+            var gdForm = new GeneralPlayerDrawingForm();
+            gdForm.Show(this);
         }
     
         private void RaffleToolStripMenuItem_Click(object sender, EventArgs e)

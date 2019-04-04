@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Raffle));
-            this.tbctrlRafle = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.mainTC = new System.Windows.Forms.TabControl();
+            this.playerListRaffleSetupTP = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lstBxRafflePrizes2 = new System.Windows.Forms.ListBox();
+            this.playerListRafflesSC = new System.Windows.Forms.SplitContainer();
+            this.playerListsRafflesGB = new System.Windows.Forms.GroupBox();
+            this.playerListRafflesLB = new System.Windows.Forms.ListBox();
             this.imgbtnUpdate = new GTI.Controls.ImageButton();
             this.btnSetupDelete = new GTI.Controls.ImageButton();
             this.btnSetupNew = new GTI.Controls.ImageButton();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.playerListRaffleSettingsSC = new System.Windows.Forms.SplitContainer();
+            this.playerListRaffleSettingsGB = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtbxDisclaimer = new System.Windows.Forms.TextBox();
             this.lblSavedSuccessfully = new System.Windows.Forms.Label();
@@ -50,20 +50,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSetupSave = new GTI.Controls.ImageButton();
+            this.playerListRaffleSetupSaveBtn = new GTI.Controls.ImageButton();
             this.btnSetupClose = new GTI.Controls.ImageButton();
-            this.btnSetupCancel = new GTI.Controls.ImageButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cmbxPlayerList = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblPlayerList = new System.Windows.Forms.Label();
-            this.cmbxRaffle = new System.Windows.Forms.ComboBox();
-            this.btnRunRaffle = new GTI.Controls.ImageButton();
-            this.lblRaffleInfo = new System.Windows.Forms.Label();
-            this.lstbxRaffleWinners2 = new System.Windows.Forms.ListBox();
+            this.playerListRaffleSetupCancelBtn = new GTI.Controls.ImageButton();
+            this.playerListRaffleTP = new System.Windows.Forms.TabPage();
+            this.playerListRaffleRunGB = new System.Windows.Forms.GroupBox();
+            this.playerListRaffleRunListCB = new System.Windows.Forms.ComboBox();
+            this.playerListRaffleRunRaffleLbl = new System.Windows.Forms.Label();
+            this.playerListRaffleRunListLbl = new System.Windows.Forms.Label();
+            this.playerListRaffleRunRaffleCB = new System.Windows.Forms.ComboBox();
+            this.playerListRaffleRunBtn = new GTI.Controls.ImageButton();
+            this.playerListRaffleRunInfoLbl = new System.Windows.Forms.Label();
+            this.playerListRaffleWinnersLB = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnClearRaffle = new GTI.Controls.ImageButton();
+            this.clearCurrentPlayersListRaffleEntriesBtn = new GTI.Controls.ImageButton();
             this.btnRaffleClose = new GTI.Controls.ImageButton();
             this.btnRaffleReprintVoucher = new GTI.Controls.ImageButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -127,24 +127,24 @@
             this.closeBtn4 = new GTI.Controls.ImageButton();
             this.wheelRafCancelBtn = new GTI.Controls.ImageButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tbctrlRafle.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.mainTC.SuspendLayout();
+            this.playerListRaffleSetupTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playerListRafflesSC)).BeginInit();
+            this.playerListRafflesSC.Panel1.SuspendLayout();
+            this.playerListRafflesSC.Panel2.SuspendLayout();
+            this.playerListRafflesSC.SuspendLayout();
+            this.playerListsRafflesGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playerListRaffleSettingsSC)).BeginInit();
+            this.playerListRaffleSettingsSC.Panel1.SuspendLayout();
+            this.playerListRaffleSettingsSC.Panel2.SuspendLayout();
+            this.playerListRaffleSettingsSC.SuspendLayout();
+            this.playerListRaffleSettingsGB.SuspendLayout();
+            this.playerListRaffleTP.SuspendLayout();
+            this.playerListRaffleRunGB.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -179,26 +179,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // tbctrlRafle
+            // mainTC
             // 
-            this.tbctrlRafle.Controls.Add(this.tabPage1);
-            this.tbctrlRafle.Controls.Add(this.tabPage2);
-            this.tbctrlRafle.Controls.Add(this.tabPage3);
-            this.tbctrlRafle.Controls.Add(this.tabPage4);
-            resources.ApplyResources(this.tbctrlRafle, "tbctrlRafle");
-            this.tbctrlRafle.Name = "tbctrlRafle";
-            this.tbctrlRafle.SelectedIndex = 0;
-            this.tbctrlRafle.Tag = "1";
-            this.tbctrlRafle.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbctrlRafle_Selecting);
-            this.tbctrlRafle.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.mainTC.Controls.Add(this.playerListRaffleSetupTP);
+            this.mainTC.Controls.Add(this.playerListRaffleTP);
+            this.mainTC.Controls.Add(this.tabPage3);
+            this.mainTC.Controls.Add(this.tabPage4);
+            resources.ApplyResources(this.mainTC, "mainTC");
+            this.mainTC.Name = "mainTC";
+            this.mainTC.SelectedIndex = 0;
+            this.mainTC.Tag = "1";
+            this.mainTC.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.mainTC_Selecting);
+            this.mainTC.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // tabPage1
+            // playerListRaffleSetupTP
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
-            this.tabPage1.Controls.Add(this.splitContainer1);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Tag = "1";
+            this.playerListRaffleSetupTP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
+            this.playerListRaffleSetupTP.Controls.Add(this.splitContainer1);
+            resources.ApplyResources(this.playerListRaffleSetupTP, "playerListRaffleSetupTP");
+            this.playerListRaffleSetupTP.Name = "playerListRaffleSetupTP";
+            this.playerListRaffleSetupTP.Tag = "1";
             // 
             // splitContainer1
             // 
@@ -207,43 +207,43 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel1.Controls.Add(this.playerListRafflesSC);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer1.Panel2.Controls.Add(this.playerListRaffleSettingsSC);
             this.splitContainer1.TabStop = false;
             // 
-            // splitContainer2
+            // playerListRafflesSC
             // 
-            resources.ApplyResources(this.splitContainer2, "splitContainer2");
-            this.splitContainer2.Name = "splitContainer2";
+            resources.ApplyResources(this.playerListRafflesSC, "playerListRafflesSC");
+            this.playerListRafflesSC.Name = "playerListRafflesSC";
             // 
-            // splitContainer2.Panel1
+            // playerListRafflesSC.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
+            this.playerListRafflesSC.Panel1.Controls.Add(this.playerListsRafflesGB);
             // 
-            // splitContainer2.Panel2
+            // playerListRafflesSC.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.imgbtnUpdate);
-            this.splitContainer2.Panel2.Controls.Add(this.btnSetupDelete);
-            this.splitContainer2.Panel2.Controls.Add(this.btnSetupNew);
-            this.splitContainer2.TabStop = false;
+            this.playerListRafflesSC.Panel2.Controls.Add(this.imgbtnUpdate);
+            this.playerListRafflesSC.Panel2.Controls.Add(this.btnSetupDelete);
+            this.playerListRafflesSC.Panel2.Controls.Add(this.btnSetupNew);
+            this.playerListRafflesSC.TabStop = false;
             // 
-            // groupBox1
+            // playerListsRafflesGB
             // 
-            this.groupBox1.Controls.Add(this.lstBxRafflePrizes2);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            this.playerListsRafflesGB.Controls.Add(this.playerListRafflesLB);
+            resources.ApplyResources(this.playerListsRafflesGB, "playerListsRafflesGB");
+            this.playerListsRafflesGB.Name = "playerListsRafflesGB";
+            this.playerListsRafflesGB.TabStop = false;
             // 
-            // lstBxRafflePrizes2
+            // playerListRafflesLB
             // 
-            this.lstBxRafflePrizes2.FormattingEnabled = true;
-            resources.ApplyResources(this.lstBxRafflePrizes2, "lstBxRafflePrizes2");
-            this.lstBxRafflePrizes2.Name = "lstBxRafflePrizes2";
-            this.lstBxRafflePrizes2.SelectedIndexChanged += new System.EventHandler(this.colorListBox1_SelectedIndexChanged);
-            this.lstBxRafflePrizes2.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.playerListRafflesLB.FormattingEnabled = true;
+            resources.ApplyResources(this.playerListRafflesLB, "playerListRafflesLB");
+            this.playerListRafflesLB.Name = "playerListRafflesLB";
+            this.playerListRafflesLB.SelectedIndexChanged += new System.EventHandler(this.colorListBox1_SelectedIndexChanged);
+            this.playerListRafflesLB.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
             // imgbtnUpdate
             // 
@@ -253,8 +253,6 @@
             this.imgbtnUpdate.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.imgbtnUpdate, "imgbtnUpdate");
             this.imgbtnUpdate.Name = "imgbtnUpdate";
-            this.imgbtnUpdate.RepeatRate = 150;
-            this.imgbtnUpdate.RepeatWhenHeldFor = 750;
             this.imgbtnUpdate.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnUpdate.UseVisualStyleBackColor = false;
             this.imgbtnUpdate.Click += new System.EventHandler(this.imgbtnUpdate_Click);
@@ -267,8 +265,6 @@
             this.btnSetupDelete.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.btnSetupDelete, "btnSetupDelete");
             this.btnSetupDelete.Name = "btnSetupDelete";
-            this.btnSetupDelete.RepeatRate = 150;
-            this.btnSetupDelete.RepeatWhenHeldFor = 750;
             this.btnSetupDelete.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnSetupDelete.UseVisualStyleBackColor = false;
             this.btnSetupDelete.Click += new System.EventHandler(this.btnSetupDelete_Click);
@@ -281,43 +277,41 @@
             this.btnSetupNew.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.btnSetupNew, "btnSetupNew");
             this.btnSetupNew.Name = "btnSetupNew";
-            this.btnSetupNew.RepeatRate = 150;
-            this.btnSetupNew.RepeatWhenHeldFor = 750;
             this.btnSetupNew.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnSetupNew.UseVisualStyleBackColor = false;
             this.btnSetupNew.Click += new System.EventHandler(this.btnSetupNew_Click);
             this.btnSetupNew.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // splitContainer3
+            // playerListRaffleSettingsSC
             // 
-            resources.ApplyResources(this.splitContainer3, "splitContainer3");
-            this.splitContainer3.Name = "splitContainer3";
+            resources.ApplyResources(this.playerListRaffleSettingsSC, "playerListRaffleSettingsSC");
+            this.playerListRaffleSettingsSC.Name = "playerListRaffleSettingsSC";
             // 
-            // splitContainer3.Panel1
+            // playerListRaffleSettingsSC.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
+            this.playerListRaffleSettingsSC.Panel1.Controls.Add(this.playerListRaffleSettingsGB);
             // 
-            // splitContainer3.Panel2
+            // playerListRaffleSettingsSC.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.btnSetupSave);
-            this.splitContainer3.Panel2.Controls.Add(this.btnSetupClose);
-            this.splitContainer3.Panel2.Controls.Add(this.btnSetupCancel);
-            this.splitContainer3.TabStop = false;
+            this.playerListRaffleSettingsSC.Panel2.Controls.Add(this.playerListRaffleSetupSaveBtn);
+            this.playerListRaffleSettingsSC.Panel2.Controls.Add(this.btnSetupClose);
+            this.playerListRaffleSettingsSC.Panel2.Controls.Add(this.playerListRaffleSetupCancelBtn);
+            this.playerListRaffleSettingsSC.TabStop = false;
             // 
-            // groupBox2
+            // playerListRaffleSettingsGB
             // 
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtbxDisclaimer);
-            this.groupBox2.Controls.Add(this.lblSavedSuccessfully);
-            this.groupBox2.Controls.Add(this.txtbxSetupPrizeDescription);
-            this.groupBox2.Controls.Add(this.txtbxSetupNumberofWinners);
-            this.groupBox2.Controls.Add(this.txtbxSetupName);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            this.playerListRaffleSettingsGB.Controls.Add(this.label4);
+            this.playerListRaffleSettingsGB.Controls.Add(this.txtbxDisclaimer);
+            this.playerListRaffleSettingsGB.Controls.Add(this.lblSavedSuccessfully);
+            this.playerListRaffleSettingsGB.Controls.Add(this.txtbxSetupPrizeDescription);
+            this.playerListRaffleSettingsGB.Controls.Add(this.txtbxSetupNumberofWinners);
+            this.playerListRaffleSettingsGB.Controls.Add(this.txtbxSetupName);
+            this.playerListRaffleSettingsGB.Controls.Add(this.label3);
+            this.playerListRaffleSettingsGB.Controls.Add(this.label2);
+            this.playerListRaffleSettingsGB.Controls.Add(this.label1);
+            resources.ApplyResources(this.playerListRaffleSettingsGB, "playerListRaffleSettingsGB");
+            this.playerListRaffleSettingsGB.Name = "playerListRaffleSettingsGB";
+            this.playerListRaffleSettingsGB.TabStop = false;
             // 
             // label4
             // 
@@ -373,19 +367,17 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // btnSetupSave
+            // playerListRaffleSetupSaveBtn
             // 
-            this.btnSetupSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSetupSave.FocusColor = System.Drawing.Color.Black;
-            this.btnSetupSave.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btnSetupSave.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.btnSetupSave, "btnSetupSave");
-            this.btnSetupSave.Name = "btnSetupSave";
-            this.btnSetupSave.RepeatRate = 150;
-            this.btnSetupSave.RepeatWhenHeldFor = 750;
-            this.btnSetupSave.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btnSetupSave.UseVisualStyleBackColor = false;
-            this.btnSetupSave.Click += new System.EventHandler(this.btnSetupSave_Click);
+            this.playerListRaffleSetupSaveBtn.BackColor = System.Drawing.Color.Transparent;
+            this.playerListRaffleSetupSaveBtn.FocusColor = System.Drawing.Color.Black;
+            this.playerListRaffleSetupSaveBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.playerListRaffleSetupSaveBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.playerListRaffleSetupSaveBtn, "playerListRaffleSetupSaveBtn");
+            this.playerListRaffleSetupSaveBtn.Name = "playerListRaffleSetupSaveBtn";
+            this.playerListRaffleSetupSaveBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.playerListRaffleSetupSaveBtn.UseVisualStyleBackColor = false;
+            this.playerListRaffleSetupSaveBtn.Click += new System.EventHandler(this.playerListRaffleSetupSaveBtn_Click);
             // 
             // btnSetupClose
             // 
@@ -395,128 +387,120 @@
             this.btnSetupClose.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.btnSetupClose, "btnSetupClose");
             this.btnSetupClose.Name = "btnSetupClose";
-            this.btnSetupClose.RepeatRate = 150;
-            this.btnSetupClose.RepeatWhenHeldFor = 750;
             this.btnSetupClose.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnSetupClose.UseVisualStyleBackColor = false;
             this.btnSetupClose.Click += new System.EventHandler(this.btnSetupClose_Click);
             this.btnSetupClose.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // btnSetupCancel
+            // playerListRaffleSetupCancelBtn
             // 
-            this.btnSetupCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnSetupCancel.FocusColor = System.Drawing.Color.Black;
-            this.btnSetupCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btnSetupCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.btnSetupCancel, "btnSetupCancel");
-            this.btnSetupCancel.Name = "btnSetupCancel";
-            this.btnSetupCancel.RepeatRate = 150;
-            this.btnSetupCancel.RepeatWhenHeldFor = 750;
-            this.btnSetupCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btnSetupCancel.UseVisualStyleBackColor = false;
-            this.btnSetupCancel.Click += new System.EventHandler(this.btnSetupCancel_Click);
-            this.btnSetupCancel.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.playerListRaffleSetupCancelBtn.BackColor = System.Drawing.Color.Transparent;
+            this.playerListRaffleSetupCancelBtn.FocusColor = System.Drawing.Color.Black;
+            this.playerListRaffleSetupCancelBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.playerListRaffleSetupCancelBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.playerListRaffleSetupCancelBtn, "playerListRaffleSetupCancelBtn");
+            this.playerListRaffleSetupCancelBtn.Name = "playerListRaffleSetupCancelBtn";
+            this.playerListRaffleSetupCancelBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.playerListRaffleSetupCancelBtn.UseVisualStyleBackColor = false;
+            this.playerListRaffleSetupCancelBtn.Click += new System.EventHandler(this.playerListRaffleSetupCancelBtn_Click);
+            this.playerListRaffleSetupCancelBtn.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // tabPage2
+            // playerListRaffleTP
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.lstbxRaffleWinners2);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.btnClearRaffle);
-            this.tabPage2.Controls.Add(this.btnRaffleClose);
-            this.tabPage2.Controls.Add(this.btnRaffleReprintVoucher);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Tag = "2";
+            this.playerListRaffleTP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(179)))), ((int)(((byte)(213)))));
+            this.playerListRaffleTP.Controls.Add(this.playerListRaffleRunGB);
+            this.playerListRaffleTP.Controls.Add(this.playerListRaffleWinnersLB);
+            this.playerListRaffleTP.Controls.Add(this.label6);
+            this.playerListRaffleTP.Controls.Add(this.clearCurrentPlayersListRaffleEntriesBtn);
+            this.playerListRaffleTP.Controls.Add(this.btnRaffleClose);
+            this.playerListRaffleTP.Controls.Add(this.btnRaffleReprintVoucher);
+            resources.ApplyResources(this.playerListRaffleTP, "playerListRaffleTP");
+            this.playerListRaffleTP.Name = "playerListRaffleTP";
+            this.playerListRaffleTP.Tag = "2";
             // 
-            // groupBox3
+            // playerListRaffleRunGB
             // 
-            this.groupBox3.Controls.Add(this.cmbxPlayerList);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.lblPlayerList);
-            this.groupBox3.Controls.Add(this.cmbxRaffle);
-            this.groupBox3.Controls.Add(this.btnRunRaffle);
-            this.groupBox3.Controls.Add(this.lblRaffleInfo);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunListCB);
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunRaffleLbl);
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunListLbl);
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunRaffleCB);
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunBtn);
+            this.playerListRaffleRunGB.Controls.Add(this.playerListRaffleRunInfoLbl);
+            resources.ApplyResources(this.playerListRaffleRunGB, "playerListRaffleRunGB");
+            this.playerListRaffleRunGB.Name = "playerListRaffleRunGB";
+            this.playerListRaffleRunGB.TabStop = false;
             // 
-            // cmbxPlayerList
+            // playerListRaffleRunListCB
             // 
-            this.cmbxPlayerList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxPlayerList.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbxPlayerList, "cmbxPlayerList");
-            this.cmbxPlayerList.Name = "cmbxPlayerList";
-            this.cmbxPlayerList.SelectedIndexChanged += new System.EventHandler(this.cmbxPlayerList_SelectedIndexChanged);
+            this.playerListRaffleRunListCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerListRaffleRunListCB.FormattingEnabled = true;
+            resources.ApplyResources(this.playerListRaffleRunListCB, "playerListRaffleRunListCB");
+            this.playerListRaffleRunListCB.Name = "playerListRaffleRunListCB";
+            this.playerListRaffleRunListCB.SelectedIndexChanged += new System.EventHandler(this.playerListRaffleRunListCB_SelectedIndexChanged);
             // 
-            // label5
+            // playerListRaffleRunRaffleLbl
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.playerListRaffleRunRaffleLbl, "playerListRaffleRunRaffleLbl");
+            this.playerListRaffleRunRaffleLbl.Name = "playerListRaffleRunRaffleLbl";
             // 
-            // lblPlayerList
+            // playerListRaffleRunListLbl
             // 
-            resources.ApplyResources(this.lblPlayerList, "lblPlayerList");
-            this.lblPlayerList.Name = "lblPlayerList";
+            resources.ApplyResources(this.playerListRaffleRunListLbl, "playerListRaffleRunListLbl");
+            this.playerListRaffleRunListLbl.Name = "playerListRaffleRunListLbl";
             // 
-            // cmbxRaffle
+            // playerListRaffleRunRaffleCB
             // 
-            this.cmbxRaffle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxRaffle.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbxRaffle, "cmbxRaffle");
-            this.cmbxRaffle.Name = "cmbxRaffle";
-            this.cmbxRaffle.SelectedIndexChanged += new System.EventHandler(this.cmbxRaffle_SelectedIndexChanged);
-            this.cmbxRaffle.Enter += new System.EventHandler(this.ClearErrorProvider);
-            this.cmbxRaffle.Validating += new System.ComponentModel.CancelEventHandler(this.cmbxRaffle_Validating);
+            this.playerListRaffleRunRaffleCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerListRaffleRunRaffleCB.FormattingEnabled = true;
+            resources.ApplyResources(this.playerListRaffleRunRaffleCB, "playerListRaffleRunRaffleCB");
+            this.playerListRaffleRunRaffleCB.Name = "playerListRaffleRunRaffleCB";
+            this.playerListRaffleRunRaffleCB.SelectedIndexChanged += new System.EventHandler(this.playerListRaffleRunRaffleCB_SelectedIndexChanged);
+            this.playerListRaffleRunRaffleCB.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.playerListRaffleRunRaffleCB.Validating += new System.ComponentModel.CancelEventHandler(this.playerListRaffleRunRaffleCB_Validating);
             // 
-            // btnRunRaffle
+            // playerListRaffleRunBtn
             // 
-            this.btnRunRaffle.BackColor = System.Drawing.Color.Transparent;
-            this.btnRunRaffle.FocusColor = System.Drawing.Color.Black;
-            resources.ApplyResources(this.btnRunRaffle, "btnRunRaffle");
-            this.btnRunRaffle.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btnRunRaffle.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.btnRunRaffle.Name = "btnRunRaffle";
-            this.btnRunRaffle.RepeatRate = 150;
-            this.btnRunRaffle.RepeatWhenHeldFor = 750;
-            this.btnRunRaffle.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btnRunRaffle.UseVisualStyleBackColor = false;
-            this.btnRunRaffle.Click += new System.EventHandler(this.btnRunRaffle_Click);
-            this.btnRunRaffle.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.playerListRaffleRunBtn.BackColor = System.Drawing.Color.Transparent;
+            this.playerListRaffleRunBtn.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.playerListRaffleRunBtn, "playerListRaffleRunBtn");
+            this.playerListRaffleRunBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.playerListRaffleRunBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.playerListRaffleRunBtn.Name = "playerListRaffleRunBtn";
+            this.playerListRaffleRunBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.playerListRaffleRunBtn.UseVisualStyleBackColor = false;
+            this.playerListRaffleRunBtn.Click += new System.EventHandler(this.playerListRaffleRunBtn_Click);
+            this.playerListRaffleRunBtn.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
-            // lblRaffleInfo
+            // playerListRaffleRunInfoLbl
             // 
-            resources.ApplyResources(this.lblRaffleInfo, "lblRaffleInfo");
-            this.lblRaffleInfo.Name = "lblRaffleInfo";
+            resources.ApplyResources(this.playerListRaffleRunInfoLbl, "playerListRaffleRunInfoLbl");
+            this.playerListRaffleRunInfoLbl.Name = "playerListRaffleRunInfoLbl";
             // 
-            // lstbxRaffleWinners2
+            // playerListRaffleWinnersLB
             // 
-            this.lstbxRaffleWinners2.FormattingEnabled = true;
-            resources.ApplyResources(this.lstbxRaffleWinners2, "lstbxRaffleWinners2");
-            this.lstbxRaffleWinners2.Name = "lstbxRaffleWinners2";
-            this.lstbxRaffleWinners2.TabStop = false;
-            this.lstbxRaffleWinners2.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.playerListRaffleWinnersLB.FormattingEnabled = true;
+            resources.ApplyResources(this.playerListRaffleWinnersLB, "playerListRaffleWinnersLB");
+            this.playerListRaffleWinnersLB.Name = "playerListRaffleWinnersLB";
+            this.playerListRaffleWinnersLB.TabStop = false;
+            this.playerListRaffleWinnersLB.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // btnClearRaffle
+            // clearCurrentPlayersListRaffleEntriesBtn
             // 
-            this.btnClearRaffle.BackColor = System.Drawing.Color.Transparent;
-            this.btnClearRaffle.FocusColor = System.Drawing.Color.Black;
-            this.btnClearRaffle.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.btnClearRaffle.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            resources.ApplyResources(this.btnClearRaffle, "btnClearRaffle");
-            this.btnClearRaffle.Name = "btnClearRaffle";
-            this.btnClearRaffle.RepeatRate = 150;
-            this.btnClearRaffle.RepeatWhenHeldFor = 750;
-            this.btnClearRaffle.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.btnClearRaffle.UseVisualStyleBackColor = false;
-            this.btnClearRaffle.Click += new System.EventHandler(this.btnClearRaffle_Click);
-            this.btnClearRaffle.Enter += new System.EventHandler(this.ClearErrorProvider);
+            this.clearCurrentPlayersListRaffleEntriesBtn.BackColor = System.Drawing.Color.Transparent;
+            this.clearCurrentPlayersListRaffleEntriesBtn.FocusColor = System.Drawing.Color.Black;
+            this.clearCurrentPlayersListRaffleEntriesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.clearCurrentPlayersListRaffleEntriesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            resources.ApplyResources(this.clearCurrentPlayersListRaffleEntriesBtn, "clearCurrentPlayersListRaffleEntriesBtn");
+            this.clearCurrentPlayersListRaffleEntriesBtn.Name = "clearCurrentPlayersListRaffleEntriesBtn";
+            this.clearCurrentPlayersListRaffleEntriesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.clearCurrentPlayersListRaffleEntriesBtn.UseVisualStyleBackColor = false;
+            this.clearCurrentPlayersListRaffleEntriesBtn.Click += new System.EventHandler(this.clearCurrentPlayersListRaffleEntriesBtn_Click);
+            this.clearCurrentPlayersListRaffleEntriesBtn.Enter += new System.EventHandler(this.ClearErrorProvider);
             // 
             // btnRaffleClose
             // 
@@ -526,8 +510,6 @@
             this.btnRaffleClose.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.btnRaffleClose, "btnRaffleClose");
             this.btnRaffleClose.Name = "btnRaffleClose";
-            this.btnRaffleClose.RepeatRate = 150;
-            this.btnRaffleClose.RepeatWhenHeldFor = 750;
             this.btnRaffleClose.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnRaffleClose.UseVisualStyleBackColor = false;
             this.btnRaffleClose.Click += new System.EventHandler(this.btnRaffleClose_Click);
@@ -541,8 +523,6 @@
             this.btnRaffleReprintVoucher.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.btnRaffleReprintVoucher, "btnRaffleReprintVoucher");
             this.btnRaffleReprintVoucher.Name = "btnRaffleReprintVoucher";
-            this.btnRaffleReprintVoucher.RepeatRate = 150;
-            this.btnRaffleReprintVoucher.RepeatWhenHeldFor = 750;
             this.btnRaffleReprintVoucher.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnRaffleReprintVoucher.UseVisualStyleBackColor = false;
             this.btnRaffleReprintVoucher.Click += new System.EventHandler(this.btnRaffleReprintVoucher_Click);
@@ -607,8 +587,6 @@
             this.editMonRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.editMonRafBtn, "editMonRafBtn");
             this.editMonRafBtn.Name = "editMonRafBtn";
-            this.editMonRafBtn.RepeatRate = 150;
-            this.editMonRafBtn.RepeatWhenHeldFor = 750;
             this.editMonRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.editMonRafBtn.UseVisualStyleBackColor = false;
             this.editMonRafBtn.Click += new System.EventHandler(this.editMonRafBtn_Click);
@@ -621,8 +599,6 @@
             this.deleteMonRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.deleteMonRafBtn, "deleteMonRafBtn");
             this.deleteMonRafBtn.Name = "deleteMonRafBtn";
-            this.deleteMonRafBtn.RepeatRate = 150;
-            this.deleteMonRafBtn.RepeatWhenHeldFor = 750;
             this.deleteMonRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.deleteMonRafBtn.UseVisualStyleBackColor = false;
             this.deleteMonRafBtn.Click += new System.EventHandler(this.deleteMonRafBtn_Click);
@@ -635,8 +611,6 @@
             this.newMonRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.newMonRafBtn, "newMonRafBtn");
             this.newMonRafBtn.Name = "newMonRafBtn";
-            this.newMonRafBtn.RepeatRate = 150;
-            this.newMonRafBtn.RepeatWhenHeldFor = 750;
             this.newMonRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.newMonRafBtn.UseVisualStyleBackColor = false;
             this.newMonRafBtn.Click += new System.EventHandler(this.newMonRafBtn_Click);
@@ -701,8 +675,6 @@
             this.removeMonRafPrizeBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.removeMonRafPrizeBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.removeMonRafPrizeBtn.Name = "removeMonRafPrizeBtn";
-            this.removeMonRafPrizeBtn.RepeatRate = 150;
-            this.removeMonRafPrizeBtn.RepeatWhenHeldFor = 750;
             this.removeMonRafPrizeBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.removeMonRafPrizeBtn.UseVisualStyleBackColor = false;
             this.removeMonRafPrizeBtn.Click += new System.EventHandler(this.removeMonRafPrizeBtn_Click);
@@ -715,8 +687,6 @@
             this.addMonRafPrizeBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addMonRafPrizeBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.addMonRafPrizeBtn.Name = "addMonRafPrizeBtn";
-            this.addMonRafPrizeBtn.RepeatRate = 150;
-            this.addMonRafPrizeBtn.RepeatWhenHeldFor = 750;
             this.addMonRafPrizeBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.addMonRafPrizeBtn.UseVisualStyleBackColor = false;
             this.addMonRafPrizeBtn.Click += new System.EventHandler(this.addMonRafPrizeBtn_Click);
@@ -739,8 +709,6 @@
             this.btnRunMonetary.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnRunMonetary.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnRunMonetary.Name = "btnRunMonetary";
-            this.btnRunMonetary.RepeatRate = 150;
-            this.btnRunMonetary.RepeatWhenHeldFor = 750;
             this.btnRunMonetary.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnRunMonetary.UseVisualStyleBackColor = false;
             this.btnRunMonetary.Click += new System.EventHandler(this.btnRunMonetary_Click);
@@ -786,8 +754,6 @@
             this.monRafSaveBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.monRafSaveBtn, "monRafSaveBtn");
             this.monRafSaveBtn.Name = "monRafSaveBtn";
-            this.monRafSaveBtn.RepeatRate = 150;
-            this.monRafSaveBtn.RepeatWhenHeldFor = 750;
             this.monRafSaveBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.monRafSaveBtn.UseVisualStyleBackColor = false;
             this.monRafSaveBtn.Click += new System.EventHandler(this.monRafSaveBtn_Click);
@@ -800,8 +766,6 @@
             this.closeBtn3.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.closeBtn3, "closeBtn3");
             this.closeBtn3.Name = "closeBtn3";
-            this.closeBtn3.RepeatRate = 150;
-            this.closeBtn3.RepeatWhenHeldFor = 750;
             this.closeBtn3.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.closeBtn3.UseVisualStyleBackColor = false;
             this.closeBtn3.Click += new System.EventHandler(this.closeBtn3_Click);
@@ -814,8 +778,6 @@
             this.monRafCancelBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.monRafCancelBtn, "monRafCancelBtn");
             this.monRafCancelBtn.Name = "monRafCancelBtn";
-            this.monRafCancelBtn.RepeatRate = 150;
-            this.monRafCancelBtn.RepeatWhenHeldFor = 750;
             this.monRafCancelBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.monRafCancelBtn.UseVisualStyleBackColor = false;
             this.monRafCancelBtn.Click += new System.EventHandler(this.monRafCancelBtn_Click);
@@ -880,8 +842,6 @@
             this.editWheelRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.editWheelRafBtn, "editWheelRafBtn");
             this.editWheelRafBtn.Name = "editWheelRafBtn";
-            this.editWheelRafBtn.RepeatRate = 150;
-            this.editWheelRafBtn.RepeatWhenHeldFor = 750;
             this.editWheelRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.editWheelRafBtn.UseVisualStyleBackColor = false;
             this.editWheelRafBtn.Click += new System.EventHandler(this.editWheelRafBtn_Click);
@@ -894,8 +854,6 @@
             this.deleteWheelRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.deleteWheelRafBtn, "deleteWheelRafBtn");
             this.deleteWheelRafBtn.Name = "deleteWheelRafBtn";
-            this.deleteWheelRafBtn.RepeatRate = 150;
-            this.deleteWheelRafBtn.RepeatWhenHeldFor = 750;
             this.deleteWheelRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.deleteWheelRafBtn.UseVisualStyleBackColor = false;
             this.deleteWheelRafBtn.Click += new System.EventHandler(this.deleteWheelRafBtn_Click);
@@ -908,8 +866,6 @@
             this.newWheelRafBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.newWheelRafBtn, "newWheelRafBtn");
             this.newWheelRafBtn.Name = "newWheelRafBtn";
-            this.newWheelRafBtn.RepeatRate = 150;
-            this.newWheelRafBtn.RepeatWhenHeldFor = 750;
             this.newWheelRafBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.newWheelRafBtn.UseVisualStyleBackColor = false;
             this.newWheelRafBtn.Click += new System.EventHandler(this.newWheelRafBtn_Click);
@@ -965,8 +921,6 @@
             this.btnRunWheel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.btnRunWheel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.btnRunWheel.Name = "btnRunWheel";
-            this.btnRunWheel.RepeatRate = 150;
-            this.btnRunWheel.RepeatWhenHeldFor = 750;
             this.btnRunWheel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnRunWheel.UseVisualStyleBackColor = false;
             this.btnRunWheel.Click += new System.EventHandler(this.btnRunWheel_Click);
@@ -986,8 +940,6 @@
             this.btnBrowseOverlay.ImageNormal = ((System.Drawing.Image)(resources.GetObject("btnBrowseOverlay.ImageNormal")));
             this.btnBrowseOverlay.ImagePressed = ((System.Drawing.Image)(resources.GetObject("btnBrowseOverlay.ImagePressed")));
             this.btnBrowseOverlay.Name = "btnBrowseOverlay";
-            this.btnBrowseOverlay.RepeatRate = 150;
-            this.btnBrowseOverlay.RepeatWhenHeldFor = 750;
             this.btnBrowseOverlay.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnBrowseOverlay.UseVisualStyleBackColor = false;
             this.btnBrowseOverlay.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -1012,8 +964,6 @@
             this.btnBrowseWheel.ImageNormal = ((System.Drawing.Image)(resources.GetObject("btnBrowseWheel.ImageNormal")));
             this.btnBrowseWheel.ImagePressed = ((System.Drawing.Image)(resources.GetObject("btnBrowseWheel.ImagePressed")));
             this.btnBrowseWheel.Name = "btnBrowseWheel";
-            this.btnBrowseWheel.RepeatRate = 150;
-            this.btnBrowseWheel.RepeatWhenHeldFor = 750;
             this.btnBrowseWheel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.btnBrowseWheel.UseVisualStyleBackColor = false;
             this.btnBrowseWheel.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -1059,8 +1009,6 @@
             this.removeWheelRafPrizeBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.removeWheelRafPrizeBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.removeWheelRafPrizeBtn.Name = "removeWheelRafPrizeBtn";
-            this.removeWheelRafPrizeBtn.RepeatRate = 150;
-            this.removeWheelRafPrizeBtn.RepeatWhenHeldFor = 750;
             this.removeWheelRafPrizeBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.removeWheelRafPrizeBtn.UseVisualStyleBackColor = false;
             this.removeWheelRafPrizeBtn.Click += new System.EventHandler(this.removeWheelRafPrizeBtn_Click);
@@ -1073,8 +1021,6 @@
             this.addWheelRafPrizeBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addWheelRafPrizeBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.addWheelRafPrizeBtn.Name = "addWheelRafPrizeBtn";
-            this.addWheelRafPrizeBtn.RepeatRate = 150;
-            this.addWheelRafPrizeBtn.RepeatWhenHeldFor = 750;
             this.addWheelRafPrizeBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.addWheelRafPrizeBtn.UseVisualStyleBackColor = false;
             this.addWheelRafPrizeBtn.Click += new System.EventHandler(this.addWheelRafPrizeBtn_Click);
@@ -1130,8 +1076,6 @@
             this.wheelRafSaveBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.wheelRafSaveBtn, "wheelRafSaveBtn");
             this.wheelRafSaveBtn.Name = "wheelRafSaveBtn";
-            this.wheelRafSaveBtn.RepeatRate = 150;
-            this.wheelRafSaveBtn.RepeatWhenHeldFor = 750;
             this.wheelRafSaveBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.wheelRafSaveBtn.UseVisualStyleBackColor = false;
             this.wheelRafSaveBtn.Click += new System.EventHandler(this.wheelRafSaveBtn_Click);
@@ -1144,8 +1088,6 @@
             this.closeBtn4.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.closeBtn4, "closeBtn4");
             this.closeBtn4.Name = "closeBtn4";
-            this.closeBtn4.RepeatRate = 150;
-            this.closeBtn4.RepeatWhenHeldFor = 750;
             this.closeBtn4.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.closeBtn4.UseVisualStyleBackColor = false;
             this.closeBtn4.Click += new System.EventHandler(this.closeBtn4_Click);
@@ -1158,8 +1100,6 @@
             this.wheelRafCancelBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             resources.ApplyResources(this.wheelRafCancelBtn, "wheelRafCancelBtn");
             this.wheelRafCancelBtn.Name = "wheelRafCancelBtn";
-            this.wheelRafCancelBtn.RepeatRate = 150;
-            this.wheelRafCancelBtn.RepeatWhenHeldFor = 750;
             this.wheelRafCancelBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.wheelRafCancelBtn.UseVisualStyleBackColor = false;
             this.wheelRafCancelBtn.Click += new System.EventHandler(this.wheelRafCancelBtn_Click);
@@ -1173,7 +1113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.tbctrlRafle);
+            this.Controls.Add(this.mainTC);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -1181,26 +1121,26 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Raffle_FormClosing);
-            this.tbctrlRafle.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.mainTC.ResumeLayout(false);
+            this.playerListRaffleSetupTP.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.playerListRafflesSC.Panel1.ResumeLayout(false);
+            this.playerListRafflesSC.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.playerListRafflesSC)).EndInit();
+            this.playerListRafflesSC.ResumeLayout(false);
+            this.playerListsRafflesGB.ResumeLayout(false);
+            this.playerListRaffleSettingsSC.Panel1.ResumeLayout(false);
+            this.playerListRaffleSettingsSC.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.playerListRaffleSettingsSC)).EndInit();
+            this.playerListRaffleSettingsSC.ResumeLayout(false);
+            this.playerListRaffleSettingsGB.ResumeLayout(false);
+            this.playerListRaffleSettingsGB.PerformLayout();
+            this.playerListRaffleTP.ResumeLayout(false);
+            this.playerListRaffleRunGB.ResumeLayout(false);
+            this.playerListRaffleRunGB.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
@@ -1241,43 +1181,43 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tbctrlRafle;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl mainTC;
+        private System.Windows.Forms.TabPage playerListRaffleSetupTP;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.SplitContainer playerListRafflesSC;
+        private System.Windows.Forms.GroupBox playerListsRafflesGB;
         private Controls.ImageButton btnSetupDelete;
         private Controls.ImageButton btnSetupNew;
-        private System.Windows.Forms.SplitContainer splitContainer3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.SplitContainer playerListRaffleSettingsSC;
+        private System.Windows.Forms.GroupBox playerListRaffleSettingsGB;
         private System.Windows.Forms.TextBox txtbxSetupPrizeDescription;
         private System.Windows.Forms.TextBox txtbxSetupNumberofWinners;
         private System.Windows.Forms.TextBox txtbxSetupName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Controls.ImageButton btnSetupSave;
+        private Controls.ImageButton playerListRaffleSetupSaveBtn;
         private Controls.ImageButton btnSetupClose;
-        private Controls.ImageButton btnSetupCancel;
-        private System.Windows.Forms.TabPage tabPage2;
+        private Controls.ImageButton playerListRaffleSetupCancelBtn;
+        private System.Windows.Forms.TabPage playerListRaffleTP;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         public System.Windows.Forms.Label lblSavedSuccessfully;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblRaffleInfo;
+        private System.Windows.Forms.Label playerListRaffleRunRaffleLbl;
+        private System.Windows.Forms.Label playerListRaffleRunInfoLbl;
         private Controls.ImageButton btnRaffleClose;
         private Controls.ImageButton btnRaffleReprintVoucher;
         private System.Windows.Forms.Label label6;
-        private Controls.ImageButton btnRunRaffle;
-        private System.Windows.Forms.ComboBox cmbxRaffle;
-        private Controls.ImageButton btnClearRaffle;
+        private Controls.ImageButton playerListRaffleRunBtn;
+        private System.Windows.Forms.ComboBox playerListRaffleRunRaffleCB;
+        private Controls.ImageButton clearCurrentPlayersListRaffleEntriesBtn;
         private System.Windows.Forms.TextBox txtbxDisclaimer;
-        private System.Windows.Forms.ListBox lstBxRafflePrizes2;
-        private System.Windows.Forms.ListBox lstbxRaffleWinners2;
+        private System.Windows.Forms.ListBox playerListRafflesLB;
+        private System.Windows.Forms.ListBox playerListRaffleWinnersLB;
         private System.Windows.Forms.Label label4;
         private Controls.ImageButton imgbtnUpdate;
-        private System.Windows.Forms.ComboBox cmbxPlayerList;
-        private System.Windows.Forms.Label lblPlayerList;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox playerListRaffleRunListCB;
+        private System.Windows.Forms.Label playerListRaffleRunListLbl;
+        private System.Windows.Forms.GroupBox playerListRaffleRunGB;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;

@@ -132,82 +132,82 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="playerListRafflesSC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="splitContainer2.IsSplitterFixed" type="System.Boolean, mscorlib">
+  <data name="playerListRafflesSC.IsSplitterFixed" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRafflesSC.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+  <data name="playerListRafflesSC.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
-  <data name="lstBxRafflePrizes2.ItemHeight" type="System.Int32, mscorlib">
+  <data name="playerListRafflesLB.ItemHeight" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="lstBxRafflePrizes2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRafflesLB.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 40</value>
   </data>
-  <data name="lstBxRafflePrizes2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRafflesLB.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 422</value>
   </data>
-  <data name="lstBxRafflePrizes2.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRafflesLB.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;lstBxRafflePrizes2.Name" xml:space="preserve">
-    <value>lstBxRafflePrizes2</value>
+  <data name="&gt;&gt;playerListRafflesLB.Name" xml:space="preserve">
+    <value>playerListRafflesLB</value>
   </data>
-  <data name="&gt;&gt;lstBxRafflePrizes2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesLB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lstBxRafflePrizes2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;playerListRafflesLB.Parent" xml:space="preserve">
+    <value>playerListsRafflesGB</value>
   </data>
-  <data name="&gt;&gt;lstBxRafflePrizes2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesLB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="playerListsRafflesGB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListsRafflesGB.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="playerListsRafflesGB.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListsRafflesGB.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 480</value>
   </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListsRafflesGB.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
+  <data name="playerListsRafflesGB.Text" xml:space="preserve">
     <value>Drawings</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;playerListsRafflesGB.Name" xml:space="preserve">
+    <value>playerListsRafflesGB</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListsRafflesGB.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel1</value>
+  <data name="&gt;&gt;playerListsRafflesGB.Parent" xml:space="preserve">
+    <value>playerListRafflesSC.Panel1</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListsRafflesGB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Name" xml:space="preserve">
-    <value>splitContainer2.Panel1</value>
+  <data name="&gt;&gt;playerListRafflesSC.Panel1.Name" xml:space="preserve">
+    <value>playerListRafflesSC.Panel1</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer2</value>
+  <data name="&gt;&gt;playerListRafflesSC.Panel1.Parent" xml:space="preserve">
+    <value>playerListRafflesSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="imgbtnUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -232,10 +232,10 @@
     <value>imgbtnUpdate</value>
   </data>
   <data name="&gt;&gt;imgbtnUpdate.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnUpdate.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
+    <value>playerListRafflesSC.Panel2</value>
   </data>
   <data name="&gt;&gt;imgbtnUpdate.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -262,10 +262,10 @@
     <value>btnSetupDelete</value>
   </data>
   <data name="&gt;&gt;btnSetupDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupDelete.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
+    <value>playerListRafflesSC.Panel2</value>
   </data>
   <data name="&gt;&gt;btnSetupDelete.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -292,45 +292,45 @@
     <value>btnSetupNew</value>
   </data>
   <data name="&gt;&gt;btnSetupNew.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupNew.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
+    <value>playerListRafflesSC.Panel2</value>
   </data>
   <data name="&gt;&gt;btnSetupNew.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Name" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
+  <data name="&gt;&gt;playerListRafflesSC.Panel2.Name" xml:space="preserve">
+    <value>playerListRafflesSC.Panel2</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer2</value>
+  <data name="&gt;&gt;playerListRafflesSC.Panel2.Parent" xml:space="preserve">
+    <value>playerListRafflesSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRafflesSC.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 637</value>
   </data>
-  <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
+  <data name="playerListRafflesSC.SplitterDistance" type="System.Int32, mscorlib">
     <value>480</value>
   </data>
-  <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRafflesSC.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Name" xml:space="preserve">
-    <value>splitContainer2</value>
+  <data name="&gt;&gt;playerListRafflesSC.Name" xml:space="preserve">
+    <value>playerListRafflesSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRafflesSC.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
@@ -345,19 +345,19 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="splitContainer3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="playerListRaffleSettingsSC.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="splitContainer3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="playerListRaffleSettingsSC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="splitContainer3.IsSplitterFixed" type="System.Boolean, mscorlib">
+  <data name="playerListRaffleSettingsSC.IsSplitterFixed" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="splitContainer3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleSettingsSC.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="splitContainer3.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+  <data name="playerListRaffleSettingsSC.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
@@ -388,7 +388,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -427,7 +427,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtbxDisclaimer.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;txtbxDisclaimer.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -482,7 +482,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lblSavedSuccessfully.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;lblSavedSuccessfully.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -521,7 +521,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtbxSetupPrizeDescription.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;txtbxSetupPrizeDescription.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -554,7 +554,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtbxSetupNumberofWinners.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;txtbxSetupNumberofWinners.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -587,7 +587,7 @@
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtbxSetupName.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;txtbxSetupName.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -620,7 +620,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -653,7 +653,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -686,78 +686,78 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>playerListRaffleSettingsGB</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="playerListRaffleSettingsGB.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleSettingsGB.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSettingsGB.Size" type="System.Drawing.Size, System.Drawing">
     <value>780, 583</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSettingsGB.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
+  <data name="playerListRaffleSettingsGB.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;playerListRaffleSettingsGB.Name" xml:space="preserve">
+    <value>playerListRaffleSettingsGB</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsGB.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>splitContainer3.Panel1</value>
+  <data name="&gt;&gt;playerListRaffleSettingsGB.Parent" xml:space="preserve">
+    <value>playerListRaffleSettingsSC.Panel1</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsGB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel1.Name" xml:space="preserve">
-    <value>splitContainer3.Panel1</value>
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel1.Name" xml:space="preserve">
+    <value>playerListRaffleSettingsSC.Panel1</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer3</value>
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel1.Parent" xml:space="preserve">
+    <value>playerListRaffleSettingsSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnSetupSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleSetupSaveBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnSetupSave.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleSetupSaveBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>302, 5</value>
   </data>
-  <data name="btnSetupSave.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSetupSaveBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="btnSetupSave.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSetupSaveBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
   </data>
-  <data name="btnSetupSave.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSetupSaveBtn.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="btnSetupSave.Text" xml:space="preserve">
+  <data name="playerListRaffleSetupSaveBtn.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
-  <data name="&gt;&gt;btnSetupSave.Name" xml:space="preserve">
-    <value>btnSetupSave</value>
+  <data name="&gt;&gt;playerListRaffleSetupSaveBtn.Name" xml:space="preserve">
+    <value>playerListRaffleSetupSaveBtn</value>
   </data>
-  <data name="&gt;&gt;btnSetupSave.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;playerListRaffleSetupSaveBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;btnSetupSave.Parent" xml:space="preserve">
-    <value>splitContainer3.Panel2</value>
+  <data name="&gt;&gt;playerListRaffleSetupSaveBtn.Parent" xml:space="preserve">
+    <value>playerListRaffleSettingsSC.Panel2</value>
   </data>
-  <data name="&gt;&gt;btnSetupSave.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSetupSaveBtn.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="btnSetupClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -782,75 +782,75 @@
     <value>btnSetupClose</value>
   </data>
   <data name="&gt;&gt;btnSetupClose.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSetupClose.Parent" xml:space="preserve">
-    <value>splitContainer3.Panel2</value>
+    <value>playerListRaffleSettingsSC.Panel2</value>
   </data>
   <data name="&gt;&gt;btnSetupClose.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="btnSetupCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleSetupCancelBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnSetupCancel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleSetupCancelBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>461, 5</value>
   </data>
-  <data name="btnSetupCancel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSetupCancelBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="btnSetupCancel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSetupCancelBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
   </data>
-  <data name="btnSetupCancel.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSetupCancelBtn.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="btnSetupCancel.Text" xml:space="preserve">
+  <data name="playerListRaffleSetupCancelBtn.Text" xml:space="preserve">
     <value>C&amp;ancel</value>
   </data>
-  <data name="&gt;&gt;btnSetupCancel.Name" xml:space="preserve">
-    <value>btnSetupCancel</value>
+  <data name="&gt;&gt;playerListRaffleSetupCancelBtn.Name" xml:space="preserve">
+    <value>playerListRaffleSetupCancelBtn</value>
   </data>
-  <data name="&gt;&gt;btnSetupCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;playerListRaffleSetupCancelBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;btnSetupCancel.Parent" xml:space="preserve">
-    <value>splitContainer3.Panel2</value>
+  <data name="&gt;&gt;playerListRaffleSetupCancelBtn.Parent" xml:space="preserve">
+    <value>playerListRaffleSettingsSC.Panel2</value>
   </data>
-  <data name="&gt;&gt;btnSetupCancel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSetupCancelBtn.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel2.Name" xml:space="preserve">
-    <value>splitContainer3.Panel2</value>
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel2.Name" xml:space="preserve">
+    <value>playerListRaffleSettingsSC.Panel2</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer3</value>
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel2.Parent" xml:space="preserve">
+    <value>playerListRaffleSettingsSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Panel2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="splitContainer3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSettingsSC.Size" type="System.Drawing.Size, System.Drawing">
     <value>780, 637</value>
   </data>
-  <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSettingsSC.SplitterDistance" type="System.Int32, mscorlib">
     <value>583</value>
   </data>
-  <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSettingsSC.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Name" xml:space="preserve">
-    <value>splitContainer3</value>
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Name" xml:space="preserve">
+    <value>playerListRaffleSettingsSC</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;splitContainer3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSettingsSC.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
@@ -881,246 +881,246 @@
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>tabPage1</value>
+    <value>playerListRaffleSetupTP</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleSetupTP.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 31</value>
   </data>
-  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="playerListRaffleSetupTP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleSetupTP.Size" type="System.Drawing.Size, System.Drawing">
     <value>1010, 643</value>
   </data>
-  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleSetupTP.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Setup</value>
+  <data name="playerListRaffleSetupTP.Text" xml:space="preserve">
+    <value>Player List Raffle Setup</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="&gt;&gt;playerListRaffleSetupTP.Name" xml:space="preserve">
+    <value>playerListRaffleSetupTP</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSetupTP.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>tbctrlRafle</value>
+  <data name="&gt;&gt;playerListRaffleSetupTP.Parent" xml:space="preserve">
+    <value>mainTC</value>
   </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleSetupTP.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cmbxPlayerList.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunListCB.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 102</value>
   </data>
-  <data name="cmbxPlayerList.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunListCB.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 30</value>
   </data>
-  <data name="cmbxPlayerList.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunListCB.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="&gt;&gt;cmbxPlayerList.Name" xml:space="preserve">
-    <value>cmbxPlayerList</value>
+  <data name="&gt;&gt;playerListRaffleRunListCB.Name" xml:space="preserve">
+    <value>playerListRaffleRunListCB</value>
   </data>
-  <data name="&gt;&gt;cmbxPlayerList.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunListCB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmbxPlayerList.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunListCB.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;cmbxPlayerList.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunListCB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+  <data name="playerListRaffleRunRaffleLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleRunRaffleLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunRaffleLbl.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 156</value>
   </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunRaffleLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 22</value>
   </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunRaffleLbl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
+  <data name="playerListRaffleRunRaffleLbl.Text" xml:space="preserve">
     <value>Raffle</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
+  <data name="&gt;&gt;playerListRaffleRunRaffleLbl.Name" xml:space="preserve">
+    <value>playerListRaffleRunRaffleLbl</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunRaffleLbl.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunRaffleLbl.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunRaffleLbl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="lblPlayerList.AutoSize" type="System.Boolean, mscorlib">
+  <data name="playerListRaffleRunListLbl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lblPlayerList.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleRunListLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblPlayerList.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunListLbl.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 77</value>
   </data>
-  <data name="lblPlayerList.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunListLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 22</value>
   </data>
-  <data name="lblPlayerList.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunListLbl.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="lblPlayerList.Text" xml:space="preserve">
+  <data name="playerListRaffleRunListLbl.Text" xml:space="preserve">
     <value>Player List</value>
   </data>
-  <data name="&gt;&gt;lblPlayerList.Name" xml:space="preserve">
-    <value>lblPlayerList</value>
+  <data name="&gt;&gt;playerListRaffleRunListLbl.Name" xml:space="preserve">
+    <value>playerListRaffleRunListLbl</value>
   </data>
-  <data name="&gt;&gt;lblPlayerList.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunListLbl.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblPlayerList.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunListLbl.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;lblPlayerList.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunListLbl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="cmbxRaffle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunRaffleCB.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 181</value>
   </data>
-  <data name="cmbxRaffle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunRaffleCB.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 30</value>
   </data>
-  <data name="cmbxRaffle.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunRaffleCB.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;cmbxRaffle.Name" xml:space="preserve">
-    <value>cmbxRaffle</value>
+  <data name="&gt;&gt;playerListRaffleRunRaffleCB.Name" xml:space="preserve">
+    <value>playerListRaffleRunRaffleCB</value>
   </data>
-  <data name="&gt;&gt;cmbxRaffle.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunRaffleCB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cmbxRaffle.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunRaffleCB.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;cmbxRaffle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunRaffleCB.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="btnRunRaffle.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="playerListRaffleRunBtn.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
-  <data name="btnRunRaffle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleRunBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnRunRaffle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 263</value>
   </data>
-  <data name="btnRunRaffle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="btnRunRaffle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 40</value>
   </data>
-  <data name="btnRunRaffle.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunBtn.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
-  <data name="btnRunRaffle.Text" xml:space="preserve">
+  <data name="playerListRaffleRunBtn.Text" xml:space="preserve">
     <value>&amp;Run Raffle</value>
   </data>
-  <data name="&gt;&gt;btnRunRaffle.Name" xml:space="preserve">
-    <value>btnRunRaffle</value>
+  <data name="&gt;&gt;playerListRaffleRunBtn.Name" xml:space="preserve">
+    <value>playerListRaffleRunBtn</value>
   </data>
-  <data name="&gt;&gt;btnRunRaffle.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;playerListRaffleRunBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;btnRunRaffle.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunBtn.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;btnRunRaffle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunBtn.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="lblRaffleInfo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="playerListRaffleRunInfoLbl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblRaffleInfo.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunInfoLbl.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 17</value>
   </data>
-  <data name="lblRaffleInfo.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunInfoLbl.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 37</value>
   </data>
-  <data name="lblRaffleInfo.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunInfoLbl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="lblRaffleInfo.Text" xml:space="preserve">
+  <data name="playerListRaffleRunInfoLbl.Text" xml:space="preserve">
     <value>100 Player(s) Entered/ 10 Player(s) Required</value>
   </data>
-  <data name="lblRaffleInfo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="playerListRaffleRunInfoLbl.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;lblRaffleInfo.Name" xml:space="preserve">
-    <value>lblRaffleInfo</value>
+  <data name="&gt;&gt;playerListRaffleRunInfoLbl.Name" xml:space="preserve">
+    <value>playerListRaffleRunInfoLbl</value>
   </data>
-  <data name="&gt;&gt;lblRaffleInfo.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunInfoLbl.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lblRaffleInfo.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunInfoLbl.Parent" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;lblRaffleInfo.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunInfoLbl.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleRunGB.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 24</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleRunGB.Size" type="System.Drawing.Size, System.Drawing">
     <value>369, 537</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleRunGB.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;playerListRaffleRunGB.Name" xml:space="preserve">
+    <value>playerListRaffleRunGB</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunGB.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;playerListRaffleRunGB.Parent" xml:space="preserve">
+    <value>playerListRaffleTP</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleRunGB.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lstbxRaffleWinners2.ItemHeight" type="System.Int32, mscorlib">
+  <data name="playerListRaffleWinnersLB.ItemHeight" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
-  <data name="lstbxRaffleWinners2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleWinnersLB.Location" type="System.Drawing.Point, System.Drawing">
     <value>571, 66</value>
   </data>
-  <data name="lstbxRaffleWinners2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleWinnersLB.Size" type="System.Drawing.Size, System.Drawing">
     <value>369, 488</value>
   </data>
-  <data name="lstbxRaffleWinners2.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleWinnersLB.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lstbxRaffleWinners2.Name" xml:space="preserve">
-    <value>lstbxRaffleWinners2</value>
+  <data name="&gt;&gt;playerListRaffleWinnersLB.Name" xml:space="preserve">
+    <value>playerListRaffleWinnersLB</value>
   </data>
-  <data name="&gt;&gt;lstbxRaffleWinners2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleWinnersLB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;lstbxRaffleWinners2.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;playerListRaffleWinnersLB.Parent" xml:space="preserve">
+    <value>playerListRaffleTP</value>
   </data>
-  <data name="&gt;&gt;lstbxRaffleWinners2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleWinnersLB.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1148,39 +1148,39 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+    <value>playerListRaffleTP</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="btnClearRaffle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="btnClearRaffle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.Location" type="System.Drawing.Point, System.Drawing">
     <value>290, 589</value>
   </data>
-  <data name="btnClearRaffle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
-  <data name="btnClearRaffle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 40</value>
   </data>
-  <data name="btnClearRaffle.TabIndex" type="System.Int32, mscorlib">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="btnClearRaffle.Text" xml:space="preserve">
+  <data name="clearCurrentPlayersListRaffleEntriesBtn.Text" xml:space="preserve">
     <value>Cle&amp;ar Raffle</value>
   </data>
-  <data name="&gt;&gt;btnClearRaffle.Name" xml:space="preserve">
-    <value>btnClearRaffle</value>
+  <data name="&gt;&gt;clearCurrentPlayersListRaffleEntriesBtn.Name" xml:space="preserve">
+    <value>clearCurrentPlayersListRaffleEntriesBtn</value>
   </data>
-  <data name="&gt;&gt;btnClearRaffle.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+  <data name="&gt;&gt;clearCurrentPlayersListRaffleEntriesBtn.Type" xml:space="preserve">
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
-  <data name="&gt;&gt;btnClearRaffle.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;clearCurrentPlayersListRaffleEntriesBtn.Parent" xml:space="preserve">
+    <value>playerListRaffleTP</value>
   </data>
-  <data name="&gt;&gt;btnClearRaffle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;clearCurrentPlayersListRaffleEntriesBtn.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="btnRaffleClose.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -1205,10 +1205,10 @@
     <value>btnRaffleClose</value>
   </data>
   <data name="&gt;&gt;btnRaffleClose.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRaffleClose.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+    <value>playerListRaffleTP</value>
   </data>
   <data name="&gt;&gt;btnRaffleClose.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1235,39 +1235,39 @@
     <value>btnRaffleReprintVoucher</value>
   </data>
   <data name="&gt;&gt;btnRaffleReprintVoucher.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRaffleReprintVoucher.Parent" xml:space="preserve">
-    <value>tabPage2</value>
+    <value>playerListRaffleTP</value>
   </data>
   <data name="&gt;&gt;btnRaffleReprintVoucher.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="playerListRaffleTP.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 31</value>
   </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="playerListRaffleTP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="playerListRaffleTP.Size" type="System.Drawing.Size, System.Drawing">
     <value>1010, 643</value>
   </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
+  <data name="playerListRaffleTP.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Raffle</value>
+  <data name="playerListRaffleTP.Text" xml:space="preserve">
+    <value>Player List Raffle</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
+  <data name="&gt;&gt;playerListRaffleTP.Name" xml:space="preserve">
+    <value>playerListRaffleTP</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleTP.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tbctrlRafle</value>
+  <data name="&gt;&gt;playerListRaffleTP.Parent" xml:space="preserve">
+    <value>mainTC</value>
   </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;playerListRaffleTP.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="splitContainer4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1382,7 +1382,7 @@
     <value>editMonRafBtn</value>
   </data>
   <data name="&gt;&gt;editMonRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;editMonRafBtn.Parent" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
@@ -1412,7 +1412,7 @@
     <value>deleteMonRafBtn</value>
   </data>
   <data name="&gt;&gt;deleteMonRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;deleteMonRafBtn.Parent" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
@@ -1442,7 +1442,7 @@
     <value>newMonRafBtn</value>
   </data>
   <data name="&gt;&gt;newMonRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;newMonRafBtn.Parent" xml:space="preserve">
     <value>splitContainer5.Panel2</value>
@@ -1535,7 +1535,7 @@
     <value>monRafPrizeValTxtBx</value>
   </data>
   <data name="&gt;&gt;monRafPrizeValTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafPrizeValTxtBx.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1565,7 +1565,7 @@
     <value>monRafPrizeWeightTxtBx</value>
   </data>
   <data name="&gt;&gt;monRafPrizeWeightTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafPrizeWeightTxtBx.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1601,7 +1601,7 @@
     <value>removeMonRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;removeMonRafPrizeBtn.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1637,7 +1637,7 @@
     <value>addMonRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;addMonRafPrizeBtn.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -1742,7 +1742,7 @@
     <value>btnRunMonetary</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRunMonetary.Parent" xml:space="preserve">
     <value>monRaffleGroupBox2</value>
@@ -2025,7 +2025,7 @@
     <value>monRafSaveBtn</value>
   </data>
   <data name="&gt;&gt;monRafSaveBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafSaveBtn.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -2055,7 +2055,7 @@
     <value>closeBtn3</value>
   </data>
   <data name="&gt;&gt;closeBtn3.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;closeBtn3.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -2085,7 +2085,7 @@
     <value>monRafCancelBtn</value>
   </data>
   <data name="&gt;&gt;monRafCancelBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;monRafCancelBtn.Parent" xml:space="preserve">
     <value>splitContainer6.Panel2</value>
@@ -2181,7 +2181,7 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
-    <value>tbctrlRafle</value>
+    <value>mainTC</value>
   </data>
   <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -2295,7 +2295,7 @@
     <value>editWheelRafBtn</value>
   </data>
   <data name="&gt;&gt;editWheelRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;editWheelRafBtn.Parent" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
@@ -2325,7 +2325,7 @@
     <value>deleteWheelRafBtn</value>
   </data>
   <data name="&gt;&gt;deleteWheelRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;deleteWheelRafBtn.Parent" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
@@ -2355,7 +2355,7 @@
     <value>newWheelRafBtn</value>
   </data>
   <data name="&gt;&gt;newWheelRafBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;newWheelRafBtn.Parent" xml:space="preserve">
     <value>splitContainer8.Panel2</value>
@@ -2448,7 +2448,7 @@
     <value>btnRunWheel</value>
   </data>
   <data name="&gt;&gt;btnRunWheel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnRunWheel.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -2579,7 +2579,7 @@
     <value>btnBrowseOverlay</value>
   </data>
   <data name="&gt;&gt;btnBrowseOverlay.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnBrowseOverlay.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -2746,7 +2746,7 @@
     <value>btnBrowseWheel</value>
   </data>
   <data name="&gt;&gt;btnBrowseWheel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnBrowseWheel.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -2890,7 +2890,7 @@
     <value>wheelRafPrizeWeightTxtBx</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.Type" xml:space="preserve">
-    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.TextBoxNumeric, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafPrizeWeightTxtBx.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -2926,7 +2926,7 @@
     <value>removeWheelRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;removeWheelRafPrizeBtn.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -2962,7 +2962,7 @@
     <value>addWheelRafPrizeBtn</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;addWheelRafPrizeBtn.Parent" xml:space="preserve">
     <value>wheelRaffleGroupBox2</value>
@@ -3311,7 +3311,7 @@
     <value>wheelRafSaveBtn</value>
   </data>
   <data name="&gt;&gt;wheelRafSaveBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafSaveBtn.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3341,7 +3341,7 @@
     <value>closeBtn4</value>
   </data>
   <data name="&gt;&gt;closeBtn4.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;closeBtn4.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3371,7 +3371,7 @@
     <value>wheelRafCancelBtn</value>
   </data>
   <data name="&gt;&gt;wheelRafCancelBtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.893, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1276, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;wheelRafCancelBtn.Parent" xml:space="preserve">
     <value>splitContainer9.Panel2</value>
@@ -3467,33 +3467,33 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabPage4.Parent" xml:space="preserve">
-    <value>tbctrlRafle</value>
+    <value>mainTC</value>
   </data>
   <data name="&gt;&gt;tabPage4.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tbctrlRafle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="mainTC.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tbctrlRafle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="mainTC.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tbctrlRafle.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="mainTC.Size" type="System.Drawing.Size, System.Drawing">
     <value>1018, 678</value>
   </data>
-  <data name="tbctrlRafle.TabIndex" type="System.Int32, mscorlib">
+  <data name="mainTC.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;tbctrlRafle.Name" xml:space="preserve">
-    <value>tbctrlRafle</value>
+  <data name="&gt;&gt;mainTC.Name" xml:space="preserve">
+    <value>mainTC</value>
   </data>
-  <data name="&gt;&gt;tbctrlRafle.Type" xml:space="preserve">
+  <data name="&gt;&gt;mainTC.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tbctrlRafle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;mainTC.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tbctrlRafle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;mainTC.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -3527,6 +3527,6 @@
     <value>Raffle</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.893, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1277, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

@@ -85,10 +85,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             AppliedSystemSettingDisplayedText();
 
-            if (btnSetupSave.Enabled != false) { btnSetupSave.Enabled = false; }
-            if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
+            if (playerListRaffleSetupSaveBtn.Enabled != false) { playerListRaffleSetupSaveBtn.Enabled = false; }
+            if (playerListRaffleSetupCancelBtn.Enabled != false) { playerListRaffleSetupCancelBtn.Enabled = false; }
 
-            tbctrlRafle.SelectedIndexChanged += new EventHandler(tbctrlRafle_SelectedIndexChanged);
+            mainTC.SelectedIndexChanged += new EventHandler(tbctrlRafle_SelectedIndexChanged);
             GetAndLoadPlayerListComboBox();
 
             SetupMonetaryRaffle();
@@ -985,9 +985,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private void GetAndLoadPlayerListComboBox()
         {
 
-            if (cmbxPlayerList.Items.Count > 0)
+            if (playerListRaffleRunListCB.Items.Count > 0)
             {
-                cmbxPlayerList.Items.Clear();
+                playerListRaffleRunListCB.Items.Clear();
             }
 
             if (IndexToDefID.Count > 0)
@@ -1001,10 +1001,10 @@ namespace GTI.Modules.PlayerCenter.UI
             int indexOf = 0;
 
             var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);
-            cmbxPlayerList.Items.Add("Use Current Players");
+            playerListRaffleRunListCB.Items.Add("Use Current Players");
             foreach (PlayerListDefinition pld in sortPlayerListDef)
             {
-                cmbxPlayerList.Items.Add(pld.DefinitionName);
+                playerListRaffleRunListCB.Items.Add(pld.DefinitionName);
                 indexOf = indexOf + 1;
                 IndexToDefID.Add(indexOf, pld.DefId);
             }
@@ -1051,15 +1051,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (btnSetupDelete.Enabled != true) { btnSetupDelete.Enabled = true; }
                 if (imgbtnUpdate.Enabled != true) { imgbtnUpdate.Enabled = true; }
                 if (btnSetupNew.Enabled != true) { btnSetupNew.Enabled = true; }
-                if (lstBxRafflePrizes2.Enabled != true) { lstBxRafflePrizes2.Enabled = true; }
+                if (playerListRafflesLB.Enabled != true) { playerListRafflesLB.Enabled = true; }
 
-                if (lstBxRafflePrizes2.SelectedIndex == -1)
+                if (playerListRafflesLB.SelectedIndex == -1)
                 {
                     clearAllContentsRaffleSettings();
                     disableRaffleSettingsControls();
                 }
-                if (btnSetupSave.Enabled != false) { btnSetupSave.Enabled = false; }
-                if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
+                if (playerListRaffleSetupSaveBtn.Enabled != false) { playerListRaffleSetupSaveBtn.Enabled = false; }
+                if (playerListRaffleSetupCancelBtn.Enabled != false) { playerListRaffleSetupCancelBtn.Enabled = false; }
             }
         }
 
@@ -1098,11 +1098,11 @@ namespace GTI.Modules.PlayerCenter.UI
             bool tempresult = canWeRunTheRaffleWithTheCurrentPlayerEntry();
             if (tempresult == false)
             {
-                if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; }
+                if (playerListRaffleRunBtn.Enabled != false) { playerListRaffleRunBtn.Enabled = false; }
             }
             else
             {
-                if (btnRunRaffle.Enabled != true) { btnRunRaffle.Enabled = true; }
+                if (playerListRaffleRunBtn.Enabled != true) { playerListRaffleRunBtn.Enabled = true; }
             }
             return tempresult;
         }
@@ -1253,15 +1253,16 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void AppliedSystemSettingDisplayedText()
         {
-            displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
+            displayedText = "Player List " + ((raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing");
             if (displayedText != "")
             {
-                wheelRaffleGroupBox1.Text = monRaffleGroupBox1.Text = groupBox1.Text = displayedText;
-                tabPage2.Text = displayedText;
-                btnRunRaffle.Text = "&Run " + displayedText;
-                label5.Text = displayedText;
+                wheelRaffleGroupBox1.Text = monRaffleGroupBox1.Text = playerListsRafflesGB.Text = displayedText;
+                playerListRaffleTP.Text = displayedText;
+                playerListRaffleSetupTP.Text = displayedText + " Setup";
+                playerListRaffleRunBtn.Text = "&Run " + displayedText;
+                playerListRaffleRunRaffleLbl.Text = displayedText;
                 //lblWarningMessage.Text =  (lblWarningMessage.Text.ToString()).Replace("raffle", displayedText.ToLower());
-                btnClearRaffle.Text = "Cle&ar " + displayedText;
+                clearCurrentPlayersListRaffleEntriesBtn.Text = "Cle&ar " + displayedText;
                 this.Text = displayedText;
 
                 btnRunMonetary.Text = String.Format("&Run Monetary {0}", displayedText);
@@ -1315,15 +1316,15 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void disableSaveCancelClose()
         {
-            if (btnSetupSave.Enabled != false) { btnSetupSave.Enabled = false; }
-            if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
+            if (playerListRaffleSetupSaveBtn.Enabled != false) { playerListRaffleSetupSaveBtn.Enabled = false; }
+            if (playerListRaffleSetupCancelBtn.Enabled != false) { playerListRaffleSetupCancelBtn.Enabled = false; }
             if (btnSetupClose.Enabled != false) { btnSetupClose.Enabled = false; }
         }
 
         private void enableSaveCancelClose()
         {
-            if (btnSetupSave.Enabled != true) { btnSetupSave.Enabled = true; }
-            if (btnSetupCancel.Enabled != true) { btnSetupCancel.Enabled = true; }
+            if (playerListRaffleSetupSaveBtn.Enabled != true) { playerListRaffleSetupSaveBtn.Enabled = true; }
+            if (playerListRaffleSetupCancelBtn.Enabled != true) { playerListRaffleSetupCancelBtn.Enabled = true; }
             if (btnSetupClose.Enabled != true) { btnSetupClose.Enabled = true; }
         }
 
@@ -1364,31 +1365,31 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             //get the current item
             string CurrentRaffle = "";
-            if (cmbxRaffle.SelectedIndex != -1)
+            if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
             {
-                CurrentRaffle = cmbxRaffle.SelectedItem.ToString();
+                CurrentRaffle = playerListRaffleRunRaffleCB.SelectedItem.ToString();
             }
 
-            if (cmbxRaffle.Items.Count > 0)
+            if (playerListRaffleRunRaffleCB.Items.Count > 0)
             {
-                cmbxRaffle.Items.Clear();
+                playerListRaffleRunRaffleCB.Items.Clear();
             }
 
             foreach (DataRafflePrizes drf in List_DataRafflePrize.LDataRafflePrize)
             {
-                cmbxRaffle.Items.Add(drf.RaffleName);
+                playerListRaffleRunRaffleCB.Items.Add(drf.RaffleName);
             }
 
-            if (cmbxRaffle.Items.Count > 0)
+            if (playerListRaffleRunRaffleCB.Items.Count > 0)
             {
-                cmbxRaffle.Sorted = true;
-                cmbxRaffle.SelectedIndex = -1;
+                playerListRaffleRunRaffleCB.Sorted = true;
+                playerListRaffleRunRaffleCB.SelectedIndex = -1;
             }
 
             if (CurrentRaffle != "")
             {
                 //select the current raffle
-                cmbxRaffle.SelectedIndex = cmbxRaffle.Items.IndexOf(CurrentRaffle);
+                playerListRaffleRunRaffleCB.SelectedIndex = playerListRaffleRunRaffleCB.Items.IndexOf(CurrentRaffle);
             }
         }
 
@@ -1399,9 +1400,9 @@ namespace GTI.Modules.PlayerCenter.UI
             //var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => NOfPlayer = gri.GetNumberOfPlayerPerPlayerList(GetOperatorID.operatorID, DefID));//SQL
             var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => gri.GetNumberOfPlayersRaffleEntry(DefID));
             ExecuteMe.Wait();
-            lblRaffleInfo.Text = RaffleInfo.m_currentPlayerCount + " Player(s) Entered / " + RaffleInfo.m_playersReq.ToString() + " Player(s) Required";
+            playerListRaffleRunInfoLbl.Text = RaffleInfo.m_currentPlayerCount + " Player(s) Entered / " + RaffleInfo.m_playersReq.ToString() + " Player(s) Required";
             N_OfPlayersReqMet = DisableOrEnableRunRaffle();
-            if (cmbxRaffle.SelectedIndex != -1 && N_OfPlayersReqMet == true) { btnRunRaffle.Enabled = true; } else { btnRunRaffle.Enabled = false; }
+            if (playerListRaffleRunRaffleCB.SelectedIndex != -1 && N_OfPlayersReqMet == true) { playerListRaffleRunBtn.Enabled = true; } else { playerListRaffleRunBtn.Enabled = false; }
             this.Cursor = Cursors.Default;
         }
 
@@ -1410,30 +1411,30 @@ namespace GTI.Modules.PlayerCenter.UI
             GetRafflePlayerDefinitions run = new GetRafflePlayerDefinitions();
             run.runGetRafflePlayerDefinitions();
 
-            if (lstBxRafflePrizes2.Items.Count > 0)
+            if (playerListRafflesLB.Items.Count > 0)
             {
-                lstBxRafflePrizes2.Items.Clear();
+                playerListRafflesLB.Items.Clear();
             }
 
             foreach (DataRafflePrizes drf in List_DataRafflePrize.LDataRafflePrize)
             {
                 //lstBxRafflePrizes.Items.Add(drf.RaffleName);
-                lstBxRafflePrizes2.Items.Add(drf.RaffleName);
+                playerListRafflesLB.Items.Add(drf.RaffleName);
             }
 
 
-            if (lstBxRafflePrizes2.Items.Count > 0)
+            if (playerListRafflesLB.Items.Count > 0)
             {
-                lstBxRafflePrizes2.Sorted = true;
+                playerListRafflesLB.Sorted = true;
 
                 if (isUpdate == true)
                 {
-                    int indexItem = lstBxRafflePrizes2.Items.IndexOf(RaffleName);
-                    lstBxRafflePrizes2.SelectedIndex = indexItem;
+                    int indexItem = playerListRafflesLB.Items.IndexOf(RaffleName);
+                    playerListRafflesLB.SelectedIndex = indexItem;
                 }
                 else//for insert and delete
                 {
-                    lstBxRafflePrizes2.SelectedIndex = -1;
+                    playerListRafflesLB.SelectedIndex = -1;
                 }
             }
         }
@@ -1535,9 +1536,9 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
 
-                if (lstBxRafflePrizes2.SelectedIndex == -1)//New insert
+                if (playerListRafflesLB.SelectedIndex == -1)//New insert
                 {
-                    foreach (string rn in lstBxRafflePrizes2.Items)//Find if it exists
+                    foreach (string rn in playerListRafflesLB.Items)//Find if it exists
                     {
                         if (rn.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -1550,12 +1551,12 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (isNew == false && isUpdate == true)//check if the new name already exists.
                     {
-                        foreach (string rn in lstBxRafflePrizes2.Items)//Find if it exists
+                        foreach (string rn in playerListRafflesLB.Items)//Find if it exists
                         {
                             //find the index of each item
-                            int findIndex = lstBxRafflePrizes2.Items.IndexOf(rn);
+                            int findIndex = playerListRafflesLB.Items.IndexOf(rn);
 
-                            if (lstBxRafflePrizes2.SelectedIndex != findIndex)//exclude itself
+                            if (playerListRafflesLB.SelectedIndex != findIndex)//exclude itself
                             {
 
                                 if (rn.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
@@ -1591,9 +1592,9 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cmbxRaffle_Validating(object sender, CancelEventArgs e)
+        private void playerListRaffleRunRaffleCB_Validating(object sender, CancelEventArgs e)
         {
-            if (cmbxRaffle.SelectedIndex == -1)//&& isRunRaffle == true)
+            if (playerListRaffleRunRaffleCB.SelectedIndex == -1)//&& isRunRaffle == true)
             {
                 //lblWarningMessage.Text = "Invalid entry. Please select a raffle.";
                 //lblWarningMessage.Visible = true;
@@ -1635,42 +1636,42 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = result;
         }
 
-        private void cmbxPlayerList_SelectedIndexChanged(object sender, EventArgs e)
+        private void playerListRaffleRunListCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbxPlayerList.SelectedIndex != 0 && cmbxPlayerList.SelectedIndex != -1)
+            if (playerListRaffleRunListCB.SelectedIndex != 0 && playerListRaffleRunListCB.SelectedIndex != -1)
             {
-                if (IndexToDefID.ContainsKey(cmbxPlayerList.SelectedIndex))
+                if (IndexToDefID.ContainsKey(playerListRaffleRunListCB.SelectedIndex))
                 {
-                    DefID = IndexToDefID[cmbxPlayerList.SelectedIndex];
+                    DefID = IndexToDefID[playerListRaffleRunListCB.SelectedIndex];
                     loadRaffleInfo();
                 }
             }
-            else if (cmbxPlayerList.SelectedIndex == 0)
+            else if (playerListRaffleRunListCB.SelectedIndex == 0)
             {
                 DefID = 0;
                 loadRaffleInfo();
                 N_OfPlayersReqMet = DisableOrEnableRunRaffle();
-                if (cmbxRaffle.SelectedIndex != -1 && N_OfPlayersReqMet == true) { btnRunRaffle.Enabled = true; } else { btnRunRaffle.Enabled = false; }
+                if (playerListRaffleRunRaffleCB.SelectedIndex != -1 && N_OfPlayersReqMet == true) { playerListRaffleRunBtn.Enabled = true; } else { playerListRaffleRunBtn.Enabled = false; }
             }
-            else if (cmbxPlayerList.SelectedIndex == -1)
+            else if (playerListRaffleRunListCB.SelectedIndex == -1)
             {
-                lblRaffleInfo.Text = string.Empty;
+                playerListRaffleRunInfoLbl.Text = string.Empty;
             }
         }
 
         private void imgbtnUpdate_Click(object sender, EventArgs e)
         {
             // if (isUpdate2 != true) isUpdate2 = true;
-            if (lstBxRafflePrizes2.Items.Count > 0)
+            if (playerListRafflesLB.Items.Count > 0)
             {
-                if (lstBxRafflePrizes2.SelectedIndex == -1)
+                if (playerListRafflesLB.SelectedIndex == -1)
                 {
                     errorProvider1.SetError(imgbtnUpdate, "No raffle was selected on the list.");
                     //clearAllContentsRaffleSettings();
                     return;
                 }
             }
-            else if (lstBxRafflePrizes2.Items.Count == 0)
+            else if (playerListRafflesLB.Items.Count == 0)
             {
                 errorProvider1.SetError(imgbtnUpdate, "No raffle was selected on the list.");
                 return;
@@ -1691,7 +1692,7 @@ namespace GTI.Modules.PlayerCenter.UI
             enableRaffleSettingsControls();
             clearAllContentsRaffleSettings();
             // lstBxRafflePrizes.SelectedIndex = -1; 
-            lstBxRafflePrizes2.SelectedIndex = -1;
+            playerListRafflesLB.SelectedIndex = -1;
             txtbxSetupName.Focus();
             HandleControlsFromInsertUpdateDeleteCancelSaveClose(1);
         }
@@ -1717,14 +1718,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 isModify = false;
                 if (saveChanges == true)
                 {
-                    btnSetupSave.PerformClick();
+                    playerListRaffleSetupSaveBtn.PerformClick();
                     isClose = false;
                     // e.Cancel = true;
                     return;
                 }
                 else
                 {
-                    lstBxRafflePrizes2.SelectedIndex = -1;
+                    playerListRafflesLB.SelectedIndex = -1;
                     setControlsToFalse2();
                     SetAllCommandsToFalse();
                 }
@@ -1742,7 +1743,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    lstBxRafflePrizes2.SelectedIndex = -1;
+                    playerListRafflesLB.SelectedIndex = -1;
                     setControlsToFalse2();
                     SetAllCommandsToFalse();
                 }
@@ -1759,7 +1760,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSetupCancel_Click(object sender, EventArgs e)
+        private void playerListRaffleSetupCancelBtn_Click(object sender, EventArgs e)
         {
             clearAllMessages();
 
@@ -1773,11 +1774,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 //loadListRaffle();
                 string tempRaffleName = dataRafflePrize.RaffleName;
                 //  lstBxRafflePrizes.SelectedIndex = -1;
-                lstBxRafflePrizes2.SelectedIndex = -1;
+                playerListRafflesLB.SelectedIndex = -1;
                 // int tempIndex = lstBxRafflePrizes.Items.IndexOf(tempRaffleName);
-                int tempIndex = lstBxRafflePrizes2.Items.IndexOf(tempRaffleName);
+                int tempIndex = playerListRafflesLB.Items.IndexOf(tempRaffleName);
                 //  lstBxRafflePrizes.SelectedIndex = tempIndex;
-                lstBxRafflePrizes2.SelectedIndex = tempIndex;
+                playerListRafflesLB.SelectedIndex = tempIndex;
             }
             setControlsToFalse2();
         }
@@ -1791,7 +1792,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dialogResult == DialogResult.Yes)
                 {
                     tempResult = true;
-                    btnSetupSave.PerformClick();
+                    playerListRaffleSetupSaveBtn.PerformClick();
                 }
                 else
                 {
@@ -1847,7 +1848,7 @@ namespace GTI.Modules.PlayerCenter.UI
             clearAllMessages();
             disableRaffleSettingsControls();
 
-            if (lstBxRafflePrizes2.Items.Count == 0)
+            if (playerListRafflesLB.Items.Count == 0)
             {
                 errorProvider1.SetError(btnSetupDelete, "Raffle list is empty, create a new raffle.");
                 clearAllContentsRaffleSettings();
@@ -1858,7 +1859,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             SetAllCommandsToFalse();
             setControlsToFalse2();
-            if (lstBxRafflePrizes2.SelectedIndex != -1)
+            if (playerListRafflesLB.SelectedIndex != -1)
             {
                 // DeleteRafflePrizeSQL run = new DeleteRafflePrizeSQL(dataRafflePrize.RaffleID);
                 var Exists = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID);
@@ -1866,17 +1867,17 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     ListPreviousWinner.data.RemoveAll(l => l.RaffleID == dataRafflePrize.RaffleID);
                 }
-                if (cmbxRaffle.SelectedIndex != -1)
+                if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
-                    if (cmbxRaffle.SelectedItem.ToString() == dataRafflePrize.RaffleName)
+                    if (playerListRaffleRunRaffleCB.SelectedItem.ToString() == dataRafflePrize.RaffleName)
                     {
-                        if (cmbxRaffle.Items.Count != 0)
+                        if (playerListRaffleRunRaffleCB.Items.Count != 0)
                         {
-                            cmbxRaffle.SelectedIndex = 0;
+                            playerListRaffleRunRaffleCB.SelectedIndex = 0;
                         }
                         else
                         {
-                            cmbxRaffle.SelectedIndex = -1;
+                            playerListRaffleRunRaffleCB.SelectedIndex = -1;
                         }
                     }
                 }
@@ -1901,20 +1902,20 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void colorListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lstBxRafflePrizes2.SelectedIndex != -1)
+            if (playerListRafflesLB.SelectedIndex != -1)
             {
                 isNew = false;
                 isUpdate = true;
                 //dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == lstBxRafflePrizes.SelectedItem.ToString());
-                dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == lstBxRafflePrizes2.SelectedItem.ToString());
+                dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == playerListRafflesLB.SelectedItem.ToString());
                 loadRaffleSettings();
                 enableRaffleSettingsControls();
 
                 ReadOnlyTRaffleSettingControls();
                 enableInsertUpdateDeleteControls();
 
-                if (btnSetupSave.Enabled != false) { btnSetupSave.Enabled = false; }
-                if (btnSetupCancel.Enabled != false) { btnSetupCancel.Enabled = false; }
+                if (playerListRaffleSetupSaveBtn.Enabled != false) { playerListRaffleSetupSaveBtn.Enabled = false; }
+                if (playerListRaffleSetupCancelBtn.Enabled != false) { playerListRaffleSetupCancelBtn.Enabled = false; }
 
             }
             else
@@ -1930,18 +1931,18 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="e"></param>
         private void tbctrlRafle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(tbctrlRafle.SelectedTab.Tag) == 1)//RaffleSetup Tab
+            if (Convert.ToInt32(mainTC.SelectedTab.Tag) == 1)//RaffleSetup Tab
             {
                 HandleControlsFromInsertUpdateDeleteCancelSaveClose(4);
             }
-            else if (Convert.ToInt32(tbctrlRafle.SelectedTab.Tag) == 2)//Raffle Tab
+            else if (Convert.ToInt32(mainTC.SelectedTab.Tag) == 2)//Raffle Tab
             {
                 loadcmbxRafle();
                 //loadRaffleInfo();
                 DisableOrEnableRunRaffle();
-                cmbxRaffle.SelectedIndex = -1;
-                cmbxPlayerList.SelectedIndex = -1;
-                btnRunRaffle.Enabled = false;
+                playerListRaffleRunRaffleCB.SelectedIndex = -1;
+                playerListRaffleRunListCB.SelectedIndex = -1;
+                playerListRaffleRunBtn.Enabled = false;
                 label6.Text = "Winners";
             }
             clearAllMessages();
@@ -1958,23 +1959,23 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cmbxRaffle_SelectedIndexChanged(object sender, EventArgs e)
+        private void playerListRaffleRunRaffleCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                lstbxRaffleWinners2.Items.Clear();
+                playerListRaffleWinnersLB.Items.Clear();
 
-                if (cmbxRaffle.SelectedIndex != -1)
+                if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
-                    dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == cmbxRaffle.SelectedItem.ToString());
+                    dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == playerListRaffleRunRaffleCB.SelectedItem.ToString());
                 }
                 else
                 {
-                    if (btnRunRaffle.Enabled != false) { btnRunRaffle.Enabled = false; }
+                    if (playerListRaffleRunBtn.Enabled != false) { playerListRaffleRunBtn.Enabled = false; }
                     return;
                 }
 
-                if (cmbxRaffle.SelectedIndex != -1 && cmbxPlayerList.SelectedIndex != -1)
+                if (playerListRaffleRunRaffleCB.SelectedIndex != -1 && playerListRaffleRunListCB.SelectedIndex != -1)
                 {
                     //Check if the number of player is enough to win the raffle prize
                     if (!DisableOrEnableRunRaffle())
@@ -1984,11 +1985,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if (doWeHaveEnoughPlayerToWinTheRafflePrize())
                     {
-                        btnRunRaffle.Enabled = true;
+                        playerListRaffleRunBtn.Enabled = true;
                     }
                     else
                     {
-                        btnRunRaffle.Enabled = false;
+                        playerListRaffleRunBtn.Enabled = false;
                     }
 
                     //check if the selected raffle have previous winner 
@@ -2010,7 +2011,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             for (int i = 0; i < dpw.WinnerPlayerID.Count; i++)
                             {
-                                lstbxRaffleWinners2.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
+                                playerListRaffleWinnersLB.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
                             }
                         }
                     }
@@ -2019,7 +2020,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         label6.Text = "Winners";
                     }
                 }
-                else if (cmbxRaffle.SelectedIndex != -1)
+                else if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
                     //check if the selected raffle have previous winner 
                     if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID))
@@ -2040,7 +2041,7 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             for (int i = 0; i < dpw.WinnerPlayerID.Count; i++)
                             {
-                                lstbxRaffleWinners2.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
+                                playerListRaffleWinnersLB.Items.Add((i + 1).ToString() + ". " + dpw.WinnerPlayerFName[i].ToString() + " " + dpw.WinnerPlayerLName[i].ToString());
                             }
                         }
                     }
@@ -2052,8 +2053,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             catch (Exception ex)
             {
-                PlayerManager.Log(String.Format("Error selecting {0} in drop-down: {1}", label5.Text, ex.ToString()), LoggerLevel.Severe);
-                MessageForm.Show(String.Format("Error selecting {0} in drop-down: {1}", label5.Text, ex.Message));
+                PlayerManager.Log(String.Format("Error selecting {0} in drop-down: {1}", playerListRaffleRunRaffleLbl.Text, ex.ToString()), LoggerLevel.Severe);
+                MessageForm.Show(String.Format("Error selecting {0} in drop-down: {1}", playerListRaffleRunRaffleLbl.Text, ex.Message));
             }
         }
 
@@ -2062,7 +2063,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSetupSave_Click(object sender, EventArgs e)
+        private void playerListRaffleSetupSaveBtn_Click(object sender, EventArgs e)
         {
             clearAllMessages();
 
@@ -2073,7 +2074,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (isNew == false && isUpdate == false)
             {
-                errorProvider1.SetError(btnSetupSave, "Create new raffle or select a raffle in the list to update.");
+                errorProvider1.SetError(playerListRaffleSetupSaveBtn, "Create new raffle or select a raffle in the list to update.");
                 return;
             }
             else if (isNew == true && isUpdate == false)//Insert new entry
@@ -2107,24 +2108,24 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         //RUN RAFFLE
-        private void btnRunRaffle_Click(object sender, EventArgs e)
+        private void playerListRaffleRunBtn_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
 
             if (dataRafflePrize.NoOfRafflePrize > 1) { label6.Text = "Winners"; } else { label6.Text = "Winner"; }
 
-            if (lstbxRaffleWinners2.Items.Count != 0)
+            if (playerListRaffleWinnersLB.Items.Count != 0)
             {
-                lstbxRaffleWinners2.Items.Clear();
+                playerListRaffleWinnersLB.Items.Clear();
             }
 
             List<RaffleWinner> raffleWinners = new List<RaffleWinner>();
 
             //disable Run button and close button
-            btnRunRaffle.Enabled = false;
+            playerListRaffleRunBtn.Enabled = false;
             btnRaffleClose.Enabled = false;
-            btnClearRaffle.Enabled = false;
+            clearCurrentPlayersListRaffleEntriesBtn.Enabled = false;
             btnRaffleReprintVoucher.Enabled = false;
 
             int delaytime = 0;
@@ -2141,16 +2142,16 @@ namespace GTI.Modules.PlayerCenter.UI
                 raffleWinner = RunPlayerRaffleMessage.GetRaffleWinner(dataRafflePrize.RaffleID, tempRaffleHistory, DefID);   //Raffle winner here //What raffle is being run and is PlayerHistory = 0; //How to change the value from the existing raffleHistoryID
                 raffleWinners.Add(raffleWinner);
                 if (String.IsNullOrWhiteSpace(raffleWinner.FirstName) && String.IsNullOrWhiteSpace(raffleWinner.LastName))
-                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + String.Format("[Player Id {0}]", raffleWinner.PlayerID));
+                    playerListRaffleWinnersLB.Items.Add((startcount + 1).ToString() + ". " + String.Format("[Player Id {0}]", raffleWinner.PlayerID));
                 else
-                    lstbxRaffleWinners2.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
+                    playerListRaffleWinnersLB.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
 
                 getVouchersInfo(raffleWinner.PlayerID);
                 RaffleReceipt raffleReceipt = new RaffleReceipt();
                 AssignValueToReceipt(raffleReceipt, startcount);
 
-                lstbxRaffleWinners2.SelectedIndex = startcount;
-                lstbxRaffleWinners2.SetSelected(startcount, false);
+                playerListRaffleWinnersLB.SelectedIndex = startcount;
+                playerListRaffleWinnersLB.SetSelected(startcount, false);
 
                 if (CheckForReceiptPrinter())
                 {
@@ -2162,9 +2163,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     System.Threading.Thread.Sleep(((delaytime + 1) * 1000)); // note: same setting that remote display listens to. Can take a bit to load player images
             }
 
-            btnRunRaffle.Enabled = true;
+            playerListRaffleRunBtn.Enabled = true;
             btnRaffleClose.Enabled = true;
-            btnClearRaffle.Enabled = true;
+            clearCurrentPlayersListRaffleEntriesBtn.Enabled = true;
             btnRaffleReprintVoucher.Enabled = true;
             Cursor.Current = Cursors.Default;
 
@@ -2225,7 +2226,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
 
             //Do we have a winner in the listbox? If not then exit
-            if (lstbxRaffleWinners2.Items.Count == 0)// && isReprint == true)
+            if (playerListRaffleWinnersLB.Items.Count == 0)// && isReprint == true)
             {
                 //lblWarningMessage.Text = "There are no winners on the raffle list.";
                 //lblWarningMessage.Visible = true;
@@ -2235,7 +2236,7 @@ namespace GTI.Modules.PlayerCenter.UI
             DataPreviousWinner RafflePreviousWinner = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);
 
             //Print only selected winner
-            if (lstbxRaffleWinners2.SelectedIndex == -1)//print all
+            if (playerListRaffleWinnersLB.SelectedIndex == -1)//print all
             {
                 int count = 0;
                 // foreach (RaffleWinner rw in ListOfCurrentRaffleWinner.ListOfRaffleWinners)
@@ -2258,7 +2259,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 //Get the player ID of the selected winner
                 //Its the same index order of RafflePreviousWinner
                 //get the index 
-                int indexOfPlayerWinner = lstbxRaffleWinners2.SelectedIndex;
+                int indexOfPlayerWinner = playerListRaffleWinnersLB.SelectedIndex;
                 //get the playerID of the selected index
                 int PlayerID = RafflePreviousWinner.WinnerPlayerID[indexOfPlayerWinner];
                 getVouchersInfo(PlayerID);
@@ -2271,7 +2272,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void btnClearRaffle_Click(object sender, EventArgs e)
+        private void clearCurrentPlayersListRaffleEntriesBtn_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageForm.Show("Are you sure you want to permanently delete the players entered into the raffle?", "Confirm", MessageFormTypes.YesNo);
 
@@ -2288,9 +2289,9 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void tbctrlRafle_Selecting(object sender, TabControlCancelEventArgs e)
+        private void mainTC_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (tbctrlRafle.SelectedIndex != 0)
+            if (mainTC.SelectedIndex != 0)
             {
                 bool saveChanges = false;
 
@@ -2307,13 +2308,13 @@ namespace GTI.Modules.PlayerCenter.UI
                     isModify = false;
                     if (saveChanges == true)
                     {
-                        btnSetupSave.PerformClick();
+                        playerListRaffleSetupSaveBtn.PerformClick();
                         e.Cancel = true;
                     }
                     else
                     {
 
-                        lstBxRafflePrizes2.SelectedIndex = -1;
+                        playerListRafflesLB.SelectedIndex = -1;
                         setControlsToFalse2();
                         SetAllCommandsToFalse();
 
@@ -2330,7 +2331,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     else
                     {
 
-                        lstBxRafflePrizes2.SelectedIndex = -1;
+                        playerListRafflesLB.SelectedIndex = -1;
                         setControlsToFalse2();
                         SetAllCommandsToFalse();
 
@@ -2338,7 +2339,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 }
 
-                lblRaffleInfo.Text = string.Empty;
+                playerListRaffleRunInfoLbl.Text = string.Empty;
             }
         }
 
@@ -2361,7 +2362,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     isModify = false;
                     if (saveChanges == true)
                     {
-                        btnSetupSave.PerformClick();
+                        playerListRaffleSetupSaveBtn.PerformClick();
                         //isClose = false;
                         e.Cancel = true;
                         return;
@@ -2369,7 +2370,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     else
                     {
 
-                        lstBxRafflePrizes2.SelectedIndex = -1;
+                        playerListRafflesLB.SelectedIndex = -1;
                         setControlsToFalse2();
                         SetAllCommandsToFalse();
 
@@ -2390,7 +2391,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     else
                     {
 
-                        lstBxRafflePrizes2.SelectedIndex = -1;
+                        playerListRafflesLB.SelectedIndex = -1;
                         setControlsToFalse2();
                         SetAllCommandsToFalse();
 

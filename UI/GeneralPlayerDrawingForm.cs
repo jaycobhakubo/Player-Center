@@ -438,7 +438,12 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var inactiveFont = new Font(drawingsLV.Font, FontStyle.Bold | FontStyle.Italic);
                 drawingsLV.Columns.Clear();
-                drawingsLV.Columns.Add("Name");
+                //drawingsLV.Columns.Add("Name");
+                ColumnHeader columnHeaderShowOnlyThis = new ColumnHeader();
+                columnHeaderShowOnlyThis.Text = "";
+                columnHeaderShowOnlyThis.Name = "clmnHeader";
+                drawingsLV.Columns.Add(columnHeaderShowOnlyThis);
+                drawingsLV.HeaderStyle = ColumnHeaderStyle.None;
 
                 if(selectId == null && drawingsLV.SelectedItems.Count == 1)
                     selectId = (drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing).Id;

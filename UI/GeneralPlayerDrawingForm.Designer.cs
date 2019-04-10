@@ -113,6 +113,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -398,8 +400,12 @@
             // eventTP
             // 
             this.eventTP.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.eventTP.Controls.Add(this.panel3);
+            this.eventTP.Controls.Add(this.panel2);
+            this.eventTP.Controls.Add(this.eventExamplesLV);
             this.eventTP.Controls.Add(this.entryPeriodLbl);
             this.eventTP.Controls.Add(this.initialEventScheduledForLbl);
+            this.eventTP.Controls.Add(this.eventWindowExamplesLbl);
             this.eventTP.Controls.Add(this.initialEventScheduledForDTP);
             this.eventTP.Controls.Add(this.eventRepeatDetailsPnl);
             this.eventTP.Controls.Add(this.entrySessionsLbl);
@@ -412,7 +418,7 @@
             this.eventTP.Location = new System.Drawing.Point(4, 31);
             this.eventTP.Name = "eventTP";
             this.eventTP.Padding = new System.Windows.Forms.Padding(3);
-            this.eventTP.Size = new System.Drawing.Size(687, 452);
+            this.eventTP.Size = new System.Drawing.Size(687, 449);
             this.eventTP.TabIndex = 1;
             this.eventTP.Text = "Entry Window";
             // 
@@ -428,7 +434,7 @@
             // initialEventScheduledForLbl
             // 
             this.initialEventScheduledForLbl.BackColor = System.Drawing.Color.Transparent;
-            this.initialEventScheduledForLbl.Location = new System.Drawing.Point(10, 102);
+            this.initialEventScheduledForLbl.Location = new System.Drawing.Point(388, 10);
             this.initialEventScheduledForLbl.Name = "initialEventScheduledForLbl";
             this.initialEventScheduledForLbl.Size = new System.Drawing.Size(123, 22);
             this.initialEventScheduledForLbl.TabIndex = 36;
@@ -438,7 +444,7 @@
             // 
             this.initialEventScheduledForDTP.Checked = false;
             this.initialEventScheduledForDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(92, 127);
+            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(388, 36);
             this.initialEventScheduledForDTP.Name = "initialEventScheduledForDTP";
             this.initialEventScheduledForDTP.ShowCheckBox = true;
             this.initialEventScheduledForDTP.Size = new System.Drawing.Size(287, 26);
@@ -448,17 +454,15 @@
             // eventRepeatDetailsPnl
             // 
             this.eventRepeatDetailsPnl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventExamplesLV);
             this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIncrementTxt);
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventWindowExamplesLbl);
             this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionRateLbl);
             this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIntervalCB);
             this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsDTP);
             this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsLbl);
             this.eventRepeatDetailsPnl.Enabled = false;
-            this.eventRepeatDetailsPnl.Location = new System.Drawing.Point(14, 195);
+            this.eventRepeatDetailsPnl.Location = new System.Drawing.Point(12, 273);
             this.eventRepeatDetailsPnl.Name = "eventRepeatDetailsPnl";
-            this.eventRepeatDetailsPnl.Size = new System.Drawing.Size(365, 231);
+            this.eventRepeatDetailsPnl.Size = new System.Drawing.Size(365, 83);
             this.eventRepeatDetailsPnl.TabIndex = 34;
             // 
             // eventExamplesLV
@@ -467,9 +471,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.eventExamplesLV.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventExamplesLV.Location = new System.Drawing.Point(7, 107);
+            this.eventExamplesLV.Location = new System.Drawing.Point(387, 120);
             this.eventExamplesLV.Name = "eventExamplesLV";
-            this.eventExamplesLV.Size = new System.Drawing.Size(351, 117);
+            this.eventExamplesLV.Size = new System.Drawing.Size(290, 55);
             this.eventExamplesLV.TabIndex = 39;
             this.eventExamplesLV.UseCompatibleStateImageBehavior = false;
             this.eventExamplesLV.View = System.Windows.Forms.View.Details;
@@ -487,7 +491,7 @@
             // eventWindowExamplesLbl
             // 
             this.eventWindowExamplesLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventWindowExamplesLbl.Location = new System.Drawing.Point(3, 82);
+            this.eventWindowExamplesLbl.Location = new System.Drawing.Point(388, 92);
             this.eventWindowExamplesLbl.Name = "eventWindowExamplesLbl";
             this.eventWindowExamplesLbl.Size = new System.Drawing.Size(141, 22);
             this.eventWindowExamplesLbl.TabIndex = 37;
@@ -542,7 +546,7 @@
             // entrySessionsLbl
             // 
             this.entrySessionsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.entrySessionsLbl.Location = new System.Drawing.Point(402, 10);
+            this.entrySessionsLbl.Location = new System.Drawing.Point(9, 115);
             this.entrySessionsLbl.Name = "entrySessionsLbl";
             this.entrySessionsLbl.Size = new System.Drawing.Size(112, 22);
             this.entrySessionsLbl.TabIndex = 30;
@@ -557,10 +561,10 @@
             this.entrySessionNumbersCL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entrySessionNumbersCL.FormattingEnabled = true;
             this.entrySessionNumbersCL.IntegralHeight = false;
-            this.entrySessionNumbersCL.Location = new System.Drawing.Point(386, 35);
+            this.entrySessionNumbersCL.Location = new System.Drawing.Point(11, 137);
             this.entrySessionNumbersCL.MultiColumn = true;
             this.entrySessionNumbersCL.Name = "entrySessionNumbersCL";
-            this.entrySessionNumbersCL.Size = new System.Drawing.Size(295, 352);
+            this.entrySessionNumbersCL.Size = new System.Drawing.Size(368, 93);
             this.entrySessionNumbersCL.TabIndex = 0;
             this.entrySessionNumbersCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entrySessionNumbersCL_ItemCheck);
             // 
@@ -603,7 +607,7 @@
             // eventRepeatsChk
             // 
             this.eventRepeatsChk.AutoSize = true;
-            this.eventRepeatsChk.Location = new System.Drawing.Point(14, 163);
+            this.eventRepeatsChk.Location = new System.Drawing.Point(13, 247);
             this.eventRepeatsChk.Name = "eventRepeatsChk";
             this.eventRepeatsChk.Size = new System.Drawing.Size(88, 26);
             this.eventRepeatsChk.TabIndex = 25;
@@ -618,7 +622,7 @@
             this.entryMethodsTP.Location = new System.Drawing.Point(4, 31);
             this.entryMethodsTP.Name = "entryMethodsTP";
             this.entryMethodsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryMethodsTP.Size = new System.Drawing.Size(687, 452);
+            this.entryMethodsTP.Size = new System.Drawing.Size(687, 449);
             this.entryMethodsTP.TabIndex = 2;
             this.entryMethodsTP.Text = "Entry Methods";
             // 
@@ -633,7 +637,7 @@
             this.entryMethodsTC.Location = new System.Drawing.Point(14, 6);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(658, 350);
+            this.entryMethodsTC.Size = new System.Drawing.Size(658, 347);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entrySpendTP
@@ -646,7 +650,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(650, 315);
+            this.entrySpendTP.Size = new System.Drawing.Size(650, 312);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -656,7 +660,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(6, 275);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(556, 272);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -674,12 +678,12 @@
             this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.entrySpendScaleDGV.Location = new System.Drawing.Point(5, 43);
+            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 14);
             this.entrySpendScaleDGV.MultiSelect = false;
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(350, 226);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(483, 248);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Visible = false;
             // 
@@ -692,9 +696,9 @@
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingBySessionRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByDayRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
-            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
+            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 14);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(634, 31);
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(137, 286);
             this.entrySpendGroupingFLP.TabIndex = 4;
             // 
             // entrySpendGroupingNoneRB
@@ -711,7 +715,7 @@
             // entrySpendGroupingByTransactionRB
             // 
             this.entrySpendGroupingByTransactionRB.AutoSize = true;
-            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(76, 3);
+            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 35);
             this.entrySpendGroupingByTransactionRB.Name = "entrySpendGroupingByTransactionRB";
             this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
             this.entrySpendGroupingByTransactionRB.TabIndex = 1;
@@ -722,7 +726,7 @@
             // entrySpendGroupingBySessionRB
             // 
             this.entrySpendGroupingBySessionRB.AutoSize = true;
-            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(200, 3);
+            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(3, 67);
             this.entrySpendGroupingBySessionRB.Name = "entrySpendGroupingBySessionRB";
             this.entrySpendGroupingBySessionRB.Size = new System.Drawing.Size(83, 26);
             this.entrySpendGroupingBySessionRB.TabIndex = 2;
@@ -733,7 +737,7 @@
             // entrySpendGroupingByDayRB
             // 
             this.entrySpendGroupingByDayRB.AutoSize = true;
-            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(289, 3);
+            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(3, 99);
             this.entrySpendGroupingByDayRB.Name = "entrySpendGroupingByDayRB";
             this.entrySpendGroupingByDayRB.Size = new System.Drawing.Size(55, 26);
             this.entrySpendGroupingByDayRB.TabIndex = 3;
@@ -744,7 +748,7 @@
             // entrySpendGroupingEntryPeriodRB
             // 
             this.entrySpendGroupingEntryPeriodRB.AutoSize = true;
-            this.entrySpendGroupingEntryPeriodRB.Location = new System.Drawing.Point(350, 3);
+            this.entrySpendGroupingEntryPeriodRB.Location = new System.Drawing.Point(3, 131);
             this.entrySpendGroupingEntryPeriodRB.Name = "entrySpendGroupingEntryPeriodRB";
             this.entrySpendGroupingEntryPeriodRB.Size = new System.Drawing.Size(121, 26);
             this.entrySpendGroupingEntryPeriodRB.TabIndex = 3;
@@ -1173,6 +1177,20 @@
             this.panel1.Size = new System.Drawing.Size(366, 37);
             this.panel1.TabIndex = 25;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(11, 270);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(368, 91);
+            this.panel2.TabIndex = 40;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(383, 87);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(298, 100);
+            this.panel3.TabIndex = 41;
+            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1316,5 +1334,7 @@
         private System.Windows.Forms.ListView eventExamplesLV;
         private System.Windows.Forms.Button testEventsBtn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

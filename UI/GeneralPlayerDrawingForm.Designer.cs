@@ -112,6 +112,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -282,7 +283,7 @@
             this.maximumDrawsPerPlayerLbl.Name = "maximumDrawsPerPlayerLbl";
             this.maximumDrawsPerPlayerLbl.Size = new System.Drawing.Size(240, 22);
             this.maximumDrawsPerPlayerLbl.TabIndex = 27;
-            this.maximumDrawsPerPlayerLbl.Text = "Maximum draws per player";
+            this.maximumDrawsPerPlayerLbl.Text = "Maximum wins per player";
             // 
             // maximumDrawsPerPlayerTxt
             // 
@@ -311,17 +312,17 @@
             this.drawingEntriesDrawnLbl.Name = "drawingEntriesDrawnLbl";
             this.drawingEntriesDrawnLbl.Size = new System.Drawing.Size(240, 22);
             this.drawingEntriesDrawnLbl.TabIndex = 25;
-            this.drawingEntriesDrawnLbl.Text = "Entries drawn";
+            this.drawingEntriesDrawnLbl.Text = "Number of Winners";
             // 
             // drawingDescriptionTxt
             // 
             this.drawingDescriptionTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingDescriptionTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawingDescriptionTxt.Location = new System.Drawing.Point(247, 14);
+            this.drawingDescriptionTxt.Location = new System.Drawing.Point(252, 14);
             this.drawingDescriptionTxt.Multiline = true;
             this.drawingDescriptionTxt.Name = "drawingDescriptionTxt";
-            this.drawingDescriptionTxt.Size = new System.Drawing.Size(427, 100);
+            this.drawingDescriptionTxt.Size = new System.Drawing.Size(423, 100);
             this.drawingDescriptionTxt.TabIndex = 20;
             // 
             // entryLimitEventLbl
@@ -331,7 +332,7 @@
             this.entryLimitEventLbl.Name = "entryLimitEventLbl";
             this.entryLimitEventLbl.Size = new System.Drawing.Size(240, 22);
             this.entryLimitEventLbl.TabIndex = 15;
-            this.entryLimitEventLbl.Text = "Max entries per player";
+            this.entryLimitEventLbl.Text = "Maximum entries per player";
             // 
             // entryLimitEventTxt
             // 
@@ -366,22 +367,22 @@
             // 
             this.playerPresenceRequiredChk.AutoSize = true;
             this.playerPresenceRequiredChk.BackColor = System.Drawing.Color.Transparent;
-            this.playerPresenceRequiredChk.Location = new System.Drawing.Point(10, 280);
+            this.playerPresenceRequiredChk.Location = new System.Drawing.Point(10, 252);
             this.playerPresenceRequiredChk.Name = "playerPresenceRequiredChk";
-            this.playerPresenceRequiredChk.Size = new System.Drawing.Size(200, 26);
+            this.playerPresenceRequiredChk.Size = new System.Drawing.Size(254, 26);
             this.playerPresenceRequiredChk.TabIndex = 24;
-            this.playerPresenceRequiredChk.Text = "Player must be present";
+            this.playerPresenceRequiredChk.Text = "Player must be present to win";
             this.playerPresenceRequiredChk.UseVisualStyleBackColor = false;
             // 
             // showEntryCountOnReceiptsChk
             // 
             this.showEntryCountOnReceiptsChk.AutoSize = true;
             this.showEntryCountOnReceiptsChk.BackColor = System.Drawing.Color.Transparent;
-            this.showEntryCountOnReceiptsChk.Location = new System.Drawing.Point(10, 248);
+            this.showEntryCountOnReceiptsChk.Location = new System.Drawing.Point(10, 291);
             this.showEntryCountOnReceiptsChk.Name = "showEntryCountOnReceiptsChk";
-            this.showEntryCountOnReceiptsChk.Size = new System.Drawing.Size(252, 26);
+            this.showEntryCountOnReceiptsChk.Size = new System.Drawing.Size(291, 26);
             this.showEntryCountOnReceiptsChk.TabIndex = 16;
-            this.showEntryCountOnReceiptsChk.Text = "Show entry count on receipts";
+            this.showEntryCountOnReceiptsChk.Text = "Print player entry count on receipt";
             this.showEntryCountOnReceiptsChk.UseVisualStyleBackColor = false;
             // 
             // minimumEntriesToRunTxt
@@ -1056,11 +1057,11 @@
             this.revertDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.revertDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.revertDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(396, 560);
+            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(14, 560);
             this.revertDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.revertDrawingChangesBtn.Name = "revertDrawingChangesBtn";
             this.revertDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.revertDrawingChangesBtn.Size = new System.Drawing.Size(152, 40);
+            this.revertDrawingChangesBtn.Size = new System.Drawing.Size(153, 40);
             this.revertDrawingChangesBtn.TabIndex = 10;
             this.revertDrawingChangesBtn.Text = "Revert";
             this.revertDrawingChangesBtn.UseVisualStyleBackColor = false;
@@ -1101,7 +1102,7 @@
             this.saveDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.saveDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.saveDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.saveDrawingChangesBtn.Location = new System.Drawing.Point(14, 560);
+            this.saveDrawingChangesBtn.Location = new System.Drawing.Point(395, 560);
             this.saveDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.saveDrawingChangesBtn.Name = "saveDrawingChangesBtn";
             this.saveDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1156,7 +1157,7 @@
             // 
             this.testEventsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.testEventsBtn.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testEventsBtn.Location = new System.Drawing.Point(278, 644);
+            this.testEventsBtn.Location = new System.Drawing.Point(312, 633);
             this.testEventsBtn.Name = "testEventsBtn";
             this.testEventsBtn.Size = new System.Drawing.Size(131, 27);
             this.testEventsBtn.TabIndex = 24;
@@ -1164,11 +1165,20 @@
             this.testEventsBtn.UseVisualStyleBackColor = true;
             this.testEventsBtn.Click += new System.EventHandler(this.testEventsBtn_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(302, 630);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(366, 37);
+            this.panel1.TabIndex = 25;
+            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(1018, 678);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.testEventsBtn);
             this.Controls.Add(this.copyDrawingBtn);
             this.Controls.Add(this.closeBtn);
@@ -1305,5 +1315,6 @@
         private System.Windows.Forms.Label entryPeriodLbl;
         private System.Windows.Forms.ListView eventExamplesLV;
         private System.Windows.Forms.Button testEventsBtn;
+        private System.Windows.Forms.Panel panel1;
     }
 }

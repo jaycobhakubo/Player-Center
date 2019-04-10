@@ -139,7 +139,7 @@
             this.drawingsLV.Location = new System.Drawing.Point(10, 40);
             this.drawingsLV.MultiSelect = false;
             this.drawingsLV.Name = "drawingsLV";
-            this.drawingsLV.Size = new System.Drawing.Size(263, 454);
+            this.drawingsLV.Size = new System.Drawing.Size(263, 482);
             this.drawingsLV.TabIndex = 0;
             this.drawingsLV.UseCompatibleStateImageBehavior = false;
             this.drawingsLV.View = System.Windows.Forms.View.Details;
@@ -163,11 +163,11 @@
             this.newDrawingBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.newDrawingBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.newDrawingBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.newDrawingBtn.Location = new System.Drawing.Point(10, 504);
+            this.newDrawingBtn.Location = new System.Drawing.Point(10, 539);
             this.newDrawingBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.newDrawingBtn.Name = "newDrawingBtn";
             this.newDrawingBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.newDrawingBtn.Size = new System.Drawing.Size(263, 50);
+            this.newDrawingBtn.Size = new System.Drawing.Size(260, 40);
             this.newDrawingBtn.TabIndex = 13;
             this.newDrawingBtn.Text = "New";
             this.newDrawingBtn.UseVisualStyleBackColor = false;
@@ -182,11 +182,11 @@
             this.editDrawingBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.editDrawingBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.editDrawingBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.editDrawingBtn.Location = new System.Drawing.Point(10, 616);
+            this.editDrawingBtn.Location = new System.Drawing.Point(10, 632);
             this.editDrawingBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.editDrawingBtn.Name = "editDrawingBtn";
             this.editDrawingBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.editDrawingBtn.Size = new System.Drawing.Size(263, 50);
+            this.editDrawingBtn.Size = new System.Drawing.Size(260, 40);
             this.editDrawingBtn.TabIndex = 14;
             this.editDrawingBtn.Text = "Edit";
             this.editDrawingBtn.UseVisualStyleBackColor = false;
@@ -219,9 +219,9 @@
             this.drawingDetailsGB.Controls.Add(this.drawingNameLbl);
             this.drawingDetailsGB.Controls.Add(this.cancelDrawingChangesBtn);
             this.drawingDetailsGB.Controls.Add(this.saveDrawingChangesBtn);
-            this.drawingDetailsGB.Location = new System.Drawing.Point(279, 12);
+            this.drawingDetailsGB.Location = new System.Drawing.Point(284, 12);
             this.drawingDetailsGB.Name = "drawingDetailsGB";
-            this.drawingDetailsGB.Size = new System.Drawing.Size(727, 590);
+            this.drawingDetailsGB.Size = new System.Drawing.Size(722, 608);
             this.drawingDetailsGB.TabIndex = 16;
             this.drawingDetailsGB.TabStop = false;
             this.drawingDetailsGB.Text = "Details";
@@ -235,10 +235,10 @@
             this.drawingDetailsTC.Controls.Add(this.commonOptionsTP);
             this.drawingDetailsTC.Controls.Add(this.eventTP);
             this.drawingDetailsTC.Controls.Add(this.entryMethodsTP);
-            this.drawingDetailsTC.Location = new System.Drawing.Point(20, 69);
+            this.drawingDetailsTC.Location = new System.Drawing.Point(14, 69);
             this.drawingDetailsTC.Name = "drawingDetailsTC";
             this.drawingDetailsTC.SelectedIndex = 0;
-            this.drawingDetailsTC.Size = new System.Drawing.Size(701, 467);
+            this.drawingDetailsTC.Size = new System.Drawing.Size(695, 484);
             this.drawingDetailsTC.TabIndex = 19;
             // 
             // commonOptionsTP
@@ -260,7 +260,7 @@
             this.commonOptionsTP.Location = new System.Drawing.Point(4, 31);
             this.commonOptionsTP.Name = "commonOptionsTP";
             this.commonOptionsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.commonOptionsTP.Size = new System.Drawing.Size(693, 432);
+            this.commonOptionsTP.Size = new System.Drawing.Size(687, 449);
             this.commonOptionsTP.TabIndex = 0;
             this.commonOptionsTP.Text = "Common";
             // 
@@ -318,10 +318,10 @@
             this.drawingDescriptionTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingDescriptionTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawingDescriptionTxt.Location = new System.Drawing.Point(110, 6);
+            this.drawingDescriptionTxt.Location = new System.Drawing.Point(247, 14);
             this.drawingDescriptionTxt.Multiline = true;
             this.drawingDescriptionTxt.Name = "drawingDescriptionTxt";
-            this.drawingDescriptionTxt.Size = new System.Drawing.Size(577, 108);
+            this.drawingDescriptionTxt.Size = new System.Drawing.Size(427, 100);
             this.drawingDescriptionTxt.TabIndex = 20;
             // 
             // entryLimitEventLbl
@@ -347,7 +347,7 @@
             // drawingDescriptionLbl
             // 
             this.drawingDescriptionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.drawingDescriptionLbl.Location = new System.Drawing.Point(6, 9);
+            this.drawingDescriptionLbl.Location = new System.Drawing.Point(6, 17);
             this.drawingDescriptionLbl.Name = "drawingDescriptionLbl";
             this.drawingDescriptionLbl.Size = new System.Drawing.Size(98, 22);
             this.drawingDescriptionLbl.TabIndex = 20;
@@ -411,7 +411,7 @@
             this.eventTP.Location = new System.Drawing.Point(4, 31);
             this.eventTP.Name = "eventTP";
             this.eventTP.Padding = new System.Windows.Forms.Padding(3);
-            this.eventTP.Size = new System.Drawing.Size(693, 432);
+            this.eventTP.Size = new System.Drawing.Size(687, 452);
             this.eventTP.TabIndex = 1;
             this.eventTP.Text = "Entry Window";
             // 
@@ -559,7 +559,7 @@
             this.entrySessionNumbersCL.Location = new System.Drawing.Point(386, 35);
             this.entrySessionNumbersCL.MultiColumn = true;
             this.entrySessionNumbersCL.Name = "entrySessionNumbersCL";
-            this.entrySessionNumbersCL.Size = new System.Drawing.Size(301, 341);
+            this.entrySessionNumbersCL.Size = new System.Drawing.Size(295, 352);
             this.entrySessionNumbersCL.TabIndex = 0;
             this.entrySessionNumbersCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entrySessionNumbersCL_ItemCheck);
             // 
@@ -617,7 +617,7 @@
             this.entryMethodsTP.Location = new System.Drawing.Point(4, 31);
             this.entryMethodsTP.Name = "entryMethodsTP";
             this.entryMethodsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryMethodsTP.Size = new System.Drawing.Size(693, 432);
+            this.entryMethodsTP.Size = new System.Drawing.Size(687, 452);
             this.entryMethodsTP.TabIndex = 2;
             this.entryMethodsTP.Text = "Entry Methods";
             // 
@@ -629,10 +629,10 @@
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.Controls.Add(this.entryVisitsTP);
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
-            this.entryMethodsTC.Location = new System.Drawing.Point(6, 6);
+            this.entryMethodsTC.Location = new System.Drawing.Point(14, 6);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(681, 339);
+            this.entryMethodsTC.Size = new System.Drawing.Size(658, 350);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entrySpendTP
@@ -645,7 +645,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(673, 304);
+            this.entrySpendTP.Size = new System.Drawing.Size(650, 315);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -655,7 +655,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(6, 264);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(6, 275);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -678,7 +678,7 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(350, 215);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(350, 226);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Visible = false;
             // 
@@ -693,7 +693,7 @@
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
             this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(657, 31);
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(634, 31);
             this.entrySpendGroupingFLP.TabIndex = 4;
             // 
             // entrySpendGroupingNoneRB
@@ -758,10 +758,10 @@
             this.entryVisitsTP.Controls.Add(this.addEntryVisitTierBtn);
             this.entryVisitsTP.Controls.Add(this.entryVisitScaleDGV);
             this.entryVisitsTP.Controls.Add(this.entryVisitsTypeFLP);
-            this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
+            this.entryVisitsTP.Location = new System.Drawing.Point(4, 22);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(673, 304);
+            this.entryVisitsTP.Size = new System.Drawing.Size(673, 313);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -771,7 +771,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(6, 264);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(6, 273);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -794,7 +794,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(350, 215);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(350, 224);
             this.entryVisitScaleDGV.TabIndex = 7;
             this.entryVisitScaleDGV.Visible = false;
             // 
@@ -864,10 +864,10 @@
             this.entryPurchasesTP.Controls.Add(this.addEntryPurchaseTierBtn);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseScaleDGV);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseTypeFLP);
-            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 31);
+            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 22);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(673, 304);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(673, 313);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -939,7 +939,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(362, 78);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(301, 216);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(301, 225);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -949,7 +949,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(6, 264);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(6, 273);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -972,7 +972,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(350, 180);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(350, 189);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Visible = false;
             // 
@@ -1030,7 +1030,7 @@
             this.drawingActiveChk.AutoSize = true;
             this.drawingActiveChk.BackColor = System.Drawing.Color.Transparent;
             this.drawingActiveChk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawingActiveChk.Location = new System.Drawing.Point(639, 30);
+            this.drawingActiveChk.Location = new System.Drawing.Point(634, 30);
             this.drawingActiveChk.Name = "drawingActiveChk";
             this.drawingActiveChk.Size = new System.Drawing.Size(77, 26);
             this.drawingActiveChk.TabIndex = 15;
@@ -1044,7 +1044,7 @@
             this.drawingNameTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drawingNameTxt.Location = new System.Drawing.Point(75, 28);
             this.drawingNameTxt.Name = "drawingNameTxt";
-            this.drawingNameTxt.Size = new System.Drawing.Size(558, 26);
+            this.drawingNameTxt.Size = new System.Drawing.Size(553, 26);
             this.drawingNameTxt.TabIndex = 12;
             this.drawingNameTxt.TextChanged += new System.EventHandler(this.drawingNameTxt_TextChanged);
             // 
@@ -1056,11 +1056,11 @@
             this.revertDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.revertDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.revertDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(409, 542);
+            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(396, 560);
             this.revertDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.revertDrawingChangesBtn.Name = "revertDrawingChangesBtn";
             this.revertDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.revertDrawingChangesBtn.Size = new System.Drawing.Size(153, 40);
+            this.revertDrawingChangesBtn.Size = new System.Drawing.Size(152, 40);
             this.revertDrawingChangesBtn.TabIndex = 10;
             this.revertDrawingChangesBtn.Text = "Revert";
             this.revertDrawingChangesBtn.UseVisualStyleBackColor = false;
@@ -1083,11 +1083,11 @@
             this.cancelDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.cancelDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.cancelDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cancelDrawingChangesBtn.Location = new System.Drawing.Point(568, 542);
+            this.cancelDrawingChangesBtn.Location = new System.Drawing.Point(555, 560);
             this.cancelDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.cancelDrawingChangesBtn.Name = "cancelDrawingChangesBtn";
             this.cancelDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.cancelDrawingChangesBtn.Size = new System.Drawing.Size(153, 40);
+            this.cancelDrawingChangesBtn.Size = new System.Drawing.Size(152, 40);
             this.cancelDrawingChangesBtn.TabIndex = 9;
             this.cancelDrawingChangesBtn.Text = "Cancel";
             this.cancelDrawingChangesBtn.UseVisualStyleBackColor = false;
@@ -1101,7 +1101,7 @@
             this.saveDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.saveDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.saveDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.saveDrawingChangesBtn.Location = new System.Drawing.Point(20, 542);
+            this.saveDrawingChangesBtn.Location = new System.Drawing.Point(14, 560);
             this.saveDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.saveDrawingChangesBtn.Name = "saveDrawingChangesBtn";
             this.saveDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1119,11 +1119,11 @@
             this.closeBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.closeBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.closeBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.closeBtn.Location = new System.Drawing.Point(689, 616);
+            this.closeBtn.Location = new System.Drawing.Point(747, 631);
             this.closeBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.closeBtn.Size = new System.Drawing.Size(317, 50);
+            this.closeBtn.Size = new System.Drawing.Size(260, 40);
             this.closeBtn.TabIndex = 17;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = false;
@@ -1138,11 +1138,11 @@
             this.copyDrawingBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.copyDrawingBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.copyDrawingBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.copyDrawingBtn.Location = new System.Drawing.Point(10, 560);
+            this.copyDrawingBtn.Location = new System.Drawing.Point(10, 586);
             this.copyDrawingBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.copyDrawingBtn.Name = "copyDrawingBtn";
             this.copyDrawingBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.copyDrawingBtn.Size = new System.Drawing.Size(263, 50);
+            this.copyDrawingBtn.Size = new System.Drawing.Size(260, 40);
             this.copyDrawingBtn.TabIndex = 19;
             this.copyDrawingBtn.Text = "Copy";
             this.copyDrawingBtn.UseVisualStyleBackColor = false;
@@ -1156,7 +1156,7 @@
             // 
             this.testEventsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.testEventsBtn.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testEventsBtn.Location = new System.Drawing.Point(397, 616);
+            this.testEventsBtn.Location = new System.Drawing.Point(278, 644);
             this.testEventsBtn.Name = "testEventsBtn";
             this.testEventsBtn.Size = new System.Drawing.Size(131, 27);
             this.testEventsBtn.TabIndex = 24;

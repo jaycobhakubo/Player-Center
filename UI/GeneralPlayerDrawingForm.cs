@@ -156,8 +156,9 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
 
             LoadEntrySessionsCheckList();
-
             InitEntryScaleElements();
+            ChangeDateFormatToSavedSpace();
+            HideOrShowRepeatsPerCheckedStatus();
 
             if(!c_enablePurchaseUI)
                 entryMethodsTC.TabPages.Remove(entryPurchasesTP);
@@ -170,6 +171,30 @@ namespace GTI.Modules.PlayerCenter.UI
             LoadGeneralDrawings();
 
             ToggleEditMode(false);
+        }
+
+        private void ChangeDateFormatToSavedSpace()
+        {
+            initialEventEntryPeriodBeginDTP.Format = DateTimePickerFormat.Custom;
+            initialEventEntryPeriodBeginDTP.CustomFormat = "ddd, MMM dd, yyyy";
+            initialEventEntryPeriodEndDTP.Format = DateTimePickerFormat.Custom;
+            initialEventEntryPeriodEndDTP.CustomFormat = "ddd, MMM dd, yyyy";
+            initialEventScheduledForDTP.Format = DateTimePickerFormat.Custom;
+            initialEventScheduledForDTP.CustomFormat = "ddd, MMM dd, yyyy";
+        }
+
+        private void HideOrShowRepeatsPerCheckedStatus()
+        {
+            if (eventRepeatsChk.Checked)
+            {
+                m_pnlHideRepeats.Visible = false;
+                m_pnlHideRepeats.SendToBack();
+            }
+            else
+            {
+                m_pnlHideRepeats.Visible = true;
+                m_pnlHideRepeats.BringToFront();
+            }
         }
 
         private void InitEntryScaleElements()
@@ -436,7 +461,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             try
             {
-                var inactiveFont = new Font(drawingsLV.Font, FontStyle.Bold | FontStyle.Italic);
+                var inactiveFont = new Font(drawingsLV.Font, FontStyle.Bold | /*FontStyle.Italic*/FontStyle.Regular);
                 drawingsLV.Columns.Clear();
                 //drawingsLV.Columns.Add("Name");
                 ColumnHeader columnHeaderShowOnlyThis = new ColumnHeader();
@@ -1288,6 +1313,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void eventRepeatsChk_CheckedChanged(object sender, EventArgs e)
         {
+            HideOrShowRepeatsPerCheckedStatus();
             eventRepeatDetailsPnl.Enabled = eventRepeatsChk.Checked;
             eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
             eventRepeatIntervalCB_SelectedIndexChanged(null, null);

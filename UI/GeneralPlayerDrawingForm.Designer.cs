@@ -51,26 +51,27 @@
             this.showEntryCountOnReceiptsChk = new System.Windows.Forms.CheckBox();
             this.minimumEntriesToRunTxt = new System.Windows.Forms.TextBox();
             this.eventTP = new System.Windows.Forms.TabPage();
-            this.m_pnlHideRepeats = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.eventExamplesLV = new System.Windows.Forms.ListView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.entryPeriodLbl = new System.Windows.Forms.Label();
+            this.initialEventEntryPeriodEndDTP = new System.Windows.Forms.DateTimePicker();
+            this.initialEventEntryPeriodEndLbl = new System.Windows.Forms.Label();
+            this.initialEventEntryPeriodBeginLbl = new System.Windows.Forms.Label();
+            this.initialEventEntryPeriodBeginDTP = new System.Windows.Forms.DateTimePicker();
+            this.entrySessionNumbersCL = new System.Windows.Forms.CheckedListBox();
+            this.entrySessionsLbl = new System.Windows.Forms.Label();
             this.initialEventScheduledForLbl = new System.Windows.Forms.Label();
-            this.eventWindowExamplesLbl = new System.Windows.Forms.Label();
-            this.initialEventScheduledForDTP = new System.Windows.Forms.DateTimePicker();
+            this.m_pnlHideRepeats = new System.Windows.Forms.Panel();
+            this.eventRepeatsChk = new System.Windows.Forms.CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.eventRepeatDetailsPnl = new System.Windows.Forms.Panel();
             this.eventRepeatIncrementTxt = new System.Windows.Forms.TextBox();
             this.eventRepetitionRateLbl = new System.Windows.Forms.Label();
             this.eventRepeatIntervalCB = new System.Windows.Forms.ComboBox();
             this.eventRepetitionEndsDTP = new System.Windows.Forms.DateTimePicker();
             this.eventRepetitionEndsLbl = new System.Windows.Forms.Label();
-            this.entrySessionsLbl = new System.Windows.Forms.Label();
-            this.entrySessionNumbersCL = new System.Windows.Forms.CheckedListBox();
-            this.initialEventEntryPeriodBeginDTP = new System.Windows.Forms.DateTimePicker();
-            this.initialEventEntryPeriodBeginLbl = new System.Windows.Forms.Label();
-            this.initialEventEntryPeriodEndLbl = new System.Windows.Forms.Label();
-            this.initialEventEntryPeriodEndDTP = new System.Windows.Forms.DateTimePicker();
-            this.eventRepeatsChk = new System.Windows.Forms.CheckBox();
+            this.eventExamplesLV = new System.Windows.Forms.ListView();
+            this.initialEventScheduledForDTP = new System.Windows.Forms.DateTimePicker();
+            this.eventWindowExamplesLbl = new System.Windows.Forms.Label();
             this.entryMethodsTP = new System.Windows.Forms.TabPage();
             this.entryMethodsTC = new System.Windows.Forms.TabControl();
             this.entrySpendTP = new System.Windows.Forms.TabPage();
@@ -115,11 +116,14 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
             this.eventTP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.eventRepeatDetailsPnl.SuspendLayout();
             this.entryMethodsTP.SuspendLayout();
             this.entryMethodsTC.SuspendLayout();
@@ -134,10 +138,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.entryPurchaseScaleDGV)).BeginInit();
             this.entryPurchaseTypeFLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // drawingsLV
@@ -413,29 +413,35 @@
             this.eventTP.TabIndex = 1;
             this.eventTP.Text = "Scheduling";
             // 
-            // m_pnlHideRepeats
+            // splitContainer1
             // 
-            this.m_pnlHideRepeats.Location = new System.Drawing.Point(31, 107);
-            this.m_pnlHideRepeats.Name = "m_pnlHideRepeats";
-            this.m_pnlHideRepeats.Size = new System.Drawing.Size(304, 106);
-            this.m_pnlHideRepeats.TabIndex = 41;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // panel2
+            // splitContainer1.Panel1
             // 
-            this.panel2.Location = new System.Drawing.Point(14, 326);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(278, 78);
-            this.panel2.TabIndex = 40;
+            this.splitContainer1.Panel1.Controls.Add(this.entryPeriodLbl);
+            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndDTP);
+            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndLbl);
+            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodBeginLbl);
+            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodBeginDTP);
+            this.splitContainer1.Panel1.Controls.Add(this.entrySessionNumbersCL);
+            this.splitContainer1.Panel1.Controls.Add(this.entrySessionsLbl);
             // 
-            // eventExamplesLV
+            // splitContainer1.Panel2
             // 
-            this.eventExamplesLV.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventExamplesLV.Location = new System.Drawing.Point(21, 353);
-            this.eventExamplesLV.Name = "eventExamplesLV";
-            this.eventExamplesLV.Size = new System.Drawing.Size(242, 46);
-            this.eventExamplesLV.TabIndex = 39;
-            this.eventExamplesLV.UseCompatibleStateImageBehavior = false;
-            this.eventExamplesLV.View = System.Windows.Forms.View.Details;
+            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForLbl);
+            this.splitContainer1.Panel2.Controls.Add(this.m_pnlHideRepeats);
+            this.splitContainer1.Panel2.Controls.Add(this.eventRepeatsChk);
+            this.splitContainer1.Panel2.Controls.Add(this.panel2);
+            this.splitContainer1.Panel2.Controls.Add(this.eventRepeatDetailsPnl);
+            this.splitContainer1.Panel2.Controls.Add(this.eventExamplesLV);
+            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForDTP);
+            this.splitContainer1.Panel2.Controls.Add(this.eventWindowExamplesLbl);
+            this.splitContainer1.Size = new System.Drawing.Size(681, 443);
+            this.splitContainer1.SplitterDistance = 340;
+            this.splitContainer1.TabIndex = 42;
             // 
             // entryPeriodLbl
             // 
@@ -446,6 +452,66 @@
             this.entryPeriodLbl.TabIndex = 37;
             this.entryPeriodLbl.Text = "Entry period";
             // 
+            // initialEventEntryPeriodEndDTP
+            // 
+            this.initialEventEntryPeriodEndDTP.CustomFormat = "ddd dd MMM yyyy";
+            this.initialEventEntryPeriodEndDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialEventEntryPeriodEndDTP.Location = new System.Drawing.Point(141, 75);
+            this.initialEventEntryPeriodEndDTP.Name = "initialEventEntryPeriodEndDTP";
+            this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(192, 26);
+            this.initialEventEntryPeriodEndDTP.TabIndex = 23;
+            this.initialEventEntryPeriodEndDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodEndDTP_ValueChanged);
+            // 
+            // initialEventEntryPeriodEndLbl
+            // 
+            this.initialEventEntryPeriodEndLbl.BackColor = System.Drawing.Color.Transparent;
+            this.initialEventEntryPeriodEndLbl.Location = new System.Drawing.Point(44, 79);
+            this.initialEventEntryPeriodEndLbl.Name = "initialEventEntryPeriodEndLbl";
+            this.initialEventEntryPeriodEndLbl.Size = new System.Drawing.Size(54, 22);
+            this.initialEventEntryPeriodEndLbl.TabIndex = 24;
+            this.initialEventEntryPeriodEndLbl.Text = "Ends";
+            // 
+            // initialEventEntryPeriodBeginLbl
+            // 
+            this.initialEventEntryPeriodBeginLbl.BackColor = System.Drawing.Color.Transparent;
+            this.initialEventEntryPeriodBeginLbl.Location = new System.Drawing.Point(44, 47);
+            this.initialEventEntryPeriodBeginLbl.Name = "initialEventEntryPeriodBeginLbl";
+            this.initialEventEntryPeriodBeginLbl.Size = new System.Drawing.Size(60, 22);
+            this.initialEventEntryPeriodBeginLbl.TabIndex = 21;
+            this.initialEventEntryPeriodBeginLbl.Text = "Begins";
+            // 
+            // initialEventEntryPeriodBeginDTP
+            // 
+            this.initialEventEntryPeriodBeginDTP.CustomFormat = "ddd dd MMM yyyy";
+            this.initialEventEntryPeriodBeginDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialEventEntryPeriodBeginDTP.Location = new System.Drawing.Point(143, 43);
+            this.initialEventEntryPeriodBeginDTP.Name = "initialEventEntryPeriodBeginDTP";
+            this.initialEventEntryPeriodBeginDTP.Size = new System.Drawing.Size(190, 26);
+            this.initialEventEntryPeriodBeginDTP.TabIndex = 22;
+            this.initialEventEntryPeriodBeginDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodBeginDTP_ValueChanged);
+            // 
+            // entrySessionNumbersCL
+            // 
+            this.entrySessionNumbersCL.CheckOnClick = true;
+            this.entrySessionNumbersCL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entrySessionNumbersCL.FormattingEnabled = true;
+            this.entrySessionNumbersCL.IntegralHeight = false;
+            this.entrySessionNumbersCL.Location = new System.Drawing.Point(9, 145);
+            this.entrySessionNumbersCL.MultiColumn = true;
+            this.entrySessionNumbersCL.Name = "entrySessionNumbersCL";
+            this.entrySessionNumbersCL.Size = new System.Drawing.Size(324, 214);
+            this.entrySessionNumbersCL.TabIndex = 0;
+            this.entrySessionNumbersCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entrySessionNumbersCL_ItemCheck);
+            // 
+            // entrySessionsLbl
+            // 
+            this.entrySessionsLbl.BackColor = System.Drawing.Color.Transparent;
+            this.entrySessionsLbl.Location = new System.Drawing.Point(6, 123);
+            this.entrySessionsLbl.Name = "entrySessionsLbl";
+            this.entrySessionsLbl.Size = new System.Drawing.Size(112, 22);
+            this.entrySessionsLbl.TabIndex = 30;
+            this.entrySessionsLbl.Text = "Session(s)";
+            // 
             // initialEventScheduledForLbl
             // 
             this.initialEventScheduledForLbl.BackColor = System.Drawing.Color.Transparent;
@@ -455,26 +521,30 @@
             this.initialEventScheduledForLbl.TabIndex = 36;
             this.initialEventScheduledForLbl.Text = "Scheduled for";
             // 
-            // eventWindowExamplesLbl
+            // m_pnlHideRepeats
             // 
-            this.eventWindowExamplesLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventWindowExamplesLbl.Location = new System.Drawing.Point(16, 331);
-            this.eventWindowExamplesLbl.Name = "eventWindowExamplesLbl";
-            this.eventWindowExamplesLbl.Size = new System.Drawing.Size(141, 22);
-            this.eventWindowExamplesLbl.TabIndex = 37;
-            this.eventWindowExamplesLbl.Text = "Event examples";
+            this.m_pnlHideRepeats.Location = new System.Drawing.Point(31, 107);
+            this.m_pnlHideRepeats.Name = "m_pnlHideRepeats";
+            this.m_pnlHideRepeats.Size = new System.Drawing.Size(304, 106);
+            this.m_pnlHideRepeats.TabIndex = 41;
             // 
-            // initialEventScheduledForDTP
+            // eventRepeatsChk
             // 
-            this.initialEventScheduledForDTP.Checked = false;
-            this.initialEventScheduledForDTP.CustomFormat = "ddd dd MMM yyyy";
-            this.initialEventScheduledForDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(133, 12);
-            this.initialEventScheduledForDTP.Name = "initialEventScheduledForDTP";
-            this.initialEventScheduledForDTP.ShowCheckBox = true;
-            this.initialEventScheduledForDTP.Size = new System.Drawing.Size(192, 26);
-            this.initialEventScheduledForDTP.TabIndex = 35;
-            this.initialEventScheduledForDTP.ValueChanged += new System.EventHandler(this.initialEventScheduledForDTP_ValueChanged);
+            this.eventRepeatsChk.AutoSize = true;
+            this.eventRepeatsChk.Location = new System.Drawing.Point(9, 83);
+            this.eventRepeatsChk.Name = "eventRepeatsChk";
+            this.eventRepeatsChk.Size = new System.Drawing.Size(88, 26);
+            this.eventRepeatsChk.TabIndex = 25;
+            this.eventRepeatsChk.Text = "Repeats";
+            this.eventRepeatsChk.UseVisualStyleBackColor = true;
+            this.eventRepeatsChk.CheckedChanged += new System.EventHandler(this.eventRepeatsChk_CheckedChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(14, 326);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(278, 78);
+            this.panel2.TabIndex = 40;
             // 
             // eventRepeatDetailsPnl
             // 
@@ -548,76 +618,36 @@
             this.eventRepetitionEndsLbl.TabIndex = 29;
             this.eventRepetitionEndsLbl.Text = "Until";
             // 
-            // entrySessionsLbl
+            // eventExamplesLV
             // 
-            this.entrySessionsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.entrySessionsLbl.Location = new System.Drawing.Point(6, 123);
-            this.entrySessionsLbl.Name = "entrySessionsLbl";
-            this.entrySessionsLbl.Size = new System.Drawing.Size(112, 22);
-            this.entrySessionsLbl.TabIndex = 30;
-            this.entrySessionsLbl.Text = "Session(s)";
+            this.eventExamplesLV.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eventExamplesLV.Location = new System.Drawing.Point(21, 353);
+            this.eventExamplesLV.Name = "eventExamplesLV";
+            this.eventExamplesLV.Size = new System.Drawing.Size(242, 46);
+            this.eventExamplesLV.TabIndex = 39;
+            this.eventExamplesLV.UseCompatibleStateImageBehavior = false;
+            this.eventExamplesLV.View = System.Windows.Forms.View.Details;
             // 
-            // entrySessionNumbersCL
+            // initialEventScheduledForDTP
             // 
-            this.entrySessionNumbersCL.CheckOnClick = true;
-            this.entrySessionNumbersCL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entrySessionNumbersCL.FormattingEnabled = true;
-            this.entrySessionNumbersCL.IntegralHeight = false;
-            this.entrySessionNumbersCL.Location = new System.Drawing.Point(9, 145);
-            this.entrySessionNumbersCL.MultiColumn = true;
-            this.entrySessionNumbersCL.Name = "entrySessionNumbersCL";
-            this.entrySessionNumbersCL.Size = new System.Drawing.Size(324, 214);
-            this.entrySessionNumbersCL.TabIndex = 0;
-            this.entrySessionNumbersCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entrySessionNumbersCL_ItemCheck);
+            this.initialEventScheduledForDTP.Checked = false;
+            this.initialEventScheduledForDTP.CustomFormat = "ddd dd MMM yyyy";
+            this.initialEventScheduledForDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(133, 12);
+            this.initialEventScheduledForDTP.Name = "initialEventScheduledForDTP";
+            this.initialEventScheduledForDTP.ShowCheckBox = true;
+            this.initialEventScheduledForDTP.Size = new System.Drawing.Size(192, 26);
+            this.initialEventScheduledForDTP.TabIndex = 35;
+            this.initialEventScheduledForDTP.ValueChanged += new System.EventHandler(this.initialEventScheduledForDTP_ValueChanged);
             // 
-            // initialEventEntryPeriodBeginDTP
+            // eventWindowExamplesLbl
             // 
-            this.initialEventEntryPeriodBeginDTP.CustomFormat = "ddd dd MMM yyyy";
-            this.initialEventEntryPeriodBeginDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventEntryPeriodBeginDTP.Location = new System.Drawing.Point(143, 43);
-            this.initialEventEntryPeriodBeginDTP.Name = "initialEventEntryPeriodBeginDTP";
-            this.initialEventEntryPeriodBeginDTP.Size = new System.Drawing.Size(190, 26);
-            this.initialEventEntryPeriodBeginDTP.TabIndex = 22;
-            this.initialEventEntryPeriodBeginDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodBeginDTP_ValueChanged);
-            // 
-            // initialEventEntryPeriodBeginLbl
-            // 
-            this.initialEventEntryPeriodBeginLbl.BackColor = System.Drawing.Color.Transparent;
-            this.initialEventEntryPeriodBeginLbl.Location = new System.Drawing.Point(44, 47);
-            this.initialEventEntryPeriodBeginLbl.Name = "initialEventEntryPeriodBeginLbl";
-            this.initialEventEntryPeriodBeginLbl.Size = new System.Drawing.Size(60, 22);
-            this.initialEventEntryPeriodBeginLbl.TabIndex = 21;
-            this.initialEventEntryPeriodBeginLbl.Text = "Begins";
-            // 
-            // initialEventEntryPeriodEndLbl
-            // 
-            this.initialEventEntryPeriodEndLbl.BackColor = System.Drawing.Color.Transparent;
-            this.initialEventEntryPeriodEndLbl.Location = new System.Drawing.Point(44, 79);
-            this.initialEventEntryPeriodEndLbl.Name = "initialEventEntryPeriodEndLbl";
-            this.initialEventEntryPeriodEndLbl.Size = new System.Drawing.Size(54, 22);
-            this.initialEventEntryPeriodEndLbl.TabIndex = 24;
-            this.initialEventEntryPeriodEndLbl.Text = "Ends";
-            // 
-            // initialEventEntryPeriodEndDTP
-            // 
-            this.initialEventEntryPeriodEndDTP.CustomFormat = "ddd dd MMM yyyy";
-            this.initialEventEntryPeriodEndDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventEntryPeriodEndDTP.Location = new System.Drawing.Point(141, 75);
-            this.initialEventEntryPeriodEndDTP.Name = "initialEventEntryPeriodEndDTP";
-            this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(192, 26);
-            this.initialEventEntryPeriodEndDTP.TabIndex = 23;
-            this.initialEventEntryPeriodEndDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodEndDTP_ValueChanged);
-            // 
-            // eventRepeatsChk
-            // 
-            this.eventRepeatsChk.AutoSize = true;
-            this.eventRepeatsChk.Location = new System.Drawing.Point(9, 83);
-            this.eventRepeatsChk.Name = "eventRepeatsChk";
-            this.eventRepeatsChk.Size = new System.Drawing.Size(88, 26);
-            this.eventRepeatsChk.TabIndex = 25;
-            this.eventRepeatsChk.Text = "Repeats";
-            this.eventRepeatsChk.UseVisualStyleBackColor = true;
-            this.eventRepeatsChk.CheckedChanged += new System.EventHandler(this.eventRepeatsChk_CheckedChanged);
+            this.eventWindowExamplesLbl.BackColor = System.Drawing.Color.Transparent;
+            this.eventWindowExamplesLbl.Location = new System.Drawing.Point(16, 331);
+            this.eventWindowExamplesLbl.Name = "eventWindowExamplesLbl";
+            this.eventWindowExamplesLbl.Size = new System.Drawing.Size(141, 22);
+            this.eventWindowExamplesLbl.TabIndex = 37;
+            this.eventWindowExamplesLbl.Text = "Event examples";
             // 
             // entryMethodsTP
             // 
@@ -641,7 +671,7 @@
             this.entryMethodsTC.Location = new System.Drawing.Point(14, 6);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(658, 338);
+            this.entryMethodsTC.Size = new System.Drawing.Size(658, 320);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entrySpendTP
@@ -654,7 +684,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(650, 303);
+            this.entrySpendTP.Size = new System.Drawing.Size(650, 285);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -664,7 +694,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(561, 263);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(561, 245);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -678,19 +708,23 @@
             // 
             this.entrySpendScaleDGV.AllowUserToAddRows = false;
             this.entrySpendScaleDGV.AllowUserToDeleteRows = false;
-            this.entrySpendScaleDGV.AllowUserToResizeColumns = false;
             this.entrySpendScaleDGV.AllowUserToResizeRows = false;
             this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 14);
             this.entrySpendScaleDGV.MultiSelect = false;
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(486, 239);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(486, 221);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Visible = false;
+            this.entrySpendScaleDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellClick);
+            this.entrySpendScaleDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellLeave);
+            this.entrySpendScaleDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellValueChanged);
+            this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
+            this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
             // 
             // entrySpendGroupingFLP
             // 
@@ -703,7 +737,7 @@
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
             this.entrySpendGroupingFLP.Location = new System.Drawing.Point(12, 14);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(131, 266);
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(131, 241);
             this.entrySpendGroupingFLP.TabIndex = 4;
             // 
             // entrySpendGroupingNoneRB
@@ -768,7 +802,7 @@
             this.entryVisitsTP.Controls.Add(this.addEntryVisitTierBtn);
             this.entryVisitsTP.Controls.Add(this.entryVisitScaleDGV);
             this.entryVisitsTP.Controls.Add(this.entryVisitsTypeFLP);
-            this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
+            this.entryVisitsTP.Location = new System.Drawing.Point(4, 22);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
             this.entryVisitsTP.Size = new System.Drawing.Size(650, 303);
@@ -874,7 +908,7 @@
             this.entryPurchasesTP.Controls.Add(this.addEntryPurchaseTierBtn);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseScaleDGV);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseTypeFLP);
-            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 31);
+            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 22);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
             this.entryPurchasesTP.Size = new System.Drawing.Size(650, 303);
@@ -1182,36 +1216,6 @@
             this.panel1.Size = new System.Drawing.Size(366, 37);
             this.panel1.TabIndex = 25;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.entryPeriodLbl);
-            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndDTP);
-            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndLbl);
-            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodBeginLbl);
-            this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodBeginDTP);
-            this.splitContainer1.Panel1.Controls.Add(this.entrySessionNumbersCL);
-            this.splitContainer1.Panel1.Controls.Add(this.entrySessionsLbl);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForLbl);
-            this.splitContainer1.Panel2.Controls.Add(this.m_pnlHideRepeats);
-            this.splitContainer1.Panel2.Controls.Add(this.eventRepeatsChk);
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
-            this.splitContainer1.Panel2.Controls.Add(this.eventRepeatDetailsPnl);
-            this.splitContainer1.Panel2.Controls.Add(this.eventExamplesLV);
-            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForDTP);
-            this.splitContainer1.Panel2.Controls.Add(this.eventWindowExamplesLbl);
-            this.splitContainer1.Size = new System.Drawing.Size(681, 443);
-            this.splitContainer1.SplitterDistance = 340;
-            this.splitContainer1.TabIndex = 42;
-            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1244,6 +1248,11 @@
             this.commonOptionsTP.ResumeLayout(false);
             this.commonOptionsTP.PerformLayout();
             this.eventTP.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.eventRepeatDetailsPnl.ResumeLayout(false);
             this.eventRepeatDetailsPnl.PerformLayout();
             this.entryMethodsTP.ResumeLayout(false);
@@ -1263,11 +1272,6 @@
             this.entryPurchaseTypeFLP.ResumeLayout(false);
             this.entryPurchaseTypeFLP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

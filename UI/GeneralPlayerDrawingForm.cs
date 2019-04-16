@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GTI.Modules.Shared;
 using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
+using System.Text.RegularExpressions;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -197,6 +198,15 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        private void SetHeaderWidth(DataGridView DGV)
+        {
+            for (int i = 0; i != 3; i++)
+            {
+                DGV.Columns[i].Width = 300;
+            }
+        }
+
+        #region A
         private void InitEntryScaleElements()
         {
             m_entrySpendScaleDT = new DataTable();
@@ -234,12 +244,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 dgv.CellContentClick += entryScaleDGV_CellContentClick;
                 dgv.CellValueChanged += entryScaleDGV_CellValueChanged;
+                dgv.CellClick += entrySpendScaleDGV_CellClick;
+              
                 dgv.RowsRemoved += entryScaleDGV_RowsRemoved;
                 dgv.RowsAdded += entryScaleDGV_RowsAdded;
                 dgv.Leave += entryScaleDGV_Leave;
             }
 
         }
+
+        #endregion
+
+
 
         void entryScaleDGV_Leave(object sender, EventArgs e)
         {
@@ -250,31 +266,40 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void entryScaleDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var dgv = sender as DataGridView;
+            var dgv = sender as DataGridView;         
             var col = dgv.Columns[e.ColumnIndex];
 
-            if(col is DataGridViewButtonColumn && col.Name == "removeDGVBC" && e.RowIndex < dgv.Rows.Count)
+            if (col is DataGridViewButtonColumn && col.Name == "removeDGVBC" && e.RowIndex < dgv.Rows.Count)
                 dgv.Rows.RemoveAt(e.RowIndex);
         }
 
         void entryScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
+        {     
             if(m_loadingDetails)
                 return;
-            CheckEntryScale(sender as DataGridView);
+            //Get the current cell
+ 
+
+        //    CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
         }
 
+      
         void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             if(m_loadingDetails)
                 return;
-            CheckEntryScale(sender as DataGridView);
+                CheckEntryScale(sender as DataGridView);
+      
+         
+          
         }
 
-        void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {
             if(m_loadingDetails)
                 return;
+
+            
             CheckEntryScale(sender as DataGridView);
         }
 
@@ -1540,5 +1565,175 @@ namespace GTI.Modules.PlayerCenter.UI
             f.Dispose();
         }
 
+        //private void entryScaleDGV_CellValidating(Object sender, DataGridViewCellValidatingEventArgs e)
+        //{
+        //    //var ddd = (DataGridView)sender;
+        //    //var ttt = ddd.Columns[e.ColumnIndex].HeaderText;
+        //    //var ii = "Hello";
+        //}
+
+
+        private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
+        {                 
+            DataGridView dgv = (DataGridView)sender;
+            DataGridViewRow dgvr = dgv.Rows[e.RowIndex];
+        
+            for (int i = 1; i < 4; i++)
+            {
+                var currentValue = entrySpendScaleDGV.Rows[e.RowIndex].Cells[i].Value.ToString();
+                if (currentValue == string.Empty || currentValue == null)
+                {
+                    if (i != 3)
+                    {
+                        dgv.Rows[e.RowIndex].Cells[i].Value = "00.00";
+                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        dgv.Rows[e.RowIndex].Cells[i].Value = "0";
+                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
+                    }
+                }
+            }
+        }
+
+        private bool checkRowItemIfValid()
+        {
+            bool result = false;
+
+            return result; 
+        }
+
+
+        private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var f = 1;                       
+        }
+
+        private void SetIndicatorForEntrty()
+        {
+                         
+        }
+
+        private Type m_selectedColumnDataType;
+
+        private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;//Current DataGridView
+            DataGridViewColumn dgvc = dgv.Columns[e.ColumnIndex];
+            m_selectedColumnDataType = dgvc.ValueType;
+
+            DataGridViewRow dgvr = dgv.Rows[e.RowIndex];
+            if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
+            {
+            dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            }
+        }
+
+
+        //LIKE KEYPRESS WILL TRIGGER WHEN YOU HIT ANY KEY ON THE CONTROL 
+        //How do we cancel the entry
+        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {          
+            if (m_selectedColumnDataType == typeof(int))
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
+                e.Control.KeyPress += new KeyPressEventHandler(IntOnly);
+            }
+            else if (m_selectedColumnDataType == typeof(decimal))
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
+                e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
+            }
+
+            CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
+
+        }
+
+        //NOT WORKING
+        //private void entrySpendScaleDGV_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    var f = 1;
+
+        //}
+
+        //WILL TRIGGER WHEN YOU LEAVE THE CELL
+        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var f = 1;
+
+        }
+
+
+        private void IntOnly(object sender, KeyPressEventArgs e)
+        {
+            bool result = true;
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                result = false;
+            }
+            if (result)
+            {
+                result = !char.IsDigit(e.KeyChar);
+            }
+
+            e.Handled = result;
+        }
+
+        private void DecimalOnly(object sender, KeyPressEventArgs e)
+        {
+
+            TextBox txtbxValue = new TextBox();
+            if (sender is TextBox)
+            {
+                txtbxValue = (TextBox)sender;
+                bool result = false;
+
+                string x = txtbxValue.Text;
+                if (txtbxValue.SelectionLength > 0)
+                {
+                    int tlen = x.Length - txtbxValue.SelectionLength;
+                    x = x.Substring(0, tlen);
+                }
+
+                int count = x.Split('.').Length - 1;
+
+                if (!char.IsControl(e.KeyChar))
+                {
+                    switch (e.KeyChar)
+                    {
+                        case (char)46://period
+                            //allow 1 decimal point
+                            if (count > 0)
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                result = false;
+                            }
+                            break;
+                        default:
+                            result = !char.IsDigit(e.KeyChar);
+                            break;
+                    }
+                }
+
+                if (e.KeyChar == (char)Keys.Back)
+                {
+                    result = false;
+
+                }
+
+                else if (Regex.IsMatch(x, @"\.\d\d"))
+                {
+                    result = true;
+
+                }
+
+                e.Handled = result;
+
+            }
+        }
     }
 }

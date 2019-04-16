@@ -10,6 +10,7 @@ using GTI.Modules.Shared;
 using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
 using System.Text.RegularExpressions;
 
+
 namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class GeneralPlayerDrawingForm : GradientForm
@@ -71,7 +72,14 @@ namespace GTI.Modules.PlayerCenter.UI
             public SessionNumberListing(Byte sessionNumber)
             {
                 SessionNumber = sessionNumber;
-                DisplayString = String.Format("Session {0}", SessionNumber);
+                if (sessionNumber != 0)
+                {
+                    DisplayString = String.Format("Session {0}", SessionNumber);
+                }
+                else
+                {
+                    DisplayString = String.Format("All Session");
+                }
             }
         }
 
@@ -206,7 +214,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        #region A
+        #region POPULATE DATATABLE TO DATAGRIDVIEW STRUCTURE
         private void InitEntryScaleElements()
         {
             m_entrySpendScaleDT = new DataTable();
@@ -255,7 +263,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
-
+        #region LEAVE
 
         void entryScaleDGV_Leave(object sender, EventArgs e)
         {
@@ -263,6 +271,9 @@ namespace GTI.Modules.PlayerCenter.UI
             if(dgv.IsCurrentCellDirty)
                 dgv.CommitEdit(new DataGridViewDataErrorContexts());
         }
+
+        #endregion
+
 
         private void entryScaleDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -278,9 +289,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
             //Get the current cell
- 
-
-        //    CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
+             CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
         }
 
       
@@ -526,8 +535,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void LoadEntrySessionsCheckList()
         {
-            for(Byte i = 1; i <= 16; ++i)
-                entrySessionNumbersCL.Items.Add(new SessionNumberListing(i));
+            //entrySessionNumbersCL.Items.Add(new  "All Session");
+            for(Byte i = 0; i <= 16; ++i)
+                entrySessionNumbersCL.Items.Add(new SessionNumberListing(i)); 
         }
 
         private void ToggleEditMode(bool enterEditMode)
@@ -1540,22 +1550,70 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             SetError(drawingNameTxt, errMsg);
+        }
+
+
+        private void SetAllItemCheck()
+        {
+            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+
+            for (int i = 1; i != entrySessionNumbersCL.Items.Count; ++i)
+            {
+                entrySessionNumbersCL.SetItemChecked(i, true);
+            }
+
+            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
 
         }
 
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            bool hasChecks = false;
+           // object itemChecked =          
+            if (entrySessionNumbersCL.SelectedIndex == 0)
+            {
+                var t = entrySessionNumbersCL.GetItemChecked(0);
+                if (!t)//Not sure why the value is inverted.
+                {
+                    SetAllItemCheck();
+                }
+                //else
+                //{
+                //    //entrySessionNumbersCL.CheckedItems.Cast()
 
-            if(e == null)
-                hasChecks = entrySessionNumbersCL.CheckedItems.Count > 0;
-            else if (e.NewValue == CheckState.Checked || entrySessionNumbersCL.CheckedItems.Count > 1)
-                hasChecks = true;
+                //   // var tesy = entrySessionNumbersCL.CheckedItems.Cast<ListItem>().Where(l => l.);
+                //    var yesy = entrySessionNumbersCL.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0);
+                //  int count 
+                //    var tesr = entrySessionNumbersCL.CheckedItems.Cast<bool>().Where(l => l.Equals(true));  //Items.Cast<bool>().Where(l => l.Equals(true));
+                //    tesr.Count();
+                //   //If one is not checked except for index 0 the removed the checked on the index 0
+                //   // Lets get all the session first 
 
-            if (hasChecks)
-                SetError(entrySessionsLbl, null);
-            else
-                SetError(entrySessionsLbl, "Drawing should have one or more sessions selected for entries to be accepted.");
+                //}
+                // SetAllItemCheck(); 
+            }
+            else if (entrySessionNumbersCL.SelectedIndex != -1)
+            {
+                var t = !entrySessionNumbersCL.GetItemChecked(entrySessionNumbersCL.SelectedIndex);
+                var HowManyCheckedItem = entrySessionNumbersCL.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();             
+                HowManyCheckedItem = (t == true)? HowManyCheckedItem += 1 : HowManyCheckedItem -= 1;
+
+                var HowManySession = entrySessionNumbersCL.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
+                if (HowManyCheckedItem == HowManySession)
+                {
+                    entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                    entrySessionNumbersCL.SetItemChecked(0, true);
+                    entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                }
+                else
+                {
+                    if (entrySessionNumbersCL.GetItemChecked(0) == true)
+                    {
+                        entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                        entrySessionNumbersCL.SetItemChecked(0, false);
+                        entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                    }
+                }
+            }
         }
 
         private void testEventsBtn_Click(object sender, EventArgs e)
@@ -1571,7 +1629,6 @@ namespace GTI.Modules.PlayerCenter.UI
         //    //var ttt = ddd.Columns[e.ColumnIndex].HeaderText;
         //    //var ii = "Hello";
         //}
-
 
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {                 
@@ -1597,12 +1654,12 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private bool checkRowItemIfValid()
-        {
-            bool result = false;
+        //private bool checkRowItemIfValid()
+        //{
+        //    bool result = false;
 
-            return result; 
-        }
+        //    return result; 
+        //}
 
 
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
@@ -1610,10 +1667,10 @@ namespace GTI.Modules.PlayerCenter.UI
             var f = 1;                       
         }
 
-        private void SetIndicatorForEntrty()
-        {
+        //private void SetIndicatorForEntrty()
+        //{
                          
-        }
+        //}
 
         private Type m_selectedColumnDataType;
 
@@ -1646,7 +1703,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
 
-            CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
+         //   CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
 
         }
 

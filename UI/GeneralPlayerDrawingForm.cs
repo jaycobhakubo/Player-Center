@@ -1563,7 +1563,18 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+        }
 
+        private void SetAllItem_Uncheck()
+        {
+            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+
+            for (int i = 1; i != entrySessionNumbersCL.Items.Count; ++i)
+            {
+                entrySessionNumbersCL.SetItemChecked(i, false);
+            }
+
+            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
         }
 
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -1572,25 +1583,12 @@ namespace GTI.Modules.PlayerCenter.UI
             if (entrySessionNumbersCL.SelectedIndex == 0)
             {
                 var t = entrySessionNumbersCL.GetItemChecked(0);
-                if (!t)//Not sure why the value is inverted.
+                if (!t)
                 {
                     SetAllItemCheck();
                 }
-                //else
-                //{
-                //    //entrySessionNumbersCL.CheckedItems.Cast()
-
-                //   // var tesy = entrySessionNumbersCL.CheckedItems.Cast<ListItem>().Where(l => l.);
-                //    var yesy = entrySessionNumbersCL.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0);
-                //  int count 
-                //    var tesr = entrySessionNumbersCL.CheckedItems.Cast<bool>().Where(l => l.Equals(true));  //Items.Cast<bool>().Where(l => l.Equals(true));
-                //    tesr.Count();
-                //   //If one is not checked except for index 0 the removed the checked on the index 0
-                //   // Lets get all the session first 
-
-                //}
-                // SetAllItemCheck(); 
             }
+
             else if (entrySessionNumbersCL.SelectedIndex != -1)
             {
                 var t = !entrySessionNumbersCL.GetItemChecked(entrySessionNumbersCL.SelectedIndex);
@@ -1621,14 +1619,7 @@ namespace GTI.Modules.PlayerCenter.UI
             var f = new GeneralPlayerDrawingEventsTestForm(m_drawings);
             f.ShowDialog(this);
             f.Dispose();
-        }
-
-        //private void entryScaleDGV_CellValidating(Object sender, DataGridViewCellValidatingEventArgs e)
-        //{
-        //    //var ddd = (DataGridView)sender;
-        //    //var ttt = ddd.Columns[e.ColumnIndex].HeaderText;
-        //    //var ii = "Hello";
-        //}
+        }  
 
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {                 
@@ -1654,23 +1645,11 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        //private bool checkRowItemIfValid()
-        //{
-        //    bool result = false;
-
-        //    return result; 
-        //}
-
-
+        //FOR TESTING PURPOSES will be deleted once work is complete
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             var f = 1;                       
         }
-
-        //private void SetIndicatorForEntrty()
-        //{
-                         
-        //}
 
         private Type m_selectedColumnDataType;
 
@@ -1687,9 +1666,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
-        //LIKE KEYPRESS WILL TRIGGER WHEN YOU HIT ANY KEY ON THE CONTROL 
-        //How do we cancel the entry
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {          
             if (m_selectedColumnDataType == typeof(int))
@@ -1702,23 +1678,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
-
-         //   CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
-
         }
 
-        //NOT WORKING
-        //private void entrySpendScaleDGV_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    var f = 1;
-
-        //}
-
+        //FOR TESTING PURPOSES will be deleted once work is complete
         //WILL TRIGGER WHEN YOU LEAVE THE CELL
         private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             var f = 1;
-
         }
 
 

@@ -1553,25 +1553,16 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        private void SetAllItemCheck()
+        private void SetAllItemCheck(bool check)
         {
             entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
 
             for (int i = 1; i != entrySessionNumbersCL.Items.Count; ++i)
             {
-                entrySessionNumbersCL.SetItemChecked(i, true);
-            }
-
-            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-        }
-
-        private void SetAllItem_Uncheck()
-        {
-            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-
-            for (int i = 1; i != entrySessionNumbersCL.Items.Count; ++i)
-            {
-                entrySessionNumbersCL.SetItemChecked(i, false);
+                if (entrySessionNumbersCL.GetItemChecked(i) != check)
+                {
+                    entrySessionNumbersCL.SetItemChecked(i, check);
+                }
             }
 
             entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
@@ -1579,36 +1570,42 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-           // object itemChecked =          
-            if (entrySessionNumbersCL.SelectedIndex == 0)
-            {
-                var t = entrySessionNumbersCL.GetItemChecked(0);
-                if (!t)
-                {
-                    SetAllItemCheck();
-                }
-            }
 
-            else if (entrySessionNumbersCL.SelectedIndex != -1)
+            if (entrySessionNumbersCL.SelectedIndex != -1)
             {
-                var t = !entrySessionNumbersCL.GetItemChecked(entrySessionNumbersCL.SelectedIndex);
-                var HowManyCheckedItem = entrySessionNumbersCL.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();             
-                HowManyCheckedItem = (t == true)? HowManyCheckedItem += 1 : HowManyCheckedItem -= 1;
+                CheckedListBox chkListBoxCurrent = (CheckedListBox)sender;
+                var numberOfCheckedItem = chkListBoxCurrent.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
+                numberOfCheckedItem = (e.NewValue == CheckState.Checked) ? numberOfCheckedItem += 1 : numberOfCheckedItem -= 1;
+                var tnumOfCurrentSession = chkListBoxCurrent.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
 
-                var HowManySession = entrySessionNumbersCL.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
-                if (HowManyCheckedItem == HowManySession)
+                if (entrySessionNumbersCL.SelectedIndex == 0)
                 {
-                    entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                    entrySessionNumbersCL.SetItemChecked(0, true);
-                    entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        SetAllItemCheck(true);
+                    }
+                    else
+                    {
+                        SetAllItemCheck(false);
+                    }
                 }
-                else
-                {
-                    if (entrySessionNumbersCL.GetItemChecked(0) == true)
+
+                else 
+                {          
+                    if (numberOfCheckedItem == tnumOfCurrentSession)
                     {
                         entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                        entrySessionNumbersCL.SetItemChecked(0, false);
+                        entrySessionNumbersCL.SetItemChecked(0, true);
                         entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                    }
+                    else
+                    {
+                        if (entrySessionNumbersCL.GetItemChecked(0) == true)
+                        {
+                            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                            entrySessionNumbersCL.SetItemChecked(0, false);
+                            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                        }
                     }
                 }
             }

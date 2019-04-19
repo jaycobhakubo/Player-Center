@@ -1644,23 +1644,48 @@ namespace GTI.Modules.PlayerCenter.UI
 
         //FOR TESTING PURPOSES will be deleted once work is complete
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {  
+           
+        }
+
+        private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            var f = 1;                       
+            var dgv = (DataGridView)sender;//Current DataGridView
+            var dgvr = dgv.Rows[e.RowIndex];
+            if (m_selectedColumnDataType == typeof(int))
+            {
+                dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";// string.Empty;
+            }
+            else if(m_selectedColumnDataType == typeof(decimal))
+            {
+                if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
+                {
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";// string.Empty;
+                }
+            }
+        }
+
+        private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var a = 1;
+        }
+
+        //FOR TESTING PURPOSES will be deleted once work is complete
+        //WILL TRIGGER WHEN YOU LEAVE THE CELL
+        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var f = 1;
         }
 
         private Type m_selectedColumnDataType;
 
         private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = (DataGridView)sender;//Current DataGridView
-            DataGridViewColumn dgvc = dgv.Columns[e.ColumnIndex];
-            m_selectedColumnDataType = dgvc.ValueType;
-
-            DataGridViewRow dgvr = dgv.Rows[e.RowIndex];
-            if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
-            {
-            dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-            }
+            var dgv = (DataGridView)sender;//Current DataGridView
+            var dgvc = dgv.Columns[e.ColumnIndex];
+            m_selectedColumnDataType = dgvc.ValueType;       
         }
 
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -1676,14 +1701,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
         }
-
-        //FOR TESTING PURPOSES will be deleted once work is complete
-        //WILL TRIGGER WHEN YOU LEAVE THE CELL
-        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var f = 1;
-        }
-
 
         private void IntOnly(object sender, KeyPressEventArgs e)
         {
@@ -1703,7 +1720,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void DecimalOnly(object sender, KeyPressEventArgs e)
         {
 
-            TextBox txtbxValue = new TextBox();
+            var txtbxValue = new TextBox();
             if (sender is TextBox)
             {
                 txtbxValue = (TextBox)sender;
@@ -1754,6 +1771,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Handled = result;
 
             }
-        }
+        }     
     }
 }

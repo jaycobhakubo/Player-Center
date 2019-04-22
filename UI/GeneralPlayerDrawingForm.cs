@@ -1523,7 +1523,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     }                   
                     eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize)            
+                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);           
                 }
             }
             finally
@@ -1801,7 +1801,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void setEntryMethodBothUI()
         {
-            m_currentTabDisplay = 1;
             entryMethodsTC.Appearance = TabAppearance.Normal;
             entryMethodsTC.ItemSize = new Size(79, 27);
             entryMethodsTC.SizeMode = TabSizeMode.Normal;
@@ -1809,7 +1808,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void hideEntryMethodBothUI()
         {
-            m_currentTabDisplay = 0;
             entryMethodsTC.Appearance = TabAppearance.FlatButtons;
             entryMethodsTC.ItemSize = new Size(0, 1);
             entryMethodsTC.SizeMode = TabSizeMode.Fixed;

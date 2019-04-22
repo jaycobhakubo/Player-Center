@@ -254,7 +254,7 @@
             this.drawingDetailsTC.SelectedIndex = 0;
             this.drawingDetailsTC.Size = new System.Drawing.Size(695, 484);
             this.drawingDetailsTC.TabIndex = 19;
-            this.drawingDetailsTC.SelectedIndexChanged += new System.EventHandler(this.drawingDetailsTC_SelectedIndexChanged);
+
             // 
             // commonOptionsTP
             // 
@@ -736,7 +736,6 @@
             this.entrySpendScaleDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellClick);
             this.entrySpendScaleDGV.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEnter);
             this.entrySpendScaleDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellLeave);
-            this.entrySpendScaleDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellValueChanged);
             this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
             this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
             // 

@@ -222,9 +222,7 @@
     <Compile Include="UI\ActiveStatusEditor.designer.cs">
       <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\MCPFindPlayerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="UI\MCPFindPlayerForm.cs" />
     <Compile Include="UI\MCPFindPlayerForm.Designer.cs">
       <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
     </Compile>

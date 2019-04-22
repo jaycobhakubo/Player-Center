@@ -50,9 +50,9 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.m_cmbxFilterSearchResult = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -94,21 +94,6 @@ namespace GTI.Modules.PlayerCenter.UI
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.SuspendLayout();
             // 
-            // splitContainer4
-            // 
-            this.splitContainer4.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.splitContainer4, "splitContainer4");
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.m_txtbxSearchCategory);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.m_searchButton);
-            resources.ApplyResources(this.splitContainer4.Panel2, "splitContainer4.Panel2");
-            // 
             // m_txtbxSearchCategory
             // 
             this.m_txtbxSearchCategory.BackColor = System.Drawing.Color.White;
@@ -127,6 +112,21 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.UseVisualStyleBackColor = false;
             this.m_searchButton.Click += new System.EventHandler(this.SearchClick);
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.splitContainer4, "splitContainer4");
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.m_txtbxSearchCategory);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.m_searchButton);
+            resources.ApplyResources(this.splitContainer4.Panel2, "splitContainer4.Panel2");
             // 
             // m_cmbxFilterSearchResult
             // 

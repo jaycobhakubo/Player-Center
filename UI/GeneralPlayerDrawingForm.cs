@@ -1616,7 +1616,9 @@ namespace GTI.Modules.PlayerCenter.UI
             var f = new GeneralPlayerDrawingEventsTestForm(m_drawings);
             f.ShowDialog(this);
             f.Dispose();
-        }  
+        }
+
+        #region IN
 
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {                 
@@ -1630,7 +1632,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (i != 3)
                     {
-                        dgv.Rows[e.RowIndex].Cells[i].Value = "00.00";
+                        dgv.Rows[e.RowIndex].Cells[i].Value = "00.00";//If this is decimal how did you add this?
                         dgvr.Cells[i].Style.ForeColor = Color.LightGray;
                     }
                     else
@@ -1642,11 +1644,19 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        //FOR TESTING PURPOSES will be deleted once work is complete
-        private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {  
-           
+        private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var a = 1;
         }
+
+        private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dgv = (DataGridView)sender;//Current DataGridView
+            var dgvc = dgv.Columns[e.ColumnIndex];
+            m_selectedColumnDataType = dgvc.ValueType;
+            var testrrf = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+        }
+
 
         private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -1655,41 +1665,22 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_selectedColumnDataType == typeof(int))
             {
                 dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";// string.Empty;
+                // dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";// string.Empty;
+                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
             }
-            else if(m_selectedColumnDataType == typeof(decimal))
+            else if (m_selectedColumnDataType == typeof(decimal))
             {
                 if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
                 {
                     dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";// string.Empty;
+                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
                 }
             }
         }
 
-        private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            var a = 1;
-        }
-
-        //FOR TESTING PURPOSES will be deleted once work is complete
-        //WILL TRIGGER WHEN YOU LEAVE THE CELL
-        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var f = 1;
-        }
-
-        private Type m_selectedColumnDataType;
-
-        private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var dgv = (DataGridView)sender;//Current DataGridView
-            var dgvc = dgv.Columns[e.ColumnIndex];
-            m_selectedColumnDataType = dgvc.ValueType;       
-        }
 
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {          
+        {
             if (m_selectedColumnDataType == typeof(int))
             {
                 e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
@@ -1701,6 +1692,61 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
         }
+        #endregion
+
+        #region  OUT
+
+
+        //FOR TESTING PURPOSES will be deleted once work is complete
+        private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dgv = (DataGridView)sender;//Current DataGridView
+            var dgvr = dgv.Rows[e.RowIndex];
+            //var tesrfd = e.RowIndex;
+            //var testjfj = e.ColumnIndex;
+            var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+            if (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == DBNull.Value)
+            {
+                if (m_selectedColumnDataType == typeof(int))
+                {
+                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+                }
+                else if (m_selectedColumnDataType == typeof(decimal))
+                {
+                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+                }
+            }
+        }
+
+
+        //FOR TESTING PURPOSES will be deleted once work is complete
+        //WILL TRIGGER WHEN YOU LEAVE THE CELL
+        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var f = 1;
+        }
+
+      
+
+        #endregion 
+
+       
+
+     
+      
+
+        private Type m_selectedColumnDataType;
+
+
+        private string currentValue;
+        //{
+        //    string result = "";
+        //    return result;
+        //}
+       
 
         private void IntOnly(object sender, KeyPressEventArgs e)
         {
@@ -1771,6 +1817,55 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Handled = result;
 
             }
-        }     
+        }
+
+        private int m_currentTabDisplay;
+
+        private void drawingDetailsTC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TabControl tc_current = (TabControl)sender;
+            //if (tc_current.SelectedIndex == 2 && m_currentTabDisplay == 1)
+            //{
+            //    m_currentTabDisplay = 0;
+            //    tc_current.Appearance = TabAppearance.FlatButtons;
+            //    tc_current.ItemSize = new Size(0, 1);
+            //    tc_current.SizeMode = TabSizeMode.Fixed;
+            //}
+            //else if (tc_current.SelectedIndex != 2 && m_currentTabDisplay == 0)
+            //{
+            //    m_currentTabDisplay = 1;
+            //    tc_current.Appearance = TabAppearance.Normal;
+            //    tc_current.ItemSize = new Size(79, 27);
+            //    tc_current.SizeMode = TabSizeMode.Normal;
+            //}
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rd_current = (RadioButton)sender;
+            int test;
+            bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
+            entryMethodsTC.SelectedIndex = test - 1;
+
+        } 
+
+        //private void drawingDetailsTC_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    TabControl tc_current = (TabControl)sender;
+        //    if (tc_current.SelectedIndex == 2 && m_currentTabDisplay == 1)
+        //    {
+        //        m_currentTabDisplay = 0;
+        //        tc_current.Appearance = TabAppearance.FlatButtons;
+        //        tc_current.ItemSize = new Size(0, 1);
+        //        tc_current.SizeMode = TabSizeMode.Fixed;
+        //    }
+        //    else if (tc_current.SelectedIndex != 2 && m_currentTabDisplay == 0)
+        //    {
+        //        m_currentTabDisplay = 1;
+        //        tc_current.Appearance = TabAppearance.Normal;
+        //        tc_current.ItemSize = new Size(79, 27);
+        //        tc_current.SizeMode = TabSizeMode.Normal;
+        //    }
+        //}     
     }
 }

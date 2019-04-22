@@ -265,6 +265,27 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region List Events
 
+        /// <summary>
+        /// Handles the results list up button click.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">An EventArgs object that contains the 
+        /// event data.</param>
+        private void ResultsListUpClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Handles the results list down button click.
+        /// </summary>
+        /// <param name="sender">The sender of the event.</param>
+        /// <param name="e">An EventArgs object that contains the 
+        /// event data.</param>
+        private void ResultsListDownClick(object sender, EventArgs e)
+        {
+
+        }
 
 
         /// <summary>
@@ -312,6 +333,25 @@ namespace GTI.Modules.PlayerCenter.UI
             if (e.KeyCode == Keys.Enter)
                 SelectPlayerClick(sender, new EventArgs());
 
+        }
+
+        private void PlayerResultsDoubleClick(object sender, EventArgs e)
+        {
+            ListBox lst = (ListBox)sender;
+            lock (this)
+            {
+                try
+                {
+                    if (lst.SelectedIndex > -1)
+                    {
+                        SelectPlayerClick(sender, new EventArgs());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("PlayerResultsDoubleClick()...Exception: " + ex.Message);
+                }
+            }
         }
 
         /// <summary>

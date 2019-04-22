@@ -118,9 +118,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rdobtn_Spend = new System.Windows.Forms.RadioButton();
+            this.rdobtnVisit = new System.Windows.Forms.RadioButton();
+            this.rdobtnBoth = new System.Windows.Forms.RadioButton();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -706,7 +706,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(561, 295);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 350);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -724,12 +724,12 @@
             this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 14);
+            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 6);
             this.entrySpendScaleDGV.MultiSelect = false;
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(486, 275);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 338);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Visible = false;
             this.entrySpendScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
@@ -749,9 +749,9 @@
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByTransactionRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByDayRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
-            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(12, 14);
+            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(132, 241);
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(138, 338);
             this.entrySpendGroupingFLP.TabIndex = 4;
             // 
             // entrySpendGroupingNoneRB
@@ -995,7 +995,7 @@
             this.entryPurchaseSelectionsCL.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entryPurchaseSelectionsCL.FormattingEnabled = true;
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
-            this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(257, 144);
+            this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
             this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 224);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
@@ -1241,50 +1241,49 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.radioButton3);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.rdobtnBoth);
+            this.panel3.Controls.Add(this.rdobtnVisit);
+            this.panel3.Controls.Add(this.rdobtn_Spend);
             this.panel3.Location = new System.Drawing.Point(248, 7);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(401, 30);
             this.panel3.TabIndex = 6;
             // 
-            // radioButton1
+            // rdobtn_Spend
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(16, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(72, 26);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.Tag = "1";
-            this.radioButton1.Text = "Spend";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rdobtn_Spend.AutoSize = true;
+            this.rdobtn_Spend.Location = new System.Drawing.Point(16, 3);
+            this.rdobtn_Spend.Name = "rdobtn_Spend";
+            this.rdobtn_Spend.Size = new System.Drawing.Size(72, 26);
+            this.rdobtn_Spend.TabIndex = 0;
+            this.rdobtn_Spend.Tag = "1";
+            this.rdobtn_Spend.Text = "Spend";
+            this.rdobtn_Spend.UseVisualStyleBackColor = true;
+            this.rdobtn_Spend.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton2
+            // rdobtnVisit
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(117, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(61, 26);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Tag = "2";
-            this.radioButton2.Text = "Visit";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rdobtnVisit.AutoSize = true;
+            this.rdobtnVisit.Location = new System.Drawing.Point(117, 3);
+            this.rdobtnVisit.Name = "rdobtnVisit";
+            this.rdobtnVisit.Size = new System.Drawing.Size(61, 26);
+            this.rdobtnVisit.TabIndex = 1;
+            this.rdobtnVisit.Tag = "2";
+            this.rdobtnVisit.Text = "Visit";
+            this.rdobtnVisit.UseVisualStyleBackColor = true;
+            this.rdobtnVisit.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton3
+            // rdobtnBoth
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(211, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(63, 26);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Tag = "3";
-            this.radioButton3.Text = "Both";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rdobtnBoth.AutoSize = true;
+            this.rdobtnBoth.Location = new System.Drawing.Point(211, 3);
+            this.rdobtnBoth.Name = "rdobtnBoth";
+            this.rdobtnBoth.Size = new System.Drawing.Size(63, 26);
+            this.rdobtnBoth.TabIndex = 2;
+            this.rdobtnBoth.Tag = "3";
+            this.rdobtnBoth.Text = "Both";
+            this.rdobtnBoth.UseVisualStyleBackColor = true;
+            this.rdobtnBoth.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // GeneralPlayerDrawingForm
             // 
@@ -1441,8 +1440,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rdobtnVisit;
+        private System.Windows.Forms.RadioButton rdobtn_Spend;
+        private System.Windows.Forms.RadioButton rdobtnBoth;
     }
 }

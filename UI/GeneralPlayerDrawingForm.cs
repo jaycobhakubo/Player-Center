@@ -801,6 +801,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pendingPackageSelections.Clear();
             m_pendingProductSelections.Clear();
             entryPurchaseSelectionsCL.Items.Clear();
+            //Set default 
+            rdobtn_Spend.Checked = true;
             #endregion
             #endregion
 
@@ -1519,11 +1521,9 @@ namespace GTI.Modules.PlayerCenter.UI
                                 break;
                         }
 
-                    }
-                    
+                    }                   
                     eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-
+                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize)            
                 }
             }
             finally
@@ -1537,18 +1537,16 @@ namespace GTI.Modules.PlayerCenter.UI
         private void drawingNameTxt_TextChanged(object sender, EventArgs e)
         {
             String errMsg = null;
-
             int drawingNameLenLimit = 48;
             int drawingNameLen = drawingNameTxt.Text.Length;
             if(drawingNameLen > drawingNameLenLimit)
-                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
+            errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
             else
             {
                 var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
                 if(namingConflict != null)
-                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
+                errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
             }
-
             SetError(drawingNameTxt, errMsg);
         }
 
@@ -1618,8 +1616,6 @@ namespace GTI.Modules.PlayerCenter.UI
             f.Dispose();
         }
 
-        #region IN
-
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {                 
             DataGridView dgv = (DataGridView)sender;
@@ -1665,7 +1661,6 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_selectedColumnDataType == typeof(int))
             {
                 dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-                // dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";// string.Empty;
                 dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
             }
             else if (m_selectedColumnDataType == typeof(decimal))
@@ -1692,18 +1687,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
         }
-        #endregion
 
-        #region  OUT
-
-
-        //FOR TESTING PURPOSES will be deleted once work is complete
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             var dgv = (DataGridView)sender;//Current DataGridView
             var dgvr = dgv.Rows[e.RowIndex];
-            //var tesrfd = e.RowIndex;
-            //var testjfj = e.ColumnIndex;
             var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
 
             if (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == DBNull.Value)
@@ -1720,33 +1708,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
-
-
-        //FOR TESTING PURPOSES will be deleted once work is complete
-        //WILL TRIGGER WHEN YOU LEAVE THE CELL
-        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var f = 1;
-        }
-
-      
-
-        #endregion 
-
-       
-
      
-      
-
         private Type m_selectedColumnDataType;
-
-
-        private string currentValue;
-        //{
-        //    string result = "";
-        //    return result;
-        //}
-       
 
         private void IntOnly(object sender, KeyPressEventArgs e)
         {
@@ -1819,53 +1782,37 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private int m_currentTabDisplay;
-
-        private void drawingDetailsTC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //TabControl tc_current = (TabControl)sender;
-            //if (tc_current.SelectedIndex == 2 && m_currentTabDisplay == 1)
-            //{
-            //    m_currentTabDisplay = 0;
-            //    tc_current.Appearance = TabAppearance.FlatButtons;
-            //    tc_current.ItemSize = new Size(0, 1);
-            //    tc_current.SizeMode = TabSizeMode.Fixed;
-            //}
-            //else if (tc_current.SelectedIndex != 2 && m_currentTabDisplay == 0)
-            //{
-            //    m_currentTabDisplay = 1;
-            //    tc_current.Appearance = TabAppearance.Normal;
-            //    tc_current.ItemSize = new Size(79, 27);
-            //    tc_current.SizeMode = TabSizeMode.Normal;
-            //}
-        }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rd_current = (RadioButton)sender;
             int test;
             bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
+
+            if (test == 3)
+            {
+                setEntryMethodBothUI();              
+            }
+            else if (test != 3)
+            {
+                hideEntryMethodBothUI();
+            }
             entryMethodsTC.SelectedIndex = test - 1;
+        }
 
-        } 
+        private void setEntryMethodBothUI()
+        {
+            m_currentTabDisplay = 1;
+            entryMethodsTC.Appearance = TabAppearance.Normal;
+            entryMethodsTC.ItemSize = new Size(79, 27);
+            entryMethodsTC.SizeMode = TabSizeMode.Normal;
+        }
 
-        //private void drawingDetailsTC_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    TabControl tc_current = (TabControl)sender;
-        //    if (tc_current.SelectedIndex == 2 && m_currentTabDisplay == 1)
-        //    {
-        //        m_currentTabDisplay = 0;
-        //        tc_current.Appearance = TabAppearance.FlatButtons;
-        //        tc_current.ItemSize = new Size(0, 1);
-        //        tc_current.SizeMode = TabSizeMode.Fixed;
-        //    }
-        //    else if (tc_current.SelectedIndex != 2 && m_currentTabDisplay == 0)
-        //    {
-        //        m_currentTabDisplay = 1;
-        //        tc_current.Appearance = TabAppearance.Normal;
-        //        tc_current.ItemSize = new Size(79, 27);
-        //        tc_current.SizeMode = TabSizeMode.Normal;
-        //    }
-        //}     
+        private void hideEntryMethodBothUI()
+        {
+            m_currentTabDisplay = 0;
+            entryMethodsTC.Appearance = TabAppearance.FlatButtons;
+            entryMethodsTC.ItemSize = new Size(0, 1);
+            entryMethodsTC.SizeMode = TabSizeMode.Fixed;
+        }
     }
 }

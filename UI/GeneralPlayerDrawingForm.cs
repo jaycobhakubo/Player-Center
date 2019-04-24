@@ -1642,7 +1642,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            var a = 1;
+            //var a = 1;
         }
 
         private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1653,6 +1653,13 @@ namespace GTI.Modules.PlayerCenter.UI
             var testrrf = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
         }
 
+        private bool IsFromOk()
+        {
+            bool result = false;
+
+            
+            return result;
+        }
 
         private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -1674,21 +1681,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (m_selectedColumnDataType == typeof(int))
-            {
-                e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
-                e.Control.KeyPress += new KeyPressEventHandler(IntOnly);
-            }
-            else if (m_selectedColumnDataType == typeof(decimal))
-            {
-                e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
-                e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
-            }
-        }
-
-        private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        private void entrySpendScaleDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var dgv = (DataGridView)sender;//Current DataGridView
             var dgvr = dgv.Rows[e.RowIndex];
@@ -1707,7 +1700,94 @@ namespace GTI.Modules.PlayerCenter.UI
                     dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
                 }
             }
+            else
+            {
+                if (m_selectedColumnDataType == typeof(int))
+                {
+                    //dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
+                }
+                else if (m_selectedColumnDataType == typeof(decimal))
+                {
+                    //dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
+                }
+            }
         }
+
+        private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var i = 1;
+            //var dgv = (DataGridView)sender;//Current DataGridView
+            //var dgvr = dgv.Rows[e.RowIndex];
+            //var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+            //if (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == DBNull.Value)
+            //{
+            //    if (m_selectedColumnDataType == typeof(int))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //    else if (m_selectedColumnDataType == typeof(decimal))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //}
+        }
+
+
+        private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            var i = 1;
+            //var dgv = (DataGridView)sender;//Current DataGridView
+            //var dgvr = dgv.Rows[e.RowIndex];
+            //var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+            //if (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == DBNull.Value)
+            //{
+            //    if (m_selectedColumnDataType == typeof(int))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //    else if (m_selectedColumnDataType == typeof(decimal))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //}
+            //else
+            //{
+            //    if (m_selectedColumnDataType == typeof(int))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
+            //    }
+            //    else if (m_selectedColumnDataType == typeof(decimal))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
+            //    }
+            //}
+        }
+
+
+        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (m_selectedColumnDataType == typeof(int))
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
+                e.Control.KeyPress += new KeyPressEventHandler(IntOnly);
+            }
+            else if (m_selectedColumnDataType == typeof(decimal))
+            {
+                e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
+                e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
+            }
+        }
+
      
         private Type m_selectedColumnDataType;
 
@@ -1788,15 +1868,27 @@ namespace GTI.Modules.PlayerCenter.UI
             int test;
             bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
 
+       
             if (test == 3)
             {
-                setEntryMethodBothUI();              
+                setEntryMethodBothUI();
+                entryMethodsTC.SelectedIndex = test - 1;
             }
             else if (test != 3)
             {
                 hideEntryMethodBothUI();
+                if (test == 1)
+                {
+                    entryMethodsTC.SelectedIndex = 1;
+                }
+                if (test == 2)
+                {
+                    entryMethodsTC.SelectedIndex = 0;
+                }
             }
-            entryMethodsTC.SelectedIndex = test - 1;
+       
+            //0 = visit
+            //1 = spend
         }
 
         private void setEntryMethodBothUI()
@@ -1812,5 +1904,26 @@ namespace GTI.Modules.PlayerCenter.UI
             entryMethodsTC.ItemSize = new Size(0, 1);
             entryMethodsTC.SizeMode = TabSizeMode.Fixed;
         }
+
+        private void SetIndicatorOnOff(bool set, DataGridView activeDGV)
+        {
+            //if (set)
+            //{
+            //    if (m_selectedColumnDataType == typeof(int))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //    else if (m_selectedColumnDataType == typeof(decimal))
+            //    {
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
+            //    }
+            //}
+        }
+
+       
+
+
     }
 }

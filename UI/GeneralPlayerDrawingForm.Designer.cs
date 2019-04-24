@@ -73,16 +73,12 @@
             this.initialEventScheduledForDTP = new System.Windows.Forms.DateTimePicker();
             this.eventWindowExamplesLbl = new System.Windows.Forms.Label();
             this.entryMethodsTP = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.rdobtnBoth = new System.Windows.Forms.RadioButton();
+            this.rdobtnVisit = new System.Windows.Forms.RadioButton();
+            this.rdobtn_Spend = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.entryMethodsTC = new System.Windows.Forms.TabControl();
-            this.entrySpendTP = new System.Windows.Forms.TabPage();
-            this.addEntrySpendTierBtn = new GTI.Controls.ImageButton();
-            this.entrySpendScaleDGV = new System.Windows.Forms.DataGridView();
-            this.entrySpendGroupingFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.entrySpendGroupingNoneRB = new System.Windows.Forms.RadioButton();
-            this.entrySpendGroupingByTransactionRB = new System.Windows.Forms.RadioButton();
-            this.entrySpendGroupingBySessionRB = new System.Windows.Forms.RadioButton();
-            this.entrySpendGroupingByDayRB = new System.Windows.Forms.RadioButton();
-            this.entrySpendGroupingEntryPeriodRB = new System.Windows.Forms.RadioButton();
             this.entryVisitsTP = new System.Windows.Forms.TabPage();
             this.addEntryVisitTierBtn = new GTI.Controls.ImageButton();
             this.entryVisitScaleDGV = new System.Windows.Forms.DataGridView();
@@ -104,6 +100,15 @@
             this.entryPurchaseTypeNoneRB = new System.Windows.Forms.RadioButton();
             this.entryPurchaseTypePackageRB = new System.Windows.Forms.RadioButton();
             this.entryPurchaseTypeProductRB = new System.Windows.Forms.RadioButton();
+            this.entrySpendTP = new System.Windows.Forms.TabPage();
+            this.addEntrySpendTierBtn = new GTI.Controls.ImageButton();
+            this.entrySpendScaleDGV = new System.Windows.Forms.DataGridView();
+            this.entrySpendGroupingFLP = new System.Windows.Forms.FlowLayoutPanel();
+            this.entrySpendGroupingBySessionRB = new System.Windows.Forms.RadioButton();
+            this.entrySpendGroupingNoneRB = new System.Windows.Forms.RadioButton();
+            this.entrySpendGroupingByTransactionRB = new System.Windows.Forms.RadioButton();
+            this.entrySpendGroupingByDayRB = new System.Windows.Forms.RadioButton();
+            this.entrySpendGroupingEntryPeriodRB = new System.Windows.Forms.RadioButton();
             this.drawingActiveChk = new System.Windows.Forms.CheckBox();
             this.drawingNameTxt = new System.Windows.Forms.TextBox();
             this.revertDrawingChangesBtn = new GTI.Controls.ImageButton();
@@ -116,11 +121,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rdobtn_Spend = new System.Windows.Forms.RadioButton();
-            this.rdobtnVisit = new System.Windows.Forms.RadioButton();
-            this.rdobtnBoth = new System.Windows.Forms.RadioButton();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -131,10 +131,8 @@
             this.splitContainer1.SuspendLayout();
             this.eventRepeatDetailsPnl.SuspendLayout();
             this.entryMethodsTP.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.entryMethodsTC.SuspendLayout();
-            this.entrySpendTP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.entrySpendScaleDGV)).BeginInit();
-            this.entrySpendGroupingFLP.SuspendLayout();
             this.entryVisitsTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entryVisitScaleDGV)).BeginInit();
             this.entryVisitsTypeFLP.SuspendLayout();
@@ -142,8 +140,10 @@
             this.entryPurchaseGroupingFLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entryPurchaseScaleDGV)).BeginInit();
             this.entryPurchaseTypeFLP.SuspendLayout();
+            this.entrySpendTP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.entrySpendScaleDGV)).BeginInit();
+            this.entrySpendGroupingFLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // drawingsLV
@@ -254,7 +254,6 @@
             this.drawingDetailsTC.SelectedIndex = 0;
             this.drawingDetailsTC.Size = new System.Drawing.Size(695, 484);
             this.drawingDetailsTC.TabIndex = 19;
-
             // 
             // commonOptionsTP
             // 
@@ -669,6 +668,61 @@
             this.entryMethodsTP.TabIndex = 2;
             this.entryMethodsTP.Text = "Entry Methods";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.rdobtnBoth);
+            this.panel3.Controls.Add(this.rdobtnVisit);
+            this.panel3.Controls.Add(this.rdobtn_Spend);
+            this.panel3.Location = new System.Drawing.Point(248, 7);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(401, 30);
+            this.panel3.TabIndex = 6;
+            // 
+            // rdobtnBoth
+            // 
+            this.rdobtnBoth.AutoSize = true;
+            this.rdobtnBoth.Location = new System.Drawing.Point(211, 3);
+            this.rdobtnBoth.Name = "rdobtnBoth";
+            this.rdobtnBoth.Size = new System.Drawing.Size(63, 26);
+            this.rdobtnBoth.TabIndex = 2;
+            this.rdobtnBoth.Tag = "3";
+            this.rdobtnBoth.Text = "Both";
+            this.rdobtnBoth.UseVisualStyleBackColor = true;
+            this.rdobtnBoth.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // rdobtnVisit
+            // 
+            this.rdobtnVisit.AutoSize = true;
+            this.rdobtnVisit.Location = new System.Drawing.Point(117, 3);
+            this.rdobtnVisit.Name = "rdobtnVisit";
+            this.rdobtnVisit.Size = new System.Drawing.Size(61, 26);
+            this.rdobtnVisit.TabIndex = 1;
+            this.rdobtnVisit.Tag = "2";
+            this.rdobtnVisit.Text = "Visit";
+            this.rdobtnVisit.UseVisualStyleBackColor = true;
+            this.rdobtnVisit.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // rdobtn_Spend
+            // 
+            this.rdobtn_Spend.AutoSize = true;
+            this.rdobtn_Spend.Location = new System.Drawing.Point(16, 3);
+            this.rdobtn_Spend.Name = "rdobtn_Spend";
+            this.rdobtn_Spend.Size = new System.Drawing.Size(72, 26);
+            this.rdobtn_Spend.TabIndex = 0;
+            this.rdobtn_Spend.Tag = "1";
+            this.rdobtn_Spend.Text = "Spend";
+            this.rdobtn_Spend.UseVisualStyleBackColor = true;
+            this.rdobtn_Spend.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 22);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Enter players based on";
+            // 
             // entryMethodsTC
             // 
             this.entryMethodsTC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -682,131 +736,9 @@
             this.entryMethodsTC.Location = new System.Drawing.Point(7, 44);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(671, 399);
+            this.entryMethodsTC.Size = new System.Drawing.Size(671, 390);
             this.entryMethodsTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.entryMethodsTC.TabIndex = 4;
-            // 
-            // entrySpendTP
-            // 
-            this.entrySpendTP.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.entrySpendTP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.entrySpendTP.Controls.Add(this.addEntrySpendTierBtn);
-            this.entrySpendTP.Controls.Add(this.entrySpendScaleDGV);
-            this.entrySpendTP.Controls.Add(this.entrySpendGroupingFLP);
-            this.entrySpendTP.Location = new System.Drawing.Point(4, 5);
-            this.entrySpendTP.Name = "entrySpendTP";
-            this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(663, 390);
-            this.entrySpendTP.TabIndex = 0;
-            this.entrySpendTP.Text = "Spend";
-            // 
-            // addEntrySpendTierBtn
-            // 
-            this.addEntrySpendTierBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
-            this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
-            this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 350);
-            this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
-            this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
-            this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.addEntrySpendTierBtn.Size = new System.Drawing.Size(75, 30);
-            this.addEntrySpendTierBtn.TabIndex = 6;
-            this.addEntrySpendTierBtn.Text = "+";
-            this.addEntrySpendTierBtn.Visible = false;
-            this.addEntrySpendTierBtn.Click += new System.EventHandler(this.addEntrySpendTierBtn_Click);
-            // 
-            // entrySpendScaleDGV
-            // 
-            this.entrySpendScaleDGV.AllowUserToAddRows = false;
-            this.entrySpendScaleDGV.AllowUserToDeleteRows = false;
-            this.entrySpendScaleDGV.AllowUserToResizeRows = false;
-            this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 6);
-            this.entrySpendScaleDGV.MultiSelect = false;
-            this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
-            this.entrySpendScaleDGV.RowHeadersVisible = false;
-            this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 338);
-            this.entrySpendScaleDGV.TabIndex = 5;
-            this.entrySpendScaleDGV.Visible = false;
-            this.entrySpendScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
-            this.entrySpendScaleDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellClick);
-            this.entrySpendScaleDGV.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEnter);
-            this.entrySpendScaleDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellLeave);
-            this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
-            this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
-            // 
-            // entrySpendGroupingFLP
-            // 
-            this.entrySpendGroupingFLP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingBySessionRB);
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingNoneRB);
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByTransactionRB);
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByDayRB);
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
-            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
-            this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(138, 338);
-            this.entrySpendGroupingFLP.TabIndex = 4;
-            // 
-            // entrySpendGroupingNoneRB
-            // 
-            this.entrySpendGroupingNoneRB.AutoSize = true;
-            this.entrySpendGroupingNoneRB.Location = new System.Drawing.Point(3, 35);
-            this.entrySpendGroupingNoneRB.Name = "entrySpendGroupingNoneRB";
-            this.entrySpendGroupingNoneRB.Size = new System.Drawing.Size(67, 26);
-            this.entrySpendGroupingNoneRB.TabIndex = 4;
-            this.entrySpendGroupingNoneRB.Text = "None";
-            this.entrySpendGroupingNoneRB.UseVisualStyleBackColor = true;
-            this.entrySpendGroupingNoneRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
-            // 
-            // entrySpendGroupingByTransactionRB
-            // 
-            this.entrySpendGroupingByTransactionRB.AutoSize = true;
-            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 67);
-            this.entrySpendGroupingByTransactionRB.Name = "entrySpendGroupingByTransactionRB";
-            this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
-            this.entrySpendGroupingByTransactionRB.TabIndex = 1;
-            this.entrySpendGroupingByTransactionRB.Text = "Transaction";
-            this.entrySpendGroupingByTransactionRB.UseVisualStyleBackColor = true;
-            this.entrySpendGroupingByTransactionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
-            // 
-            // entrySpendGroupingBySessionRB
-            // 
-            this.entrySpendGroupingBySessionRB.AutoSize = true;
-            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(3, 3);
-            this.entrySpendGroupingBySessionRB.Name = "entrySpendGroupingBySessionRB";
-            this.entrySpendGroupingBySessionRB.Size = new System.Drawing.Size(83, 26);
-            this.entrySpendGroupingBySessionRB.TabIndex = 2;
-            this.entrySpendGroupingBySessionRB.Text = "Session";
-            this.entrySpendGroupingBySessionRB.UseVisualStyleBackColor = true;
-            this.entrySpendGroupingBySessionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
-            // 
-            // entrySpendGroupingByDayRB
-            // 
-            this.entrySpendGroupingByDayRB.AutoSize = true;
-            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(3, 99);
-            this.entrySpendGroupingByDayRB.Name = "entrySpendGroupingByDayRB";
-            this.entrySpendGroupingByDayRB.Size = new System.Drawing.Size(55, 26);
-            this.entrySpendGroupingByDayRB.TabIndex = 3;
-            this.entrySpendGroupingByDayRB.Text = "Day";
-            this.entrySpendGroupingByDayRB.UseVisualStyleBackColor = true;
-            this.entrySpendGroupingByDayRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
-            // 
-            // entrySpendGroupingEntryPeriodRB
-            // 
-            this.entrySpendGroupingEntryPeriodRB.AutoSize = true;
-            this.entrySpendGroupingEntryPeriodRB.Location = new System.Drawing.Point(3, 131);
-            this.entrySpendGroupingEntryPeriodRB.Name = "entrySpendGroupingEntryPeriodRB";
-            this.entrySpendGroupingEntryPeriodRB.Size = new System.Drawing.Size(121, 26);
-            this.entrySpendGroupingEntryPeriodRB.TabIndex = 3;
-            this.entrySpendGroupingEntryPeriodRB.Text = "Entry Period";
-            this.entrySpendGroupingEntryPeriodRB.UseVisualStyleBackColor = true;
-            this.entrySpendGroupingEntryPeriodRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
             // 
             // entryVisitsTP
             // 
@@ -818,7 +750,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 5);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(663, 390);
+            this.entryVisitsTP.Size = new System.Drawing.Size(663, 381);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -828,7 +760,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 350);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 341);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -851,7 +783,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(486, 326);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 317);
             this.entryVisitScaleDGV.TabIndex = 7;
             this.entryVisitScaleDGV.Visible = false;
             // 
@@ -924,7 +856,7 @@
             this.entryPurchasesTP.Location = new System.Drawing.Point(4, 5);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 390);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 381);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -996,7 +928,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 224);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 215);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -1006,7 +938,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 189);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 180);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1029,7 +961,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 169);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 160);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Visible = false;
             // 
@@ -1080,6 +1012,130 @@
             this.entryPurchaseTypeProductRB.Text = "Products";
             this.entryPurchaseTypeProductRB.UseVisualStyleBackColor = true;
             this.entryPurchaseTypeProductRB.CheckedChanged += new System.EventHandler(this.entryPurchaseTypeRB_CheckedChanged);
+            // 
+            // entrySpendTP
+            // 
+            this.entrySpendTP.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.entrySpendTP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.entrySpendTP.Controls.Add(this.addEntrySpendTierBtn);
+            this.entrySpendTP.Controls.Add(this.entrySpendScaleDGV);
+            this.entrySpendTP.Controls.Add(this.entrySpendGroupingFLP);
+            this.entrySpendTP.Location = new System.Drawing.Point(4, 5);
+            this.entrySpendTP.Name = "entrySpendTP";
+            this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
+            this.entrySpendTP.Size = new System.Drawing.Size(663, 381);
+            this.entrySpendTP.TabIndex = 0;
+            this.entrySpendTP.Text = "Spend";
+            // 
+            // addEntrySpendTierBtn
+            // 
+            this.addEntrySpendTierBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
+            this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 341);
+            this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
+            this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
+            this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.addEntrySpendTierBtn.Size = new System.Drawing.Size(75, 30);
+            this.addEntrySpendTierBtn.TabIndex = 6;
+            this.addEntrySpendTierBtn.Text = "+";
+            this.addEntrySpendTierBtn.Visible = false;
+            this.addEntrySpendTierBtn.Click += new System.EventHandler(this.addEntrySpendTierBtn_Click);
+            // 
+            // entrySpendScaleDGV
+            // 
+            this.entrySpendScaleDGV.AllowUserToAddRows = false;
+            this.entrySpendScaleDGV.AllowUserToDeleteRows = false;
+            this.entrySpendScaleDGV.AllowUserToResizeRows = false;
+            this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 6);
+            this.entrySpendScaleDGV.MultiSelect = false;
+            this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
+            this.entrySpendScaleDGV.RowHeadersVisible = false;
+            this.entrySpendScaleDGV.RowTemplate.Height = 30;
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 329);
+            this.entrySpendScaleDGV.TabIndex = 5;
+            this.entrySpendScaleDGV.Visible = false;
+            this.entrySpendScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
+            this.entrySpendScaleDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellClick);
+            this.entrySpendScaleDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEndEdit);
+            this.entrySpendScaleDGV.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEnter);
+            this.entrySpendScaleDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellLeave);
+            this.entrySpendScaleDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellValueChanged);
+            this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
+            this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
+            // 
+            // entrySpendGroupingFLP
+            // 
+            this.entrySpendGroupingFLP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingBySessionRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingNoneRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByTransactionRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByDayRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
+            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
+            this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(138, 338);
+            this.entrySpendGroupingFLP.TabIndex = 4;
+            // 
+            // entrySpendGroupingBySessionRB
+            // 
+            this.entrySpendGroupingBySessionRB.AutoSize = true;
+            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(3, 3);
+            this.entrySpendGroupingBySessionRB.Name = "entrySpendGroupingBySessionRB";
+            this.entrySpendGroupingBySessionRB.Size = new System.Drawing.Size(83, 26);
+            this.entrySpendGroupingBySessionRB.TabIndex = 2;
+            this.entrySpendGroupingBySessionRB.Text = "Session";
+            this.entrySpendGroupingBySessionRB.UseVisualStyleBackColor = true;
+            this.entrySpendGroupingBySessionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            // 
+            // entrySpendGroupingNoneRB
+            // 
+            this.entrySpendGroupingNoneRB.AutoSize = true;
+            this.entrySpendGroupingNoneRB.Location = new System.Drawing.Point(3, 35);
+            this.entrySpendGroupingNoneRB.Name = "entrySpendGroupingNoneRB";
+            this.entrySpendGroupingNoneRB.Size = new System.Drawing.Size(67, 26);
+            this.entrySpendGroupingNoneRB.TabIndex = 4;
+            this.entrySpendGroupingNoneRB.Text = "None";
+            this.entrySpendGroupingNoneRB.UseVisualStyleBackColor = true;
+            this.entrySpendGroupingNoneRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            // 
+            // entrySpendGroupingByTransactionRB
+            // 
+            this.entrySpendGroupingByTransactionRB.AutoSize = true;
+            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 67);
+            this.entrySpendGroupingByTransactionRB.Name = "entrySpendGroupingByTransactionRB";
+            this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
+            this.entrySpendGroupingByTransactionRB.TabIndex = 1;
+            this.entrySpendGroupingByTransactionRB.Text = "Transaction";
+            this.entrySpendGroupingByTransactionRB.UseVisualStyleBackColor = true;
+            this.entrySpendGroupingByTransactionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            // 
+            // entrySpendGroupingByDayRB
+            // 
+            this.entrySpendGroupingByDayRB.AutoSize = true;
+            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(3, 99);
+            this.entrySpendGroupingByDayRB.Name = "entrySpendGroupingByDayRB";
+            this.entrySpendGroupingByDayRB.Size = new System.Drawing.Size(55, 26);
+            this.entrySpendGroupingByDayRB.TabIndex = 3;
+            this.entrySpendGroupingByDayRB.Text = "Day";
+            this.entrySpendGroupingByDayRB.UseVisualStyleBackColor = true;
+            this.entrySpendGroupingByDayRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            // 
+            // entrySpendGroupingEntryPeriodRB
+            // 
+            this.entrySpendGroupingEntryPeriodRB.AutoSize = true;
+            this.entrySpendGroupingEntryPeriodRB.Location = new System.Drawing.Point(3, 131);
+            this.entrySpendGroupingEntryPeriodRB.Name = "entrySpendGroupingEntryPeriodRB";
+            this.entrySpendGroupingEntryPeriodRB.Size = new System.Drawing.Size(121, 26);
+            this.entrySpendGroupingEntryPeriodRB.TabIndex = 3;
+            this.entrySpendGroupingEntryPeriodRB.Text = "Entry Period";
+            this.entrySpendGroupingEntryPeriodRB.UseVisualStyleBackColor = true;
+            this.entrySpendGroupingEntryPeriodRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
             // 
             // drawingActiveChk
             // 
@@ -1229,61 +1285,6 @@
             this.panel1.Size = new System.Drawing.Size(366, 37);
             this.panel1.TabIndex = 25;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 22);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Enter players based on";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.rdobtnBoth);
-            this.panel3.Controls.Add(this.rdobtnVisit);
-            this.panel3.Controls.Add(this.rdobtn_Spend);
-            this.panel3.Location = new System.Drawing.Point(248, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(401, 30);
-            this.panel3.TabIndex = 6;
-            // 
-            // rdobtn_Spend
-            // 
-            this.rdobtn_Spend.AutoSize = true;
-            this.rdobtn_Spend.Location = new System.Drawing.Point(16, 3);
-            this.rdobtn_Spend.Name = "rdobtn_Spend";
-            this.rdobtn_Spend.Size = new System.Drawing.Size(72, 26);
-            this.rdobtn_Spend.TabIndex = 0;
-            this.rdobtn_Spend.Tag = "1";
-            this.rdobtn_Spend.Text = "Spend";
-            this.rdobtn_Spend.UseVisualStyleBackColor = true;
-            this.rdobtn_Spend.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // rdobtnVisit
-            // 
-            this.rdobtnVisit.AutoSize = true;
-            this.rdobtnVisit.Location = new System.Drawing.Point(117, 3);
-            this.rdobtnVisit.Name = "rdobtnVisit";
-            this.rdobtnVisit.Size = new System.Drawing.Size(61, 26);
-            this.rdobtnVisit.TabIndex = 1;
-            this.rdobtnVisit.Tag = "2";
-            this.rdobtnVisit.Text = "Visit";
-            this.rdobtnVisit.UseVisualStyleBackColor = true;
-            this.rdobtnVisit.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // rdobtnBoth
-            // 
-            this.rdobtnBoth.AutoSize = true;
-            this.rdobtnBoth.Location = new System.Drawing.Point(211, 3);
-            this.rdobtnBoth.Name = "rdobtnBoth";
-            this.rdobtnBoth.Size = new System.Drawing.Size(63, 26);
-            this.rdobtnBoth.TabIndex = 2;
-            this.rdobtnBoth.Tag = "3";
-            this.rdobtnBoth.Text = "Both";
-            this.rdobtnBoth.UseVisualStyleBackColor = true;
-            this.rdobtnBoth.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1325,11 +1326,9 @@
             this.eventRepeatDetailsPnl.PerformLayout();
             this.entryMethodsTP.ResumeLayout(false);
             this.entryMethodsTP.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.entryMethodsTC.ResumeLayout(false);
-            this.entrySpendTP.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.entrySpendScaleDGV)).EndInit();
-            this.entrySpendGroupingFLP.ResumeLayout(false);
-            this.entrySpendGroupingFLP.PerformLayout();
             this.entryVisitsTP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.entryVisitScaleDGV)).EndInit();
             this.entryVisitsTypeFLP.ResumeLayout(false);
@@ -1340,9 +1339,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.entryPurchaseScaleDGV)).EndInit();
             this.entryPurchaseTypeFLP.ResumeLayout(false);
             this.entryPurchaseTypeFLP.PerformLayout();
+            this.entrySpendTP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.entrySpendScaleDGV)).EndInit();
+            this.entrySpendGroupingFLP.ResumeLayout(false);
+            this.entrySpendGroupingFLP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

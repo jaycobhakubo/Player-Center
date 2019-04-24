@@ -12,6 +12,16 @@ using System.Timers;
 using GTI.Modules.PlayerCenter.Business;
 using System.Management;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using GameTech.Elite.Base;
+using GameTech.Elite.Client;
+using GetPlayerDataMessage = GTI.Modules.Shared.GetPlayerDataMessage;
+using LoggerLevel = GTI.Modules.Shared.LoggerLevel;
+using Operator = GTI.Modules.Shared.Operator;
+
+
+//04.19.2019-jkim: US5766: Caller - Allow the user to run Player Center style raffles on the Caller
+
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -52,9 +62,10 @@ namespace GTI.Modules.PlayerCenter.UI
         int[] RaffleSettingID = new int[] { 214 };//, 22, 182, 38, 37, 3, 189, 190 };//, 77 };
         Vouchers vouchers = new Vouchers();
         Printer globalPrinter;
-        DataRafflePrizes dataRafflePrize = new DataRafflePrizes();
+        RafflePrize dataRafflePrize = new RafflePrize();
         Dictionary<int, int> IndexToDefID = new Dictionary<int, int>();
         private Operator ActiveOperatorsData;
+        private RaffleEntryInformation m_raffleEntryInfo;
 
         //System Setting reference
         //==========================
@@ -76,7 +87,10 @@ namespace GTI.Modules.PlayerCenter.UI
         public Raffle()
         {
             InitializeComponent();
-            loadListRaffle();
+
+            var prizes = GetPlayerRafflePrizesMessage.GetRafflePrizes();
+            loadListRaffle(prizes);
+            loadcmbxRafle(prizes);
 
             RaffleSettings.data.Clear();
             foreach (int globalsettingID in RaffleSettingID)
@@ -189,7 +203,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //monRafStatusLabel.Text = "Loading...";
             monRaffleGroupBox1.Enabled = false;
             monRaffleGroupBox2.Enabled = false;
-            if(!m_monRaffleLoader.IsBusy)
+            if (!m_monRaffleLoader.IsBusy)
                 m_monRaffleLoader.RunWorkerAsync();
         }
 
@@ -233,7 +247,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                   // monRafStatusLabel.Text = "No Monetary Raffles Found";
+                    // monRafStatusLabel.Text = "No Monetary Raffles Found";
                 }
             }
             else
@@ -599,7 +613,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //wheelRafStatusLabel.Text = "Loading...";
             wheelRaffleGroupBox1.Enabled = false;
             wheelRaffleGroupBox2.Enabled = false;
-            if(!m_wheelRaffleLoader.IsBusy)
+            if (!m_wheelRaffleLoader.IsBusy)
                 m_wheelRaffleLoader.RunWorkerAsync();
         }
 
@@ -938,7 +952,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (e.KeyCode == Keys.Enter)
                 addWheelRafPrizeBtn_Click(this, new EventArgs());
         }
-        
+
         /// <summary>
         /// Browses for an image and then sets the UI to an overlayed combination
         /// </summary>
@@ -976,7 +990,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 catch (Exception ex)
                 {
-                    MessageForm.Show("Error loading image: "+ex.ToString());
+                    MessageForm.Show("Error loading image: " + ex.ToString());
                 }
             }
         }
@@ -995,18 +1009,18 @@ namespace GTI.Modules.PlayerCenter.UI
                 IndexToDefID.Clear();
             }
 
-            GetPlayerListDefinition get_pld = new GetPlayerListDefinition();
-            List<PlayerListDefinition> List_pld = get_pld.GetPlayerListDefinitionMSG();
+            var getPlayerListDefinition = new GetPlayerListDefinition();
+            var List_pld = getPlayerListDefinition.GetPlayerListDefinitionMessage();
 
             int indexOf = 0;
 
-            var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);
+            var sortPlayerListDef = List_pld.OrderBy(x => x.StringValue);
             playerListRaffleRunListCB.Items.Add("Use Current Players");
-            foreach (PlayerListDefinition pld in sortPlayerListDef)
+            foreach (var pld in sortPlayerListDef)
             {
-                playerListRaffleRunListCB.Items.Add(pld.DefinitionName);
+                playerListRaffleRunListCB.Items.Add(pld.StringValue);
                 indexOf = indexOf + 1;
-                IndexToDefID.Add(indexOf, pld.DefId);
+                IndexToDefID.Add(indexOf, pld.IntValue);
             }
         }
 
@@ -1069,13 +1083,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <returns></returns>
         private bool canWeRunTheRaffleWithTheCurrentPlayerEntry()
         {
-            bool result = false;
-            if (RaffleInfo.m_currentPlayerCount >= RaffleInfo.m_playersReq) //Check if the players requirements was met.
+            if (m_raffleEntryInfo == null)
             {
-                result = true;
+                return false;
             }
 
-            return result;
+            return m_raffleEntryInfo.CurrentPlayerCount >= m_raffleEntryInfo.PlayersRequired;
         }
 
         /// <summary>
@@ -1084,13 +1097,12 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <returns></returns>
         private bool doWeHaveEnoughPlayerToWinTheRafflePrize()
         {
-            bool result = false;
-            if (dataRafflePrize.NoOfRafflePrize <= RaffleInfo.m_currentPlayerCount)
+            if (m_raffleEntryInfo == null)
             {
-                result = true;
+                return false;
             }
 
-            return result;
+            return dataRafflePrize.NumberOfPrizes <= m_raffleEntryInfo.CurrentPlayerCount; ;
         }
 
         private bool DisableOrEnableRunRaffle()
@@ -1129,12 +1141,12 @@ namespace GTI.Modules.PlayerCenter.UI
             vouchers.CharityLicenseNumber = "";
 
             //RAFFLE
-            vouchers.RaffleID = dataRafflePrize.RaffleID;
-            vouchers.NoOfWinners = dataRafflePrize.NoOfRafflePrize;
-            vouchers.RaffleName = dataRafflePrize.RaffleName;
+            vouchers.RaffleID = dataRafflePrize.Id;
+            vouchers.NoOfWinners = dataRafflePrize.NumberOfPrizes;
+            vouchers.RaffleName = dataRafflePrize.Name;
             vouchers.RaffleDate = DateTime.Now; // format 01/01/2001 11:11:11AM
-            vouchers.RaffleDescription = dataRafflePrize.RafflePrizeDescription;
-            vouchers.RaffleDisclaimer = dataRafflePrize.RaffleDisclaimer;
+            vouchers.RaffleDescription = dataRafflePrize.Description;
+            vouchers.RaffleDisclaimer = dataRafflePrize.Disclaimer;
 
             RafflePlayerWinnerInfo(PlayerID);
         }
@@ -1253,7 +1265,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         private void AppliedSystemSettingDisplayedText()
         {
-            displayedText = "Player List " + ((raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing");
+            displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
             if (displayedText != "")
             {
                 wheelRaffleGroupBox1.Text = monRaffleGroupBox1.Text = playerListsRafflesGB.Text = displayedText;
@@ -1361,7 +1373,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        private void loadcmbxRafle()
+        private void loadcmbxRafle(List<RafflePrize> rafflePrizes)
         {
             //get the current item
             string CurrentRaffle = "";
@@ -1375,9 +1387,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 playerListRaffleRunRaffleCB.Items.Clear();
             }
 
-            foreach (DataRafflePrizes drf in List_DataRafflePrize.LDataRafflePrize)
+            foreach (RafflePrize drf in rafflePrizes)
             {
-                playerListRaffleRunRaffleCB.Items.Add(drf.RaffleName);
+                playerListRaffleRunRaffleCB.Items.Add(drf);
             }
 
             if (playerListRaffleRunRaffleCB.Items.Count > 0)
@@ -1395,31 +1407,47 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void loadRaffleInfo()
         {
-            GetRaffleInformation gri = new GetRaffleInformation(DefID);
+
             this.Cursor = Cursors.WaitCursor;
-            //var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => NOfPlayer = gri.GetNumberOfPlayerPerPlayerList(GetOperatorID.operatorID, DefID));//SQL
-            var ExecuteMe = System.Threading.Tasks.Task.Factory.StartNew(() => gri.GetNumberOfPlayersRaffleEntry(DefID));
-            ExecuteMe.Wait();
-            playerListRaffleRunInfoLbl.Text = RaffleInfo.m_currentPlayerCount + " Player(s) Entered / " + RaffleInfo.m_playersReq.ToString() + " Player(s) Required";
+
+            var executeMe = System.Threading.Tasks.Task.Factory.StartNew(() => RunGetRaffleEntryInformationMessage(DefID));
+            executeMe.Wait();
+
+            if (m_raffleEntryInfo != null)
+            {
+                playerListRaffleRunInfoLbl.Text = string.Format("{0} Player(s) Entered / {1} Player(s) Required", m_raffleEntryInfo.CurrentPlayerCount, m_raffleEntryInfo.PlayersRequired);
+            }
+
             N_OfPlayersReqMet = DisableOrEnableRunRaffle();
             if (playerListRaffleRunRaffleCB.SelectedIndex != -1 && N_OfPlayersReqMet == true) { playerListRaffleRunBtn.Enabled = true; } else { playerListRaffleRunBtn.Enabled = false; }
             this.Cursor = Cursors.Default;
         }
 
-        private void loadListRaffle()
+        public void RunGetRaffleEntryInformationMessage(int playerListId)
         {
-            GetRafflePlayerDefinitions run = new GetRafflePlayerDefinitions();
-            run.runGetRafflePlayerDefinitions();
+            var msg = new GetRaffleEntryInformationMessage(playerListId);
+            try
+            {
+                msg.Send();
+                m_raffleEntryInfo = msg.RaffleEntryInfo;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("GetRaffleEntryInformationMessage: " + ex.Message);
+            }
+        }
 
+        private void loadListRaffle(List<RafflePrize> rafflePrizes)
+        {
             if (playerListRafflesLB.Items.Count > 0)
             {
                 playerListRafflesLB.Items.Clear();
             }
 
-            foreach (DataRafflePrizes drf in List_DataRafflePrize.LDataRafflePrize)
+            foreach (RafflePrize drf in rafflePrizes)
             {
                 //lstBxRafflePrizes.Items.Add(drf.RaffleName);
-                playerListRafflesLB.Items.Add(drf.RaffleName);
+                playerListRafflesLB.Items.Add(drf);
             }
 
 
@@ -1441,29 +1469,29 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void loadRaffleSettings()
         {
-            txtbxSetupName.Text = dataRafflePrize.RaffleName;
-            txtbxSetupNumberofWinners.Text = dataRafflePrize.NoOfRafflePrize.ToString(); ;
-            txtbxSetupPrizeDescription.Text = dataRafflePrize.RafflePrizeDescription;
-            txtbxDisclaimer.Text = dataRafflePrize.RaffleDisclaimer;
+            txtbxSetupName.Text = dataRafflePrize.Name;
+            txtbxSetupNumberofWinners.Text = dataRafflePrize.NumberOfPrizes.ToString(); ;
+            txtbxSetupPrizeDescription.Text = dataRafflePrize.Description;
+            txtbxDisclaimer.Text = dataRafflePrize.Disclaimer;
         }
 
         private void isRaffleSettingModify()
         {
             if (isUpdate == true)
             {
-                if (dataRafflePrize.RaffleName != txtbxSetupName.Text.ToString())
+                if (dataRafflePrize.Name != txtbxSetupName.Text.ToString())
                 {
                     isModify = true;
                 }
-                else if (dataRafflePrize.NoOfRafflePrize != Convert.ToInt32(txtbxSetupNumberofWinners.Text))
+                else if (dataRafflePrize.NumberOfPrizes != Convert.ToInt32(txtbxSetupNumberofWinners.Text))
                 {
                     isModify = true;
                 }
-                else if (dataRafflePrize.RafflePrizeDescription != txtbxSetupPrizeDescription.Text.ToString())
+                else if (dataRafflePrize.Description != txtbxSetupPrizeDescription.Text.ToString())
                 {
                     isModify = true;
                 }
-                else if (dataRafflePrize.RaffleDisclaimer != txtbxDisclaimer.Text.ToString())
+                else if (dataRafflePrize.Disclaimer != txtbxDisclaimer.Text.ToString())
                 {
                     isModify = true;
                 }
@@ -1479,12 +1507,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void SaveOrUpdateRaffleDefinitions(int saveorupdate, bool isdelete)//0 = insert; !0 = update ; -1 delete
         {
-            DataRafflePrizes drp = new DataRafflePrizes(); // RaffleDefinition rd = new RaffleDefinition();
-            drp.RaffleID = saveorupdate;
-            drp.RaffleName = txtbxSetupName.Text;
-            drp.NoOfRafflePrize = Convert.ToInt32(txtbxSetupNumberofWinners.Text);
-            drp.RafflePrizeDescription = txtbxSetupPrizeDescription.Text;
-            drp.RaffleDisclaimer = txtbxDisclaimer.Text;
+            var drp = new RafflePrize(); // RaffleDefinition rd = new RaffleDefinition();
+            drp.Id = saveorupdate;
+            drp.Name = txtbxSetupName.Text;
+            drp.NumberOfPrizes = Convert.ToInt32(txtbxSetupNumberofWinners.Text);
+            drp.Description = txtbxSetupPrizeDescription.Text;
+            drp.Disclaimer = txtbxDisclaimer.Text;
             int RaffleID = SetPlayerRaffleDefinitions.Set(drp, isdelete);
         }
 
@@ -1772,7 +1800,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else if (isUpdate == true)
             {
                 //loadListRaffle();
-                string tempRaffleName = dataRafflePrize.RaffleName;
+                string tempRaffleName = dataRafflePrize.Name;
                 //  lstBxRafflePrizes.SelectedIndex = -1;
                 playerListRafflesLB.SelectedIndex = -1;
                 // int tempIndex = lstBxRafflePrizes.Items.IndexOf(tempRaffleName);
@@ -1862,14 +1890,14 @@ namespace GTI.Modules.PlayerCenter.UI
             if (playerListRafflesLB.SelectedIndex != -1)
             {
                 // DeleteRafflePrizeSQL run = new DeleteRafflePrizeSQL(dataRafflePrize.RaffleID);
-                var Exists = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID);
+                var Exists = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.Id);
                 if (Exists == true)
                 {
-                    ListPreviousWinner.data.RemoveAll(l => l.RaffleID == dataRafflePrize.RaffleID);
+                    ListPreviousWinner.data.RemoveAll(l => l.RaffleID == dataRafflePrize.Id);
                 }
                 if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
-                    if (playerListRaffleRunRaffleCB.SelectedItem.ToString() == dataRafflePrize.RaffleName)
+                    if (playerListRaffleRunRaffleCB.SelectedItem.ToString() == dataRafflePrize.Name)
                     {
                         if (playerListRaffleRunRaffleCB.Items.Count != 0)
                         {
@@ -1882,8 +1910,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                 }
 
-                SaveOrUpdateRaffleDefinitions(dataRafflePrize.RaffleID, true);
-                loadListRaffle();
+                SaveOrUpdateRaffleDefinitions(dataRafflePrize.Id, true);
+                loadListRaffle(GetPlayerRafflePrizesMessage.GetRafflePrizes());
                 clearAllContentsRaffleSettings();
                 SetAllCommandsToFalse();
             }
@@ -1907,7 +1935,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 isNew = false;
                 isUpdate = true;
                 //dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == lstBxRafflePrizes.SelectedItem.ToString());
-                dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == playerListRafflesLB.SelectedItem.ToString());
+                dataRafflePrize = (RafflePrize)playerListRafflesLB.SelectedItem;
                 loadRaffleSettings();
                 enableRaffleSettingsControls();
 
@@ -1937,7 +1965,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (Convert.ToInt32(mainTC.SelectedTab.Tag) == 2)//Raffle Tab
             {
-                loadcmbxRafle();
+                //loadcmbxRafle();
                 //loadRaffleInfo();
                 DisableOrEnableRunRaffle();
                 playerListRaffleRunRaffleCB.SelectedIndex = -1;
@@ -1967,7 +1995,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
-                    dataRafflePrize = List_DataRafflePrize.LDataRafflePrize.Single(l => l.RaffleName == playerListRaffleRunRaffleCB.SelectedItem.ToString());
+                    dataRafflePrize = (RafflePrize)playerListRaffleRunRaffleCB.SelectedItem;
                 }
                 else
                 {
@@ -1993,10 +2021,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     //check if the selected raffle have previous winner 
-                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID))
+                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.Id))
                     {
                         string messagetext = "";
-                        DataPreviousWinner dpw = ListPreviousWinner.data.First(l => l.RaffleID == dataRafflePrize.RaffleID);
+                        DataPreviousWinner dpw = ListPreviousWinner.data.First(l => l.RaffleID == dataRafflePrize.Id);
                         if (dpw.WinnerPlayerID.Count > 1)
                         {
                             messagetext = "Previous Winners";
@@ -2023,9 +2051,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 else if (playerListRaffleRunRaffleCB.SelectedIndex != -1)
                 {
                     //check if the selected raffle have previous winner 
-                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID))
+                    if (ListPreviousWinner.data.Count != 0 && ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.Id))
                     {
-                        DataPreviousWinner dpw = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);//This will commit an error if it did not found.
+                        DataPreviousWinner dpw = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.Id);//This will commit an error if it did not found.
                         string messagetext = "";
                         if (dpw.WinnerPlayerID.Count > 1)//ERROR
                         {
@@ -2089,13 +2117,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (isModify == true)
                 {
                     RaffleName = txtbxSetupName.Text.ToString();
-                    SaveOrUpdateRaffleDefinitions(dataRafflePrize.RaffleID, false);
+                    SaveOrUpdateRaffleDefinitions(dataRafflePrize.Id, false);
                 }
             }
 
             if (isNew == true || isModify == true)
             {
-                loadListRaffle();
+                loadListRaffle(GetPlayerRafflePrizesMessage.GetRafflePrizes());
             }
             isModify = false;
 
@@ -2113,7 +2141,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
                 return;
 
-            if (dataRafflePrize.NoOfRafflePrize > 1) { label6.Text = "Winners"; } else { label6.Text = "Winner"; }
+            if (dataRafflePrize.NumberOfPrizes > 1) { label6.Text = "Winners"; } else { label6.Text = "Winner"; }
 
             if (playerListRaffleWinnersLB.Items.Count != 0)
             {
@@ -2134,19 +2162,31 @@ namespace GTI.Modules.PlayerCenter.UI
             RaffleWinner raffleWinner = new RaffleWinner();//Winner should be clear in runnning a new raffle.
             Cursor.Current = Cursors.WaitCursor;
 
-            for (int startcount = 0; startcount < dataRafflePrize.NoOfRafflePrize; startcount++)
+            for (int startcount = 0; startcount < dataRafflePrize.NumberOfPrizes; startcount++)
             {
                 int tempRaffleHistory = 0; //check if the raffleHistory already exists if not then set to 0 = new;
-                tempRaffleHistory = raffleWinner.HistoryID;
+                tempRaffleHistory = raffleWinner.HistoryId;
+                try
+                {
+                    var runRaffleMessage = new RunPlayerRaffleMessage(dataRafflePrize.Id, tempRaffleHistory, DefID);
+                    runRaffleMessage.Send();
 
-                raffleWinner = RunPlayerRaffleMessage.GetRaffleWinner(dataRafflePrize.RaffleID, tempRaffleHistory, DefID);   //Raffle winner here //What raffle is being run and is PlayerHistory = 0; //How to change the value from the existing raffleHistoryID
+                    raffleWinner = runRaffleMessage.Winner;
+                }
+                catch (Exception ex)
+                {
+                    MessageForm.Show(String.Format("Unable get run raffle: {0}", ex.Message));
+                    return;
+                }
+
+
                 raffleWinners.Add(raffleWinner);
                 if (String.IsNullOrWhiteSpace(raffleWinner.FirstName) && String.IsNullOrWhiteSpace(raffleWinner.LastName))
-                    playerListRaffleWinnersLB.Items.Add((startcount + 1).ToString() + ". " + String.Format("[Player Id {0}]", raffleWinner.PlayerID));
+                    playerListRaffleWinnersLB.Items.Add((startcount + 1).ToString() + ". " + String.Format("[Player Id {0}]", raffleWinner.PlayerId));
                 else
                     playerListRaffleWinnersLB.Items.Add((startcount + 1).ToString() + ". " + raffleWinner.FirstName + " " + raffleWinner.LastName);
 
-                getVouchersInfo(raffleWinner.PlayerID);
+                getVouchersInfo(raffleWinner.PlayerId);
                 RaffleReceipt raffleReceipt = new RaffleReceipt();
                 AssignValueToReceipt(raffleReceipt, startcount);
 
@@ -2159,7 +2199,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 Application.DoEvents();
-                if (delaytime > 0 && startcount + 1 < dataRafflePrize.NoOfRafflePrize) // if there is another winner after this one, we should delay.
+                if (delaytime > 0 && startcount + 1 < dataRafflePrize.NumberOfPrizes) // if there is another winner after this one, we should delay.
                     System.Threading.Thread.Sleep(((delaytime + 1) * 1000)); // note: same setting that remote display listens to. Can take a bit to load player images
             }
 
@@ -2172,23 +2212,23 @@ namespace GTI.Modules.PlayerCenter.UI
             //save to datapreviouswinner
             if (ListPreviousWinner.data.Count != 0)
             {
-                var isRaffleExists = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.RaffleID);       //check if the raffleName alrady exists
+                var isRaffleExists = ListPreviousWinner.data.Exists(l => l.RaffleID == dataRafflePrize.Id);       //check if the raffleName alrady exists
                 if (isRaffleExists == true)
                 {
                     //delete it 
-                    ListPreviousWinner.data.RemoveAll(l => l.RaffleID == dataRafflePrize.RaffleID);
+                    ListPreviousWinner.data.RemoveAll(l => l.RaffleID == dataRafflePrize.Id);
 
                 }
             }
 
 
             DataPreviousWinner dpw = new DataPreviousWinner();
-            dpw.RaffleID = dataRafflePrize.RaffleID;
-            dpw.RaffleName = dataRafflePrize.RaffleName;
+            dpw.RaffleID = dataRafflePrize.Id;
+            dpw.RaffleName = dataRafflePrize.Name;
 
             foreach (RaffleWinner rw in raffleWinners)
             {
-                dpw.WinnerPlayerID.Add(rw.PlayerID);
+                dpw.WinnerPlayerID.Add(rw.PlayerId);
                 dpw.WinnerPlayerFName.Add(rw.FirstName);
                 dpw.WinnerPlayerLName.Add(rw.LastName);
             }
@@ -2233,7 +2273,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;
             }
 
-            DataPreviousWinner RafflePreviousWinner = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.RaffleID);
+            DataPreviousWinner RafflePreviousWinner = ListPreviousWinner.data.Single(l => l.RaffleID == dataRafflePrize.Id);
 
             //Print only selected winner
             if (playerListRaffleWinnersLB.SelectedIndex == -1)//print all

@@ -148,15 +148,11 @@
     <Compile Include="Data\ClearPlayerRaffleMessage.cs" />
     <Compile Include="Data\CreateNewPlayerMessage.cs" />
     <Compile Include="Data\DataPreviousWinner.cs" />
-    <Compile Include="Data\DataRafflePrizes.cs" />
     <Compile Include="Data\GetLastPlayerRaffleWinnerMessage.cs" />
     <Compile Include="Data\GetOperatorPlayerStatusList.cs" />
-    <Compile Include="Data\GetPlayerListDefinition.cs" />
     <Compile Include="Data\GetPlayerListDetail.cs" />
     <Compile Include="Data\GetPlayerListReportMessage.cs" />
     <Compile Include="Data\GetRaffleDelaySettings.cs" />
-    <Compile Include="Data\GetRaffleInformation.cs" />
-    <Compile Include="Data\GetRafflePlayerDefinitions.cs" />
     <Compile Include="UI\AwardPoints.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,11 +193,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Data\RaffleSettings.cs" />
-    <Compile Include="Data\RunPlayerRaffle.cs" />
     <Compile Include="Data\SetOperatorPlayerStatus.cs" />
     <Compile Include="Data\SetPlayerDataMessage.cs" />
     <Compile Include="Data\SetPlayerImageMessage.cs" />
-    <Compile Include="Data\SetPlayerRaffleDefinitions.cs" />
     <Compile Include="Data\SetPlayerList.cs" />
     <Compile Include="Data\SetPlayerStatusCode.cs" />
     <Compile Include="Data\GetPlayerLocation.cs" />
@@ -222,7 +216,9 @@
     <Compile Include="UI\ActiveStatusEditor.designer.cs">
       <DependentUpon>ActiveStatusEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\MCPFindPlayerForm.cs" />
+    <Compile Include="UI\MCPFindPlayerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\MCPFindPlayerForm.Designer.cs">
       <DependentUpon>MCPFindPlayerForm.cs</DependentUpon>
     </Compile>

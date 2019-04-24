@@ -72,8 +72,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if(m_displayMode is NormalDisplayMode)
             {
-                StartPosition = FormStartPosition.Manual;
-                Location = new Point(112, 173);
+                //StartPosition = FormStartPosition.Manual;
+                //Location = new Point(112, 173);
             }
             else if(m_displayMode is CompactDisplayMode)
             {
@@ -316,5 +316,14 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
+
+        private void m_firstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SearchClick(sender, new EventArgs());
+            }
+        }
     }
 }

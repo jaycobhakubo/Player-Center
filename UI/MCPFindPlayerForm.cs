@@ -14,6 +14,8 @@ using GTI.Modules.Shared;
 using GTI.Modules.PlayerCenter.Data;
 using GTI.Modules.PlayerCenter.Business;
 using GTI.Modules.PlayerCenter.Properties;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -25,9 +27,10 @@ namespace GTI.Modules.PlayerCenter.UI
         #region Member Variables
         protected object m_lastFocus = null;
         protected Player m_selectedPlayer = null;
-
         protected PlayerManager m_parent;
-
+        private PlayerListItem[] m_playerList = null;
+        private bool[] m_sortInfo = new bool[8]{true, false, false, false, false, false, false, false};
+        private int m_sortColumn = 0;
         #endregion
 
         #region Member Properties
@@ -61,24 +64,23 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();           
             Application.DoEvents();
             Application.DoEvents();
-            m_lastFocus = m_firstName;
-            m_firstName.MaxLength = StringSizes.MaxNameLength;
-            m_lastName.MaxLength = StringSizes.MaxNameLength;
-            m_cmbxFilterSearchResult.SelectedIndex = 0;
-          
+            m_lastFocus = m_txtbxSearchCategory;
             Application.DoEvents();
-           
         }
         #endregion
 
 
         private void LoadPlayerListDataGrid(PlayerListItem[] players)
         {
+            m_sortColumn = 0;
+            m_sortInfo = new bool[8]{true, false, false, false, false, false, false, false};
+            m_playerList = players.OrderBy(i => i.Id).ToArray();
+            BindingSource bs = new BindingSource(m_playerList, "");
             m_dgvResultsList.DataSource = null;
             m_dgvResultsList.Rows.Clear();
             m_dgvResultsList.AutoGenerateColumns = false;
             m_dgvResultsList.AllowUserToAddRows = false;
-            m_dgvResultsList.DataSource = players;
+            m_dgvResultsList.DataSource = bs; //players;
             //Sort("ReportDisplayName", SortOrder.Ascending);
             m_dgvResultsList.ClearSelection();
         }
@@ -123,6 +125,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         m_selectPlayerButton.PerformClick();
                     }
+
+                    m_dgvResultsList.Focus();
                 }
                 else
                 {
@@ -191,7 +195,32 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-       
+        private void m_dgvResultsList_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                SelectPlayerClick(sender, new EventArgs());
+            }
+        }
+
+
+        private void m_dgvResultsList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void m_dgvResultsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
         /// <summary>
         /// Handles the select player button click.
         /// </summary>
@@ -205,7 +234,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             //var testr = m_dgvResultsList.CurrentCell.RowIndex;
 
-            if (m_dgvResultsList.CurrentCell == null)
+            if (m_dgvResultsList.SelectedRows == null || m_dgvResultsList.SelectedRows.Count == 0)
             {
                 MessageForm.Show(Resources.FindPlayerFormNoPlayer);
                 return;               
@@ -266,29 +295,6 @@ namespace GTI.Modules.PlayerCenter.UI
         #region List Events
 
         /// <summary>
-        /// Handles the results list up button click.
-        /// </summary>
-        /// <param name="sender">The sender of the event.</param>
-        /// <param name="e">An EventArgs object that contains the 
-        /// event data.</param>
-        private void ResultsListUpClick(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Handles the results list down button click.
-        /// </summary>
-        /// <param name="sender">The sender of the event.</param>
-        /// <param name="e">An EventArgs object that contains the 
-        /// event data.</param>
-        private void ResultsListDownClick(object sender, EventArgs e)
-        {
-
-        }
-
-
-        /// <summary>
         /// Sets the settings of this form based on the current display mode.
         /// </summary>
         //protected override void ApplyDisplayMode()
@@ -312,77 +318,137 @@ namespace GTI.Modules.PlayerCenter.UI
         //    }
         //}
 
-        /// <summary>
-        /// Handles when the focus changes on a form.
-        /// </summary>
-        /// <param name="sender">The sender of the event.</param>
-        /// <param name="e">An EventArgs object that contains the 
-        /// event data.</param>
-        private void FocusChanged(object sender, EventArgs e)
+
+        private void m_dgvResultsList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (sender is Control) //&& (sender != m_virtualKeyboard))
-            {
-                m_lastFocus = sender;
-            }
-
-        }
-
-
-        private void PlayerResultsEnter(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if (e.RowIndex != -1)
                 SelectPlayerClick(sender, new EventArgs());
-
         }
 
-        private void PlayerResultsDoubleClick(object sender, EventArgs e)
+        private void m_txtbxSearchCategory_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ListBox lst = (ListBox)sender;
-            lock (this)
-            {
-                try
-                {
-                    if (lst.SelectedIndex > -1)
-                    {
-                        SelectPlayerClick(sender, new EventArgs());
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("PlayerResultsDoubleClick()...Exception: " + ex.Message);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Handles when a key on the virtual keyboard is clicked.
-        /// </summary>
-        /// <param name="sender">The sender of the event.</param>
-        /// <param name="e">A KeyboardEventArgs object that contains the 
-        /// event data.</param>
-        private void KeyboardKeyPressed(object sender, KeyboardEventArgs e)
-        {
-            if (m_lastFocus is Control) // && (m_lastFocus != m_virtualKeyboard))
-            {
-                ((Control)m_lastFocus).Focus();
-                SendKeys.Send(e.KeyPressed);
-            }
-        }
-
-        private void NameKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if(e.KeyChar == (char)Keys.Enter)
                 SearchClick(sender, new EventArgs());
         }
 
+        private void MCPFindPlayerForm_Shown(object sender, EventArgs e)
+        {
+            m_txtbxSearchCategory.Focus();
+        }
+
+        private void m_dgvResultsList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (m_playerList != null && e.ColumnIndex >= 0 && e.ColumnIndex < 8)
+            {
+                m_sortColumn = e.ColumnIndex;
+                m_sortInfo[m_sortColumn] = !m_sortInfo[m_sortColumn];
+
+                switch (m_sortColumn)
+                {
+                    case 1: //first name
+                    {
+                        if(m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.FirstName).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.FirstName).ToArray();
+
+                        break;
+                    }
+
+                    case 2: //middle name
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.MiddleInitial).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.MiddleInitial).ToArray();
+                        
+                        break;
+                    }
+
+                    case 3: //last name
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.LastName).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.LastName).ToArray();
+                        
+                        break;
+                    }
+
+                    case 4: //mag card
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.MagCard).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.MagCard).ToArray();
+                        
+                        break;
+                    }
+
+                    case 5: //identity
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.PlayerIdentity).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.PlayerIdentity).ToArray();
+                        
+                        break;
+                    }
+
+                    case 6: //birthdate
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.BirthDate).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.BirthDate).ToArray();
+                        
+                        break;
+                    }
+
+                    case 7: //last visit date
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.LastVisitDate).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.LastVisitDate).ToArray();
+                        
+                        break;
+                    }
+
+                    default:
+                    {
+                        if (m_sortInfo[m_sortColumn])
+                            m_playerList = m_playerList.OrderBy(i => i.Id).ToArray();
+                        else
+                            m_playerList = m_playerList.OrderByDescending(i => i.Id).ToArray();
+                        
+                        break;
+                    }
+                }
+
+                BindingSource bs = new BindingSource(m_playerList, "");
+                m_dgvResultsList.DataSource = null;
+                m_dgvResultsList.Rows.Clear();
+                m_dgvResultsList.AutoGenerateColumns = false;
+                m_dgvResultsList.AllowUserToAddRows = false;
+                m_dgvResultsList.DataSource = bs; //players;
+                m_dgvResultsList.ClearSelection();
+
+                for (int i = 0; i < m_sortInfo.Length; i++)
+                {
+                    if (i != m_sortColumn)
+                    {
+                        m_sortInfo[i] = false;
+                        m_dgvResultsList.Columns[i].HeaderCell.SortGlyphDirection = SortOrder.None;
+                    }
+                    else
+                    {
+                        m_dgvResultsList.Columns[i].HeaderCell.SortGlyphDirection = (m_sortInfo[i] ? SortOrder.Ascending : SortOrder.Descending);
+                    }
+                }
+            }
+        }
 
         #endregion
-
-        
-
-        
-
-        
-
     }
 }

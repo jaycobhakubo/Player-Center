@@ -89,6 +89,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_firstName.ForeColor = System.Drawing.Color.Yellow;
             this.m_firstName.Name = "m_firstName";
             this.m_firstName.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_firstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_firstName_KeyPress);
             // 
             // m_lastName
             // 

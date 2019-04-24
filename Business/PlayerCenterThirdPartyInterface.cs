@@ -559,9 +559,21 @@ namespace GTI.Modules.PlayerCenter.Business
                     return;
                 }
 
-                try { cardMsg.Send(); }  // Send the message.
-                catch (ServerCommException) { throw; }// // Don't repackage the ServerCommException}
-                catch (Exception ex) { throw new PlayerCenterException(string.Format(Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex); }
+                try
+                {
+                    cardMsg.Send(); 
+                
+                    if(cardMsg.SyncError != string.Empty)
+                        throw new Exception(cardMsg.SyncError);
+                } 
+                catch (ServerCommException)// Don't repackage the ServerCommException}
+                {
+                    throw; 
+                }
+                catch (Exception ex)
+                {
+                    throw new PlayerCenterException(string.Format(Resources.GetPlayerFailed, ServerExceptionTranslator.FormatExceptionMessage(ex)), ex); 
+                }
 
                 if (cardMsg.PlayerId == 0)
                 {

@@ -986,6 +986,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     cardMsg.Send();
+
+                    if (cardMsg.SyncError != string.Empty)
+                        throw new Exception(cardMsg.SyncError);
                 }
                 catch (ServerCommException)
                 {
@@ -1139,6 +1142,9 @@ namespace GTI.Modules.PlayerCenter.Business
                 try
                 {
                     cardMsg.Send();
+
+                    if (cardMsg.SyncError != string.Empty)
+                        throw new Exception(cardMsg.SyncError);
                 }
                 catch (ServerCommException ex)
                 {

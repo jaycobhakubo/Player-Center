@@ -21,7 +21,13 @@ using System.Drawing; //US2469
 using GTI.Modules.PlayerCenter.Data; //US2469    
 using System.Collections.Generic;  //US2469
 using CheckComboBoxTest;
-using GTI.Modules.Shared.Business;
+using GameTech.Elite.Base;
+using GameTech.Elite.Client;
+using LoggerLevel = GTI.Modules.Shared.LoggerLevel;
+using ProductItem = GTI.Modules.Shared.Business.ProductItem;
+using ServerCommException = GTI.Modules.Shared.ServerCommException;
+using StringSizes = GTI.Modules.Shared.StringSizes;
+
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -149,18 +155,18 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 IndexToDefID.Clear();
             }
-
-            GetPlayerListDefinition get_pld = new GetPlayerListDefinition();
-            List<PlayerListDefinition> List_pld = get_pld.GetPlayerListDefinitionMSG();
+            
+            var getPlayerListDefinition = new GetPlayerListDefinition();
+            List<IntStringPair> List_pld = getPlayerListDefinition.GetPlayerListDefinitionMessage();
             int indexOf = 0;
 
             if (List_pld.Count > 0)
             {
-                var sortPlayerListDef = List_pld.OrderBy(x => x.DefinitionName);//Populate our existing player list.
-                foreach (PlayerListDefinition pld in sortPlayerListDef)
+                var sortPlayerListDef = List_pld.OrderBy(x => x.StringValue);//Populate our existing player list.
+                foreach (var pld in sortPlayerListDef)
                 {
-                    m_cmbxPlayerList.Items.Add(pld.DefinitionName);
-                    IndexToDefID.Add(indexOf, pld.DefId);
+                    m_cmbxPlayerList.Items.Add(pld.StringValue);
+                    IndexToDefID.Add(indexOf, pld.IntValue);
                     indexOf = indexOf + 1;
                 }
             }
@@ -2603,7 +2609,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         if (PlyrActListSetting.Settings.Count() == 0)
                         {
-                            m_errorProvider.SetError(btnSaveList, "Apply atleast one setting to set.");
+                            m_errorProvider.SetError(btnSaveList, "Apply at least one setting to set.");
                             return;
                         }
 
@@ -4179,11 +4185,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
     }
 
-    struct PlayerListDefinition
-    {
-        public int DefId;
-        public string DefinitionName;
-    }
 
     struct PlayerListSetting
     {

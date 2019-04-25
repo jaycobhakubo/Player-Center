@@ -289,7 +289,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
             //Get the current cell
-             CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
+            // CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
         }
 
       
@@ -306,10 +306,19 @@ namespace GTI.Modules.PlayerCenter.UI
         void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {
             if(m_loadingDetails)
-                return;
-
-            
+                return;          
             CheckEntryScale(sender as DataGridView);
+        }
+
+        private bool IsCellIndicator (int rowIndex, int columnIndex)
+        {
+            bool result = false;
+                  var dgvr = entrySpendScaleDGV.Rows[rowIndex];         
+                  if (dgvr.Cells[columnIndex + 1].Style.ForeColor != SystemColors.WindowText)
+                  {
+                      result = true;
+                  }
+                  return result;
         }
 
         void CheckEntryScale(DataGridView dgv)
@@ -330,7 +339,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach(System.Data.DataRow dr in dt.Rows)
                     {
                         for(int i = 0; i < 3; ++i)
-                            if(dr[i] == DBNull.Value)
+
+
+                            if(dr[i] == DBNull.Value || IsCellIndicator(dt.Rows.IndexOf(dr), i))
                             {
                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
                                 return;
@@ -1643,6 +1654,21 @@ namespace GTI.Modules.PlayerCenter.UI
         private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             //var a = 1;
+            //var dgv = (DataGridView)sender;//Current DataGridView
+            //var dgvr = dgv.Rows[e.RowIndex];
+            //if (m_selectedColumnDataType == typeof(int))
+            //{
+            //    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            //    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            //}
+            //else if (m_selectedColumnDataType == typeof(decimal))
+            //{
+            //    if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
+            //    {
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            //    }
+            //}
         }
 
         private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1650,7 +1676,6 @@ namespace GTI.Modules.PlayerCenter.UI
             var dgv = (DataGridView)sender;//Current DataGridView
             var dgvc = dgv.Columns[e.ColumnIndex];
             m_selectedColumnDataType = dgvc.ValueType;
-            var testrrf = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
         }
 
         private bool IsFromOk()
@@ -1665,19 +1690,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             var dgv = (DataGridView)sender;//Current DataGridView
             var dgvr = dgv.Rows[e.RowIndex];
-            if (m_selectedColumnDataType == typeof(int))
-            {
-                dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-                dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-            }
-            else if (m_selectedColumnDataType == typeof(decimal))
-            {
-                if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
-                {
-                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-                    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-                }
-            }
+            dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
         }
 
 
@@ -1868,24 +1882,27 @@ namespace GTI.Modules.PlayerCenter.UI
             int test;
             bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
 
-       
-            if (test == 3)
+            if (rd_current.Checked == true)
             {
-                setEntryMethodBothUI();
-                entryMethodsTC.SelectedIndex = test - 1;
-            }
-            else if (test != 3)
-            {
-                hideEntryMethodBothUI();
-                if (test == 1)
+                if (test == 3)
                 {
-                    entryMethodsTC.SelectedIndex = 1;
+                    setEntryMethodBothUI();
+                    entryMethodsTC.SelectedIndex = test - 1;
                 }
-                if (test == 2)
+                else if (test != 3)
                 {
-                    entryMethodsTC.SelectedIndex = 0;
+                    hideEntryMethodBothUI();
+                    if (test == 1)
+                    {
+                        entryMethodsTC.SelectedIndex = 1;
+                    }
+                    if (test == 2)
+                    {
+                        entryMethodsTC.SelectedIndex = 0;
+                    }
                 }
             }
+           
        
             //0 = visit
             //1 = spend

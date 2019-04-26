@@ -1329,7 +1329,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_erroredControls.Remove(c);
             else if(!m_erroredControls.Contains(c))
                 m_erroredControls.Add(c);
-            saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
+           // saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
 
             if(m_erroredControls.Count > 0)
             {
@@ -2217,6 +2217,51 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetError(dgv, "Invalid scale");
                 e.Cancel = true;
             }
+        }
+
+        private void drawingNameTxt_Validating(object sender, CancelEventArgs e)
+        {
+            String errMsg = null;
+            int drawingNameLenLimit = 48;
+            int drawingNameLen = drawingNameTxt.Text.Length;
+            if (drawingNameLen > drawingNameLenLimit)
+            {
+                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
+                e.Cancel = true;
+            }
+            else
+            {
+                var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
+                if (namingConflict != null)
+                {
+                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
+                    e.Cancel = true;
+                }
+            }
+            SetError(drawingNameTxt, errMsg);
+        }
+
+        private void saveDrawingChangesBtn_Validating(object sender, CancelEventArgs e)
+        {
+            //errorProvider.SetError(c, errMsg);
+
+            //if (String.IsNullOrEmpty(errMsg))
+            //    m_erroredControls.Remove(c);
+            //else if (!m_erroredControls.Contains(c))
+            //    m_erroredControls.Add(c);
+            //// saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
+
+            //if (m_erroredControls.Count > 0)
+            //{
+            //    StringBuilder sb = new StringBuilder();
+            //    foreach (var ec in m_erroredControls)
+            //        sb.AppendLine(errorProvider.GetError(ec));
+            //    errorProvider.SetError(saveDrawingChangesBtn, sb.ToString());
+            //}
+            //else
+            //{
+            //    errorProvider.SetError(saveDrawingChangesBtn, null);
+            //}
         }
 
        

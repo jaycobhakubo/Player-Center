@@ -289,36 +289,56 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
             //Get the current cell
-            // CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
+            //if (m_cellLastEntry) 
+            //CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.\
+            
         }
 
+        private bool m_cellLastEntry = false;
       
         void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             if(m_loadingDetails)
                 return;
-                CheckEntryScale(sender as DataGridView);
-      
-         
-          
+                //CheckEntryScale(sender as DataGridView);                  
         }
 
         void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
         {
             if(m_loadingDetails)
                 return;          
-            CheckEntryScale(sender as DataGridView);
+            //CheckEntryScale(sender as DataGridView);
         }
 
         private bool IsCellIndicator (int rowIndex, int columnIndex)
         {
             bool result = false;
                   var dgvr = entrySpendScaleDGV.Rows[rowIndex];         
-                  if (dgvr.Cells[columnIndex + 1].Style.ForeColor != SystemColors.WindowText)
+                  if (dgvr.Cells[columnIndex + 1].Style.ForeColor == Color.LightGray)
                   {
                       result = true;
                   }
                   return result;
+        }
+
+        private bool IsCellLastEntry(DataGridViewRow dgvr)
+        {
+            bool result = true;
+            for (int i = 0; i < 3; ++i)
+            {
+                if (dgvr.Cells[i + 1].Style.ForeColor == Color.LightGray)
+                {
+                    result = false;
+                }                         
+            }
+            m_cellLastEntry = result;
+            return result; 
+        }
+
+
+        private void ValidateUserEntry()
+        {
+
         }
 
         void CheckEntryScale(DataGridView dgv)
@@ -336,16 +356,40 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
 
                     #region Check for incompletely defined tiers
-                    foreach(System.Data.DataRow dr in dt.Rows)
+                    foreach (System.Data.DataRow dr in dt.Rows)
                     {
-                        for(int i = 0; i < 3; ++i)
-
-
-                            if(dr[i] == DBNull.Value || IsCellIndicator(dt.Rows.IndexOf(dr), i))
-                            {
-                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                return;
+                        for (int i = 0; i < 3; ++i)
+                        {                            
+                            if (dr[i] == DBNull.Value)
+                            {                               
+                                    SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                    return;
                             }
+                            else
+                            {
+                                var itemvalue = dr[i];
+                                int intValue = -1;
+                                decimal decValue = -1;
+
+                                if (i == 3)//int
+                                {
+                                    intValue = Convert.ToInt32(itemvalue); 
+                                }
+                                else//decimal
+                                {
+                                    decValue = Convert.ToDecimal(itemvalue); 
+                                }
+
+                                if (intValue == 0 || decValue == 0)
+                                {
+                                    if (IsCellIndicator(dt.Rows.IndexOf(dr), i))
+                                    {
+                                        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                        return;
+                                    }
+                                }
+                            }
+                        }
                     }
                     #endregion
 
@@ -570,7 +614,7 @@ namespace GTI.Modules.PlayerCenter.UI
             foreach(TabPage tp in entryMethodsTC.TabPages)
                 tp.Enabled = enterEditMode;
 
-            saveDrawingChangesBtn.Enabled = enterEditMode && m_erroredControls.Count == 0;
+            //saveDrawingChangesBtn.Enabled = enterEditMode && m_erroredControls.Count == 0;
             revertDrawingChangesBtn.Enabled = enterEditMode;
             cancelDrawingChangesBtn.Enabled = enterEditMode;
 
@@ -592,7 +636,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 entrySpendScaleDGV.Visible = entryMethodUsed;
                 addEntrySpendTierBtn.Visible = entryMethodUsed;
-                CheckEntryScale(entrySpendScaleDGV);
+                //CheckEntryScale(entrySpendScaleDGV);
             }
             CheckEntryMethods();
         }
@@ -608,7 +652,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 entryVisitScaleDGV.Visible = entryMethodUsed;
                 addEntryVisitTierBtn.Visible = entryMethodUsed;
-                CheckEntryScale(entryVisitScaleDGV);
+                //CheckEntryScale(entryVisitScaleDGV);
             }
             CheckEntryMethods();
 
@@ -653,7 +697,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 entryPurchaseScaleDGV.Visible = entryMethodUsed;
                 addEntryPurchaseTierBtn.Visible = entryMethodUsed;
                 entryPurchaseSelectionsCL.Visible = entryMethodUsed;
-                CheckEntryScale(entryPurchaseScaleDGV);
+                //CheckEntryScale(entryPurchaseScaleDGV);
 
                 if(Object.ReferenceEquals(rb, entryPurchaseTypePackageRB))
                 {
@@ -912,7 +956,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_entrySpendScaleDT.Rows.Clear();
                 foreach(var et in m_currentGPD.EntrySpendTiers)
                     m_entrySpendScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
-                CheckEntryScale(entrySpendScaleDGV);
+                //CheckEntryScale(entrySpendScaleDGV);
 
                 switch(m_currentGPD.EntryVisitType)
                 {
@@ -937,7 +981,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_entryVisitScaleDT.Rows.Clear();
                 foreach(var et in m_currentGPD.EntryVisitTiers)
                     m_entryVisitScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
-                CheckEntryScale(entryVisitScaleDGV);
+                //CheckEntryScale(entryVisitScaleDGV);
 
                 switch(m_currentGPD.EntryPurchaseType)
                 {
@@ -959,7 +1003,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_entryPurchaseScaleDT.Rows.Clear();
                 foreach(var et in m_currentGPD.EntryPurchaseTiers)
                     m_entryPurchaseScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
-                CheckEntryScale(entryPurchaseScaleDGV);
+                //CheckEntryScale(entryPurchaseScaleDGV);
 
                 m_pendingPackageSelections.Clear();
                 foreach(var id in m_currentGPD.EntryPurchasePackageIds)
@@ -1010,6 +1054,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void saveDrawingChangesBtn_Click(object sender, EventArgs e)
         {
+                // Validate the input.
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+            { return; }
+                        
             var candidate = GeneratePendingDrawing();
 
             if(candidate.Id == null && !candidate.Active)
@@ -1692,6 +1740,8 @@ namespace GTI.Modules.PlayerCenter.UI
             var dgvr = dgv.Rows[e.RowIndex];
             dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
             dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            IsCellLastEntry(dgvr);
+            
         }
 
 
@@ -1792,11 +1842,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_selectedColumnDataType == typeof(int))
             {
+                e.Control.KeyUp -= new KeyEventHandler(IntOnly);
+                e.Control.KeyUp += new KeyEventHandler(IntOnly);
                 e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
                 e.Control.KeyPress += new KeyPressEventHandler(IntOnly);
             }
             else if (m_selectedColumnDataType == typeof(decimal))
             {
+                e.Control.KeyUp -= new KeyEventHandler(DecimalOnly);
+                e.Control.KeyUp += new KeyEventHandler(DecimalOnly);
                 e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
                 e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
             }
@@ -1804,6 +1858,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
      
         private Type m_selectedColumnDataType;
+
+
+
+
+        private void IntOnly(object sender, KeyEventArgs e)
+        { 
+            if (m_cellLastEntry)
+            {             
+                //CheckEntryScale(entrySpendScaleDGV);
+            }
+        }
+
 
         private void IntOnly(object sender, KeyPressEventArgs e)
         {
@@ -1816,8 +1882,29 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 result = !char.IsDigit(e.KeyChar);
             }
-
             e.Handled = result;
+        }
+
+
+
+        private void DecimalOnly(object sender, KeyEventArgs e)
+        {
+
+            var t = e.KeyData; 
+            var r = e.KeyCode;
+            var f = e.KeyValue;
+            var txtbxValue = new TextBox();
+
+            if (sender is TextBox)
+            {
+                txtbxValue = (TextBox)sender;
+                var ff = txtbxValue.Text;
+            }
+
+            if (m_cellLastEntry)
+            {
+                //CheckEntryScale(entrySpendScaleDGV);
+            }
         }
 
         private void DecimalOnly(object sender, KeyPressEventArgs e)
@@ -1872,9 +1959,10 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 e.Handled = result;
-
             }
         }
+
+        private string m_actualValue = "";
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -1937,6 +2025,198 @@ namespace GTI.Modules.PlayerCenter.UI
             //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
             //    }
             //}
+        }
+
+        private void ValidateUserInput(object sender, CancelEventArgs e)
+        {
+            var dgv = entrySpendScaleDGV;
+            try
+            {
+             
+                if (dgv.Visible)
+                {
+                    var dt = dgv.DataSource as DataTable;
+
+                    if (dt.Rows.Count == 0)
+                    {
+                        SetError(dgv, "No entry tiers specified.");
+                        e.Cancel = true;
+                        return;
+                    }
+
+                    #region Check for incompletely defined tiers
+                    foreach (System.Data.DataRow dr in dt.Rows)
+                    {
+                        for (int i = 0; i < 3; ++i)
+                        {
+                            if (dr[i] == DBNull.Value)
+                            {
+                                //if (m_actualValue != string.Empty)
+                                //{
+                                //}
+                                //else
+                                //{
+                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                e.Cancel = true;
+                                return;
+                                //}
+                            }
+                            else
+                            {
+                                var itemvalue = dr[i];
+                                int intValue = -1;
+                                decimal decValue = -1;
+
+                                if (i == 3)//int
+                                {
+                                    intValue = Convert.ToInt32(itemvalue);
+                                }
+                                else//decimal
+                                {
+                                    decValue = Convert.ToDecimal(itemvalue);
+                                }
+
+                                if (intValue == 0 || decValue == 0)
+                                {
+                                    if (IsCellIndicator(dt.Rows.IndexOf(dr), i))
+                                    {
+                                        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                        e.Cancel = true;
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #endregion
+
+                    if (dt.Columns[0].DataType == typeof(decimal))
+                    {
+                        var candidateScale = new List<GeneralPlayerDrawing.EntryTier<decimal>>();
+
+                        #region Build EntryTier list, and make sure tiers have valid relative begin-end
+                        foreach (System.Data.DataRow dr in dt.Rows)
+                        {
+                            var et = new GeneralPlayerDrawing.EntryTier<decimal>((decimal)dr[0], (decimal)dr[1], (int)dr[2]);
+                            if (et.TierBegin > et.TierEnd)
+                            {
+                                SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            candidateScale.Add(et);
+                        }
+                        #endregion
+
+                        #region Check for overlapping tiers
+                        for (int i = 0; i < candidateScale.Count; ++i)
+                        {
+                            var et = candidateScale[i];
+                            var overlap = candidateScale.FirstOrDefault(
+                                            (et2) => !object.ReferenceEquals(et, et2)
+                                                     && GeneralPlayerDrawing.EntryTier<decimal>.OverlapComparer.Compare(et, et2) == 0
+                                            );
+                            if (overlap != null)
+                            {
+                                SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                        }
+                        #endregion
+
+                        #region Check for gaps and entry losses
+                        candidateScale.Sort(GeneralPlayerDrawing.EntryTier<decimal>.SortComparer);
+                        for (int i = 1; i < candidateScale.Count; ++i)
+                        {
+                            var prevET = candidateScale[i - 1];
+                            var et = candidateScale[i];
+                            if ((et.TierBegin - prevET.TierEnd) > 0.01m)
+                            {
+                                SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            if (et.Entries < prevET.Entries)
+                            {
+                                SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            prevET = et;
+                        }
+                        #endregion
+
+                    }
+                    else if (dt.Columns[0].DataType == typeof(int))
+                    {
+                        var candidateScale = new List<GeneralPlayerDrawing.EntryTier<int>>();
+
+                        #region Build EntryTier list, and make sure tiers have valid relative begin-end
+                        foreach (System.Data.DataRow dr in dt.Rows)
+                        {
+                            var et = new GeneralPlayerDrawing.EntryTier<int>((int)dr[0], (int)dr[1], (int)dr[2]);
+                            if (et.TierBegin > et.TierEnd)
+                            {
+                                SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            candidateScale.Add(et);
+                        }
+                        #endregion
+
+                        #region Check for overlapping tiers
+                        for (int i = 0; i < candidateScale.Count; ++i)
+                        {
+                            var et = candidateScale[i];
+                            var overlap = candidateScale.FirstOrDefault(
+                                            (et2) => !object.ReferenceEquals(et, et2)
+                                                     && GeneralPlayerDrawing.EntryTier<int>.OverlapComparer.Compare(et, et2) == 0
+                                            );
+                            if (overlap != null)
+                            {
+                                SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                        }
+                        #endregion
+
+                        #region Check for gaps and entry losses
+                        candidateScale.Sort(GeneralPlayerDrawing.EntryTier<int>.SortComparer);
+                        for (int i = 1; i < candidateScale.Count; ++i)
+                        {
+                            var prevET = candidateScale[i - 1];
+                            var et = candidateScale[i];
+                            if ((et.TierBegin - prevET.TierEnd) > 1)
+                            {
+                                SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            if (et.Entries < prevET.Entries)
+                            {
+                                SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
+                                e.Cancel = true;
+                                return;
+                            }
+                            prevET = et;
+                        }
+                        #endregion
+                    }
+
+                }
+
+                SetError(dgv, null);
+
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                SetError(dgv, "Invalid scale");
+                e.Cancel = true;
+            }
         }
 
        

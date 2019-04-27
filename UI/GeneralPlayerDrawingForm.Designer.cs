@@ -317,6 +317,7 @@
             this.drawingEntriesDrawnTxt.TabIndex = 26;
             this.drawingEntriesDrawnTxt.TextChanged += new System.EventHandler(this.requiredUIntTxt_TextChanged);
             this.drawingEntriesDrawnTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.requiredIntTxt_KeyPress);
+            this.drawingEntriesDrawnTxt.Validating += new System.ComponentModel.CancelEventHandler(this.drawingEntriesDrawnTxt_Validating);
             // 
             // drawingEntriesDrawnLbl
             // 
@@ -357,6 +358,7 @@
             this.entryLimitEventTxt.TabIndex = 0;
             this.entryLimitEventTxt.TextChanged += new System.EventHandler(this.entryLimitTxt_TextChanged);
             this.entryLimitEventTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entryLimitTxt_KeyPress);
+            this.entryLimitEventTxt.Validating += new System.ComponentModel.CancelEventHandler(this.entryLimitEventTxt_Validating);
             // 
             // drawingDescriptionLbl
             // 
@@ -467,6 +469,7 @@
             this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(192, 26);
             this.initialEventEntryPeriodEndDTP.TabIndex = 23;
             this.initialEventEntryPeriodEndDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodEndDTP_ValueChanged);
+            this.initialEventEntryPeriodEndDTP.Validating += new System.ComponentModel.CancelEventHandler(this.initialEventEntryPeriodEndDTP_Validating);
             // 
             // initialEventEntryPeriodEndLbl
             // 
@@ -495,6 +498,7 @@
             this.initialEventEntryPeriodBeginDTP.Size = new System.Drawing.Size(190, 26);
             this.initialEventEntryPeriodBeginDTP.TabIndex = 22;
             this.initialEventEntryPeriodBeginDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodBeginDTP_ValueChanged);
+            this.initialEventEntryPeriodBeginDTP.Validating += new System.ComponentModel.CancelEventHandler(this.initialEventEntryPeriodBeginDTP_Validating);
             // 
             // entrySessionNumbersCL
             // 
@@ -576,6 +580,7 @@
             this.eventRepeatIncrementTxt.TabIndex = 38;
             this.eventRepeatIncrementTxt.TextChanged += new System.EventHandler(this.eventRepeatIncrementTxt_TextChanged);
             this.eventRepeatIncrementTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entryPeriodRepeatIncrementTxt_KeyPress);
+            this.eventRepeatIncrementTxt.Validating += new System.ComponentModel.CancelEventHandler(this.eventRepeatIncrementTxt_Validating);
             // 
             // eventRepetitionRateLbl
             // 
@@ -645,6 +650,7 @@
             this.initialEventScheduledForDTP.Size = new System.Drawing.Size(192, 26);
             this.initialEventScheduledForDTP.TabIndex = 35;
             this.initialEventScheduledForDTP.ValueChanged += new System.EventHandler(this.initialEventScheduledForDTP_ValueChanged);
+            this.initialEventScheduledForDTP.Validating += new System.ComponentModel.CancelEventHandler(this.initialEventScheduledForDTP_Validating);
             // 
             // eventWindowExamplesLbl
             // 
@@ -736,7 +742,7 @@
             this.entryMethodsTC.Location = new System.Drawing.Point(7, 44);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(671, 363);
+            this.entryMethodsTC.Size = new System.Drawing.Size(671, 318);
             this.entryMethodsTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.entryMethodsTC.TabIndex = 4;
             // 
@@ -750,7 +756,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 5);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(663, 354);
+            this.entryVisitsTP.Size = new System.Drawing.Size(663, 309);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -760,7 +766,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 314);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 269);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -783,9 +789,10 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 290);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 245);
             this.entryVisitScaleDGV.TabIndex = 7;
             this.entryVisitScaleDGV.Visible = false;
+            this.entryVisitScaleDGV.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendScaleDGV_Validating);
             // 
             // entryVisitsTypeFLP
             // 
@@ -856,7 +863,7 @@
             this.entryPurchasesTP.Location = new System.Drawing.Point(4, 5);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 363);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 318);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -928,7 +935,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 197);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 152);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -938,7 +945,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 162);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 117);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -961,7 +968,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 142);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 97);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Visible = false;
             // 
@@ -1023,7 +1030,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 5);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(663, 363);
+            this.entrySpendTP.Size = new System.Drawing.Size(663, 318);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -1033,7 +1040,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 323);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 278);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1056,7 +1063,7 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 311);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 266);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Visible = false;
             this.entrySpendScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
@@ -1067,7 +1074,7 @@
             this.entrySpendScaleDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellValueChanged);
             this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
             this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
-            this.entrySpendScaleDGV.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateUserInput);
+            this.entrySpendScaleDGV.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendScaleDGV_Validating);
             // 
             // entrySpendGroupingFLP
             // 
@@ -1093,6 +1100,7 @@
             this.entrySpendGroupingBySessionRB.Text = "Session";
             this.entrySpendGroupingBySessionRB.UseVisualStyleBackColor = true;
             this.entrySpendGroupingBySessionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            this.entrySpendGroupingBySessionRB.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendGrouping_Validating);
             // 
             // entrySpendGroupingNoneRB
             // 
@@ -1104,6 +1112,7 @@
             this.entrySpendGroupingNoneRB.Text = "None";
             this.entrySpendGroupingNoneRB.UseVisualStyleBackColor = true;
             this.entrySpendGroupingNoneRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            this.entrySpendGroupingNoneRB.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendGrouping_Validating);
             // 
             // entrySpendGroupingByTransactionRB
             // 
@@ -1115,6 +1124,7 @@
             this.entrySpendGroupingByTransactionRB.Text = "Transaction";
             this.entrySpendGroupingByTransactionRB.UseVisualStyleBackColor = true;
             this.entrySpendGroupingByTransactionRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            this.entrySpendGroupingByTransactionRB.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendGrouping_Validating);
             // 
             // entrySpendGroupingByDayRB
             // 
@@ -1126,6 +1136,7 @@
             this.entrySpendGroupingByDayRB.Text = "Day";
             this.entrySpendGroupingByDayRB.UseVisualStyleBackColor = true;
             this.entrySpendGroupingByDayRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            this.entrySpendGroupingByDayRB.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendGrouping_Validating);
             // 
             // entrySpendGroupingEntryPeriodRB
             // 
@@ -1137,6 +1148,7 @@
             this.entrySpendGroupingEntryPeriodRB.Text = "Entry Period";
             this.entrySpendGroupingEntryPeriodRB.UseVisualStyleBackColor = true;
             this.entrySpendGroupingEntryPeriodRB.CheckedChanged += new System.EventHandler(this.entrySpendGroupingRB_CheckedChanged);
+            this.entrySpendGroupingEntryPeriodRB.Validating += new System.ComponentModel.CancelEventHandler(this.entrySpendGrouping_Validating);
             // 
             // drawingActiveChk
             // 
@@ -1160,8 +1172,6 @@
             this.drawingNameTxt.Name = "drawingNameTxt";
             this.drawingNameTxt.Size = new System.Drawing.Size(553, 26);
             this.drawingNameTxt.TabIndex = 12;
-            this.drawingNameTxt.TextChanged += new System.EventHandler(this.drawingNameTxt_TextChanged);
-            this.drawingNameTxt.Validating += new System.ComponentModel.CancelEventHandler(this.drawingNameTxt_Validating);
             // 
             // revertDrawingChangesBtn
             // 
@@ -1225,7 +1235,6 @@
             this.saveDrawingChangesBtn.Text = "Save";
             this.saveDrawingChangesBtn.UseVisualStyleBackColor = false;
             this.saveDrawingChangesBtn.Click += new System.EventHandler(this.saveDrawingChangesBtn_Click);
-            this.saveDrawingChangesBtn.Validating += new System.ComponentModel.CancelEventHandler(this.saveDrawingChangesBtn_Validating);
             // 
             // closeBtn
             // 

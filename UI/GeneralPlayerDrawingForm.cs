@@ -341,29 +341,30 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        void CheckEntryScale(DataGridView dgv)
+       private bool CheckEntryScale(DataGridView dgv)
         {
             try
             {
-                if(dgv.Visible)
+
+                if (dgv.Visible)
                 {
                     var dt = dgv.DataSource as DataTable;
 
-                    if(dt.Rows.Count == 0)
+                    if (dt.Rows.Count == 0)
                     {
                         SetError(dgv, "No entry tiers specified.");
-                        return;
+                        return true;
                     }
 
                     #region Check for incompletely defined tiers
                     foreach (System.Data.DataRow dr in dt.Rows)
                     {
                         for (int i = 0; i < 3; ++i)
-                        {                            
+                        {
                             if (dr[i] == DBNull.Value)
-                            {                               
-                                    SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                    return;
+                            {                             
+                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));                      
+                                return true;
                             }
                             else
                             {
@@ -373,11 +374,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
                                 if (i == 3)//int
                                 {
-                                    intValue = Convert.ToInt32(itemvalue); 
+                                    intValue = Convert.ToInt32(itemvalue);
                                 }
                                 else//decimal
                                 {
-                                    decValue = Convert.ToDecimal(itemvalue); 
+                                    decValue = Convert.ToDecimal(itemvalue);
                                 }
 
                                 if (intValue == 0 || decValue == 0)
@@ -385,7 +386,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                     if (IsCellIndicator(dt.Rows.IndexOf(dr), i))
                                     {
                                         SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                        return;
+                                        return true;
                                     }
                                 }
                             }
@@ -404,7 +405,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             if(et.TierBegin > et.TierEnd)
                             {
                                 SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             candidateScale.Add(et);
                         }
@@ -421,7 +422,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             if(overlap != null)
                             {
                                 SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
-                                return;
+                                return true;
                             }
                         }
                         #endregion
@@ -435,12 +436,12 @@ namespace GTI.Modules.PlayerCenter.UI
                             if((et.TierBegin - prevET.TierEnd) > 0.01m)
                             {
                                 SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             if(et.Entries < prevET.Entries)
                             {
                                 SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             prevET = et;
                         }
@@ -458,7 +459,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             if(et.TierBegin > et.TierEnd)
                             {
                                 SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             candidateScale.Add(et);
                         }
@@ -475,7 +476,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             if(overlap != null)
                             {
                                 SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
-                                return;
+                                return true;
                             }
                         }
                         #endregion
@@ -489,12 +490,12 @@ namespace GTI.Modules.PlayerCenter.UI
                             if((et.TierBegin - prevET.TierEnd) > 1)
                             {
                                 SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             if(et.Entries < prevET.Entries)
                             {
                                 SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                return;
+                                return true;
                             }
                             prevET = et;
                         }
@@ -511,6 +512,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 SetError(dgv, "Invalid scale");
             }
+
+            return false;
         }
 
         private void LoadPackages()
@@ -638,7 +641,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 addEntrySpendTierBtn.Visible = entryMethodUsed;
                 //CheckEntryScale(entrySpendScaleDGV);
             }
-            CheckEntryMethods();
+           // CheckEntryMethods();
         }
 
         private void entryVisitTypeRB_CheckedChanged(object sender, EventArgs e)
@@ -654,7 +657,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 addEntryVisitTierBtn.Visible = entryMethodUsed;
                 //CheckEntryScale(entryVisitScaleDGV);
             }
-            CheckEntryMethods();
+            //CheckEntryMethods();
 
         }
 
@@ -682,7 +685,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             var rb = sender as RadioButton;
             UpdateEntryPurchaseTPHeader();
-            CheckEntryMethods();
+            //CheckEntryMethods();
         }
 
         private void entryPurchaseTypeRB_CheckedChanged(object sender, EventArgs e)
@@ -714,7 +717,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             entryPurchaseSelectionsCL.Items.Add(p, m_pendingProductSelections.Contains(p.Id));
                 }
             }
-            CheckEntryMethods();
+           // CheckEntryMethods();
         }
 
         private void CheckEntryMethods()
@@ -732,17 +735,17 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void entryLimitTxt_TextChanged(object sender, EventArgs e)
         {
-            var tb = sender as TextBox;
-            int parseTarget = 0;
+            //var tb = sender as TextBox;
+            //int parseTarget = 0;
 
-            if(String.IsNullOrWhiteSpace(tb.Text))
-                SetError(tb, null);
-            else if(!int.TryParse(tb.Text, out parseTarget))
-                SetError(tb, "Limit must be numeric");
-            else if(parseTarget <= 0)
-                SetError(tb, "Limit must be greater than 0.");
-            else
-                SetError(tb, null);
+            //if(String.IsNullOrWhiteSpace(tb.Text))
+            //    SetError(tb, null);
+            //else if(!int.TryParse(tb.Text, out parseTarget))
+            //    SetError(tb, "Limit must be numeric");
+            //else if(parseTarget <= 0)
+            //    SetError(tb, "Limit must be greater than 0.");
+            //else
+            //    SetError(tb, null);
         }
 
         private void entryLimitTxt_KeyPress(object sender, KeyPressEventArgs e)
@@ -902,7 +905,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     eventRepetitionEndsDTP.Checked = true;
                 }
 
-                CheckEventDates();
+                //CheckEventDates();
                 UpdateEventExamples();
 
                 SortedSet<Byte> sessionNumbersChecked = new SortedSet<byte>();
@@ -1289,12 +1292,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
         {
-            var tb = sender as TextBox;
-            uint parseUInt;
-            if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
-                SetError(tb, "Must be whole number greater than 0.");
-            else
-                SetError(tb, null);
+            //var tb = sender as TextBox;
+            //uint parseUInt;
+            //if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+            //    SetError(tb, "Must be whole number greater than 0.");
+            //else
+            //    SetError(tb, null);
         }
 
         private void requiredIntTxt_KeyPress(object sender, KeyPressEventArgs e)
@@ -1370,7 +1373,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
 
-            CheckEventDates();
+            //CheckEventDates();
             UpdateEventExamples();
         }
 
@@ -1379,23 +1382,27 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
 
-            CheckEventDates();
+            //CheckEventDates();
             eventRepetitionEndsDTP_ValueChanged(null, null);
             UpdateEventExamples();
         }
 
-        void CheckEventDates()
+        private bool CheckEventDates()
         {
+            bool result = false;
             if(initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
-                SetError(entryPeriodLbl, "Entry period begin must be before its end.");
+            {SetError(entryPeriodLbl, "Entry period begin must be before its end."); result = true;}
             else
                 SetError(entryPeriodLbl, null);
 
-            if(!initialEventScheduledForDTP.Checked || initialEventScheduledForDTP.Value >= initialEventEntryPeriodEndDTP.Value.Date)
+            if (!initialEventScheduledForDTP.Checked || initialEventScheduledForDTP.Value >= initialEventEntryPeriodEndDTP.Value.Date)
                 SetError(initialEventScheduledForLbl, null);
             else
+            {
                 SetError(initialEventScheduledForLbl, "Scheduled date should be on or after the end of the entry period.");
-
+                result = true;
+            }
+        return result;
         }
 
         private void initialEventScheduledForDTP_ValueChanged(object sender, EventArgs e)
@@ -1403,7 +1410,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(m_loadingDetails)
                 return;
 
-            CheckEventDates();
+           // CheckEventDates();
             UpdateEventExamples();
         }
 
@@ -1595,18 +1602,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void drawingNameTxt_TextChanged(object sender, EventArgs e)
         {
-            String errMsg = null;
-            int drawingNameLenLimit = 48;
-            int drawingNameLen = drawingNameTxt.Text.Length;
-            if(drawingNameLen > drawingNameLenLimit)
-            errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
-            else
-            {
-                var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
-                if(namingConflict != null)
-                errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
-            }
-            SetError(drawingNameTxt, errMsg);
+            //String errMsg = null;
+            //int drawingNameLenLimit = 48;
+            //int drawingNameLen = drawingNameTxt.Text.Length;
+            //if(drawingNameLen > drawingNameLenLimit)
+            //errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
+            //else
+            //{
+            //    var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
+            //    if(namingConflict != null)
+            //    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
+            //}
+            //SetError(drawingNameTxt, errMsg);
         }
 
 
@@ -2027,244 +2034,130 @@ namespace GTI.Modules.PlayerCenter.UI
             //}
         }
 
-        private void ValidateUserInput(object sender, CancelEventArgs e)
+        #region Validate user input
+
+
+        private void entrySpendScaleDGV_Validating(object sender, CancelEventArgs e)
         {
-            var dgv = entrySpendScaleDGV;
-            try
+            var dgv = (DataGridView)sender;
+            if (CheckEntryScale(dgv))
             {
-             
-                if (dgv.Visible)
-                {
-                    var dt = dgv.DataSource as DataTable;
-
-                    if (dt.Rows.Count == 0)
-                    {
-                        SetError(dgv, "No entry tiers specified.");
-                        e.Cancel = true;
-                        return;
-                    }
-
-                    #region Check for incompletely defined tiers
-                    foreach (System.Data.DataRow dr in dt.Rows)
-                    {
-                        for (int i = 0; i < 3; ++i)
-                        {
-                            if (dr[i] == DBNull.Value)
-                            {
-                                //if (m_actualValue != string.Empty)
-                                //{
-                                //}
-                                //else
-                                //{
-                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                e.Cancel = true;
-                                return;
-                                //}
-                            }
-                            else
-                            {
-                                var itemvalue = dr[i];
-                                int intValue = -1;
-                                decimal decValue = -1;
-
-                                if (i == 3)//int
-                                {
-                                    intValue = Convert.ToInt32(itemvalue);
-                                }
-                                else//decimal
-                                {
-                                    decValue = Convert.ToDecimal(itemvalue);
-                                }
-
-                                if (intValue == 0 || decValue == 0)
-                                {
-                                    if (IsCellIndicator(dt.Rows.IndexOf(dr), i))
-                                    {
-                                        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                        e.Cancel = true;
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    #endregion
-
-                    if (dt.Columns[0].DataType == typeof(decimal))
-                    {
-                        var candidateScale = new List<GeneralPlayerDrawing.EntryTier<decimal>>();
-
-                        #region Build EntryTier list, and make sure tiers have valid relative begin-end
-                        foreach (System.Data.DataRow dr in dt.Rows)
-                        {
-                            var et = new GeneralPlayerDrawing.EntryTier<decimal>((decimal)dr[0], (decimal)dr[1], (int)dr[2]);
-                            if (et.TierBegin > et.TierEnd)
-                            {
-                                SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            candidateScale.Add(et);
-                        }
-                        #endregion
-
-                        #region Check for overlapping tiers
-                        for (int i = 0; i < candidateScale.Count; ++i)
-                        {
-                            var et = candidateScale[i];
-                            var overlap = candidateScale.FirstOrDefault(
-                                            (et2) => !object.ReferenceEquals(et, et2)
-                                                     && GeneralPlayerDrawing.EntryTier<decimal>.OverlapComparer.Compare(et, et2) == 0
-                                            );
-                            if (overlap != null)
-                            {
-                                SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                        }
-                        #endregion
-
-                        #region Check for gaps and entry losses
-                        candidateScale.Sort(GeneralPlayerDrawing.EntryTier<decimal>.SortComparer);
-                        for (int i = 1; i < candidateScale.Count; ++i)
-                        {
-                            var prevET = candidateScale[i - 1];
-                            var et = candidateScale[i];
-                            if ((et.TierBegin - prevET.TierEnd) > 0.01m)
-                            {
-                                SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            if (et.Entries < prevET.Entries)
-                            {
-                                SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            prevET = et;
-                        }
-                        #endregion
-
-                    }
-                    else if (dt.Columns[0].DataType == typeof(int))
-                    {
-                        var candidateScale = new List<GeneralPlayerDrawing.EntryTier<int>>();
-
-                        #region Build EntryTier list, and make sure tiers have valid relative begin-end
-                        foreach (System.Data.DataRow dr in dt.Rows)
-                        {
-                            var et = new GeneralPlayerDrawing.EntryTier<int>((int)dr[0], (int)dr[1], (int)dr[2]);
-                            if (et.TierBegin > et.TierEnd)
-                            {
-                                SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            candidateScale.Add(et);
-                        }
-                        #endregion
-
-                        #region Check for overlapping tiers
-                        for (int i = 0; i < candidateScale.Count; ++i)
-                        {
-                            var et = candidateScale[i];
-                            var overlap = candidateScale.FirstOrDefault(
-                                            (et2) => !object.ReferenceEquals(et, et2)
-                                                     && GeneralPlayerDrawing.EntryTier<int>.OverlapComparer.Compare(et, et2) == 0
-                                            );
-                            if (overlap != null)
-                            {
-                                SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                        }
-                        #endregion
-
-                        #region Check for gaps and entry losses
-                        candidateScale.Sort(GeneralPlayerDrawing.EntryTier<int>.SortComparer);
-                        for (int i = 1; i < candidateScale.Count; ++i)
-                        {
-                            var prevET = candidateScale[i - 1];
-                            var et = candidateScale[i];
-                            if ((et.TierBegin - prevET.TierEnd) > 1)
-                            {
-                                SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            if (et.Entries < prevET.Entries)
-                            {
-                                SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
-                                e.Cancel = true;
-                                return;
-                            }
-                            prevET = et;
-                        }
-                        #endregion
-                    }
-
-                }
-
-                SetError(dgv, null);
-
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                SetError(dgv, "Invalid scale");
                 e.Cancel = true;
-            }
+            }  
         }
 
-        private void drawingNameTxt_Validating(object sender, CancelEventArgs e)
+      
+
+        private void entrySpendGrouping_Validating(object sender, CancelEventArgs e)
         {
-            String errMsg = null;
-            int drawingNameLenLimit = 48;
-            int drawingNameLen = drawingNameTxt.Text.Length;
-            if (drawingNameLen > drawingNameLenLimit)
+            var rb = sender as RadioButton;
+            if (rb.Checked)
             {
-                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
-                e.Cancel = true;
-            }
-            else
-            {
-                var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
-                if (namingConflict != null)
+                entrySpendTP.Text = "Spend (" + rb.Text + ")";
+
+                var entryMethodUsed = !Object.ReferenceEquals(rb, entrySpendGroupingNoneRB);
+
+                entrySpendScaleDGV.Visible = entryMethodUsed;
+                addEntrySpendTierBtn.Visible = entryMethodUsed;
+                if (CheckEntryScale(entrySpendScaleDGV))
                 {
-                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
                     e.Cancel = true;
                 }
             }
-            SetError(drawingNameTxt, errMsg);
+             CheckEntryMethods();
         }
 
-        private void saveDrawingChangesBtn_Validating(object sender, CancelEventArgs e)
+        private void entryLimitEventTxt_Validating(object sender, CancelEventArgs e)
         {
-            //errorProvider.SetError(c, errMsg);
+            var tb = sender as TextBox;
+            int parseTarget = 0;
 
-            //if (String.IsNullOrEmpty(errMsg))
-            //    m_erroredControls.Remove(c);
-            //else if (!m_erroredControls.Contains(c))
-            //    m_erroredControls.Add(c);
-            //// saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
-
-            //if (m_erroredControls.Count > 0)
-            //{
-            //    StringBuilder sb = new StringBuilder();
-            //    foreach (var ec in m_erroredControls)
-            //        sb.AppendLine(errorProvider.GetError(ec));
-            //    errorProvider.SetError(saveDrawingChangesBtn, sb.ToString());
-            //}
-            //else
-            //{
-            //    errorProvider.SetError(saveDrawingChangesBtn, null);
-            //}
+            if (String.IsNullOrWhiteSpace(tb.Text))
+                SetError(tb, null);
+            else if (!int.TryParse(tb.Text, out parseTarget))
+            { SetError(tb, "Limit must be numeric"); e.Cancel = true; }
+            else if (parseTarget <= 0)
+            { SetError(tb, "Limit must be greater than 0."); e.Cancel = true; }
+            else
+                SetError(tb, null);
         }
 
-       
+        private void eventRepeatIncrementTxt_Validating(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+            int parseTarget = 0;
+
+            string errMsg = null;
+
+            if (eventRepeatsChk.Checked)
+            {
+                if (String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
+                { errMsg = "Event repeat increment must be a non-negative whole number."; e.Cancel = true; }
+                else if (parseTarget > Int16.MaxValue)
+                { errMsg = "Event repeat increment too large."; e.Cancel = true; }
+            }
+
+            SetError(tb, errMsg);
+
+            if (sender != null)
+                UpdateEventExamples();
+        }
+
+        private void drawingEntriesDrawnTxt_Validating(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+            uint parseUInt;
+            if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+            {
+                SetError(tb, "Must be whole number greater than 0.");
+                e.Cancel = true;
+            }
+            else
+                SetError(tb, null);
+        }
+
+        private void initialEventEntryPeriodBeginDTP_Validating(object sender, CancelEventArgs e)
+        {
+            if (m_loadingDetails)
+                return;
+
+            if (CheckEventDates())
+            {
+                e.Cancel = true;
+            }
+            UpdateEventExamples();
+        }
+
+        private void initialEventEntryPeriodEndDTP_Validating(object sender, CancelEventArgs e)
+        {
+            if (m_loadingDetails)
+                return;
+
+            if (CheckEventDates())
+            {
+                e.Cancel = true;
+            }
+            eventRepetitionEndsDTP_ValueChanged(null, null);
+            UpdateEventExamples();
+        }
+
+        private void initialEventScheduledForDTP_Validating(object sender, CancelEventArgs e)
+        {
+            if (m_loadingDetails)
+                return;
+
+            if (CheckEventDates())
+            {
+                e.Cancel = true;
+            }
+            UpdateEventExamples();
+        }
+
+
+        #endregion
+
+
+
 
 
     }

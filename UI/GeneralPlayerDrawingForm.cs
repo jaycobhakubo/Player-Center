@@ -720,7 +720,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             bool result = false;
             var dgvr = entrySpendScaleDGV.Rows[rowIndex];
-            if (dgvr.Cells[columnIndex + 1].Style.ForeColor != SystemColors.WindowText)
+            if (dgvr.Cells[columnIndex + 1].Style.ForeColor == Color.LightGray)
             {
                 result = true;
             }
@@ -1161,15 +1161,13 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
+
        //This trigger when clicking a cell
         private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var a = 1;
-           // var dgv = (DataGridView)sender;//Current DataGridView
-            //var dgvc = dgv.Columns[e.ColumnIndex];
-            //m_selectedColumnDataType = dgvc.ValueType;
         }
-        //This trigger when on the first keystroke
+
+        //This trigger on the first keystroke
         private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             var dgv = (DataGridView)sender;//Current DataGridView
@@ -1217,23 +1215,6 @@ namespace GTI.Modules.PlayerCenter.UI
         //This trigger when clicking a cell.
         private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            var a = 1;
-            
-            //var dgv = (DataGridView)sender;//Current DataGridView
-            //var dgvr = dgv.Rows[e.RowIndex];
-            //if (m_selectedColumnDataType == typeof(int))
-            //{
-            //    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-            //    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-            //}
-            //else if (m_selectedColumnDataType == typeof(decimal))
-            //{
-            //    if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
-            //    {
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-            //    }
-            //}
         }
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
@@ -1259,45 +1240,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         //this trigger every value change
         private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            var i = 1;
-            
-            //var dgv = (DataGridView)sender;//Current DataGridView
-            //var dgvr = dgv.Rows[e.RowIndex];
-            //var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-
-            //if (dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == DBNull.Value)
+        {               
+            //if (m_cellLastEntry)
             //{
-            //    if (m_selectedColumnDataType == typeof(int))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
-            //    }
-            //    else if (m_selectedColumnDataType == typeof(decimal))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
-            //    }
+            //    MessageBox.Show("I am valeue changed");
+            //    CheckEntryScale(entrySpendScaleDGV);
             //}
-            //else
-            //{
-            //    if (m_selectedColumnDataType == typeof(int))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
-            //    }
-            //    else if (m_selectedColumnDataType == typeof(decimal))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
-            //    }
-            //}
-            if (m_cellLastEntry)
-            {
-                MessageBox.Show("I am valeue changed");
-
-                CheckEntryScale(entrySpendScaleDGV);
-            }
         }
 
         //This trigger every key stroke
@@ -1323,6 +1271,11 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        /// <summary>
+        /// Allow user to input specific character per column data type
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ManageUserInput(object sender, KeyPressEventArgs e)
         {
             var txtbxValue = new TextBox();
@@ -1604,6 +1557,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void addEntryVisitTierBtn_Click(object sender, EventArgs e)
         {
+            m_cellLastEntry = false;
+            m_cellActualValue = "";
             m_entryVisitScaleDT.Rows.Add();
             entryVisitScaleDGV.Focus();
         }
@@ -1846,8 +1801,6 @@ namespace GTI.Modules.PlayerCenter.UI
         {     
             if(m_loadingDetails)
                 return;
-            //Get the current cell
-            // CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
         }
       
         void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)

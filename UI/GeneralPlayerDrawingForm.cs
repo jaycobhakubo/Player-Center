@@ -437,8 +437,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void SetError(Control c, String errMsg)
         {
+            errorProvider.SetIconPadding(c, -15); 
             errorProvider.SetError(c, errMsg);
-
             if (String.IsNullOrEmpty(errMsg))
                 m_erroredControls.Remove(c);
             else if (!m_erroredControls.Contains(c))
@@ -829,6 +829,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             var et = new GeneralPlayerDrawing.EntryTier<decimal>((decimal)dr[0], (decimal)dr[1], (int)dr[2]);
                             if (et.TierBegin > et.TierEnd)
                             {
+                                
                                 SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
                                 return;
                             }

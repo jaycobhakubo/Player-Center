@@ -31,6 +31,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private List<GeneralPlayerDrawing> m_drawings;
         private const bool c_enablePurchaseUI = false;
         private Type m_selectedColumnDataType;
+        private bool m_cellLastEntry = false;
 
         #endregion
 
@@ -199,7 +200,21 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region METHOD(member)
 
-        
+
+        private bool IsCellLastEntry(DataGridViewRow dgvr)
+        {
+            bool result = true;
+            for (int i = 0; i < 3; ++i)
+            {
+                if (dgvr.Cells[i + 1].Style.ForeColor == Color.LightGray)
+                {
+                    result = false;
+                }
+            }
+            m_cellLastEntry = result;
+            return result;
+        }
+
         private bool IsFromOk()
         {
             bool result = false;
@@ -360,25 +375,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void showInactiveDrawingsChk_CheckedChanged(object sender, EventArgs e) { ListDrawings(); }
-
-        private void drawingNameTxt_TextChanged(object sender, EventArgs e)
-        {
-            String errMsg = null;
-            int drawingNameLenLimit = 48;
-            int drawingNameLen = drawingNameTxt.Text.Length;
-            if (drawingNameLen > drawingNameLenLimit)
-                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
-            else
-            {
-                var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
-                if (namingConflict != null)
-                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
-            }
-            SetError(drawingNameTxt, errMsg);
-        }
-
-
         private void SetAllItemCheck(bool check)
         {
             entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
@@ -394,15 +390,14 @@ namespace GTI.Modules.PlayerCenter.UI
             entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
         }
 
-
-        private void setEntryMethodBothUI()
+        private void SetEntryMethodBothUI()
         {
             entryMethodsTC.Appearance = TabAppearance.Normal;
             entryMethodsTC.ItemSize = new Size(79, 27);
             entryMethodsTC.SizeMode = TabSizeMode.Normal;
         }
 
-        private void hideEntryMethodBothUI()
+        private void HideEntryMethodBothUI()
         {
             entryMethodsTC.Appearance = TabAppearance.FlatButtons;
             entryMethodsTC.ItemSize = new Size(0, 1);
@@ -425,7 +420,6 @@ namespace GTI.Modules.PlayerCenter.UI
             //    }
             //}
         }
-
 
         void CheckEventDates()
         {
@@ -722,7 +716,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
         private bool IsCellIndicator(int rowIndex, int columnIndex)
         {
             bool result = false;
@@ -733,7 +726,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             return result;
         }
-
 
         private void CheckEntryMethods()
         {
@@ -786,12 +778,43 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach (System.Data.DataRow dr in dt.Rows)
                     {
                         for (int i = 0; i < 3; ++i)
-
-
                             if (dr[i] == DBNull.Value || IsCellIndicator(dt.Rows.IndexOf(dr), i))
                             {
-                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                return;
+                                if (dr[i] == DBNull.Value && m_cellLastEntry)
+                                {
+                                    bool result =  false;
+                                    decimal decResult;
+                                    int intResult;
+                                    
+                                    if (dt.Columns[i].DataType == typeof(decimal))
+                                    {
+                                        result = decimal.TryParse(m_cellActualValue.ToString(), out decResult);
+                                        if (result)
+                                        {
+                                            dr[i] = Convert.ToDecimal(m_cellActualValue.ToString());
+                                        }
+                                    }
+                                    else if (dt.Columns[i].DataType == typeof(int))
+                                    {
+                                        result = int.TryParse(m_cellActualValue.ToString(), out intResult);
+                                        if (result)
+                                        {
+                                            dr[i] = Convert.ToInt32(m_cellActualValue.ToString());
+                                        }
+                                    }
+
+                                    if (result == false)
+                                    {
+                                        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                               
+                                    SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                    return;
+                                }                              
                             }
                     }
                     #endregion
@@ -1113,15 +1136,50 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region EVENT
 
-           private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+             #region ENTRY-spend
+
+        private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            DataGridViewRow dgvr = dgv.Rows[e.RowIndex];
+
+            for (int i = 1; i < 4; i++)
+            {
+                var currentValue = entrySpendScaleDGV.Rows[e.RowIndex].Cells[i].Value.ToString();
+                if (currentValue == string.Empty || currentValue == null)
+                {
+                    if (i != 3)
+                    {
+                        dgv.Rows[e.RowIndex].Cells[i].Value = "00.00";//If this is decimal how did you add this?
+                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        dgv.Rows[e.RowIndex].Cells[i].Value = "0";
+                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
+                    }
+                }
+            }
+        }
+       //This trigger when clicking a cell
+        private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var a = 1;
+           // var dgv = (DataGridView)sender;//Current DataGridView
+            //var dgvc = dgv.Columns[e.ColumnIndex];
+            //m_selectedColumnDataType = dgvc.ValueType;
+        }
+        //This trigger when on the first keystroke
+        private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             var dgv = (DataGridView)sender;//Current DataGridView
             var dgvr = dgv.Rows[e.RowIndex];
             dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
             dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            var dgvc = dgv.Columns[e.ColumnIndex];
+            m_selectedColumnDataType = dgvc.ValueType;
+            IsCellLastEntry(dgvr);
         }
-
-
         private void entrySpendScaleDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             var dgv = (DataGridView)sender;//Current DataGridView
@@ -1146,7 +1204,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (m_selectedColumnDataType == typeof(int))
                 {
                     //dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
-                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
+                    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; 
                 }
                 else if (m_selectedColumnDataType == typeof(decimal))
                 {
@@ -1156,6 +1214,27 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        //This trigger when clicking a cell.
+        private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var a = 1;
+            
+            //var dgv = (DataGridView)sender;//Current DataGridView
+            //var dgvr = dgv.Rows[e.RowIndex];
+            //if (m_selectedColumnDataType == typeof(int))
+            //{
+            //    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            //    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            //}
+            //else if (m_selectedColumnDataType == typeof(decimal))
+            //{
+            //    if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
+            //    {
+            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
+            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
+            //    }
+            //}
+        }
         private void entrySpendScaleDGV_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             var i = 1;
@@ -1178,10 +1257,11 @@ namespace GTI.Modules.PlayerCenter.UI
             //}
         }
 
-
+        //this trigger every value change
         private void entrySpendScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             var i = 1;
+            
             //var dgv = (DataGridView)sender;//Current DataGridView
             //var dgvr = dgv.Rows[e.RowIndex];
             //var testee = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
@@ -1212,6 +1292,153 @@ namespace GTI.Modules.PlayerCenter.UI
             //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
             //    }
             //}
+            if (m_cellLastEntry)
+            {
+                MessageBox.Show("I am valeue changed");
+
+                CheckEntryScale(entrySpendScaleDGV);
+            }
+        }
+
+        //This trigger every key stroke
+        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(ManageUserInput);
+            e.Control.KeyPress += new KeyPressEventHandler(ManageUserInput);
+
+            e.Control.KeyUp -= new KeyEventHandler(ManageUserInput2);
+            e.Control.KeyUp += new KeyEventHandler(ManageUserInput2);           
+        }
+
+        private string m_cellActualValue = "";
+
+        private void ManageUserInput2(object sender, KeyEventArgs e)
+        {
+            if (m_cellLastEntry)
+            {
+                var txtbxValue = (TextBox)sender;
+                m_cellActualValue = txtbxValue.Text;
+                CheckEntryScale(entrySpendScaleDGV);  
+                var yyy =   e.KeyValue;
+            }
+        }
+
+        private void ManageUserInput(object sender, KeyPressEventArgs e)
+        {
+            var txtbxValue = new TextBox();
+            bool result = true;
+
+            if (m_selectedColumnDataType == typeof(int))
+            {
+                if (e.KeyChar == (char)Keys.Back)
+                {
+                    result = false;
+                }
+                if (result)
+                {
+                    result = !char.IsDigit(e.KeyChar);
+                }
+            }
+            else if (m_selectedColumnDataType == typeof(decimal))
+            {
+                if (sender is TextBox)
+                {
+                    txtbxValue = (TextBox)sender;
+                    result = false;
+
+                    string x = txtbxValue.Text;
+                    if (txtbxValue.SelectionLength > 0)
+                    {
+                        int tlen = x.Length - txtbxValue.SelectionLength;
+                        x = x.Substring(0, tlen);
+                    }
+
+                    int count = x.Split('.').Length - 1;
+
+                    if (!char.IsControl(e.KeyChar))
+                    {
+                        switch (e.KeyChar)
+                        {
+                            case (char)46://period
+                                //allow 1 decimal point
+                                if (count > 0)
+                                {
+                                    result = true;
+                                }
+                                else
+                                {
+                                    result = false;
+                                }
+                                break;
+                            default:
+                                result = !char.IsDigit(e.KeyChar);
+                                break;
+                        }
+                    }
+
+                    if (e.KeyChar == (char)Keys.Back)
+                    {
+                        result = false;
+
+                    }
+
+                    else if (Regex.IsMatch(x, @"\.\d\d"))
+                    {
+                        result = true;
+
+                    }
+                }
+            }              
+            
+            e.Handled = result;
+        }
+            #endregion
+
+        private void EnterPlayerBasedOn_RdoClick(object sender, EventArgs e)
+        {
+            RadioButton rd_current = (RadioButton)sender;
+            int test;
+            bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
+
+            if (rd_current.Checked == true)
+            {
+                if (test == 3)
+                {
+                    SetEntryMethodBothUI();
+                    entryMethodsTC.SelectedIndex = test - 1;
+                }
+                else if (test != 3)
+                {
+                    HideEntryMethodBothUI();
+                    if (test == 1)
+                    {
+                        entryMethodsTC.SelectedIndex = 1;
+                    }
+                    if (test == 2)
+                    {
+                        entryMethodsTC.SelectedIndex = 0;
+                    }
+                }
+            }
+        }
+            #region unspecify yet
+
+        private void showInactiveDrawingsChk_CheckedChanged(object sender, EventArgs e) { ListDrawings(); }
+
+        private void drawingNameTxt_TextChanged(object sender, EventArgs e)
+        {
+            String errMsg = null;
+            int drawingNameLenLimit = 48;
+            int drawingNameLen = drawingNameTxt.Text.Length;
+            if (drawingNameLen > drawingNameLenLimit)
+                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
+            else
+            {
+                var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
+                if (namingConflict != null)
+                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
+            }
+            SetError(drawingNameTxt, errMsg);
         }
 
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -1262,173 +1489,6 @@ namespace GTI.Modules.PlayerCenter.UI
             var f = new GeneralPlayerDrawingEventsTestForm(m_drawings);
             f.ShowDialog(this);
             f.Dispose();
-        }
-
-        private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc
-        {
-            DataGridView dgv = (DataGridView)sender;
-            DataGridViewRow dgvr = dgv.Rows[e.RowIndex];
-
-            for (int i = 1; i < 4; i++)
-            {
-                var currentValue = entrySpendScaleDGV.Rows[e.RowIndex].Cells[i].Value.ToString();
-                if (currentValue == string.Empty || currentValue == null)
-                {
-                    if (i != 3)
-                    {
-                        dgv.Rows[e.RowIndex].Cells[i].Value = "00.00";//If this is decimal how did you add this?
-                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
-                    }
-                    else
-                    {
-                        dgv.Rows[e.RowIndex].Cells[i].Value = "0";
-                        dgvr.Cells[i].Style.ForeColor = Color.LightGray;
-                    }
-                }
-            }
-        }
-
-        private void entrySpendScaleDGV_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //var a = 1;
-            //var dgv = (DataGridView)sender;//Current DataGridView
-            //var dgvr = dgv.Rows[e.RowIndex];
-            //if (m_selectedColumnDataType == typeof(int))
-            //{
-            //    dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-            //    dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-            //}
-            //else if (m_selectedColumnDataType == typeof(decimal))
-            //{
-            //    if (dgvr.Cells[e.ColumnIndex].Style.ForeColor != SystemColors.WindowText)
-            //    {
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText;
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = DBNull.Value;
-            //    }
-            //}
-        }
-
-        private void entrySpendScaleDGV_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var dgv = (DataGridView)sender;//Current DataGridView
-            var dgvc = dgv.Columns[e.ColumnIndex];
-            m_selectedColumnDataType = dgvc.ValueType;
-        }
-
-        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (m_selectedColumnDataType == typeof(int))
-            {
-                e.Control.KeyPress -= new KeyPressEventHandler(IntOnly);
-                e.Control.KeyPress += new KeyPressEventHandler(IntOnly);
-            }
-            else if (m_selectedColumnDataType == typeof(decimal))
-            {
-                e.Control.KeyPress -= new KeyPressEventHandler(DecimalOnly);
-                e.Control.KeyPress += new KeyPressEventHandler(DecimalOnly);
-            }
-        }
-
-
-
-
-        private void IntOnly(object sender, KeyPressEventArgs e)
-        {
-            bool result = true;
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                result = false;
-            }
-            if (result)
-            {
-                result = !char.IsDigit(e.KeyChar);
-            }
-
-            e.Handled = result;
-        }
-
-        private void DecimalOnly(object sender, KeyPressEventArgs e)
-        {
-
-            var txtbxValue = new TextBox();
-            if (sender is TextBox)
-            {
-                txtbxValue = (TextBox)sender;
-                bool result = false;
-
-                string x = txtbxValue.Text;
-                if (txtbxValue.SelectionLength > 0)
-                {
-                    int tlen = x.Length - txtbxValue.SelectionLength;
-                    x = x.Substring(0, tlen);
-                }
-
-                int count = x.Split('.').Length - 1;
-
-                if (!char.IsControl(e.KeyChar))
-                {
-                    switch (e.KeyChar)
-                    {
-                        case (char)46://period
-                            //allow 1 decimal point
-                            if (count > 0)
-                            {
-                                result = true;
-                            }
-                            else
-                            {
-                                result = false;
-                            }
-                            break;
-                        default:
-                            result = !char.IsDigit(e.KeyChar);
-                            break;
-                    }
-                }
-
-                if (e.KeyChar == (char)Keys.Back)
-                {
-                    result = false;
-
-                }
-
-                else if (Regex.IsMatch(x, @"\.\d\d"))
-                {
-                    result = true;
-
-                }
-
-                e.Handled = result;
-
-            }
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rd_current = (RadioButton)sender;
-            int test;
-            bool result = Int32.TryParse(rd_current.Tag.ToString(), out test);
-
-            if (rd_current.Checked == true)
-            {
-                if (test == 3)
-                {
-                    setEntryMethodBothUI();
-                    entryMethodsTC.SelectedIndex = test - 1;
-                }
-                else if (test != 3)
-                {
-                    hideEntryMethodBothUI();
-                    if (test == 1)
-                    {
-                        entryMethodsTC.SelectedIndex = 1;
-                    }
-                    if (test == 2)
-                    {
-                        entryMethodsTC.SelectedIndex = 0;
-                    }
-                }
-            }
         }
 
         private void editDrawingBtn_Click(object sender, EventArgs e) { ToggleEditMode(true); }
@@ -1520,9 +1580,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-
-
-
         private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
         {
             var tb = sender as TextBox;
@@ -1556,8 +1613,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_entryPurchaseScaleDT.Rows.Add();
             entryPurchaseScaleDGV.Focus();
         }
-
-
 
         private void entryPurchaseSelectionsCL_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -1598,8 +1653,6 @@ namespace GTI.Modules.PlayerCenter.UI
             eventRepetitionEndsDTP_ValueChanged(null, null);
             UpdateEventExamples();
         }
-
-
 
         private void initialEventScheduledForDTP_ValueChanged(object sender, EventArgs e)
         {
@@ -1642,7 +1695,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 UpdateEventExamples();
         }
 
-
         private void entrySpendGroupingRB_CheckedChanged(object sender, EventArgs e)
         {
             var rb = sender as RadioButton;
@@ -1675,8 +1727,6 @@ namespace GTI.Modules.PlayerCenter.UI
             CheckEntryMethods();
 
         }
-
-
 
         private void entryPurchaseGroupingRB_CheckedChanged(object sender, EventArgs e)
         {
@@ -1716,8 +1766,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             CheckEntryMethods();
         }
-
-
 
         private void entryLimitTxt_TextChanged(object sender, EventArgs e)
         {
@@ -1778,7 +1826,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetCurrentDrawing(null);
         }
 
-
         void entryScaleDGV_Leave(object sender, EventArgs e)
         {
             var dgv = sender as DataGridView;
@@ -1802,7 +1849,6 @@ namespace GTI.Modules.PlayerCenter.UI
             //Get the current cell
             // CheckEntryScale(sender as DataGridView);//So every time a user changed a value in the cell it will iretirate the whole data each cell. not cool.
         }
-
       
         void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
@@ -1817,6 +1863,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 return;          
             CheckEntryScale(sender as DataGridView);
         }
+
+            #endregion
 
         #endregion
 

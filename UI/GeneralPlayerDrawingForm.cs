@@ -34,7 +34,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private bool m_cellLastEntry = false;
         private string m_cellActualValue = "";
         private DataGridView m_selectedDataGridView = new DataGridView();
-        private bool m_isUserInputValid = false;
+        private bool m_invalidUserInput = false;
 
         #endregion
 
@@ -203,6 +203,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region METHOD(member)
 
+        private string GetCellActualValue(TextBox txtvalue)
+        {
+            string result = "";
+            m_cellActualValue = txtvalue.Text;
+            //CheckEntryScale(/*entrySpendScaleDGV*/m_selectedDataGridView);        
+            return result;
+        }
 
         private bool IsCellLastEntry(DataGridViewRow dgvr)
         {
@@ -1176,7 +1183,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region EVENT
 
-             #region ENTRY-spend
+           
 
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -1218,10 +1225,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
         }
 
-       //This trigger when clicking a cell
-        //CELLCLICK
-       
-
         //This trigger on the first keystroke
         private void entrySpendScaleDGV_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
@@ -1232,6 +1235,17 @@ namespace GTI.Modules.PlayerCenter.UI
             var dgvc = dgv.Columns[e.ColumnIndex];
             m_selectedColumnDataType = dgvc.ValueType;
             IsCellLastEntry(dgvr);
+        }
+
+
+        //This trigger every key stroke
+        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyDown -= new KeyEventHandler(Cell_KeyDown);
+            e.Control.KeyDown += new KeyEventHandler(Cell_KeyDown);
+
+            e.Control.KeyPress -= new KeyPressEventHandler(Cell_KeyPress);
+            e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
         }
 
         private void entrySpendScaleDGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -1257,40 +1271,17 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (m_selectedColumnDataType == typeof(int))
                 {
-                    //dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
                     dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; 
                 }
                 else if (m_selectedColumnDataType == typeof(decimal))
                 {
-                    //dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
                     dgvr.Cells[e.ColumnIndex].Style.ForeColor = SystemColors.WindowText; ;
                 }
             }
         }
 
-        //This trigger every key stroke
-        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
 
-            //e.Control.KeyUp -= new KeyEventHandler(ManageUserInput2);
-            //e.Control.KeyUp += new KeyEventHandler(ManageUserInput2);
-
-            e.Control.KeyDown -= new KeyEventHandler(ManageUserInput3);
-            e.Control.KeyDown += new KeyEventHandler(ManageUserInput3);
-
-            e.Control.KeyPress -= new KeyPressEventHandler(ManageUserInput);
-            e.Control.KeyPress += new KeyPressEventHandler(ManageUserInput);
-
-            //if (m_cellLastEntry)
-            //{
-            //    if (e.Control is TextBox)
-            //    {
-            //        m_cellActualValue = GetCellActualValue((TextBox)e.Control);
-            //    }
-            //}
-        }
-
-        private void ManageUserInput3(object sender, KeyEventArgs e)
+        private void Cell_KeyDown(object sender, KeyEventArgs e)
         {
             var txtbxValue = (TextBox)sender;
             bool result = true;
@@ -1362,21 +1353,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_cellActualValue = txtbxValue.Text + ((char)e.KeyValue).ToString();
             }
-
             e.Handled = result;
         }
 
-        private void ManageUserInput2(object sender, KeyEventArgs e)
-        {
-        }
-
-        private bool m_invalidUserInput = false;
-        /// <summary>
-        /// Allow user to input specific character per column data type
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ManageUserInput(object sender, KeyPressEventArgs e)
+        private void Cell_KeyPress(object sender, KeyPressEventArgs e)
         {         
             e.Handled = m_invalidUserInput;
 
@@ -1385,15 +1365,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 CheckEntryScale(/*entrySpendScaleDGV*/m_selectedDataGridView);
             }      
         }
-
-        private string GetCellActualValue(TextBox txtvalue)
-        {
-            string result = "";
-            m_cellActualValue = txtvalue.Text;
-            //CheckEntryScale(/*entrySpendScaleDGV*/m_selectedDataGridView);        
-            return result;
-        }
-            #endregion
 
         private void EnterPlayerBasedOn_RdoClick(object sender, EventArgs e)
         {
@@ -2020,8 +1991,6 @@ namespace GTI.Modules.PlayerCenter.UI
         public List<int> PendingEntryPurchaseProducts { get { return m_pendingProductSelections; } }
 
         #endregion
-
-
 
     }
 }

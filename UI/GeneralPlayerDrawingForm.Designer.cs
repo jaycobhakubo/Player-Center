@@ -736,7 +736,7 @@
             this.entryMethodsTC.Location = new System.Drawing.Point(7, 44);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(671, 363);
+            this.entryMethodsTC.Size = new System.Drawing.Size(671, 345);
             this.entryMethodsTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.entryMethodsTC.TabIndex = 4;
             // 
@@ -750,7 +750,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 5);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(663, 354);
+            this.entryVisitsTP.Size = new System.Drawing.Size(663, 336);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -760,7 +760,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 314);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 296);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -783,21 +783,24 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 290);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 272);
             this.entryVisitScaleDGV.TabIndex = 7;
+            this.entryVisitScaleDGV.Tag = "2";
             this.entryVisitScaleDGV.Visible = false;
+            this.entryVisitScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
+            this.entryVisitScaleDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEndEdit);
+            this.entryVisitScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
+            this.entryVisitScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
             // 
             // entryVisitsTypeFLP
             // 
-            this.entryVisitsTypeFLP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeNoneRB);
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeSessionsPerDayRB);
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeSessionsInEntryPeriodRB);
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeDaysInEntryPeriodWindowRB);
             this.entryVisitsTypeFLP.Location = new System.Drawing.Point(6, 14);
             this.entryVisitsTypeFLP.Name = "entryVisitsTypeFLP";
-            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 326);
+            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 312);
             this.entryVisitsTypeFLP.TabIndex = 6;
             // 
             // entryVisitTypeNoneRB
@@ -856,7 +859,7 @@
             this.entryPurchasesTP.Location = new System.Drawing.Point(4, 5);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 363);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 336);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -928,7 +931,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 197);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 170);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -938,7 +941,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 162);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 135);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -961,8 +964,9 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 142);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 115);
             this.entryPurchaseScaleDGV.TabIndex = 9;
+            this.entryPurchaseScaleDGV.Tag = "3";
             this.entryPurchaseScaleDGV.Visible = false;
             // 
             // entryPurchaseTypeFLP
@@ -1023,7 +1027,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 5);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(663, 363);
+            this.entrySpendTP.Size = new System.Drawing.Size(663, 336);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -1033,7 +1037,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 323);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 296);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1056,15 +1060,12 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 311);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 284);
             this.entrySpendScaleDGV.TabIndex = 5;
+            this.entrySpendScaleDGV.Tag = "1";
             this.entrySpendScaleDGV.Visible = false;
             this.entrySpendScaleDGV.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.entrySpendScaleDGV_CellBeginEdit);
-            this.entrySpendScaleDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellClick);
             this.entrySpendScaleDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEndEdit);
-            this.entrySpendScaleDGV.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellEnter);
-            this.entrySpendScaleDGV.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellLeave);
-            this.entrySpendScaleDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.entrySpendScaleDGV_CellValueChanged);
             this.entrySpendScaleDGV.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.entrySpendScaleDGV_EditingControlShowing);
             this.entrySpendScaleDGV.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.entrySpendScaleDGV_RowsAdded);
             // 

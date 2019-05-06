@@ -389,7 +389,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
 
-            for (int i = 1; i != entrySessionNumbersCL.Items.Count; ++i)
+            for (int i = 0; i != entrySessionNumbersCL.Items.Count; ++i)
             {
                 if (entrySessionNumbersCL.GetItemChecked(i) != check)
                 {
@@ -556,7 +556,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_pendingProductSelections.Clear();
             entryPurchaseSelectionsCL.Items.Clear();
             //Set default 
-            rdobtn_Spend.Checked = true;
+            //rdobtn_Spend.Checked = true;
             #endregion
             #endregion
 
@@ -1064,7 +1064,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void LoadEntrySessionsCheckList()
         {
             //entrySessionNumbersCL.Items.Add(new  "All Session");
-            for (Byte i = 0; i <= 16; ++i)
+            for (Byte i = 1; i <= 16; ++i)
                 entrySessionNumbersCL.Items.Add(new SessionNumberListing(i));
         }
 
@@ -1106,19 +1106,23 @@ namespace GTI.Modules.PlayerCenter.UI
             initialEventEntryPeriodEndDTP.CustomFormat = "ddd, MMM dd, yyyy";
             initialEventScheduledForDTP.Format = DateTimePickerFormat.Custom;
             initialEventScheduledForDTP.CustomFormat = "ddd, MMM dd, yyyy";
+            eventRepetitionEndsDTP.Format = DateTimePickerFormat.Custom;
+            eventRepetitionEndsDTP.CustomFormat = "ddd, MMM dd, yyyy";
         }
 
         private void HideOrShowRepeatsPerCheckedStatus()
         {
             if (eventRepeatsChk.Checked)
             {
-                m_pnlHideRepeats.Visible = false;
-                m_pnlHideRepeats.SendToBack();
+                eventRepeatDetailsPnl.Visible = true;
+                //m_pnlHideRepeats.Visible = false;
+                //m_pnlHideRepeats.SendToBack();
             }
             else
             {
-                m_pnlHideRepeats.Visible = true;
-                m_pnlHideRepeats.BringToFront();
+                eventRepeatDetailsPnl.Visible = false;
+                //m_pnlHideRepeats.Visible = true;
+                //m_pnlHideRepeats.BringToFront();
             }
         }
 
@@ -1419,44 +1423,44 @@ namespace GTI.Modules.PlayerCenter.UI
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
         {
 
-            if (entrySessionNumbersCL.SelectedIndex != -1)
-            {
-                CheckedListBox chkListBoxCurrent = (CheckedListBox)sender;
-                var numberOfCheckedItem = chkListBoxCurrent.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
-                numberOfCheckedItem = (e.NewValue == CheckState.Checked) ? numberOfCheckedItem += 1 : numberOfCheckedItem -= 1;
-                var tnumOfCurrentSession = chkListBoxCurrent.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
+            //if (entrySessionNumbersCL.SelectedIndex != -1)
+            //{
+                //CheckedListBox chkListBoxCurrent = (CheckedListBox)sender;
+                //var numberOfCheckedItem = chkListBoxCurrent.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
+                //numberOfCheckedItem = (e.NewValue == CheckState.Checked) ? numberOfCheckedItem += 1 : numberOfCheckedItem -= 1;
+                //var tnumOfCurrentSession = chkListBoxCurrent.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
 
-                if (entrySessionNumbersCL.SelectedIndex == 0)
-                {
-                    if (e.NewValue == CheckState.Checked)
-                    {
-                        SetAllItemCheck(true);
-                    }
-                    else
-                    {
-                        SetAllItemCheck(false);
-                    }
-                }
+                //if (entrySessionNumbersCL.SelectedIndex == 0)
+                //{
+                //    if (e.NewValue == CheckState.Checked)
+                //    {
+                //        SetAllItemCheck(true);
+                //    }
+                //    else
+                //    {
+                //        SetAllItemCheck(false);
+                //    }
+                //}
 
-                else
-                {
-                    if (numberOfCheckedItem == tnumOfCurrentSession)
-                    {
-                        entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                        entrySessionNumbersCL.SetItemChecked(0, true);
-                        entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                    }
-                    else
-                    {
-                        if (entrySessionNumbersCL.GetItemChecked(0) == true)
-                        {
-                            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                            entrySessionNumbersCL.SetItemChecked(0, false);
-                            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                        }
-                    }
-                }
-            }
+                //else
+                //{
+                //    if (numberOfCheckedItem == tnumOfCurrentSession)
+                //    {
+                //        entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                //        entrySessionNumbersCL.SetItemChecked(0, true);
+                //        entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                //    }
+                //    else
+                //    {
+                //        if (entrySessionNumbersCL.GetItemChecked(0) == true)
+                //        {
+                //            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                //            entrySessionNumbersCL.SetItemChecked(0, false);
+                //            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+                //        }
+                //    }
+                //}
+            //}
         }
 
         private void testEventsBtn_Click(object sender, EventArgs e)
@@ -1991,6 +1995,19 @@ namespace GTI.Modules.PlayerCenter.UI
         public List<int> PendingEntryPurchaseProducts { get { return m_pendingProductSelections; } }
 
         #endregion
+
+        private void m_imgbtnSelectAllSession_Click(object sender, EventArgs e)
+        {
+            SetAllItemCheck(true);
+        }
+
+        private void eventRepeatsChk_VisibleChanged(object sender, EventArgs e)
+        {
+            if (eventRepeatsChk.Visible == false)
+            {
+                eventRepeatsChk.Visible = true;
+            }
+        }
 
     }
 }

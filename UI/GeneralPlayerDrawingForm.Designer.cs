@@ -60,10 +60,8 @@
             this.entrySessionNumbersCL = new System.Windows.Forms.CheckedListBox();
             this.entrySessionsLbl = new System.Windows.Forms.Label();
             this.initialEventScheduledForLbl = new System.Windows.Forms.Label();
-            this.m_pnlHideRepeats = new System.Windows.Forms.Panel();
             this.eventRepeatsChk = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.eventRepeatDetailsPnl = new System.Windows.Forms.Panel();
             this.eventRepeatIncrementTxt = new System.Windows.Forms.TextBox();
             this.eventRepetitionRateLbl = new System.Windows.Forms.Label();
             this.eventRepeatIntervalCB = new System.Windows.Forms.ComboBox();
@@ -73,11 +71,6 @@
             this.initialEventScheduledForDTP = new System.Windows.Forms.DateTimePicker();
             this.eventWindowExamplesLbl = new System.Windows.Forms.Label();
             this.entryMethodsTP = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rdobtnBoth = new System.Windows.Forms.RadioButton();
-            this.rdobtnVisit = new System.Windows.Forms.RadioButton();
-            this.rdobtn_Spend = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.entryMethodsTC = new System.Windows.Forms.TabControl();
             this.entryVisitsTP = new System.Windows.Forms.TabPage();
             this.addEntryVisitTierBtn = new GTI.Controls.ImageButton();
@@ -121,6 +114,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.m_imgbtnSelectAllSession = new GTI.Controls.ImageButton();
+            this.eventRepeatDetailsPnl = new System.Windows.Forms.GroupBox();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -129,9 +124,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.eventRepeatDetailsPnl.SuspendLayout();
             this.entryMethodsTP.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.entryMethodsTC.SuspendLayout();
             this.entryVisitsTP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.entryVisitScaleDGV)).BeginInit();
@@ -144,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.entrySpendScaleDGV)).BeginInit();
             this.entrySpendGroupingFLP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.eventRepeatDetailsPnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // drawingsLV
@@ -427,6 +421,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.m_imgbtnSelectAllSession);
             this.splitContainer1.Panel1.Controls.Add(this.entryPeriodLbl);
             this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndDTP);
             this.splitContainer1.Panel1.Controls.Add(this.initialEventEntryPeriodEndLbl);
@@ -437,9 +432,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForLbl);
-            this.splitContainer1.Panel2.Controls.Add(this.m_pnlHideRepeats);
             this.splitContainer1.Panel2.Controls.Add(this.eventRepeatsChk);
+            this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForLbl);
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.eventRepeatDetailsPnl);
             this.splitContainer1.Panel2.Controls.Add(this.eventExamplesLV);
@@ -462,16 +456,16 @@
             // 
             this.initialEventEntryPeriodEndDTP.CustomFormat = "ddd dd MMM yyyy";
             this.initialEventEntryPeriodEndDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventEntryPeriodEndDTP.Location = new System.Drawing.Point(141, 75);
+            this.initialEventEntryPeriodEndDTP.Location = new System.Drawing.Point(94, 75);
             this.initialEventEntryPeriodEndDTP.Name = "initialEventEntryPeriodEndDTP";
-            this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(192, 26);
+            this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(239, 26);
             this.initialEventEntryPeriodEndDTP.TabIndex = 23;
             this.initialEventEntryPeriodEndDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodEndDTP_ValueChanged);
             // 
             // initialEventEntryPeriodEndLbl
             // 
             this.initialEventEntryPeriodEndLbl.BackColor = System.Drawing.Color.Transparent;
-            this.initialEventEntryPeriodEndLbl.Location = new System.Drawing.Point(44, 79);
+            this.initialEventEntryPeriodEndLbl.Location = new System.Drawing.Point(34, 79);
             this.initialEventEntryPeriodEndLbl.Name = "initialEventEntryPeriodEndLbl";
             this.initialEventEntryPeriodEndLbl.Size = new System.Drawing.Size(54, 22);
             this.initialEventEntryPeriodEndLbl.TabIndex = 24;
@@ -480,7 +474,7 @@
             // initialEventEntryPeriodBeginLbl
             // 
             this.initialEventEntryPeriodBeginLbl.BackColor = System.Drawing.Color.Transparent;
-            this.initialEventEntryPeriodBeginLbl.Location = new System.Drawing.Point(44, 47);
+            this.initialEventEntryPeriodBeginLbl.Location = new System.Drawing.Point(34, 51);
             this.initialEventEntryPeriodBeginLbl.Name = "initialEventEntryPeriodBeginLbl";
             this.initialEventEntryPeriodBeginLbl.Size = new System.Drawing.Size(60, 22);
             this.initialEventEntryPeriodBeginLbl.TabIndex = 21;
@@ -490,9 +484,9 @@
             // 
             this.initialEventEntryPeriodBeginDTP.CustomFormat = "ddd dd MMM yyyy";
             this.initialEventEntryPeriodBeginDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventEntryPeriodBeginDTP.Location = new System.Drawing.Point(143, 43);
+            this.initialEventEntryPeriodBeginDTP.Location = new System.Drawing.Point(94, 47);
             this.initialEventEntryPeriodBeginDTP.Name = "initialEventEntryPeriodBeginDTP";
-            this.initialEventEntryPeriodBeginDTP.Size = new System.Drawing.Size(190, 26);
+            this.initialEventEntryPeriodBeginDTP.Size = new System.Drawing.Size(239, 26);
             this.initialEventEntryPeriodBeginDTP.TabIndex = 22;
             this.initialEventEntryPeriodBeginDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodBeginDTP_ValueChanged);
             // 
@@ -523,56 +517,36 @@
             this.initialEventScheduledForLbl.BackColor = System.Drawing.Color.Transparent;
             this.initialEventScheduledForLbl.Location = new System.Drawing.Point(9, 16);
             this.initialEventScheduledForLbl.Name = "initialEventScheduledForLbl";
-            this.initialEventScheduledForLbl.Size = new System.Drawing.Size(123, 22);
+            this.initialEventScheduledForLbl.Size = new System.Drawing.Size(190, 22);
             this.initialEventScheduledForLbl.TabIndex = 36;
-            this.initialEventScheduledForLbl.Text = "Scheduled for";
-            // 
-            // m_pnlHideRepeats
-            // 
-            this.m_pnlHideRepeats.Location = new System.Drawing.Point(31, 107);
-            this.m_pnlHideRepeats.Name = "m_pnlHideRepeats";
-            this.m_pnlHideRepeats.Size = new System.Drawing.Size(304, 106);
-            this.m_pnlHideRepeats.TabIndex = 41;
+            this.initialEventScheduledForLbl.Text = "Scheduled to run on ";
             // 
             // eventRepeatsChk
             // 
             this.eventRepeatsChk.AutoSize = true;
-            this.eventRepeatsChk.Location = new System.Drawing.Point(9, 83);
+            this.eventRepeatsChk.Location = new System.Drawing.Point(14, 104);
             this.eventRepeatsChk.Name = "eventRepeatsChk";
             this.eventRepeatsChk.Size = new System.Drawing.Size(88, 26);
             this.eventRepeatsChk.TabIndex = 25;
             this.eventRepeatsChk.Text = "Repeats";
             this.eventRepeatsChk.UseVisualStyleBackColor = true;
             this.eventRepeatsChk.CheckedChanged += new System.EventHandler(this.eventRepeatsChk_CheckedChanged);
+            this.eventRepeatsChk.VisibleChanged += new System.EventHandler(this.eventRepeatsChk_VisibleChanged);
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(14, 326);
+            this.panel2.Location = new System.Drawing.Point(13, 331);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(278, 78);
             this.panel2.TabIndex = 40;
             // 
-            // eventRepeatDetailsPnl
-            // 
-            this.eventRepeatDetailsPnl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIncrementTxt);
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionRateLbl);
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIntervalCB);
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsDTP);
-            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsLbl);
-            this.eventRepeatDetailsPnl.Enabled = false;
-            this.eventRepeatDetailsPnl.Location = new System.Drawing.Point(30, 110);
-            this.eventRepeatDetailsPnl.Name = "eventRepeatDetailsPnl";
-            this.eventRepeatDetailsPnl.Size = new System.Drawing.Size(286, 83);
-            this.eventRepeatDetailsPnl.TabIndex = 34;
-            // 
             // eventRepeatIncrementTxt
             // 
             this.eventRepeatIncrementTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventRepeatIncrementTxt.Location = new System.Drawing.Point(81, 10);
+            this.eventRepeatIncrementTxt.Location = new System.Drawing.Point(81, 25);
             this.eventRepeatIncrementTxt.Multiline = true;
             this.eventRepeatIncrementTxt.Name = "eventRepeatIncrementTxt";
-            this.eventRepeatIncrementTxt.Size = new System.Drawing.Size(106, 30);
+            this.eventRepeatIncrementTxt.Size = new System.Drawing.Size(151, 30);
             this.eventRepeatIncrementTxt.TabIndex = 38;
             this.eventRepeatIncrementTxt.TextChanged += new System.EventHandler(this.eventRepeatIncrementTxt_TextChanged);
             this.eventRepeatIncrementTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entryPeriodRepeatIncrementTxt_KeyPress);
@@ -580,7 +554,7 @@
             // eventRepetitionRateLbl
             // 
             this.eventRepetitionRateLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventRepetitionRateLbl.Location = new System.Drawing.Point(3, 14);
+            this.eventRepetitionRateLbl.Location = new System.Drawing.Point(19, 29);
             this.eventRepetitionRateLbl.Name = "eventRepetitionRateLbl";
             this.eventRepetitionRateLbl.Size = new System.Drawing.Size(54, 22);
             this.eventRepetitionRateLbl.TabIndex = 35;
@@ -597,7 +571,7 @@
             "month",
             "day",
             "week"});
-            this.eventRepeatIntervalCB.Location = new System.Drawing.Point(192, 10);
+            this.eventRepeatIntervalCB.Location = new System.Drawing.Point(238, 25);
             this.eventRepeatIntervalCB.Name = "eventRepeatIntervalCB";
             this.eventRepeatIntervalCB.Size = new System.Drawing.Size(82, 30);
             this.eventRepeatIntervalCB.TabIndex = 27;
@@ -608,17 +582,17 @@
             this.eventRepetitionEndsDTP.Checked = false;
             this.eventRepetitionEndsDTP.CustomFormat = "ddd dd MMM yyyy";
             this.eventRepetitionEndsDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventRepetitionEndsDTP.Location = new System.Drawing.Point(82, 43);
+            this.eventRepetitionEndsDTP.Location = new System.Drawing.Point(81, 58);
             this.eventRepetitionEndsDTP.Name = "eventRepetitionEndsDTP";
             this.eventRepetitionEndsDTP.ShowCheckBox = true;
-            this.eventRepetitionEndsDTP.Size = new System.Drawing.Size(192, 26);
+            this.eventRepetitionEndsDTP.Size = new System.Drawing.Size(239, 26);
             this.eventRepetitionEndsDTP.TabIndex = 28;
             this.eventRepetitionEndsDTP.ValueChanged += new System.EventHandler(this.eventRepetitionEndsDTP_ValueChanged);
             // 
             // eventRepetitionEndsLbl
             // 
             this.eventRepetitionEndsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventRepetitionEndsLbl.Location = new System.Drawing.Point(4, 47);
+            this.eventRepetitionEndsLbl.Location = new System.Drawing.Point(20, 62);
             this.eventRepetitionEndsLbl.Name = "eventRepetitionEndsLbl";
             this.eventRepetitionEndsLbl.Size = new System.Drawing.Size(54, 22);
             this.eventRepetitionEndsLbl.TabIndex = 29;
@@ -639,10 +613,10 @@
             this.initialEventScheduledForDTP.Checked = false;
             this.initialEventScheduledForDTP.CustomFormat = "ddd dd MMM yyyy";
             this.initialEventScheduledForDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(133, 12);
+            this.initialEventScheduledForDTP.Location = new System.Drawing.Point(81, 47);
             this.initialEventScheduledForDTP.Name = "initialEventScheduledForDTP";
             this.initialEventScheduledForDTP.ShowCheckBox = true;
-            this.initialEventScheduledForDTP.Size = new System.Drawing.Size(192, 26);
+            this.initialEventScheduledForDTP.Size = new System.Drawing.Size(239, 26);
             this.initialEventScheduledForDTP.TabIndex = 35;
             this.initialEventScheduledForDTP.ValueChanged += new System.EventHandler(this.initialEventScheduledForDTP_ValueChanged);
             // 
@@ -658,8 +632,6 @@
             // entryMethodsTP
             // 
             this.entryMethodsTP.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.entryMethodsTP.Controls.Add(this.panel3);
-            this.entryMethodsTP.Controls.Add(this.label1);
             this.entryMethodsTP.Controls.Add(this.entryMethodsTC);
             this.entryMethodsTP.Location = new System.Drawing.Point(4, 31);
             this.entryMethodsTP.Name = "entryMethodsTP";
@@ -668,76 +640,17 @@
             this.entryMethodsTP.TabIndex = 2;
             this.entryMethodsTP.Text = "Entry Methods";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.rdobtnBoth);
-            this.panel3.Controls.Add(this.rdobtnVisit);
-            this.panel3.Controls.Add(this.rdobtn_Spend);
-            this.panel3.Location = new System.Drawing.Point(248, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(401, 30);
-            this.panel3.TabIndex = 6;
-            // 
-            // rdobtnBoth
-            // 
-            this.rdobtnBoth.AutoSize = true;
-            this.rdobtnBoth.Location = new System.Drawing.Point(211, 3);
-            this.rdobtnBoth.Name = "rdobtnBoth";
-            this.rdobtnBoth.Size = new System.Drawing.Size(63, 26);
-            this.rdobtnBoth.TabIndex = 2;
-            this.rdobtnBoth.Tag = "3";
-            this.rdobtnBoth.Text = "Both";
-            this.rdobtnBoth.UseVisualStyleBackColor = true;
-            this.rdobtnBoth.CheckedChanged += new System.EventHandler(this.EnterPlayerBasedOn_RdoClick);
-            // 
-            // rdobtnVisit
-            // 
-            this.rdobtnVisit.AutoSize = true;
-            this.rdobtnVisit.Location = new System.Drawing.Point(117, 3);
-            this.rdobtnVisit.Name = "rdobtnVisit";
-            this.rdobtnVisit.Size = new System.Drawing.Size(61, 26);
-            this.rdobtnVisit.TabIndex = 1;
-            this.rdobtnVisit.Tag = "2";
-            this.rdobtnVisit.Text = "Visit";
-            this.rdobtnVisit.UseVisualStyleBackColor = true;
-            this.rdobtnVisit.CheckedChanged += new System.EventHandler(this.EnterPlayerBasedOn_RdoClick);
-            // 
-            // rdobtn_Spend
-            // 
-            this.rdobtn_Spend.AutoSize = true;
-            this.rdobtn_Spend.Location = new System.Drawing.Point(16, 3);
-            this.rdobtn_Spend.Name = "rdobtn_Spend";
-            this.rdobtn_Spend.Size = new System.Drawing.Size(72, 26);
-            this.rdobtn_Spend.TabIndex = 0;
-            this.rdobtn_Spend.Tag = "1";
-            this.rdobtn_Spend.Text = "Spend";
-            this.rdobtn_Spend.UseVisualStyleBackColor = true;
-            this.rdobtn_Spend.CheckedChanged += new System.EventHandler(this.EnterPlayerBasedOn_RdoClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 22);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Enter players based on";
-            // 
             // entryMethodsTC
             // 
-            this.entryMethodsTC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.entryMethodsTC.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.entryMethodsTC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.entryMethodsTC.Controls.Add(this.entryVisitsTP);
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
-            this.entryMethodsTC.ItemSize = new System.Drawing.Size(0, 1);
-            this.entryMethodsTC.Location = new System.Drawing.Point(7, 44);
+            this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
+            this.entryMethodsTC.Location = new System.Drawing.Point(6, 6);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(671, 345);
-            this.entryMethodsTC.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.entryMethodsTC.Size = new System.Drawing.Size(675, 437);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entryVisitsTP
@@ -747,10 +660,10 @@
             this.entryVisitsTP.Controls.Add(this.addEntryVisitTierBtn);
             this.entryVisitsTP.Controls.Add(this.entryVisitScaleDGV);
             this.entryVisitsTP.Controls.Add(this.entryVisitsTypeFLP);
-            this.entryVisitsTP.Location = new System.Drawing.Point(4, 5);
+            this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(663, 336);
+            this.entryVisitsTP.Size = new System.Drawing.Size(667, 402);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -760,7 +673,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(561, 296);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(578, 362);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -783,7 +696,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 272);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 338);
             this.entryVisitScaleDGV.TabIndex = 7;
             this.entryVisitScaleDGV.Tag = "2";
             this.entryVisitScaleDGV.Visible = false;
@@ -800,7 +713,7 @@
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeDaysInEntryPeriodWindowRB);
             this.entryVisitsTypeFLP.Location = new System.Drawing.Point(6, 14);
             this.entryVisitsTypeFLP.Name = "entryVisitsTypeFLP";
-            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 312);
+            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 338);
             this.entryVisitsTypeFLP.TabIndex = 6;
             // 
             // entryVisitTypeNoneRB
@@ -856,10 +769,10 @@
             this.entryPurchasesTP.Controls.Add(this.addEntryPurchaseTierBtn);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseScaleDGV);
             this.entryPurchasesTP.Controls.Add(this.entryPurchaseTypeFLP);
-            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 5);
+            this.entryPurchasesTP.Location = new System.Drawing.Point(4, 31);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(663, 336);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(667, 402);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -871,9 +784,9 @@
             this.entryPurchaseGroupingFLP.Controls.Add(this.entryPurchaseGroupingBySessionRB);
             this.entryPurchaseGroupingFLP.Controls.Add(this.entryPurchaseGroupingByDayRB);
             this.entryPurchaseGroupingFLP.Controls.Add(this.entryPurchaseGroupingEntryPeriodRB);
-            this.entryPurchaseGroupingFLP.Location = new System.Drawing.Point(12, 14);
+            this.entryPurchaseGroupingFLP.Location = new System.Drawing.Point(6, 14);
             this.entryPurchaseGroupingFLP.Name = "entryPurchaseGroupingFLP";
-            this.entryPurchaseGroupingFLP.Size = new System.Drawing.Size(144, 286);
+            this.entryPurchaseGroupingFLP.Size = new System.Drawing.Size(148, 286);
             this.entryPurchaseGroupingFLP.TabIndex = 12;
             // 
             // entryPurchaseGroupingByTransactionRB
@@ -931,7 +844,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(381, 170);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(385, 229);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -941,7 +854,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 135);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 194);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -964,7 +877,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 115);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 174);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Tag = "3";
             this.entryPurchaseScaleDGV.Visible = false;
@@ -978,7 +891,7 @@
             this.entryPurchaseTypeFLP.Controls.Add(this.entryPurchaseTypeProductRB);
             this.entryPurchaseTypeFLP.Location = new System.Drawing.Point(150, 153);
             this.entryPurchaseTypeFLP.Name = "entryPurchaseTypeFLP";
-            this.entryPurchaseTypeFLP.Size = new System.Drawing.Size(131, 146);
+            this.entryPurchaseTypeFLP.Size = new System.Drawing.Size(135, 146);
             this.entryPurchaseTypeFLP.TabIndex = 8;
             // 
             // entryPurchaseTypeNoneRB
@@ -1024,10 +937,10 @@
             this.entrySpendTP.Controls.Add(this.addEntrySpendTierBtn);
             this.entrySpendTP.Controls.Add(this.entrySpendScaleDGV);
             this.entrySpendTP.Controls.Add(this.entrySpendGroupingFLP);
-            this.entrySpendTP.Location = new System.Drawing.Point(4, 5);
+            this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(663, 336);
+            this.entrySpendTP.Size = new System.Drawing.Size(667, 402);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -1037,7 +950,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 296);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(578, 362);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1055,12 +968,12 @@
             this.entrySpendScaleDGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.entrySpendScaleDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.entrySpendScaleDGV.Location = new System.Drawing.Point(150, 6);
+            this.entrySpendScaleDGV.Location = new System.Drawing.Point(151, 14);
             this.entrySpendScaleDGV.MultiSelect = false;
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(503, 284);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(502, 338);
             this.entrySpendScaleDGV.TabIndex = 5;
             this.entrySpendScaleDGV.Tag = "1";
             this.entrySpendScaleDGV.Visible = false;
@@ -1073,12 +986,12 @@
             // 
             this.entrySpendGroupingFLP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingBySessionRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingNoneRB);
-            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByTransactionRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingBySessionRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByDayRB);
+            this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingByTransactionRB);
             this.entrySpendGroupingFLP.Controls.Add(this.entrySpendGroupingEntryPeriodRB);
-            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 6);
+            this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 14);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
             this.entrySpendGroupingFLP.Size = new System.Drawing.Size(138, 338);
             this.entrySpendGroupingFLP.TabIndex = 4;
@@ -1086,7 +999,7 @@
             // entrySpendGroupingBySessionRB
             // 
             this.entrySpendGroupingBySessionRB.AutoSize = true;
-            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(3, 3);
+            this.entrySpendGroupingBySessionRB.Location = new System.Drawing.Point(3, 35);
             this.entrySpendGroupingBySessionRB.Name = "entrySpendGroupingBySessionRB";
             this.entrySpendGroupingBySessionRB.Size = new System.Drawing.Size(83, 26);
             this.entrySpendGroupingBySessionRB.TabIndex = 2;
@@ -1097,7 +1010,7 @@
             // entrySpendGroupingNoneRB
             // 
             this.entrySpendGroupingNoneRB.AutoSize = true;
-            this.entrySpendGroupingNoneRB.Location = new System.Drawing.Point(3, 35);
+            this.entrySpendGroupingNoneRB.Location = new System.Drawing.Point(3, 3);
             this.entrySpendGroupingNoneRB.Name = "entrySpendGroupingNoneRB";
             this.entrySpendGroupingNoneRB.Size = new System.Drawing.Size(67, 26);
             this.entrySpendGroupingNoneRB.TabIndex = 4;
@@ -1108,7 +1021,7 @@
             // entrySpendGroupingByTransactionRB
             // 
             this.entrySpendGroupingByTransactionRB.AutoSize = true;
-            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 67);
+            this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 99);
             this.entrySpendGroupingByTransactionRB.Name = "entrySpendGroupingByTransactionRB";
             this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
             this.entrySpendGroupingByTransactionRB.TabIndex = 1;
@@ -1119,7 +1032,7 @@
             // entrySpendGroupingByDayRB
             // 
             this.entrySpendGroupingByDayRB.AutoSize = true;
-            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(3, 99);
+            this.entrySpendGroupingByDayRB.Location = new System.Drawing.Point(3, 67);
             this.entrySpendGroupingByDayRB.Name = "entrySpendGroupingByDayRB";
             this.entrySpendGroupingByDayRB.Size = new System.Drawing.Size(55, 26);
             this.entrySpendGroupingByDayRB.TabIndex = 3;
@@ -1286,6 +1199,33 @@
             this.panel1.Size = new System.Drawing.Size(366, 37);
             this.panel1.TabIndex = 25;
             // 
+            // m_imgbtnSelectAllSession
+            // 
+            this.m_imgbtnSelectAllSession.BackColor = System.Drawing.Color.Transparent;
+            this.m_imgbtnSelectAllSession.FocusColor = System.Drawing.Color.Black;
+            this.m_imgbtnSelectAllSession.Location = new System.Drawing.Point(214, 360);
+            this.m_imgbtnSelectAllSession.MinimumSize = new System.Drawing.Size(30, 30);
+            this.m_imgbtnSelectAllSession.Name = "m_imgbtnSelectAllSession";
+            this.m_imgbtnSelectAllSession.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_imgbtnSelectAllSession.Size = new System.Drawing.Size(119, 30);
+            this.m_imgbtnSelectAllSession.TabIndex = 39;
+            this.m_imgbtnSelectAllSession.Text = "Select All";
+            this.m_imgbtnSelectAllSession.UseVisualStyleBackColor = false;
+            this.m_imgbtnSelectAllSession.Click += new System.EventHandler(this.m_imgbtnSelectAllSession_Click);
+            // 
+            // eventRepeatDetailsPnl
+            // 
+            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIncrementTxt);
+            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionRateLbl);
+            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsLbl);
+            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepeatIntervalCB);
+            this.eventRepeatDetailsPnl.Controls.Add(this.eventRepetitionEndsDTP);
+            this.eventRepeatDetailsPnl.Location = new System.Drawing.Point(3, 108);
+            this.eventRepeatDetailsPnl.Name = "eventRepeatDetailsPnl";
+            this.eventRepeatDetailsPnl.Size = new System.Drawing.Size(327, 98);
+            this.eventRepeatDetailsPnl.TabIndex = 42;
+            this.eventRepeatDetailsPnl.TabStop = false;
+            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1323,12 +1263,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.eventRepeatDetailsPnl.ResumeLayout(false);
-            this.eventRepeatDetailsPnl.PerformLayout();
             this.entryMethodsTP.ResumeLayout(false);
-            this.entryMethodsTP.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.entryMethodsTC.ResumeLayout(false);
             this.entryVisitsTP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.entryVisitScaleDGV)).EndInit();
@@ -1345,6 +1280,8 @@
             this.entrySpendGroupingFLP.ResumeLayout(false);
             this.entrySpendGroupingFLP.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.eventRepeatDetailsPnl.ResumeLayout(false);
+            this.eventRepeatDetailsPnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1419,7 +1356,6 @@
         private Controls.ImageButton addEntryPurchaseTierBtn;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckedListBox entryPurchaseSelectionsCL;
-        private System.Windows.Forms.Panel eventRepeatDetailsPnl;
         private System.Windows.Forms.Label eventRepetitionRateLbl;
         private System.Windows.Forms.Label eventWindowExamplesLbl;
         private System.Windows.Forms.TextBox eventRepeatIncrementTxt;
@@ -1436,13 +1372,9 @@
         private System.Windows.Forms.ListView eventExamplesLV;
         private System.Windows.Forms.Button testEventsBtn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel m_pnlHideRepeats;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton rdobtnVisit;
-        private System.Windows.Forms.RadioButton rdobtn_Spend;
-        private System.Windows.Forms.RadioButton rdobtnBoth;
+        private Controls.ImageButton m_imgbtnSelectAllSession;
+        private System.Windows.Forms.GroupBox eventRepeatDetailsPnl;
     }
 }

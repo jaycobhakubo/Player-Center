@@ -652,6 +652,7 @@
             this.entryMethodsTC.SelectedIndex = 0;
             this.entryMethodsTC.Size = new System.Drawing.Size(675, 437);
             this.entryMethodsTC.TabIndex = 4;
+            this.entryMethodsTC.SelectedIndexChanged += new System.EventHandler(this.entryMethodsTC_SelectedIndexChanged);
             // 
             // entryVisitsTP
             // 

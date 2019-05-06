@@ -219,6 +219,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dgvr.Cells[i + 1].Style.ForeColor == Color.LightGray)
                 {
                     result = false;
+                    break;
                 }
             }
             m_cellLastEntry = result;
@@ -414,23 +415,6 @@ namespace GTI.Modules.PlayerCenter.UI
             entryMethodsTC.SizeMode = TabSizeMode.Fixed;
         }
 
-        private void SetIndicatorOnOff(bool set, DataGridView activeDGV)
-        {
-            //if (set)
-            //{
-            //    if (m_selectedColumnDataType == typeof(int))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
-            //    }
-            //    else if (m_selectedColumnDataType == typeof(decimal))
-            //    {
-            //        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "00.00";
-            //        dgvr.Cells[e.ColumnIndex].Style.ForeColor = Color.LightGray;
-            //    }
-            //}
-        }
-
         void CheckEventDates()
         {
             if (initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
@@ -543,21 +527,17 @@ namespace GTI.Modules.PlayerCenter.UI
             #endregion
 
             #region Entry Qualifications
-
             entrySpendGroupingNoneRB.Checked = true;
             m_entrySpendScaleDT.Rows.Clear();
-
             entryVisitTypeNoneRB.Checked = true;
             m_entryVisitScaleDT.Rows.Clear();
-
             entryPurchaseTypeNoneRB.Checked = true;
             m_entryPurchaseScaleDT.Rows.Clear();
             m_pendingPackageSelections.Clear();
             m_pendingProductSelections.Clear();
             entryPurchaseSelectionsCL.Items.Clear();
-            //Set default 
-            //rdobtn_Spend.Checked = true;
             #endregion
+            
             #endregion
 
             if (m_currentGPD != null)
@@ -1187,7 +1167,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region EVENT
 
-           
+        private void m_imgbtnSelectAllSession_Click(object sender, EventArgs e)
+        {
+            SetAllItemCheck(true);
+        }
+
+        private void eventRepeatsChk_VisibleChanged(object sender, EventArgs e)
+        {
+            if (eventRepeatsChk.Visible == false)
+            {
+                eventRepeatsChk.Visible = true;
+            }
+        }
 
         private void entrySpendScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -1241,7 +1232,6 @@ namespace GTI.Modules.PlayerCenter.UI
             IsCellLastEntry(dgvr);
         }
 
-
         //This trigger every key stroke
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -1283,7 +1273,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
-
 
         private void Cell_KeyDown(object sender, KeyEventArgs e)
         {
@@ -1400,6 +1389,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
         }
+
             #region unspecify yet
 
         private void showInactiveDrawingsChk_CheckedChanged(object sender, EventArgs e) { ListDrawings(); }
@@ -1850,16 +1840,15 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region PROPERTIES (pending)
+
         public string PendingName { get { return drawingNameTxt.Text.Trim(); } }
         public bool PendingActive { get { return drawingActiveChk.Checked; } }
         public string PendingDescription { get { return drawingDescriptionTxt.Text.Trim(); } }
-
         public int PendingEntriesDrawn { get { return int.Parse(drawingEntriesDrawnTxt.Text); } }
         public int PendingMinimumEntries { get { return int.Parse(minimumEntriesToRunTxt.Text); } }
         public int PendingMaxDrawsPerPlayer { get { return int.Parse(maximumDrawsPerPlayerTxt.Text); } }
         public bool PendingShowEntriesOnReceipts { get { return showEntryCountOnReceiptsChk.Checked; } }
         public bool PendingPlayerPresenceRequired { get { return playerPresenceRequiredChk.Checked; } }
-
         public DateTime PendingInitialEventEntryPeriodBegin { get { return initialEventEntryPeriodBeginDTP.Value.Date; } }
         public DateTime PendingInitialEventEntryPeriodEnd { get { return initialEventEntryPeriodEndDTP.Value.Date; } }
         public DateTime? PendingInitialEventScheduledForWhen { get { return (initialEventScheduledForDTP.Checked ? (DateTime?)initialEventScheduledForDTP.Value.Date : null); } }
@@ -1996,16 +1985,15 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #endregion
 
-        private void m_imgbtnSelectAllSession_Click(object sender, EventArgs e)
+        private void entryMethodsTC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SetAllItemCheck(true);
-        }
-
-        private void eventRepeatsChk_VisibleChanged(object sender, EventArgs e)
-        {
-            if (eventRepeatsChk.Visible == false)
+            if (entryMethodsTC.SelectedIndex == 0)
             {
-                eventRepeatsChk.Visible = true;
+                     m_selectedDataGridView = entryVisitScaleDGV;
+            }
+            else if (entryMethodsTC.SelectedIndex == 2)
+            {
+                    m_selectedDataGridView = entrySpendScaleDGV;
             }
         }
 

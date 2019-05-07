@@ -663,10 +663,10 @@
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
-            this.entryMethodsTC.Location = new System.Drawing.Point(6, -12);
+            this.entryMethodsTC.Location = new System.Drawing.Point(6, 6);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(675, 437);
+            this.entryMethodsTC.Size = new System.Drawing.Size(675, 419);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entryVisitsTP
@@ -679,7 +679,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(667, 402);
+            this.entryVisitsTP.Size = new System.Drawing.Size(667, 384);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -689,7 +689,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(578, 362);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(578, 344);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -712,7 +712,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 338);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(502, 320);
             this.entryVisitScaleDGV.TabIndex = 7;
             this.entryVisitScaleDGV.Tag = "2";
             this.entryVisitScaleDGV.Visible = false;
@@ -725,7 +725,7 @@
             this.entryVisitsTypeFLP.Controls.Add(this.entryVisitTypeDaysInEntryPeriodWindowRB);
             this.entryVisitsTypeFLP.Location = new System.Drawing.Point(6, 14);
             this.entryVisitsTypeFLP.Name = "entryVisitsTypeFLP";
-            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 338);
+            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(138, 320);
             this.entryVisitsTypeFLP.TabIndex = 6;
             // 
             // entryVisitTypeNoneRB

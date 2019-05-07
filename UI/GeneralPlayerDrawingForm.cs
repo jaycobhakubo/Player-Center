@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using GTI.Modules.Shared;
 using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
+using System.Text.RegularExpressions;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -1567,6 +1568,100 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 eventRepeatDetailsPnl.Visible = false;
             }
+        }
+
+        Type m_selectedColumnDataType;
+
+        private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            var dgv = (DataGridView)sender;
+           m_selectedColumnDataType = dgv.CurrentCell.ValueType;
+
+            e.Control.KeyDown -= new KeyEventHandler(Cell_KeyDown);
+            e.Control.KeyDown += new KeyEventHandler(Cell_KeyDown);
+
+            e.Control.KeyPress -= new KeyPressEventHandler(Cell_KeyPress);
+            e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
+        }
+
+        private void Cell_KeyDown(object sender, KeyEventArgs e)
+        {
+            var txtbxValue = (TextBox)sender;
+            bool result = true;
+            int keyValue = e.KeyValue;
+          
+
+
+            if (m_selectedColumnDataType == typeof(int))
+            {
+                if (e.KeyCode == Keys.Back)
+                {
+                    result = false;
+                }
+                if (result)
+                {
+                    result = !char.IsDigit(/*e.KeyChar*/(char)keyValue);
+                }
+            }
+            else if (m_selectedColumnDataType == typeof(decimal))
+            {
+                if (sender is TextBox)
+                {
+                    txtbxValue = (TextBox)sender;
+                    result = false;
+
+                    string x = txtbxValue.Text;
+                    if (txtbxValue.SelectionLength > 0)
+                    {
+                        int tlen = x.Length - txtbxValue.SelectionLength;
+                        x = x.Substring(0, tlen);
+                    }
+
+                    int count = x.Split('.').Length - 1;
+
+                    if (!char.IsControl((char)keyValue))
+                    {
+                        switch ((char)keyValue)
+                        {
+                            case (char)190://period
+                                //allow 1 decimal point
+                                if (count > 0)
+                                {
+                                    result = true;
+                                }
+                                else
+                                {
+                                    result = false;
+                                }
+                                break;
+                            default:
+                                result = !char.IsDigit((char)keyValue);
+                                break;
+                        }
+                    }
+
+                    if ((char)keyValue == (char)Keys.Back)
+                    {
+                        result = false;
+                    }
+
+                    else if (Regex.IsMatch(x, @"\.\d\d"))
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            m_invalidUserInput = result;
+        
+            e.Handled = result;
+        }
+
+        bool m_invalidUserInput;
+
+        private void Cell_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = m_invalidUserInput;
         }
     }
 }

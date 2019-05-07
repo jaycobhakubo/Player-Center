@@ -718,7 +718,7 @@ namespace GTI.Modules.PlayerCenter.UI
             return result;
         }
 
-        private bool IsUserInputValid()
+        private bool IsCellValueValid(string cellValue)
         {
             bool result = false;
             int intResult;
@@ -726,11 +726,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_selectedColumnDataType == typeof(int))
             {
-                result = int.TryParse(m_cellActualValue, out intResult);
+                result = int.TryParse(cellValue, out intResult);
             }
             else if(m_selectedColumnDataType == typeof(decimal))
             {
-                result =  decimal.TryParse(m_cellActualValue, out decResult);
+                result = decimal.TryParse(cellValue, out decResult);
             }
 
             return result;
@@ -785,14 +785,18 @@ namespace GTI.Modules.PlayerCenter.UI
                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dgv.Columns[i].Name));
                                 return;
                             }
-
+                            else
                             if (IsCellIndicator(dgvr.Index, i, dgv))
                             {
                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dgv.Columns[i].Name));
                                 return;
                             }
-
-
+                            else
+                             if (IsCellValueValid(dgvr.Cells[i].Value.ToString()))
+                             {
+                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dgv.Columns[i].Name));
+                                 return;
+                             }                          
                         }
                     }
                 
@@ -820,56 +824,42 @@ namespace GTI.Modules.PlayerCenter.UI
                         return;
                     }
 
-                    #region Check for incompletely defined tiers
-                    foreach (System.Data.DataRow dr in dt.Rows)
+                    CheckAllCellEntry(dgv);
+
+                    //update data table if it is the last entry
+                    if (m_cellLastEntry)
                     {
-                        for (int i = 0; i < 3; ++i)
+                            bool result = false;
+                            decimal decResult;
+                            int intResult;
+
+                        if (m_selectedColumnDataType == typeof(decimal))
                         {
-                            if (IsCellIndicator(dt.Rows.IndexOf(dr), i, dgv))
+                            result = decimal.TryParse(m_cellActualValue.ToString(), out decResult);
+                            if (result)
                             {
-                                SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                return;
-                            }
-                                                
-                            if (dr[i] == DBNull.Value) 
+                                ((DataRow)dt.Rows[m_selectedDataGridView.CurrentCell.RowIndex])[m_selectedDataGridView.CurrentCell.ColumnIndex] = decResult;
+                            }                          
+                        }
+                        else
+                        if (m_selectedColumnDataType == typeof(int))
+                        {
+                            result = int.TryParse(m_cellActualValue.ToString(), out intResult);
+                            if (result)
                             {
-                                    SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                    return;
-                            }
+                                ((DataRow)dt.Rows[m_selectedDataGridView.CurrentCell.RowIndex])[m_selectedDataGridView.CurrentCell.ColumnIndex] = intResult;
+                            }  
+                        }
 
-
-                                //else
-                                //{
-                                //    bool result = false;
-                                //    decimal decResult;
-                                //    int intResult;
-
-                                //    if (dt.Columns[i].DataType == typeof(decimal))
-                                //    {
-                                //        result = decimal.TryParse(m_cellActualValue.ToString(), out decResult);
-                                //        if (result)
-                                //        {
-                                //            dr[i] = Convert.ToDecimal(m_cellActualValue.ToString());
-                                //        }
-                                //    }
-                                //    else if (dt.Columns[i].DataType == typeof(int))
-                                //    {
-                                //        result = int.TryParse(m_cellActualValue.ToString(), out intResult);
-                                //        if (result)
-                                //        {
-                                //            dr[i] = Convert.ToInt32(m_cellActualValue.ToString());
-                                //        }
-                                //    }
-
-                                //    if (result == false)
-                                //    {
-                                //        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                //        return;
-                                //    }                                  
-                                //}
-                            
+                        if (!result)
+                        {
+                            SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[m_selectedDataGridView.CurrentCell.ColumnIndex].ColumnName));
+                            return;
                         }
                     }
+
+                    #region Check for incompletely defined tiers
+                   
                     #endregion
 
 
@@ -1191,6 +1181,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region EVENT
 
+        //Click all session
         private void m_imgbtnSelectAllSession_Click(object sender, EventArgs e)
         {
             SetAllItemCheck(true);
@@ -1379,7 +1370,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (m_cellLastEntry)
             {
-                if (!IsUserInputValid())
+                if (!IsCellValueValid(m_cellActualValue))
                 {
                     SetError(m_selectedDataGridView, String.Format("Tier entry missing {0} value.", m_selectedDataGridView.CurrentCell.OwningColumn.Name));
                     return;

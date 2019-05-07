@@ -156,6 +156,7 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             LoadEntrySessionsCheckList();
             ChangeDateFormatToSavedSpace();
+            HideOrShowRepeatsPerCheckedStatus();
             InitEntryScaleElements();
 
             if(!c_enablePurchaseUI)
@@ -1208,6 +1209,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void SetError(Control c, String errMsg)
         {
+         
+            errorProvider.SetIconAlignment (c, ErrorIconAlignment.MiddleRight);
+           errorProvider.SetIconPadding(c, -5);        
             errorProvider.SetError(c, errMsg);
 
             if(String.IsNullOrEmpty(errMsg))
@@ -1294,6 +1298,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void eventRepeatsChk_CheckedChanged(object sender, EventArgs e)
         {
+            HideOrShowRepeatsPerCheckedStatus();
             eventRepeatDetailsPnl.Enabled = eventRepeatsChk.Checked;
             eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
             eventRepeatIntervalCB_SelectedIndexChanged(null, null);
@@ -1550,6 +1555,18 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+        }
+
+        private void HideOrShowRepeatsPerCheckedStatus()
+        {
+            if (eventRepeatsChk.Checked)
+            {
+                eventRepeatDetailsPnl.Visible = true;
+            }
+            else
+            {
+                eventRepeatDetailsPnl.Visible = false;
+            }
         }
     }
 }

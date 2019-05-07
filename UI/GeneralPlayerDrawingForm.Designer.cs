@@ -526,7 +526,7 @@
             // eventRepeatsChk
             // 
             this.eventRepeatsChk.AutoSize = true;
-            this.eventRepeatsChk.Location = new System.Drawing.Point(14, 104);
+            this.eventRepeatsChk.Location = new System.Drawing.Point(6, 104);
             this.eventRepeatsChk.Name = "eventRepeatsChk";
             this.eventRepeatsChk.Size = new System.Drawing.Size(88, 26);
             this.eventRepeatsChk.TabIndex = 25;
@@ -559,7 +559,7 @@
             // eventRepeatIncrementTxt
             // 
             this.eventRepeatIncrementTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventRepeatIncrementTxt.Location = new System.Drawing.Point(81, 25);
+            this.eventRepeatIncrementTxt.Location = new System.Drawing.Point(74, 25);
             this.eventRepeatIncrementTxt.Multiline = true;
             this.eventRepeatIncrementTxt.Name = "eventRepeatIncrementTxt";
             this.eventRepeatIncrementTxt.Size = new System.Drawing.Size(151, 30);
@@ -570,7 +570,7 @@
             // eventRepetitionRateLbl
             // 
             this.eventRepetitionRateLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventRepetitionRateLbl.Location = new System.Drawing.Point(19, 29);
+            this.eventRepetitionRateLbl.Location = new System.Drawing.Point(12, 29);
             this.eventRepetitionRateLbl.Name = "eventRepetitionRateLbl";
             this.eventRepetitionRateLbl.Size = new System.Drawing.Size(54, 22);
             this.eventRepetitionRateLbl.TabIndex = 35;
@@ -579,7 +579,7 @@
             // eventRepetitionEndsLbl
             // 
             this.eventRepetitionEndsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.eventRepetitionEndsLbl.Location = new System.Drawing.Point(20, 62);
+            this.eventRepetitionEndsLbl.Location = new System.Drawing.Point(13, 62);
             this.eventRepetitionEndsLbl.Name = "eventRepetitionEndsLbl";
             this.eventRepetitionEndsLbl.Size = new System.Drawing.Size(54, 22);
             this.eventRepetitionEndsLbl.TabIndex = 29;
@@ -596,7 +596,7 @@
             "month",
             "day",
             "week"});
-            this.eventRepeatIntervalCB.Location = new System.Drawing.Point(238, 25);
+            this.eventRepeatIntervalCB.Location = new System.Drawing.Point(231, 25);
             this.eventRepeatIntervalCB.Name = "eventRepeatIntervalCB";
             this.eventRepeatIntervalCB.Size = new System.Drawing.Size(82, 30);
             this.eventRepeatIntervalCB.TabIndex = 27;
@@ -607,7 +607,7 @@
             this.eventRepetitionEndsDTP.Checked = false;
             this.eventRepetitionEndsDTP.CustomFormat = "ddd dd MMM yyyy";
             this.eventRepetitionEndsDTP.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventRepetitionEndsDTP.Location = new System.Drawing.Point(81, 58);
+            this.eventRepetitionEndsDTP.Location = new System.Drawing.Point(74, 58);
             this.eventRepetitionEndsDTP.Name = "eventRepetitionEndsDTP";
             this.eventRepetitionEndsDTP.ShowCheckBox = true;
             this.eventRepetitionEndsDTP.Size = new System.Drawing.Size(239, 26);
@@ -663,7 +663,7 @@
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
-            this.entryMethodsTC.Location = new System.Drawing.Point(6, -3);
+            this.entryMethodsTC.Location = new System.Drawing.Point(6, -12);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
             this.entryMethodsTC.Size = new System.Drawing.Size(675, 437);

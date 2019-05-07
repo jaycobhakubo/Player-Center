@@ -769,6 +769,43 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+
+        //Check all cell
+        void CheckAllCellEntry(DataGridView dgv)
+        {
+            try
+            {              
+                    foreach (DataGridViewRow dgvr in dgv.Rows)
+                    {
+                        for (int i = 1; i < 4; ++i)
+                        {
+                            //Check if any cell is empty
+                            if (dgvr.Cells[i].Value == DBNull.Value)
+                            {
+                                SetError(dgv, String.Format("Tier entry missing {0} value.", dgv.Columns[i].Name));
+                                return;
+                            }
+
+                            if (IsCellIndicator(dgvr.Index, i, dgv))
+                            {
+                                SetError(dgv, String.Format("Tier entry missing {0} value.", dgv.Columns[i].Name));
+                                return;
+                            }
+
+
+                        }
+                    }
+                
+                //If no error then clear all error in the dgv
+                SetError(dgv, null);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                SetError(dgv, "Invalid scale");
+            }
+        }
+
         void CheckEntryScale(DataGridView dgv)
         {
             try
@@ -776,7 +813,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dgv.Visible)
                 {
                     var dt = dgv.DataSource as DataTable;
-
+                                                       
                     if (dt.Rows.Count == 0)
                     {
                         SetError(dgv, "No entry tiers specified.");
@@ -793,57 +830,48 @@ namespace GTI.Modules.PlayerCenter.UI
                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
                                 return;
                             }
-
-                            if (m_cellLastEntry)
+                                                
+                            if (dr[i] == DBNull.Value) 
                             {
-                                if (!IsUserInputValid())
-                                {
                                     SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
                                     return;
-                                }
                             }
 
 
-                          
-                                if (dr[i] == DBNull.Value) 
-                                {
-                                    bool result = false;
-                                    decimal decResult;
-                                    int intResult;
+                                //else
+                                //{
+                                //    bool result = false;
+                                //    decimal decResult;
+                                //    int intResult;
 
-                                    if (dt.Columns[i].DataType == typeof(decimal))
-                                    {
-                                        result = decimal.TryParse(m_cellActualValue.ToString(), out decResult);
-                                        if (result)
-                                        {
-                                            dr[i] = Convert.ToDecimal(m_cellActualValue.ToString());
-                                        }
-                                    }
-                                    else if (dt.Columns[i].DataType == typeof(int))
-                                    {
-                                        result = int.TryParse(m_cellActualValue.ToString(), out intResult);
-                                        if (result)
-                                        {
-                                            dr[i] = Convert.ToInt32(m_cellActualValue.ToString());
-                                        }
-                                    }
+                                //    if (dt.Columns[i].DataType == typeof(decimal))
+                                //    {
+                                //        result = decimal.TryParse(m_cellActualValue.ToString(), out decResult);
+                                //        if (result)
+                                //        {
+                                //            dr[i] = Convert.ToDecimal(m_cellActualValue.ToString());
+                                //        }
+                                //    }
+                                //    else if (dt.Columns[i].DataType == typeof(int))
+                                //    {
+                                //        result = int.TryParse(m_cellActualValue.ToString(), out intResult);
+                                //        if (result)
+                                //        {
+                                //            dr[i] = Convert.ToInt32(m_cellActualValue.ToString());
+                                //        }
+                                //    }
 
-                                    if (result == false)
-                                    {
-                                        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                        return;
-                                    }
-                                }
-                                else
-                                {
-
-                                    //SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
-                                    //return;
-                                }
+                                //    if (result == false)
+                                //    {
+                                //        SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
+                                //        return;
+                                //    }                                  
+                                //}
                             
                         }
                     }
                     #endregion
+
 
                     if (dt.Columns[0].DataType == typeof(decimal))
                     {
@@ -1095,14 +1123,10 @@ namespace GTI.Modules.PlayerCenter.UI
             if (eventRepeatsChk.Checked)
             {
                 eventRepeatDetailsPnl.Visible = true;
-                //m_pnlHideRepeats.Visible = false;
-                //m_pnlHideRepeats.SendToBack();
             }
             else
             {
                 eventRepeatDetailsPnl.Visible = false;
-                //m_pnlHideRepeats.Visible = true;
-                //m_pnlHideRepeats.BringToFront();
             }
         }
 
@@ -1354,7 +1378,13 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = m_invalidUserInput;
 
             if (m_cellLastEntry)
-            {        
+            {
+                if (!IsUserInputValid())
+                {
+                    SetError(m_selectedDataGridView, String.Format("Tier entry missing {0} value.", m_selectedDataGridView.CurrentCell.OwningColumn.Name));
+                    return;
+                }
+                //Check every key press on the last entry
                 CheckEntryScale(/*entrySpendScaleDGV*/m_selectedDataGridView);
             }      
         }
@@ -1413,44 +1443,17 @@ namespace GTI.Modules.PlayerCenter.UI
         private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
         {
 
-            //if (entrySessionNumbersCL.SelectedIndex != -1)
-            //{
-                //CheckedListBox chkListBoxCurrent = (CheckedListBox)sender;
-                //var numberOfCheckedItem = chkListBoxCurrent.CheckedItems.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
-                //numberOfCheckedItem = (e.NewValue == CheckState.Checked) ? numberOfCheckedItem += 1 : numberOfCheckedItem -= 1;
-                //var tnumOfCurrentSession = chkListBoxCurrent.Items.Cast<SessionNumberListing>().Where(l => l.SessionNumber != 0).Count();
+            bool hasChecks = false;
 
-                //if (entrySessionNumbersCL.SelectedIndex == 0)
-                //{
-                //    if (e.NewValue == CheckState.Checked)
-                //    {
-                //        SetAllItemCheck(true);
-                //    }
-                //    else
-                //    {
-                //        SetAllItemCheck(false);
-                //    }
-                //}
+            if (e == null)
+                hasChecks = entrySessionNumbersCL.CheckedItems.Count > 0;
+            else if (e.NewValue == CheckState.Checked || entrySessionNumbersCL.CheckedItems.Count > 1)
+                hasChecks = true;
 
-                //else
-                //{
-                //    if (numberOfCheckedItem == tnumOfCurrentSession)
-                //    {
-                //        entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                //        entrySessionNumbersCL.SetItemChecked(0, true);
-                //        entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                //    }
-                //    else
-                //    {
-                //        if (entrySessionNumbersCL.GetItemChecked(0) == true)
-                //        {
-                //            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                //            entrySessionNumbersCL.SetItemChecked(0, false);
-                //            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-                //        }
-                //    }
-                //}
-            //}
+            if (hasChecks)
+                SetError(entrySessionsLbl, null);
+            else
+                SetError(entrySessionsLbl, "Drawing should have one or more sessions selected for entries to be accepted.");
         }
 
         private void testEventsBtn_Click(object sender, EventArgs e)
@@ -1825,7 +1828,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if(m_loadingDetails)
                 return;
-                CheckEntryScale(sender as DataGridView);                   
+                CheckAllCellEntry(sender as DataGridView);                   
         }
 
         void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)//knc

@@ -502,7 +502,7 @@ namespace GTI.Modules.PlayerCenter.UI
             drawingNameTxt.Enabled = enterEditMode;
             drawingActiveChk.Enabled = enterEditMode;
 
-            commonOptionsTP.Enabled = enterEditMode;
+            commonOptionsTP.Enabled = enterEditMode;//knc
             eventTP.Enabled = enterEditMode;
             foreach(TabPage tp in entryMethodsTC.TabPages)
                 tp.Enabled = enterEditMode;
@@ -1212,7 +1212,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
          
             errorProvider.SetIconAlignment (c, ErrorIconAlignment.MiddleRight);
-           errorProvider.SetIconPadding(c, -5);        
+           errorProvider.SetIconPadding(c, -2);        
             errorProvider.SetError(c, errMsg);
 
             if(String.IsNullOrEmpty(errMsg))
@@ -1590,67 +1590,68 @@ namespace GTI.Modules.PlayerCenter.UI
             bool result = true;
             int keyValue = e.KeyValue;
           
-
-
-            if (m_selectedColumnDataType == typeof(int))
-            {
-                if (e.KeyCode == Keys.Back)
+     
+                if (m_selectedColumnDataType == typeof(int))
                 {
-                    result = false;
-                }
-                if (result)
-                {
-                    result = !char.IsDigit(/*e.KeyChar*/(char)keyValue);
-                }
-            }
-            else if (m_selectedColumnDataType == typeof(decimal))
-            {
-                if (sender is TextBox)
-                {
-                    txtbxValue = (TextBox)sender;
-                    result = false;
-
-                    string x = txtbxValue.Text;
-                    if (txtbxValue.SelectionLength > 0)
-                    {
-                        int tlen = x.Length - txtbxValue.SelectionLength;
-                        x = x.Substring(0, tlen);
-                    }
-
-                    int count = x.Split('.').Length - 1;
-
-                    if (!char.IsControl((char)keyValue))
-                    {
-                        switch ((char)keyValue)
-                        {
-                            case (char)190://period
-                                //allow 1 decimal point
-                                if (count > 0)
-                                {
-                                    result = true;
-                                }
-                                else
-                                {
-                                    result = false;
-                                }
-                                break;
-                            default:
-                                result = !char.IsDigit((char)keyValue);
-                                break;
-                        }
-                    }
-
-                    if ((char)keyValue == (char)Keys.Back)
+                    if (e.KeyCode == Keys.Back)
                     {
                         result = false;
                     }
-
-                    else if (Regex.IsMatch(x, @"\.\d\d"))
+                    if (result)
                     {
-                        result = true;
+                        result = !char.IsDigit(/*e.KeyChar*/(char)keyValue);
                     }
                 }
-            }
+                else if (m_selectedColumnDataType == typeof(decimal))
+                {
+                    if (sender is TextBox)
+                    {
+                        txtbxValue = (TextBox)sender;
+                        result = false;
+
+                        string x = txtbxValue.Text;
+                        if (txtbxValue.SelectionLength > 0)
+                        {
+                            int tlen = x.Length - txtbxValue.SelectionLength;
+                            x = x.Substring(0, tlen);
+                        }
+
+                        int count = x.Split('.').Length - 1;
+
+                        if (!char.IsControl((char)keyValue))
+                        {
+                            switch ((char)keyValue)
+                            {
+                                case (char)190://period
+                                    //allow 1 decimal point
+                                    if (count > 0)
+                                    {
+                                        result = true;
+                                    }
+                                    else
+                                    {
+                                        result = false;
+                                    }
+                                    break;
+                                default:
+                                    result = !char.IsDigit((char)keyValue);
+                                    break;
+                            }
+                        }
+
+                        if ((char)keyValue == (char)Keys.Back)
+                        {
+                            result = false;
+                        }
+
+                        else if (Regex.IsMatch(x, @"\.\d\d"))
+                        {
+                            result = true;
+                        }
+                    }
+                
+                }
+            
 
             m_invalidUserInput = result;
         
@@ -1661,7 +1662,33 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void Cell_KeyPress(object sender, KeyPressEventArgs e)
         {
+            var txtbxValue = (TextBox)sender;
+   
+            //Limit max lenght = 10
+            if (txtbxValue.TextLength  < 10)
+            {
+                if (Char.IsDigit(e.KeyChar))
+                {
+                    m_invalidUserInput = false;
+                }
+            }
+            else
+            {
+                m_invalidUserInput = true;
+            }
+
+
             e.Handled = m_invalidUserInput;
+        }
+
+        private void drawingDescriptionTxt_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void drawingDescriptionTxt_EnabledChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

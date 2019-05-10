@@ -173,8 +173,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         void generalDrawingTSMI_Click(object sender, EventArgs e)
         {
-            var gdForm = new GeneralPlayerDrawingForm();
-            gdForm.Show(this);
+            //var gdForm = new GeneralPlayerDrawingForm();
+            //gdForm.Show(this);
+            var gdp = new GeneralPlayerDrawingParent();
+            gdp.Show(this);
         }
     
         private void RaffleToolStripMenuItem_Click(object sender, EventArgs e)

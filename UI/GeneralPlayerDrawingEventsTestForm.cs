@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GTI.Modules.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using GeneralPlayerDrawingEvent = GTI.Modules.Shared.Business.GeneralPlayerDrawi
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-    public partial class GeneralPlayerDrawingEventsTestForm : Form
+    public partial class GeneralPlayerDrawingEventsTestForm : GradientForm
     {
         private List<GeneralPlayerDrawing> m_drawings;
 

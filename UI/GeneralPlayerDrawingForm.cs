@@ -135,6 +135,11 @@ namespace GTI.Modules.PlayerCenter.UI
             public override string ToString() { return Name; }
         }
 
+        public List<GeneralPlayerDrawing> Drawings
+        {
+            get { return m_drawings; }
+        }
+
         private bool m_editMode = false;
         private List<Control> m_erroredControls = new List<Control>();
         private GeneralPlayerDrawing m_currentGPD = null;
@@ -276,7 +281,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if(dt.Rows.Count == 0)
                     {
-                        SetError(dgv, "No entry tiers specified.");
+                        SetError(dgv, "No entry tiers specified.");                     
                         return;
                     }
 
@@ -612,15 +617,24 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void CheckEntryMethods()
         {
-            if(PendingEntrySpendGrouping == GeneralPlayerDrawing.SpendGrouping.NONE
+            if (PendingEntrySpendGrouping == GeneralPlayerDrawing.SpendGrouping.NONE
                 && PendingEntryVisitType == GeneralPlayerDrawing.VisitType.NONE
                 && (PendingEntryPurchaseGrouping == GeneralPlayerDrawing.PurchaseGrouping.NONE
                     || PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.NONE
                     )
                 )
-                SetError(entryMethodsTP, "No entry method specified.");
+            {
+                //SetError(entryMethodsTP, "No entry method specified.");
+                //Lets put the error in to the tab page
+                SetError(entrySpendGroupingNoneRB, "No entry method specified.");
+                SetError(entryVisitTypeNoneRB, "No entry method specified.");
+            }
             else
-                SetError(entryMethodsTP, null);
+            {
+                SetError(entrySpendGroupingNoneRB, null);
+                SetError(entryVisitTypeNoneRB,null);
+                //SetError(entryMethodsTP, null);
+            }
         }
 
         private void entryLimitTxt_TextChanged(object sender, EventArgs e)
@@ -1535,12 +1549,13 @@ namespace GTI.Modules.PlayerCenter.UI
             if (tCheckedItem == tSession)
             {
                 SetAllItemCheck(false);
+                 SetError(entrySessionsLbl, "Drawing should have one or more sessions selected for entries to be accepted.");
             }
             else
             {
                 SetAllItemCheck(true);
-            }
-           
+                SetError(entrySessionsLbl, null);
+            }                           
         }
 
         private void SetAllItemCheck(bool check)
@@ -1681,14 +1696,6 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = m_invalidUserInput;
         }
 
-        private void drawingDescriptionTxt_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void drawingDescriptionTxt_EnabledChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

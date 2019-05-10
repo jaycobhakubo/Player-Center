@@ -45,7 +45,8 @@
             // generationCurrentEventsBtn
             // 
             this.generationCurrentEventsBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.generationCurrentEventsBtn.Location = new System.Drawing.Point(438, 12);
+            this.generationCurrentEventsBtn.AutoSize = true;
+            this.generationCurrentEventsBtn.Location = new System.Drawing.Point(439, 12);
             this.generationCurrentEventsBtn.Name = "generationCurrentEventsBtn";
             this.generationCurrentEventsBtn.Size = new System.Drawing.Size(133, 27);
             this.generationCurrentEventsBtn.TabIndex = 26;
@@ -78,7 +79,7 @@
             // refreshEventsListBtn
             // 
             this.refreshEventsListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.refreshEventsListBtn.Location = new System.Drawing.Point(8, 633);
+            this.refreshEventsListBtn.Location = new System.Drawing.Point(8, 386);
             this.refreshEventsListBtn.Name = "refreshEventsListBtn";
             this.refreshEventsListBtn.Size = new System.Drawing.Size(90, 27);
             this.refreshEventsListBtn.TabIndex = 27;
@@ -96,7 +97,7 @@
             this.drawingEventsLV.Location = new System.Drawing.Point(8, 78);
             this.drawingEventsLV.MultiSelect = false;
             this.drawingEventsLV.Name = "drawingEventsLV";
-            this.drawingEventsLV.Size = new System.Drawing.Size(988, 545);
+            this.drawingEventsLV.Size = new System.Drawing.Size(990, 298);
             this.drawingEventsLV.TabIndex = 28;
             this.drawingEventsLV.UseCompatibleStateImageBehavior = false;
             this.drawingEventsLV.View = System.Windows.Forms.View.Details;
@@ -105,7 +106,7 @@
             // drawingEventsLbl
             // 
             this.drawingEventsLbl.AutoSize = true;
-            this.drawingEventsLbl.Location = new System.Drawing.Point(5, 62);
+            this.drawingEventsLbl.Location = new System.Drawing.Point(12, 47);
             this.drawingEventsLbl.Name = "drawingEventsLbl";
             this.drawingEventsLbl.Size = new System.Drawing.Size(120, 13);
             this.drawingEventsLbl.TabIndex = 29;
@@ -143,7 +144,7 @@
             this.eventActionsFLP.Controls.Add(this.initiateEventResultsBroadcastBtn);
             this.eventActionsFLP.Enabled = false;
             this.eventActionsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.eventActionsFLP.Location = new System.Drawing.Point(281, 626);
+            this.eventActionsFLP.Location = new System.Drawing.Point(283, 379);
             this.eventActionsFLP.Name = "eventActionsFLP";
             this.eventActionsFLP.Size = new System.Drawing.Size(715, 34);
             this.eventActionsFLP.TabIndex = 32;
@@ -162,7 +163,7 @@
             // abortEventResultsBroadcastBtn
             // 
             this.abortEventResultsBroadcastBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.abortEventResultsBroadcastBtn.Location = new System.Drawing.Point(104, 633);
+            this.abortEventResultsBroadcastBtn.Location = new System.Drawing.Point(104, 386);
             this.abortEventResultsBroadcastBtn.Name = "abortEventResultsBroadcastBtn";
             this.abortEventResultsBroadcastBtn.Size = new System.Drawing.Size(160, 27);
             this.abortEventResultsBroadcastBtn.TabIndex = 33;
@@ -172,21 +173,23 @@
             // 
             // GeneralPlayerDrawingEventsTestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 666);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(1010, 419);
             this.Controls.Add(this.eventActionsFLP);
             this.Controls.Add(this.drawingEventsLbl);
             this.Controls.Add(this.drawingEventsLV);
             this.Controls.Add(this.generationCurrentEventsBtn);
             this.Controls.Add(this.refreshEventsListBtn);
             this.Controls.Add(this.abortEventResultsBroadcastBtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GeneralPlayerDrawingEventsTestForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Drawing Events Tests";
             this.eventActionsFLP.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

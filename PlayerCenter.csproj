@@ -165,6 +165,12 @@
     <Compile Include="UI\AwardPointsToListOfPlayer.Designer.cs">
       <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeneralPlayerDrawingParent.Designer.cs">
+      <DependentUpon>GeneralPlayerDrawingParent.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\GeneralPlayerDrawingEventsTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +294,12 @@
     <Compile Include="UI\TakePIN.Designer.cs">
       <DependentUpon>TakePIN.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ViewRaffleWinnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,6 +329,9 @@
     <EmbeddedResource Include="UI\AwardPointsToListOfPlayer.resx">
       <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeneralPlayerDrawingParent.resx">
+      <DependentUpon>GeneralPlayerDrawingParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GeneralPlayerDrawingEventsTestForm.resx">
       <DependentUpon>GeneralPlayerDrawingEventsTestForm.cs</DependentUpon>
@@ -389,6 +404,9 @@
     <EmbeddedResource Include="UI\TakePIN.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TakePIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ViewRaffleWinnerForm.es.resx">
       <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>

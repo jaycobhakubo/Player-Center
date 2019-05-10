@@ -28,63 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabControl1.SuspendLayout();
+            this.tc_PlayerDrawing = new System.Windows.Forms.TabControl();
+            this.tp_PlayerDrawing = new System.Windows.Forms.TabPage();
+            this.tp_PlayerDrawingSetup = new System.Windows.Forms.TabPage();
+            this.tc_PlayerDrawing.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tc_PlayerDrawing
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1018, 678);
-            this.tabControl1.TabIndex = 1;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tc_PlayerDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tc_PlayerDrawing.Controls.Add(this.tp_PlayerDrawing);
+            this.tc_PlayerDrawing.Controls.Add(this.tp_PlayerDrawingSetup);
+            this.tc_PlayerDrawing.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.tc_PlayerDrawing.Location = new System.Drawing.Point(0, 0);
+            this.tc_PlayerDrawing.Name = "tc_PlayerDrawing";
+            this.tc_PlayerDrawing.SelectedIndex = 0;
+            this.tc_PlayerDrawing.Size = new System.Drawing.Size(1018, 678);
+            this.tc_PlayerDrawing.TabIndex = 1;
+            this.tc_PlayerDrawing.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // tabPage1
+            // tp_PlayerDrawing
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1010, 643);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Drawing";
+            this.tp_PlayerDrawing.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tp_PlayerDrawing.Location = new System.Drawing.Point(4, 31);
+            this.tp_PlayerDrawing.Name = "tp_PlayerDrawing";
+            this.tp_PlayerDrawing.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_PlayerDrawing.Size = new System.Drawing.Size(1010, 643);
+            this.tp_PlayerDrawing.TabIndex = 0;
+            this.tp_PlayerDrawing.Text = "Drawing";
             // 
-            // tabPage2
+            // tp_PlayerDrawingSetup
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1010, 643);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Setup";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tp_PlayerDrawingSetup.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.tp_PlayerDrawingSetup.Location = new System.Drawing.Point(4, 31);
+            this.tp_PlayerDrawingSetup.Name = "tp_PlayerDrawingSetup";
+            this.tp_PlayerDrawingSetup.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_PlayerDrawingSetup.Size = new System.Drawing.Size(1005, 643);
+            this.tp_PlayerDrawingSetup.TabIndex = 1;
+            this.tp_PlayerDrawingSetup.Text = "Setup";
             // 
             // GeneralPlayerDrawingParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 678);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tc_PlayerDrawing);
             this.IsMdiContainer = true;
             this.Name = "GeneralPlayerDrawingParent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Player Drawing";
-            this.tabControl1.ResumeLayout(false);
+            this.tc_PlayerDrawing.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tc_PlayerDrawing;
+        private System.Windows.Forms.TabPage tp_PlayerDrawing;
+        private System.Windows.Forms.TabPage tp_PlayerDrawingSetup;
     }
 }

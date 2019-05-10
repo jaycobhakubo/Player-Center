@@ -24,14 +24,18 @@ namespace GTI.Modules.PlayerCenter.UI
             m_gdf = new GeneralPlayerDrawingForm();
             m_drawings = m_gdf.Drawings;
             m_gpde = new GeneralPlayerDrawingEventsTestForm(m_drawings);
+            m_gpde.MdiParent = this;
+            m_gpde.Dock = DockStyle.Fill; 
+            tc_PlayerDrawing.SelectedTab.Controls.Add(m_gpde);
+            m_gpde.Show();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            TabPage tp = tabControl1.SelectedTab;
+            TabPage tp = tc_PlayerDrawing.SelectedTab;
 
-            if (tabControl1.SelectedIndex == 1)
+            if (tc_PlayerDrawing.SelectedIndex == 1)
             {               
                 m_gdf.MdiParent = this;
                 m_gdf.Dock = DockStyle.Fill;
@@ -39,7 +43,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 tp.Controls.Add(m_gdf);          
             }
             else
-                if (tabControl1.SelectedIndex == 0)
+                if (tc_PlayerDrawing.SelectedIndex == 0)
                 {          
                     m_gpde.MdiParent = this;
                     m_gpde.Dock = DockStyle.Fill;

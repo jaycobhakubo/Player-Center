@@ -45,7 +45,6 @@
             this.drawingDescriptionTxt = new System.Windows.Forms.TextBox();
             this.entryLimitEventLbl = new System.Windows.Forms.Label();
             this.entryLimitEventTxt = new System.Windows.Forms.TextBox();
-            this.drawingDescriptionLbl = new System.Windows.Forms.Label();
             this.minimumEntriesToRunLbl = new System.Windows.Forms.Label();
             this.playerPresenceRequiredChk = new System.Windows.Forms.CheckBox();
             this.showEntryCountOnReceiptsChk = new System.Windows.Forms.CheckBox();
@@ -258,7 +257,6 @@
             this.commonOptionsTP.Controls.Add(this.drawingDescriptionTxt);
             this.commonOptionsTP.Controls.Add(this.entryLimitEventLbl);
             this.commonOptionsTP.Controls.Add(this.entryLimitEventTxt);
-            this.commonOptionsTP.Controls.Add(this.drawingDescriptionLbl);
             this.commonOptionsTP.Controls.Add(this.minimumEntriesToRunLbl);
             this.commonOptionsTP.Controls.Add(this.playerPresenceRequiredChk);
             this.commonOptionsTP.Controls.Add(this.showEntryCountOnReceiptsChk);
@@ -266,7 +264,7 @@
             this.commonOptionsTP.Location = new System.Drawing.Point(4, 31);
             this.commonOptionsTP.Name = "commonOptionsTP";
             this.commonOptionsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.commonOptionsTP.Size = new System.Drawing.Size(684, 415);
+            this.commonOptionsTP.Size = new System.Drawing.Size(679, 415);
             this.commonOptionsTP.TabIndex = 0;
             this.commonOptionsTP.Text = "Details";
             // 
@@ -329,7 +327,7 @@
             this.drawingDescriptionTxt.Multiline = true;
             this.drawingDescriptionTxt.Name = "drawingDescriptionTxt";
             this.drawingDescriptionTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.drawingDescriptionTxt.Size = new System.Drawing.Size(420, 100);
+            this.drawingDescriptionTxt.Size = new System.Drawing.Size(415, 100);
             this.drawingDescriptionTxt.TabIndex = 1;
             // 
             // entryLimitEventLbl
@@ -351,15 +349,6 @@
             this.entryLimitEventTxt.TabIndex = 5;
             this.entryLimitEventTxt.TextChanged += new System.EventHandler(this.entryLimitTxt_TextChanged);
             this.entryLimitEventTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entryLimitTxt_KeyPress);
-            // 
-            // drawingDescriptionLbl
-            // 
-            this.drawingDescriptionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.drawingDescriptionLbl.Location = new System.Drawing.Point(6, 17);
-            this.drawingDescriptionLbl.Name = "drawingDescriptionLbl";
-            this.drawingDescriptionLbl.Size = new System.Drawing.Size(169, 22);
-            this.drawingDescriptionLbl.TabIndex = 20;
-            this.drawingDescriptionLbl.Text = "Drawing Description";
             // 
             // minimumEntriesToRunLbl
             // 
@@ -657,7 +646,7 @@
             this.entryMethodsTP.Location = new System.Drawing.Point(4, 31);
             this.entryMethodsTP.Name = "entryMethodsTP";
             this.entryMethodsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryMethodsTP.Size = new System.Drawing.Size(684, 415);
+            this.entryMethodsTP.Size = new System.Drawing.Size(679, 415);
             this.entryMethodsTP.TabIndex = 2;
             this.entryMethodsTP.Text = "Entry Methods";
             // 
@@ -1103,7 +1092,7 @@
             this.revertDrawingChangesBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.revertDrawingChangesBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.revertDrawingChangesBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(9, 525);
+            this.revertDrawingChangesBtn.Location = new System.Drawing.Point(14, 525);
             this.revertDrawingChangesBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.revertDrawingChangesBtn.Name = "revertDrawingChangesBtn";
             this.revertDrawingChangesBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -1209,6 +1198,7 @@
             this.testEventsBtn.TabIndex = 24;
             this.testEventsBtn.Text = "Event Testing";
             this.testEventsBtn.UseVisualStyleBackColor = true;
+            this.testEventsBtn.Visible = false;
             this.testEventsBtn.Click += new System.EventHandler(this.testEventsBtn_Click);
             // 
             // GeneralPlayerDrawingForm
@@ -1326,7 +1316,6 @@
         private System.Windows.Forms.FlowLayoutPanel entryPurchaseTypeFLP;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.TextBox drawingDescriptionTxt;
-        private System.Windows.Forms.Label drawingDescriptionLbl;
         private System.Windows.Forms.TextBox drawingEntriesDrawnTxt;
         private System.Windows.Forms.Label drawingEntriesDrawnLbl;
         private System.Windows.Forms.Label maximumDrawsPerPlayerLbl;

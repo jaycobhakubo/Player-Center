@@ -28,64 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.generationCurrentEventsBtn = new System.Windows.Forms.Button();
-            this.executeEventBtn = new System.Windows.Forms.Button();
-            this.cancelEventBtn = new System.Windows.Forms.Button();
-            this.refreshEventsListBtn = new System.Windows.Forms.Button();
             this.drawingEventsLV = new System.Windows.Forms.ListView();
             this.drawingEventsLbl = new System.Windows.Forms.Label();
-            this.viewEntriesBtn = new System.Windows.Forms.Button();
-            this.reinstateEventBtn = new System.Windows.Forms.Button();
+            this.imgbtnRefresh = new GTI.Controls.ImageButton();
+            this.imgbtnAbortResult = new GTI.Controls.ImageButton();
+            this.imgbtnInitiateResults = new GTI.Controls.ImageButton();
+            this.imgbtnViewEntriesResult = new GTI.Controls.ImageButton();
+            this.imgbtnExecute = new GTI.Controls.ImageButton();
+            this.imgbtnReinstate = new GTI.Controls.ImageButton();
+            this.imgbtnCancel = new GTI.Controls.ImageButton();
+            this.imgbtnGenerateCurrent = new GTI.Controls.ImageButton();
             this.eventActionsFLP = new System.Windows.Forms.FlowLayoutPanel();
-            this.initiateEventResultsBroadcastBtn = new System.Windows.Forms.Button();
-            this.abortEventResultsBroadcastBtn = new System.Windows.Forms.Button();
             this.eventActionsFLP.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // generationCurrentEventsBtn
-            // 
-            this.generationCurrentEventsBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.generationCurrentEventsBtn.AutoSize = true;
-            this.generationCurrentEventsBtn.Location = new System.Drawing.Point(439, 12);
-            this.generationCurrentEventsBtn.Name = "generationCurrentEventsBtn";
-            this.generationCurrentEventsBtn.Size = new System.Drawing.Size(133, 27);
-            this.generationCurrentEventsBtn.TabIndex = 26;
-            this.generationCurrentEventsBtn.Text = "Generate Current";
-            this.generationCurrentEventsBtn.UseVisualStyleBackColor = true;
-            this.generationCurrentEventsBtn.Click += new System.EventHandler(this.generateCurrentEventsBtn_Click);
-            // 
-            // executeEventBtn
-            // 
-            this.executeEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.executeEventBtn.Location = new System.Drawing.Point(460, 3);
-            this.executeEventBtn.Name = "executeEventBtn";
-            this.executeEventBtn.Size = new System.Drawing.Size(80, 27);
-            this.executeEventBtn.TabIndex = 24;
-            this.executeEventBtn.Text = "Execute";
-            this.executeEventBtn.UseVisualStyleBackColor = true;
-            this.executeEventBtn.Click += new System.EventHandler(this.executeEventBtn_Click);
-            // 
-            // cancelEventBtn
-            // 
-            this.cancelEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelEventBtn.Location = new System.Drawing.Point(632, 3);
-            this.cancelEventBtn.Name = "cancelEventBtn";
-            this.cancelEventBtn.Size = new System.Drawing.Size(80, 27);
-            this.cancelEventBtn.TabIndex = 25;
-            this.cancelEventBtn.Text = "Cancel";
-            this.cancelEventBtn.UseVisualStyleBackColor = true;
-            this.cancelEventBtn.Click += new System.EventHandler(this.cancelEventBtn_Click);
-            // 
-            // refreshEventsListBtn
-            // 
-            this.refreshEventsListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.refreshEventsListBtn.Location = new System.Drawing.Point(8, 386);
-            this.refreshEventsListBtn.Name = "refreshEventsListBtn";
-            this.refreshEventsListBtn.Size = new System.Drawing.Size(90, 27);
-            this.refreshEventsListBtn.TabIndex = 27;
-            this.refreshEventsListBtn.Text = "Refresh";
-            this.refreshEventsListBtn.UseVisualStyleBackColor = true;
-            this.refreshEventsListBtn.Click += new System.EventHandler(this.refreshEventsListBtn_Click);
             // 
             // drawingEventsLV
             // 
@@ -94,10 +49,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingEventsLV.FullRowSelect = true;
             this.drawingEventsLV.HideSelection = false;
-            this.drawingEventsLV.Location = new System.Drawing.Point(8, 78);
+            this.drawingEventsLV.Location = new System.Drawing.Point(10, 86);
             this.drawingEventsLV.MultiSelect = false;
             this.drawingEventsLV.Name = "drawingEventsLV";
-            this.drawingEventsLV.Size = new System.Drawing.Size(990, 298);
+            this.drawingEventsLV.Size = new System.Drawing.Size(990, 492);
             this.drawingEventsLV.TabIndex = 28;
             this.drawingEventsLV.UseCompatibleStateImageBehavior = false;
             this.drawingEventsLV.View = System.Windows.Forms.View.Details;
@@ -106,82 +61,169 @@
             // drawingEventsLbl
             // 
             this.drawingEventsLbl.AutoSize = true;
-            this.drawingEventsLbl.Location = new System.Drawing.Point(12, 47);
+            this.drawingEventsLbl.BackColor = System.Drawing.Color.Transparent;
+            this.drawingEventsLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.drawingEventsLbl.Location = new System.Drawing.Point(11, 61);
             this.drawingEventsLbl.Name = "drawingEventsLbl";
-            this.drawingEventsLbl.Size = new System.Drawing.Size(120, 13);
+            this.drawingEventsLbl.Size = new System.Drawing.Size(183, 22);
             this.drawingEventsLbl.TabIndex = 29;
             this.drawingEventsLbl.Text = "Recent Drawing Events";
             // 
-            // viewEntriesBtn
+            // imgbtnRefresh
             // 
-            this.viewEntriesBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.viewEntriesBtn.Location = new System.Drawing.Point(294, 3);
-            this.viewEntriesBtn.Name = "viewEntriesBtn";
-            this.viewEntriesBtn.Size = new System.Drawing.Size(160, 27);
-            this.viewEntriesBtn.TabIndex = 30;
-            this.viewEntriesBtn.Text = "View Entries && Results";
-            this.viewEntriesBtn.UseVisualStyleBackColor = true;
-            this.viewEntriesBtn.Click += new System.EventHandler(this.viewEntriesAndResultsBtn_Click);
+            this.imgbtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imgbtnRefresh.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnRefresh.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnRefresh.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnRefresh.Location = new System.Drawing.Point(15, 595);
+            this.imgbtnRefresh.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnRefresh.Name = "imgbtnRefresh";
+            this.imgbtnRefresh.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnRefresh.Size = new System.Drawing.Size(65, 30);
+            this.imgbtnRefresh.TabIndex = 34;
+            this.imgbtnRefresh.Text = "Referesh";
+            this.imgbtnRefresh.Click += new System.EventHandler(this.refreshEventsListBtn_Click);
             // 
-            // reinstateEventBtn
+            // imgbtnAbortResult
             // 
-            this.reinstateEventBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reinstateEventBtn.Location = new System.Drawing.Point(546, 3);
-            this.reinstateEventBtn.Name = "reinstateEventBtn";
-            this.reinstateEventBtn.Size = new System.Drawing.Size(80, 27);
-            this.reinstateEventBtn.TabIndex = 31;
-            this.reinstateEventBtn.Text = "Reinstate";
-            this.reinstateEventBtn.UseVisualStyleBackColor = true;
-            this.reinstateEventBtn.Click += new System.EventHandler(this.reinstateEventBtn_Click);
+            this.imgbtnAbortResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.imgbtnAbortResult.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnAbortResult.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnAbortResult.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnAbortResult.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnAbortResult.Location = new System.Drawing.Point(87, 595);
+            this.imgbtnAbortResult.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnAbortResult.Name = "imgbtnAbortResult";
+            this.imgbtnAbortResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnAbortResult.Size = new System.Drawing.Size(161, 30);
+            this.imgbtnAbortResult.TabIndex = 35;
+            this.imgbtnAbortResult.Text = "Abort Results Broadcast";
+            this.imgbtnAbortResult.Click += new System.EventHandler(this.abortEventResultsBroadcastBtn_Click);
+            // 
+            // imgbtnInitiateResults
+            // 
+            this.imgbtnInitiateResults.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnInitiateResults.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnInitiateResults.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnInitiateResults.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnInitiateResults.Location = new System.Drawing.Point(43, 3);
+            this.imgbtnInitiateResults.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnInitiateResults.Name = "imgbtnInitiateResults";
+            this.imgbtnInitiateResults.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnInitiateResults.Size = new System.Drawing.Size(181, 30);
+            this.imgbtnInitiateResults.TabIndex = 36;
+            this.imgbtnInitiateResults.Text = "Initiate Results Broadcast";
+            this.imgbtnInitiateResults.Click += new System.EventHandler(this.initiateEventResultsBroadcastBtn_Click);
+            // 
+            // imgbtnViewEntriesResult
+            // 
+            this.imgbtnViewEntriesResult.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnViewEntriesResult.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnViewEntriesResult.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnViewEntriesResult.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnViewEntriesResult.Location = new System.Drawing.Point(230, 3);
+            this.imgbtnViewEntriesResult.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnViewEntriesResult.Name = "imgbtnViewEntriesResult";
+            this.imgbtnViewEntriesResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnViewEntriesResult.Size = new System.Drawing.Size(147, 30);
+            this.imgbtnViewEntriesResult.TabIndex = 37;
+            this.imgbtnViewEntriesResult.Text = "View Entries & Results";
+            this.imgbtnViewEntriesResult.Click += new System.EventHandler(this.viewEntriesAndResultsBtn_Click);
+            // 
+            // imgbtnExecute
+            // 
+            this.imgbtnExecute.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnExecute.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnExecute.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnExecute.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnExecute.Location = new System.Drawing.Point(459, 3);
+            this.imgbtnExecute.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnExecute.Name = "imgbtnExecute";
+            this.imgbtnExecute.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnExecute.Size = new System.Drawing.Size(60, 30);
+            this.imgbtnExecute.TabIndex = 38;
+            this.imgbtnExecute.Text = "Execute";
+            this.imgbtnExecute.Click += new System.EventHandler(this.executeEventBtn_Click);
+            // 
+            // imgbtnReinstate
+            // 
+            this.imgbtnReinstate.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnReinstate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnReinstate.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnReinstate.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnReinstate.Location = new System.Drawing.Point(383, 3);
+            this.imgbtnReinstate.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnReinstate.Name = "imgbtnReinstate";
+            this.imgbtnReinstate.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnReinstate.Size = new System.Drawing.Size(70, 30);
+            this.imgbtnReinstate.TabIndex = 39;
+            this.imgbtnReinstate.Text = "Reinstate";
+            this.imgbtnReinstate.Click += new System.EventHandler(this.reinstateEventBtn_Click);
+            // 
+            // imgbtnCancel
+            // 
+            this.imgbtnCancel.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnCancel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnCancel.Location = new System.Drawing.Point(525, 3);
+            this.imgbtnCancel.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnCancel.Name = "imgbtnCancel";
+            this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnCancel.Size = new System.Drawing.Size(46, 30);
+            this.imgbtnCancel.TabIndex = 40;
+            this.imgbtnCancel.Text = "Cancel";
+            this.imgbtnCancel.Click += new System.EventHandler(this.cancelEventBtn_Click);
+            // 
+            // imgbtnGenerateCurrent
+            // 
+            this.imgbtnGenerateCurrent.FocusColor = System.Drawing.Color.Black;
+            this.imgbtnGenerateCurrent.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.imgbtnGenerateCurrent.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.imgbtnGenerateCurrent.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.imgbtnGenerateCurrent.Location = new System.Drawing.Point(426, 33);
+            this.imgbtnGenerateCurrent.MinimumSize = new System.Drawing.Size(30, 30);
+            this.imgbtnGenerateCurrent.Name = "imgbtnGenerateCurrent";
+            this.imgbtnGenerateCurrent.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.imgbtnGenerateCurrent.Size = new System.Drawing.Size(126, 30);
+            this.imgbtnGenerateCurrent.TabIndex = 41;
+            this.imgbtnGenerateCurrent.Text = "Generate Current";
+            this.imgbtnGenerateCurrent.Click += new System.EventHandler(this.generateCurrentEventsBtn_Click);
             // 
             // eventActionsFLP
             // 
-            this.eventActionsFLP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.eventActionsFLP.Controls.Add(this.cancelEventBtn);
-            this.eventActionsFLP.Controls.Add(this.reinstateEventBtn);
-            this.eventActionsFLP.Controls.Add(this.executeEventBtn);
-            this.eventActionsFLP.Controls.Add(this.viewEntriesBtn);
-            this.eventActionsFLP.Controls.Add(this.initiateEventResultsBroadcastBtn);
-            this.eventActionsFLP.Enabled = false;
+            this.eventActionsFLP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.eventActionsFLP.AutoSize = true;
+            this.eventActionsFLP.BackColor = System.Drawing.Color.Transparent;
+            this.eventActionsFLP.Controls.Add(this.imgbtnCancel);
+            this.eventActionsFLP.Controls.Add(this.imgbtnExecute);
+            this.eventActionsFLP.Controls.Add(this.imgbtnReinstate);
+            this.eventActionsFLP.Controls.Add(this.imgbtnViewEntriesResult);
+            this.eventActionsFLP.Controls.Add(this.imgbtnInitiateResults);
             this.eventActionsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.eventActionsFLP.Location = new System.Drawing.Point(283, 379);
+            this.eventActionsFLP.Location = new System.Drawing.Point(426, 591);
             this.eventActionsFLP.Name = "eventActionsFLP";
-            this.eventActionsFLP.Size = new System.Drawing.Size(715, 34);
-            this.eventActionsFLP.TabIndex = 32;
-            // 
-            // initiateEventResultsBroadcastBtn
-            // 
-            this.initiateEventResultsBroadcastBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.initiateEventResultsBroadcastBtn.Location = new System.Drawing.Point(128, 3);
-            this.initiateEventResultsBroadcastBtn.Name = "initiateEventResultsBroadcastBtn";
-            this.initiateEventResultsBroadcastBtn.Size = new System.Drawing.Size(160, 27);
-            this.initiateEventResultsBroadcastBtn.TabIndex = 32;
-            this.initiateEventResultsBroadcastBtn.Text = "Initiate Results Broadcast";
-            this.initiateEventResultsBroadcastBtn.UseVisualStyleBackColor = true;
-            this.initiateEventResultsBroadcastBtn.Click += new System.EventHandler(this.initiateEventResultsBroadcastBtn_Click);
-            // 
-            // abortEventResultsBroadcastBtn
-            // 
-            this.abortEventResultsBroadcastBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.abortEventResultsBroadcastBtn.Location = new System.Drawing.Point(104, 386);
-            this.abortEventResultsBroadcastBtn.Name = "abortEventResultsBroadcastBtn";
-            this.abortEventResultsBroadcastBtn.Size = new System.Drawing.Size(160, 27);
-            this.abortEventResultsBroadcastBtn.TabIndex = 33;
-            this.abortEventResultsBroadcastBtn.Text = "Abort Results Broadcast";
-            this.abortEventResultsBroadcastBtn.UseVisualStyleBackColor = true;
-            this.abortEventResultsBroadcastBtn.Click += new System.EventHandler(this.abortEventResultsBroadcastBtn_Click);
+            this.eventActionsFLP.Size = new System.Drawing.Size(574, 38);
+            this.eventActionsFLP.TabIndex = 42;
             // 
             // GeneralPlayerDrawingEventsTestForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1010, 419);
+            this.ClientSize = new System.Drawing.Size(1010, 641);
             this.Controls.Add(this.eventActionsFLP);
+            this.Controls.Add(this.imgbtnGenerateCurrent);
+            this.Controls.Add(this.imgbtnAbortResult);
+            this.Controls.Add(this.imgbtnRefresh);
             this.Controls.Add(this.drawingEventsLbl);
             this.Controls.Add(this.drawingEventsLV);
-            this.Controls.Add(this.generationCurrentEventsBtn);
-            this.Controls.Add(this.refreshEventsListBtn);
-            this.Controls.Add(this.abortEventResultsBroadcastBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -198,16 +240,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button generationCurrentEventsBtn;
-        private System.Windows.Forms.Button executeEventBtn;
-        private System.Windows.Forms.Button cancelEventBtn;
-        private System.Windows.Forms.Button refreshEventsListBtn;
         private System.Windows.Forms.ListView drawingEventsLV;
         private System.Windows.Forms.Label drawingEventsLbl;
-        private System.Windows.Forms.Button viewEntriesBtn;
-        private System.Windows.Forms.Button reinstateEventBtn;
+        private Controls.ImageButton imgbtnRefresh;
+        private Controls.ImageButton imgbtnAbortResult;
+        private Controls.ImageButton imgbtnInitiateResults;
+        private Controls.ImageButton imgbtnViewEntriesResult;
+        private Controls.ImageButton imgbtnExecute;
+        private Controls.ImageButton imgbtnReinstate;
+        private Controls.ImageButton imgbtnCancel;
+        private Controls.ImageButton imgbtnGenerateCurrent;
         private System.Windows.Forms.FlowLayoutPanel eventActionsFLP;
-        private System.Windows.Forms.Button initiateEventResultsBroadcastBtn;
-        private System.Windows.Forms.Button abortEventResultsBroadcastBtn;
     }
 }

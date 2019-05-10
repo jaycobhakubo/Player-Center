@@ -294,12 +294,6 @@
     <Compile Include="UI\TakePIN.Designer.cs">
       <DependentUpon>TakePIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControl1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ViewRaffleWinnerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,9 +398,6 @@
     <EmbeddedResource Include="UI\TakePIN.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TakePIN.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ViewRaffleWinnerForm.es.resx">
       <DependentUpon>ViewRaffleWinnerForm.cs</DependentUpon>

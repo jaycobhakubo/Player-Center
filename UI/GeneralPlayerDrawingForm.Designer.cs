@@ -113,6 +113,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
+            this.drawingDescriptionLbl = new System.Windows.Forms.Label();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -249,6 +250,7 @@
             // commonOptionsTP
             // 
             this.commonOptionsTP.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.commonOptionsTP.Controls.Add(this.drawingDescriptionLbl);
             this.commonOptionsTP.Controls.Add(this.entryLimitEventNoteLbl);
             this.commonOptionsTP.Controls.Add(this.maximumDrawsPerPlayerLbl);
             this.commonOptionsTP.Controls.Add(this.maximumDrawsPerPlayerTxt);
@@ -426,7 +428,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.eventRepeatDetailsPnl);
             this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForDTP);
             this.splitContainer1.Size = new System.Drawing.Size(673, 409);
-            this.splitContainer1.SplitterDistance = 336;
+            this.splitContainer1.SplitterDistance = 335;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
@@ -657,7 +659,7 @@
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
-            this.entryMethodsTC.Location = new System.Drawing.Point(-4, 31);
+            this.entryMethodsTC.Location = new System.Drawing.Point(-4, 22);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
             this.entryMethodsTC.Size = new System.Drawing.Size(695, 388);
@@ -781,7 +783,7 @@
             this.entryPurchasesTP.Location = new System.Drawing.Point(4, 31);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(687, 360);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(687, 353);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -853,7 +855,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(405, 187);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(405, 180);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -863,7 +865,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 152);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 145);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -886,7 +888,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 132);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 125);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Tag = "3";
             this.entryPurchaseScaleDGV.Visible = false;
@@ -1201,6 +1203,15 @@
             this.testEventsBtn.Visible = false;
             this.testEventsBtn.Click += new System.EventHandler(this.testEventsBtn_Click);
             // 
+            // drawingDescriptionLbl
+            // 
+            this.drawingDescriptionLbl.BackColor = System.Drawing.Color.Transparent;
+            this.drawingDescriptionLbl.Location = new System.Drawing.Point(7, 17);
+            this.drawingDescriptionLbl.Name = "drawingDescriptionLbl";
+            this.drawingDescriptionLbl.Size = new System.Drawing.Size(128, 22);
+            this.drawingDescriptionLbl.TabIndex = 30;
+            this.drawingDescriptionLbl.Text = "Description";
+            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1349,5 +1360,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Controls.ImageButton m_imgbtnSelectAllSession;
         private System.Windows.Forms.GroupBox eventRepeatDetailsPnl;
+        private System.Windows.Forms.Label drawingDescriptionLbl;
     }
 }

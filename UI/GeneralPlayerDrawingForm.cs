@@ -454,7 +454,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
             try
             {
-                var inactiveFont = new Font(drawingsLV.Font, FontStyle.Bold | FontStyle.Italic);
+                var inactiveFont = new Font(drawingsLV.Font, FontStyle.Regular | FontStyle.Italic);
+                var activeFont = new Font(drawingsLV.Font, FontStyle.Regular);
                 drawingsLV.Columns.Clear();
                 drawingsLV.Columns.Add("Name");
 
@@ -467,11 +468,13 @@ namespace GTI.Modules.PlayerCenter.UI
                         if(d.Active || showInactiveDrawingsChk.Checked)
                         {
                             var lvi = drawingsLV.Items.Add(d.Name);
+                            lvi.Font = activeFont;
                             lvi.Tag = d;
 
-                            if(!d.Active)
-                                lvi.Font = inactiveFont;
-
+                            if (!d.Active)
+                            {
+                                lvi.Font = inactiveFont;                              
+                            }
                             if(selectId.HasValue && d.Id == selectId.Value)
                             {
                                 lvi.Selected = true;

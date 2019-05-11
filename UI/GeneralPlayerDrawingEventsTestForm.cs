@@ -37,6 +37,7 @@ namespace GTI.Modules.PlayerCenter.UI
             try
             {
                 var drawingEvents = GTI.Modules.Shared.Data.GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);
+                
                 if(drawingEvents.Count == 0)
                 {
                     drawingEventsLV.Columns.Add("");
@@ -45,7 +46,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    drawingEventsLV.Columns.Add("Event Id");
                     drawingEventsLV.Columns.Add("Drawing");
                     drawingEventsLV.Columns.Add("Entries Begin");
                     drawingEventsLV.Columns.Add("Entries End");
@@ -63,6 +63,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach(var de in drawingEvents)
                     {
                         var lvi = drawingEventsLV.Items.Add(de.EventId.ToString());
+                        lvi.Font = new Font(lvi.Font, FontStyle.Regular);
                         var ed = m_drawings.FirstOrDefault((d) => d.Id == de.DrawingId);
                         lvi.SubItems.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
                         lvi.SubItems.Add(de.EntryPeriodBegin.ToShortDateString());

@@ -63,7 +63,7 @@
             this.tp_PlayerDrawingSetup.Location = new System.Drawing.Point(4, 31);
             this.tp_PlayerDrawingSetup.Name = "tp_PlayerDrawingSetup";
             this.tp_PlayerDrawingSetup.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_PlayerDrawingSetup.Size = new System.Drawing.Size(1005, 643);
+            this.tp_PlayerDrawingSetup.Size = new System.Drawing.Size(1010, 643);
             this.tp_PlayerDrawingSetup.TabIndex = 1;
             this.tp_PlayerDrawingSetup.Text = "Setup";
             // 
@@ -75,6 +75,7 @@
             this.Controls.Add(this.tc_PlayerDrawing);
             this.IsMdiContainer = true;
             this.Name = "GeneralPlayerDrawingParent";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Player Drawing";
             this.tc_PlayerDrawing.ResumeLayout(false);

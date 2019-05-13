@@ -1010,7 +1010,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void closeBtn_Click(object sender, EventArgs e) { this.Close(); }
+        private void closeBtn_Click(object sender, EventArgs e) 
+        { 
+            this.Close(); 
+        }
 
         private void GeneralPlayerDrawingForm_FormClosing(object sender, FormClosingEventArgs e)
         {

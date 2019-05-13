@@ -21,6 +21,26 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
             LoadCurrentAndRecentDrawingEvents();
+            SetBtnControlDisable(false);
+        }
+
+        private void GenerateCurrentDrawing()
+        {
+            StringBuilder sb = new StringBuilder();
+            var gResult = GTI.Modules.Shared.Data.GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
+
+            var msg = EventsToString(gResult, m_drawings);
+            var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
+            if (dr == System.Windows.Forms.DialogResult.Yes)
+                LoadCurrentAndRecentDrawingEvents();
+        }
+
+        private void SetBtnControlDisable(bool set)
+        {
+            imgbtnViewEntriesResult.Enabled = set;
+            imgbtnReinstate.Enabled = set;
+            imgbtnExecute.Enabled = set;
+            imgbtnCancel.Enabled = set;
         }
 
         private void LoadCurrentAndRecentDrawingEvents()
@@ -28,7 +48,7 @@ namespace GTI.Modules.PlayerCenter.UI
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
             if(drawingEventsLV.SelectedItems.Count == 1)
-                prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+            prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
 
             drawingEventsLV.Items.Clear();
             drawingEventsLV.Columns.Clear();
@@ -149,7 +169,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void drawingEventsLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
-            eventActionsFLP.Enabled = selectionMade;
+            //eventActionsFLP.Enabled = selectionMade;
+            SetBtnControlDisable(selectionMade);
         }
 
         private void generateCurrentEventsBtn_Click(object sender, EventArgs e)
@@ -161,11 +182,11 @@ namespace GTI.Modules.PlayerCenter.UI
             var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
             if(dr == System.Windows.Forms.DialogResult.Yes)
                 LoadCurrentAndRecentDrawingEvents();
-
         }
 
         private void refreshEventsListBtn_Click(object sender, EventArgs e)
         {
+            GenerateCurrentDrawing();
             LoadCurrentAndRecentDrawingEvents();
 
             //StringBuilder sb = new StringBuilder();
@@ -318,6 +339,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void abortEventResultsBroadcastBtn_Click(object sender, EventArgs e)
         {
             GTI.Modules.Shared.Data.AbortGeneralDrawingEventResultsNotificationsMessage.AbortResultsNotifications();
+        }
+
+        private void imgBtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

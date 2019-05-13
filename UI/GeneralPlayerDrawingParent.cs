@@ -26,6 +26,8 @@ namespace GTI.Modules.PlayerCenter.UI
             m_gpde = new GeneralPlayerDrawingEventsTestForm(m_drawings);
             m_gpde.MdiParent = this;
             m_gpde.Dock = DockStyle.Fill; 
+            m_gdf.FormClosed +=new FormClosedEventHandler (formClosedEvent);
+            m_gpde.FormClosed += new FormClosedEventHandler(formClosedEvent);
             tc_PlayerDrawing.SelectedTab.Controls.Add(m_gpde);
             m_gpde.Show();
         }
@@ -51,6 +53,11 @@ namespace GTI.Modules.PlayerCenter.UI
                     tp.Controls.Add(m_gpde);
                     m_gpde.Show();
                 }
+        }
+
+         private  void formClosedEvent(object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

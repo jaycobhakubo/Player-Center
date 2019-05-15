@@ -327,8 +327,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_txtbxSearchCategory_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
+            {
                 SearchClick(sender, new EventArgs());
+                e.Handled = true;
+            }
         }
 
         private void MCPFindPlayerForm_Shown(object sender, EventArgs e)

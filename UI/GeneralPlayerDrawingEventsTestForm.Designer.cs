@@ -119,6 +119,7 @@
             this.imgbtnInitiateResults.Size = new System.Drawing.Size(129, 45);
             this.imgbtnInitiateResults.TabIndex = 36;
             this.imgbtnInitiateResults.Text = "Initiate Results Broadcast";
+            this.imgbtnInitiateResults.Visible = false;
             this.imgbtnInitiateResults.Click += new System.EventHandler(this.initiateEventResultsBroadcastBtn_Click);
             // 
             // imgbtnViewEntriesResult

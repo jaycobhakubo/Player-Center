@@ -37,6 +37,11 @@
             this.drawingDetailsGB = new System.Windows.Forms.GroupBox();
             this.drawingDetailsTC = new System.Windows.Forms.TabControl();
             this.commonOptionsTP = new System.Windows.Forms.TabPage();
+            this.txtbx_disclaimer = new System.Windows.Forms.TextBox();
+            this.lbl_Disclaimer = new System.Windows.Forms.Label();
+            this.txtbx_PrizeDescription = new System.Windows.Forms.TextBox();
+            this.lbl_prizeDescription = new System.Windows.Forms.Label();
+            this.drawingDescriptionLbl = new System.Windows.Forms.Label();
             this.entryLimitEventNoteLbl = new System.Windows.Forms.Label();
             this.maximumDrawsPerPlayerLbl = new System.Windows.Forms.Label();
             this.maximumDrawsPerPlayerTxt = new System.Windows.Forms.TextBox();
@@ -113,7 +118,6 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
-            this.drawingDescriptionLbl = new System.Windows.Forms.Label();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
             this.commonOptionsTP.SuspendLayout();
@@ -250,6 +254,10 @@
             // commonOptionsTP
             // 
             this.commonOptionsTP.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.commonOptionsTP.Controls.Add(this.txtbx_disclaimer);
+            this.commonOptionsTP.Controls.Add(this.lbl_Disclaimer);
+            this.commonOptionsTP.Controls.Add(this.txtbx_PrizeDescription);
+            this.commonOptionsTP.Controls.Add(this.lbl_prizeDescription);
             this.commonOptionsTP.Controls.Add(this.drawingDescriptionLbl);
             this.commonOptionsTP.Controls.Add(this.entryLimitEventNoteLbl);
             this.commonOptionsTP.Controls.Add(this.maximumDrawsPerPlayerLbl);
@@ -269,6 +277,63 @@
             this.commonOptionsTP.Size = new System.Drawing.Size(679, 415);
             this.commonOptionsTP.TabIndex = 0;
             this.commonOptionsTP.Text = "Details";
+            // 
+            // txtbx_disclaimer
+            // 
+            this.txtbx_disclaimer.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.txtbx_disclaimer.Location = new System.Drawing.Point(361, 151);
+            this.txtbx_disclaimer.Margin = new System.Windows.Forms.Padding(8, 4, 8, 8);
+            this.txtbx_disclaimer.MaxLength = 120;
+            this.txtbx_disclaimer.Multiline = true;
+            this.txtbx_disclaimer.Name = "txtbx_disclaimer";
+            this.txtbx_disclaimer.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtbx_disclaimer.Size = new System.Drawing.Size(307, 52);
+            this.txtbx_disclaimer.TabIndex = 36;
+            // 
+            // lbl_Disclaimer
+            // 
+            this.lbl_Disclaimer.AutoSize = true;
+            this.lbl_Disclaimer.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbl_Disclaimer.Location = new System.Drawing.Point(357, 125);
+            this.lbl_Disclaimer.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.lbl_Disclaimer.Name = "lbl_Disclaimer";
+            this.lbl_Disclaimer.Size = new System.Drawing.Size(89, 22);
+            this.lbl_Disclaimer.TabIndex = 35;
+            this.lbl_Disclaimer.Text = "Disclaimer";
+            // 
+            // txtbx_PrizeDescription
+            // 
+            this.txtbx_PrizeDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbx_PrizeDescription.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbx_PrizeDescription.Location = new System.Drawing.Point(361, 42);
+            this.txtbx_PrizeDescription.MaxLength = 255;
+            this.txtbx_PrizeDescription.Multiline = true;
+            this.txtbx_PrizeDescription.Name = "txtbx_PrizeDescription";
+            this.txtbx_PrizeDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtbx_PrizeDescription.Size = new System.Drawing.Size(307, 72);
+            this.txtbx_PrizeDescription.TabIndex = 32;
+            // 
+            // lbl_prizeDescription
+            // 
+            this.lbl_prizeDescription.AutoSize = true;
+            this.lbl_prizeDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbl_prizeDescription.Location = new System.Drawing.Point(357, 17);
+            this.lbl_prizeDescription.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
+            this.lbl_prizeDescription.Name = "lbl_prizeDescription";
+            this.lbl_prizeDescription.Size = new System.Drawing.Size(140, 22);
+            this.lbl_prizeDescription.TabIndex = 31;
+            this.lbl_prizeDescription.Text = "Prize Description";
+            // 
+            // drawingDescriptionLbl
+            // 
+            this.drawingDescriptionLbl.AutoSize = true;
+            this.drawingDescriptionLbl.BackColor = System.Drawing.Color.Transparent;
+            this.drawingDescriptionLbl.Location = new System.Drawing.Point(7, 17);
+            this.drawingDescriptionLbl.Name = "drawingDescriptionLbl";
+            this.drawingDescriptionLbl.Size = new System.Drawing.Size(96, 22);
+            this.drawingDescriptionLbl.TabIndex = 30;
+            this.drawingDescriptionLbl.Text = "Description";
             // 
             // entryLimitEventNoteLbl
             // 
@@ -324,12 +389,12 @@
             this.drawingDescriptionTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingDescriptionTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drawingDescriptionTxt.Location = new System.Drawing.Point(252, 14);
+            this.drawingDescriptionTxt.Location = new System.Drawing.Point(10, 42);
             this.drawingDescriptionTxt.MaxLength = 255;
             this.drawingDescriptionTxt.Multiline = true;
             this.drawingDescriptionTxt.Name = "drawingDescriptionTxt";
             this.drawingDescriptionTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.drawingDescriptionTxt.Size = new System.Drawing.Size(415, 100);
+            this.drawingDescriptionTxt.Size = new System.Drawing.Size(307, 72);
             this.drawingDescriptionTxt.TabIndex = 1;
             // 
             // entryLimitEventLbl
@@ -659,10 +724,10 @@
             this.entryMethodsTC.Controls.Add(this.entryPurchasesTP);
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
-            this.entryMethodsTC.Location = new System.Drawing.Point(-4, 22);
+            this.entryMethodsTC.Location = new System.Drawing.Point(-4, 0);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(695, 388);
+            this.entryMethodsTC.Size = new System.Drawing.Size(695, 419);
             this.entryMethodsTC.TabIndex = 4;
             // 
             // entryVisitsTP
@@ -675,7 +740,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(687, 353);
+            this.entryVisitsTP.Size = new System.Drawing.Size(687, 384);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -685,7 +750,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(592, 313);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(592, 344);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
             this.addEntryVisitTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -708,7 +773,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(501, 293);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(501, 324);
             this.entryVisitScaleDGV.TabIndex = 5;
             this.entryVisitScaleDGV.Tag = "2";
             this.entryVisitScaleDGV.Visible = false;
@@ -723,7 +788,7 @@
             this.entryVisitsTypeFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.entryVisitsTypeFLP.Location = new System.Drawing.Point(6, 14);
             this.entryVisitsTypeFLP.Name = "entryVisitsTypeFLP";
-            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(160, 293);
+            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(160, 324);
             this.entryVisitsTypeFLP.TabIndex = 6;
             this.entryVisitsTypeFLP.WrapContents = false;
             // 
@@ -783,7 +848,7 @@
             this.entryPurchasesTP.Location = new System.Drawing.Point(4, 31);
             this.entryPurchasesTP.Name = "entryPurchasesTP";
             this.entryPurchasesTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryPurchasesTP.Size = new System.Drawing.Size(687, 353);
+            this.entryPurchasesTP.Size = new System.Drawing.Size(687, 384);
             this.entryPurchasesTP.TabIndex = 2;
             this.entryPurchasesTP.Text = "Purchase";
             // 
@@ -855,7 +920,7 @@
             this.entryPurchaseSelectionsCL.IntegralHeight = false;
             this.entryPurchaseSelectionsCL.Location = new System.Drawing.Point(153, 130);
             this.entryPurchaseSelectionsCL.Name = "entryPurchaseSelectionsCL";
-            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(405, 180);
+            this.entryPurchaseSelectionsCL.Size = new System.Drawing.Size(405, 211);
             this.entryPurchaseSelectionsCL.TabIndex = 11;
             this.entryPurchaseSelectionsCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entryPurchaseSelectionsCL_ItemCheck);
             // 
@@ -865,7 +930,7 @@
             this.addEntryPurchaseTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryPurchaseTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryPurchaseTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 145);
+            this.addEntryPurchaseTierBtn.Location = new System.Drawing.Point(560, 176);
             this.addEntryPurchaseTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryPurchaseTierBtn.Name = "addEntryPurchaseTierBtn";
             this.addEntryPurchaseTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -888,7 +953,7 @@
             this.entryPurchaseScaleDGV.Name = "entryPurchaseScaleDGV";
             this.entryPurchaseScaleDGV.RowHeadersVisible = false;
             this.entryPurchaseScaleDGV.RowTemplate.Height = 30;
-            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 125);
+            this.entryPurchaseScaleDGV.Size = new System.Drawing.Size(485, 156);
             this.entryPurchaseScaleDGV.TabIndex = 9;
             this.entryPurchaseScaleDGV.Tag = "3";
             this.entryPurchaseScaleDGV.Visible = false;
@@ -951,7 +1016,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(687, 353);
+            this.entrySpendTP.Size = new System.Drawing.Size(687, 384);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -961,7 +1026,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(592, 313);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(592, 344);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
             this.addEntrySpendTierBtn.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -984,7 +1049,7 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(501, 293);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(501, 324);
             this.entrySpendScaleDGV.TabIndex = 6;
             this.entrySpendScaleDGV.Tag = "1";
             this.entrySpendScaleDGV.Visible = false;
@@ -1002,7 +1067,7 @@
             this.entrySpendGroupingFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.entrySpendGroupingFLP.Location = new System.Drawing.Point(6, 14);
             this.entrySpendGroupingFLP.Name = "entrySpendGroupingFLP";
-            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(160, 293);
+            this.entrySpendGroupingFLP.Size = new System.Drawing.Size(160, 324);
             this.entrySpendGroupingFLP.TabIndex = 4;
             this.entrySpendGroupingFLP.WrapContents = false;
             // 
@@ -1203,15 +1268,6 @@
             this.testEventsBtn.Visible = false;
             this.testEventsBtn.Click += new System.EventHandler(this.testEventsBtn_Click);
             // 
-            // drawingDescriptionLbl
-            // 
-            this.drawingDescriptionLbl.BackColor = System.Drawing.Color.Transparent;
-            this.drawingDescriptionLbl.Location = new System.Drawing.Point(7, 17);
-            this.drawingDescriptionLbl.Name = "drawingDescriptionLbl";
-            this.drawingDescriptionLbl.Size = new System.Drawing.Size(128, 22);
-            this.drawingDescriptionLbl.TabIndex = 30;
-            this.drawingDescriptionLbl.Text = "Description";
-            // 
             // GeneralPlayerDrawingForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1361,5 +1417,9 @@
         private Controls.ImageButton m_imgbtnSelectAllSession;
         private System.Windows.Forms.GroupBox eventRepeatDetailsPnl;
         private System.Windows.Forms.Label drawingDescriptionLbl;
+        private System.Windows.Forms.TextBox txtbx_PrizeDescription;
+        private System.Windows.Forms.Label lbl_prizeDescription;
+        private System.Windows.Forms.Label lbl_Disclaimer;
+        private System.Windows.Forms.TextBox txtbx_disclaimer;
     }
 }

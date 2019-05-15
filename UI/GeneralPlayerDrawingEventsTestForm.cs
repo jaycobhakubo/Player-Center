@@ -7,8 +7,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
-using GeneralPlayerDrawingEvent = GTI.Modules.Shared.Business.GeneralPlayerDrawingEvent;
+using GameTech.Elite.Base;
+using GameTech.Elite.Client;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -27,7 +27,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void GenerateCurrentDrawing()
         {
             StringBuilder sb = new StringBuilder();
-            var gResult = GTI.Modules.Shared.Data.GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
+            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
 
             var msg = EventsToString(gResult, m_drawings);
             var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
@@ -56,7 +56,7 @@ namespace GTI.Modules.PlayerCenter.UI
             drawingEventsLV.BeginUpdate();
             try
             {
-                var drawingEvents = GTI.Modules.Shared.Data.GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);
+                var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);
                 
                 if(drawingEvents.Count == 0)
                 {
@@ -82,10 +82,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     foreach(var de in drawingEvents)
                     {
-                        var lvi = drawingEventsLV.Items.Add(de.EventId.ToString());
-                        lvi.Font = new Font(lvi.Font, FontStyle.Regular);
+                        //var lvi = drawingEventsLV.Items.Add(de.EventId.ToString());
+                        
                         var ed = m_drawings.FirstOrDefault((d) => d.Id == de.DrawingId);
-                        lvi.SubItems.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
+                        var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
+                        lvi.Font = new Font(lvi.Font, FontStyle.Regular);
+                        //lvi.SubItems.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
                         lvi.SubItems.Add(de.EntryPeriodBegin.ToShortDateString());
                         lvi.SubItems.Add(de.EntryPeriodEnd.ToShortDateString());
                         lvi.SubItems.Add(de.ScheduledForWhen.HasValue ? de.ScheduledForWhen.Value.ToShortDateString() : "(unspecified)");
@@ -176,7 +178,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void generateCurrentEventsBtn_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            var gResult = GTI.Modules.Shared.Data.GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
+            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
 
             var msg = EventsToString(gResult, m_drawings);
             var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
@@ -215,7 +217,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 int eventId = drawingEvent.EventId;
 
                 bool showEvent = false;
-                var eeResult = GTI.Modules.Shared.Data.ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
+                var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
                 LoadCurrentAndRecentDrawingEvents();
                 if(!eeResult.Item1)
                 {
@@ -239,6 +241,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, ed);
                     f.ShowDialog(this);
                     f.Dispose();
+                    //Lets initiate the result broadcast
+                    imgbtnInitiateResults.PerformClick();
                 }
             }
 
@@ -261,7 +265,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var cd = GTI.Modules.Shared.Data.SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
+                var cd = SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
 
                 string msg = null;
                 if(cd.HasValue)
@@ -287,7 +291,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var cd = GTI.Modules.Shared.Data.SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
+                var cd = SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
 
                 string msg = null;
                 if(cd.HasValue)
@@ -324,7 +328,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var displayInitiated = GTI.Modules.Shared.Data.InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(eventId);
+                var displayInitiated = InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(eventId);
 
                 string msg = null;
                 if(displayInitiated)
@@ -338,7 +342,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void abortEventResultsBroadcastBtn_Click(object sender, EventArgs e)
         {
-            GTI.Modules.Shared.Data.AbortGeneralDrawingEventResultsNotificationsMessage.AbortResultsNotifications();
+            AbortGeneralDrawingEventResultsNotificationsMessage.AbortResultsNotifications();
         }
 
         private void imgBtnClose_Click(object sender, EventArgs e)

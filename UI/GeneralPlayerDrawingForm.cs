@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GTI.Modules.Shared;
-using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
 using System.Text.RegularExpressions;
+using GameTech.Elite.Base;
+using GameTech.Elite.Client;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -177,6 +178,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
             ToggleEditMode(false);
         }
+
+      
+    //private void SetDrawingByDrawingOr
 
         private void ChangeDateFormatToSavedSpace()
         {
@@ -441,7 +445,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void LoadGeneralDrawings()
         {
-            m_drawings = GTI.Modules.Shared.Data.GetGeneralDrawingsMessage.GetDrawings();
+            m_drawings = GetGeneralDrawingsMessage.GetDrawings();
             m_drawings.Sort(DrawingSortComparer.Comparer);
             ListDrawings();
         }
@@ -736,6 +740,8 @@ namespace GTI.Modules.PlayerCenter.UI
             maximumDrawsPerPlayerTxt.Text = "";
             showEntryCountOnReceiptsChk.Checked = false;
             playerPresenceRequiredChk.Checked = false;
+            txtbx_PrizeDescription.Text = "";
+            txtbx_disclaimer.Text = "";
 
             #region Entry Window
             initialEventEntryPeriodBeginDTP.Value = initialEventEntryPeriodBeginDTP.MinDate;
@@ -779,6 +785,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 maximumDrawsPerPlayerTxt.Text = m_currentGPD.MaximumDrawsPerPlayer.ToString();
                 showEntryCountOnReceiptsChk.Checked = m_currentGPD.ShowEntriesOnReceipts;
                 playerPresenceRequiredChk.Checked = m_currentGPD.PlayerPresenceRequired;
+                txtbx_PrizeDescription.Text = m_currentGPD.PrizeDescription;
+                txtbx_disclaimer.Text = m_currentGPD.Disclaimer;
 
                 #region Entry Window
                 initialEventEntryPeriodBeginDTP.Value = m_currentGPD.InitialEventEntryPeriodBegin;
@@ -985,7 +993,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-            var saveResult = GTI.Modules.Shared.Data.SetGeneralDrawingMessage.SetDrawing(candidate);
+            var saveResult = SetGeneralDrawingMessage.SetDrawing(candidate);
 
             if(saveResult != null)
             {
@@ -1042,6 +1050,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 , PendingEntryPurchaseType != GeneralPlayerDrawing.PurchaseType.NONE ? PendingEntryPurchaseTiers : null
                 , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PACKAGE ? PendingEntryPurchasePackages : null
                 , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT ? PendingEntryPurchaseProducts : null
+                , PendingPrizeDescription
+                , PendingDisclaimer
                 , m_currentGPD.Id);
 
             return dfd;
@@ -1191,6 +1201,10 @@ namespace GTI.Modules.PlayerCenter.UI
         public List<int> PendingEntryPurchasePackages { get { return m_pendingPackageSelections; } }
 
         public List<int> PendingEntryPurchaseProducts { get { return m_pendingProductSelections; } }
+
+        public string PendingPrizeDescription { get { return txtbx_PrizeDescription.Text.Trim(); } }
+        public string PendingDisclaimer { get { return txtbx_disclaimer.Text.Trim(); } }
+
 
         #endregion
 

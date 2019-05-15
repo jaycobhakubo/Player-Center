@@ -45,7 +45,7 @@
             this.tc_PlayerDrawing.SelectedIndex = 0;
             this.tc_PlayerDrawing.Size = new System.Drawing.Size(1018, 678);
             this.tc_PlayerDrawing.TabIndex = 1;
-            this.tc_PlayerDrawing.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tc_PlayerDrawing.SelectedIndexChanged += new System.EventHandler(this.playerDrawingTabControlSelectedIndexChanged);
             // 
             // tp_PlayerDrawing
             // 

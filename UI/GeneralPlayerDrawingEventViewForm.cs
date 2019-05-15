@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using GeneralPlayerDrawing = GTI.Modules.Shared.Business.GeneralPlayerDrawing;
-using GeneralPlayerDrawingEvent = GTI.Modules.Shared.Business.GeneralPlayerDrawingEvent;
+﻿using System.Windows.Forms;
+using GameTech.Elite.Base;
 
 namespace GTI.Modules.PlayerCenter.UI
 {

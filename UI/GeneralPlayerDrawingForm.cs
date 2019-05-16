@@ -155,10 +155,12 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Data.DataTable m_entryVisitScaleDT;
         private System.Data.DataTable m_entryPurchaseScaleDT;
         private List<GeneralPlayerDrawing> m_drawings;
+        private string m_displayedText = "";
+        //private string m_notDisplayedText = "";
 
         private const bool c_enablePurchaseUI = false;
 
-        public GeneralPlayerDrawingForm()
+        public GeneralPlayerDrawingForm(string displayText)
         {
             InitializeComponent();
             LoadEntrySessionsCheckList();
@@ -175,12 +177,15 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             LoadGeneralDrawings();
-
+            m_displayedText = displayText;
+            AppliedSystemSettingDisplayedText();
             ToggleEditMode(false);
         }
 
-      
-    //private void SetDrawingByDrawingOr
+        private void AppliedSystemSettingDisplayedText()
+        {
+            drawingsLbl.Text = m_displayedText + "s";
+        }
 
         private void ChangeDateFormatToSavedSpace()
         {
@@ -450,6 +455,23 @@ namespace GTI.Modules.PlayerCenter.UI
             ListDrawings();
         }
 
+        //update our current list
+        //private void SetDisplayText()
+        //{
+        //    AppliedSystemSettingDisplayedText();
+        //    if (m_drawings != null)
+        //    {
+        //        foreach (var d in m_drawings)
+        //         {
+        //             if (d.Name.IndexOf(m_notDisplayedText) != -1)
+        //             {
+        //                 d.Name = d.Name.Replace(m_notDisplayedText, m_displayedText);
+        //             }
+                   
+        //        }
+        //    }
+        //}
+
         private void ListDrawings(int? selectId = null)
         {
             SetCurrentDrawing(null);
@@ -471,6 +493,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach(var d in m_drawings)
                         if(d.Active || showInactiveDrawingsChk.Checked)
                         {
+                           
                             var lvi = drawingsLV.Items.Add(d.Name);
                             lvi.Font = activeFont;
                             lvi.Tag = d;
@@ -514,7 +537,7 @@ namespace GTI.Modules.PlayerCenter.UI
             drawingNameTxt.Enabled = enterEditMode;
             drawingActiveChk.Enabled = enterEditMode;
 
-            commonOptionsTP.Enabled = enterEditMode;//knc
+            commonOptionsTP.Enabled = enterEditMode;
             eventTP.Enabled = enterEditMode;
             foreach(TabPage tp in entryMethodsTC.TabPages)
                 tp.Enabled = enterEditMode;
@@ -957,6 +980,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void newDrawingBtn_Click(object sender, EventArgs e)
         {
             SetCurrentDrawing(new GeneralPlayerDrawing());
+            drawingNameTxt.Text = "New " + m_displayedText;                  
             ToggleEditMode(true);
         }
 
@@ -1526,12 +1550,12 @@ namespace GTI.Modules.PlayerCenter.UI
             int drawingNameLenLimit = 48;
             int drawingNameLen = drawingNameTxt.Text.Length;
             if(drawingNameLen > drawingNameLenLimit)
-                errMsg = String.Format("Drawing name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
+                errMsg = String.Format( m_displayedText + " name may be no longer than {0} characters, currently {1}.", drawingNameLenLimit, drawingNameLen);
             else
             {
                 var namingConflict = m_drawings.FirstOrDefault((d) => d.Name.ToLower() == drawingNameTxt.Text.ToLower() && (m_currentGPD.Id == null || m_currentGPD.Id != d.Id));
                 if(namingConflict != null)
-                    errMsg = String.Format("Drawings must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
+                    errMsg = String.Format(m_displayedText + " must have unique names{0}", namingConflict.Active ? "." : ", even considering drawings that are no longer active.");
             }
 
             SetError(drawingNameTxt, errMsg);
@@ -1550,12 +1574,12 @@ namespace GTI.Modules.PlayerCenter.UI
             if (hasChecks)
                 SetError(entrySessionsLbl, null);
             else
-                SetError(entrySessionsLbl, "Drawing should have one or more sessions selected for entries to be accepted.");
+                SetError(entrySessionsLbl, m_displayedText +" should have one or more sessions selected for entries to be accepted.");
         }
 
         private void testEventsBtn_Click(object sender, EventArgs e)
         {
-            var f = new GeneralPlayerDrawingEventsTestForm(m_drawings);
+            var f = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);
             f.ShowDialog(this);
             f.Dispose();
         }
@@ -1569,7 +1593,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (tCheckedItem == tSession)
             {
                 SetAllItemCheck(false);
-                 SetError(entrySessionsLbl, "Drawing should have one or more sessions selected for entries to be accepted.");
+                 SetError(entrySessionsLbl, m_displayedText + " should have one or more sessions selected for entries to be accepted.");
             }
             else
             {

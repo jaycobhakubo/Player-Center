@@ -15,24 +15,34 @@ namespace GTI.Modules.PlayerCenter.UI
     public partial class GeneralPlayerDrawingEventsTestForm : GradientForm
     {
         private List<GeneralPlayerDrawing> m_drawings;
+        private string m_displayText;
 
-        public GeneralPlayerDrawingEventsTestForm(List<GeneralPlayerDrawing> drawings)
+        public GeneralPlayerDrawingEventsTestForm(List<GeneralPlayerDrawing> drawings, string displayText)
         {
             InitializeComponent();
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
+            m_displayText = displayText;
+
             LoadCurrentAndRecentDrawingEvents();
             SetBtnControlDisable(false);
+            AppliedSystemSettingDisplayedText();
+           
+            
         }
 
         private void GenerateCurrentDrawing()
         {
             StringBuilder sb = new StringBuilder();
             var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
-
             var msg = EventsToString(gResult, m_drawings);
             var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
             if (dr == System.Windows.Forms.DialogResult.Yes)
-                LoadCurrentAndRecentDrawingEvents();
+                LoadCurrentAndRecentDrawingEvents();         
+        }
+
+        private void AppliedSystemSettingDisplayedText()
+        {
+            drawingEventsLbl.Text = "Scheduled " + m_displayText.ToLower() + "s";
         }
 
         private void SetBtnControlDisable(bool set)
@@ -66,7 +76,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    drawingEventsLV.Columns.Add("Drawing");
+                    drawingEventsLV.Columns.Add(m_displayText);
                     drawingEventsLV.Columns.Add("Entries Begin");
                     drawingEventsLV.Columns.Add("Entries End");
                     drawingEventsLV.Columns.Add("Schedule for");

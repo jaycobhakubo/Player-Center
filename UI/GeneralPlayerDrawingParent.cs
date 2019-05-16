@@ -18,18 +18,21 @@ namespace GTI.Modules.PlayerCenter.UI
         private List<GeneralPlayerDrawing> m_drawings;
         private GeneralPlayerDrawingForm m_genPlayerDrawing;
         private GeneralPlayerDrawingEventsTestForm m_genPlayerDrawingEvent;
+        private string m_displayedText = "";
 
         public GeneralPlayerDrawingParent()
         {
             InitializeComponent();
-            m_genPlayerDrawing = new GeneralPlayerDrawingForm();
+            m_displayedText = GetDisplayTextPerRaffleSetting();
+            m_genPlayerDrawing = new GeneralPlayerDrawingForm(m_displayedText);
             m_drawings = m_genPlayerDrawing.Drawings;
-            m_genPlayerDrawingEvent = new GeneralPlayerDrawingEventsTestForm(m_drawings);
+            m_genPlayerDrawingEvent = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);
             m_genPlayerDrawingEvent.MdiParent = this;
             m_genPlayerDrawingEvent.Dock = DockStyle.Fill;
             m_genPlayerDrawing.FormClosed += new FormClosedEventHandler(closedPlayerDrawing);
             m_genPlayerDrawingEvent.FormClosed += new FormClosedEventHandler(closedPlayerDrawing);
             tc_PlayerDrawing.SelectedTab.Controls.Add(m_genPlayerDrawingEvent);
+            GetDisplayTextPerRaffleSetting();
             m_genPlayerDrawingEvent.Show();
         }
 
@@ -54,6 +57,20 @@ namespace GTI.Modules.PlayerCenter.UI
                     tp.Controls.Add(m_genPlayerDrawingEvent);
                     m_genPlayerDrawingEvent.Show();
                 }
+        }
+
+        //private void AppliedSystemSettingDisplayedText()
+        //{
+        //    tp_PlayerDrawing.Text = m_displayedText;
+           
+        //}
+
+
+        private string GetDisplayTextPerRaffleSetting()
+        {
+           m_displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
+           tp_PlayerDrawing.Text = m_displayedText;
+           return m_displayedText;
         }
 
          private  void closedPlayerDrawing(object sender, FormClosedEventArgs e)

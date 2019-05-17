@@ -38,7 +38,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void playerDrawingTabControlSelectedIndexChanged(object sender, EventArgs e)
         {
-
             TabPage tp = tc_PlayerDrawing.SelectedTab;
 
             if (tc_PlayerDrawing.SelectedIndex == 1)
@@ -59,16 +58,11 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
         }
 
-        //private void AppliedSystemSettingDisplayedText()
-        //{
-        //    tp_PlayerDrawing.Text = m_displayedText;
-           
-        //}
-
 
         private string GetDisplayTextPerRaffleSetting()
         {
            m_displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
+           this.Text = "Player " + m_displayedText;
            tp_PlayerDrawing.Text = m_displayedText;
            return m_displayedText;
         }

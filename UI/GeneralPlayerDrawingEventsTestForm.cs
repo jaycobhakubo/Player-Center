@@ -53,12 +53,15 @@ namespace GTI.Modules.PlayerCenter.UI
             imgbtnCancel.Enabled = set;
         }
 
-        private void LoadCurrentAndRecentDrawingEvents()
+        private void LoadCurrentAndRecentDrawingEvents()//knc
         {
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
             if(drawingEventsLV.SelectedItems.Count == 1)
             prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+
+            DataGridView dgvtest = new DataGridView();
+            DataGridViewRow  dgvr = new DataGridViewRow();
 
             drawingEventsLV.Items.Clear();
             drawingEventsLV.Columns.Clear();
@@ -87,14 +90,29 @@ namespace GTI.Modules.PlayerCenter.UI
                     drawingEventsLV.Columns.Add("# Drawn");
 
                     bool heldPresent = false
-                        , cancellationPresent = false
-                        ;
+                        , cancellationPresent = false;
 
-                    foreach(var de in drawingEvents)
+
+
+                    foreach(GeneralPlayerDrawingEvent de in drawingEvents)
                     {
-                        //var lvi = drawingEventsLV.Items.Add(de.EventId.ToString());
-                        
-                        var ed = m_drawings.FirstOrDefault((d) => d.Id == de.DrawingId);
+                        GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == de.DrawingId);
+                        var playersEntered = (from e in de.Entries
+                                              select e.PlayerId).Distinct();
+                        var totalEntries = (from e in de.Entries
+                                            select e.EntryCount).Sum();
+
+                        //default (true) show drawing that are currently available to run without any issues.
+                        //Removed drawing that are already held, cancelled and if the minimum entries is greater than the current total entries.
+                        if (chkbx_showAvailableDrawing.Checked)
+                        {
+                            if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue || ed.MinimumEntries > totalEntries)
+                            {
+                                continue;
+                            }
+                            
+                        }       
+
                         var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
                         lvi.Font = new Font(lvi.Font, FontStyle.Regular);
                         //lvi.SubItems.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
@@ -114,10 +132,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             : "---"
                             );
 
-                        var playersEntered = (from e in de.Entries
-                                              select e.PlayerId).Distinct();
-                        var totalEntries = (from e in de.Entries
-                                            select e.EntryCount).Sum();
+             
 
                         lvi.SubItems.Add(playersEntered.Count().ToString());
                         lvi.SubItems.Add(totalEntries.ToString());
@@ -198,19 +213,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void refreshEventsListBtn_Click(object sender, EventArgs e)
         {
-            GenerateCurrentDrawing();
-            LoadCurrentAndRecentDrawingEvents();
-
-            //StringBuilder sb = new StringBuilder();
-            //var gResult = GTI.Modules.Shared.Data.GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date);
-
-            //var msg = EventsToString(gResult, m_drawings);
-            //MessageBox.Show(msg ?? "No Current Events", "Current Events");
+            GenerateCurrentDrawing();      
         }
 
         private void executeEventBtn_Click(object sender, EventArgs e)
         {
-            var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+            var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//get the selected item data
 
             if(drawingEvent.HeldWhen.HasValue)
             {
@@ -228,7 +236,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 bool showEvent = false;
                 var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
-                LoadCurrentAndRecentDrawingEvents();
+                LoadCurrentAndRecentDrawingEvents();//?
                 if(!eeResult.Item1)
                 {
                     String msg = String.Empty;
@@ -358,6 +366,11 @@ namespace GTI.Modules.PlayerCenter.UI
         private void imgBtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadCurrentAndRecentDrawingEvents();
         }
     }
 }

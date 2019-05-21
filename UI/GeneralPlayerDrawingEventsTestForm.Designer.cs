@@ -39,6 +39,7 @@
             this.imgbtnCancel = new GTI.Controls.ImageButton();
             this.eventActionsFLP = new System.Windows.Forms.FlowLayoutPanel();
             this.imgBtnClose = new GTI.Controls.ImageButton();
+            this.chkbx_showAvailableDrawing = new System.Windows.Forms.CheckBox();
             this.eventActionsFLP.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             this.imgbtnAbortResult.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnAbortResult.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnAbortResult.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnAbortResult.Location = new System.Drawing.Point(10, 584);
+            this.imgbtnAbortResult.Location = new System.Drawing.Point(10, 587);
             this.imgbtnAbortResult.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnAbortResult.Name = "imgbtnAbortResult";
             this.imgbtnAbortResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -112,7 +113,7 @@
             this.imgbtnInitiateResults.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnInitiateResults.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnInitiateResults.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnInitiateResults.Location = new System.Drawing.Point(280, 584);
+            this.imgbtnInitiateResults.Location = new System.Drawing.Point(280, 587);
             this.imgbtnInitiateResults.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnInitiateResults.Name = "imgbtnInitiateResults";
             this.imgbtnInitiateResults.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -128,7 +129,7 @@
             this.imgbtnViewEntriesResult.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnViewEntriesResult.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnViewEntriesResult.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnViewEntriesResult.Location = new System.Drawing.Point(145, 584);
+            this.imgbtnViewEntriesResult.Location = new System.Drawing.Point(145, 587);
             this.imgbtnViewEntriesResult.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnViewEntriesResult.Name = "imgbtnViewEntriesResult";
             this.imgbtnViewEntriesResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
@@ -195,9 +196,9 @@
             this.eventActionsFLP.Controls.Add(this.imgbtnReinstate);
             this.eventActionsFLP.Controls.Add(this.imgbtnRefresh);
             this.eventActionsFLP.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.eventActionsFLP.Location = new System.Drawing.Point(497, 579);
+            this.eventActionsFLP.Location = new System.Drawing.Point(497, 583);
             this.eventActionsFLP.Name = "eventActionsFLP";
-            this.eventActionsFLP.Size = new System.Drawing.Size(501, 58);
+            this.eventActionsFLP.Size = new System.Drawing.Size(501, 51);
             this.eventActionsFLP.TabIndex = 42;
             // 
             // imgBtnClose
@@ -215,11 +216,28 @@
             this.imgBtnClose.Text = "Close";
             this.imgBtnClose.Click += new System.EventHandler(this.imgBtnClose_Click);
             // 
+            // chkbx_showAvailableDrawing
+            // 
+            this.chkbx_showAvailableDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkbx_showAvailableDrawing.AutoSize = true;
+            this.chkbx_showAvailableDrawing.BackColor = System.Drawing.Color.Transparent;
+            this.chkbx_showAvailableDrawing.Checked = true;
+            this.chkbx_showAvailableDrawing.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkbx_showAvailableDrawing.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkbx_showAvailableDrawing.Location = new System.Drawing.Point(787, 8);
+            this.chkbx_showAvailableDrawing.Name = "chkbx_showAvailableDrawing";
+            this.chkbx_showAvailableDrawing.Size = new System.Drawing.Size(208, 26);
+            this.chkbx_showAvailableDrawing.TabIndex = 43;
+            this.chkbx_showAvailableDrawing.Text = "Show available drawing";
+            this.chkbx_showAvailableDrawing.UseVisualStyleBackColor = false;
+            this.chkbx_showAvailableDrawing.CheckedChanged += new System.EventHandler(this.chkbx_showAvailableDrawing_CheckedChanged);
+            // 
             // GeneralPlayerDrawingEventsTestForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1010, 641);
+            this.Controls.Add(this.chkbx_showAvailableDrawing);
             this.Controls.Add(this.eventActionsFLP);
             this.Controls.Add(this.imgbtnAbortResult);
             this.Controls.Add(this.imgbtnViewEntriesResult);
@@ -253,5 +271,6 @@
         private Controls.ImageButton imgbtnCancel;
         private System.Windows.Forms.FlowLayoutPanel eventActionsFLP;
         private Controls.ImageButton imgBtnClose;
+        private System.Windows.Forms.CheckBox chkbx_showAvailableDrawing;
     }
 }

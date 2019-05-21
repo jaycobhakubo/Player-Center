@@ -36,11 +36,12 @@
             // 
             // tc_PlayerDrawing
             // 
-            this.tc_PlayerDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tc_PlayerDrawing.Controls.Add(this.tp_PlayerDrawing);
             this.tc_PlayerDrawing.Controls.Add(this.tp_PlayerDrawingSetup);
+            this.tc_PlayerDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tc_PlayerDrawing.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.tc_PlayerDrawing.Location = new System.Drawing.Point(0, 0);
+            this.tc_PlayerDrawing.Margin = new System.Windows.Forms.Padding(0);
             this.tc_PlayerDrawing.Name = "tc_PlayerDrawing";
             this.tc_PlayerDrawing.SelectedIndex = 0;
             this.tc_PlayerDrawing.Size = new System.Drawing.Size(1018, 678);
@@ -51,8 +52,8 @@
             // 
             this.tp_PlayerDrawing.BackColor = System.Drawing.Color.LightSteelBlue;
             this.tp_PlayerDrawing.Location = new System.Drawing.Point(4, 31);
+            this.tp_PlayerDrawing.Margin = new System.Windows.Forms.Padding(0);
             this.tp_PlayerDrawing.Name = "tp_PlayerDrawing";
-            this.tp_PlayerDrawing.Padding = new System.Windows.Forms.Padding(3);
             this.tp_PlayerDrawing.Size = new System.Drawing.Size(1010, 643);
             this.tp_PlayerDrawing.TabIndex = 0;
             this.tp_PlayerDrawing.Text = "Drawing";
@@ -61,8 +62,8 @@
             // 
             this.tp_PlayerDrawingSetup.BackColor = System.Drawing.Color.LightSteelBlue;
             this.tp_PlayerDrawingSetup.Location = new System.Drawing.Point(4, 31);
+            this.tp_PlayerDrawingSetup.Margin = new System.Windows.Forms.Padding(0);
             this.tp_PlayerDrawingSetup.Name = "tp_PlayerDrawingSetup";
-            this.tp_PlayerDrawingSetup.Padding = new System.Windows.Forms.Padding(3);
             this.tp_PlayerDrawingSetup.Size = new System.Drawing.Size(1010, 643);
             this.tp_PlayerDrawingSetup.TabIndex = 1;
             this.tp_PlayerDrawingSetup.Text = "Setup";
@@ -73,7 +74,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 678);
             this.Controls.Add(this.tc_PlayerDrawing);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
             this.Name = "GeneralPlayerDrawingParent";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

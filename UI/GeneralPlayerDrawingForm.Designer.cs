@@ -820,7 +820,7 @@
             this.entryVisitsTypeFLP.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.entryVisitsTypeFLP.Location = new System.Drawing.Point(16, 16);
             this.entryVisitsTypeFLP.Name = "entryVisitsTypeFLP";
-            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(160, 313);
+            this.entryVisitsTypeFLP.Size = new System.Drawing.Size(162, 313);
             this.entryVisitsTypeFLP.TabIndex = 6;
             this.entryVisitsTypeFLP.WrapContents = false;
             // 

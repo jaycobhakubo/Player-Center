@@ -185,6 +185,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void AppliedSystemSettingDisplayedText()
         {
             drawingsLbl.Text = m_displayedText + "s";
+            
         }
 
         private void ChangeDateFormatToSavedSpace()

@@ -43,6 +43,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void AppliedSystemSettingDisplayedText()
         {
             drawingEventsLbl.Text = "Scheduled " + m_displayText.ToLower() + "s";
+            chkbx_showAvailableDrawing.Text = "Show available " + m_displayText.ToLower() + "s";
         }
 
         private void SetBtnControlDisable(bool set)
@@ -53,7 +54,7 @@ namespace GTI.Modules.PlayerCenter.UI
             imgbtnCancel.Enabled = set;
         }
 
-        private void LoadCurrentAndRecentDrawingEvents()//knc
+        private void LoadCurrentAndRecentDrawingEvents()
         {
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
@@ -236,7 +237,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 bool showEvent = false;
                 var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
-                LoadCurrentAndRecentDrawingEvents();//?
+                LoadCurrentAndRecentDrawingEvents();
                 if(!eeResult.Item1)
                 {
                     String msg = String.Empty;

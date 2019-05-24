@@ -212,6 +212,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (!m_cmbxPlayerList.Enabled) m_cmbxPlayerList.Enabled = true;
                 if (!m_listTypePanel.Enabled) m_listTypePanel.Enabled = true;
             }
+
         }
         
         protected void LoadValues()
@@ -466,10 +467,9 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_NAverageFrom.Text = string.Empty;
             summary_NSpendFrom.Text = string.Empty;
             summary_ProductPurchase2.Text = string.Empty;
-            m_txtbxSummaryAge.Text = string.Empty;                                                                                                                                          
+            m_txtbxSummaryAge.Text = string.Empty;                                                                                                                                           
         }
- 
-       
+        
         private void PopulateDataIntoControls()
         {
             ClearAllSummaryItem();
@@ -1962,6 +1962,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 PlyrActListSetting = new PlayerActualListSetting();
                 isSavedList = true;
+
                 m_cmbxPlayerList.Items.Remove(m_cmbxPlayerList.SelectedItem);
             }
             else if (ActiveButton_ == 3)

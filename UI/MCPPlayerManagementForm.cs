@@ -900,16 +900,26 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             //Populate the players coupon 
+           
+            //m_lstComps.Items.Clear();
+            //m_lstComps.DataSource = null;
+            m_lstComps.DataSource = null;
             if (m_player.Comps != null)
             {
                 if (m_player.Comps.Count != 0)
                 {
-                    m_lstComps.DataSource = null;
-                    m_lstComps.Items.Clear();
+
                     m_lstComps.DataSource = m_player.Comps;
                     m_lstComps.ValueMember = "Name";
                 }
             }
+       
+            
+                m_lstComps.Update();
+         
+
+            //m_lstComps.Update();
+            //m_lstComps.Refresh();
 
             //START RALLY DE8358
             if (canceled)

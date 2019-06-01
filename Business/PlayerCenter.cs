@@ -774,6 +774,24 @@ namespace GTI.Modules.PlayerCenter.Business
                 Settings.LoadSetting(setting);
             }
 
+            //get POS settings for CBB
+            settingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.POSSettings);
+
+            try
+            {
+                settingsMsg.Send();
+            }
+            catch (Exception e)
+            {
+                ReformatException(e);
+            }
+
+            // Loop through each setting and parse the value.
+            stationSettings = settingsMsg.Settings;
+
+            foreach (SettingValue setting in stationSettings)
+                Settings.LoadSetting(setting);
+
             // Send message for receipt management settings.
             settingsMsg = new GetSettingsMessage(m_machineId, OperatorID, SettingsCategory.ReceiptMgmtSettings);
 

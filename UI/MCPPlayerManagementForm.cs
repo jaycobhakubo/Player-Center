@@ -29,7 +29,7 @@ namespace GTI.Modules.PlayerCenter.UI
         protected bool mbolCreditOnline = true;
         protected object m_lastFocus;
         protected bool m_dataChanged;
-        protected Player m_player = new Player();//NOTE: There's 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
+        protected Player m_player = new Player();//NOTE: There are 2 Player.cs this one is using  ManagedEliteModule.Business.Player.cs
         protected Player m_playerToSet;
         protected List<PlayerStatus> m_playerStatusList;//RALLY DE8358     
         protected byte[] m_pinNumber = new byte[DataSizes.PasswordHash]; // FIX: DE3134 - PIN required and a new player error.
@@ -56,6 +56,9 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_parent = parent;
                 InitializeComponent();
+
+                if (!m_parent.Settings.CBBFavoritesAllowed)
+                    m_btnCBBFavorites.Visible = false;
 
                 if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
                     lblPlayerIdentLabel.Text = "Player Identity/Account";
@@ -377,6 +380,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
         #region Events
 
+        private void m_btnCBBFavorites_Click(object sender, EventArgs e)
+        {
+            CBBFavoritesForm favs = new CBBFavoritesForm(m_player, m_parent.Settings.POSreceiptPrinterName);
+
+            favs.ShowDialog(this);
+        }
 
         private void m_lstComps_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -900,26 +909,16 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             //Populate the players coupon 
-           
-            //m_lstComps.Items.Clear();
-            //m_lstComps.DataSource = null;
-            m_lstComps.DataSource = null;
             if (m_player.Comps != null)
             {
                 if (m_player.Comps.Count != 0)
                 {
-
+                    m_lstComps.DataSource = null;
+                    m_lstComps.Items.Clear();
                     m_lstComps.DataSource = m_player.Comps;
                     m_lstComps.ValueMember = "Name";
                 }
             }
-       
-            
-                m_lstComps.Update();
-         
-
-            //m_lstComps.Update();
-            //m_lstComps.Refresh();
 
             //START RALLY DE8358
             if (canceled)

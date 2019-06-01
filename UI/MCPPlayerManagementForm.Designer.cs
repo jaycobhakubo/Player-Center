@@ -193,6 +193,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.m_btnRemovedCoupon = new GTI.Controls.ImageButton();
             this.m_lstComps = new System.Windows.Forms.ListBox();
+            this.m_btnCBBFavorites = new GTI.Controls.ImageButton();
             this.personalInfoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
@@ -967,10 +968,25 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_lstComps.Name = "m_lstComps";
             this.m_lstComps.SelectedIndexChanged += new System.EventHandler(this.m_lstComps_SelectedIndexChanged);
             // 
+            // m_btnCBBFavorites
+            // 
+            this.m_btnCBBFavorites.BackColor = System.Drawing.Color.Transparent;
+            this.m_btnCBBFavorites.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnCBBFavorites, "m_btnCBBFavorites");
+            this.m_btnCBBFavorites.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_btnCBBFavorites.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
+            this.m_btnCBBFavorites.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
+            this.m_btnCBBFavorites.Name = "m_btnCBBFavorites";
+            this.m_btnCBBFavorites.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnCBBFavorites.ShowFocus = false;
+            this.m_btnCBBFavorites.UseVisualStyleBackColor = false;
+            this.m_btnCBBFavorites.Click += new System.EventHandler(this.m_btnCBBFavorites_Click);
+            // 
             // MCPPlayerManagementForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.m_btnCBBFavorites);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.m_saveChangesButton);
@@ -1030,6 +1046,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox m_lstComps;
         private Controls.ImageButton m_btnRemovedCoupon;
+        private Controls.ImageButton m_btnCBBFavorites;
 
        
        

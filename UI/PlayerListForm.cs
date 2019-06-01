@@ -467,7 +467,8 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_NAverageFrom.Text = string.Empty;
             summary_NSpendFrom.Text = string.Empty;
             summary_ProductPurchase2.Text = string.Empty;
-            m_txtbxSummaryAge.Text = string.Empty;                                                                                                                                           
+                                                                                                                                                          
+
         }
         
         private void PopulateDataIntoControls()

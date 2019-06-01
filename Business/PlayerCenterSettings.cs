@@ -32,6 +32,8 @@ namespace GTI.Modules.PlayerCenter.Business
         protected int m_ThirdPartyPlayerInterfaceID;
         protected int m_ThirdPartyPlayerSyncMode = 0;
         protected bool m_UsePlayerIdentityAsAccountNumber = false;
+        protected bool m_CBBEnabled = false;
+        protected bool m_AllowCBBFavorites = false;
  
         private PlayerCenterSettings()
         {
@@ -61,6 +63,10 @@ namespace GTI.Modules.PlayerCenter.Business
 
                 switch (param)
                 {
+                    case Setting.EnableCBBFavorites:
+                        m_AllowCBBFavorites = Convert.ToBoolean(setting.Value);
+                        break;
+
                     case Setting.PrintPlayerIdentityAsAccountNumber:
                         m_UsePlayerIdentityAsAccountNumber = Convert.ToBoolean(setting.Value);
                         break;
@@ -203,6 +209,10 @@ namespace GTI.Modules.PlayerCenter.Business
             {
                 switch (param)
                 {
+                    case LicenseSetting.CBBEnabled:
+                        m_CBBEnabled = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
+                        break;
+
                     case LicenseSetting.CreditEnabled:
                         CreditEnabled = Convert.ToBoolean(setting.Value, CultureInfo.InvariantCulture);
                         break;
@@ -231,7 +241,15 @@ namespace GTI.Modules.PlayerCenter.Business
         public bool EnableAnonymousMachineAccounts { get; set; }//Not being use maybe in the future set default to false
         public int ThirdPartyPlayerInterfaceID { get; set; }
         public int ThirdPartyPlayerSyncMode { get; set; }
-    
+
+        public bool CBBFavoritesAllowed
+        {
+            get
+            {
+                return m_CBBEnabled && m_AllowCBBFavorites;
+            }
+        }
+
         public bool ThirdPartyPlayerInterfaceGetPINWhenCardSwiped
         {
             get

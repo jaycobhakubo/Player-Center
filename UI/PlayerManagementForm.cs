@@ -58,6 +58,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 strErr = "Initialize.";
                 InitializeComponent();
 
+                if (!m_parent.Settings.CBBFavoritesAllowed)
+                    m_btnCBBFavorites.Visible = false;
+
                 if (m_parent.Settings.UsePlayerIdentityAsAccountNumber)
                 {
                     m_playerIdentLabel.Text = "Identity/Account";
@@ -218,6 +221,13 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         #region Events
+
+        private void m_btnCBBFavorites_Click(object sender, EventArgs e)
+        {
+            CBBFavoritesForm favs = new CBBFavoritesForm(m_player, m_parent.Settings.POSreceiptPrinterName, false);
+
+            favs.ShowDialog(this);
+        }
 
         private void receiptUpImageButton_Click(object sender, EventArgs e)
         {
@@ -1234,6 +1244,5 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
-
     }
 }

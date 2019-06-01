@@ -1550,8 +1550,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_listCriteriaPanel);
+            this.Controls.Add(this.m_summaryPanel);
             this.Controls.Add(this.m_selectionPanel);
             this.Controls.Add(this.m_spendPanel);
             this.Controls.Add(this.m_listTypePanel);

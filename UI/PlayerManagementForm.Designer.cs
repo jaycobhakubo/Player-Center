@@ -104,6 +104,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_gender = new System.Windows.Forms.Label();
             this.m_credits = new GTI.Controls.ImageLabel();
             this.m_creditsNon = new GTI.Controls.ImageLabel();
+            this.m_btnCBBFavorites = new GTI.Controls.ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.m_playerPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m_noPic)).BeginInit();
             this.SuspendLayout();
@@ -875,11 +876,27 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_creditsNon.TextChanged += new System.EventHandler(this.PlayerDataChanged);
             this.m_creditsNon.Enter += new System.EventHandler(this.FocusChanged);
             // 
+            // m_btnCBBFavorites
+            // 
+            this.m_btnCBBFavorites.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_btnCBBFavorites.FocusColor = System.Drawing.Color.Black;
+            resources.ApplyResources(this.m_btnCBBFavorites, "m_btnCBBFavorites");
+            this.m_btnCBBFavorites.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.m_btnCBBFavorites.ImageNormal = ((System.Drawing.Image)(resources.GetObject("m_btnCBBFavorites.ImageNormal")));
+            this.m_btnCBBFavorites.ImagePressed = ((System.Drawing.Image)(resources.GetObject("m_btnCBBFavorites.ImagePressed")));
+            this.m_btnCBBFavorites.Name = "m_btnCBBFavorites";
+            this.m_btnCBBFavorites.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
+            this.m_btnCBBFavorites.ShowFocus = false;
+            this.m_btnCBBFavorites.TabStop = false;
+            this.m_btnCBBFavorites.UseVisualStyleBackColor = false;
+            this.m_btnCBBFavorites.Click += new System.EventHandler(this.m_btnCBBFavorites_Click);
+            // 
             // PlayerManagementForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.PlayerScreenCredits1024;
+            this.Controls.Add(this.m_btnCBBFavorites);
             this.Controls.Add(this.m_creditsNon);
             this.Controls.Add(this.m_credits);
             this.Controls.Add(this.m_gender);
@@ -1046,6 +1063,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageLabel m_credits;
         private GTI.Controls.ImageLabel m_creditsNon;
         private System.Windows.Forms.TextBox m_magCard;
+        private Controls.ImageButton m_btnCBBFavorites;
 
     }
 }

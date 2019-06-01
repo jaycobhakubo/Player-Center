@@ -141,6 +141,12 @@
     <Compile Include="Data\Printing\PlayerRaffleReceipt.cs" />
     <Compile Include="Data\SetPlayersCouponMessage.cs" />
     <Compile Include="Data\SetPrizeWheelRaffleDefinition.cs" />
+    <Compile Include="UI\CBBFavoritesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CBBFavoritesForm.designer.cs">
+      <DependentUpon>CBBFavoritesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CCBoxItem.cs" />
     <Compile Include="UI\CheckedComboBox.cs">
       <SubType>Component</SubType>
@@ -323,6 +329,9 @@
     <EmbeddedResource Include="UI\AwardPointsToListOfPlayer.resx">
       <DependentUpon>AwardPointsToListOfPlayer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CBBFavoritesForm.resx">
+      <DependentUpon>CBBFavoritesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GeneralPlayerDrawingParent.resx">
       <DependentUpon>GeneralPlayerDrawingParent.cs</DependentUpon>

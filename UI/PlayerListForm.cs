@@ -467,8 +467,7 @@ namespace GTI.Modules.PlayerCenter.UI
             summary_NAverageFrom.Text = string.Empty;
             summary_NSpendFrom.Text = string.Empty;
             summary_ProductPurchase2.Text = string.Empty;
-                                                                                                                                                          
-
+            m_txtbxSummaryAge.Text = string.Empty;                                                                                                                                              
         }
         
         private void PopulateDataIntoControls()
@@ -477,7 +476,6 @@ namespace GTI.Modules.PlayerCenter.UI
             string t_summary_DateFrom = "";
             DateTime t_summary_DateFrom_dt = new DateTime();
             string t_summary_value = "";
-            string t_summary_Option = "";
 
             foreach (PlayerListSetting pls in PlyrActListSetting.Settings)//Im getting 0 here
             {
@@ -1978,6 +1976,8 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             // Send the arguments to the parent.
+            #region ARGUEMENT
+            
             PlayerListParams args = new PlayerListParams();
             args.ListName = m_ListName;
 
@@ -1985,6 +1985,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 args.UseAge = true;
                 args.Age = (int)m_txtbxAgeValue.Value;
+                string SelectionSelected;
+                SelectionSelected = Selection(m_cmbxAge.Text);
+                args.AgeOptionSelected = SelectionSelected;
+
                 if (m_cmbxAge.SelectedIndex == 0)
                 {
                     SetListOfSetting((int)PlayerListSettingEnum.AgeGreaterThan, args.Age.ToString());
@@ -2572,8 +2576,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetListOfSetting((int)PlayerListSettingEnum.SpendFrom, args.FromSpendDate.ToString());
                 SetListOfSetting((int)PlayerListSettingEnum.SpendTo, args.ToSpendDate.ToString());
             }
+            #endregion
 
-     
+
             if (m_isAwardPointToPlayerList)
             {
                 m_playerListParams = args;

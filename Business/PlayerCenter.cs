@@ -1753,8 +1753,6 @@ namespace GTI.Modules.PlayerCenter.Business
 
 
             // Rally US493
-            // reportDoc.SetParameterValue("@Status", listParams.UseStatus);
-
             if (listParams.UseStatus)
                 reportDoc.SetParameterValue("@StatusId", listParams.Status);
             else
@@ -1866,6 +1864,16 @@ namespace GTI.Modules.PlayerCenter.Business
                 reportDoc.SetParameterValue("@PackageName", string.Empty);
             }
 
+            if (listParams.UseAge)
+            {
+                reportDoc.SetParameterValue("@AgeOptionSelected", listParams.AgeOptionSelected);
+                reportDoc.SetParameterValue("@AgeValue", Convert.ToInt32(listParams.Age, CultureInfo.CurrentCulture));
+            }
+            else
+            {
+                reportDoc.SetParameterValue("@AgeOptionSelected", string.Empty);
+                reportDoc.SetParameterValue("@AgeValue", 0M);
+            }
 
             //US2649
 
@@ -2676,8 +2684,8 @@ namespace GTI.Modules.PlayerCenter.Business
     /// </summary>
     internal struct PlayerListParams
     {
-        public bool UseAge;
-        public int Age;
+        //public bool UseAge;
+        //public int Age;
         public bool UseBirthday;
         public DateTime FromBirthday;
         public DateTime ToBirthday;
@@ -2737,6 +2745,9 @@ namespace GTI.Modules.PlayerCenter.Business
         public bool IsProduct;
         public string SelectedProduct;
         public string ListName;
+        public bool UseAge;
+        public string AgeOptionSelected;
+        public int Age;
     }
 
     internal class GetOperatorID

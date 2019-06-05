@@ -844,7 +844,7 @@
     <value>m_generateButton</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_generateButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -877,7 +877,7 @@
     <value>m_closeButton</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_closeButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -892,7 +892,7 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>86</value>
+    <value>62</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1018, 678</value>
@@ -1042,7 +1042,7 @@
     <value>m_statusCheckComboBox</value>
   </data>
   <data name="&gt;&gt;m_statusCheckComboBox.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_statusCheckComboBox.Parent" xml:space="preserve">
     <value>m_listCriteriaPanel</value>
@@ -2068,7 +2068,7 @@
     <value>m_spendBotton</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_spendBotton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2101,7 +2101,7 @@
     <value>imgbtnNewList</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnNewList.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2161,7 +2161,7 @@
     <value>imgbtn</value>
   </data>
   <data name="&gt;&gt;imgbtn.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2191,7 +2191,7 @@
     <value>m_playDatesButton</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_playDatesButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2227,7 +2227,7 @@
     <value>imgbtnDelete</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnDelete.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2257,7 +2257,7 @@
     <value>m_locationButton</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_locationButton.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2287,7 +2287,7 @@
     <value>m_listCriteriaButton1</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_listCriteriaButton1.Parent" xml:space="preserve">
     <value>m_selectionPanel</value>
@@ -2809,7 +2809,7 @@
     <value>m_ProductCheckBox2</value>
   </data>
   <data name="&gt;&gt;m_ProductCheckBox2.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_ProductCheckBox2.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -3058,7 +3058,7 @@
     <value>m_locListBox</value>
   </data>
   <data name="&gt;&gt;m_locListBox.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>GTI.Modules.PlayerCenter.Data.MyListBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_locListBox.Parent" xml:space="preserve">
     <value>m_locationPanel</value>
@@ -4018,7 +4018,7 @@
     <value>m_checkComboAllSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboAllSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4114,7 +4114,7 @@
     <value>m_checkComboSUNSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboSUNSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboSUNSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4243,7 +4243,7 @@
     <value>m_checkComboSATSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboSATSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboSATSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4339,7 +4339,7 @@
     <value>m_checkComboFRISession</value>
   </data>
   <data name="&gt;&gt;m_checkComboFRISession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboFRISession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4402,7 +4402,7 @@
     <value>m_checkComboMONSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboMONSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboMONSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4432,7 +4432,7 @@
     <value>m_checkComboTHURSSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboTHURSSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboTHURSSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4462,7 +4462,7 @@
     <value>m_checkComboTUESession</value>
   </data>
   <data name="&gt;&gt;m_checkComboTUESession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboTUESession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4492,7 +4492,7 @@
     <value>m_checkComboWEDSession</value>
   </data>
   <data name="&gt;&gt;m_checkComboWEDSession.Type" xml:space="preserve">
-    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.6, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>CheckComboBoxTest.CheckedComboBox, PlayerCenter, Version=1.14.2.11, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
   <data name="&gt;&gt;m_checkComboWEDSession.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -4741,7 +4741,7 @@
     <value>imgbtn_AwardPointsToListOfPlayer</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtn_AwardPointsToListOfPlayer.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4777,7 +4777,7 @@
     <value>imgbtnCancel</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;imgbtnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4813,7 +4813,7 @@
     <value>btnSaveList</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1332, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1367, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;btnSaveList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4840,6 +4840,6 @@
     <value>PlayerListForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1333, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1368, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

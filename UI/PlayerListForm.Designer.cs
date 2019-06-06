@@ -418,6 +418,11 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_txtbxAgeValue
             // 
             resources.ApplyResources(this.m_txtbxAgeValue, "m_txtbxAgeValue");
+            this.m_txtbxAgeValue.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.m_txtbxAgeValue.Name = "m_txtbxAgeValue";
             this.m_txtbxAgeValue.Value = new decimal(new int[] {
             18,

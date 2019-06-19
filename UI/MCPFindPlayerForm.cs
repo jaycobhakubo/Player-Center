@@ -453,5 +453,10 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         #endregion
+
+        private void m_dgvResultsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

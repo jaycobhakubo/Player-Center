@@ -45,8 +45,8 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.m_searchButton = new GTI.Controls.ImageButton();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
+            this.m_searchButton = new GTI.Controls.ImageButton();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -94,6 +94,14 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             resources.ApplyResources(this.splitContainer4.Panel2, "splitContainer4.Panel2");
             // 
+            // m_txtbxSearchCategory
+            // 
+            this.m_txtbxSearchCategory.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.m_txtbxSearchCategory, "m_txtbxSearchCategory");
+            this.m_txtbxSearchCategory.ForeColor = System.Drawing.Color.Black;
+            this.m_txtbxSearchCategory.Name = "m_txtbxSearchCategory";
+            this.m_txtbxSearchCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxSearchCategory_KeyPress);
+            // 
             // m_searchButton
             // 
             this.m_searchButton.BackColor = System.Drawing.Color.Transparent;
@@ -105,14 +113,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_searchButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_searchButton.UseVisualStyleBackColor = false;
             this.m_searchButton.Click += new System.EventHandler(this.SearchClick);
-            // 
-            // m_txtbxSearchCategory
-            // 
-            this.m_txtbxSearchCategory.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.m_txtbxSearchCategory, "m_txtbxSearchCategory");
-            this.m_txtbxSearchCategory.ForeColor = System.Drawing.Color.Black;
-            this.m_txtbxSearchCategory.Name = "m_txtbxSearchCategory";
-            this.m_txtbxSearchCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxSearchCategory_KeyPress);
             // 
             // label1
             // 
@@ -169,8 +169,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // m_selectPlayerButton
             // 
             this.m_selectPlayerButton.BackColor = System.Drawing.Color.Transparent;
-            this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.m_selectPlayerButton, "m_selectPlayerButton");
+            this.m_selectPlayerButton.FocusColor = System.Drawing.Color.Black;
             this.m_selectPlayerButton.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.m_selectPlayerButton.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
             this.m_selectPlayerButton.Name = "m_selectPlayerButton";
@@ -249,7 +249,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.PlayerId.Name = "PlayerId";
             this.PlayerId.ReadOnly = true;
             this.PlayerId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // m_clmnhdrFirstName
             // 

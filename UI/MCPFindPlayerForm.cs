@@ -341,7 +341,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_dgvResultsList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (m_playerList != null && e.ColumnIndex >= 0 && e.ColumnIndex < 8)
+            if (m_playerList != null && e.ColumnIndex >= 1 && e.ColumnIndex < 8)//Exclude playerId on sorting in the list.  
             {
                 m_sortColumn = e.ColumnIndex;
                 m_sortInfo[m_sortColumn] = !m_sortInfo[m_sortColumn];

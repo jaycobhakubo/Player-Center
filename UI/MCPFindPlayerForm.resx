@@ -289,7 +289,7 @@
     <value>30, 30</value>
   </data>
   <data name="m_searchByCardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 40</value>
+    <value>140, 40</value>
   </data>
   <data name="m_searchByCardButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -384,6 +384,9 @@
   <data name="&gt;&gt;splitContainer3.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="m_selectPlayerButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="m_selectPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
@@ -391,7 +394,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_selectPlayerButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="m_selectPlayerButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -427,7 +430,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 0</value>
+    <value>109, 0</value>
   </data>
   <data name="m_cancelButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
@@ -469,7 +472,7 @@
     <value>488, 40</value>
   </data>
   <data name="splitContainer3.SplitterDistance" type="System.Int32, mscorlib">
-    <value>244</value>
+    <value>275</value>
   </data>
   <data name="splitContainer3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -526,7 +529,7 @@
     <value>Player Id</value>
   </data>
   <data name="PlayerId.Width" type="System.Int32, mscorlib">
-    <value>97</value>
+    <value>78</value>
   </data>
   <metadata name="m_clmnhdrFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

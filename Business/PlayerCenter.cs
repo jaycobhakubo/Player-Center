@@ -1085,49 +1085,8 @@ namespace GTI.Modules.PlayerCenter.Business
         /// If blank, last name isn't used in the search.</param>
         /// <param name="lastName">The first name to search on.
         /// If blank, first name isn't used in the search.</param>
-        internal void FindPlayers(string magCardNumber, string firstName, string lastName)
-        {
-            // Set the wait message.
-            m_waitForm.Message = Resources.WaitFormFindingPlayers;
-
-            // Set the search params.
-            string[] parameters = new string[3];
-            parameters[0] = magCardNumber;
-            parameters[1] = firstName;
-            parameters[2] = lastName;
-
-            // Create the worker thread and run it.
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(GetPlayerList);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FindPlayersComplete);
-            m_worker.RunWorkerAsync(parameters);
-        }
-
-        internal void FindPlayers2(string magCardNumber, string categorySearchString)
-        {
-            // Set the wait message.
-            m_waitForm.Message = Resources.WaitFormFindingPlayers;
-
-            // Set the search params.
-            string[] parameters = new string[2];
-            parameters[0] = magCardNumber;
-            parameters[1] = categorySearchString;
-
-            // Create the worker thread and run it.
-            m_worker = new BackgroundWorker();
-            m_worker.WorkerReportsProgress = true;
-            m_worker.WorkerSupportsCancellation = false;
-            m_worker.DoWork += new DoWorkEventHandler(GetPlayerList);
-            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
-            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FindPlayersComplete);
-            m_worker.RunWorkerAsync(parameters);
-        }
-        // END: DE2476
-
-        internal void FindPlayers3(string magCardNumber, string lastName, string firstName, string magCardNumberString)
+   
+        internal void FindPlayers(string magCardNumber, string lastName, string firstName, string magCardNumberString)
         {
             // Set the wait message.
             m_waitForm.Message = Resources.WaitFormFindingPlayers;

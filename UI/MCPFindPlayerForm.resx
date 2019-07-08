@@ -118,34 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="m_txtbxSearchCategory.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Trebuchet MS, 12pt</value>
-  </data>
-  <data name="m_txtbxSearchCategory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 10</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="m_txtbxSearchCategory.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="m_txtbxSearchCategory.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 32</value>
-  </data>
-  <data name="m_txtbxSearchCategory.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;m_txtbxSearchCategory.Name" xml:space="preserve">
-    <value>m_txtbxSearchCategory</value>
-  </data>
-  <data name="&gt;&gt;m_txtbxSearchCategory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;m_txtbxSearchCategory.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;m_txtbxSearchCategory.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="m_searchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Trebuchet MS, 9.75pt, style=Bold</value>
   </data>
@@ -162,6 +134,7 @@
   <data name="m_searchButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 48</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_searchButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -214,7 +187,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 632</value>
@@ -469,7 +442,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <metadata name="PlayerId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -559,16 +532,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_dgvResultsList.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>3</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 14</value>
+    <value>278, 13</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 22</value>
@@ -612,11 +582,8 @@
   <data name="&gt;&gt;m_txtbxLastName.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 14</value>
+    <value>12, 13</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 22</value>
@@ -660,20 +627,17 @@
   <data name="&gt;&gt;m_txtbxFirstName.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>540, 14</value>
+    <value>540, 13</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
+    <value>133, 22</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Mag Card</value>
+    <value>Player Card</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>

@@ -44,7 +44,6 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -82,14 +81,6 @@ namespace GTI.Modules.PlayerCenter.UI
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // m_txtbxSearchCategory
-            // 
-            this.m_txtbxSearchCategory.BackColor = System.Drawing.Color.White;
-            resources.ApplyResources(this.m_txtbxSearchCategory, "m_txtbxSearchCategory");
-            this.m_txtbxSearchCategory.ForeColor = System.Drawing.Color.Black;
-            this.m_txtbxSearchCategory.Name = "m_txtbxSearchCategory";
-            this.m_txtbxSearchCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbxSearchCategory_KeyPress);
             // 
             // m_searchButton
             // 
@@ -312,8 +303,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
             // m_txtbxLastName
@@ -323,8 +314,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // label3
             // 
-            resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
             // 
             // m_txtbxFirstName
@@ -334,8 +325,8 @@ namespace GTI.Modules.PlayerCenter.UI
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
             // m_txtbxMagCard
@@ -363,7 +354,6 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.m_txtbxSearchCategory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.m_dgvResultsList);
@@ -401,7 +391,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox m_txtbxSearchCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrMiddleName;

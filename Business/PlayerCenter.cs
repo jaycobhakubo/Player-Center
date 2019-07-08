@@ -1106,7 +1106,6 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(parameters);
         }
 
-
         internal void FindPlayers2(string magCardNumber, string categorySearchString)
         {
             // Set the wait message.
@@ -1127,6 +1126,29 @@ namespace GTI.Modules.PlayerCenter.Business
             m_worker.RunWorkerAsync(parameters);
         }
         // END: DE2476
+
+        internal void FindPlayers3(string magCardNumber, string lastName, string firstName, string magCardNumberString)
+        {
+            // Set the wait message.
+            m_waitForm.Message = Resources.WaitFormFindingPlayers;
+
+            // Set the search params.
+            string[] parameters = new string[4];
+            parameters[0] = magCardNumber;
+            parameters[1] = lastName;
+            parameters[2] = firstName;          
+            parameters[3] = magCardNumberString;
+
+            // Create the worker thread and run it.
+            m_worker = new BackgroundWorker();
+            m_worker.WorkerReportsProgress = true;
+            m_worker.WorkerSupportsCancellation = false;
+            m_worker.DoWork += new DoWorkEventHandler(GetPlayerList);
+            m_worker.ProgressChanged += new ProgressChangedEventHandler(m_waitForm.ReportProgress);
+            m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FindPlayersComplete);
+            m_worker.RunWorkerAsync(parameters);
+        }
+
 
         /// <summary>
         /// Searches for players on the server.
@@ -1185,10 +1207,11 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else  //Search string category  // First and Last Name
             {
-                GetPlayerListMessage listMsg = new GetPlayerListMessage();
-                //listMsg.FirstName = parameters[1];
-                //listMsg.LastName = parameters[2];
-                listMsg.SearchCategory = parameters[1];
+                GetPlayerListMessage listMsg = new GetPlayerListMessage();//knc
+                listMsg.LastName = parameters[1];
+                listMsg.FirstName = parameters[2];
+                listMsg.MagCardNumberString = parameters[3];
+
 
                 // Send the message.
                 try

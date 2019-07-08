@@ -44,7 +44,6 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.m_txtbxSearchCategory = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,9 +62,13 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.m_txtbxMagCard = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,22 +80,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.splitContainer4, "splitContainer4");
-            this.splitContainer4.Name = "splitContainer4";
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.m_txtbxSearchCategory);
-            this.splitContainer4.Panel1.Controls.Add(this.m_searchButton);
-            // 
-            // splitContainer4.Panel2
-            // 
-            resources.ApplyResources(this.splitContainer4.Panel2, "splitContainer4.Panel2");
             // 
             // m_txtbxSearchCategory
             // 
@@ -321,12 +310,60 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvclmnLastVisitDate.ReadOnly = true;
             this.m_dgvclmnLastVisitDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Name = "label2";
+            // 
+            // m_txtbxLastName
+            // 
+            resources.ApplyResources(this.m_txtbxLastName, "m_txtbxLastName");
+            this.m_txtbxLastName.Name = "m_txtbxLastName";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Name = "label3";
+            // 
+            // m_txtbxFirstName
+            // 
+            resources.ApplyResources(this.m_txtbxFirstName, "m_txtbxFirstName");
+            this.m_txtbxFirstName.Name = "m_txtbxFirstName";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Name = "label4";
+            // 
+            // m_txtbxMagCard
+            // 
+            resources.ApplyResources(this.m_txtbxMagCard, "m_txtbxMagCard");
+            this.m_txtbxMagCard.Name = "m_txtbxMagCard";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.m_txtbxMagCard);
+            this.groupBox1.Controls.Add(this.m_searchButton);
+            this.groupBox1.Controls.Add(this.m_txtbxLastName);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.m_txtbxFirstName);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
             // MCPFindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
-            this.Controls.Add(this.splitContainer4);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.m_txtbxSearchCategory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.m_dgvResultsList);
@@ -337,10 +374,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Shown += new System.EventHandler(this.MCPFindPlayerForm_Shown);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -352,6 +385,8 @@ namespace GTI.Modules.PlayerCenter.UI
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,7 +402,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox m_txtbxSearchCategory;
-        private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrMiddleName;
@@ -376,6 +410,13 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrPlayerIdentity;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnBirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnLastVisitDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox m_txtbxLastName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox m_txtbxFirstName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox m_txtbxMagCard;
+        private System.Windows.Forms.GroupBox groupBox1;
 
        
     }

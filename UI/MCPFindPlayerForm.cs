@@ -97,7 +97,8 @@ namespace GTI.Modules.PlayerCenter.UI
         /// event data.</param>
         private void SearchClick(object sender, EventArgs e)
         {                    
-            m_parent.FindPlayers2(string.Empty, m_txtbxSearchCategory.Text.Trim());
+          //  m_parent.FindPlayers2(string.Empty, m_txtbxSearchCategory.Text.Trim());
+            m_parent.FindPlayers3(string.Empty, m_txtbxLastName.Text.Trim(), m_txtbxFirstName.Text.Trim(), m_txtbxMagCard.Text.Trim());
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 
@@ -155,7 +156,8 @@ namespace GTI.Modules.PlayerCenter.UI
                 // Spawn a new thread to find players and wait until done.
                 // FIX: DE2476
                 //m_parent.FindPlayers(magForm.MagCardNumber, string.Empty, string.Empty);//
-                m_parent.FindPlayers2(magForm.MagCardNumber, string.Empty);//
+                //m_parent.FindPlayers2(magForm.MagCardNumber, string.Empty);//
+                m_parent.FindPlayers3(magForm.MagCardNumber, string.Empty, string.Empty, string.Empty);//
                 m_parent.ShowWaitForm(this); // Block until we are done.
                 // END: DE2476
 

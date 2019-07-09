@@ -338,7 +338,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void MCPFindPlayerForm_Shown(object sender, EventArgs e)
         {
             //m_txtbxSearchCategory.Focus();
-            m_txtbxLastName.Focus();
+            m_txtbxFirstName.Focus();
         }
 
         private void m_dgvResultsList_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

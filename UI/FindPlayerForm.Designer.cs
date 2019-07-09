@@ -32,7 +32,7 @@ namespace GTI.Modules.PlayerCenter.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.m_virtualKeyboard = new GTI.Controls.VirtualKeyboard();
-            this.m_firstName = new System.Windows.Forms.TextBox();
+            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
             this.m_lastName = new System.Windows.Forms.TextBox();
             this.m_searchButton = new GTI.Controls.ImageButton();
             this.m_resultsList = new GTI.Controls.ColorListBox();
@@ -42,7 +42,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_cancelButton = new GTI.Controls.ImageButton();
             this.m_searchByCardButton = new GTI.Controls.ImageButton();
             this.m_firstNameLabel = new System.Windows.Forms.Label();
-            this.m_lastNameLabel = new System.Windows.Forms.Label();
+            this.m_lblLastName = new System.Windows.Forms.Label();
             this.m_dgvPlayerList = new System.Windows.Forms.DataGridView();
             this.m_clmnID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +52,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnLastVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_lblFirstName = new System.Windows.Forms.Label();
+            this.m_lblPlayerCardString = new System.Windows.Forms.Label();
+            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
+            this.m_txtbxPlayerCard = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvPlayerList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,15 +85,15 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_virtualKeyboard.TabStop = false;
             this.m_virtualKeyboard.KeyPressed += new GTI.Controls.KeyboardEventHandler(this.KeyboardKeyPressed);
             // 
-            // m_firstName
+            // m_txtbxLastName
             // 
-            this.m_firstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
-            this.m_firstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.m_firstName, "m_firstName");
-            this.m_firstName.ForeColor = System.Drawing.Color.Yellow;
-            this.m_firstName.Name = "m_firstName";
-            this.m_firstName.Enter += new System.EventHandler(this.FocusChanged);
-            this.m_firstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_firstName_KeyPress);
+            this.m_txtbxLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_txtbxLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.m_txtbxLastName, "m_txtbxLastName");
+            this.m_txtbxLastName.ForeColor = System.Drawing.Color.Yellow;
+            this.m_txtbxLastName.Name = "m_txtbxLastName";
+            this.m_txtbxLastName.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_txtbxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_firstName_KeyPress);
             // 
             // m_lastName
             // 
@@ -210,12 +214,12 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_firstNameLabel.ForeColor = System.Drawing.Color.White;
             this.m_firstNameLabel.Name = "m_firstNameLabel";
             // 
-            // m_lastNameLabel
+            // m_lblLastName
             // 
-            this.m_lastNameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(120)))), ((int)(((byte)(124)))));
-            resources.ApplyResources(this.m_lastNameLabel, "m_lastNameLabel");
-            this.m_lastNameLabel.ForeColor = System.Drawing.Color.White;
-            this.m_lastNameLabel.Name = "m_lastNameLabel";
+            this.m_lblLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(120)))), ((int)(((byte)(124)))));
+            resources.ApplyResources(this.m_lblLastName, "m_lblLastName");
+            this.m_lblLastName.ForeColor = System.Drawing.Color.White;
+            this.m_lblLastName.Name = "m_lblLastName";
             // 
             // m_dgvPlayerList
             // 
@@ -299,12 +303,46 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_clmnLastVisit, "m_clmnLastVisit");
             this.m_clmnLastVisit.Name = "m_clmnLastVisit";
             // 
+            // m_lblFirstName
+            // 
+            this.m_lblFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(120)))), ((int)(((byte)(124)))));
+            resources.ApplyResources(this.m_lblFirstName, "m_lblFirstName");
+            this.m_lblFirstName.ForeColor = System.Drawing.Color.White;
+            this.m_lblFirstName.Name = "m_lblFirstName";
+            // 
+            // m_lblPlayerCardString
+            // 
+            this.m_lblPlayerCardString.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(120)))), ((int)(((byte)(124)))));
+            resources.ApplyResources(this.m_lblPlayerCardString, "m_lblPlayerCardString");
+            this.m_lblPlayerCardString.ForeColor = System.Drawing.Color.White;
+            this.m_lblPlayerCardString.Name = "m_lblPlayerCardString";
+            // 
+            // m_txtbxFirstName
+            // 
+            this.m_txtbxFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_txtbxFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.m_txtbxFirstName, "m_txtbxFirstName");
+            this.m_txtbxFirstName.ForeColor = System.Drawing.Color.Yellow;
+            this.m_txtbxFirstName.Name = "m_txtbxFirstName";
+            // 
+            // m_txtbxPlayerCard
+            // 
+            this.m_txtbxPlayerCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(60)))), ((int)(((byte)(96)))));
+            this.m_txtbxPlayerCard.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.m_txtbxPlayerCard, "m_txtbxPlayerCard");
+            this.m_txtbxPlayerCard.ForeColor = System.Drawing.Color.Yellow;
+            this.m_txtbxPlayerCard.Name = "m_txtbxPlayerCard";
+            // 
             // FindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800b;
+            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800c;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.m_lastNameLabel);
+            this.Controls.Add(this.m_txtbxPlayerCard);
+            this.Controls.Add(this.m_txtbxFirstName);
+            this.Controls.Add(this.m_lblPlayerCardString);
+            this.Controls.Add(this.m_lblFirstName);
+            this.Controls.Add(this.m_lblLastName);
             this.Controls.Add(this.m_firstNameLabel);
             this.Controls.Add(this.m_searchByCardButton);
             this.Controls.Add(this.m_cancelButton);
@@ -312,7 +350,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Controls.Add(this.m_resultsListDown);
             this.Controls.Add(this.m_resultsListUp);
             this.Controls.Add(this.m_searchButton);
-            this.Controls.Add(this.m_firstName);
+            this.Controls.Add(this.m_txtbxLastName);
             this.Controls.Add(this.m_virtualKeyboard);
             this.Controls.Add(this.m_resultsList);
             this.Controls.Add(this.m_dgvPlayerList);
@@ -332,7 +370,7 @@ namespace GTI.Modules.PlayerCenter.UI
         #endregion
 
         private GTI.Controls.VirtualKeyboard m_virtualKeyboard;
-        private System.Windows.Forms.TextBox m_firstName;
+        private System.Windows.Forms.TextBox m_txtbxLastName;
         private System.Windows.Forms.TextBox m_lastName;
         private GTI.Controls.ImageButton m_searchButton;
         private GTI.Controls.ColorListBox m_resultsList;
@@ -342,7 +380,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private GTI.Controls.ImageButton m_cancelButton;
         private GTI.Controls.ImageButton m_searchByCardButton;
         private System.Windows.Forms.Label m_firstNameLabel;
-        private System.Windows.Forms.Label m_lastNameLabel;
+        private System.Windows.Forms.Label m_lblLastName;
         private System.Windows.Forms.DataGridView m_dgvPlayerList;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnID;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnFirstName;
@@ -352,5 +390,9 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnPlayerIdentity;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnBirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnLastVisit;
+        private System.Windows.Forms.Label m_lblFirstName;
+        private System.Windows.Forms.Label m_lblPlayerCardString;
+        private System.Windows.Forms.TextBox m_txtbxFirstName;
+        private System.Windows.Forms.TextBox m_txtbxPlayerCard;
     }
 }

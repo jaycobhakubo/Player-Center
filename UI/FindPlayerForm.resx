@@ -135,37 +135,37 @@
     <value>m_virtualKeyboard</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.Type" xml:space="preserve">
-    <value>GTI.Controls.VirtualKeyboard, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.VirtualKeyboard, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_virtualKeyboard.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>13</value>
   </data>
-  <data name="m_firstName.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_txtbxLastName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
-  <data name="m_firstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 19</value>
+  <data name="m_txtbxLastName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>218, 19</value>
   </data>
-  <data name="m_firstName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>676, 20</value>
+  <data name="m_txtbxLastName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
   </data>
-  <data name="m_firstName.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_txtbxLastName.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;m_firstName.Name" xml:space="preserve">
-    <value>m_firstName</value>
+  <data name="&gt;&gt;m_txtbxLastName.Name" xml:space="preserve">
+    <value>m_txtbxLastName</value>
   </data>
-  <data name="&gt;&gt;m_firstName.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_txtbxLastName.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_firstName.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_txtbxLastName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;m_firstName.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;m_txtbxLastName.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="m_lastName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
@@ -192,7 +192,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_lastName.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="m_searchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -423,13 +423,13 @@
     <value>m_searchButton</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_searchButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>11</value>
   </data>
   <data name="m_resultsList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14pt, style=Bold</value>
@@ -450,13 +450,13 @@
     <value>m_resultsList</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Type" xml:space="preserve">
-    <value>GTI.Controls.ColorListBox, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ColorListBox, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsList.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>14</value>
   </data>
   <data name="m_resultsListUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>711, 65</value>
@@ -474,13 +474,13 @@
     <value>m_resultsListUp</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>10</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_resultsListDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -502,13 +502,13 @@
     <value>m_resultsListDown</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="m_selectPlayerButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -742,13 +742,13 @@
     <value>m_selectPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="m_cancelButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -982,13 +982,13 @@
     <value>m_cancelButton</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="m_searchByCardButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 10pt, style=Bold</value>
@@ -1222,13 +1222,13 @@
     <value>m_searchByCardButton</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1387, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="m_firstNameLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
@@ -1255,40 +1255,40 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_firstNameLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
-  <data name="m_lastNameLabel.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="m_lblLastName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9pt, style=Bold</value>
   </data>
-  <data name="m_lastNameLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="m_lblLastName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="m_lastNameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 47</value>
+  <data name="m_lblLastName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 47</value>
   </data>
-  <data name="m_lastNameLabel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="m_lblLastName.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 15</value>
   </data>
-  <data name="m_lastNameLabel.TabIndex" type="System.Int32, mscorlib">
+  <data name="m_lblLastName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="m_lastNameLabel.Text" xml:space="preserve">
-    <value>Player Search</value>
+  <data name="m_lblLastName.Text" xml:space="preserve">
+    <value>Last Name</value>
   </data>
-  <data name="m_lastNameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="m_lblLastName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;m_lastNameLabel.Name" xml:space="preserve">
-    <value>m_lastNameLabel</value>
+  <data name="&gt;&gt;m_lblLastName.Name" xml:space="preserve">
+    <value>m_lblLastName</value>
   </data>
-  <data name="&gt;&gt;m_lastNameLabel.Type" xml:space="preserve">
+  <data name="&gt;&gt;m_lblLastName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;m_lastNameLabel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;m_lblLastName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;m_lastNameLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;m_lblLastName.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <metadata name="m_clmnID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1369,7 +1369,121 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;m_dgvPlayerList.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>15</value>
+  </data>
+  <data name="m_lblFirstName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="m_lblFirstName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_lblFirstName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 47</value>
+  </data>
+  <data name="m_lblFirstName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 15</value>
+  </data>
+  <data name="m_lblFirstName.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="m_lblFirstName.Text" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="m_lblFirstName.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;m_lblFirstName.Name" xml:space="preserve">
+    <value>m_lblFirstName</value>
+  </data>
+  <data name="&gt;&gt;m_lblFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_lblFirstName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_lblFirstName.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="m_lblPlayerCardString.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt, style=Bold</value>
+  </data>
+  <data name="m_lblPlayerCardString.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="m_lblPlayerCardString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>517, 47</value>
+  </data>
+  <data name="m_lblPlayerCardString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 15</value>
+  </data>
+  <data name="m_lblPlayerCardString.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="m_lblPlayerCardString.Text" xml:space="preserve">
+    <value>Player Card</value>
+  </data>
+  <data name="m_lblPlayerCardString.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;m_lblPlayerCardString.Name" xml:space="preserve">
+    <value>m_lblPlayerCardString</value>
+  </data>
+  <data name="&gt;&gt;m_lblPlayerCardString.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_lblPlayerCardString.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_lblPlayerCardString.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="m_txtbxFirstName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 12pt, style=Bold</value>
+  </data>
+  <data name="m_txtbxFirstName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 19</value>
+  </data>
+  <data name="m_txtbxFirstName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="m_txtbxFirstName.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxFirstName.Name" xml:space="preserve">
+    <value>m_txtbxFirstName</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxFirstName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxFirstName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxFirstName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="m_txtbxPlayerCard.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 12pt, style=Bold</value>
+  </data>
+  <data name="m_txtbxPlayerCard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>522, 19</value>
+  </data>
+  <data name="m_txtbxPlayerCard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="m_txtbxPlayerCard.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPlayerCard.Name" xml:space="preserve">
+    <value>m_txtbxPlayerCard</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPlayerCard.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPlayerCard.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;m_txtbxPlayerCard.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1438,6 +1552,6 @@
     <value>FindPlayerForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.PlayerCenter.UI.PlayerForm, PlayerCenter, Version=1.15.0.5, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
+    <value>GTI.Modules.PlayerCenter.UI.PlayerForm, PlayerCenter, Version=1.14.2.21, Culture=neutral, PublicKeyToken=ad38fdbcb75789ff</value>
   </data>
 </root>

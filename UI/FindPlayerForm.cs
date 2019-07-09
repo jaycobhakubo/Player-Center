@@ -43,11 +43,11 @@ namespace GTI.Modules.PlayerCenter.UI
             ApplyDisplayMode();
 
             // Set the last focused control to the first field.
-            m_lastFocus = m_firstName;
+            m_lastFocus = m_txtbxFirstName; //m_txtbxLastName;
             //m_lastFocus = m_lastName;
 
             // Set the max text lengths.
-            m_firstName.MaxLength = StringSizes.MaxNameLength;
+            m_txtbxLastName.MaxLength = StringSizes.MaxNameLength;
             //m_lastName.MaxLength = StringSizes.MaxNameLength;
 
             // Which keyboard do we need to use?
@@ -109,7 +109,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // Spawn a new thread to find players and wait until done.
             // FIX: DE2476
-            m_parent.FindPlayers(string.Empty, m_firstName.Text.Trim(), string.Empty, string.Empty);
+            m_parent.FindPlayers(string.Empty, m_txtbxLastName.Text.Trim(), m_txtbxFirstName.Text.Trim(), m_txtbxPlayerCard.Text.Trim());
             m_parent.ShowWaitForm(this); // Block until we are done.
             // END: DE2476
 

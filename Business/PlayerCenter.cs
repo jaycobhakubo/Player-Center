@@ -1822,7 +1822,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else
             {
-                reportDoc.SetParameterValue("@SPOprtionSelected", string.Empty);
+                reportDoc.SetParameterValue("@SPOptionSelected", string.Empty);
                 reportDoc.SetParameterValue("@SPOptionValue", 0M);
             }
 

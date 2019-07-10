@@ -510,6 +510,7 @@
     <None Include="Resources\ArrowUpRed.png" />
     <None Include="Resources\FindPlayerBack800b.png" />
     <None Include="Resources\FindPlayerBack800c.png" />
+    <None Include="Resources\FindPlayerBack800d.png" />
     <Content Include="Res\Players.ico" />
     <None Include="Res\PlayerScreenCredits1024.png" />
   </ItemGroup>

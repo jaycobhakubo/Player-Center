@@ -65,7 +65,7 @@ namespace GTI.Modules.PlayerCenter.UI
             Application.DoEvents();
             Application.DoEvents();
             // m_lastFocus = m_txtbxSearchCategory;
-            m_lastFocus = m_txtbxLastName;
+            m_lastFocus = m_txtbxFirstName;
             Application.DoEvents();
         }
         #endregion

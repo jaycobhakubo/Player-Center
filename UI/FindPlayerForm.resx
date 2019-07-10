@@ -147,13 +147,13 @@
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
   <data name="m_txtbxLastName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 19</value>
+    <value>218, 31</value>
   </data>
   <data name="m_txtbxLastName.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 20</value>
   </data>
   <data name="m_txtbxLastName.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;m_txtbxLastName.Name" xml:space="preserve">
     <value>m_txtbxLastName</value>
@@ -414,7 +414,7 @@
     <value>160, 50</value>
   </data>
   <data name="m_searchButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>6</value>
   </data>
   <data name="m_searchButton.Text" xml:space="preserve">
     <value>Search</value>
@@ -444,7 +444,7 @@
     <value>676, 164</value>
   </data>
   <data name="m_resultsList.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;m_resultsList.Name" xml:space="preserve">
     <value>m_resultsList</value>
@@ -468,7 +468,7 @@
     <value>71, 52</value>
   </data>
   <data name="m_resultsListUp.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;m_resultsListUp.Name" xml:space="preserve">
     <value>m_resultsListUp</value>
@@ -496,7 +496,7 @@
     <value>71, 52</value>
   </data>
   <data name="m_resultsListDown.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;m_resultsListDown.Name" xml:space="preserve">
     <value>m_resultsListDown</value>
@@ -733,7 +733,7 @@
     <value>160, 50</value>
   </data>
   <data name="m_selectPlayerButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>8</value>
   </data>
   <data name="m_selectPlayerButton.Text" xml:space="preserve">
     <value>Select Player</value>
@@ -973,7 +973,7 @@
     <value>160, 50</value>
   </data>
   <data name="m_cancelButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>9</value>
   </data>
   <data name="m_cancelButton.Text" xml:space="preserve">
     <value>Cancel</value>
@@ -1213,7 +1213,7 @@
     <value>160, 50</value>
   </data>
   <data name="m_searchByCardButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>7</value>
   </data>
   <data name="m_searchByCardButton.Text" xml:space="preserve">
     <value>Swipe Player Card</value>
@@ -1264,7 +1264,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lblLastName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 47</value>
+    <value>214, 9</value>
   </data>
   <data name="m_lblLastName.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 15</value>
@@ -1378,7 +1378,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lblFirstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 47</value>
+    <value>21, 9</value>
   </data>
   <data name="m_lblFirstName.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 15</value>
@@ -1411,7 +1411,7 @@
     <value>NoControl</value>
   </data>
   <data name="m_lblPlayerCardString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>517, 47</value>
+    <value>517, 9</value>
   </data>
   <data name="m_lblPlayerCardString.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 15</value>
@@ -1441,13 +1441,13 @@
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
   <data name="m_txtbxFirstName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 19</value>
+    <value>24, 31</value>
   </data>
   <data name="m_txtbxFirstName.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 20</value>
   </data>
   <data name="m_txtbxFirstName.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;m_txtbxFirstName.Name" xml:space="preserve">
     <value>m_txtbxFirstName</value>
@@ -1465,13 +1465,13 @@
     <value>Tahoma, 12pt, style=Bold</value>
   </data>
   <data name="m_txtbxPlayerCard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 19</value>
+    <value>523, 31</value>
   </data>
   <data name="m_txtbxPlayerCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 20</value>
   </data>
   <data name="m_txtbxPlayerCard.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;m_txtbxPlayerCard.Name" xml:space="preserve">
     <value>m_txtbxPlayerCard</value>

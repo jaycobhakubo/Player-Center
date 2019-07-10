@@ -336,7 +336,7 @@ namespace GTI.Modules.PlayerCenter.UI
             // FindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800c;
+            this.BackgroundImage = global::GTI.Modules.PlayerCenter.Properties.Resources.FindPlayerBack800d;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.m_txtbxPlayerCard);
             this.Controls.Add(this.m_txtbxFirstName);

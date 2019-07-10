@@ -43,6 +43,7 @@ namespace GTI.Modules.PlayerCenter.UI
             ApplyDisplayMode();
 
             // Set the last focused control to the first field.
+            m_txtbxFirstName.Focus();
             m_lastFocus = m_txtbxFirstName; //m_txtbxLastName;
             //m_lastFocus = m_lastName;
 

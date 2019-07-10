@@ -2712,15 +2712,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     result = saveForm.ShowDialog(this);
 
                     if (result == DialogResult.OK)
-                        m_parent.StartExportPlayerList(saveForm.FileName, args);//knc
+                        m_parent.StartExportPlayerList(saveForm.FileName, args);
                 }
-                else if (m_printRaffleRadio.Checked)
+                else if (m_printRaffleRadio.Checked) 
                 {
                     m_parent.StartPrintPlayerRaffle(args);
                 }
                 else
                 {
-                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);//knc
+                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);
                 }
 
                 if (result == DialogResult.OK)

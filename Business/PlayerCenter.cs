@@ -1166,7 +1166,7 @@ namespace GTI.Modules.PlayerCenter.Business
             }
             else  //Search string category  // First and Last Name
             {
-                GetPlayerListMessage listMsg = new GetPlayerListMessage();//knc
+                GetPlayerListMessage listMsg = new GetPlayerListMessage();
                 listMsg.LastName = parameters[1];
                 listMsg.FirstName = parameters[2];
                 listMsg.MagCardNumberString = parameters[3];

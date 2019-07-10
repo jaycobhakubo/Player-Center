@@ -110,11 +110,6 @@ namespace GTI.Modules.PlayerCenter.Data
             requestWriter.Write((ushort)tempDec.Length);
             requestWriter.Write(tempDec.ToCharArray());
 
-            //if (!string.IsNullOrEmpty(m_params.MinPoints))
-            //{
-
-            //}
-
             // Max Points
             tempDec = m_params.MaxPoints.ToString("N", CultureInfo.InvariantCulture);
             requestWriter.Write((ushort)tempDec.Length);
@@ -188,9 +183,6 @@ namespace GTI.Modules.PlayerCenter.Data
             requestWriter.Write((ushort)tempDate.Length);
             requestWriter.Write(tempDate.ToCharArray());
 
-            //// bool SAIsRange
-            //requestWriter.Write(m_params.SAIsRange);
-
             // bool SAOption
             requestWriter.Write(m_params.SAOption);
 
@@ -209,11 +201,6 @@ namespace GTI.Modules.PlayerCenter.Data
             tempDec = m_params.SAOptionValue.ToString("N", CultureInfo.InvariantCulture);
             requestWriter.Write((ushort)tempDec.Length);
             requestWriter.Write(tempDec.ToCharArray());
-
-
-            // Rally US493
-            // Use Status
-            //requestWriter.Write(m_params.UseStatus);
 
             // Status
             if (m_params.UseStatus)
@@ -400,6 +387,20 @@ namespace GTI.Modules.PlayerCenter.Data
             {
                 requestWriter.Write((ushort)0);  
             }
+
+            //Age option selected
+            if (!string.IsNullOrEmpty(m_params.AgeOptionSelected))
+            {
+                requestWriter.Write((ushort)m_params.AgeOptionSelected.Length);
+                requestWriter.Write(m_params.AgeOptionSelected.ToCharArray());
+            }
+            else
+            {
+                requestWriter.Write((ushort)0);
+            }
+
+            //Age
+            requestWriter.Write(m_params.Age);
 
             // Set the bytes to be sent.
             m_requestPayload = requestStream.ToArray();
@@ -601,26 +602,7 @@ namespace GTI.Modules.PlayerCenter.Data
                     //days
                     stringLen = responseReader.ReadUInt16();
                     item.DaysOfWeek = new string(responseReader.ReadChars(stringLen));    
-
-                    //stringLen = responseReader.ReadUInt16();
-                    //item.Player.LastName = new string(responseReader.ReadChars(stringLen));
-                    //   public  int no_OfDaysPlayed;// = 0;
-                    //public int no_OfSessionPlayed;// = 0;
-                    //public DateTime gamingDate;
-                    //public int sessionNumber;// = 0;
-                    //public string DaysOfWeek;// = string.Empty;
-                    //stringLen = responseReader.ReadUInt16();
-                    //item.StatusList = new string(responseReader.ReadChars(stringLen));                
-                    //  item.Player.VisitCount = responseReader.ReadInt32(); INT Sample
-
-                    // Last Visit Date
-                    //stringLen = responseReader.ReadUInt16();
-                    //tempDate = new string(responseReader.ReadChars(stringLen));
-                    //if (!string.IsNullOrEmpty(tempDate))
-                    //    item.Player.LastVisit = DateTime.Parse(tempDate, CultureInfo.InvariantCulture);
               
-                    //days
-
                     m_playerList.Add(item);
                 }
             }

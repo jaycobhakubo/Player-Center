@@ -2712,7 +2712,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     result = saveForm.ShowDialog(this);
 
                     if (result == DialogResult.OK)
-                        m_parent.StartExportPlayerList(saveForm.FileName, args);
+                        m_parent.StartExportPlayerList(saveForm.FileName, args);//knc
                 }
                 else if (m_printRaffleRadio.Checked)
                 {
@@ -2720,7 +2720,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);
+                    m_parent.StartGetPlayerReport(m_listReportRadio.Checked, args);//knc
                 }
 
                 if (result == DialogResult.OK)

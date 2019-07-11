@@ -106,7 +106,8 @@ namespace GTI.Modules.PlayerCenter.Data
 
             string tempDec;
             // Min Points
-            tempDec = m_params.MinPoints.ToString("N", CultureInfo.InvariantCulture);
+            //tempDec = m_params.MinPoints.ToString("N", CultureInfo.InvariantCulture);
+            tempDec = m_params.MinPoints.ToString("N", CultureInfo.CurrentCulture);
             requestWriter.Write((ushort)tempDec.Length);
             requestWriter.Write(tempDec.ToCharArray());
 

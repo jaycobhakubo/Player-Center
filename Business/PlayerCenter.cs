@@ -1817,7 +1817,7 @@ namespace GTI.Modules.PlayerCenter.Business
 
             if (listParams.IsNumberOfSessionPlayed && listParams.IsSPOption)
             {
-                reportDoc.SetParameterValue("@SPOprtionSelected", listParams.SPOptionSelected);
+                reportDoc.SetParameterValue("@SPOptionSelected", listParams.SPOptionSelected);
                 reportDoc.SetParameterValue("@SPOptionValue", Convert.ToInt32(listParams.SPOptionValue, CultureInfo.CurrentCulture));
             }
             else

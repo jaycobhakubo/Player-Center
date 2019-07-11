@@ -324,6 +324,8 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_txtbxFirstName, "m_txtbxFirstName");
             this.m_txtbxFirstName.ForeColor = System.Drawing.Color.Yellow;
             this.m_txtbxFirstName.Name = "m_txtbxFirstName";
+            this.m_txtbxFirstName.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_txtbxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_firstName_KeyPress);
             // 
             // m_txtbxPlayerCard
             // 
@@ -332,6 +334,8 @@ namespace GTI.Modules.PlayerCenter.UI
             resources.ApplyResources(this.m_txtbxPlayerCard, "m_txtbxPlayerCard");
             this.m_txtbxPlayerCard.ForeColor = System.Drawing.Color.Yellow;
             this.m_txtbxPlayerCard.Name = "m_txtbxPlayerCard";
+            this.m_txtbxPlayerCard.Enter += new System.EventHandler(this.FocusChanged);
+            this.m_txtbxPlayerCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_firstName_KeyPress);
             // 
             // FindPlayerForm
             // 

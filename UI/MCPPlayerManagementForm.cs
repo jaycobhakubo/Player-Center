@@ -64,44 +64,26 @@ namespace GTI.Modules.PlayerCenter.UI
                     lblPlayerIdentLabel.Text = "Player Identity/Account";
 
                 commentsGroupBox.DoubleClick += CommentsGroupBoxDoubleClick;
-                //ApplyDisplayMode();
-                SetMaxTextLengths();
-                
+                SetMaxTextLengths();    //ApplyDisplayMode();             
                 m_playerStatusList = new List<PlayerStatus>();//RALLY DE8358
-
-                // Rally TA7897
-                mbolCreditOnline = parent.Settings.CreditEnabled;
-
-                //   Set the labels and textboxes for credit
-                // visisble (T or F) properties.
-                SetCreditControls();
-
-                // Set the last focused control to the first field.
-                m_lastFocus = txtFirstName;
-
+                mbolCreditOnline = parent.Settings.CreditEnabled; // Rally TA7897
+                SetCreditControls(); //   Set the labels and textboxes for credit // visisble (T or F) properties.
+                m_lastFocus = txtFirstName;// Set the last focused control to the first field.
                 LoadOperatorPlayerStatusCodes();
-
                 LoadGenders(); // FIX: DE1891
 
-                // Do they have a player already selected?
-                if (m_parent.CurrentPlayer != null)
+                if (m_parent.CurrentPlayer != null)  // Do they have a player already selected?
                 {
                     m_player = m_parent.CurrentPlayer;
-
-                    // Fill in the default player values.
-                    SetPlayerValues(false);//RALLY DE8358
+                    SetPlayerValues(false);    // Fill in the default player values.//RALLY DE8358
                 }
 
                 personalInfoGroupBox.Text = "Personal Information";
-
-                // Reset the data changed value.
-                m_dataChanged = false;
-
+                m_dataChanged = false;   // Reset the data changed value.
                 ChkSystemCamera();
                 AddToolStripMenuItem();
 
-                //Get player permission to removed coupon
-                if (GetStaffPermissionToRemovedCoupon())
+                if (GetStaffPermissionToRemovedCoupon()) //Get player permission to removed coupon
                 {
                     m_btnRemovedCoupon.Visible = true;
                     m_lstComps.Size = new Size(319, 94);
@@ -914,7 +896,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (m_player.Comps.Count != 0)
                 {
-                    m_lstComps.DataSource = m_player.Comps;
+                    m_lstComps.DataSource = m_player.Comps;//knc
                     m_lstComps.ValueMember = "Name";
                 }
             }

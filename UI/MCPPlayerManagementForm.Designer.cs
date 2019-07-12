@@ -966,6 +966,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_lstComps.FormattingEnabled = true;
             resources.ApplyResources(this.m_lstComps, "m_lstComps");
             this.m_lstComps.Name = "m_lstComps";
+            this.m_lstComps.Sorted = true;
             this.m_lstComps.SelectedIndexChanged += new System.EventHandler(this.m_lstComps_SelectedIndexChanged);
             // 
             // m_btnCBBFavorites

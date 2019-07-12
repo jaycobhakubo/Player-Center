@@ -70,7 +70,6 @@ namespace GTI.Modules.PlayerCenter.UI
         }
         #endregion
 
-
         private void LoadPlayerListDataGrid(PlayerListItem[] players)
         {
             m_sortColumn = 0;
@@ -85,8 +84,6 @@ namespace GTI.Modules.PlayerCenter.UI
             //Sort("ReportDisplayName", SortOrder.Ascending);
             m_dgvResultsList.ClearSelection();
         }
-
-
 
 
         #region Button Events
@@ -326,14 +323,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 SelectPlayerClick(sender, new EventArgs());
         }
 
-        //private void m_txtbxSearchCategory_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (e.KeyChar == (char)Keys.Enter)
-        //    {
-        //        SearchClick(sender, new EventArgs());
-        //        e.Handled = true;
-        //    }
-        //}
+        private void m_txtbx_KeyPressEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                SearchClick(sender, new EventArgs());
+                e.Handled = true;
+            }
+        }
 
         private void MCPFindPlayerForm_Shown(object sender, EventArgs e)
         {

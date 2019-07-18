@@ -898,6 +898,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     m_lstComps.DataSource = m_player.Comps;
                     m_lstComps.ValueMember = "Name";
+                    m_lstComps.SelectedIndex = -1;
                 }
             }
             m_lstComps.Update();

@@ -896,7 +896,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 if (m_player.Comps.Count != 0)
                 {
-                    m_lstComps.DataSource = m_player.Comps;//knc
+                    m_lstComps.DataSource = m_player.Comps;
                     m_lstComps.ValueMember = "Name";
                 }
             }

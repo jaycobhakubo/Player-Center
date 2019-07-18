@@ -74,7 +74,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_sortColumn = 0;
             m_sortInfo = new bool[8]{true, false, false, false, false, false, false, false};
-            m_playerList = players.OrderBy(i => i.Id).ToArray();
+            m_playerList = players.OrderBy(i => i.FirstName).ThenBy(i => i.LastName).ToArray();
             BindingSource bs = new BindingSource(m_playerList, "");
             m_dgvResultsList.DataSource = null;
             m_dgvResultsList.Rows.Clear();
@@ -350,9 +350,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     case 1: //first name
                     {
                         if(m_sortInfo[m_sortColumn])
-                            m_playerList = m_playerList.OrderBy(i => i.FirstName).ToArray();
+                            m_playerList = m_playerList.OrderBy(i => i.FirstName).ThenBy(i => i.LastName).ToArray();
                         else
-                            m_playerList = m_playerList.OrderByDescending(i => i.FirstName).ToArray();
+                            m_playerList = m_playerList.OrderByDescending(i => i.FirstName).ThenBy(i => i.LastName).ToArray();
 
                         break;
                     }
@@ -370,9 +370,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     case 3: //last name
                     {
                         if (m_sortInfo[m_sortColumn])
-                            m_playerList = m_playerList.OrderBy(i => i.LastName).ToArray();
+                            m_playerList = m_playerList.OrderBy(i => i.LastName).ThenBy(i => i.FirstName).ToArray();
                         else
-                            m_playerList = m_playerList.OrderByDescending(i => i.LastName).ToArray();
+                            m_playerList = m_playerList.OrderByDescending(i => i.LastName).ThenBy(i => i.FirstName).ToArray();
                         
                         break;
                     }

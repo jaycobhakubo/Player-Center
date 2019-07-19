@@ -86,14 +86,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     decimal tPlayerPointsSubtracted = 0;
                     decimal.TryParse(txtbxPointsSubtracted.Text, out tPlayerPointsSubtracted);
 
-                    //if (tPlayerPointsAdded == 0)
-                    //    return; //nothing to do
-
                     tPlayerPointsSubtracted = tPlayerPointsSubtracted * -1;
+
+                    // DE14415 Create a total and display that
+                    decimal totalPointAdjustment = tPlayerPointsAdded + tPlayerPointsSubtracted;
 
                     IsPointsAwardedSuccess = false;
 
-                    string reasonMessage = "Manual point award for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + tPlayerPointsAdded.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) ? "None" : txtManualPointAdjustReason.Text);
+                    string reasonMessage = "Manual point adjustment for player " + lblPlayerNameIndicator.Text + " (ID = " + m_playercenterThirdPartyInterface.PlayerSelected.Id.ToString() + ") for " + totalPointAdjustment.ToString() + " point(s). Reason: " + (string.IsNullOrWhiteSpace(txtManualPointAdjustReason.Text) ? "None" : txtManualPointAdjustReason.Text);
+
                     SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(PlayerId, (tPlayerPointsAdded + tPlayerPointsSubtracted), reasonMessage);
 
                     msg.Send();

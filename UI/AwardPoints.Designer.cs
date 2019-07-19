@@ -58,7 +58,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.cancelImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.cancelImageButton.ShowFocus = false;
             this.cancelImageButton.Size = new System.Drawing.Size(133, 50);
-            this.cancelImageButton.TabIndex = 8;
+            this.cancelImageButton.TabIndex = 10;
             this.cancelImageButton.Text = "&Cancel";
             this.cancelImageButton.UseVisualStyleBackColor = false;
             this.cancelImageButton.Click += new System.EventHandler(this.cancelImageButton_Click);
@@ -78,8 +78,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.acceptImageButton.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.acceptImageButton.ShowFocus = false;
             this.acceptImageButton.Size = new System.Drawing.Size(133, 50);
-            this.acceptImageButton.TabIndex = 7;
-            this.acceptImageButton.Text = "Update Points";
+            this.acceptImageButton.TabIndex = 9;
+            this.acceptImageButton.Text = "&Update Points";
             this.acceptImageButton.UseVisualStyleBackColor = false;
             this.acceptImageButton.Click += new System.EventHandler(this.acceptImageButton_Click);
             // 
@@ -90,7 +90,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPointsAwarded.Location = new System.Drawing.Point(7, 91);
             this.lblPointsAwarded.Name = "lblPointsAwarded";
             this.lblPointsAwarded.Size = new System.Drawing.Size(217, 20);
-            this.lblPointsAwarded.TabIndex = 1;
+            this.lblPointsAwarded.TabIndex = 3;
             this.lblPointsAwarded.Text = "Number of points to add:";
             // 
             // lblPlayerNameIndicator
@@ -113,7 +113,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsAwarded.Name = "txtbxPointsAwarded";
             this.txtbxPointsAwarded.Precision = 2;
             this.txtbxPointsAwarded.Size = new System.Drawing.Size(133, 26);
-            this.txtbxPointsAwarded.TabIndex = 2;
+            this.txtbxPointsAwarded.TabIndex = 4;
             this.txtbxPointsAwarded.TextChanged += new System.EventHandler(this.txtbxPointsAwarded_TextChanged);
             this.txtbxPointsAwarded.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtbxPointsAwarded_PreviewKeyDown);
             // 
@@ -125,7 +125,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtManualPointAdjustReason.Multiline = true;
             this.txtManualPointAdjustReason.Name = "txtManualPointAdjustReason";
             this.txtManualPointAdjustReason.Size = new System.Drawing.Size(378, 137);
-            this.txtManualPointAdjustReason.TabIndex = 4;
+            this.txtManualPointAdjustReason.TabIndex = 8;
             this.txtManualPointAdjustReason.TextChanged += new System.EventHandler(this.txtManualPointAdjustReason_TextChanged);
             // 
             // lblManualPointAdjustReasonCharactersLeftTitle
@@ -136,7 +136,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblManualPointAdjustReasonCharactersLeftTitle.Location = new System.Drawing.Point(242, 353);
             this.lblManualPointAdjustReasonCharactersLeftTitle.Name = "lblManualPointAdjustReasonCharactersLeftTitle";
             this.lblManualPointAdjustReasonCharactersLeftTitle.Size = new System.Drawing.Size(108, 15);
-            this.lblManualPointAdjustReasonCharactersLeftTitle.TabIndex = 5;
+            this.lblManualPointAdjustReasonCharactersLeftTitle.TabIndex = 11;
             this.lblManualPointAdjustReasonCharactersLeftTitle.Text = "Characters left:";
             this.lblManualPointAdjustReasonCharactersLeftTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -148,7 +148,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblManualPointsAdjustReasonCharactersLeft.Location = new System.Drawing.Point(356, 353);
             this.lblManualPointsAdjustReasonCharactersLeft.Name = "lblManualPointsAdjustReasonCharactersLeft";
             this.lblManualPointsAdjustReasonCharactersLeft.Size = new System.Drawing.Size(37, 15);
-            this.lblManualPointsAdjustReasonCharactersLeft.TabIndex = 6;
+            this.lblManualPointsAdjustReasonCharactersLeft.TabIndex = 12;
             this.lblManualPointsAdjustReasonCharactersLeft.Text = "500";
             this.lblManualPointsAdjustReasonCharactersLeft.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -159,8 +159,8 @@ namespace GTI.Modules.PlayerCenter.UI
             this.label2.Location = new System.Drawing.Point(8, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(382, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Reason for awarding points:";
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Reason for adjusting points:";
             // 
             // lblPointsSubtracted
             // 
@@ -169,7 +169,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPointsSubtracted.Location = new System.Drawing.Point(7, 126);
             this.lblPointsSubtracted.Name = "lblPointsSubtracted";
             this.lblPointsSubtracted.Size = new System.Drawing.Size(243, 20);
-            this.lblPointsSubtracted.TabIndex = 9;
+            this.lblPointsSubtracted.TabIndex = 5;
             this.lblPointsSubtracted.Text = "Number of points to subtract:";
             // 
             // txtbxPointsSubtracted
@@ -181,7 +181,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.txtbxPointsSubtracted.Name = "txtbxPointsSubtracted";
             this.txtbxPointsSubtracted.Precision = 2;
             this.txtbxPointsSubtracted.Size = new System.Drawing.Size(133, 26);
-            this.txtbxPointsSubtracted.TabIndex = 10;
+            this.txtbxPointsSubtracted.TabIndex = 6;
             this.txtbxPointsSubtracted.TextChanged += new System.EventHandler(this.txtbxPointsSubtracted_TextChanged);
             // 
             // label1
@@ -191,7 +191,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.label1.Location = new System.Drawing.Point(7, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 20);
-            this.label1.TabIndex = 11;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Current points:";
             // 
             // lblPlayerCurrentPoint
@@ -201,7 +201,7 @@ namespace GTI.Modules.PlayerCenter.UI
             this.lblPlayerCurrentPoint.Location = new System.Drawing.Point(256, 55);
             this.lblPlayerCurrentPoint.Name = "lblPlayerCurrentPoint";
             this.lblPlayerCurrentPoint.Size = new System.Drawing.Size(137, 20);
-            this.lblPlayerCurrentPoint.TabIndex = 12;
+            this.lblPlayerCurrentPoint.TabIndex = 2;
             this.lblPlayerCurrentPoint.Text = "55555";
             // 
             // AwardPoints

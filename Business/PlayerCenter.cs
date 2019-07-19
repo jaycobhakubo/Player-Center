@@ -2403,7 +2403,7 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     try
                     {
-                        string reasonMessage = "Manual point award for player list " + listParams.ListName + ": Players changed= " + playersChanged.ToString() + " for " + t_pointsAwarded.ToString() + " point(s) each. Reason: " + (string.IsNullOrWhiteSpace(reason) ? "None" : reason);
+                        string reasonMessage = "Manual point adjustment for player list " + listParams.ListName + ": Players changed= " + playersChanged.ToString() + " for " + t_pointsAwarded.ToString() + " point(s) each. Reason: " + (string.IsNullOrWhiteSpace(reason) ? "None" : reason);
                         SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(0, 0, reasonMessage);
                         msg.Send();
                     }

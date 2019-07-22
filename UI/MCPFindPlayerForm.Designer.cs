@@ -168,7 +168,7 @@ namespace GTI.Modules.PlayerCenter.UI
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.m_dgvResultsList.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.m_dgvResultsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.m_dgvResultsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.m_dgvResultsList_CellContentClick);
+            //this.m_dgvResultsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.m_dgvResultsList_CellContentClick);
             this.m_dgvResultsList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.m_dgvResultsList_CellDoubleClick);
             this.m_dgvResultsList.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.m_dgvResultsList_ColumnHeaderMouseClick);
             this.m_dgvResultsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.m_dgvResultsList_KeyDown);

@@ -1186,7 +1186,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerListFailed, FormatExceptionMessage(ex)), ex);
                 }
 
-                e.Result = listMsg.Players;
+                e.Result = listMsg.Players;//knc
             }
         }
 
@@ -1205,7 +1205,8 @@ namespace GTI.Modules.PlayerCenter.Business
             if (e.Error == null)
             {
                 // Set the results of the search.
-                LastFindPlayersResults = (PlayerListItem[])e.Result;
+                LastFindPlayersResults = ((PlayerListItem[])e.Result).OrderBy(l => l.LastName).ThenBy(l => l.FirstName).ToArray();
+                
             }
             else
             {

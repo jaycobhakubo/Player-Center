@@ -50,6 +50,13 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectPlayerButton = new GTI.Controls.ImageButton();
             this.m_cancelButton = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.m_txtbxMagCard = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,13 +65,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.m_txtbxMagCard = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -175,86 +175,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_dgvResultsList_KeyPress);
             this.m_dgvResultsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.m_dgvResultsList_KeyUp);
             // 
-            // PlayerId
-            // 
-            this.PlayerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PlayerId.DataPropertyName = "Id";
-            resources.ApplyResources(this.PlayerId, "PlayerId");
-            this.PlayerId.Name = "PlayerId";
-            this.PlayerId.ReadOnly = true;
-            this.PlayerId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // m_clmnhdrFirstName
-            // 
-            this.m_clmnhdrFirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
-            this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
-            this.m_clmnhdrFirstName.ReadOnly = true;
-            this.m_clmnhdrFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_clmnhdrMiddleName
-            // 
-            this.m_clmnhdrMiddleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_clmnhdrMiddleName.DataPropertyName = "MiddleInitial";
-            resources.ApplyResources(this.m_clmnhdrMiddleName, "m_clmnhdrMiddleName");
-            this.m_clmnhdrMiddleName.MaxInputLength = 4;
-            this.m_clmnhdrMiddleName.Name = "m_clmnhdrMiddleName";
-            this.m_clmnhdrMiddleName.ReadOnly = true;
-            this.m_clmnhdrMiddleName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_clmnhdrLastName
-            // 
-            this.m_clmnhdrLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_clmnhdrLastName.DataPropertyName = "LastName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
-            this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
-            this.m_clmnhdrLastName.ReadOnly = true;
-            this.m_clmnhdrLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_clmnhdrMagCard
-            // 
-            this.m_clmnhdrMagCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_clmnhdrMagCard.DataPropertyName = "MagCard";
-            resources.ApplyResources(this.m_clmnhdrMagCard, "m_clmnhdrMagCard");
-            this.m_clmnhdrMagCard.Name = "m_clmnhdrMagCard";
-            this.m_clmnhdrMagCard.ReadOnly = true;
-            this.m_clmnhdrMagCard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_clmnhdrPlayerIdentity
-            // 
-            this.m_clmnhdrPlayerIdentity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_clmnhdrPlayerIdentity.DataPropertyName = "PlayerIdentity";
-            resources.ApplyResources(this.m_clmnhdrPlayerIdentity, "m_clmnhdrPlayerIdentity");
-            this.m_clmnhdrPlayerIdentity.Name = "m_clmnhdrPlayerIdentity";
-            this.m_clmnhdrPlayerIdentity.ReadOnly = true;
-            this.m_clmnhdrPlayerIdentity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_dgvclmnBirthDay
-            // 
-            this.m_dgvclmnBirthDay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_dgvclmnBirthDay.DataPropertyName = "BirthDate";
-            resources.ApplyResources(this.m_dgvclmnBirthDay, "m_dgvclmnBirthDay");
-            this.m_dgvclmnBirthDay.Name = "m_dgvclmnBirthDay";
-            this.m_dgvclmnBirthDay.ReadOnly = true;
-            this.m_dgvclmnBirthDay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // m_dgvclmnLastVisitDate
-            // 
-            this.m_dgvclmnLastVisitDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.m_dgvclmnLastVisitDate.DataPropertyName = "LastVisitDate";
-            resources.ApplyResources(this.m_dgvclmnLastVisitDate, "m_dgvclmnLastVisitDate");
-            this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
-            this.m_dgvclmnLastVisitDate.ReadOnly = true;
-            this.m_dgvclmnLastVisitDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
@@ -305,6 +225,86 @@ namespace GTI.Modules.PlayerCenter.UI
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
+            // PlayerId
+            // 
+            this.PlayerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PlayerId.DataPropertyName = "Id";
+            resources.ApplyResources(this.PlayerId, "PlayerId");
+            this.PlayerId.Name = "PlayerId";
+            this.PlayerId.ReadOnly = true;
+            this.PlayerId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // m_clmnhdrFirstName
+            // 
+            this.m_clmnhdrFirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_clmnhdrFirstName.DataPropertyName = "FirstName";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrFirstName.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.m_clmnhdrFirstName, "m_clmnhdrFirstName");
+            this.m_clmnhdrFirstName.Name = "m_clmnhdrFirstName";
+            this.m_clmnhdrFirstName.ReadOnly = true;
+            this.m_clmnhdrFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_clmnhdrMiddleName
+            // 
+            this.m_clmnhdrMiddleName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_clmnhdrMiddleName.DataPropertyName = "MiddleInitial";
+            resources.ApplyResources(this.m_clmnhdrMiddleName, "m_clmnhdrMiddleName");
+            this.m_clmnhdrMiddleName.MaxInputLength = 4;
+            this.m_clmnhdrMiddleName.Name = "m_clmnhdrMiddleName";
+            this.m_clmnhdrMiddleName.ReadOnly = true;
+            this.m_clmnhdrMiddleName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_clmnhdrLastName
+            // 
+            this.m_clmnhdrLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_clmnhdrLastName.DataPropertyName = "LastName";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.m_clmnhdrLastName.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.m_clmnhdrLastName, "m_clmnhdrLastName");
+            this.m_clmnhdrLastName.Name = "m_clmnhdrLastName";
+            this.m_clmnhdrLastName.ReadOnly = true;
+            this.m_clmnhdrLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_clmnhdrMagCard
+            // 
+            this.m_clmnhdrMagCard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_clmnhdrMagCard.DataPropertyName = "MagCard";
+            resources.ApplyResources(this.m_clmnhdrMagCard, "m_clmnhdrMagCard");
+            this.m_clmnhdrMagCard.Name = "m_clmnhdrMagCard";
+            this.m_clmnhdrMagCard.ReadOnly = true;
+            this.m_clmnhdrMagCard.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_clmnhdrPlayerIdentity
+            // 
+            this.m_clmnhdrPlayerIdentity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_clmnhdrPlayerIdentity.DataPropertyName = "PlayerIdentity";
+            resources.ApplyResources(this.m_clmnhdrPlayerIdentity, "m_clmnhdrPlayerIdentity");
+            this.m_clmnhdrPlayerIdentity.Name = "m_clmnhdrPlayerIdentity";
+            this.m_clmnhdrPlayerIdentity.ReadOnly = true;
+            this.m_clmnhdrPlayerIdentity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_dgvclmnBirthDay
+            // 
+            this.m_dgvclmnBirthDay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_dgvclmnBirthDay.DataPropertyName = "BirthDate";
+            resources.ApplyResources(this.m_dgvclmnBirthDay, "m_dgvclmnBirthDay");
+            this.m_dgvclmnBirthDay.Name = "m_dgvclmnBirthDay";
+            this.m_dgvclmnBirthDay.ReadOnly = true;
+            this.m_dgvclmnBirthDay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // m_dgvclmnLastVisitDate
+            // 
+            this.m_dgvclmnLastVisitDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.m_dgvclmnLastVisitDate.DataPropertyName = "LastVisitDate";
+            resources.ApplyResources(this.m_dgvclmnLastVisitDate, "m_dgvclmnLastVisitDate");
+            this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
+            this.m_dgvclmnLastVisitDate.ReadOnly = true;
+            this.m_dgvclmnLastVisitDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // MCPFindPlayerForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -337,6 +337,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private System.Windows.Forms.DataGridView m_dgvResultsList;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox m_txtbxLastName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox m_txtbxFirstName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox m_txtbxMagCard;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlayerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrMiddleName;
@@ -345,13 +352,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn m_clmnhdrPlayerIdentity;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnBirthDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn m_dgvclmnLastVisitDate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox m_txtbxLastName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox m_txtbxFirstName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox m_txtbxMagCard;
-        private System.Windows.Forms.GroupBox groupBox1;
 
        
     }

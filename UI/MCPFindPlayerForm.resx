@@ -126,13 +126,13 @@
     <value>NoControl</value>
   </data>
   <data name="m_searchButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>851, 15</value>
+    <value>851, 20</value>
   </data>
   <data name="m_searchButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>30, 30</value>
   </data>
   <data name="m_searchButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 48</value>
+    <value>116, 40</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="m_searchButton.TabIndex" type="System.Int32, mscorlib">
@@ -145,7 +145,7 @@
     <value>m_searchButton</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1456, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchButton.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -214,7 +214,7 @@
     <value>m_searchByCardButton</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1456, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_searchByCardButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -247,7 +247,7 @@
     <value>m_selectPlayerButton</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1456, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_selectPlayerButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -280,7 +280,7 @@
     <value>m_cancelButton</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Type" xml:space="preserve">
-    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1447, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
+    <value>GTI.Controls.ImageButton, GTIControls, Version=1.3.11.1456, Culture=neutral, PublicKeyToken=8379638106a1f521</value>
   </data>
   <data name="&gt;&gt;m_cancelButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -294,9 +294,6 @@
   <data name="PlayerId.HeaderText" xml:space="preserve">
     <value>Player Id</value>
   </data>
-  <data name="PlayerId.Width" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
   <metadata name="m_clmnhdrFirstName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -304,7 +301,7 @@
     <value>First Name</value>
   </data>
   <data name="m_clmnhdrFirstName.Width" type="System.Int32, mscorlib">
-    <value>111</value>
+    <value>140</value>
   </data>
   <metadata name="m_clmnhdrMiddleName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -313,7 +310,7 @@
     <value>M.I.</value>
   </data>
   <data name="m_clmnhdrMiddleName.Width" type="System.Int32, mscorlib">
-    <value>62</value>
+    <value>54</value>
   </data>
   <metadata name="m_clmnhdrLastName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -322,13 +319,16 @@
     <value>Last Name</value>
   </data>
   <data name="m_clmnhdrLastName.Width" type="System.Int32, mscorlib">
-    <value>108</value>
+    <value>140</value>
   </data>
   <metadata name="m_clmnhdrMagCard.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="m_clmnhdrMagCard.HeaderText" xml:space="preserve">
     <value>Mag Card</value>
+  </data>
+  <data name="m_clmnhdrMagCard.Width" type="System.Int32, mscorlib">
+    <value>120</value>
   </data>
   <metadata name="m_clmnhdrPlayerIdentity.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -337,7 +337,7 @@
     <value>Player Identity</value>
   </data>
   <data name="m_clmnhdrPlayerIdentity.Width" type="System.Int32, mscorlib">
-    <value>139</value>
+    <value>140</value>
   </data>
   <metadata name="m_dgvclmnBirthDay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -346,7 +346,7 @@
     <value>Birth Date</value>
   </data>
   <data name="m_dgvclmnBirthDay.Width" type="System.Int32, mscorlib">
-    <value>108</value>
+    <value>135</value>
   </data>
   <metadata name="m_dgvclmnLastVisitDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -355,7 +355,7 @@
     <value>Last Visit Date</value>
   </data>
   <data name="m_dgvclmnLastVisitDate.Width" type="System.Int32, mscorlib">
-    <value>137</value>
+    <value>150</value>
   </data>
   <data name="m_dgvResultsList.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 128</value>
@@ -377,6 +377,9 @@
   </data>
   <data name="&gt;&gt;m_dgvResultsList.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -426,6 +429,9 @@
   <data name="&gt;&gt;m_txtbxLastName.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
+  </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -473,6 +479,9 @@
   </data>
   <data name="&gt;&gt;m_txtbxFirstName.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Trebuchet MS, 12pt, style=Bold</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>540, 13</value>
@@ -866,6 +875,6 @@
     <value>MCPFindPlayerForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1448, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
+    <value>GTI.Modules.Shared.GradientForm, ManagedEliteModule, Version=1.3.42.1457, Culture=neutral, PublicKeyToken=f7ab3ec26b04c7cf</value>
   </data>
 </root>

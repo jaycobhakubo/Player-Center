@@ -2379,7 +2379,8 @@ namespace GTI.Modules.PlayerCenter.Business
                 {
                     try
                     {
-                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded, "");
+                        //US5866 When awarding points to a list make sure that the reason is included.
+                        SetPlayerPointsAwarded msg = new SetPlayerPointsAwarded(player.Player.Id, t_pointsAwarded, reason);
                         msg.Send();
 
                         if (msg.ReturnCode == 0) //success

@@ -1186,7 +1186,7 @@ namespace GTI.Modules.PlayerCenter.Business
                     throw new PlayerCenterException(string.Format(Resources.GetPlayerListFailed, FormatExceptionMessage(ex)), ex);
                 }
 
-                e.Result = listMsg.Players;//knc
+                e.Result = listMsg.Players;
             }
         }
 

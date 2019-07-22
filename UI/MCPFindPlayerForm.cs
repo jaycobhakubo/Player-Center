@@ -74,7 +74,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_sortColumn = 0;
             m_sortInfo = new bool[8]{true, false, false, false, false, false, false, false};
-            m_playerList = players.OrderBy(i => i.FirstName).ThenBy(i => i.LastName).ToArray();
+            m_playerList = players.OrderBy(i => i.LastName).ThenBy(i => i.FirstName).ToArray();
             BindingSource bs = new BindingSource(m_playerList, "");
             m_dgvResultsList.DataSource = null;
             m_dgvResultsList.Rows.Clear();

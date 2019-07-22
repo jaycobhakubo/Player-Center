@@ -50,13 +50,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_selectPlayerButton = new GTI.Controls.ImageButton();
             this.m_cancelButton = new GTI.Controls.ImageButton();
             this.m_dgvResultsList = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.m_txtbxMagCard = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PlayerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_clmnhdrMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +58,13 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_clmnhdrPlayerIdentity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnBirthDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.m_dgvclmnLastVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m_txtbxLastName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.m_txtbxFirstName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.m_txtbxMagCard = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.m_dgvResultsList)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -175,56 +175,6 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvResultsList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_dgvResultsList_KeyPress);
             this.m_dgvResultsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.m_dgvResultsList_KeyUp);
             // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // m_txtbxLastName
-            // 
-            resources.ApplyResources(this.m_txtbxLastName, "m_txtbxLastName");
-            this.m_txtbxLastName.Name = "m_txtbxLastName";
-            this.m_txtbxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // m_txtbxFirstName
-            // 
-            resources.ApplyResources(this.m_txtbxFirstName, "m_txtbxFirstName");
-            this.m_txtbxFirstName.Name = "m_txtbxFirstName";
-            this.m_txtbxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // m_txtbxMagCard
-            // 
-            resources.ApplyResources(this.m_txtbxMagCard, "m_txtbxMagCard");
-            this.m_txtbxMagCard.Name = "m_txtbxMagCard";
-            this.m_txtbxMagCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.m_txtbxMagCard);
-            this.groupBox1.Controls.Add(this.m_searchButton);
-            this.groupBox1.Controls.Add(this.m_txtbxLastName);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.m_txtbxFirstName);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
             // PlayerId
             // 
             this.PlayerId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -304,6 +254,56 @@ namespace GTI.Modules.PlayerCenter.UI
             this.m_dgvclmnLastVisitDate.Name = "m_dgvclmnLastVisitDate";
             this.m_dgvclmnLastVisitDate.ReadOnly = true;
             this.m_dgvclmnLastVisitDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // m_txtbxLastName
+            // 
+            resources.ApplyResources(this.m_txtbxLastName, "m_txtbxLastName");
+            this.m_txtbxLastName.Name = "m_txtbxLastName";
+            this.m_txtbxLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // m_txtbxFirstName
+            // 
+            resources.ApplyResources(this.m_txtbxFirstName, "m_txtbxFirstName");
+            this.m_txtbxFirstName.Name = "m_txtbxFirstName";
+            this.m_txtbxFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // m_txtbxMagCard
+            // 
+            resources.ApplyResources(this.m_txtbxMagCard, "m_txtbxMagCard");
+            this.m_txtbxMagCard.Name = "m_txtbxMagCard";
+            this.m_txtbxMagCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.m_txtbx_KeyPressEnter);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.m_txtbxMagCard);
+            this.groupBox1.Controls.Add(this.m_searchButton);
+            this.groupBox1.Controls.Add(this.m_txtbxLastName);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.m_txtbxFirstName);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
             // 
             // MCPFindPlayerForm
             // 

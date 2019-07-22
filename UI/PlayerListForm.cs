@@ -229,7 +229,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 DateTime time = new DateTime(DateTime.Now.Year, month, 1);
                 MonthItem item = new MonthItem();
                 item.Number = month;
-                item.Name = time.ToString("MMM", CultureInfo.CurrentCulture);
+                item.Name = time.ToString("MMMM", CultureInfo.CurrentCulture);
                 m_fromBirthdayMonth.Items.Add(item);
                 m_toBirthdayMonth.Items.Add(item);
             }
@@ -251,13 +251,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
             // FIX: DE1891
             m_genderList.BeginUpdate();
-
             // m_genderList.Items.Add(string.Empty);
             m_genderList.Items.Add(Resources.GenderMale);
             m_genderList.Items.Add(Resources.GenderFemale);
-
+            m_genderList.Items.Add(Resources.GenderOther);
             m_genderList.SelectedIndex = 0;
-
             m_genderList.EndUpdate();
             // END: DE1891
 

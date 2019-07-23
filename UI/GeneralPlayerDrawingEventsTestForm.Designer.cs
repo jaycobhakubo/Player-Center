@@ -85,7 +85,7 @@
             this.imgbtnRefresh.Name = "imgbtnRefresh";
             this.imgbtnRefresh.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnRefresh.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnRefresh.TabIndex = 34;
+            this.imgbtnRefresh.TabIndex = 38;
             this.imgbtnRefresh.Text = "Refresh";
             this.imgbtnRefresh.Click += new System.EventHandler(this.refreshEventsListBtn_Click);
             // 
@@ -118,7 +118,7 @@
             this.imgbtnInitiateResults.Name = "imgbtnInitiateResults";
             this.imgbtnInitiateResults.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnInitiateResults.Size = new System.Drawing.Size(129, 45);
-            this.imgbtnInitiateResults.TabIndex = 36;
+            this.imgbtnInitiateResults.TabIndex = 37;
             this.imgbtnInitiateResults.Text = "Initiate Results Broadcast";
             this.imgbtnInitiateResults.Visible = false;
             this.imgbtnInitiateResults.Click += new System.EventHandler(this.initiateEventResultsBroadcastBtn_Click);
@@ -134,8 +134,8 @@
             this.imgbtnViewEntriesResult.Name = "imgbtnViewEntriesResult";
             this.imgbtnViewEntriesResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnViewEntriesResult.Size = new System.Drawing.Size(129, 45);
-            this.imgbtnViewEntriesResult.TabIndex = 37;
-            this.imgbtnViewEntriesResult.Text = "View Entries & Results";
+            this.imgbtnViewEntriesResult.TabIndex = 36;
+            this.imgbtnViewEntriesResult.Text = "View Entries && Results";
             this.imgbtnViewEntriesResult.Click += new System.EventHandler(this.viewEntriesAndResultsBtn_Click);
             // 
             // imgbtnExecute
@@ -149,7 +149,7 @@
             this.imgbtnExecute.Name = "imgbtnExecute";
             this.imgbtnExecute.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnExecute.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnExecute.TabIndex = 38;
+            this.imgbtnExecute.TabIndex = 40;
             this.imgbtnExecute.Text = "Execute";
             this.imgbtnExecute.Click += new System.EventHandler(this.executeEventBtn_Click);
             // 
@@ -179,7 +179,7 @@
             this.imgbtnCancel.Name = "imgbtnCancel";
             this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnCancel.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnCancel.TabIndex = 40;
+            this.imgbtnCancel.TabIndex = 41;
             this.imgbtnCancel.Text = "Cancel";
             this.imgbtnCancel.Click += new System.EventHandler(this.cancelEventBtn_Click);
             // 
@@ -212,7 +212,7 @@
             this.imgBtnClose.Name = "imgBtnClose";
             this.imgBtnClose.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgBtnClose.Size = new System.Drawing.Size(92, 45);
-            this.imgBtnClose.TabIndex = 41;
+            this.imgBtnClose.TabIndex = 42;
             this.imgBtnClose.Text = "Close";
             this.imgBtnClose.Click += new System.EventHandler(this.imgBtnClose_Click);
             // 

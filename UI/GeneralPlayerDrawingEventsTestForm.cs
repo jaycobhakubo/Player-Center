@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using GameTech.Elite.Base;
 using GameTech.Elite.Client;
+using System.Globalization;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -25,9 +26,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             LoadCurrentAndRecentDrawingEvents();
             SetBtnControlDisable(false);
-            AppliedSystemSettingDisplayedText();
-           
-            
+            AppliedSystemSettingDisplayedText();                       
         }
 
         private void GenerateCurrentDrawing()
@@ -42,8 +41,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void AppliedSystemSettingDisplayedText()
         {
-            drawingEventsLbl.Text = "Scheduled " + m_displayText.ToLower() + "s";
-            chkbx_showAvailableDrawing.Text = "Show available " + m_displayText.ToLower() + "s";
+            drawingEventsLbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Scheduled " + m_displayText.ToLower() + "s");
+            chkbx_showAvailableDrawing.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Show Available " + m_displayText.ToLower() + "s");
         }
 
         private void SetBtnControlDisable(bool set)
@@ -83,9 +82,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     drawingEventsLV.Columns.Add(m_displayText);
                     drawingEventsLV.Columns.Add("Entries Begin");
                     drawingEventsLV.Columns.Add("Entries End");
-                    drawingEventsLV.Columns.Add("Schedule for");
-                    drawingEventsLV.Columns.Add("Held when");
-                    drawingEventsLV.Columns.Add("Cancelled when");
+                    drawingEventsLV.Columns.Add("Schedule For");
+                    drawingEventsLV.Columns.Add("Held When");
+                    drawingEventsLV.Columns.Add("Cancelled When");
                     drawingEventsLV.Columns.Add("Players");
                     drawingEventsLV.Columns.Add("Entries");
                     drawingEventsLV.Columns.Add("# Drawn");

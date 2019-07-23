@@ -65,9 +65,9 @@
             this.drawingEventsLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.drawingEventsLbl.Location = new System.Drawing.Point(12, 9);
             this.drawingEventsLbl.Name = "drawingEventsLbl";
-            this.drawingEventsLbl.Size = new System.Drawing.Size(159, 22);
+            this.drawingEventsLbl.Size = new System.Drawing.Size(160, 22);
             this.drawingEventsLbl.TabIndex = 29;
-            this.drawingEventsLbl.Text = "Scheduled drawings";
+            this.drawingEventsLbl.Text = "Scheduled Drawings";
             // 
             // imgbtnRefresh
             // 
@@ -89,9 +89,6 @@
             // 
             // imgbtnAbortResult
             // 
-            this.imgbtnAbortResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.imgbtnAbortResult.FocusColor = System.Drawing.Color.Black;
             this.imgbtnAbortResult.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnAbortResult.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
@@ -102,7 +99,7 @@
             this.imgbtnAbortResult.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnAbortResult.Size = new System.Drawing.Size(129, 45);
             this.imgbtnAbortResult.TabIndex = 35;
-            this.imgbtnAbortResult.Text = "Cancel winner display";
+            this.imgbtnAbortResult.Text = "Cancel Winner Display";
             this.imgbtnAbortResult.Click += new System.EventHandler(this.abortEventResultsBroadcastBtn_Click);
             // 
             // imgbtnInitiateResults
@@ -204,11 +201,11 @@
             this.chkbx_showAvailableDrawing.Checked = true;
             this.chkbx_showAvailableDrawing.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkbx_showAvailableDrawing.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkbx_showAvailableDrawing.Location = new System.Drawing.Point(787, 8);
+            this.chkbx_showAvailableDrawing.Location = new System.Drawing.Point(784, 8);
             this.chkbx_showAvailableDrawing.Name = "chkbx_showAvailableDrawing";
-            this.chkbx_showAvailableDrawing.Size = new System.Drawing.Size(208, 26);
+            this.chkbx_showAvailableDrawing.Size = new System.Drawing.Size(211, 26);
             this.chkbx_showAvailableDrawing.TabIndex = 43;
-            this.chkbx_showAvailableDrawing.Text = "Show available drawing";
+            this.chkbx_showAvailableDrawing.Text = "Show Available Drawing";
             this.chkbx_showAvailableDrawing.UseVisualStyleBackColor = false;
             this.chkbx_showAvailableDrawing.CheckedChanged += new System.EventHandler(this.chkbx_showAvailableDrawing_CheckedChanged);
             // 

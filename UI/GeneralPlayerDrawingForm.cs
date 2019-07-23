@@ -208,21 +208,43 @@ namespace GTI.Modules.PlayerCenter.UI
             m_entrySpendScaleDT.Columns.Add("Entries", typeof(int));
             entrySpendScaleDGV.DataSource = m_entrySpendScaleDT;
 
-            //Set Maxlenght to 10 character
-            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["From"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["To"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["Entries"]).MaxInputLength = 10;
-        
+            //Set Maxlenght to 10 character; Set column width to fit 10 character
+            var dgvClmnFrom = (DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["From"];
+            dgvClmnFrom.MaxInputLength = 10;
+            dgvClmnFrom.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnFrom.Width = 100;
+
+            var dgvClmnTo = (DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["To"];
+            dgvClmnTo.MaxInputLength = 10;
+            dgvClmnTo.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnTo.Width = 100;
+
+            var dgvClmnEntries = (DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["Entries"];
+            dgvClmnEntries.MaxInputLength = 10;
+            dgvClmnEntries.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnEntries.Width = 100;
+               
             m_entryVisitScaleDT = new DataTable();
             m_entryVisitScaleDT.Columns.Add("From", typeof(int));
             m_entryVisitScaleDT.Columns.Add("To", typeof(int));
             m_entryVisitScaleDT.Columns.Add("Entries", typeof(int));
             entryVisitScaleDGV.DataSource = m_entryVisitScaleDT;
 
-            //Set Maxlenght to 10 character
-            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["From"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["To"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["Entries"]).MaxInputLength = 10;
+            //Set Maxlenght to 10 character; Set column width to fit 10 character
+            dgvClmnFrom = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["From"];
+            dgvClmnFrom.MaxInputLength = 10;
+            dgvClmnFrom.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnFrom.Width = 100;
+
+            dgvClmnTo = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["To"];
+            dgvClmnTo.MaxInputLength = 10;
+            dgvClmnTo.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnTo.Width = 100;
+
+            dgvClmnEntries = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["Entries"];
+            dgvClmnEntries.MaxInputLength = 10;
+            dgvClmnEntries.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvClmnEntries.Width = 100;
 
             m_entryPurchaseScaleDT = new DataTable();
             m_entryPurchaseScaleDT.Columns.Add("From", typeof(int));
@@ -230,13 +252,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_entryPurchaseScaleDT.Columns.Add("Entries", typeof(int));
             entryPurchaseScaleDGV.DataSource = m_entryPurchaseScaleDT;
 
-            /*
-            //Set Maxlenght to 10 character
-            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["From"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["To"]).MaxInputLength = 10;
-            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["Entries"]).MaxInputLength = 10;
-            */
-
+         
             foreach (var dgv in new DataGridView[] { entrySpendScaleDGV, entryVisitScaleDGV, entryPurchaseScaleDGV })
             {
                 dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;

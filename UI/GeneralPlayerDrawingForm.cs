@@ -208,11 +208,21 @@ namespace GTI.Modules.PlayerCenter.UI
             m_entrySpendScaleDT.Columns.Add("Entries", typeof(int));
             entrySpendScaleDGV.DataSource = m_entrySpendScaleDT;
 
+            //Set Maxlenght to 10 character
+            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["From"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["To"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["Entries"]).MaxInputLength = 10;
+        
             m_entryVisitScaleDT = new DataTable();
             m_entryVisitScaleDT.Columns.Add("From", typeof(int));
             m_entryVisitScaleDT.Columns.Add("To", typeof(int));
             m_entryVisitScaleDT.Columns.Add("Entries", typeof(int));
             entryVisitScaleDGV.DataSource = m_entryVisitScaleDT;
+
+            //Set Maxlenght to 10 character
+            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["From"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["To"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["Entries"]).MaxInputLength = 10;
 
             m_entryPurchaseScaleDT = new DataTable();
             m_entryPurchaseScaleDT.Columns.Add("From", typeof(int));
@@ -220,7 +230,14 @@ namespace GTI.Modules.PlayerCenter.UI
             m_entryPurchaseScaleDT.Columns.Add("Entries", typeof(int));
             entryPurchaseScaleDGV.DataSource = m_entryPurchaseScaleDT;
 
-            foreach(var dgv in new DataGridView[] { entrySpendScaleDGV, entryVisitScaleDGV, entryPurchaseScaleDGV })
+            /*
+            //Set Maxlenght to 10 character
+            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["From"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["To"]).MaxInputLength = 10;
+            ((DataGridViewTextBoxColumn)entryPurchaseScaleDGV.Columns["Entries"]).MaxInputLength = 10;
+            */
+
+            foreach (var dgv in new DataGridView[] { entrySpendScaleDGV, entryVisitScaleDGV, entryPurchaseScaleDGV })
             {
                 dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
@@ -1637,110 +1654,48 @@ namespace GTI.Modules.PlayerCenter.UI
             var dgv = (DataGridView)sender;
            m_selectedColumnDataType = dgv.CurrentCell.ValueType;
 
-            e.Control.KeyDown -= new KeyEventHandler(Cell_KeyDown);
-            e.Control.KeyDown += new KeyEventHandler(Cell_KeyDown);
-
             e.Control.KeyPress -= new KeyPressEventHandler(Cell_KeyPress);
             e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
         }
 
-        private void Cell_KeyDown(object sender, KeyEventArgs e)
-        {
-            var txtbxValue = (TextBox)sender;
-            bool result = true;
-            int keyValue = e.KeyValue;
-          
-     
-                if (m_selectedColumnDataType == typeof(int))
-                {
-                    if (e.KeyCode == Keys.Back)
-                    {
-                        result = false;
-                    }
-                    if (result)
-                    {
-                        result = !char.IsDigit(/*e.KeyChar*/(char)keyValue);
-                    }
-                }
-                else if (m_selectedColumnDataType == typeof(decimal))
-                {
-                    if (sender is TextBox)
-                    {
-                        txtbxValue = (TextBox)sender;
-                        result = false;
-
-                        string x = txtbxValue.Text;
-                        if (txtbxValue.SelectionLength > 0)
-                        {
-                            int tlen = x.Length - txtbxValue.SelectionLength;
-                            x = x.Substring(0, tlen);
-                        }
-
-                        int count = x.Split('.').Length - 1;
-
-                        if (!char.IsControl((char)keyValue))
-                        {
-                            switch ((char)keyValue)
-                            {
-                                case (char)190://period
-                                    //allow 1 decimal point
-                                    if (count > 0)
-                                    {
-                                        result = true;
-                                    }
-                                    else
-                                    {
-                                        result = false;
-                                    }
-                                    break;
-                                default:
-                                    result = !char.IsDigit((char)keyValue);
-                                    break;
-                            }
-                        }
-
-                        if ((char)keyValue == (char)Keys.Back)
-                        {
-                            result = false;
-                        }
-
-                        else if (Regex.IsMatch(x, @"\.\d\d"))
-                        {
-                            result = true;
-                        }
-                    }
-                
-                }
-            
-
-            m_invalidUserInput = result;
-        
-            e.Handled = result;
-        }
-
-        bool m_invalidUserInput;
 
         private void Cell_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var txtbxValue = (TextBox)sender;
-   
-            //Limit max lenght = 10
-            if (txtbxValue.TextLength  < 10)
+            var txtbxValue = (TextBox)sender;      
+            bool result = true;
+
+            if (m_selectedColumnDataType == typeof(int))
             {
-                if (Char.IsDigit(e.KeyChar))
+                if (e.KeyChar == (char)Keys.Back)
                 {
-                    m_invalidUserInput = false;
+                    result = false;
+
+                }
+                if (result)
+                {
+                    result = !char.IsDigit(e.KeyChar);
                 }
             }
-            else
+            else if (m_selectedColumnDataType == typeof(decimal))
             {
-                m_invalidUserInput = true;
+                result = false;
+
+                if (!char.IsControl(e.KeyChar)
+                    && !char.IsDigit(e.KeyChar)
+                    && e.KeyChar != '.')
+                {
+                    e.Handled = true;
+                    result = e.Handled;
+                }
+
+                if (e.KeyChar == '.'
+                    && (sender as TextBox).Text.IndexOf('.') > -1)
+                {
+                    e.Handled = true;
+                    result = e.Handled;
+                }
             }
-
-
-            e.Handled = m_invalidUserInput;
-        }
-
-        
+            e.Handled = result;
+        }       
     }
 }

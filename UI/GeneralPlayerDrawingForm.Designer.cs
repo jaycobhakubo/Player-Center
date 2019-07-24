@@ -251,8 +251,9 @@
             this.drawingDetailsTC.Controls.Add(this.entryMethodsTP);
             this.drawingDetailsTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.drawingDetailsTC.Location = new System.Drawing.Point(16, 70);
-            this.drawingDetailsTC.Margin = new System.Windows.Forms.Padding(16, 3, 16, 3);
+            this.drawingDetailsTC.Margin = new System.Windows.Forms.Padding(8);
             this.drawingDetailsTC.Name = "drawingDetailsTC";
+            this.drawingDetailsTC.Padding = new System.Drawing.Point(0, 0);
             this.drawingDetailsTC.SelectedIndex = 0;
             this.drawingDetailsTC.Size = new System.Drawing.Size(702, 448);
             this.drawingDetailsTC.TabIndex = 7;
@@ -473,8 +474,8 @@
             this.eventTP.BackColor = System.Drawing.Color.LightSteelBlue;
             this.eventTP.Controls.Add(this.splitContainer1);
             this.eventTP.Location = new System.Drawing.Point(4, 31);
-            this.eventTP.Margin = new System.Windows.Forms.Padding(0);
             this.eventTP.Name = "eventTP";
+            this.eventTP.Padding = new System.Windows.Forms.Padding(3);
             this.eventTP.Size = new System.Drawing.Size(694, 413);
             this.eventTP.TabIndex = 1;
             this.eventTP.Text = "Scheduling ";
@@ -482,7 +483,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -503,8 +504,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForLbl);
             this.splitContainer1.Panel2.Controls.Add(this.eventRepeatDetailsPnl);
             this.splitContainer1.Panel2.Controls.Add(this.initialEventScheduledForDTP);
-            this.splitContainer1.Size = new System.Drawing.Size(694, 413);
-            this.splitContainer1.SplitterDistance = 344;
+            this.splitContainer1.Size = new System.Drawing.Size(688, 407);
+            this.splitContainer1.SplitterDistance = 341;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.TabStop = false;
             // 
@@ -1052,7 +1053,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(694, 384);
+            this.entrySpendTP.Size = new System.Drawing.Size(694, 385);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -1062,7 +1063,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(582, 339);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(582, 340);
             this.addEntrySpendTierBtn.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
@@ -1087,7 +1088,7 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(470, 315);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(470, 316);
             this.entrySpendScaleDGV.TabIndex = 6;
             this.entrySpendScaleDGV.Tag = "1";
             this.entrySpendScaleDGV.Visible = false;

@@ -117,7 +117,6 @@
             this.closeBtn = new GTI.Controls.ImageButton();
             this.copyDrawingBtn = new GTI.Controls.ImageButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.testEventsBtn = new System.Windows.Forms.Button();
             this.drawingDetailsGB.SuspendLayout();
             this.drawingDetailsTC.SuspendLayout();
@@ -1442,7 +1441,6 @@
         private Controls.ImageButton addEntrySpendTierBtn;
         private Controls.ImageButton addEntryVisitTierBtn;
         private Controls.ImageButton addEntryPurchaseTierBtn;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckedListBox entryPurchaseSelectionsCL;
         private System.Windows.Forms.Label eventRepetitionRateLbl;
         private System.Windows.Forms.Label eventWindowExamplesLbl;

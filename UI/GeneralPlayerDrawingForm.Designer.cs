@@ -755,12 +755,12 @@
             this.entryMethodsTC.Controls.Add(this.entrySpendTP);
             this.entryMethodsTC.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.entryMethodsTC.ItemSize = new System.Drawing.Size(79, 27);
-            this.entryMethodsTC.Location = new System.Drawing.Point(-4, -3);
+            this.entryMethodsTC.Location = new System.Drawing.Point(-4, -2);
             this.entryMethodsTC.Margin = new System.Windows.Forms.Padding(8);
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.Padding = new System.Drawing.Point(0, 0);
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(702, 420);
+            this.entryMethodsTC.Size = new System.Drawing.Size(702, 419);
             this.entryMethodsTC.TabIndex = 4;
             this.entryMethodsTC.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.entryMethodsTC_DrawItem);
             // 
@@ -1052,7 +1052,7 @@
             this.entrySpendTP.Location = new System.Drawing.Point(4, 31);
             this.entrySpendTP.Name = "entrySpendTP";
             this.entrySpendTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entrySpendTP.Size = new System.Drawing.Size(694, 385);
+            this.entrySpendTP.Size = new System.Drawing.Size(694, 384);
             this.entrySpendTP.TabIndex = 0;
             this.entrySpendTP.Text = "Spend";
             // 
@@ -1062,7 +1062,7 @@
             this.addEntrySpendTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntrySpendTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntrySpendTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(582, 340);
+            this.addEntrySpendTierBtn.Location = new System.Drawing.Point(582, 339);
             this.addEntrySpendTierBtn.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.addEntrySpendTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntrySpendTierBtn.Name = "addEntrySpendTierBtn";
@@ -1087,7 +1087,7 @@
             this.entrySpendScaleDGV.Name = "entrySpendScaleDGV";
             this.entrySpendScaleDGV.RowHeadersVisible = false;
             this.entrySpendScaleDGV.RowTemplate.Height = 30;
-            this.entrySpendScaleDGV.Size = new System.Drawing.Size(470, 316);
+            this.entrySpendScaleDGV.Size = new System.Drawing.Size(470, 315);
             this.entrySpendScaleDGV.TabIndex = 6;
             this.entrySpendScaleDGV.Tag = "1";
             this.entrySpendScaleDGV.Visible = false;

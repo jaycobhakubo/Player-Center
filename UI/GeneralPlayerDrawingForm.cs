@@ -1808,6 +1808,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 //To set the alignment of the caption.
                 string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
                 StringFormat sf = new StringFormat();
+                sf.LineAlignment = StringAlignment.Center;
                 sf.Alignment = StringAlignment.Center;
 
                 //Thsi will help you to fill the interior portion of

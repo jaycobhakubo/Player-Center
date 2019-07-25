@@ -1577,15 +1577,15 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     if (isNew == false && isUpdate == true)//check if the new name already exists.
                     {
-                        foreach (string rn in lstBxRafflePrizes2.Items)//Find if it exists
+                        foreach (RafflePrize rn in lstBxRafflePrizes2.Items)//Find if it exists
                         {
-                            //find the index of each item
-                            int findIndex = lstBxRafflePrizes2.Items.IndexOf(rn);
-
+                           
+                            int findIndex = lstBxRafflePrizes2.Items.IndexOf(rn);    //find the index of each item
+                            
                             if (lstBxRafflePrizes2.SelectedIndex != findIndex)//exclude itself
                             {
-
-                                if (rn.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
+                                
+                                if (rn.Name.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
                                 {
                                     errorProvider1.SetError(txtbxSetupName, "Raffle name already exists.");
                                     e.Cancel = true;

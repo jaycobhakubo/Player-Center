@@ -1714,128 +1714,128 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = result;
         }
 
-        private void drawingDetailsTC_DrawItem(object sender, DrawItemEventArgs e)
-        {
-             try
-			{
-				//This line of code will help you to change the apperance like size,name,style.
-				Font f;
-				//For background color
-				Brush backBrush;
-				//For forground color
-				Brush foreBrush;
+        //private void drawingDetailsTC_DrawItem(object sender, DrawItemEventArgs e)
+        //{
+        //     try
+        //    {
+        //        //This line of code will help you to change the apperance like size,name,style.
+        //        Font f;
+        //        //For background color
+        //        Brush backBrush;
+        //        //For forground color
+        //        Brush foreBrush;
 			
-				//This construct will hell you to deside which tab page have current focus
-				//to change the style.
-                if (e.Index == this.drawingDetailsTC.SelectedIndex)
-				{
-					//This line of code will help you to change the apperance like size,name,style.
-					f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
-					f = new Font(e.Font,FontStyle.Bold);
+        //        //This construct will hell you to deside which tab page have current focus
+        //        //to change the style.
+        //        if (e.Index == this.drawingDetailsTC.SelectedIndex)
+        //        {
+        //            //This line of code will help you to change the apperance like size,name,style.
+        //            f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
+        //            f = new Font(e.Font,FontStyle.Bold);
 
-					backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
-					foreBrush = Brushes.Black;
-				}
-				else
-				{
-					f = e.Font;
-					backBrush = new SolidBrush(e.BackColor); 
-					foreBrush = new SolidBrush(e.ForeColor);
-				}
+        //            backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
+        //            foreBrush = Brushes.Black;
+        //        }
+        //        else
+        //        {
+        //            f = e.Font;
+        //            backBrush = new SolidBrush(e.BackColor); 
+        //            foreBrush = new SolidBrush(e.ForeColor);
+        //        }
                 
-				//To set the alignment of the caption.
-                string tabName = this.drawingDetailsTC.TabPages[e.Index].Text;
-				StringFormat sf = new StringFormat();
-				sf.Alignment = StringAlignment.Center;
+        //        //To set the alignment of the caption.
+        //        string tabName = this.drawingDetailsTC.TabPages[e.Index].Text;
+        //        StringFormat sf = new StringFormat();
+        //        sf.Alignment = StringAlignment.Center;
 	
-				//Thsi will help you to fill the interior portion of
-				//selected tabpage.
-				e.Graphics.FillRectangle(backBrush, e.Bounds);
-				Rectangle r = e.Bounds;
-				r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-				e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
+        //        //Thsi will help you to fill the interior portion of
+        //        //selected tabpage.
+        //        e.Graphics.FillRectangle(backBrush, e.Bounds);
+        //        Rectangle r = e.Bounds;
+        //        r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
+        //        e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
 
-				sf.Dispose();
-                if (e.Index == this.drawingDetailsTC.SelectedIndex)
-				{
-					f.Dispose();
-					backBrush.Dispose();
-				}
-				else
-				{
-					backBrush.Dispose();
-					foreBrush.Dispose();
-				}
-			}
-			catch(Exception Ex)
-			{
-				MessageBox.Show(Ex.Message.ToString(),"Error Occured",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        //        sf.Dispose();
+        //        if (e.Index == this.drawingDetailsTC.SelectedIndex)
+        //        {
+        //            f.Dispose();
+        //            backBrush.Dispose();
+        //        }
+        //        else
+        //        {
+        //            backBrush.Dispose();
+        //            foreBrush.Dispose();
+        //        }
+        //    }
+        //    catch(Exception Ex)
+        //    {
+        //        MessageBox.Show(Ex.Message.ToString(),"Error Occured",MessageBoxButtons.OK,MessageBoxIcon.Information);
 					
-			}
+        //    }
 			
 		
-        }
+        //}
 
-        private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            try
-            {
-                //This line of code will help you to change the apperance like size,name,style.
-                Font f;
-                //For background color
-                Brush backBrush;
-                //For forground color
-                Brush foreBrush;
+        //private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
+        //{
+        //    try
+        //    {
+        //        //This line of code will help you to change the apperance like size,name,style.
+        //        Font f;
+        //        //For background color
+        //        Brush backBrush;
+        //        //For forground color
+        //        Brush foreBrush;
 
-                //This construct will hell you to deside which tab page have current focus
-                //to change the style.
-                if (e.Index == this.entryMethodsTC.SelectedIndex)
-                {
-                    //This line of code will help you to change the apperance like size,name,style.
-                    f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
-                    f = new Font(e.Font, FontStyle.Bold);
+        //        //This construct will hell you to deside which tab page have current focus
+        //        //to change the style.
+        //        if (e.Index == this.entryMethodsTC.SelectedIndex)
+        //        {
+        //            //This line of code will help you to change the apperance like size,name,style.
+        //            f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
+        //            f = new Font(e.Font, FontStyle.Bold);
 
-                    backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
-                    foreBrush = Brushes.Black;
-                }
-                else
-                {
-                    f = e.Font;
-                    backBrush = new SolidBrush(e.BackColor);
-                    foreBrush = new SolidBrush(e.ForeColor);
-                }
+        //            backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
+        //            foreBrush = Brushes.Black;
+        //        }
+        //        else
+        //        {
+        //            f = e.Font;
+        //            backBrush = new SolidBrush(e.BackColor);
+        //            foreBrush = new SolidBrush(e.ForeColor);
+        //        }
 
-                //To set the alignment of the caption.
-                string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
-                StringFormat sf = new StringFormat();
-                sf.LineAlignment = StringAlignment.Center;
-                sf.Alignment = StringAlignment.Center;
+        //        //To set the alignment of the caption.
+        //        string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
+        //        StringFormat sf = new StringFormat();
+        //        sf.LineAlignment = StringAlignment.Center;
+        //        sf.Alignment = StringAlignment.Center;
 
-                //Thsi will help you to fill the interior portion of
-                //selected tabpage.
-                e.Graphics.FillRectangle(backBrush, e.Bounds);
-                Rectangle r = e.Bounds;
-                r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-                e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
+        //        //Thsi will help you to fill the interior portion of
+        //        //selected tabpage.
+        //        e.Graphics.FillRectangle(backBrush, e.Bounds);
+        //        Rectangle r = e.Bounds;
+        //        r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
+        //        e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
 
-                sf.Dispose();
-                if (e.Index == this.entryMethodsTC.SelectedIndex)
-                {
-                    f.Dispose();
-                    backBrush.Dispose();
-                }
-                else
-                {
-                    backBrush.Dispose();
-                    foreBrush.Dispose();
-                }
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show(Ex.Message.ToString(), "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        sf.Dispose();
+        //        if (e.Index == this.entryMethodsTC.SelectedIndex)
+        //        {
+        //            f.Dispose();
+        //            backBrush.Dispose();
+        //        }
+        //        else
+        //        {
+        //            backBrush.Dispose();
+        //            foreBrush.Dispose();
+        //        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        MessageBox.Show(Ex.Message.ToString(), "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
+        //    }
 			
-        }       
+        //}       
     }
 }

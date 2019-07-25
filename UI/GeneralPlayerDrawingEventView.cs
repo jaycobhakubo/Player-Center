@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GameTech.Elite.Base;
+using System.Globalization;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -20,6 +21,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             InitializeComponent();
             displayTextSetting();
+            this.singularPropertiesTLP.Controls.OfType<Label>().ToList().ForEach(t => t.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(t.Text));        
         }
 
         private string displayTextSetting()
@@ -27,9 +29,9 @@ namespace GTI.Modules.PlayerCenter.UI
             m_displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
             drawingCaptionLbl.Text = m_displayedText;
             return m_displayedText;
+           
         }
-
-
+      
         public void SetEvent(GeneralPlayerDrawingEvent drawingEvent, GeneralPlayerDrawing drawing)
         {
             m_drawingEvent = drawingEvent;

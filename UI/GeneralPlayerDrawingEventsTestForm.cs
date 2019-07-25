@@ -323,7 +323,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)//knc
+        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)
         {
             var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
             int eventId = selEvent.EventId;

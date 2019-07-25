@@ -14,11 +14,21 @@ namespace GTI.Modules.PlayerCenter.UI
     {
         private GeneralPlayerDrawingEvent m_drawingEvent;
         private GeneralPlayerDrawing m_drawing;
+        private string m_displayedText = "";
 
         public GeneralPlayerDrawingEventView()
         {
             InitializeComponent();
+            displayTextSetting();
         }
+
+        private string displayTextSetting()
+        {
+            m_displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
+            drawingCaptionLbl.Text = m_displayedText;
+            return m_displayedText;
+        }
+
 
         public void SetEvent(GeneralPlayerDrawingEvent drawingEvent, GeneralPlayerDrawing drawing)
         {
@@ -90,7 +100,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if(m_drawingEvent.Results.Count == 0)
                 {
                     resultsLV.Columns.Add("");
-                    resultsLV.Items.Add("No Drawing Results Found");
+                    resultsLV.Items.Add("No "+ m_displayedText +" Results Found");
                 }
                 else
                 {

@@ -115,12 +115,14 @@ namespace GTI.Modules.PlayerCenter.UI
                 RaffleToolStripMenuItem.Text = NewItem;
                 RaffleToolStripMenuItem.Click += new EventHandler(RaffleToolStripMenuItem_Click);
                 viewToolStripMenuItem.DropDownItems.Add(RaffleToolStripMenuItem);
+
+                var generalDrawingTSMI = new ToolStripMenuItem();
+                generalDrawingTSMI.Text = "General " + DisplayText; // Drawing...";
+                generalDrawingTSMI.Click += generalDrawingTSMI_Click;
+                viewToolStripMenuItem.DropDownItems.Add(generalDrawingTSMI);
             }
 
-            var generalDrawingTSMI = new ToolStripMenuItem();
-            generalDrawingTSMI.Text = "General " + DisplayText; // Drawing...";
-            generalDrawingTSMI.Click += generalDrawingTSMI_Click;
-            viewToolStripMenuItem.DropDownItems.Add(generalDrawingTSMI);
+           
 
             //see if we can purge player points (must be internal system)
             if (m_parent.Settings.ThirdPartyPlayerInterfaceID == 0)

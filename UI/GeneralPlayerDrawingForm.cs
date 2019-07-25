@@ -1776,66 +1776,98 @@ namespace GTI.Modules.PlayerCenter.UI
 		
         //}
 
-        //private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
-        //{
-        //    try
-        //    {
-        //        //This line of code will help you to change the apperance like size,name,style.
-        //        Font f;
-        //        //For background color
-        //        Brush backBrush;
-        //        //For forground color
-        //        Brush foreBrush;
+        private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
+        {
 
-        //        //This construct will hell you to deside which tab page have current focus
-        //        //to change the style.
-        //        if (e.Index == this.entryMethodsTC.SelectedIndex)
-        //        {
-        //            //This line of code will help you to change the apperance like size,name,style.
-        //            f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
-        //            f = new Font(e.Font, FontStyle.Bold);
+            //we want the tab control to paint with the top area to the right of the last tab as invisible.
+            e.DrawBackground();
 
-        //            backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
-        //            foreBrush = Brushes.Black;
-        //        }
-        //        else
-        //        {
-        //            f = e.Font;
-        //            backBrush = new SolidBrush(e.BackColor);
-        //            foreBrush = new SolidBrush(e.ForeColor);
-        //        }
+            //find the control's rectangle and make it into a rectangle covering the area we want to fix
+            Rectangle rect = entryMethodsTC.ClientRectangle;
 
-        //        //To set the alignment of the caption.
-        //        string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
-        //        StringFormat sf = new StringFormat();
-        //        sf.LineAlignment = StringAlignment.Center;
-        //        sf.Alignment = StringAlignment.Center;
+            rect.X = entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).X + entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).Width;
+            rect.Width -= entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).X;
+            rect.Height = entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).Height;
 
-        //        //Thsi will help you to fill the interior portion of
-        //        //selected tabpage.
-        //        e.Graphics.FillRectangle(backBrush, e.Bounds);
-        //        Rectangle r = e.Bounds;
-        //        r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-        //        e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
+            //draw the rectangle filled with the color from that area of the background image
+            e.Graphics.FillRectangle(new SolidBrush(Color.LightSteelBlue), rect);
 
-        //        sf.Dispose();
-        //        if (e.Index == this.entryMethodsTC.SelectedIndex)
-        //        {
-        //            f.Dispose();
-        //            backBrush.Dispose();
-        //        }
-        //        else
-        //        {
-        //            backBrush.Dispose();
-        //            foreBrush.Dispose();
-        //        }
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        MessageBox.Show(Ex.Message.ToString(), "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //draw our tab
+            rect = entryMethodsTC.GetTabRect(e.Index);
+            rect.Height += 2; //covers small "selected" color under tab
 
-        //    }
-			
-        //}       
+            //we'll make our unselected tabs a little lighter than the selected tab
+            e.Graphics.FillRectangle(e.State == DrawItemState.Selected ? SystemBrushes.Control : SystemBrushes.ControlLight, rect);
+
+            if (!entryMethodsTC.Enabled)
+            {
+                e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.Black, new PointF(e.Bounds.X - 1, e.Bounds.Y - 1));
+                e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.White, new PointF(e.Bounds.X + 1, e.Bounds.Y + 1));
+                e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.Gray, new PointF(e.Bounds.X, e.Bounds.Y));
+            }
+            else
+            {
+                e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.Black, new PointF(e.Bounds.X, e.Bounds.Y));
+            }
+
+            //try
+            //{
+            //    //This line of code will help you to change the apperance like size,name,style.
+            //    Font f;
+            //    //For background color
+            //    Brush backBrush;
+            //    //For forground color
+            //    Brush foreBrush;
+
+            //    //This construct will hell you to deside which tab page have current focus
+            //    //to change the style.
+            //    if (e.Index == this.entryMethodsTC.SelectedIndex)
+            //    {
+            //        //This line of code will help you to change the apperance like size,name,style.
+            //        f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
+            //        f = new Font(e.Font, FontStyle.Bold);
+
+            //        backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
+            //        foreBrush = Brushes.Black;
+            //    }
+            //    else
+            //    {
+            //        f = e.Font;
+            //        backBrush = new SolidBrush(e.BackColor);
+            //        foreBrush = new SolidBrush(e.ForeColor);
+            //    }
+
+            //    //To set the alignment of the caption.
+            //    string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
+            //    StringFormat sf = new StringFormat();
+            //    sf.LineAlignment = StringAlignment.Center;
+            //    sf.Alignment = StringAlignment.Center;
+
+            //    //Thsi will help you to fill the interior portion of
+            //    //selected tabpage.
+            //    e.Graphics.FillRectangle(backBrush, e.Bounds);
+            //    Rectangle r = e.Bounds;
+            //    r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
+            //    e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
+
+            //    sf.Dispose();
+            //    if (e.Index == this.entryMethodsTC.SelectedIndex)
+            //    {
+            //        f.Dispose();
+            //        backBrush.Dispose();
+            //    }
+            //    else
+            //    {
+            //        backBrush.Dispose();
+            //        foreBrush.Dispose();
+            //    }
+            //}
+            //catch (Exception Ex)
+            //{
+            //    MessageBox.Show(Ex.Message.ToString(), "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //}
+
+        }
     }
 }

@@ -2116,6 +2116,10 @@ namespace GTI.Modules.PlayerCenter.UI
                     RaffleName = txtbxSetupName.Text.ToString();
                     SaveOrUpdateRaffleDefinitions(dataRafflePrize.Id, false);
                 }
+                else
+                {
+                    return;
+                }
             }
 
             if (isNew == true || isModify == true)

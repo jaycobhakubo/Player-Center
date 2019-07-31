@@ -107,20 +107,18 @@ namespace GTI.Modules.PlayerCenter.UI
         private void AddToolStripMenuItem()
         {
             string DisplayText = (m_parent.Settings.RaffleDrawingSetting == 2) ? "Drawing..." : "Raffle...";
-            if (m_parent.Settings.RaffleRunLocation == 2)
-            {
-                //get the system settings               
-                string NewItem = "Player " + DisplayText;  //"Raffle"; //This will be change base on system setting Raffle or Drawing lets use Raffle for now
-                ToolStripItem RaffleToolStripMenuItem = new ToolStripMenuItem();
-                RaffleToolStripMenuItem.Text = NewItem;
-                RaffleToolStripMenuItem.Click += new EventHandler(RaffleToolStripMenuItem_Click);
-                viewToolStripMenuItem.DropDownItems.Add(RaffleToolStripMenuItem);
 
-                var generalDrawingTSMI = new ToolStripMenuItem();
-                generalDrawingTSMI.Text = "General " + DisplayText; // Drawing...";
-                generalDrawingTSMI.Click += generalDrawingTSMI_Click;
-                viewToolStripMenuItem.DropDownItems.Add(generalDrawingTSMI);
-            }
+            //get the system settings               
+            string NewItem = "Player " + DisplayText;  //"Raffle"; //This will be change base on system setting Raffle or Drawing lets use Raffle for now
+            ToolStripItem RaffleToolStripMenuItem = new ToolStripMenuItem();
+            RaffleToolStripMenuItem.Text = NewItem;
+            RaffleToolStripMenuItem.Click += new EventHandler(RaffleToolStripMenuItem_Click);
+            viewToolStripMenuItem.DropDownItems.Add(RaffleToolStripMenuItem);
+
+            var generalDrawingTSMI = new ToolStripMenuItem();
+            generalDrawingTSMI.Text = "General " + DisplayText; // Drawing...";
+            generalDrawingTSMI.Click += generalDrawingTSMI_Click;
+            viewToolStripMenuItem.DropDownItems.Add(generalDrawingTSMI);
 
            
 

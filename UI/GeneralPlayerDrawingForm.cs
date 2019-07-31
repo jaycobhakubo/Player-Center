@@ -13,6 +13,9 @@ using GameTech.Elite.Client;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
+
+
+
     public partial class GeneralPlayerDrawingForm : GradientForm
     {
         public static int? UILimitToNInt(object uiVal)
@@ -844,6 +847,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 playerPresenceRequiredChk.Checked = m_currentGPD.PlayerPresenceRequired;
                 txtbx_PrizeDescription.Text = m_currentGPD.PrizeDescription;
                 txtbx_disclaimer.Text = m_currentGPD.Disclaimer;
+                showZeroEntryCountChk.Checked = m_currentGPD.ShowZeroEntryDrawingOnReceipt;
 
                 #region Entry Window
                 initialEventEntryPeriodBeginDTP.Value = m_currentGPD.InitialEventEntryPeriodBegin;
@@ -1110,6 +1114,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT ? PendingEntryPurchaseProducts : null
                 , PendingPrizeDescription
                 , PendingDisclaimer
+                , showZeroEntryCountChk.Checked
                 , m_currentGPD.Id);
 
             return dfd;
@@ -1714,71 +1719,16 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Handled = result;
         }
 
-        //private void drawingDetailsTC_DrawItem(object sender, DrawItemEventArgs e)
-        //{
-        //     try
-        //    {
-        //        //This line of code will help you to change the apperance like size,name,style.
-        //        Font f;
-        //        //For background color
-        //        Brush backBrush;
-        //        //For forground color
-        //        Brush foreBrush;
-			
-        //        //This construct will hell you to deside which tab page have current focus
-        //        //to change the style.
-        //        if (e.Index == this.drawingDetailsTC.SelectedIndex)
-        //        {
-        //            //This line of code will help you to change the apperance like size,name,style.
-        //            f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
-        //            f = new Font(e.Font,FontStyle.Bold);
-
-        //            backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
-        //            foreBrush = Brushes.Black;
-        //        }
-        //        else
-        //        {
-        //            f = e.Font;
-        //            backBrush = new SolidBrush(e.BackColor); 
-        //            foreBrush = new SolidBrush(e.ForeColor);
-        //        }
-                
-        //        //To set the alignment of the caption.
-        //        string tabName = this.drawingDetailsTC.TabPages[e.Index].Text;
-        //        StringFormat sf = new StringFormat();
-        //        sf.Alignment = StringAlignment.Center;
-	
-        //        //Thsi will help you to fill the interior portion of
-        //        //selected tabpage.
-        //        e.Graphics.FillRectangle(backBrush, e.Bounds);
-        //        Rectangle r = e.Bounds;
-        //        r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-        //        e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
-
-        //        sf.Dispose();
-        //        if (e.Index == this.drawingDetailsTC.SelectedIndex)
-        //        {
-        //            f.Dispose();
-        //            backBrush.Dispose();
-        //        }
-        //        else
-        //        {
-        //            backBrush.Dispose();
-        //            foreBrush.Dispose();
-        //        }
-        //    }
-        //    catch(Exception Ex)
-        //    {
-        //        MessageBox.Show(Ex.Message.ToString(),"Error Occured",MessageBoxButtons.OK,MessageBoxIcon.Information);
-					
-        //    }
-			
-		
-        //}
+        private void showEntryCountOnReceiptsChk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showEntryCountOnReceiptsChk.Checked)
+                showZeroEntryCountChk.Enabled = true;
+            else
+                showZeroEntryCountChk.Enabled = false;
+        }
 
         private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
         {
-
             //we want the tab control to paint with the top area to the right of the last tab as invisible.
             e.DrawBackground();
 
@@ -1809,65 +1759,6 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.Black, new PointF(e.Bounds.X, e.Bounds.Y));
             }
-
-            //try
-            //{
-            //    //This line of code will help you to change the apperance like size,name,style.
-            //    Font f;
-            //    //For background color
-            //    Brush backBrush;
-            //    //For forground color
-            //    Brush foreBrush;
-
-            //    //This construct will hell you to deside which tab page have current focus
-            //    //to change the style.
-            //    if (e.Index == this.entryMethodsTC.SelectedIndex)
-            //    {
-            //        //This line of code will help you to change the apperance like size,name,style.
-            //        f = new Font(e.Font, FontStyle.Bold | FontStyle.Bold);
-            //        f = new Font(e.Font, FontStyle.Bold);
-
-            //        backBrush = new System.Drawing.SolidBrush(Color.LightSteelBlue);
-            //        foreBrush = Brushes.Black;
-            //    }
-            //    else
-            //    {
-            //        f = e.Font;
-            //        backBrush = new SolidBrush(e.BackColor);
-            //        foreBrush = new SolidBrush(e.ForeColor);
-            //    }
-
-            //    //To set the alignment of the caption.
-            //    string tabName = this.entryMethodsTC.TabPages[e.Index].Text;
-            //    StringFormat sf = new StringFormat();
-            //    sf.LineAlignment = StringAlignment.Center;
-            //    sf.Alignment = StringAlignment.Center;
-
-            //    //Thsi will help you to fill the interior portion of
-            //    //selected tabpage.
-            //    e.Graphics.FillRectangle(backBrush, e.Bounds);
-            //    Rectangle r = e.Bounds;
-            //    r = new Rectangle(r.X, r.Y + 3, r.Width, r.Height - 3);
-            //    e.Graphics.DrawString(tabName, f, foreBrush, r, sf);
-
-            //    sf.Dispose();
-            //    if (e.Index == this.entryMethodsTC.SelectedIndex)
-            //    {
-            //        f.Dispose();
-            //        backBrush.Dispose();
-            //    }
-            //    else
-            //    {
-            //        backBrush.Dispose();
-            //        foreBrush.Dispose();
-            //    }
-            //}
-            //catch (Exception Ex)
-            //{
-            //    MessageBox.Show(Ex.Message.ToString(), "Error Occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //}
-
-        }
+        }       
     }
 }

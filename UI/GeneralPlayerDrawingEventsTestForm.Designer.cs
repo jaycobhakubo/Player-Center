@@ -71,9 +71,6 @@
             // 
             // imgbtnRefresh
             // 
-            this.imgbtnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.imgbtnRefresh.FocusColor = System.Drawing.Color.Black;
             this.imgbtnRefresh.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnRefresh.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
@@ -83,7 +80,7 @@
             this.imgbtnRefresh.Name = "imgbtnRefresh";
             this.imgbtnRefresh.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnRefresh.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnRefresh.TabIndex = 38;
+            this.imgbtnRefresh.TabIndex = 39;
             this.imgbtnRefresh.Text = "Refresh";
             this.imgbtnRefresh.Click += new System.EventHandler(this.refreshEventsListBtn_Click);
             // 
@@ -144,7 +141,7 @@
             this.imgbtnExecute.Name = "imgbtnExecute";
             this.imgbtnExecute.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnExecute.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnExecute.TabIndex = 40;
+            this.imgbtnExecute.TabIndex = 41;
             this.imgbtnExecute.Text = "Execute";
             this.imgbtnExecute.Click += new System.EventHandler(this.executeEventBtn_Click);
             // 
@@ -159,7 +156,7 @@
             this.imgbtnReinstate.Name = "imgbtnReinstate";
             this.imgbtnReinstate.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnReinstate.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnReinstate.TabIndex = 39;
+            this.imgbtnReinstate.TabIndex = 40;
             this.imgbtnReinstate.Text = "Reinstate";
             this.imgbtnReinstate.Click += new System.EventHandler(this.reinstateEventBtn_Click);
             // 
@@ -174,7 +171,7 @@
             this.imgbtnCancel.Name = "imgbtnCancel";
             this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnCancel.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnCancel.TabIndex = 41;
+            this.imgbtnCancel.TabIndex = 38;
             this.imgbtnCancel.Text = "Cancel";
             this.imgbtnCancel.Click += new System.EventHandler(this.cancelEventBtn_Click);
             // 

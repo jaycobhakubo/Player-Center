@@ -1362,11 +1362,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     lblSavedSuccessfully.Visible = false;
                 }
-
-                //if (lblWarningMessage.Visible != false)
-                //{
-                //    lblWarningMessage.Visible = false;
-                //}
             }
             isSave = false;
 
@@ -1564,16 +1559,17 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (lstBxRafflePrizes2.SelectedIndex == -1)//New insert
                 {
-                    foreach (string rn in lstBxRafflePrizes2.Items)//Find if it exists
+                    foreach (RafflePrize rn in lstBxRafflePrizes2.Items)//Find if it exists
                     {
-                        if (rn.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
+
+                        if (rn.Name.Equals(NewRaffleName, StringComparison.InvariantCultureIgnoreCase))
                         {
                             errorProvider1.SetError(txtbxSetupName, "Raffle name already exists.");
                             e.Cancel = true;
                         }
                     }
                 }
-                else //delete or updarte
+                else //delete or update
                 {
                     if (isNew == false && isUpdate == true)//check if the new name already exists.
                     {
@@ -1786,7 +1782,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSetupCancel_Click(object sender, EventArgs e)
+        private void btnSetupCancel_Click(object sender, EventArgs e)//knc
         {
             clearAllMessages();
 
@@ -1797,14 +1793,14 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else if (isUpdate == true)
             {
-                //loadListRaffle();
                 string tempRaffleName = dataRafflePrize.Name;
-                //  lstBxRafflePrizes.SelectedIndex = -1;
-                lstBxRafflePrizes2.SelectedIndex = -1;
-                // int tempIndex = lstBxRafflePrizes.Items.IndexOf(tempRaffleName);
-                int tempIndex = lstBxRafflePrizes2.Items.IndexOf(tempRaffleName);
-                //  lstBxRafflePrizes.SelectedIndex = tempIndex;
+                lstBxRafflePrizes2.SelectedIndex = -1;       
+                int tempIndex = lstBxRafflePrizes2.Items.IndexOf(tempRaffleName);      
                 lstBxRafflePrizes2.SelectedIndex = tempIndex;
+                //Enable new,edit and delete button.
+                if (btnSetupDelete.Enabled != true) { btnSetupDelete.Enabled = true; }
+                if (imgbtnUpdate.Enabled != true) { imgbtnUpdate.Enabled = true; }
+                if (btnSetupNew.Enabled != true) { btnSetupNew.Enabled = true; }
             }
             setControlsToFalse2();
         }

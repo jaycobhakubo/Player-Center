@@ -261,6 +261,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     f.Dispose();
                     //Lets initiate the result broadcast
                     imgbtnInitiateResults.PerformClick();
+                    SetBtnControlDisable(false);
                 }
             }
 

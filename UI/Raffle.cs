@@ -1782,7 +1782,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSetupCancel_Click(object sender, EventArgs e)//knc
+        private void btnSetupCancel_Click(object sender, EventArgs e)
         {
             clearAllMessages();
 
@@ -2088,27 +2088,37 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             clearAllMessages();
 
-            ///Check all input entry
-
-            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
-                return;
-
+      
+         
             if (isNew == false && isUpdate == false)
             {
+                ///Check all input entry
+                if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                    return;
+                
                 errorProvider1.SetError(btnSetupSave, "Create new raffle or select a raffle in the list to update.");
                 return;
             }
             else if (isNew == true && isUpdate == false)//Insert new entry
             {
+                ///Check all input entry
+                if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                 return;
+
                 SaveOrUpdateRaffleDefinitions(0, false);
                 clearAllContentsRaffleSettings();
                 txtbxSetupName.Focus();
             }
             else if (isNew == false && isUpdate == true) //Update
             {
+
                 isRaffleSettingModify();
                 if (isModify == true)
                 {
+                    ///Check all input entry
+                    if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+                    return;
+
                     RaffleName = txtbxSetupName.Text.ToString();
                     SaveOrUpdateRaffleDefinitions(dataRafflePrize.Id, false);
                 }

@@ -142,7 +142,7 @@
             this.imgbtnExecute.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnExecute.Size = new System.Drawing.Size(92, 45);
             this.imgbtnExecute.TabIndex = 41;
-            this.imgbtnExecute.Text = "Execute";
+            this.imgbtnExecute.Text = "Run Raffle";
             this.imgbtnExecute.Click += new System.EventHandler(this.executeEventBtn_Click);
             // 
             // imgbtnReinstate

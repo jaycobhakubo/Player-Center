@@ -1223,15 +1223,23 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_lstComps.SelectedIndex != -1)
             {
-                PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
-                int CompId = selectedCoupon.CompAwardId;
-                int PlayerId = m_player.Id;
-                var testd = m_player.Comps;
-                listCouponToBeRemoved.Add(selectedCoupon);
-                testd.Remove(selectedCoupon);
-                m_lstComps.DataSource = null;
-                m_lstComps.DataSource = testd;
-                m_lstComps.Update();
+                DialogResult dialogResult = MessageForm.Show("Do you want to remove this coupon?", "Confirm", MessageFormTypes.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
+                    int CompId = selectedCoupon.CompAwardId;
+                    int PlayerId = m_player.Id;
+                    var testd = m_player.Comps;
+                    listCouponToBeRemoved.Add(selectedCoupon);
+                    testd.Remove(selectedCoupon);
+                    m_lstComps.DataSource = null;
+                    m_lstComps.DataSource = testd;
+                    m_lstComps.Update();
+                }
+                else
+                {
+                    
+                }            
             }
         }
 

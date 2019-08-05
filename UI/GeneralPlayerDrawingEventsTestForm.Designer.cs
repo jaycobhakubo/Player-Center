@@ -77,12 +77,12 @@
             this.imgbtnRefresh.ImageIcon = ((System.Drawing.Image)(resources.GetObject("imgbtnRefresh.ImageIcon")));
             this.imgbtnRefresh.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnRefresh.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnRefresh.Location = new System.Drawing.Point(926, 515);
+            this.imgbtnRefresh.Location = new System.Drawing.Point(811, 587);
             this.imgbtnRefresh.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnRefresh.Name = "imgbtnRefresh";
             this.imgbtnRefresh.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
-            this.imgbtnRefresh.Size = new System.Drawing.Size(53, 44);
-            this.imgbtnRefresh.TabIndex = 39;
+            this.imgbtnRefresh.Size = new System.Drawing.Size(92, 45);
+            this.imgbtnRefresh.TabIndex = 41;
             this.imgbtnRefresh.Click += new System.EventHandler(this.refreshEventsListBtn_Click);
             // 
             // imgbtnAbortResult
@@ -137,12 +137,12 @@
             this.imgbtnExecute.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnExecute.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnExecute.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnExecute.Location = new System.Drawing.Point(810, 587);
+            this.imgbtnExecute.Location = new System.Drawing.Point(713, 587);
             this.imgbtnExecute.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnExecute.Name = "imgbtnExecute";
             this.imgbtnExecute.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnExecute.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnExecute.TabIndex = 41;
+            this.imgbtnExecute.TabIndex = 40;
             this.imgbtnExecute.Text = "Run";
             this.imgbtnExecute.Click += new System.EventHandler(this.executeEventBtn_Click);
             // 
@@ -152,12 +152,12 @@
             this.imgbtnReinstate.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnReinstate.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnReinstate.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnReinstate.Location = new System.Drawing.Point(712, 587);
+            this.imgbtnReinstate.Location = new System.Drawing.Point(615, 587);
             this.imgbtnReinstate.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnReinstate.Name = "imgbtnReinstate";
             this.imgbtnReinstate.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.imgbtnReinstate.Size = new System.Drawing.Size(92, 45);
-            this.imgbtnReinstate.TabIndex = 40;
+            this.imgbtnReinstate.TabIndex = 39;
             this.imgbtnReinstate.Text = "Reinstate";
             this.imgbtnReinstate.Click += new System.EventHandler(this.reinstateEventBtn_Click);
             // 
@@ -167,7 +167,7 @@
             this.imgbtnCancel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.imgbtnCancel.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.imgbtnCancel.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.imgbtnCancel.Location = new System.Drawing.Point(615, 587);
+            this.imgbtnCancel.Location = new System.Drawing.Point(518, 587);
             this.imgbtnCancel.MinimumSize = new System.Drawing.Size(30, 30);
             this.imgbtnCancel.Name = "imgbtnCancel";
             this.imgbtnCancel.SecondaryTextPadding = new System.Windows.Forms.Padding(5);

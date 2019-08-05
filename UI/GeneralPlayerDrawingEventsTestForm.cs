@@ -201,6 +201,25 @@ namespace GTI.Modules.PlayerCenter.UI
             var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
             //eventActionsFLP.Enabled = selectionMade;
             SetBtnControlDisable(selectionMade);
+
+            if (selectionMade)
+            {
+                var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+
+                if (!drawingEvent.CancelledWhen.HasValue)//If drawing has no cancel value
+                {
+                    imgbtnReinstate.Enabled = false;
+                    if (drawingEvent.HeldWhen.HasValue)
+                    {
+                        imgbtnCancel.Enabled = false;
+                    }
+                }
+                else
+                {
+                    imgbtnCancel.Enabled = false;
+                  
+                }               
+            }
         }
 
         private void generateCurrentEventsBtn_Click(object sender, EventArgs e)
@@ -267,9 +286,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     SetBtnControlDisable(false);
                 }
             }
-
         }
-
+    
         private void cancelEventBtn_Click(object sender, EventArgs e)
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;

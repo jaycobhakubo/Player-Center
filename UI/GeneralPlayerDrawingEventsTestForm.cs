@@ -43,6 +43,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             drawingEventsLbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Scheduled " + m_displayText.ToLower() + "s");
             chkbx_showAvailableDrawing.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Show Available " + m_displayText.ToLower() + "s");
+            imgbtnCancel.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Cancel " + m_displayText.ToLower());
+            imgbtnExecute.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Run " + m_displayText.ToLower());
         }
 
         private void SetBtnControlDisable(bool set)
@@ -74,8 +76,9 @@ namespace GTI.Modules.PlayerCenter.UI
                 if(drawingEvents.Count == 0)
                 {
                     drawingEventsLV.Columns.Add("");
-                    drawingEventsLV.Items.Add("No Drawing Events Found");
+                    drawingEventsLV.Items.Add("No " + m_displayText + " Events Found");
                     drawingEventsLV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    SetBtnControlDisable(false);//DE14454
                 }
                 else
                 {

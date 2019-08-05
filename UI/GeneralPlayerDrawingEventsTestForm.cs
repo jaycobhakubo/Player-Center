@@ -206,7 +206,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
 
-                if (!drawingEvent.CancelledWhen.HasValue)//If drawing has no cancel value
+                if (!drawingEvent.CancelledWhen.HasValue)//If drawing is not cancelled 
                 {
                     imgbtnReinstate.Enabled = false;
                     if (drawingEvent.HeldWhen.HasValue)
@@ -216,8 +216,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
                 else
                 {
-                    imgbtnCancel.Enabled = false;
-                  
+                    imgbtnCancel.Enabled = false;                
                 }               
             }
         }
@@ -393,6 +392,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
         {
             LoadCurrentAndRecentDrawingEvents();
+            var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
+            SetBtnControlDisable(selectionMade);
         }
     }
 }

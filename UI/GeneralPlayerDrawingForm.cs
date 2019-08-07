@@ -13,9 +13,6 @@ using GameTech.Elite.Client;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-
-
-
     public partial class GeneralPlayerDrawingForm : GradientForm
     {
         public static int? UILimitToNInt(object uiVal)
@@ -27,6 +24,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
                 return parseVal;
         }
+
         public static string NIntToString(int? nintVal) { return nintVal.HasValue ? nintVal.Value.ToString() : String.Empty; }
         public static string UILimitToString(object uiVal) { return NIntToString(UILimitToNInt(uiVal)); }
 
@@ -144,25 +142,24 @@ namespace GTI.Modules.PlayerCenter.UI
             get { return m_drawings; }
         }
 
+        #region Member Variables
         private bool m_editMode = false;
         private List<Control> m_erroredControls = new List<Control>();
         private GeneralPlayerDrawing m_currentGPD = null;
         private bool m_loadingDetails;
         private List<PurchaseItemListing> m_productsAvailable = new List<PurchaseItemListing>();
         private List<PurchaseItemListing> m_packagesAvailable = new List<PurchaseItemListing>();
-
         private List<int> m_pendingProductSelections = new List<int>();
         private List<int> m_pendingPackageSelections = new List<int>();
-
         private System.Data.DataTable m_entrySpendScaleDT;
         private System.Data.DataTable m_entryVisitScaleDT;
         private System.Data.DataTable m_entryPurchaseScaleDT;
         private List<GeneralPlayerDrawing> m_drawings;
         private string m_displayedText = "";
-        //private string m_notDisplayedText = "";
-
+        private Type m_selectedColumnDataType;
         private const bool c_enablePurchaseUI = false;
-
+        #endregion
+        #region Constructor
         public GeneralPlayerDrawingForm(string displayText)
         {
             InitializeComponent();
@@ -184,11 +181,12 @@ namespace GTI.Modules.PlayerCenter.UI
             AppliedSystemSettingDisplayedText();
             ToggleEditMode(false);
         }
+        #endregion
+        #region Member Methods
 
         private void AppliedSystemSettingDisplayedText()
         {
-            drawingsLbl.Text = m_displayedText + "s";
-            
+            drawingsLbl.Text = m_displayedText + "s";            
         }
 
         private void ChangeDateFormatToSavedSpace()
@@ -280,62 +278,26 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        void entryScaleDGV_Leave(object sender, EventArgs e)
-        {
-            var dgv = sender as DataGridView;
-            if(dgv.IsCurrentCellDirty)
-                dgv.CommitEdit(new DataGridViewDataErrorContexts());
-        }
-
-        private void entryScaleDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var dgv = sender as DataGridView;
-            var col = dgv.Columns[e.ColumnIndex];
-
-            if(col is DataGridViewButtonColumn && col.Name == "removeDGVBC" && e.RowIndex < dgv.Rows.Count)
-                dgv.Rows.RemoveAt(e.RowIndex);
-        }
-
-        void entryScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if(m_loadingDetails)
-                return;
-            CheckEntryScale(sender as DataGridView);
-        }
-
-        void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
-        {
-            if(m_loadingDetails)
-                return;
-            CheckEntryScale(sender as DataGridView);
-        }
-
-        void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            if(m_loadingDetails)
-                return;
-            CheckEntryScale(sender as DataGridView);
-        }
 
         void CheckEntryScale(DataGridView dgv)
         {
             try
             {
-                if(dgv.Visible)
+                if (dgv.Visible)
                 {
                     var dt = dgv.DataSource as DataTable;
 
-                    if(dt.Rows.Count == 0)
+                    if (dt.Rows.Count == 0)
                     {
-                        SetError(dgv, "No entry tiers specified.");                     
+                        SetError(dgv, "No entry tiers specified.");
                         return;
                     }
 
                     #region Check for incompletely defined tiers
-                    foreach(System.Data.DataRow dr in dt.Rows)
+                    foreach (System.Data.DataRow dr in dt.Rows)
                     {
-                        for(int i = 0; i < 3; ++i)
-                            if(dr[i] == DBNull.Value)
+                        for (int i = 0; i < 3; ++i)
+                            if (dr[i] == DBNull.Value)
                             {
                                 SetError(dgv, String.Format("Tier entry missing {0} value.", dt.Columns[i].ColumnName));
                                 return;
@@ -343,15 +305,15 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     #endregion
 
-                    if(dt.Columns[0].DataType == typeof(decimal))
+                    if (dt.Columns[0].DataType == typeof(decimal))
                     {
                         var candidateScale = new List<GeneralPlayerDrawing.EntryTier<decimal>>();
 
                         #region Build EntryTier list, and make sure tiers have valid relative begin-end
-                        foreach(System.Data.DataRow dr in dt.Rows)
+                        foreach (System.Data.DataRow dr in dt.Rows)
                         {
                             var et = new GeneralPlayerDrawing.EntryTier<decimal>((decimal)dr[0], (decimal)dr[1], (int)dr[2]);
-                            if(et.TierBegin > et.TierEnd)
+                            if (et.TierBegin > et.TierEnd)
                             {
                                 SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
                                 return;
@@ -361,14 +323,14 @@ namespace GTI.Modules.PlayerCenter.UI
                         #endregion
 
                         #region Check for overlapping tiers
-                        for(int i = 0; i < candidateScale.Count; ++i)
+                        for (int i = 0; i < candidateScale.Count; ++i)
                         {
                             var et = candidateScale[i];
                             var overlap = candidateScale.FirstOrDefault(
                                             (et2) => !object.ReferenceEquals(et, et2)
                                                      && GeneralPlayerDrawing.EntryTier<decimal>.OverlapComparer.Compare(et, et2) == 0
                                             );
-                            if(overlap != null)
+                            if (overlap != null)
                             {
                                 SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
                                 return;
@@ -378,16 +340,16 @@ namespace GTI.Modules.PlayerCenter.UI
 
                         #region Check for gaps and entry losses
                         candidateScale.Sort(GeneralPlayerDrawing.EntryTier<decimal>.SortComparer);
-                        for(int i = 1; i < candidateScale.Count; ++i)
+                        for (int i = 1; i < candidateScale.Count; ++i)
                         {
                             var prevET = candidateScale[i - 1];
                             var et = candidateScale[i];
-                            if((et.TierBegin - prevET.TierEnd) > 0.01m)
+                            if ((et.TierBegin - prevET.TierEnd) > 0.01m)
                             {
                                 SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
                                 return;
                             }
-                            if(et.Entries < prevET.Entries)
+                            if (et.Entries < prevET.Entries)
                             {
                                 SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
                                 return;
@@ -397,15 +359,15 @@ namespace GTI.Modules.PlayerCenter.UI
                         #endregion
 
                     }
-                    else if(dt.Columns[0].DataType == typeof(int))
+                    else if (dt.Columns[0].DataType == typeof(int))
                     {
                         var candidateScale = new List<GeneralPlayerDrawing.EntryTier<int>>();
 
                         #region Build EntryTier list, and make sure tiers have valid relative begin-end
-                        foreach(System.Data.DataRow dr in dt.Rows)
+                        foreach (System.Data.DataRow dr in dt.Rows)
                         {
                             var et = new GeneralPlayerDrawing.EntryTier<int>((int)dr[0], (int)dr[1], (int)dr[2]);
-                            if(et.TierBegin > et.TierEnd)
+                            if (et.TierBegin > et.TierEnd)
                             {
                                 SetError(dgv, String.Format("Invalid tier range, {0}-{1}, tier begin must be less than tier end.", et.TierBegin, et.TierEnd));
                                 return;
@@ -415,14 +377,14 @@ namespace GTI.Modules.PlayerCenter.UI
                         #endregion
 
                         #region Check for overlapping tiers
-                        for(int i = 0; i < candidateScale.Count; ++i)
+                        for (int i = 0; i < candidateScale.Count; ++i)
                         {
                             var et = candidateScale[i];
                             var overlap = candidateScale.FirstOrDefault(
                                             (et2) => !object.ReferenceEquals(et, et2)
                                                      && GeneralPlayerDrawing.EntryTier<int>.OverlapComparer.Compare(et, et2) == 0
                                             );
-                            if(overlap != null)
+                            if (overlap != null)
                             {
                                 SetError(dgv, String.Format("Overlapping tier ranges, {0}-{1} and {2}-{3}.", et.TierBegin, et.TierEnd, overlap.TierBegin, overlap.TierEnd));
                                 return;
@@ -432,16 +394,16 @@ namespace GTI.Modules.PlayerCenter.UI
 
                         #region Check for gaps and entry losses
                         candidateScale.Sort(GeneralPlayerDrawing.EntryTier<int>.SortComparer);
-                        for(int i = 1; i < candidateScale.Count; ++i)
+                        for (int i = 1; i < candidateScale.Count; ++i)
                         {
                             var prevET = candidateScale[i - 1];
                             var et = candidateScale[i];
-                            if((et.TierBegin - prevET.TierEnd) > 1)
+                            if ((et.TierBegin - prevET.TierEnd) > 1)
                             {
                                 SetError(dgv, String.Format("Gap between tier ranges, {0}-{1} and {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
                                 return;
                             }
-                            if(et.Entries < prevET.Entries)
+                            if (et.Entries < prevET.Entries)
                             {
                                 SetError(dgv, String.Format("Entries decrease between tiers {0}-{1} to {2}-{3}.", prevET.TierBegin, prevET.TierEnd, et.TierBegin, et.TierEnd));
                                 return;
@@ -456,7 +418,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 SetError(dgv, null);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 SetError(dgv, "Invalid scale");
@@ -467,22 +429,16 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             var p = GetPackageItemMessage.GetPackageList(0).OrderBy((i) => i.PackageName);
 
-            foreach(var pkg in p)
-                m_packagesAvailable.Add(new PurchaseItemListing(pkg));
-
-            //for(int i = 0; i < 100; ++i)
-            //    m_packagesAvailable.Add(new PurchaseItemListing(i, String.Format("Package {0}", i)));
+            foreach (var pkg in p)
+                m_packagesAvailable.Add(new PurchaseItemListing(pkg));       
         }
 
         private void LoadProducts()
         {
             var p = GTI.Modules.Shared.Data.GetProductItemsMessage.GetProductItems(0).OrderBy((i) => i.ProductItemName);
 
-            foreach(var prod in p)
-                m_productsAvailable.Add(new PurchaseItemListing(prod));
-
-            //for(int i = 0; i < 100; ++i)
-            //    m_productsAvailable.Add(new PurchaseItemListing(i, String.Format("Product {0}", i)));
+            foreach (var prod in p)
+                m_productsAvailable.Add(new PurchaseItemListing(prod));         
         }
 
         private void LoadGeneralDrawings()
@@ -491,23 +447,6 @@ namespace GTI.Modules.PlayerCenter.UI
             m_drawings.Sort(DrawingSortComparer.Comparer);
             ListDrawings();
         }
-
-        //update our current list
-        //private void SetDisplayText()
-        //{
-        //    AppliedSystemSettingDisplayedText();
-        //    if (m_drawings != null)
-        //    {
-        //        foreach (var d in m_drawings)
-        //         {
-        //             if (d.Name.IndexOf(m_notDisplayedText) != -1)
-        //             {
-        //                 d.Name = d.Name.Replace(m_notDisplayedText, m_displayedText);
-        //             }
-                   
-        //        }
-        //    }
-        //}
 
         private void ListDrawings(int? selectId = null)
         {
@@ -522,24 +461,24 @@ namespace GTI.Modules.PlayerCenter.UI
                 drawingsLV.Columns.Clear();
                 drawingsLV.Columns.Add("Name");
 
-                if(selectId == null && drawingsLV.SelectedItems.Count == 1)
+                if (selectId == null && drawingsLV.SelectedItems.Count == 1)
                     selectId = (drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing).Id;
 
                 drawingsLV.Items.Clear();
-                if(m_drawings != null)
-                    foreach(var d in m_drawings)
-                        if(d.Active || showInactiveDrawingsChk.Checked)
+                if (m_drawings != null)
+                    foreach (var d in m_drawings)
+                        if (d.Active || showInactiveDrawingsChk.Checked)
                         {
-                           
+
                             var lvi = drawingsLV.Items.Add(d.Name);
                             lvi.Font = activeFont;
                             lvi.Tag = d;
 
                             if (!d.Active)
                             {
-                                lvi.Font = inactiveFont;                              
+                                lvi.Font = inactiveFont;
                             }
-                            if(selectId.HasValue && d.Id == selectId.Value)
+                            if (selectId.HasValue && d.Id == selectId.Value)
                             {
                                 lvi.Selected = true;
                                 SetCurrentDrawing(d);
@@ -548,7 +487,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             finally
             {
-                foreach(ColumnHeader ch in drawingsLV.Columns)
+                foreach (ColumnHeader ch in drawingsLV.Columns)
                     ch.AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
                 drawingsLV.EndUpdate();
             }
@@ -556,13 +495,13 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void LoadEntrySessionsCheckList()
         {
-            for(Byte i = 1; i <= 16; ++i)
+            for (Byte i = 1; i <= 16; ++i)
                 entrySessionNumbersCL.Items.Add(new SessionNumberListing(i));
         }
 
         private void ToggleEditMode(bool enterEditMode)
         {
-            if(enterEditMode)
+            if (enterEditMode)
                 m_editMode = enterEditMode;
 
             showInactiveDrawingsChk.Enabled = !enterEditMode;
@@ -576,110 +515,38 @@ namespace GTI.Modules.PlayerCenter.UI
 
             commonOptionsTP.Enabled = enterEditMode;
             eventTP.Enabled = enterEditMode;
-            foreach(TabPage tp in entryMethodsTC.TabPages)
+            foreach (TabPage tp in entryMethodsTC.TabPages)
                 tp.Enabled = enterEditMode;
 
             saveDrawingChangesBtn.Enabled = enterEditMode && m_erroredControls.Count == 0;
             revertDrawingChangesBtn.Enabled = enterEditMode;
             cancelDrawingChangesBtn.Enabled = enterEditMode;
 
-            if(!enterEditMode)
+            if (!enterEditMode)
             {
                 m_editMode = enterEditMode;
                 drawingsLV.Focus();
             }
         }
 
-        private void entrySpendGroupingRB_CheckedChanged(object sender, EventArgs e)
-        {
-            var rb = sender as RadioButton;
-            if(rb.Checked)
-            {
-                entrySpendTP.Text = "Spend (" + rb.Text + ")";
-
-                var entryMethodUsed = !Object.ReferenceEquals(rb, entrySpendGroupingNoneRB);
-
-                entrySpendScaleDGV.Visible = entryMethodUsed;
-                addEntrySpendTierBtn.Visible = entryMethodUsed;
-                CheckEntryScale(entrySpendScaleDGV);
-            }
-            CheckEntryMethods();
-        }
-
-        private void entryVisitTypeRB_CheckedChanged(object sender, EventArgs e)
-        {
-            var rb = sender as RadioButton;
-            if(rb.Checked)
-            {
-                entryVisitsTP.Text = "Visits (" + rb.Text + ")";
-
-                var entryMethodUsed = !Object.ReferenceEquals(rb, entryVisitTypeNoneRB);
-
-                entryVisitScaleDGV.Visible = entryMethodUsed;
-                addEntryVisitTierBtn.Visible = entryMethodUsed;
-                CheckEntryScale(entryVisitScaleDGV);
-            }
-            CheckEntryMethods();
-
-        }
-
         void UpdateEntryPurchaseTPHeader()
         {
-            if(entryPurchaseTypeNoneRB.Checked)
+            if (entryPurchaseTypeNoneRB.Checked)
                 entryPurchasesTP.Text = "Purchase (None)";
             else
             {
                 String grouping = "";
-                foreach(RadioButton rb in entryPurchaseGroupingFLP.Controls)
-                    if(rb.Checked)
+                foreach (RadioButton rb in entryPurchaseGroupingFLP.Controls)
+                    if (rb.Checked)
                         grouping = rb.Text + " ";
 
                 String purchaseType = "";
-                foreach(RadioButton rb in entryPurchaseTypeFLP.Controls)
-                    if(rb.Checked)
+                foreach (RadioButton rb in entryPurchaseTypeFLP.Controls)
+                    if (rb.Checked)
                         purchaseType = rb.Text;
 
                 entryPurchasesTP.Text = String.Format("Purchase ({0}/{1})", purchaseType, grouping);
             }
-        }
-
-        private void entryPurchaseGroupingRB_CheckedChanged(object sender, EventArgs e)
-        {
-            var rb = sender as RadioButton;
-            UpdateEntryPurchaseTPHeader();
-            CheckEntryMethods();
-        }
-
-        private void entryPurchaseTypeRB_CheckedChanged(object sender, EventArgs e)
-        {
-            var rb = sender as RadioButton;
-            UpdateEntryPurchaseTPHeader();
-            if(rb.Checked)
-            {
-
-                var entryMethodUsed = !Object.ReferenceEquals(rb, entryPurchaseTypeNoneRB);
-
-                entryPurchaseScaleDGV.Visible = entryMethodUsed;
-                addEntryPurchaseTierBtn.Visible = entryMethodUsed;
-                entryPurchaseSelectionsCL.Visible = entryMethodUsed;
-                CheckEntryScale(entryPurchaseScaleDGV);
-
-                if(Object.ReferenceEquals(rb, entryPurchaseTypePackageRB))
-                {
-                    entryPurchaseSelectionsCL.Items.Clear();
-                    foreach(var p in m_packagesAvailable)
-                        if(p.IsActive || m_pendingPackageSelections.Contains(p.Id))
-                            entryPurchaseSelectionsCL.Items.Add(p, m_pendingPackageSelections.Contains(p.Id));
-                }
-                if(Object.ReferenceEquals(rb, entryPurchaseTypeProductRB))
-                {
-                    entryPurchaseSelectionsCL.Items.Clear();
-                    foreach(var p in m_productsAvailable)
-                        if(p.IsActive || m_pendingProductSelections.Contains(p.Id))
-                            entryPurchaseSelectionsCL.Items.Add(p, m_pendingProductSelections.Contains(p.Id));
-                }
-            }
-            CheckEntryMethods();
         }
 
         private void CheckEntryMethods()
@@ -699,75 +566,16 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 SetError(entrySpendGroupingNoneRB, null);
-                SetError(entryVisitTypeNoneRB,null);
+                SetError(entryVisitTypeNoneRB, null);
                 //SetError(entryMethodsTP, null);
             }
-        }
-
-        private void entryLimitTxt_TextChanged(object sender, EventArgs e)
-        {
-            var tb = sender as TextBox;
-            int parseTarget = 0;
-
-            if(String.IsNullOrWhiteSpace(tb.Text))
-                SetError(tb, null);
-            else if(!int.TryParse(tb.Text, out parseTarget))
-                SetError(tb, "Limit must be numeric");
-            else if(parseTarget <= 0)
-                SetError(tb, "Limit must be greater than 0.");
-            else
-                SetError(tb, null);
-        }
-
-        private void entryLimitTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-
-        private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
-        {
-            var tb = sender as TextBox;
-            int parseTarget = 0;
-
-            string errMsg = null;
-
-            if(eventRepeatsChk.Checked)
-            {
-                if(String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
-                    errMsg = "Event repeat increment must be a non-negative whole number.";
-                else if(parseTarget > Int16.MaxValue)
-                    errMsg = "Event repeat increment too large.";
-            }
-
-            SetError(tb, errMsg);
-
-            if(sender != null)
-                UpdateEventExamples();
-        }
-
-        private void entryPeriodRepeatIncrementTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-                e.Handled = true;
-
-            if(sender != null)
-                UpdateEventExamples();
-        }
-
-        private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(drawingsLV.SelectedItems.Count == 1)
-                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);
-            else
-                SetCurrentDrawing(null);
         }
 
         private void SetCurrentDrawing(GeneralPlayerDrawing gpd)
         {
             m_currentGPD = gpd;
 
-            if(m_currentGPD == null || m_editMode)
+            if (m_currentGPD == null || m_editMode)
             {
                 editDrawingBtn.Enabled = false;
                 copyDrawingBtn.Enabled = false;
@@ -785,7 +593,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_loadingDetails = true;
 
-            if(m_currentGPD == null)
+            if (m_currentGPD == null)
             {
                 drawingDetailsGB.Visible = false;
             }
@@ -835,7 +643,7 @@ namespace GTI.Modules.PlayerCenter.UI
             #endregion
             #endregion
 
-            if(m_currentGPD != null)
+            if (m_currentGPD != null)
             {
                 drawingNameTxt.Text = m_currentGPD.Name;
                 drawingActiveChk.Checked = m_currentGPD.Active;
@@ -853,7 +661,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 initialEventEntryPeriodBeginDTP.Value = m_currentGPD.InitialEventEntryPeriodBegin;
                 initialEventEntryPeriodEndDTP.Value = m_currentGPD.InitialEventEntryPeriodEnd;
 
-                if(m_currentGPD.InitialEventScheduledForWhen == null)
+                if (m_currentGPD.InitialEventScheduledForWhen == null)
                 {
                     initialEventScheduledForDTP.Value = m_currentGPD.InitialEventEntryPeriodEnd;
                     initialEventScheduledForDTP.Checked = false;
@@ -868,7 +676,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 eventRepeatIncrementTxt.Text = m_currentGPD.EventRepeatIncrement.ToString();
                 eventRepeatIntervalCB.SelectedItem = m_currentGPD.EventRepeatInterval;
 
-                if(m_currentGPD.EventRepeatUntil == null)
+                if (m_currentGPD.EventRepeatUntil == null)
                 {
                     eventRepetitionEndsDTP.Value = m_currentGPD.InitialEventEntryPeriodEnd;
                     eventRepetitionEndsDTP.Checked = false;
@@ -883,19 +691,19 @@ namespace GTI.Modules.PlayerCenter.UI
                 UpdateEventExamples();
 
                 SortedSet<Byte> sessionNumbersChecked = new SortedSet<byte>();
-                for(int i = 0; i < entrySessionNumbersCL.Items.Count; ++i)
+                for (int i = 0; i < entrySessionNumbersCL.Items.Count; ++i)
                 {
                     var sl = entrySessionNumbersCL.Items[i] as SessionNumberListing;
                     var check = m_currentGPD.EntrySessionNumbers.Contains(sl.SessionNumber);
                     entrySessionNumbersCL.SetItemChecked(i, check);
-                    if(check)
+                    if (check)
                         sessionNumbersChecked.Add(sl.SessionNumber);
                 }
 
-                if(m_currentGPD.EntrySessionNumbers.Count > sessionNumbersChecked.Count)
+                if (m_currentGPD.EntrySessionNumbers.Count > sessionNumbersChecked.Count)
                 {
                     var nondefaultSessionNumbers = m_currentGPD.EntrySessionNumbers.Except(sessionNumbersChecked);
-                    foreach(var sn in nondefaultSessionNumbers)
+                    foreach (var sn in nondefaultSessionNumbers)
                         entrySessionNumbersCL.Items.Add(new SessionNumberListing(sn), true);
                 }
 
@@ -907,7 +715,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 #endregion
 
                 #region Entry Qualifications
-                switch(m_currentGPD.EntrySpendGrouping)
+                switch (m_currentGPD.EntrySpendGrouping)
                 {
                     case GeneralPlayerDrawing.SpendGrouping.BY_TRANSACTION:
                         entrySpendGroupingByTransactionRB.Checked = true;
@@ -925,17 +733,17 @@ namespace GTI.Modules.PlayerCenter.UI
                         entrySpendGroupingNoneRB.Checked = true;
                         break;
                     default:
-                        foreach(var c in entrySpendGroupingFLP.Controls)
-                            if(c is RadioButton)
+                        foreach (var c in entrySpendGroupingFLP.Controls)
+                            if (c is RadioButton)
                                 (c as RadioButton).Checked = false;
                         break;
                 }
                 m_entrySpendScaleDT.Rows.Clear();
-                foreach(var et in m_currentGPD.EntrySpendTiers)
+                foreach (var et in m_currentGPD.EntrySpendTiers)
                     m_entrySpendScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
                 CheckEntryScale(entrySpendScaleDGV);
 
-                switch(m_currentGPD.EntryVisitType)
+                switch (m_currentGPD.EntryVisitType)
                 {
                     case GeneralPlayerDrawing.VisitType.SESSIONS_PER_DAY:
                         entryVisitTypeSessionsPerDayRB.Checked = true;
@@ -950,17 +758,17 @@ namespace GTI.Modules.PlayerCenter.UI
                         entryVisitTypeNoneRB.Checked = true;
                         break;
                     default:
-                        foreach(var c in entryVisitsTypeFLP.Controls)
-                            if(c is RadioButton)
+                        foreach (var c in entryVisitsTypeFLP.Controls)
+                            if (c is RadioButton)
                                 (c as RadioButton).Checked = false;
                         break;
                 }
                 m_entryVisitScaleDT.Rows.Clear();
-                foreach(var et in m_currentGPD.EntryVisitTiers)
+                foreach (var et in m_currentGPD.EntryVisitTiers)
                     m_entryVisitScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
                 CheckEntryScale(entryVisitScaleDGV);
 
-                switch(m_currentGPD.EntryPurchaseType)
+                switch (m_currentGPD.EntryPurchaseType)
                 {
                     case GeneralPlayerDrawing.PurchaseType.PACKAGE:
                         entryPurchaseTypePackageRB.Checked = true;
@@ -972,30 +780,30 @@ namespace GTI.Modules.PlayerCenter.UI
                         entryPurchaseTypeNoneRB.Checked = true;
                         break;
                     default:
-                        foreach(var c in entryPurchaseTypeFLP.Controls)
-                            if(c is RadioButton)
+                        foreach (var c in entryPurchaseTypeFLP.Controls)
+                            if (c is RadioButton)
                                 (c as RadioButton).Checked = false;
                         break;
                 }
                 m_entryPurchaseScaleDT.Rows.Clear();
-                foreach(var et in m_currentGPD.EntryPurchaseTiers)
+                foreach (var et in m_currentGPD.EntryPurchaseTiers)
                     m_entryPurchaseScaleDT.Rows.Add(et.TierBegin, et.TierEnd, et.Entries);
                 CheckEntryScale(entryPurchaseScaleDGV);
 
                 m_pendingPackageSelections.Clear();
-                foreach(var id in m_currentGPD.EntryPurchasePackageIds)
+                foreach (var id in m_currentGPD.EntryPurchasePackageIds)
                     m_pendingPackageSelections.Add(id);
 
                 m_pendingProductSelections.Clear();
-                foreach(var id in m_currentGPD.EntryPurchaseProductIds)
+                foreach (var id in m_currentGPD.EntryPurchaseProductIds)
                     m_pendingProductSelections.Add(id);
 
                 entryPurchaseSelectionsCL.Items.Clear();
-                if(m_currentGPD.EntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PACKAGE)
-                    foreach(var p in m_packagesAvailable)
+                if (m_currentGPD.EntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PACKAGE)
+                    foreach (var p in m_packagesAvailable)
                         entryPurchaseSelectionsCL.Items.Add(p, m_pendingPackageSelections.Contains(p.Id));
-                if(m_currentGPD.EntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT)
-                    foreach(var p in m_productsAvailable)
+                if (m_currentGPD.EntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT)
+                    foreach (var p in m_productsAvailable)
                         entryPurchaseSelectionsCL.Items.Add(p, m_pendingProductSelections.Contains(p.Id));
 
                 #endregion
@@ -1005,6 +813,419 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        private GeneralPlayerDrawing GeneratePendingDrawing()
+        {
+            var dfd = new GeneralPlayerDrawing(PendingName, PendingActive, PendingDescription
+                , PendingEntriesDrawn, PendingMinimumEntries, PendingMaxDrawsPerPlayer, PendingShowEntriesOnReceipts, PendingPlayerPresenceRequired
+                , PendingInitialEventEntryPeriodBegin, PendingInitialEventEntryPeriodEnd, PendingInitialEventScheduledForWhen
+                , PendingEventRepeatIncrement, PendingEventRepeatInterval, PendingEventRepeatUntil
+                , PendingEntrySessions
+                , PendingPlayerEntryMaximum
+                , PendingEntrySpendGrouping, PendingEntrySpendGrouping != GeneralPlayerDrawing.SpendGrouping.NONE ? PendingEntrySpendTiers : null
+                , PendingEntryVisitType, PendingEntryVisitType != GeneralPlayerDrawing.VisitType.NONE ? PendingEntryVisitTiers : null
+                , PendingEntryPurchaseType, PendingEntryPurchaseGrouping
+                , PendingEntryPurchaseType != GeneralPlayerDrawing.PurchaseType.NONE ? PendingEntryPurchaseTiers : null
+                , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PACKAGE ? PendingEntryPurchasePackages : null
+                , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT ? PendingEntryPurchaseProducts : null
+                , PendingPrizeDescription
+                , PendingDisclaimer
+                , showZeroEntryCountChk.Checked
+                , m_currentGPD.Id);
+
+            return dfd;
+        }
+
+
+        private void SetAllItemCheck(bool check)
+        {
+            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+
+            for (int i = 0; i != entrySessionNumbersCL.Items.Count; ++i)
+            {
+                if (entrySessionNumbersCL.GetItemChecked(i) != check)
+                {
+                    entrySessionNumbersCL.SetItemChecked(i, check);
+                }
+            }
+
+            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+        }
+
+        private void HideOrShowRepeatsPerCheckedStatus()
+        {
+            if (eventRepeatsChk.Checked)
+            {
+                eventRepeatDetailsPnl.Visible = true;
+            }
+            else
+            {
+                eventRepeatDetailsPnl.Visible = false;
+            }
+        }
+
+        private void SetError(Control c, String errMsg)
+        {
+            errorProvider.SetIconAlignment(c, ErrorIconAlignment.MiddleRight);
+            errorProvider.SetIconPadding(c, -2);
+            errorProvider.SetError(c, errMsg);
+
+            if (String.IsNullOrEmpty(errMsg))
+                m_erroredControls.Remove(c);
+            else if (!m_erroredControls.Contains(c))
+                m_erroredControls.Add(c);
+            saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
+
+            if (m_erroredControls.Count > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var ec in m_erroredControls)
+                sb.AppendLine(errorProvider.GetError(ec));
+                errorProvider.SetError(saveDrawingChangesBtn, sb.ToString());
+            }
+            else
+            {
+                errorProvider.SetError(saveDrawingChangesBtn, null);
+            }
+        }
+
+        void CheckEventDates()
+        {
+            if (initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
+                SetError(entryPeriodLbl, "Entry period begin must be before its end.");
+            else
+                SetError(entryPeriodLbl, null);
+
+            if (!initialEventScheduledForDTP.Checked || initialEventScheduledForDTP.Value >= initialEventEntryPeriodEndDTP.Value.Date)
+                SetError(initialEventScheduledForLbl, null);
+            else
+                SetError(initialEventScheduledForLbl, "Scheduled date should be on or after the end of the entry period.");
+        }
+
+        private void UpdateEventExamples()
+        {
+            eventExamplesLV.Items.Clear();
+            eventExamplesLV.Columns.Clear();
+            eventExamplesLV.BeginUpdate();
+            try
+            {
+                if (initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
+                {
+                    eventExamplesLV.Columns.Add("");
+                    eventExamplesLV.Items.Add("(Invalid Entry Period)");
+                    eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                }
+                else
+                {
+                    eventExamplesLV.Columns.Add("Entry Period");
+                    eventExamplesLV.Columns.Add("Scheduled");
+
+                    bool repeats = eventRepeatsChk.Checked;
+
+                    DateTime b0 = initialEventEntryPeriodBeginDTP.Value.Date;
+                    DateTime e0 = initialEventEntryPeriodEndDTP.Value.Date;
+                    DateTime? s0 = initialEventScheduledForDTP.Checked ? (DateTime?)initialEventScheduledForDTP.Value.Date : null;
+                    DateTime bN = b0;
+                    DateTime eN = e0;
+                    DateTime? sN = s0;
+
+                    if (!repeats)
+                    {
+                        var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
+                        lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
+                    }
+                    else
+                    {
+                        int limit = repeats ? 100 : 1;
+                        int lines = 0;
+
+                        DateTime f = eventRepetitionEndsDTP.Checked ? eventRepetitionEndsDTP.Value.Date : DateTime.MaxValue;
+                        DateTime listingF = DateTime.Now.AddYears(100);
+                        int increment0 = PendingEventRepeatIncrement; ;
+                        if (increment0 == 0)
+                            limit = 1;
+
+                        var interval = (string)eventRepeatIntervalCB.SelectedItem;
+
+                        switch (interval)
+                        {
+                            case "day":
+                            case "week":
+                                if (interval == "week")
+                                    increment0 *= 7;
+                                while (lines < limit && bN < f && bN < listingF)
+                                {
+                                    if (eN > f)
+                                        eN = f;
+
+                                    if (sN.HasValue && sN.Value > f)
+                                        sN = f;
+
+                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
+                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
+                                    lines++;
+
+                                    try
+                                    {
+                                        bN = b0.AddDays(lines * increment0);
+                                        eN = e0.AddDays(lines * increment0);
+                                        if (s0.HasValue)
+                                            sN = s0.Value.AddDays(lines * increment0);
+                                    }
+                                    catch { break; }
+                                }
+                                if (bN < f)
+                                    eventExamplesLV.Items.Add("...and so on.");
+                                break;
+
+                            case "month":
+                            case "quarter":
+                                if (interval == "quarter")
+                                    increment0 *= 3;
+                                while (lines < limit && bN < f && bN < listingF)
+                                {
+                                    if (eN > f)
+                                        eN = f;
+
+                                    if (sN.HasValue && sN.Value > f)
+                                        sN = f;
+
+                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
+                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
+                                    lines++;
+
+                                    try
+                                    {
+                                        bN = b0.AddMonths(lines * increment0);
+                                        eN = e0.AddMonths(lines * increment0);
+                                        if (s0.HasValue)
+                                            sN = s0.Value.AddMonths(lines * increment0);
+                                    }
+                                    catch { break; }
+                                }
+                                if (bN < f)
+                                    eventExamplesLV.Items.Add("...and so on.");
+                                break;
+
+                            case "year":
+                                while (lines < limit && bN < f && bN < listingF)
+                                {
+                                    if (eN > f)
+                                        eN = f;
+
+                                    if (sN.HasValue && sN.Value > f)
+                                        sN = f;
+
+                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
+                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
+                                    lines++;
+
+                                    try
+                                    {
+                                        bN = b0.AddYears(lines * increment0);
+                                        eN = e0.AddYears(lines * increment0);
+                                        if (s0.HasValue)
+                                            sN = s0.Value.AddYears(lines * increment0);
+                                    }
+                                    catch { break; }
+                                }
+                                if (bN < f)
+                                    eventExamplesLV.Items.Add("...and so on.");
+                                break;
+
+                            case "":
+                            case null:
+                                eventExamplesLV.Items.Add("(No Interval Specified)");
+                                break;
+
+                            default:
+                                eventExamplesLV.Items.Add("(Unrecognized Interval)");
+                                break;
+                        }
+                    }
+
+                    eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+                }
+            }
+            finally
+            {
+                eventExamplesLV.EndUpdate();
+            }
+        }
+
+        #endregion
+        #region Events
+
+        void entryScaleDGV_Leave(object sender, EventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            if(dgv.IsCurrentCellDirty)
+                dgv.CommitEdit(new DataGridViewDataErrorContexts());
+        }
+
+        private void entryScaleDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var dgv = sender as DataGridView;
+            var col = dgv.Columns[e.ColumnIndex];
+
+            if(col is DataGridViewButtonColumn && col.Name == "removeDGVBC" && e.RowIndex < dgv.Rows.Count)
+                dgv.Rows.RemoveAt(e.RowIndex);
+        }
+
+        void entryScaleDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if(m_loadingDetails)
+                return;
+            CheckEntryScale(sender as DataGridView);
+        }
+
+        void entryScaleDGV_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if(m_loadingDetails)
+                return;
+            CheckEntryScale(sender as DataGridView);
+        }
+
+        void entryScaleDGV_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if(m_loadingDetails)
+                return;
+            CheckEntryScale(sender as DataGridView);
+        }
+
+      
+        private void entrySpendGroupingRB_CheckedChanged(object sender, EventArgs e)
+        {
+            var rb = sender as RadioButton;
+            if(rb.Checked)
+            {
+                entrySpendTP.Text = "Spend (" + rb.Text + ")";
+
+                var entryMethodUsed = !Object.ReferenceEquals(rb, entrySpendGroupingNoneRB);
+
+                entrySpendScaleDGV.Visible = entryMethodUsed;
+                addEntrySpendTierBtn.Visible = entryMethodUsed;
+                CheckEntryScale(entrySpendScaleDGV);
+            }
+            CheckEntryMethods();
+        }
+
+        private void entryVisitTypeRB_CheckedChanged(object sender, EventArgs e)
+        {
+            var rb = sender as RadioButton;
+            if(rb.Checked)
+            {
+                entryVisitsTP.Text = "Visits (" + rb.Text + ")";
+
+                var entryMethodUsed = !Object.ReferenceEquals(rb, entryVisitTypeNoneRB);
+
+                entryVisitScaleDGV.Visible = entryMethodUsed;
+                addEntryVisitTierBtn.Visible = entryMethodUsed;
+                CheckEntryScale(entryVisitScaleDGV);
+            }
+            CheckEntryMethods();
+        }
+
+        private void entryPurchaseGroupingRB_CheckedChanged(object sender, EventArgs e)
+        {
+            var rb = sender as RadioButton;
+            UpdateEntryPurchaseTPHeader();
+            CheckEntryMethods();
+        }
+
+        private void entryPurchaseTypeRB_CheckedChanged(object sender, EventArgs e)
+        {
+            var rb = sender as RadioButton;
+            UpdateEntryPurchaseTPHeader();
+            if(rb.Checked)
+            {
+
+                var entryMethodUsed = !Object.ReferenceEquals(rb, entryPurchaseTypeNoneRB);
+
+                entryPurchaseScaleDGV.Visible = entryMethodUsed;
+                addEntryPurchaseTierBtn.Visible = entryMethodUsed;
+                entryPurchaseSelectionsCL.Visible = entryMethodUsed;
+                CheckEntryScale(entryPurchaseScaleDGV);
+
+                if(Object.ReferenceEquals(rb, entryPurchaseTypePackageRB))
+                {
+                    entryPurchaseSelectionsCL.Items.Clear();
+                    foreach(var p in m_packagesAvailable)
+                        if(p.IsActive || m_pendingPackageSelections.Contains(p.Id))
+                            entryPurchaseSelectionsCL.Items.Add(p, m_pendingPackageSelections.Contains(p.Id));
+                }
+                if(Object.ReferenceEquals(rb, entryPurchaseTypeProductRB))
+                {
+                    entryPurchaseSelectionsCL.Items.Clear();
+                    foreach(var p in m_productsAvailable)
+                        if(p.IsActive || m_pendingProductSelections.Contains(p.Id))
+                            entryPurchaseSelectionsCL.Items.Add(p, m_pendingProductSelections.Contains(p.Id));
+                }
+            }
+            CheckEntryMethods();
+        }
+
+      
+        private void entryLimitTxt_TextChanged(object sender, EventArgs e)
+        {
+            var tb = sender as TextBox;
+            int parseTarget = 0;
+
+            if(String.IsNullOrWhiteSpace(tb.Text))
+                SetError(tb, null);
+            else if(!int.TryParse(tb.Text, out parseTarget))
+                SetError(tb, "Limit must be numeric");
+            else if(parseTarget <= 0)
+                SetError(tb, "Limit must be greater than 0.");
+            else
+                SetError(tb, null);
+        }
+
+        private void entryLimitTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
+        {
+            var tb = sender as TextBox;
+            int parseTarget = 0;
+            string errMsg = null;
+
+            if(eventRepeatsChk.Checked)
+            {
+                if(String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
+                    errMsg = "Event repeat increment must be a non-negative whole number.";
+                else if(parseTarget > Int16.MaxValue)
+                    errMsg = "Event repeat increment too large.";
+            }
+
+            SetError(tb, errMsg);
+
+            if(sender != null)
+                UpdateEventExamples();
+        }
+
+        private void entryPeriodRepeatIncrementTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+
+            if(sender != null)
+                UpdateEventExamples();
+        }
+
+        private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(drawingsLV.SelectedItems.Count == 1)
+                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);
+            else
+                SetCurrentDrawing(null);
+        }
+
+      
         private void editDrawingBtn_Click(object sender, EventArgs e) 
         { 
             ToggleEditMode(true); 
@@ -1106,179 +1327,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private GeneralPlayerDrawing GeneratePendingDrawing()
-        {
-            var dfd = new GeneralPlayerDrawing(PendingName, PendingActive, PendingDescription
-                , PendingEntriesDrawn, PendingMinimumEntries, PendingMaxDrawsPerPlayer, PendingShowEntriesOnReceipts, PendingPlayerPresenceRequired
-                , PendingInitialEventEntryPeriodBegin, PendingInitialEventEntryPeriodEnd, PendingInitialEventScheduledForWhen
-                , PendingEventRepeatIncrement, PendingEventRepeatInterval, PendingEventRepeatUntil
-                , PendingEntrySessions
-                , PendingPlayerEntryMaximum
-                , PendingEntrySpendGrouping, PendingEntrySpendGrouping != GeneralPlayerDrawing.SpendGrouping.NONE ? PendingEntrySpendTiers : null
-                , PendingEntryVisitType, PendingEntryVisitType != GeneralPlayerDrawing.VisitType.NONE ? PendingEntryVisitTiers : null
-                , PendingEntryPurchaseType, PendingEntryPurchaseGrouping
-                , PendingEntryPurchaseType != GeneralPlayerDrawing.PurchaseType.NONE ? PendingEntryPurchaseTiers : null
-                , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PACKAGE ? PendingEntryPurchasePackages : null
-                , PendingEntryPurchaseType == GeneralPlayerDrawing.PurchaseType.PRODUCT ? PendingEntryPurchaseProducts : null
-                , PendingPrizeDescription
-                , PendingDisclaimer
-                , showZeroEntryCountChk.Checked
-                , m_currentGPD.Id);
-
-            return dfd;
-        }
-
-        #region Pending Drawing Properties
-        public string PendingName { get { return drawingNameTxt.Text.Trim(); } }
-        public bool PendingActive { get { return drawingActiveChk.Checked; } }
-        public string PendingDescription { get { return drawingDescriptionTxt.Text.Trim(); } }
-
-        public int PendingEntriesDrawn { get { return int.Parse(drawingEntriesDrawnTxt.Text); } }
-        public int PendingMinimumEntries { get { return int.Parse(minimumEntriesToRunTxt.Text); } }
-        public int PendingMaxDrawsPerPlayer { get { return int.Parse(maximumDrawsPerPlayerTxt.Text); } }
-        public bool PendingShowEntriesOnReceipts { get { return showEntryCountOnReceiptsChk.Checked; } }
-        public bool PendingPlayerPresenceRequired { get { return playerPresenceRequiredChk.Checked; } }
-
-        public DateTime PendingInitialEventEntryPeriodBegin { get { return initialEventEntryPeriodBeginDTP.Value.Date; } }
-        public DateTime PendingInitialEventEntryPeriodEnd { get { return initialEventEntryPeriodEndDTP.Value.Date; } }
-        public DateTime? PendingInitialEventScheduledForWhen { get { return (initialEventScheduledForDTP.Checked ? (DateTime?)initialEventScheduledForDTP.Value.Date : null); } }
-        public Int16 PendingEventRepeatIncrement
-        {
-            get
-            {
-                if(!eventRepeatsChk.Checked)
-                    return 0;
-                else
-                {
-                    Int16 parseVal = 0;
-                    Int16.TryParse(eventRepeatIncrementTxt.Text, out parseVal);
-                    return parseVal;
-                }
-            }
-        }
-        public String PendingEventRepeatInterval { get { return eventRepeatsChk.Checked ? (String)eventRepeatIntervalCB.SelectedItem : ""; } }
-        public DateTime? PendingEventRepeatUntil { get { return (eventRepetitionEndsDTP.Checked ? (DateTime?)eventRepetitionEndsDTP.Value.Date : null); } }
-        public List<byte> PendingEntrySessions
-        {
-            get
-            {
-                var pes = new List<byte>();
-                foreach(var i in entrySessionNumbersCL.CheckedItems)
-                    pes.Add((i as SessionNumberListing).SessionNumber);
-                return pes;
-            }
-        }
-
-        public int? PendingPlayerEntryMaximum { get { return UILimitToNInt(entryLimitEventTxt.Text); } }
-
-        public GeneralPlayerDrawing.SpendGrouping PendingEntrySpendGrouping
-        {
-            get
-            {
-                if(entrySpendGroupingByTransactionRB.Checked)
-                    return GeneralPlayerDrawing.SpendGrouping.BY_TRANSACTION;
-
-                if(entrySpendGroupingBySessionRB.Checked)
-                    return GeneralPlayerDrawing.SpendGrouping.BY_SESSION;
-
-                if(entrySpendGroupingByDayRB.Checked)
-                    return GeneralPlayerDrawing.SpendGrouping.BY_DAY;
-
-                if(entrySpendGroupingEntryPeriodRB.Checked)
-                    return GeneralPlayerDrawing.SpendGrouping.WITHIN_ENTRY_WINDOW;
-
-                return GeneralPlayerDrawing.SpendGrouping.NONE;
-            }
-        }
-
-        public SortedSet<GeneralPlayerDrawing.EntryTier<decimal>> PendingEntrySpendTiers
-        {
-            get
-            {
-                var candidateScale = UIEntryScaleToEntryScale<decimal>(m_entrySpendScaleDT);
-                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<decimal>>();
-            }
-        }
-
-        public GeneralPlayerDrawing.VisitType PendingEntryVisitType
-        {
-            get
-            {
-                if(entryVisitTypeSessionsPerDayRB.Checked)
-                    return GeneralPlayerDrawing.VisitType.SESSIONS_PER_DAY;
-
-                if(entryVisitTypeDaysInEntryPeriodWindowRB.Checked)
-                    return GeneralPlayerDrawing.VisitType.DAYS_IN_ENTRY_PERIOD;
-
-                if(entryVisitTypeSessionsInEntryPeriodRB.Checked)
-                    return GeneralPlayerDrawing.VisitType.SESSIONS_IN_ENTRY_PERIOD;
-
-                return GeneralPlayerDrawing.VisitType.NONE;
-            }
-        }
-
-        public SortedSet<GeneralPlayerDrawing.EntryTier<int>> PendingEntryVisitTiers
-        {
-            get
-            {
-                var candidateScale = UIEntryScaleToEntryScale<int>(m_entryVisitScaleDT);
-                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<int>>();
-            }
-        }
-
-        public GeneralPlayerDrawing.PurchaseType PendingEntryPurchaseType
-        {
-            get
-            {
-                if(entryPurchaseTypePackageRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseType.PACKAGE;
-
-                if(entryPurchaseTypeProductRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseType.PRODUCT;
-
-                return GeneralPlayerDrawing.PurchaseType.NONE;
-            }
-        }
-
-        public GeneralPlayerDrawing.PurchaseGrouping PendingEntryPurchaseGrouping
-        {
-            get
-            {
-                if(entryPurchaseGroupingByTransactionRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseGrouping.BY_TRANSACTION;
-
-                if(entryPurchaseGroupingBySessionRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseGrouping.BY_SESSION;
-
-                if(entryPurchaseGroupingByDayRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseGrouping.BY_DAY;
-
-                if(entryPurchaseGroupingEntryPeriodRB.Checked)
-                    return GeneralPlayerDrawing.PurchaseGrouping.WITHIN_ENTRY_WINDOW;
-
-                return GeneralPlayerDrawing.PurchaseGrouping.NONE;
-            }
-        }
-
-        public SortedSet<GeneralPlayerDrawing.EntryTier<int>> PendingEntryPurchaseTiers
-        {
-            get
-            {
-                var candidateScale = UIEntryScaleToEntryScale<int>(m_entryPurchaseScaleDT);
-                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<int>>();
-            }
-        }
-
-        public List<int> PendingEntryPurchasePackages { get { return m_pendingPackageSelections; } }
-
-        public List<int> PendingEntryPurchaseProducts { get { return m_pendingProductSelections; } }
-
-        public string PendingPrizeDescription { get { return txtbx_PrizeDescription.Text.Trim(); } }
-        public string PendingDisclaimer { get { return txtbx_disclaimer.Text.Trim(); } }
-
-
-        #endregion
-
         private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
         {
             var tb = sender as TextBox;
@@ -1311,32 +1359,6 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             m_entryPurchaseScaleDT.Rows.Add();
             entryPurchaseScaleDGV.Focus();
-        }
-
-        private void SetError(Control c, String errMsg)
-        {
-         
-            errorProvider.SetIconAlignment (c, ErrorIconAlignment.MiddleRight);
-           errorProvider.SetIconPadding(c, -2);        
-            errorProvider.SetError(c, errMsg);
-
-            if(String.IsNullOrEmpty(errMsg))
-                m_erroredControls.Remove(c);
-            else if(!m_erroredControls.Contains(c))
-                m_erroredControls.Add(c);
-            saveDrawingChangesBtn.Enabled = m_editMode && m_erroredControls.Count == 0;
-
-            if(m_erroredControls.Count > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach(var ec in m_erroredControls)
-                    sb.AppendLine(errorProvider.GetError(ec));
-                errorProvider.SetError(saveDrawingChangesBtn, sb.ToString());
-            }
-            else
-            {
-                errorProvider.SetError(saveDrawingChangesBtn, null);
-            }
         }
 
         private void entryPurchaseSelectionsCL_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -1377,20 +1399,6 @@ namespace GTI.Modules.PlayerCenter.UI
             CheckEventDates();
             eventRepetitionEndsDTP_ValueChanged(null, null);
             UpdateEventExamples();
-        }
-
-        void CheckEventDates()
-        {
-            if(initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
-                SetError(entryPeriodLbl, "Entry period begin must be before its end.");
-            else
-                SetError(entryPeriodLbl, null);
-
-            if(!initialEventScheduledForDTP.Checked || initialEventScheduledForDTP.Value >= initialEventEntryPeriodEndDTP.Value.Date)
-                SetError(initialEventScheduledForLbl, null);
-            else
-                SetError(initialEventScheduledForLbl, "Scheduled date should be on or after the end of the entry period.");
-
         }
 
         private void initialEventScheduledForDTP_ValueChanged(object sender, EventArgs e)
@@ -1434,159 +1442,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 UpdateEventExamples();
         }
 
-        private void UpdateEventExamples()
-        {
-            eventExamplesLV.Items.Clear();
-            eventExamplesLV.Columns.Clear();
-            eventExamplesLV.BeginUpdate();
-            try
-            {
-                if(initialEventEntryPeriodBeginDTP.Value.Date > initialEventEntryPeriodEndDTP.Value.Date)
-                {
-                    eventExamplesLV.Columns.Add("");
-                    eventExamplesLV.Items.Add("(Invalid Entry Period)");
-                    eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                }
-                else
-                {
-                    eventExamplesLV.Columns.Add("Entry Period");
-                    eventExamplesLV.Columns.Add("Scheduled");
-
-                    bool repeats = eventRepeatsChk.Checked;
-
-                    DateTime b0 = initialEventEntryPeriodBeginDTP.Value.Date;
-                    DateTime e0 = initialEventEntryPeriodEndDTP.Value.Date;
-                    DateTime? s0 = initialEventScheduledForDTP.Checked ? (DateTime?)initialEventScheduledForDTP.Value.Date : null;
-                    DateTime bN = b0;
-                    DateTime eN = e0;
-                    DateTime? sN = s0;
-
-                    if(!repeats)
-                    {
-                        var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
-                        lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
-                    }
-                    else
-                    {
-                        int limit = repeats ? 100 : 1;
-                        int lines = 0;
-
-                        DateTime f = eventRepetitionEndsDTP.Checked ? eventRepetitionEndsDTP.Value.Date : DateTime.MaxValue;
-                        DateTime listingF = DateTime.Now.AddYears(100);
-                        int increment0 = PendingEventRepeatIncrement; ;
-                        if(increment0 == 0)
-                            limit = 1;
-
-                        var interval = (string)eventRepeatIntervalCB.SelectedItem;
-
-                        switch(interval)
-                        {
-                            case "day":
-                            case "week":
-                                if(interval == "week")
-                                    increment0 *= 7;
-                                while(lines < limit && bN < f && bN < listingF)
-                                {
-                                    if(eN > f)
-                                        eN = f;
-
-                                    if(sN.HasValue && sN.Value > f)
-                                        sN = f;
-
-                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
-                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
-                                    lines++;
-
-                                    try
-                                    {
-                                        bN = b0.AddDays(lines * increment0);
-                                        eN = e0.AddDays(lines * increment0);
-                                        if (s0.HasValue)
-                                            sN = s0.Value.AddDays(lines * increment0);
-                                    }
-                                    catch { break; }
-                                }
-                                if(bN < f)
-                                    eventExamplesLV.Items.Add("...and so on.");
-                                break;
-
-                            case "month":
-                            case "quarter":
-                                if(interval == "quarter")
-                                    increment0 *= 3;
-                                while(lines < limit && bN < f && bN < listingF)
-                                {
-                                    if(eN > f)
-                                        eN = f;
-
-                                    if(sN.HasValue && sN.Value > f)
-                                        sN = f;
-
-                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
-                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
-                                    lines++;
-
-                                    try
-                                    {
-                                        bN = b0.AddMonths(lines * increment0);
-                                        eN = e0.AddMonths(lines * increment0);
-                                        if(s0.HasValue)
-                                            sN = s0.Value.AddMonths(lines * increment0);
-                                    }
-                                    catch { break; }
-                                }
-                                if(bN < f)
-                                    eventExamplesLV.Items.Add("...and so on.");
-                                break;
-
-                            case "year":
-                                while(lines < limit && bN < f && bN < listingF)
-                                {
-                                    if(eN > f)
-                                        eN = f;
-
-                                    if(sN.HasValue && sN.Value > f)
-                                        sN = f;
-
-                                    var lvi = eventExamplesLV.Items.Add(bN.ToShortDateString() + "-" + eN.ToShortDateString());
-                                    lvi.SubItems.Add(sN == null ? "---" : sN.Value.ToShortDateString());
-                                    lines++;
-
-                                    try
-                                    {
-                                        bN = b0.AddYears(lines * increment0);
-                                        eN = e0.AddYears(lines * increment0);
-                                        if(s0.HasValue)
-                                            sN = s0.Value.AddYears(lines * increment0);
-                                    }
-                                    catch { break; }
-                                }
-                                if(bN < f)
-                                    eventExamplesLV.Items.Add("...and so on.");
-                                break;
-
-                            case "":
-                            case null:
-                                eventExamplesLV.Items.Add("(No Interval Specified)");
-                                break;
-
-                            default:
-                                eventExamplesLV.Items.Add("(Unrecognized Interval)");
-                                break;
-                        }
-
-                    }
-                    
-                    eventExamplesLV.Columns[0].AutoResize(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    eventExamplesLV.Columns[1].AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-                }
-            }
-            finally
-            {
-                eventExamplesLV.EndUpdate();
-            }
-        }
+     
 
         private void showInactiveDrawingsChk_CheckedChanged(object sender, EventArgs e) { ListDrawings(); }
 
@@ -1649,35 +1505,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }                           
         }
 
-        private void SetAllItemCheck(bool check)
-        {
-            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-
-            for (int i = 0; i != entrySessionNumbersCL.Items.Count; ++i)
-            {
-                if (entrySessionNumbersCL.GetItemChecked(i) != check)
-                {
-                    entrySessionNumbersCL.SetItemChecked(i, check);
-                }
-            }
-
-            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-        }
-
-        private void HideOrShowRepeatsPerCheckedStatus()
-        {
-            if (eventRepeatsChk.Checked)
-            {
-                eventRepeatDetailsPnl.Visible = true;
-            }
-            else
-            {
-                eventRepeatDetailsPnl.Visible = false;
-            }
-        }
-
-        Type m_selectedColumnDataType;
-
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             var dgv = (DataGridView)sender;
@@ -1686,7 +1513,6 @@ namespace GTI.Modules.PlayerCenter.UI
             e.Control.KeyPress -= new KeyPressEventHandler(Cell_KeyPress);
             e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
         }
-
 
         private void Cell_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -1781,6 +1607,151 @@ namespace GTI.Modules.PlayerCenter.UI
                 selectedDgv.ReadOnly = false;
                 selectedDgv.EnableHeadersVisualStyles = true;
             }
-        }       
+        }
+        #endregion
+        #region Pending Drawing Properties
+        public string PendingName { get { return drawingNameTxt.Text.Trim(); } }
+        public bool PendingActive { get { return drawingActiveChk.Checked; } }
+        public string PendingDescription { get { return drawingDescriptionTxt.Text.Trim(); } }
+        public int PendingEntriesDrawn { get { return int.Parse(drawingEntriesDrawnTxt.Text); } }
+        public int PendingMinimumEntries { get { return int.Parse(minimumEntriesToRunTxt.Text); } }
+        public int PendingMaxDrawsPerPlayer { get { return int.Parse(maximumDrawsPerPlayerTxt.Text); } }
+        public bool PendingShowEntriesOnReceipts { get { return showEntryCountOnReceiptsChk.Checked; } }
+        public bool PendingPlayerPresenceRequired { get { return playerPresenceRequiredChk.Checked; } }
+        public DateTime PendingInitialEventEntryPeriodBegin { get { return initialEventEntryPeriodBeginDTP.Value.Date; } }
+        public DateTime PendingInitialEventEntryPeriodEnd { get { return initialEventEntryPeriodEndDTP.Value.Date; } }
+        public DateTime? PendingInitialEventScheduledForWhen { get { return (initialEventScheduledForDTP.Checked ? (DateTime?)initialEventScheduledForDTP.Value.Date : null); } }
+        public String PendingEventRepeatInterval { get { return eventRepeatsChk.Checked ? (String)eventRepeatIntervalCB.SelectedItem : ""; } }
+        public DateTime? PendingEventRepeatUntil { get { return (eventRepetitionEndsDTP.Checked ? (DateTime?)eventRepetitionEndsDTP.Value.Date : null); } }
+        public int? PendingPlayerEntryMaximum { get { return UILimitToNInt(entryLimitEventTxt.Text); } }
+        public List<int> PendingEntryPurchasePackages { get { return m_pendingPackageSelections; } }
+        public List<int> PendingEntryPurchaseProducts { get { return m_pendingProductSelections; } }
+        public string PendingPrizeDescription { get { return txtbx_PrizeDescription.Text.Trim(); } }
+        public string PendingDisclaimer { get { return txtbx_disclaimer.Text.Trim(); } }
+
+        public Int16 PendingEventRepeatIncrement
+        {
+            get
+            {
+                if (!eventRepeatsChk.Checked)
+                    return 0;
+                else
+                {
+                    Int16 parseVal = 0;
+                    Int16.TryParse(eventRepeatIncrementTxt.Text, out parseVal);
+                    return parseVal;
+                }
+            }
+        }
+      
+        public List<byte> PendingEntrySessions
+        {
+            get
+            {
+                var pes = new List<byte>();
+                foreach (var i in entrySessionNumbersCL.CheckedItems)
+                    pes.Add((i as SessionNumberListing).SessionNumber);
+                return pes;
+            }
+        }
+
+        public GeneralPlayerDrawing.SpendGrouping PendingEntrySpendGrouping
+        {
+            get
+            {
+                if (entrySpendGroupingByTransactionRB.Checked)
+                    return GeneralPlayerDrawing.SpendGrouping.BY_TRANSACTION;
+
+                if (entrySpendGroupingBySessionRB.Checked)
+                    return GeneralPlayerDrawing.SpendGrouping.BY_SESSION;
+
+                if (entrySpendGroupingByDayRB.Checked)
+                    return GeneralPlayerDrawing.SpendGrouping.BY_DAY;
+
+                if (entrySpendGroupingEntryPeriodRB.Checked)
+                    return GeneralPlayerDrawing.SpendGrouping.WITHIN_ENTRY_WINDOW;
+
+                return GeneralPlayerDrawing.SpendGrouping.NONE;
+            }
+        }
+
+        public SortedSet<GeneralPlayerDrawing.EntryTier<decimal>> PendingEntrySpendTiers
+        {
+            get
+            {
+                var candidateScale = UIEntryScaleToEntryScale<decimal>(m_entrySpendScaleDT);
+                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<decimal>>();
+            }
+        }
+
+        public GeneralPlayerDrawing.VisitType PendingEntryVisitType
+        {
+            get
+            {
+                if (entryVisitTypeSessionsPerDayRB.Checked)
+                    return GeneralPlayerDrawing.VisitType.SESSIONS_PER_DAY;
+
+                if (entryVisitTypeDaysInEntryPeriodWindowRB.Checked)
+                    return GeneralPlayerDrawing.VisitType.DAYS_IN_ENTRY_PERIOD;
+
+                if (entryVisitTypeSessionsInEntryPeriodRB.Checked)
+                    return GeneralPlayerDrawing.VisitType.SESSIONS_IN_ENTRY_PERIOD;
+
+                return GeneralPlayerDrawing.VisitType.NONE;
+            }
+        }
+
+        public SortedSet<GeneralPlayerDrawing.EntryTier<int>> PendingEntryVisitTiers
+        {
+            get
+            {
+                var candidateScale = UIEntryScaleToEntryScale<int>(m_entryVisitScaleDT);
+                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<int>>();
+            }
+        }
+
+        public GeneralPlayerDrawing.PurchaseType PendingEntryPurchaseType
+        {
+            get
+            {
+                if (entryPurchaseTypePackageRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseType.PACKAGE;
+
+                if (entryPurchaseTypeProductRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseType.PRODUCT;
+
+                return GeneralPlayerDrawing.PurchaseType.NONE;
+            }
+        }
+
+        public GeneralPlayerDrawing.PurchaseGrouping PendingEntryPurchaseGrouping
+        {
+            get
+            {
+                if (entryPurchaseGroupingByTransactionRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseGrouping.BY_TRANSACTION;
+
+                if (entryPurchaseGroupingBySessionRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseGrouping.BY_SESSION;
+
+                if (entryPurchaseGroupingByDayRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseGrouping.BY_DAY;
+
+                if (entryPurchaseGroupingEntryPeriodRB.Checked)
+                    return GeneralPlayerDrawing.PurchaseGrouping.WITHIN_ENTRY_WINDOW;
+
+                return GeneralPlayerDrawing.PurchaseGrouping.NONE;
+            }
+        }
+
+        public SortedSet<GeneralPlayerDrawing.EntryTier<int>> PendingEntryPurchaseTiers
+        {
+            get
+            {
+                var candidateScale = UIEntryScaleToEntryScale<int>(m_entryPurchaseScaleDT);
+                return candidateScale ?? new SortedSet<GeneralPlayerDrawing.EntryTier<int>>();
+            }
+        }
+        #endregion
     }
 }

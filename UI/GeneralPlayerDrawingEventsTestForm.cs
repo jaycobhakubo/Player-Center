@@ -34,7 +34,7 @@ namespace GTI.Modules.PlayerCenter.UI
             StringBuilder sb = new StringBuilder();
             var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
             var msg = EventsToString(gResult, m_drawings);
-            var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
+            var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             if (dr == System.Windows.Forms.DialogResult.Yes)
                 LoadCurrentAndRecentDrawingEvents();         
         }
@@ -227,7 +227,7 @@ namespace GTI.Modules.PlayerCenter.UI
             var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
 
             var msg = EventsToString(gResult, m_drawings);
-            var dr = MessageBox.Show(this, (msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageBoxButtons.YesNo);
+            var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             if(dr == System.Windows.Forms.DialogResult.Yes)
                 LoadCurrentAndRecentDrawingEvents();
         }
@@ -243,12 +243,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if(drawingEvent.HeldWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot hold an event that has already been held.", "Execution not permitted", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot hold an event that has already been held.", "Execution not permitted", MessageFormTypes.OK);
                 return;
             }
             else if(drawingEvent.CancelledWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot hold an event that has been cancelled.", "Execution not permitted", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot hold an event that has been cancelled.", "Execution not permitted", MessageFormTypes.OK);
                 return;
             }
             else
@@ -268,7 +268,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     else
                         msg = "Event not executed.";
 
-                    var dr = MessageBox.Show(this, msg + Environment.NewLine + "Show event details?", "Event Not Executed", MessageBoxButtons.YesNo);
+                    var dr = MessageForm.Show(msg + Environment.NewLine + "Show event details?", "Event Not Executed", MessageFormTypes.YesNo);
                     showEvent = (dr == System.Windows.Forms.DialogResult.Yes);
                 }
                 else
@@ -293,12 +293,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if(drawingEvent.HeldWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot cancel an event that has been held.", "Cancel not permitted", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot cancel an event that has been held.", "Cancel not permitted", MessageFormTypes.YesNo);
                 return;
             }
             else if(drawingEvent.CancelledWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot cancel an event that has already been cancelled.", "Event already cancelled", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot cancel an event that has already been cancelled.", "Event already cancelled", MessageFormTypes.YesNo);
                 return;
             }
             else
@@ -312,7 +312,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                     msg = String.Format("Event {0} not cancelled.", eventId);
 
-                var dr = MessageBox.Show(this, msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Cancel Results", MessageBoxButtons.YesNo);
+                var dr = MessageForm.Show(msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Cancel Results", MessageFormTypes.YesNo);
                 if(dr == System.Windows.Forms.DialogResult.Yes)
                     LoadCurrentAndRecentDrawingEvents();
             }
@@ -324,7 +324,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if(!drawingEvent.CancelledWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot reinstate an event that is not cancelled.", "Event not cancelled", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot reinstate an event that is not cancelled.", "Event not cancelled", MessageFormTypes.YesNo);
                 return;
             }
             else
@@ -338,7 +338,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                     msg = String.Format("Event {0} reinstated.", eventId);
 
-                var dr = MessageBox.Show(this, msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Reinstate Results", MessageBoxButtons.YesNo);
+                var dr = MessageForm.Show(msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Reinstate Results", MessageFormTypes.YesNo);
                 if(dr == System.Windows.Forms.DialogResult.Yes)
                     LoadCurrentAndRecentDrawingEvents();
             }
@@ -361,7 +361,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if(!drawingEvent.HeldWhen.HasValue)
             {
-                MessageBox.Show(this, "Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageBoxButtons.OK);
+                MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageFormTypes.OK);
                 return;
             }
             else
@@ -375,7 +375,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 else
                     msg = String.Format("Event {0} broadcast not initiated.", eventId);
 
-                MessageBox.Show(this, msg, "Initiate Broadcast results", MessageBoxButtons.OK);
+                MessageForm.Show(msg, "Initiate Broadcast results", MessageFormTypes.OK);
             }
         }
 

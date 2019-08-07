@@ -748,7 +748,7 @@
             this.entryMethodsTC.Name = "entryMethodsTC";
             this.entryMethodsTC.Padding = new System.Drawing.Point(0, 0);
             this.entryMethodsTC.SelectedIndex = 0;
-            this.entryMethodsTC.Size = new System.Drawing.Size(681, 399);
+            this.entryMethodsTC.Size = new System.Drawing.Size(681, 398);
             this.entryMethodsTC.TabIndex = 4;
             this.entryMethodsTC.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.entryMethodsTC_DrawItem);
             // 
@@ -762,7 +762,7 @@
             this.entryVisitsTP.Location = new System.Drawing.Point(4, 31);
             this.entryVisitsTP.Name = "entryVisitsTP";
             this.entryVisitsTP.Padding = new System.Windows.Forms.Padding(3);
-            this.entryVisitsTP.Size = new System.Drawing.Size(673, 364);
+            this.entryVisitsTP.Size = new System.Drawing.Size(673, 363);
             this.entryVisitsTP.TabIndex = 1;
             this.entryVisitsTP.Text = "Visit";
             // 
@@ -772,7 +772,7 @@
             this.addEntryVisitTierBtn.FocusColor = System.Drawing.Color.Black;
             this.addEntryVisitTierBtn.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
             this.addEntryVisitTierBtn.ImagePressed = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonDown;
-            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(582, 319);
+            this.addEntryVisitTierBtn.Location = new System.Drawing.Point(582, 318);
             this.addEntryVisitTierBtn.Margin = new System.Windows.Forms.Padding(4);
             this.addEntryVisitTierBtn.MinimumSize = new System.Drawing.Size(30, 30);
             this.addEntryVisitTierBtn.Name = "addEntryVisitTierBtn";
@@ -797,7 +797,7 @@
             this.entryVisitScaleDGV.Name = "entryVisitScaleDGV";
             this.entryVisitScaleDGV.RowHeadersVisible = false;
             this.entryVisitScaleDGV.RowTemplate.Height = 30;
-            this.entryVisitScaleDGV.Size = new System.Drawing.Size(470, 295);
+            this.entryVisitScaleDGV.Size = new System.Drawing.Size(470, 294);
             this.entryVisitScaleDGV.TabIndex = 5;
             this.entryVisitScaleDGV.Tag = "2";
             this.entryVisitScaleDGV.Visible = false;
@@ -1311,6 +1311,7 @@
             // 
             this.drawingsLV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.drawingsLV.HideSelection = false;
             this.drawingsLV.Location = new System.Drawing.Point(12, 40);
             this.drawingsLV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 8);
             this.drawingsLV.MultiSelect = false;

@@ -1009,6 +1009,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void copyDrawingBtn_Click(object sender, EventArgs e)
         {
+            drawingsLV.HideSelection = true;
             var gpd = new GeneralPlayerDrawing(m_currentGPD, true);
             gpd.Name = String.Format("Copy of {0}", gpd.Name);
             SetCurrentDrawing(gpd);
@@ -1017,15 +1018,18 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void newDrawingBtn_Click(object sender, EventArgs e)
         {
+            drawingsLV.HideSelection = true;
             SetCurrentDrawing(new GeneralPlayerDrawing());
             drawingNameTxt.Text = "New " + m_displayedText;                  
             ToggleEditMode(true);
+           
         }
 
         private void cancelDrawingChangesBtn_Click(object sender, EventArgs e)
         {
             drawingsLV_SelectedIndexChanged(null, null);
             ToggleEditMode(false);
+            drawingsLV.HideSelection = false;
         }
 
         private void revertDrawingChangesBtn_Click(object sender, EventArgs e) { LoadCurrentDrawingDetails(); }
@@ -1071,6 +1075,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 m_drawings.Sort(DrawingSortComparer.Comparer);
                 ListDrawings(saveResult.Id);
                 ToggleEditMode(false);
+                drawingsLV.HideSelection = false;
 
             }
             else

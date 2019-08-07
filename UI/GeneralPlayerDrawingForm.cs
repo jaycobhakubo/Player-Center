@@ -1005,7 +1005,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void editDrawingBtn_Click(object sender, EventArgs e) { ToggleEditMode(true); }
+        private void editDrawingBtn_Click(object sender, EventArgs e) 
+        { 
+            ToggleEditMode(true); 
+        }
 
         private void copyDrawingBtn_Click(object sender, EventArgs e)
         {
@@ -1734,25 +1737,15 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void entryMethodsTC_DrawItem(object sender, DrawItemEventArgs e)
         {
-            //we want the tab control to paint with the top area to the right of the last tab as invisible.
-            e.DrawBackground();
-
-            //find the control's rectangle and make it into a rectangle covering the area we want to fix
-            Rectangle rect = entryMethodsTC.ClientRectangle;
-
+            e.DrawBackground();            //we want the tab control to paint with the top area to the right of the last tab as invisible.
+            Rectangle rect = entryMethodsTC.ClientRectangle; //find the control's rectangle and make it into a rectangle covering the area we want to fix
             rect.X = entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).X + entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).Width;
             rect.Width -= entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).X;
             rect.Height = entryMethodsTC.GetTabRect(entryMethodsTC.TabCount - 1).Height;
-
-            //draw the rectangle filled with the color from that area of the background image
-            e.Graphics.FillRectangle(new SolidBrush(Color.LightSteelBlue), rect);
-
-            //draw our tab
-            rect = entryMethodsTC.GetTabRect(e.Index);
+            e.Graphics.FillRectangle(new SolidBrush(Color.LightSteelBlue), rect); //draw the rectangle filled with the color from that area of the background image
+            rect = entryMethodsTC.GetTabRect(e.Index);//draw our tab
             rect.Height += 2; //covers small "selected" color under tab
-
-            //we'll make our unselected tabs a little lighter than the selected tab
-            e.Graphics.FillRectangle(e.State == DrawItemState.Selected ? SystemBrushes.Control : SystemBrushes.ControlLight, rect);
+            e.Graphics.FillRectangle(e.State == DrawItemState.Selected ? SystemBrushes.Control : SystemBrushes.ControlLight, rect);   //we'll make our unselected tabs a little lighter than the selected tab
 
             if (!entryMethodsTC.Enabled)
             {
@@ -1763,6 +1756,30 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 e.Graphics.DrawString(entryMethodsTC.TabPages[e.Index].Text, entryMethodsTC.Font, System.Drawing.Brushes.Black, new PointF(e.Bounds.X, e.Bounds.Y));
+            }
+        }
+
+        private void dgv_EnabledChanged(object sender, EventArgs e)
+        {
+            DataGridView selectedDgv = (DataGridView)sender;
+            if (!selectedDgv.Enabled)
+            {
+                selectedDgv.DefaultCellStyle.BackColor = SystemColors.Control;
+                selectedDgv.DefaultCellStyle.ForeColor = SystemColors.GrayText;
+                selectedDgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
+                selectedDgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.GrayText;
+                selectedDgv.CurrentCell = null;
+                selectedDgv.ReadOnly = true;
+                selectedDgv.EnableHeadersVisualStyles = false;
+            }
+            else
+            {
+                selectedDgv.DefaultCellStyle.BackColor = SystemColors.Window;
+                selectedDgv.DefaultCellStyle.ForeColor = SystemColors.ControlText;
+                selectedDgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Window;
+                selectedDgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.ControlText;
+                selectedDgv.ReadOnly = false;
+                selectedDgv.EnableHeadersVisualStyles = true;
             }
         }       
     }

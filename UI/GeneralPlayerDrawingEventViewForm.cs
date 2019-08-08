@@ -1,9 +1,10 @@
 ﻿using System.Windows.Forms;
 using GameTech.Elite.Base;
+using GTI.Modules.Shared;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
-    public partial class GeneralPlayerDrawingEventViewForm : Form
+    public partial class GeneralPlayerDrawingEventViewForm : GradientForm
     {
         public GeneralPlayerDrawingEventViewForm(GeneralPlayerDrawingEvent drawingEvent, GeneralPlayerDrawing drawing)
         {

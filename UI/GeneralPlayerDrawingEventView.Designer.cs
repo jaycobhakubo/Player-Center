@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.singularPropertiesTLP = new System.Windows.Forms.TableLayoutPanel();
+            this.resultsCaptionLbl = new System.Windows.Forms.Label();
             this.heldWhenLbl = new System.Windows.Forms.Label();
             this.cancelledWhenLbl = new System.Windows.Forms.Label();
             this.scheduleForLbl = new System.Windows.Forms.Label();
@@ -45,12 +46,11 @@
             this.cancelledWhenCaptionLbl = new System.Windows.Forms.Label();
             this.heldWhenCaptionLbl = new System.Windows.Forms.Label();
             this.eventIdLbl = new System.Windows.Forms.Label();
-            this.entriesLV = new System.Windows.Forms.ListView();
             this.resultsLV = new System.Windows.Forms.ListView();
+            this.entriesLV = new System.Windows.Forms.ListView();
             this.mainTLP = new System.Windows.Forms.TableLayoutPanel();
-            this.entriesCaptionLbl = new System.Windows.Forms.Label();
             this.entriesTLP = new System.Windows.Forms.TableLayoutPanel();
-            this.resultsCaptionLbl = new System.Windows.Forms.Label();
+            this.entriesCaptionLbl = new System.Windows.Forms.Label();
             this.singularPropertiesTLP.SuspendLayout();
             this.mainTLP.SuspendLayout();
             this.entriesTLP.SuspendLayout();
@@ -97,11 +97,21 @@
             this.singularPropertiesTLP.Size = new System.Drawing.Size(294, 544);
             this.singularPropertiesTLP.TabIndex = 0;
             // 
+            // resultsCaptionLbl
+            // 
+            this.resultsCaptionLbl.AutoSize = true;
+            this.resultsCaptionLbl.Location = new System.Drawing.Point(3, 132);
+            this.resultsCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
+            this.resultsCaptionLbl.Name = "resultsCaptionLbl";
+            this.resultsCaptionLbl.Size = new System.Drawing.Size(74, 13);
+            this.resultsCaptionLbl.TabIndex = 16;
+            this.resultsCaptionLbl.Text = "Results drawn";
+            // 
             // heldWhenLbl
             // 
             this.heldWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heldWhenLbl.AutoSize = true;
-            this.heldWhenLbl.Location = new System.Drawing.Point(107, 106);
+            this.heldWhenLbl.Location = new System.Drawing.Point(107, 113);
             this.heldWhenLbl.Name = "heldWhenLbl";
             this.heldWhenLbl.Size = new System.Drawing.Size(10, 13);
             this.heldWhenLbl.TabIndex = 15;
@@ -111,7 +121,7 @@
             // 
             this.cancelledWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelledWhenLbl.AutoSize = true;
-            this.cancelledWhenLbl.Location = new System.Drawing.Point(107, 91);
+            this.cancelledWhenLbl.Location = new System.Drawing.Point(107, 98);
             this.cancelledWhenLbl.Name = "cancelledWhenLbl";
             this.cancelledWhenLbl.Size = new System.Drawing.Size(10, 13);
             this.cancelledWhenLbl.TabIndex = 14;
@@ -121,7 +131,7 @@
             // 
             this.scheduleForLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.scheduleForLbl.AutoSize = true;
-            this.scheduleForLbl.Location = new System.Drawing.Point(107, 76);
+            this.scheduleForLbl.Location = new System.Drawing.Point(107, 83);
             this.scheduleForLbl.Name = "scheduleForLbl";
             this.scheduleForLbl.Size = new System.Drawing.Size(10, 13);
             this.scheduleForLbl.TabIndex = 13;
@@ -131,7 +141,7 @@
             // 
             this.entryPeriodEndLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.entryPeriodEndLbl.AutoSize = true;
-            this.entryPeriodEndLbl.Location = new System.Drawing.Point(107, 61);
+            this.entryPeriodEndLbl.Location = new System.Drawing.Point(107, 68);
             this.entryPeriodEndLbl.Name = "entryPeriodEndLbl";
             this.entryPeriodEndLbl.Size = new System.Drawing.Size(10, 13);
             this.entryPeriodEndLbl.TabIndex = 12;
@@ -141,7 +151,7 @@
             // 
             this.entryPeriodBeginLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.entryPeriodBeginLbl.AutoSize = true;
-            this.entryPeriodBeginLbl.Location = new System.Drawing.Point(107, 46);
+            this.entryPeriodBeginLbl.Location = new System.Drawing.Point(107, 53);
             this.entryPeriodBeginLbl.Name = "entryPeriodBeginLbl";
             this.entryPeriodBeginLbl.Size = new System.Drawing.Size(10, 13);
             this.entryPeriodBeginLbl.TabIndex = 11;
@@ -151,7 +161,7 @@
             // 
             this.createdWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.createdWhenLbl.AutoSize = true;
-            this.createdWhenLbl.Location = new System.Drawing.Point(107, 31);
+            this.createdWhenLbl.Location = new System.Drawing.Point(107, 38);
             this.createdWhenLbl.Name = "createdWhenLbl";
             this.createdWhenLbl.Size = new System.Drawing.Size(10, 13);
             this.createdWhenLbl.TabIndex = 10;
@@ -161,7 +171,7 @@
             // 
             this.drawingLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.drawingLbl.AutoSize = true;
-            this.drawingLbl.Location = new System.Drawing.Point(107, 16);
+            this.drawingLbl.Location = new System.Drawing.Point(107, 23);
             this.drawingLbl.Name = "drawingLbl";
             this.drawingLbl.Size = new System.Drawing.Size(10, 13);
             this.drawingLbl.TabIndex = 9;
@@ -171,7 +181,7 @@
             // 
             this.eventIdCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.eventIdCaptionLbl.AutoSize = true;
-            this.eventIdCaptionLbl.Location = new System.Drawing.Point(54, 1);
+            this.eventIdCaptionLbl.Location = new System.Drawing.Point(54, 4);
             this.eventIdCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.eventIdCaptionLbl.Name = "eventIdCaptionLbl";
             this.eventIdCaptionLbl.Size = new System.Drawing.Size(47, 13);
@@ -182,7 +192,7 @@
             // 
             this.drawingCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.drawingCaptionLbl.AutoSize = true;
-            this.drawingCaptionLbl.Location = new System.Drawing.Point(55, 16);
+            this.drawingCaptionLbl.Location = new System.Drawing.Point(55, 23);
             this.drawingCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.drawingCaptionLbl.Name = "drawingCaptionLbl";
             this.drawingCaptionLbl.Size = new System.Drawing.Size(46, 13);
@@ -193,7 +203,7 @@
             // 
             this.createdWhenCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.createdWhenCaptionLbl.AutoSize = true;
-            this.createdWhenCaptionLbl.Location = new System.Drawing.Point(25, 31);
+            this.createdWhenCaptionLbl.Location = new System.Drawing.Point(25, 38);
             this.createdWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.createdWhenCaptionLbl.Name = "createdWhenCaptionLbl";
             this.createdWhenCaptionLbl.Size = new System.Drawing.Size(76, 13);
@@ -204,7 +214,7 @@
             // 
             this.entryPeriodBeginCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.entryPeriodBeginCaptionLbl.AutoSize = true;
-            this.entryPeriodBeginCaptionLbl.Location = new System.Drawing.Point(3, 46);
+            this.entryPeriodBeginCaptionLbl.Location = new System.Drawing.Point(3, 53);
             this.entryPeriodBeginCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.entryPeriodBeginCaptionLbl.Name = "entryPeriodBeginCaptionLbl";
             this.entryPeriodBeginCaptionLbl.Size = new System.Drawing.Size(98, 13);
@@ -215,7 +225,7 @@
             // 
             this.entryPeriodEndCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.entryPeriodEndCaptionLbl.AutoSize = true;
-            this.entryPeriodEndCaptionLbl.Location = new System.Drawing.Point(11, 61);
+            this.entryPeriodEndCaptionLbl.Location = new System.Drawing.Point(11, 68);
             this.entryPeriodEndCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.entryPeriodEndCaptionLbl.Name = "entryPeriodEndCaptionLbl";
             this.entryPeriodEndCaptionLbl.Size = new System.Drawing.Size(90, 13);
@@ -226,7 +236,7 @@
             // 
             this.scheduledForCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.scheduledForCaptionLbl.AutoSize = true;
-            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(28, 76);
+            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(28, 83);
             this.scheduledForCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.scheduledForCaptionLbl.Name = "scheduledForCaptionLbl";
             this.scheduledForCaptionLbl.Size = new System.Drawing.Size(73, 13);
@@ -237,7 +247,7 @@
             // 
             this.cancelledWhenCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cancelledWhenCaptionLbl.AutoSize = true;
-            this.cancelledWhenCaptionLbl.Location = new System.Drawing.Point(18, 91);
+            this.cancelledWhenCaptionLbl.Location = new System.Drawing.Point(18, 98);
             this.cancelledWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cancelledWhenCaptionLbl.Name = "cancelledWhenCaptionLbl";
             this.cancelledWhenCaptionLbl.Size = new System.Drawing.Size(83, 13);
@@ -248,7 +258,7 @@
             // 
             this.heldWhenCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.heldWhenCaptionLbl.AutoSize = true;
-            this.heldWhenCaptionLbl.Location = new System.Drawing.Point(43, 106);
+            this.heldWhenCaptionLbl.Location = new System.Drawing.Point(43, 113);
             this.heldWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.heldWhenCaptionLbl.Name = "heldWhenCaptionLbl";
             this.heldWhenCaptionLbl.Size = new System.Drawing.Size(58, 13);
@@ -259,15 +269,30 @@
             // 
             this.eventIdLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.eventIdLbl.AutoSize = true;
-            this.eventIdLbl.Location = new System.Drawing.Point(107, 1);
+            this.eventIdLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.eventIdLbl.Location = new System.Drawing.Point(107, 0);
             this.eventIdLbl.Name = "eventIdLbl";
-            this.eventIdLbl.Size = new System.Drawing.Size(10, 13);
+            this.eventIdLbl.Size = new System.Drawing.Size(16, 22);
             this.eventIdLbl.TabIndex = 8;
             this.eventIdLbl.Text = "-";
+            // 
+            // resultsLV
+            // 
+            this.singularPropertiesTLP.SetColumnSpan(this.resultsLV, 2);
+            this.resultsLV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsLV.FullRowSelect = true;
+            this.resultsLV.Location = new System.Drawing.Point(3, 150);
+            this.resultsLV.Name = "resultsLV";
+            this.resultsLV.Size = new System.Drawing.Size(288, 391);
+            this.resultsLV.TabIndex = 0;
+            this.resultsLV.UseCompatibleStateImageBehavior = false;
+            this.resultsLV.View = System.Windows.Forms.View.Details;
             // 
             // entriesLV
             // 
             this.entriesLV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entriesLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entriesLV.FullRowSelect = true;
             this.entriesLV.Location = new System.Drawing.Point(3, 22);
             this.entriesLV.Name = "entriesLV";
@@ -275,18 +300,6 @@
             this.entriesLV.TabIndex = 0;
             this.entriesLV.UseCompatibleStateImageBehavior = false;
             this.entriesLV.View = System.Windows.Forms.View.Details;
-            // 
-            // resultsLV
-            // 
-            this.singularPropertiesTLP.SetColumnSpan(this.resultsLV, 2);
-            this.resultsLV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsLV.FullRowSelect = true;
-            this.resultsLV.Location = new System.Drawing.Point(3, 143);
-            this.resultsLV.Name = "resultsLV";
-            this.resultsLV.Size = new System.Drawing.Size(288, 398);
-            this.resultsLV.TabIndex = 0;
-            this.resultsLV.UseCompatibleStateImageBehavior = false;
-            this.resultsLV.View = System.Windows.Forms.View.Details;
             // 
             // mainTLP
             // 
@@ -304,16 +317,6 @@
             this.mainTLP.Size = new System.Drawing.Size(600, 550);
             this.mainTLP.TabIndex = 1;
             // 
-            // entriesCaptionLbl
-            // 
-            this.entriesCaptionLbl.AutoSize = true;
-            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 5);
-            this.entriesCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
-            this.entriesCaptionLbl.Name = "entriesCaptionLbl";
-            this.entriesCaptionLbl.Size = new System.Drawing.Size(39, 13);
-            this.entriesCaptionLbl.TabIndex = 16;
-            this.entriesCaptionLbl.Text = "Entries";
-            // 
             // entriesTLP
             // 
             this.entriesTLP.ColumnCount = 1;
@@ -329,15 +332,15 @@
             this.entriesTLP.Size = new System.Drawing.Size(294, 544);
             this.entriesTLP.TabIndex = 1;
             // 
-            // resultsCaptionLbl
+            // entriesCaptionLbl
             // 
-            this.resultsCaptionLbl.AutoSize = true;
-            this.resultsCaptionLbl.Location = new System.Drawing.Point(3, 125);
-            this.resultsCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
-            this.resultsCaptionLbl.Name = "resultsCaptionLbl";
-            this.resultsCaptionLbl.Size = new System.Drawing.Size(74, 13);
-            this.resultsCaptionLbl.TabIndex = 16;
-            this.resultsCaptionLbl.Text = "Results drawn";
+            this.entriesCaptionLbl.AutoSize = true;
+            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 5);
+            this.entriesCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
+            this.entriesCaptionLbl.Name = "entriesCaptionLbl";
+            this.entriesCaptionLbl.Size = new System.Drawing.Size(39, 13);
+            this.entriesCaptionLbl.TabIndex = 16;
+            this.entriesCaptionLbl.Text = "Entries";
             // 
             // GeneralPlayerDrawingEventView
             // 

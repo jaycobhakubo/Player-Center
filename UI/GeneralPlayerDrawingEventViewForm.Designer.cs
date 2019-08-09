@@ -38,7 +38,7 @@
             this.generalPlayerDrawingEventView1.Location = new System.Drawing.Point(0, 0);
             this.generalPlayerDrawingEventView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.generalPlayerDrawingEventView1.Name = "generalPlayerDrawingEventView1";
-            this.generalPlayerDrawingEventView1.Size = new System.Drawing.Size(657, 704);
+            this.generalPlayerDrawingEventView1.Size = new System.Drawing.Size(657, 672);
             this.generalPlayerDrawingEventView1.TabIndex = 0;
             // 
             // GeneralPlayerDrawingEventViewForm
@@ -46,7 +46,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(657, 704);
+            this.ClientSize = new System.Drawing.Size(657, 672);
             this.Controls.Add(this.generalPlayerDrawingEventView1);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;

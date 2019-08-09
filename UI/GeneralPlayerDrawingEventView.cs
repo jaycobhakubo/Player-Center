@@ -128,11 +128,6 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             resultsLV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-        }
-
-        private void entriesLV_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        }     
     }
 }

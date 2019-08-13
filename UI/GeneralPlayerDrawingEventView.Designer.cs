@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.singularPropertiesTLP = new System.Windows.Forms.TableLayoutPanel();
+            this.scheduleForLbl = new System.Windows.Forms.Label();
+            this.createdWhenLbl = new System.Windows.Forms.Label();
+            this.createdWhenCaptionLbl = new System.Windows.Forms.Label();
+            this.scheduledForCaptionLbl = new System.Windows.Forms.Label();
+            this.eventIdLbl = new System.Windows.Forms.Label();
+            this.resultsLV = new System.Windows.Forms.ListView();
+            this.eventIdCaptionLbl = new System.Windows.Forms.Label();
+            this.drawingCaptionLbl = new System.Windows.Forms.Label();
+            this.drawingLbl = new System.Windows.Forms.Label();
             this.resultsCaptionLbl = new System.Windows.Forms.Label();
             this.heldWhenLbl = new System.Windows.Forms.Label();
             this.cancelledWhenLbl = new System.Windows.Forms.Label();
-            this.scheduleForLbl = new System.Windows.Forms.Label();
             this.entryPeriodEndLbl = new System.Windows.Forms.Label();
             this.entryPeriodBeginLbl = new System.Windows.Forms.Label();
-            this.createdWhenLbl = new System.Windows.Forms.Label();
-            this.drawingLbl = new System.Windows.Forms.Label();
-            this.eventIdCaptionLbl = new System.Windows.Forms.Label();
-            this.drawingCaptionLbl = new System.Windows.Forms.Label();
-            this.createdWhenCaptionLbl = new System.Windows.Forms.Label();
             this.entryPeriodBeginCaptionLbl = new System.Windows.Forms.Label();
             this.entryPeriodEndCaptionLbl = new System.Windows.Forms.Label();
-            this.scheduledForCaptionLbl = new System.Windows.Forms.Label();
             this.cancelledWhenCaptionLbl = new System.Windows.Forms.Label();
             this.heldWhenCaptionLbl = new System.Windows.Forms.Label();
-            this.eventIdLbl = new System.Windows.Forms.Label();
-            this.resultsLV = new System.Windows.Forms.ListView();
             this.entriesLV = new System.Windows.Forms.ListView();
             this.mainTLP = new System.Windows.Forms.TableLayoutPanel();
             this.entriesTLP = new System.Windows.Forms.TableLayoutPanel();
@@ -82,17 +82,115 @@
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.Size = new System.Drawing.Size(294, 473);
             this.singularPropertiesTLP.TabIndex = 0;
             // 
+            // scheduleForLbl
+            // 
+            this.scheduleForLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.scheduleForLbl.AutoSize = true;
+            this.scheduleForLbl.Location = new System.Drawing.Point(85, 60);
+            this.scheduleForLbl.Name = "scheduleForLbl";
+            this.scheduleForLbl.Size = new System.Drawing.Size(10, 13);
+            this.scheduleForLbl.TabIndex = 13;
+            this.scheduleForLbl.Text = "-";
+            // 
+            // createdWhenLbl
+            // 
+            this.createdWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.createdWhenLbl.AutoSize = true;
+            this.createdWhenLbl.Location = new System.Drawing.Point(85, 45);
+            this.createdWhenLbl.Name = "createdWhenLbl";
+            this.createdWhenLbl.Size = new System.Drawing.Size(10, 13);
+            this.createdWhenLbl.TabIndex = 10;
+            this.createdWhenLbl.Text = "-";
+            // 
+            // createdWhenCaptionLbl
+            // 
+            this.createdWhenCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.createdWhenCaptionLbl.AutoSize = true;
+            this.createdWhenCaptionLbl.Location = new System.Drawing.Point(3, 45);
+            this.createdWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.createdWhenCaptionLbl.Name = "createdWhenCaptionLbl";
+            this.createdWhenCaptionLbl.Size = new System.Drawing.Size(76, 13);
+            this.createdWhenCaptionLbl.TabIndex = 2;
+            this.createdWhenCaptionLbl.Text = "Created When";
+            // 
+            // scheduledForCaptionLbl
+            // 
+            this.scheduledForCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.scheduledForCaptionLbl.AutoSize = true;
+            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(6, 60);
+            this.scheduledForCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.scheduledForCaptionLbl.Name = "scheduledForCaptionLbl";
+            this.scheduledForCaptionLbl.Size = new System.Drawing.Size(73, 13);
+            this.scheduledForCaptionLbl.TabIndex = 5;
+            this.scheduledForCaptionLbl.Text = "Scheduled for";
+            // 
+            // eventIdLbl
+            // 
+            this.eventIdLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.eventIdLbl.AutoSize = true;
+            this.eventIdLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.eventIdLbl.Location = new System.Drawing.Point(85, 0);
+            this.eventIdLbl.Name = "eventIdLbl";
+            this.eventIdLbl.Size = new System.Drawing.Size(16, 22);
+            this.eventIdLbl.TabIndex = 8;
+            this.eventIdLbl.Text = "-";
+            // 
+            // resultsLV
+            // 
+            this.singularPropertiesTLP.SetColumnSpan(this.resultsLV, 2);
+            this.resultsLV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultsLV.FullRowSelect = true;
+            this.resultsLV.Location = new System.Drawing.Point(3, 117);
+            this.resultsLV.Name = "resultsLV";
+            this.resultsLV.Size = new System.Drawing.Size(288, 353);
+            this.resultsLV.TabIndex = 0;
+            this.resultsLV.UseCompatibleStateImageBehavior = false;
+            this.resultsLV.View = System.Windows.Forms.View.Details;
+            // 
+            // eventIdCaptionLbl
+            // 
+            this.eventIdCaptionLbl.AutoSize = true;
+            this.eventIdCaptionLbl.Location = new System.Drawing.Point(3, 1);
+            this.eventIdCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.eventIdCaptionLbl.Name = "eventIdCaptionLbl";
+            this.eventIdCaptionLbl.Size = new System.Drawing.Size(47, 13);
+            this.eventIdCaptionLbl.TabIndex = 0;
+            this.eventIdCaptionLbl.Text = "Event Id";
+            // 
+            // drawingCaptionLbl
+            // 
+            this.drawingCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.drawingCaptionLbl.AutoSize = true;
+            this.drawingCaptionLbl.Location = new System.Drawing.Point(3, 26);
+            this.drawingCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.drawingCaptionLbl.Name = "drawingCaptionLbl";
+            this.drawingCaptionLbl.Size = new System.Drawing.Size(46, 13);
+            this.drawingCaptionLbl.TabIndex = 1;
+            this.drawingCaptionLbl.Text = "Drawing";
+            // 
+            // drawingLbl
+            // 
+            this.drawingLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.drawingLbl.AutoSize = true;
+            this.drawingLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.drawingLbl.Location = new System.Drawing.Point(85, 22);
+            this.drawingLbl.Name = "drawingLbl";
+            this.drawingLbl.Size = new System.Drawing.Size(16, 22);
+            this.drawingLbl.TabIndex = 9;
+            this.drawingLbl.Text = "-";
+            // 
             // resultsCaptionLbl
             // 
-            this.resultsCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.resultsCaptionLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.resultsCaptionLbl.AutoSize = true;
-            this.resultsCaptionLbl.Location = new System.Drawing.Point(3, 66);
+            this.resultsCaptionLbl.Location = new System.Drawing.Point(3, 100);
             this.resultsCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
             this.resultsCaptionLbl.Name = "resultsCaptionLbl";
             this.resultsCaptionLbl.Size = new System.Drawing.Size(74, 13);
@@ -119,16 +217,6 @@
             this.cancelledWhenLbl.TabIndex = 14;
             this.cancelledWhenLbl.Text = "-";
             // 
-            // scheduleForLbl
-            // 
-            this.scheduleForLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.scheduleForLbl.AutoSize = true;
-            this.scheduleForLbl.Location = new System.Drawing.Point(85, 47);
-            this.scheduleForLbl.Name = "scheduleForLbl";
-            this.scheduleForLbl.Size = new System.Drawing.Size(10, 13);
-            this.scheduleForLbl.TabIndex = 13;
-            this.scheduleForLbl.Text = "-";
-            // 
             // entryPeriodEndLbl
             // 
             this.entryPeriodEndLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -148,59 +236,6 @@
             this.entryPeriodBeginLbl.Size = new System.Drawing.Size(10, 13);
             this.entryPeriodBeginLbl.TabIndex = 11;
             this.entryPeriodBeginLbl.Text = "-";
-            // 
-            // createdWhenLbl
-            // 
-            this.createdWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.createdWhenLbl.AutoSize = true;
-            this.createdWhenLbl.Location = new System.Drawing.Point(85, 32);
-            this.createdWhenLbl.Name = "createdWhenLbl";
-            this.createdWhenLbl.Size = new System.Drawing.Size(10, 13);
-            this.createdWhenLbl.TabIndex = 10;
-            this.createdWhenLbl.Text = "-";
-            // 
-            // drawingLbl
-            // 
-            this.drawingLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.drawingLbl.AutoSize = true;
-            this.drawingLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
-            this.drawingLbl.Location = new System.Drawing.Point(85, 17);
-            this.drawingLbl.Name = "drawingLbl";
-            this.drawingLbl.Size = new System.Drawing.Size(10, 13);
-            this.drawingLbl.TabIndex = 9;
-            this.drawingLbl.Text = "-";
-            // 
-            // eventIdCaptionLbl
-            // 
-            this.eventIdCaptionLbl.AutoSize = true;
-            this.eventIdCaptionLbl.Location = new System.Drawing.Point(32, 1);
-            this.eventIdCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.eventIdCaptionLbl.Name = "eventIdCaptionLbl";
-            this.eventIdCaptionLbl.Size = new System.Drawing.Size(47, 13);
-            this.eventIdCaptionLbl.TabIndex = 0;
-            this.eventIdCaptionLbl.Text = "Event Id";
-            // 
-            // drawingCaptionLbl
-            // 
-            this.drawingCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.drawingCaptionLbl.AutoSize = true;
-            this.drawingCaptionLbl.Location = new System.Drawing.Point(33, 17);
-            this.drawingCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.drawingCaptionLbl.Name = "drawingCaptionLbl";
-            this.drawingCaptionLbl.Size = new System.Drawing.Size(46, 13);
-            this.drawingCaptionLbl.TabIndex = 1;
-            this.drawingCaptionLbl.Text = "Drawing";
-            // 
-            // createdWhenCaptionLbl
-            // 
-            this.createdWhenCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.createdWhenCaptionLbl.AutoSize = true;
-            this.createdWhenCaptionLbl.Location = new System.Drawing.Point(3, 32);
-            this.createdWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.createdWhenCaptionLbl.Name = "createdWhenCaptionLbl";
-            this.createdWhenCaptionLbl.Size = new System.Drawing.Size(76, 13);
-            this.createdWhenCaptionLbl.TabIndex = 2;
-            this.createdWhenCaptionLbl.Text = "Created When";
             // 
             // entryPeriodBeginCaptionLbl
             // 
@@ -222,17 +257,6 @@
             this.entryPeriodEndCaptionLbl.TabIndex = 4;
             this.entryPeriodEndCaptionLbl.Text = "Entry Period ends";
             // 
-            // scheduledForCaptionLbl
-            // 
-            this.scheduledForCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.scheduledForCaptionLbl.AutoSize = true;
-            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(6, 47);
-            this.scheduledForCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.scheduledForCaptionLbl.Name = "scheduledForCaptionLbl";
-            this.scheduledForCaptionLbl.Size = new System.Drawing.Size(73, 13);
-            this.scheduledForCaptionLbl.TabIndex = 5;
-            this.scheduledForCaptionLbl.Text = "Scheduled for";
-            // 
             // cancelledWhenCaptionLbl
             // 
             this.cancelledWhenCaptionLbl.AutoSize = true;
@@ -253,39 +277,15 @@
             this.heldWhenCaptionLbl.TabIndex = 7;
             this.heldWhenCaptionLbl.Text = "Held when";
             // 
-            // eventIdLbl
-            // 
-            this.eventIdLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.eventIdLbl.AutoSize = true;
-            this.eventIdLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
-            this.eventIdLbl.Location = new System.Drawing.Point(85, 0);
-            this.eventIdLbl.Name = "eventIdLbl";
-            this.eventIdLbl.Size = new System.Drawing.Size(12, 16);
-            this.eventIdLbl.TabIndex = 8;
-            this.eventIdLbl.Text = "-";
-            // 
-            // resultsLV
-            // 
-            this.singularPropertiesTLP.SetColumnSpan(this.resultsLV, 2);
-            this.resultsLV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resultsLV.FullRowSelect = true;
-            this.resultsLV.Location = new System.Drawing.Point(3, 84);
-            this.resultsLV.Name = "resultsLV";
-            this.resultsLV.Size = new System.Drawing.Size(288, 386);
-            this.resultsLV.TabIndex = 0;
-            this.resultsLV.UseCompatibleStateImageBehavior = false;
-            this.resultsLV.View = System.Windows.Forms.View.Details;
-            // 
             // entriesLV
             // 
             this.entriesTLP.SetColumnSpan(this.entriesLV, 2);
             this.entriesLV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.entriesLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entriesLV.FullRowSelect = true;
-            this.entriesLV.Location = new System.Drawing.Point(3, 83);
+            this.entriesLV.Location = new System.Drawing.Point(3, 103);
             this.entriesLV.Name = "entriesLV";
-            this.entriesLV.Size = new System.Drawing.Size(288, 387);
+            this.entriesLV.Size = new System.Drawing.Size(288, 367);
             this.entriesLV.TabIndex = 0;
             this.entriesLV.UseCompatibleStateImageBehavior = false;
             this.entriesLV.View = System.Windows.Forms.View.Details;
@@ -332,7 +332,7 @@
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.Size = new System.Drawing.Size(294, 473);
@@ -341,7 +341,7 @@
             // entriesCaptionLbl
             // 
             this.entriesCaptionLbl.AutoSize = true;
-            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 65);
+            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 85);
             this.entriesCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
             this.entriesCaptionLbl.Name = "entriesCaptionLbl";
             this.entriesCaptionLbl.Size = new System.Drawing.Size(39, 13);

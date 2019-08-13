@@ -106,14 +106,30 @@ namespace GTI.Modules.PlayerCenter.UI
                                             select e.EntryCount).Sum();
 
                         //default (true) show drawing that are currently available to run without any issues.
-                        //Removed drawing that are already held, cancelled and if the minimum entries is greater than the current total entries.
+                        //Removed drawing that are already held, cancelled and (removed)if the minimum entries is greater than the current total entries.
+                        //Show if entry end  date is current or greater than todays date.
+                        //Show if schedule date is current or greater than todays date.
                         if (chkbx_showAvailableDrawing.Checked)
                         {
-                            if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue || ed.MinimumEntries > totalEntries)
+                            if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue   /*ed.MinimumEntries > totalEntries*/)
                             {
                                 continue;
                             }
-                            
+                            else
+                            if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
+                            {
+                                if (de.ScheduledForWhen != null)
+                                {
+                                    if (de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
+                                    {
+                                        continue;
+                                    }
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }                           
                         }       
 
                         var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);

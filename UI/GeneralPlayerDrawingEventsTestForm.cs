@@ -106,27 +106,27 @@ namespace GTI.Modules.PlayerCenter.UI
                                             select e.EntryCount).Sum();
 
                         //default (true) show drawing that are currently available to run without any issues.
-                        //Removed drawing that are already held, cancelled and (removed)if the minimum entries is greater than the current total entries.
-                        //Show if entry end  date is current or greater than todays date.
-                        //Show if schedule date is current or greater than todays date.
+                        //Removed drawing that are already held, cancelled and if the minimum entries is greater than the current total entries.                   
                         if (chkbx_showAvailableDrawing.Checked)
                         {
-                            if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue   /*ed.MinimumEntries > totalEntries*/)
+                            if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue)
                             {
                                 continue;
                             }
+
                             else
-                            if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
+                                if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)   //Show if entry end  date is current or greater than todays date.
                             {
-                                if (de.ScheduledForWhen != null)
+                                if (de.ScheduledForWhen != null)  //Show if schedule date is current or greater than todays date.
                                 {
-                                    if (de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
+                                    if (de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0 && ed.MinimumEntries > totalEntries)
                                     {
                                         continue;
                                     }
                                 }
                                 else
                                 {
+                                    if (ed.MinimumEntries > totalEntries)
                                     continue;
                                 }
                             }                           

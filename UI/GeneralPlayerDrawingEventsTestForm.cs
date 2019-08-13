@@ -115,7 +115,7 @@ namespace GTI.Modules.PlayerCenter.UI
                             }
 
                             else
-                                if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)   //Show if entry end  date is current or greater than todays date.
+                               /* if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)   //Show if entry end  date is current or greater than todays date.
                             {
                                 if (de.ScheduledForWhen != null)  //Show if schedule date is current or greater than todays date.
                                 {
@@ -129,7 +129,14 @@ namespace GTI.Modules.PlayerCenter.UI
                                     if (ed.MinimumEntries > totalEntries)
                                     continue;
                                 }
-                            }                           
+                            }*/
+                                if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
+                                {
+                                    if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
+                                    {
+                                        continue;
+                                    }
+                                }
                         }       
 
                         var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);

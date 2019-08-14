@@ -646,7 +646,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_currentGPD != null)
             {
                 drawingNameTxt.Text = m_currentGPD.Name;
-                drawingActiveChk.Checked = m_currentGPD.Active;
+                drawingActiveChk.Checked = !m_currentGPD.Active;
                 drawingDescriptionTxt.Text = m_currentGPD.Description;
                 drawingEntriesDrawnTxt.Text = m_currentGPD.EntriesDrawn.ToString();
                 minimumEntriesToRunTxt.Text = m_currentGPD.MinimumEntries.ToString();

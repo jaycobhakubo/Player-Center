@@ -1153,6 +1153,8 @@
             this.drawingActiveChk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingActiveChk.AutoSize = true;
             this.drawingActiveChk.BackColor = System.Drawing.Color.Transparent;
+            this.drawingActiveChk.Checked = true;
+            this.drawingActiveChk.CheckState = System.Windows.Forms.CheckState.Checked;
             this.drawingActiveChk.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drawingActiveChk.Location = new System.Drawing.Point(646, 30);
             this.drawingActiveChk.Name = "drawingActiveChk";

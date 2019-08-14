@@ -113,30 +113,14 @@ namespace GTI.Modules.PlayerCenter.UI
                             {
                                 continue;
                             }
-
-                            else
-                               /* if (de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)   //Show if entry end  date is current or greater than todays date.
+                            else                             
+                            if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
                             {
-                                if (de.ScheduledForWhen != null)  //Show if schedule date is current or greater than todays date.
+                                if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
                                 {
-                                    if (de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0 && ed.MinimumEntries > totalEntries)
-                                    {
-                                        continue;
-                                    }
-                                }
-                                else
-                                {
-                                    if (ed.MinimumEntries > totalEntries)
                                     continue;
                                 }
-                            }*/
-                                if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
-                                {
-                                    if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
-                                    {
-                                        continue;
-                                    }
-                                }
+                            }
                         }       
 
                         var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
@@ -280,16 +264,25 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 bool showEvent = false;
                 var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
+
+               
+               
                 LoadCurrentAndRecentDrawingEvents();
                 if(!eeResult.Item1)
                 {
                     String msg = String.Empty;
+                    GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
+                    var minEntryRequired = ed.MinimumEntries;
+
                     if(eeResult.Item2.HeldWhen.HasValue)
                         msg = "Event was already held.";
                     else if(eeResult.Item2.CancelledWhen.HasValue)
                         msg = "Cannot hold a cancelled event.";
-                    else
-                        msg = "Event not executed.";
+                    else if (minEntryRequired > eeResult.Item2.Entries.Count)
+                        msg = "Not enough entry to meet the requirements.";
+                    else msg = "Event not executed.";
+
+            
 
                     var dr = MessageForm.Show(msg + Environment.NewLine + "Show event details?", "Event Not Executed", MessageFormTypes.YesNo);
                     showEvent = (dr == System.Windows.Forms.DialogResult.Yes);

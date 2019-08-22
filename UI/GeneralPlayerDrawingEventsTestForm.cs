@@ -31,11 +31,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void GenerateCurrentDrawing()
         {
-            StringBuilder sb = new StringBuilder();
-            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
-            var msg = EventsToString(gResult, m_drawings);
-            var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
-            if (dr == System.Windows.Forms.DialogResult.Yes)
+            //StringBuilder sb = new StringBuilder();
+            //var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
+            //var msg = EventsToString(gResult, m_drawings);
+            //var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
+            //if (dr == System.Windows.Forms.DialogResult.Yes)
                 LoadCurrentAndRecentDrawingEvents();         
         }
 

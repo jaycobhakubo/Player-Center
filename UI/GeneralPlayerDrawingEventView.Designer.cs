@@ -85,7 +85,7 @@
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.singularPropertiesTLP.Size = new System.Drawing.Size(294, 473);
+            this.singularPropertiesTLP.Size = new System.Drawing.Size(499, 473);
             this.singularPropertiesTLP.TabIndex = 0;
             // 
             // scheduleForLbl
@@ -149,7 +149,7 @@
             this.resultsLV.FullRowSelect = true;
             this.resultsLV.Location = new System.Drawing.Point(3, 117);
             this.resultsLV.Name = "resultsLV";
-            this.resultsLV.Size = new System.Drawing.Size(288, 353);
+            this.resultsLV.Size = new System.Drawing.Size(493, 353);
             this.resultsLV.TabIndex = 0;
             this.resultsLV.UseCompatibleStateImageBehavior = false;
             this.resultsLV.View = System.Windows.Forms.View.Details;
@@ -285,7 +285,7 @@
             this.entriesLV.FullRowSelect = true;
             this.entriesLV.Location = new System.Drawing.Point(3, 103);
             this.entriesLV.Name = "entriesLV";
-            this.entriesLV.Size = new System.Drawing.Size(288, 367);
+            this.entriesLV.Size = new System.Drawing.Size(493, 367);
             this.entriesLV.TabIndex = 0;
             this.entriesLV.UseCompatibleStateImageBehavior = false;
             this.entriesLV.View = System.Windows.Forms.View.Details;
@@ -301,9 +301,8 @@
             this.mainTLP.Location = new System.Drawing.Point(0, 0);
             this.mainTLP.Name = "mainTLP";
             this.mainTLP.RowCount = 1;
-            this.mainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.mainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 560F));
-            this.mainTLP.Size = new System.Drawing.Size(600, 479);
+            this.mainTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainTLP.Size = new System.Drawing.Size(1010, 479);
             this.mainTLP.TabIndex = 1;
             // 
             // entriesTLP
@@ -322,7 +321,7 @@
             this.entriesTLP.Controls.Add(this.entriesCaptionLbl, 0, 8);
             this.entriesTLP.Controls.Add(this.heldWhenCaptionLbl, 0, 3);
             this.entriesTLP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.entriesTLP.Location = new System.Drawing.Point(303, 3);
+            this.entriesTLP.Location = new System.Drawing.Point(508, 3);
             this.entriesTLP.Name = "entriesTLP";
             this.entriesTLP.RowCount = 10;
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -335,7 +334,7 @@
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.entriesTLP.Size = new System.Drawing.Size(294, 473);
+            this.entriesTLP.Size = new System.Drawing.Size(499, 473);
             this.entriesTLP.TabIndex = 1;
             // 
             // entriesCaptionLbl
@@ -354,7 +353,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.mainTLP);
             this.Name = "GeneralPlayerDrawingEventView";
-            this.Size = new System.Drawing.Size(600, 479);
+            this.Size = new System.Drawing.Size(1010, 479);
             this.singularPropertiesTLP.ResumeLayout(false);
             this.singularPropertiesTLP.PerformLayout();
             this.mainTLP.ResumeLayout(false);

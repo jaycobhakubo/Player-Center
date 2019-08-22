@@ -31,8 +31,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void GenerateCurrentDrawing()
         {
-            //StringBuilder sb = new StringBuilder();
-            //var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
+            StringBuilder sb = new StringBuilder();
+            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
             //var msg = EventsToString(gResult, m_drawings);
             //var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             //if (dr == System.Windows.Forms.DialogResult.Yes)
@@ -408,8 +408,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
         {
             LoadCurrentAndRecentDrawingEvents();
-            var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
-            SetBtnControlDisable(selectionMade);
+            //var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
+            SetBtnControlDisable(false);
         }
     }
 }

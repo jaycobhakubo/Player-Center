@@ -1242,6 +1242,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void newDrawingBtn_Click(object sender, EventArgs e)
         {
+            if (drawingDetailsTC.SelectedIndex != 0) drawingDetailsTC.SelectedIndex = 0;
             drawingsLV.HideSelection = true;
             SetCurrentDrawing(new GeneralPlayerDrawing());
             drawingNameTxt.Text = "New " + m_displayedText;                  

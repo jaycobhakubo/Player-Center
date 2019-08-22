@@ -12,5 +12,10 @@ namespace GTI.Modules.PlayerCenter.UI
             this.Text = "General Player " + (raffle_Setting.RaffleTextSetting == 1 ? "Raffle" : "Drawing") + " Event";
             generalPlayerDrawingEventView1.SetEvent(drawingEvent, drawing);
         }
+
+        private void imgBtnClose_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

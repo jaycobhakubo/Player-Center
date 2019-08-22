@@ -60,7 +60,7 @@
             // 
             this.singularPropertiesTLP.ColumnCount = 2;
             this.singularPropertiesTLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.singularPropertiesTLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.singularPropertiesTLP.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.singularPropertiesTLP.Controls.Add(this.scheduleForLbl, 1, 5);
             this.singularPropertiesTLP.Controls.Add(this.createdWhenLbl, 1, 2);
             this.singularPropertiesTLP.Controls.Add(this.createdWhenCaptionLbl, 0, 2);
@@ -82,7 +82,7 @@
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.singularPropertiesTLP.Size = new System.Drawing.Size(499, 473);
@@ -283,9 +283,9 @@
             this.entriesLV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.entriesLV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entriesLV.FullRowSelect = true;
-            this.entriesLV.Location = new System.Drawing.Point(3, 103);
+            this.entriesLV.Location = new System.Drawing.Point(3, 88);
             this.entriesLV.Name = "entriesLV";
-            this.entriesLV.Size = new System.Drawing.Size(493, 367);
+            this.entriesLV.Size = new System.Drawing.Size(493, 382);
             this.entriesLV.TabIndex = 0;
             this.entriesLV.UseCompatibleStateImageBehavior = false;
             this.entriesLV.View = System.Windows.Forms.View.Details;
@@ -331,7 +331,7 @@
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.entriesTLP.Size = new System.Drawing.Size(499, 473);
@@ -340,7 +340,7 @@
             // entriesCaptionLbl
             // 
             this.entriesCaptionLbl.AutoSize = true;
-            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 85);
+            this.entriesCaptionLbl.Location = new System.Drawing.Point(3, 70);
             this.entriesCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
             this.entriesCaptionLbl.Name = "entriesCaptionLbl";
             this.entriesCaptionLbl.Size = new System.Drawing.Size(39, 13);

@@ -306,13 +306,13 @@ namespace GTI.Modules.PlayerCenter.UI
         private void cancelEventBtn_Click(object sender, EventArgs e)
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
-
+            GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == drawingEvent.DrawingId);
             if(drawingEvent.HeldWhen.HasValue)
             {
                 MessageForm.Show("Cannot cancel an event that has been held.", "Cancel not permitted", MessageFormTypes.YesNo);
                 return;
             }
-            else if(drawingEvent.CancelledWhen.HasValue)
+            else if (drawingEvent.CancelledWhen.HasValue)
             {
                 MessageForm.Show("Cannot cancel an event that has already been cancelled.", "Event already cancelled", MessageFormTypes.YesNo);
                 return;
@@ -320,25 +320,22 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var cd = SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
+                var dr = MessageForm.Show("Are you sure you want to cancel the " + ed.Name + " " + m_displayText + " scheduled for " + drawingEvent.ScheduledForWhen+ ".", "Cancel Event", MessageFormTypes.YesNo);
 
-                string msg = null;
-                if(cd.HasValue)
-                    msg = String.Format("Event {0} cancelled {1}, {2}", eventId, cd.Value.ToShortDateString(), cd.Value.ToShortTimeString());
-                else
-                    msg = String.Format("Event {0} not cancelled.", eventId);
-
-                var dr = MessageForm.Show(msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Cancel Results", MessageFormTypes.YesNo);
-                if(dr == System.Windows.Forms.DialogResult.Yes)
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
                     LoadCurrentAndRecentDrawingEvents();
+                    SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
+               }              
             }
+
         }
 
         private void reinstateEventBtn_Click(object sender, EventArgs e)
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
 
-            if(!drawingEvent.CancelledWhen.HasValue)
+            if (!drawingEvent.CancelledWhen.HasValue)
             {
                 MessageForm.Show("Cannot reinstate an event that is not cancelled.", "Event not cancelled", MessageFormTypes.YesNo);
                 return;
@@ -346,17 +343,14 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var cd = SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
-
-                string msg = null;
-                if(cd.HasValue)
-                    msg = String.Format("Event {0} not reinstated; still cancelled as of {1}, {2}.", eventId, cd.Value.ToShortDateString(), cd.Value.ToShortTimeString());
-                else
-                    msg = String.Format("Event {0} reinstated.", eventId);
-
-                var dr = MessageForm.Show(msg + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Reinstate Results", MessageFormTypes.YesNo);
-                if(dr == System.Windows.Forms.DialogResult.Yes)
+                GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == drawingEvent.DrawingId);
+                var dr = MessageForm.Show("Are you sure you want to reinstate the " + ed.Name + " " + m_displayText + " scheduled for " + drawingEvent.ScheduledForWhen +".", "Reinstate Event", MessageFormTypes.YesNo);
+               
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
                     LoadCurrentAndRecentDrawingEvents();
+                }              
             }
         }
 

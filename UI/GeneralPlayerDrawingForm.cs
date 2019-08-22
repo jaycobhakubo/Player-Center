@@ -574,7 +574,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void SetCurrentDrawing(GeneralPlayerDrawing gpd)
         {
             m_currentGPD = gpd;
-
+            
             if (m_currentGPD == null || m_editMode)
             {
                 editDrawingBtn.Enabled = false;

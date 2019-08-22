@@ -123,12 +123,12 @@
             // 
             this.scheduledForCaptionLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.scheduledForCaptionLbl.AutoSize = true;
-            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(6, 60);
+            this.scheduledForCaptionLbl.Location = new System.Drawing.Point(3, 60);
             this.scheduledForCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.scheduledForCaptionLbl.Name = "scheduledForCaptionLbl";
-            this.scheduledForCaptionLbl.Size = new System.Drawing.Size(73, 13);
+            this.scheduledForCaptionLbl.Size = new System.Drawing.Size(76, 13);
             this.scheduledForCaptionLbl.TabIndex = 5;
-            this.scheduledForCaptionLbl.Text = "Scheduled for";
+            this.scheduledForCaptionLbl.Text = "Scheduled For";
             // 
             // eventIdLbl
             // 
@@ -193,15 +193,15 @@
             this.resultsCaptionLbl.Location = new System.Drawing.Point(3, 100);
             this.resultsCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 5, 3, 1);
             this.resultsCaptionLbl.Name = "resultsCaptionLbl";
-            this.resultsCaptionLbl.Size = new System.Drawing.Size(74, 13);
+            this.resultsCaptionLbl.Size = new System.Drawing.Size(76, 13);
             this.resultsCaptionLbl.TabIndex = 16;
-            this.resultsCaptionLbl.Text = "Results drawn";
+            this.resultsCaptionLbl.Text = "Results Drawn";
             // 
             // heldWhenLbl
             // 
             this.heldWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heldWhenLbl.AutoSize = true;
-            this.heldWhenLbl.Location = new System.Drawing.Point(107, 46);
+            this.heldWhenLbl.Location = new System.Drawing.Point(108, 46);
             this.heldWhenLbl.Name = "heldWhenLbl";
             this.heldWhenLbl.Size = new System.Drawing.Size(10, 13);
             this.heldWhenLbl.TabIndex = 15;
@@ -211,7 +211,7 @@
             // 
             this.cancelledWhenLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cancelledWhenLbl.AutoSize = true;
-            this.cancelledWhenLbl.Location = new System.Drawing.Point(107, 31);
+            this.cancelledWhenLbl.Location = new System.Drawing.Point(108, 31);
             this.cancelledWhenLbl.Name = "cancelledWhenLbl";
             this.cancelledWhenLbl.Size = new System.Drawing.Size(10, 13);
             this.cancelledWhenLbl.TabIndex = 14;
@@ -221,7 +221,7 @@
             // 
             this.entryPeriodEndLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.entryPeriodEndLbl.AutoSize = true;
-            this.entryPeriodEndLbl.Location = new System.Drawing.Point(107, 16);
+            this.entryPeriodEndLbl.Location = new System.Drawing.Point(108, 16);
             this.entryPeriodEndLbl.Name = "entryPeriodEndLbl";
             this.entryPeriodEndLbl.Size = new System.Drawing.Size(10, 13);
             this.entryPeriodEndLbl.TabIndex = 12;
@@ -231,7 +231,7 @@
             // 
             this.entryPeriodBeginLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.entryPeriodBeginLbl.AutoSize = true;
-            this.entryPeriodBeginLbl.Location = new System.Drawing.Point(107, 1);
+            this.entryPeriodBeginLbl.Location = new System.Drawing.Point(108, 1);
             this.entryPeriodBeginLbl.Name = "entryPeriodBeginLbl";
             this.entryPeriodBeginLbl.Size = new System.Drawing.Size(10, 13);
             this.entryPeriodBeginLbl.TabIndex = 11;
@@ -243,9 +243,9 @@
             this.entryPeriodBeginCaptionLbl.Location = new System.Drawing.Point(3, 1);
             this.entryPeriodBeginCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.entryPeriodBeginCaptionLbl.Name = "entryPeriodBeginCaptionLbl";
-            this.entryPeriodBeginCaptionLbl.Size = new System.Drawing.Size(98, 13);
+            this.entryPeriodBeginCaptionLbl.Size = new System.Drawing.Size(99, 13);
             this.entryPeriodBeginCaptionLbl.TabIndex = 3;
-            this.entryPeriodBeginCaptionLbl.Text = "Entry Period begins";
+            this.entryPeriodBeginCaptionLbl.Text = "Entry Period Begins";
             // 
             // entryPeriodEndCaptionLbl
             // 
@@ -253,9 +253,9 @@
             this.entryPeriodEndCaptionLbl.Location = new System.Drawing.Point(3, 16);
             this.entryPeriodEndCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.entryPeriodEndCaptionLbl.Name = "entryPeriodEndCaptionLbl";
-            this.entryPeriodEndCaptionLbl.Size = new System.Drawing.Size(90, 13);
+            this.entryPeriodEndCaptionLbl.Size = new System.Drawing.Size(91, 13);
             this.entryPeriodEndCaptionLbl.TabIndex = 4;
-            this.entryPeriodEndCaptionLbl.Text = "Entry Period ends";
+            this.entryPeriodEndCaptionLbl.Text = "Entry Period Ends";
             // 
             // cancelledWhenCaptionLbl
             // 
@@ -263,9 +263,9 @@
             this.cancelledWhenCaptionLbl.Location = new System.Drawing.Point(3, 31);
             this.cancelledWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.cancelledWhenCaptionLbl.Name = "cancelledWhenCaptionLbl";
-            this.cancelledWhenCaptionLbl.Size = new System.Drawing.Size(83, 13);
+            this.cancelledWhenCaptionLbl.Size = new System.Drawing.Size(86, 13);
             this.cancelledWhenCaptionLbl.TabIndex = 6;
-            this.cancelledWhenCaptionLbl.Text = "Cancelled when";
+            this.cancelledWhenCaptionLbl.Text = "Cancelled When";
             // 
             // heldWhenCaptionLbl
             // 
@@ -273,9 +273,9 @@
             this.heldWhenCaptionLbl.Location = new System.Drawing.Point(3, 46);
             this.heldWhenCaptionLbl.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.heldWhenCaptionLbl.Name = "heldWhenCaptionLbl";
-            this.heldWhenCaptionLbl.Size = new System.Drawing.Size(58, 13);
+            this.heldWhenCaptionLbl.Size = new System.Drawing.Size(61, 13);
             this.heldWhenCaptionLbl.TabIndex = 7;
-            this.heldWhenCaptionLbl.Text = "Held when";
+            this.heldWhenCaptionLbl.Text = "Held When";
             // 
             // entriesLV
             // 

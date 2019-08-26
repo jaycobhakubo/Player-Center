@@ -23,8 +23,7 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
             m_displayText = displayText;
-
-            LoadCurrentAndRecentDrawingEvents(true, true);//knc -1
+            LoadCurrentAndRecentDrawingEvents(true, true);
             SetBtnControlDisable(false);
             AppliedSystemSettingDisplayedText();                       
         }
@@ -32,11 +31,8 @@ namespace GTI.Modules.PlayerCenter.UI
         private void GenerateCurrentDrawing()
         {
             StringBuilder sb = new StringBuilder();
-            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);
-            //var msg = EventsToString(gResult, m_drawings);
-            //var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
-            //if (dr == System.Windows.Forms.DialogResult.Yes)
-                LoadCurrentAndRecentDrawingEvents(true, true);         
+            var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);            
+            LoadCurrentAndRecentDrawingEvents(true, true);         
         }
 
         private void AppliedSystemSettingDisplayedText()
@@ -61,14 +57,12 @@ namespace GTI.Modules.PlayerCenter.UI
             ListViewItem newSelLVI = null;
             if(drawingEventsLV.SelectedItems.Count == 1)
             prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
-
             DataGridView dgvtest = new DataGridView();
             DataGridViewRow  dgvr = new DataGridViewRow();
-
             drawingEventsLV.Items.Clear();
             drawingEventsLV.Columns.Clear();
-
             drawingEventsLV.BeginUpdate();
+
             try
             {
                 var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, includeEntries, includeResults);

@@ -15,7 +15,7 @@ namespace GTI.Modules.PlayerCenter.UI
 {
     public partial class GeneralPlayerDrawingEventsTestForm : GradientForm
     {
-        //hello
+        //hello you
         private List<GeneralPlayerDrawing> m_drawings;
         private string m_displayText;
 

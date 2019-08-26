@@ -24,7 +24,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
             m_displayText = displayText;
 
-            LoadCurrentAndRecentDrawingEvents();//knc -1
+            LoadCurrentAndRecentDrawingEvents(true, true);//knc -1
             SetBtnControlDisable(false);
             AppliedSystemSettingDisplayedText();                       
         }
@@ -36,7 +36,7 @@ namespace GTI.Modules.PlayerCenter.UI
             //var msg = EventsToString(gResult, m_drawings);
             //var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             //if (dr == System.Windows.Forms.DialogResult.Yes)
-                LoadCurrentAndRecentDrawingEvents();         
+                LoadCurrentAndRecentDrawingEvents(true, true);         
         }
 
         private void AppliedSystemSettingDisplayedText()
@@ -55,7 +55,7 @@ namespace GTI.Modules.PlayerCenter.UI
             imgbtnCancel.Enabled = set;
         }
 
-        private void LoadCurrentAndRecentDrawingEvents(/*bool includeEntries, bool includeResults*/)
+        private void LoadCurrentAndRecentDrawingEvents(bool includeEntries, bool includeResults)
         {
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
@@ -71,7 +71,7 @@ namespace GTI.Modules.PlayerCenter.UI
             drawingEventsLV.BeginUpdate();
             try
             {
-                var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);
+                var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(0, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, includeEntries, includeResults);
                 
                 if(drawingEvents.Count == 0)
                 {
@@ -236,7 +236,7 @@ namespace GTI.Modules.PlayerCenter.UI
             var msg = EventsToString(gResult, m_drawings);
             var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             if(dr == System.Windows.Forms.DialogResult.Yes)
-                LoadCurrentAndRecentDrawingEvents();
+                LoadCurrentAndRecentDrawingEvents(true, true);
         }
 
         private void refreshEventsListBtn_Click(object sender, EventArgs e)
@@ -267,7 +267,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                
                
-                LoadCurrentAndRecentDrawingEvents();
+                LoadCurrentAndRecentDrawingEvents(true, true);
                 if(!eeResult.Item1)
                 {
                     String msg = String.Empty;
@@ -324,7 +324,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
-                    LoadCurrentAndRecentDrawingEvents();
+                    LoadCurrentAndRecentDrawingEvents(true, true);
                     SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
                }              
             }
@@ -349,7 +349,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
                     SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
-                    LoadCurrentAndRecentDrawingEvents();
+                    LoadCurrentAndRecentDrawingEvents(true, true);
                 }              
             }
         }
@@ -401,7 +401,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
         {
-            LoadCurrentAndRecentDrawingEvents();
+            LoadCurrentAndRecentDrawingEvents(false, false);
             //var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
             SetBtnControlDisable(false);
         }

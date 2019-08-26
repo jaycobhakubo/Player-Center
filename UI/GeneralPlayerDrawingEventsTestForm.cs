@@ -24,7 +24,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
             m_displayText = displayText;
 
-            LoadCurrentAndRecentDrawingEvents();
+            LoadCurrentAndRecentDrawingEvents();//knc -1
             SetBtnControlDisable(false);
             AppliedSystemSettingDisplayedText();                       
         }
@@ -55,7 +55,7 @@ namespace GTI.Modules.PlayerCenter.UI
             imgbtnCancel.Enabled = set;
         }
 
-        private void LoadCurrentAndRecentDrawingEvents()
+        private void LoadCurrentAndRecentDrawingEvents(/*bool includeEntries, bool includeResults*/)
         {
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
@@ -88,9 +88,9 @@ namespace GTI.Modules.PlayerCenter.UI
                     drawingEventsLV.Columns.Add("Schedule For");
                     drawingEventsLV.Columns.Add("Held When");
                     drawingEventsLV.Columns.Add("Cancelled When");
-                    drawingEventsLV.Columns.Add("Players");
-                    drawingEventsLV.Columns.Add("Entries");
-                    drawingEventsLV.Columns.Add("# Drawn");
+                    //drawingEventsLV.Columns.Add("Players");
+                    //drawingEventsLV.Columns.Add("Entries");
+                    //drawingEventsLV.Columns.Add("# Drawn");
 
                     bool heldPresent = false
                         , cancellationPresent = false;
@@ -144,9 +144,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
              
 
-                        lvi.SubItems.Add(playersEntered.Count().ToString());
-                        lvi.SubItems.Add(totalEntries.ToString());
-                        lvi.SubItems.Add(de.Results.Count.ToString());
+                        //lvi.SubItems.Add(playersEntered.Count().ToString());
+                        //lvi.SubItems.Add(totalEntries.ToString());
+                        //lvi.SubItems.Add(de.Results.Count.ToString());
 
                         lvi.Tag = de;
 
@@ -159,10 +159,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
 
                     drawingEventsLV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-                    if(heldPresent)
+                    if (heldPresent)
+                        drawingEventsLV.AutoResizeColumn(4, ColumnHeaderAutoResizeStyle.ColumnContent);
+                    if (cancellationPresent)
                         drawingEventsLV.AutoResizeColumn(5, ColumnHeaderAutoResizeStyle.ColumnContent);
-                    if(cancellationPresent)
-                        drawingEventsLV.AutoResizeColumn(6, ColumnHeaderAutoResizeStyle.ColumnContent);
                 }
             }
             finally

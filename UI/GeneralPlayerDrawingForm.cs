@@ -1245,7 +1245,9 @@ namespace GTI.Modules.PlayerCenter.UI
             if (drawingDetailsTC.SelectedIndex != 0) drawingDetailsTC.SelectedIndex = 0;
             drawingsLV.HideSelection = true;
             SetCurrentDrawing(new GeneralPlayerDrawing());
-            drawingNameTxt.Text = "New " + m_displayedText;                  
+            SetAllItemCheck(true);
+            SetError(entrySessionsLbl, null);
+            drawingNameTxt.Text = "New " + m_displayedText;          
             ToggleEditMode(true);
            
         }

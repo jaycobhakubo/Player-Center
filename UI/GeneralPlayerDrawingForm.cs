@@ -1332,18 +1332,32 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
         {
-            var tb = sender as TextBox;
-            uint parseUInt;
-            if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
-                SetError(tb, "Must be whole number greater than 0.");
-            else
-                SetError(tb, null);
+            //var tb = sender as TextBox;
+            //uint parseUInt;
+            //if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+            //    SetError(tb, "Must be whole number greater than 0.");
+            //else
+            //    SetError(tb, null);
         }
 
         private void requiredIntTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+            else
+                if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                    e.Handled = true;
+                else
+                {
+                    var tb = sender as TextBox;
+                    uint parseUInt;
+                    if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+                    {
+                        e.Handled = true;
+                    }
+                }
         }
 
         private void addEntrySpendTierBtn_Click(object sender, EventArgs e)

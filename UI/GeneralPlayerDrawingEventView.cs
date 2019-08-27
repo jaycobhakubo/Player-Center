@@ -59,6 +59,17 @@ namespace GTI.Modules.PlayerCenter.UI
                 : "-"
                 ;
 
+
+            var playersEntered = (from e in m_drawingEvent.Entries
+                                  select e.PlayerId).Distinct();
+            var totalEntries = (from e in m_drawingEvent.Entries
+                                select e.EntryCount).Sum();
+            var numberDrawn = m_drawingEvent.Results.Count.ToString();
+
+            lbl_NumberPlayer.Text = playersEntered.Count().ToString();
+            lbl_NumberEntries.Text = totalEntries.ToString();
+            lbl_NumberDrawn.Text = numberDrawn;
+
             entriesLV.Items.Clear();
             entriesLV.Columns.Clear();
 

@@ -136,8 +136,6 @@ namespace GTI.Modules.PlayerCenter.UI
                             : "---"
                             );
 
-             
-
                         //lvi.SubItems.Add(playersEntered.Count().ToString());
                         //lvi.SubItems.Add(totalEntries.ToString());
                         //lvi.SubItems.Add(de.Results.Count.ToString());
@@ -150,7 +148,6 @@ namespace GTI.Modules.PlayerCenter.UI
 
                     if(newSelLVI != null)
                         newSelLVI.Selected = true;
-
 
                     drawingEventsLV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     if (heldPresent)
@@ -352,7 +349,6 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
             int eventId = selEvent.EventId;
-
             var ed = m_drawings.FirstOrDefault((d) => d.Id == selEvent.DrawingId);
             var f = new GeneralPlayerDrawingEventViewForm(selEvent, ed);
             f.ShowDialog(this);
@@ -396,7 +392,6 @@ namespace GTI.Modules.PlayerCenter.UI
         private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
         {
             LoadCurrentAndRecentDrawingEvents(false, false);
-            //var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
             SetBtnControlDisable(false);
         }
     }

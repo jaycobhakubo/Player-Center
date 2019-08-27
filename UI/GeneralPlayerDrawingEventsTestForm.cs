@@ -80,8 +80,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     drawingEventsLV.Columns.Add("Entries Begin");
                     drawingEventsLV.Columns.Add("Entries End");
                     drawingEventsLV.Columns.Add("Schedule For");
-                    drawingEventsLV.Columns.Add("Held When");
-                    drawingEventsLV.Columns.Add("Cancelled When");
+                    drawingEventsLV.Columns.Add("Held On");
+                    drawingEventsLV.Columns.Add("Cancelled On");
                     //drawingEventsLV.Columns.Add("Players");
                     //drawingEventsLV.Columns.Add("Entries");
                     //drawingEventsLV.Columns.Add("# Drawn");

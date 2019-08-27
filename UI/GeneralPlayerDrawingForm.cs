@@ -1169,24 +1169,85 @@ namespace GTI.Modules.PlayerCenter.UI
       
         private void entryLimitTxt_TextChanged(object sender, EventArgs e)
         {
-            var tb = sender as TextBox;
-            int parseTarget = 0;
+            //var tb = sender as TextBox;
+            //int parseTarget = 0;
 
-            if(String.IsNullOrWhiteSpace(tb.Text))
-                SetError(tb, null);
-            else if(!int.TryParse(tb.Text, out parseTarget))
-                SetError(tb, "Limit must be numeric");
-            else if(parseTarget <= 0)
-                SetError(tb, "Limit must be greater than 0.");
-            else
-                SetError(tb, null);
+            //if(String.IsNullOrWhiteSpace(tb.Text))
+            //    SetError(tb, null);
+            //else if(!int.TryParse(tb.Text, out parseTarget))
+            //    SetError(tb, "Limit must be numeric");
+            //else if(parseTarget <= 0)
+            //    SetError(tb, "Limit must be greater than 0.");
+            //else
+            //    SetError(tb, null);
         }
 
         private void entryLimitTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-                e.Handled = true;
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+            else
+                if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    var tb = sender as TextBox;
+                    int parseTarget = 0;
+
+                    if (String.IsNullOrWhiteSpace(tb.Text))
+                    {
+                        e.Handled = false;
+                       // SetError(tb, null);
+                    }
+                    else if (!int.TryParse(tb.Text, out parseTarget))
+                    {
+                        e.Handled = true;
+                        //SetError(tb, "Limit must be numeric");
+                    }
+                    else if (parseTarget <= 0)
+                    {
+                        e.Handled = true;
+                        //SetError(tb, "Limit must be greater than 0.");
+                    }
+                    else
+                        SetError(tb, null);
+                }
         }
+
+        private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
+        {
+            //var tb = sender as TextBox;
+            //uint parseUInt;
+            //if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+            //    SetError(tb, "Must be whole number greater than 0.");
+            //else
+            //    SetError(tb, null);
+        }
+
+        private void requiredIntTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+            else
+                if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                    e.Handled = true;
+                else
+                {
+                    var tb = sender as TextBox;
+                    uint parseUInt;
+                    if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+                    {
+                        e.Handled = true;
+                    }
+                }
+        }
+
 
         private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
         {
@@ -1330,36 +1391,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void requiredUIntTxt_TextChanged(object sender, EventArgs e)
-        {
-            //var tb = sender as TextBox;
-            //uint parseUInt;
-            //if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
-            //    SetError(tb, "Must be whole number greater than 0.");
-            //else
-            //    SetError(tb, null);
-        }
-
-        private void requiredIntTxt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                e.Handled = false;
-            }
-            else
-                if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                    e.Handled = true;
-                else
-                {
-                    var tb = sender as TextBox;
-                    uint parseUInt;
-                    if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
-                    {
-                        e.Handled = true;
-                    }
-                }
-        }
-
+      
         private void addEntrySpendTierBtn_Click(object sender, EventArgs e)
         {
             m_entrySpendScaleDT.Rows.Add();

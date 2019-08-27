@@ -311,7 +311,7 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var dr = MessageForm.Show("Are you sure you want to cancel the " + ed.Name + " " + m_displayText + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString()+ "?", "Cancel Event", MessageFormTypes.YesNo);
+                var dr = MessageForm.Show("Are you sure you want to cancel the " + ed.Name + " " + m_displayText + Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString()+ "?", "Cancel Event", MessageFormTypes.YesNo);
 
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -335,7 +335,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 int eventId = drawingEvent.EventId;
                 GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == drawingEvent.DrawingId);
-                var dr = MessageForm.Show("Are you sure you want to reinstate the " + ed.Name + " " + m_displayText + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() +"?", "Reinstate Event", MessageFormTypes.YesNo);
+                var dr = MessageForm.Show("Are you sure you want to reinstate the " + ed.Name + " " + m_displayText + Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() +"?", "Reinstate Event", MessageFormTypes.YesNo);
                
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {

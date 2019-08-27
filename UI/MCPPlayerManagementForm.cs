@@ -426,7 +426,7 @@ namespace GTI.Modules.PlayerCenter.UI
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">An EventArgs object that contains the 
         /// event data.</param>
-        private void FindPlayerClick(object sender, EventArgs e)
+        private void FindPlayerClick(object sender, EventArgs e)//knc
         {
             personalInfoGroupBox.Text = "Personal Information";
 
@@ -439,17 +439,17 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
 
                     if (
-                GetThisStaffPermissionToAwardPoints() &&
-                m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN &&
-                m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&
-                findForm.SelectedPlayer.PlayerCardPINError == true
-                )
-                    {
-                        SetPlayerCenterThirdPartyInterfaceNewValue(findForm.SelectedPlayer);
-                        m_playerCenterThirdPartyInterface.UICurrent = this;
-                        m_playerCenterThirdPartyInterface.GetPlayer(findForm.SelectedPlayer.PlayerCard);
-                        Application.DoEvents();
-                    }
+                        GetThisStaffPermissionToAwardPoints() &&
+                        m_parent.Settings.ThirdPartyPlayerInterfaceUsesPIN &&
+                        m_parent.Settings.ThirdPartyPlayerInterfaceID != 0 &&
+                        findForm.SelectedPlayer.PlayerCardPINError == true
+                        )
+                        {
+                            SetPlayerCenterThirdPartyInterfaceNewValue(findForm.SelectedPlayer);
+                            m_playerCenterThirdPartyInterface.UICurrent = this;
+                            m_playerCenterThirdPartyInterface.GetPlayer(findForm.SelectedPlayer.PlayerCard);
+                            Application.DoEvents();
+                        }
 
                     Application.DoEvents();
                     m_player = findForm.SelectedPlayer;
@@ -812,16 +812,11 @@ namespace GTI.Modules.PlayerCenter.UI
             txtMiddleInitial.Text = m_player.MiddleInitial;
             txtLastName.Text = m_player.LastName;
             txtSocialSecurityNum.Text = m_player.GovIssuedIdNumber;
-            //m_txtbxAgeValue.Text = 
-            txtBirthDate.Text = m_player.BirthDate != DateTime.MinValue ? m_player.BirthDate.ToShortDateString() : string.Empty;
-            
+            txtBirthDate.Text = m_player.BirthDate != DateTime.MinValue ? m_player.BirthDate.ToShortDateString() : string.Empty;            
             txtEmail.Text = m_player.Email;
             txtPlayerIdent.Text = m_player.PlayerIdentity;
             txtPhoneNum.Text = m_player.PhoneNumber;
-
-            // FIX: DE1891
-            m_genderList.SelectedIndex = 0;
-
+            m_genderList.SelectedIndex = 0; // FIX: DE1891
             int index = m_genderList.FindStringExact(m_player.Gender);
 
             if(index > -1)
@@ -830,23 +825,17 @@ namespace GTI.Modules.PlayerCenter.UI
              
             /*  Is Player PIN is Read Only. Not displayed on this form? */              
             m_pinNumber = m_player.PinNumber;            
-
             txtAddress1.Text = m_player.Address1;
             txtAddress2.Text = m_player.Address2;
             txCity.Text = m_player.City;
             txtState.Text = m_player.State;
             txtZipCode.Text = m_player.Zip;
             txtCountry.Text = m_player.Country;
-
             m_joinDate.Text = m_player.JoinDate != DateTime.MinValue ? m_player.JoinDate.ToShortDateString() : string.Empty;
-
             m_lastVisit.Text = m_player.LastVisit != DateTime.MinValue ? m_player.LastVisit.ToShortDateString() : string.Empty;
-
             m_pointsBalanceUI.Text = m_player.PointsBalance.ToString("N");
             m_visitCount.Text = m_player.VisitCount.ToString();
-            // FIX: DE6690
-//            m_magCardNum.Text = m_player.MagneticCardNumber;
-            txtMagCard.Text = m_player.MagneticCardNumber;
+            txtMagCard.Text = m_player.MagneticCardNumber;   // FIX: DE6690//m_magCardNum.Text = m_player.MagneticCardNumber;
             txtComments.Text = m_player.Comment;
 
             if (m_player.IsCreditOnline)
@@ -863,7 +852,6 @@ namespace GTI.Modules.PlayerCenter.UI
             // END: DE6690
 
             m_playerTier.Text = m_player.LoyaltyTier != null ? m_player.LoyaltyTier.Name : string.Empty;
-
             m_playerPicture.Image = m_player.Image;
 
             if(m_playerPicture.Image == null)
@@ -880,6 +868,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_SpendDataImageLabel.Text = m_player.TotalSpend.ToString("N"); // FIX: DE3341
             m_IsLogInStatusImageLabel.Text = m_player.IsLoggedIn ? Resources.Yes : Resources.No;
             lstReceiptNumber.Items.Clear();
+
             if (m_player.ReceiptNumbers != null)
             {
                 //US5591: (US5546) - added presold flag
@@ -892,15 +881,12 @@ namespace GTI.Modules.PlayerCenter.UI
 
             //Populate the players coupon 
             m_lstComps.DataSource = null;
-            //if (m_player.Comps != null)
-            //{
-                if (m_player.Comps.Count != 0)
-                {
-                    m_lstComps.DataSource = m_player.Comps;
-                    m_lstComps.ValueMember = "Name";
-                    m_lstComps.SelectedIndex = -1;
-                }
-            //}
+            if (m_player.Comps.Count != 0)
+            {
+                m_lstComps.DataSource = m_player.Comps;
+                m_lstComps.ValueMember = "Name";
+                m_lstComps.SelectedIndex = -1;
+            }
             m_lstComps.Update();
 
             //START RALLY DE8358
@@ -1224,7 +1210,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_lstComps.SelectedIndex != -1)
             {
                 PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
-                DialogResult dialogResult = MessageForm.Show("Do you want to remove this " + selectedCoupon.Name+"?"+Environment.NewLine+"This action cannot be undone.", "Confirm", MessageFormTypes.RemoveCancel);
+                DialogResult dialogResult = MessageForm.Show("Are you sure you want to remove the " + selectedCoupon.Name+"?"+Environment.NewLine+"This action cannot be undone.", "Confirm", MessageFormTypes.RemoveCancel);
                 if (dialogResult == DialogResult.Yes)
                 {
                   

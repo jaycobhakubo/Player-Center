@@ -889,7 +889,7 @@
             this.entryPurchaseGroupingByTransactionRB.AutoSize = true;
             this.entryPurchaseGroupingByTransactionRB.Location = new System.Drawing.Point(3, 3);
             this.entryPurchaseGroupingByTransactionRB.Name = "entryPurchaseGroupingByTransactionRB";
-            this.entryPurchaseGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
+            this.entryPurchaseGroupingByTransactionRB.Size = new System.Drawing.Size(116, 26);
             this.entryPurchaseGroupingByTransactionRB.TabIndex = 1;
             this.entryPurchaseGroupingByTransactionRB.Text = "Transaction";
             this.entryPurchaseGroupingByTransactionRB.UseVisualStyleBackColor = true;
@@ -922,7 +922,7 @@
             this.entryPurchaseGroupingEntryPeriodRB.AutoSize = true;
             this.entryPurchaseGroupingEntryPeriodRB.Location = new System.Drawing.Point(3, 99);
             this.entryPurchaseGroupingEntryPeriodRB.Name = "entryPurchaseGroupingEntryPeriodRB";
-            this.entryPurchaseGroupingEntryPeriodRB.Size = new System.Drawing.Size(121, 26);
+            this.entryPurchaseGroupingEntryPeriodRB.Size = new System.Drawing.Size(120, 26);
             this.entryPurchaseGroupingEntryPeriodRB.TabIndex = 3;
             this.entryPurchaseGroupingEntryPeriodRB.Text = "Entry Period";
             this.entryPurchaseGroupingEntryPeriodRB.UseVisualStyleBackColor = true;
@@ -1006,7 +1006,7 @@
             this.entryPurchaseTypePackageRB.AutoSize = true;
             this.entryPurchaseTypePackageRB.Location = new System.Drawing.Point(3, 35);
             this.entryPurchaseTypePackageRB.Name = "entryPurchaseTypePackageRB";
-            this.entryPurchaseTypePackageRB.Size = new System.Drawing.Size(98, 26);
+            this.entryPurchaseTypePackageRB.Size = new System.Drawing.Size(97, 26);
             this.entryPurchaseTypePackageRB.TabIndex = 6;
             this.entryPurchaseTypePackageRB.TabStop = true;
             this.entryPurchaseTypePackageRB.Text = "Packages";
@@ -1131,7 +1131,7 @@
             this.entrySpendGroupingByTransactionRB.AutoSize = true;
             this.entrySpendGroupingByTransactionRB.Location = new System.Drawing.Point(3, 99);
             this.entrySpendGroupingByTransactionRB.Name = "entrySpendGroupingByTransactionRB";
-            this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(118, 26);
+            this.entrySpendGroupingByTransactionRB.Size = new System.Drawing.Size(116, 26);
             this.entrySpendGroupingByTransactionRB.TabIndex = 4;
             this.entrySpendGroupingByTransactionRB.Text = "Transaction";
             this.entrySpendGroupingByTransactionRB.UseVisualStyleBackColor = true;
@@ -1142,7 +1142,7 @@
             this.entrySpendGroupingEntryPeriodRB.AutoSize = true;
             this.entrySpendGroupingEntryPeriodRB.Location = new System.Drawing.Point(3, 131);
             this.entrySpendGroupingEntryPeriodRB.Name = "entrySpendGroupingEntryPeriodRB";
-            this.entrySpendGroupingEntryPeriodRB.Size = new System.Drawing.Size(121, 26);
+            this.entrySpendGroupingEntryPeriodRB.Size = new System.Drawing.Size(120, 26);
             this.entrySpendGroupingEntryPeriodRB.TabIndex = 5;
             this.entrySpendGroupingEntryPeriodRB.Text = "Entry Period";
             this.entrySpendGroupingEntryPeriodRB.UseVisualStyleBackColor = true;
@@ -1248,11 +1248,11 @@
             this.showInactiveDrawingsChk.AutoSize = true;
             this.showInactiveDrawingsChk.BackColor = System.Drawing.Color.Transparent;
             this.showInactiveDrawingsChk.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showInactiveDrawingsChk.Location = new System.Drawing.Point(134, 18);
+            this.showInactiveDrawingsChk.Location = new System.Drawing.Point(168, 18);
             this.showInactiveDrawingsChk.Name = "showInactiveDrawingsChk";
-            this.showInactiveDrawingsChk.Size = new System.Drawing.Size(112, 22);
+            this.showInactiveDrawingsChk.Size = new System.Drawing.Size(78, 22);
             this.showInactiveDrawingsChk.TabIndex = 1;
-            this.showInactiveDrawingsChk.Text = "Show Inactive";
+            this.showInactiveDrawingsChk.Text = "Show All";
             this.showInactiveDrawingsChk.UseVisualStyleBackColor = false;
             this.showInactiveDrawingsChk.CheckedChanged += new System.EventHandler(this.showInactiveDrawingsChk_CheckedChanged);
             // 

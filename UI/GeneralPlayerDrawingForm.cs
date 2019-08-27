@@ -469,7 +469,6 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach (var d in m_drawings)
                         if (d.Active || showInactiveDrawingsChk.Checked)
                         {
-
                             var lvi = drawingsLV.Items.Add(d.Name);
                             lvi.Font = activeFont;
                             lvi.Tag = d;
@@ -646,7 +645,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (m_currentGPD != null)
             {
                 drawingNameTxt.Text = m_currentGPD.Name;
-                drawingActiveChk.Checked = !m_currentGPD.Active;
+                drawingActiveChk.Checked = m_currentGPD.Active;
                 drawingDescriptionTxt.Text = m_currentGPD.Description;
                 drawingEntriesDrawnTxt.Text = m_currentGPD.EntriesDrawn.ToString();
                 minimumEntriesToRunTxt.Text = m_currentGPD.MinimumEntries.ToString();

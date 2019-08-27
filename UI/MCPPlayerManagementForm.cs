@@ -1223,10 +1223,11 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             if (m_lstComps.SelectedIndex != -1)
             {
-                DialogResult dialogResult = MessageForm.Show("Do you want to remove this coupon?", "Confirm", MessageFormTypes.YesNo);
+                PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
+                DialogResult dialogResult = MessageForm.Show("Do you want to remove this " + selectedCoupon.Name+"?"+Environment.NewLine+"This action cannot be undone.", "Confirm", MessageFormTypes.RemoveCancel);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    PlayerComp selectedCoupon = (PlayerComp)m_lstComps.SelectedItem;
+                  
                     int CompId = selectedCoupon.CompAwardId;
                     int PlayerId = m_player.Id;
                     var testd = m_player.Comps;

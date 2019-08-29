@@ -25,8 +25,18 @@ namespace GTI.Modules.PlayerCenter.UI
             m_displayText = displayText;
             LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);
+            PopulateRaffleAvailability();
             cmbxAvailableRaffles.SelectedIndex = 0;
             AppliedSystemSettingDisplayedText();                       
+        }
+
+        private void PopulateRaffleAvailability()
+        {
+            cmbxAvailableRaffles.Items.Clear();
+            cmbxAvailableRaffles.Items.Add("Current " + m_displayText);
+            cmbxAvailableRaffles.Items.Add("Completed " + m_displayText);
+            cmbxAvailableRaffles.Items.Add("Cancelled " + m_displayText);
+            cmbxAvailableRaffles.Items.Add("All " + m_displayText);
         }
 
         private void GenerateCurrentDrawing()

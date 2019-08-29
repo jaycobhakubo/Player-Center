@@ -181,16 +181,16 @@
             // cmbxAvailableRaffles
             // 
             this.cmbxAvailableRaffles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbxAvailableRaffles.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbxAvailableRaffles.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbxAvailableRaffles.FormattingEnabled = true;
             this.cmbxAvailableRaffles.Items.AddRange(new object[] {
             "Current",
             "Completed",
             "Cancel",
             "All"});
-            this.cmbxAvailableRaffles.Location = new System.Drawing.Point(10, 6);
+            this.cmbxAvailableRaffles.Location = new System.Drawing.Point(10, 3);
             this.cmbxAvailableRaffles.Name = "cmbxAvailableRaffles";
-            this.cmbxAvailableRaffles.Size = new System.Drawing.Size(247, 26);
+            this.cmbxAvailableRaffles.Size = new System.Drawing.Size(247, 30);
             this.cmbxAvailableRaffles.TabIndex = 44;
             this.cmbxAvailableRaffles.SelectedIndexChanged += new System.EventHandler(this.m_genderList_SelectedIndexChanged);
             // 

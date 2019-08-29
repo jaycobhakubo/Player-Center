@@ -54,6 +54,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     m_genPlayerDrawingEvent.Dock = DockStyle.Fill;
                    
                     tp.Controls.Add(m_genPlayerDrawingEvent);
+                    m_genPlayerDrawingEvent.SelectNone();
                     m_genPlayerDrawingEvent.Show();
                 }
         }

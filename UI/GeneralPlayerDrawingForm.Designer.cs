@@ -262,11 +262,12 @@
             // 
             this.showZeroEntryCountChk.AutoSize = true;
             this.showZeroEntryCountChk.BackColor = System.Drawing.Color.Transparent;
+            this.showZeroEntryCountChk.Enabled = false;
             this.showZeroEntryCountChk.Location = new System.Drawing.Point(41, 292);
             this.showZeroEntryCountChk.Name = "showZeroEntryCountChk";
-            this.showZeroEntryCountChk.Size = new System.Drawing.Size(221, 26);
+            this.showZeroEntryCountChk.Size = new System.Drawing.Size(294, 26);
             this.showZeroEntryCountChk.TabIndex = 8;
-            this.showZeroEntryCountChk.Text = "Include zero entry counts";
+            this.showZeroEntryCountChk.Text = "Print player entry count when zero";
             this.showZeroEntryCountChk.UseVisualStyleBackColor = false;
             // 
             // txtbx_disclaimer

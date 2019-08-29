@@ -52,7 +52,7 @@
             this.m_btnClose.ShowFocus = false;
             this.m_btnClose.Size = new System.Drawing.Size(134, 51);
             this.m_btnClose.TabIndex = 5;
-            this.m_btnClose.Text = "CLOSE";
+            this.m_btnClose.Text = "Close";
             this.m_btnClose.UseVisualStyleBackColor = false;
             // 
             // m_btnPrint
@@ -69,7 +69,7 @@
             this.m_btnPrint.ShowFocus = false;
             this.m_btnPrint.Size = new System.Drawing.Size(134, 51);
             this.m_btnPrint.TabIndex = 4;
-            this.m_btnPrint.Text = "PRINT";
+            this.m_btnPrint.Text = "Print";
             this.m_btnPrint.UseVisualStyleBackColor = false;
             this.m_btnPrint.Click += new System.EventHandler(this.m_btnPrint_Click);
             // 
@@ -157,7 +157,7 @@
             this.m_btnClearAllFavorites.ShowFocus = false;
             this.m_btnClearAllFavorites.Size = new System.Drawing.Size(134, 51);
             this.m_btnClearAllFavorites.TabIndex = 6;
-            this.m_btnClearAllFavorites.Text = "CLEAR ALL\r\nFAVORITES";
+            this.m_btnClearAllFavorites.Text = "Clear All\r\nFavorites";
             this.m_btnClearAllFavorites.UseVisualStyleBackColor = false;
             this.m_btnClearAllFavorites.Click += new System.EventHandler(this.m_btnClearAllFavorites_Click);
             // 

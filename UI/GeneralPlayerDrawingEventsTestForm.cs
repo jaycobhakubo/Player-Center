@@ -39,6 +39,11 @@ namespace GTI.Modules.PlayerCenter.UI
             cmbxAvailableRaffles.Items.Add("All " + m_displayText);
         }
 
+        public void SelectNone()
+        {
+            SetBtnControlDisable(false);
+        }
+
         private void GenerateCurrentDrawing()
         {
             StringBuilder sb = new StringBuilder();
@@ -276,7 +281,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void refreshEventsListBtn_Click(object sender, EventArgs e)
         {
-            GenerateCurrentDrawing();      
+            GenerateCurrentDrawing();
+            SetBtnControlDisable(false);
         }
 
         private void executeEventBtn_Click(object sender, EventArgs e)

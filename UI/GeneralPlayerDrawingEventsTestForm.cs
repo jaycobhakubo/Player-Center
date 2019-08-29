@@ -23,8 +23,9 @@ namespace GTI.Modules.PlayerCenter.UI
             InitializeComponent();
             m_drawings = drawings ?? new List<GeneralPlayerDrawing>();
             m_displayText = displayText;
-            LoadCurrentAndRecentDrawingEvents(true, true);
+            LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);
+            cmbxAvailableRaffles.SelectedIndex = 0;
             AppliedSystemSettingDisplayedText();                       
         }
 
@@ -32,13 +33,13 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             StringBuilder sb = new StringBuilder();
             var gResult = GenerateGeneralDrawingsEventsMessage.GenerateDrawingEvents(DateTime.Now.Date);            
-            LoadCurrentAndRecentDrawingEvents(true, true);         
+            LoadCurrentAndRecentDrawingEvents(false, false);         
         }
 
         private void AppliedSystemSettingDisplayedText()
         {
-            drawingEventsLbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Scheduled " + m_displayText.ToLower() + "s");
-            chkbx_showAvailableDrawing.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Show Available " + m_displayText.ToLower() + "s");
+            //drawingEventsLbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Scheduled " + m_displayText.ToLower() + "s");
+            //chkbx_showAvailableDrawing.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Show Available " + m_displayText.ToLower() + "s");
             imgbtnCancel.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Cancel " + m_displayText.ToLower());
             imgbtnExecute.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Run " + m_displayText.ToLower());
         }
@@ -101,13 +102,29 @@ namespace GTI.Modules.PlayerCenter.UI
 
                         //default (true) show drawing that are currently available to run without any issues.
                         //Removed drawing that are already held, cancelled and if the minimum entries is greater than the current total entries.                   
-                        if (chkbx_showAvailableDrawing.Checked)
+                        //if (chkbx_showAvailableDrawing.Checked)
+                        //{
+                        //    if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue)
+                        //    {
+                        //        continue;
+                        //    }
+                        //    else                             
+                        //    if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
+                        //    {
+                        //        if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
+                        //        {
+                        //            continue;
+                        //        }
+                        //    }
+                        //}
+
+                        if (cmbxAvailableRaffles.SelectedIndex == 0)//Current
                         {
                             if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue)
                             {
                                 continue;
                             }
-                            else                             
+                            else
                             if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
                             {
                                 if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
@@ -115,7 +132,24 @@ namespace GTI.Modules.PlayerCenter.UI
                                     continue;
                                 }
                             }
-                        }       
+                        }  
+                        else
+                        if (cmbxAvailableRaffles.SelectedIndex == 1)
+                        {
+                            if (!de.HeldWhen.HasValue)
+                            {
+                                continue;
+                            }
+                            
+                        }
+                        else
+                        if (cmbxAvailableRaffles.SelectedIndex == 2)
+                        {
+                            if (!de.CancelledWhen.HasValue)
+                            {
+                                continue;
+                            }
+                        }
 
                         var lvi = drawingEventsLV.Items.Add(ed == null ? String.Format("[{0}]", de.DrawingId) : ed.Name);
                         lvi.Font = new Font(lvi.Font, FontStyle.Regular);
@@ -227,7 +261,7 @@ namespace GTI.Modules.PlayerCenter.UI
             var msg = EventsToString(gResult, m_drawings);
             var dr = MessageForm.Show((msg ?? "No Events Generated") + Environment.NewLine + Environment.NewLine + "Reload Recent?", "Generated Events", MessageFormTypes.YesNo);
             if(dr == System.Windows.Forms.DialogResult.Yes)
-                LoadCurrentAndRecentDrawingEvents(true, true);
+                LoadCurrentAndRecentDrawingEvents(false, false);
         }
 
         private void refreshEventsListBtn_Click(object sender, EventArgs e)
@@ -258,7 +292,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
                
                
-                LoadCurrentAndRecentDrawingEvents(true, true);
+                LoadCurrentAndRecentDrawingEvents(false, false);
                 if(!eeResult.Item1)
                 {
                     String msg = String.Empty;
@@ -315,11 +349,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
-                    LoadCurrentAndRecentDrawingEvents(true, true);
+                    LoadCurrentAndRecentDrawingEvents(false, false);
                     SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
                }              
             }
-
         }
 
         private void reinstateEventBtn_Click(object sender, EventArgs e)
@@ -340,17 +373,19 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
                     SetGeneralDrawingEventCancelledMessage.ReinstateEvent(eventId);
-                    LoadCurrentAndRecentDrawingEvents(true, true);
+                    LoadCurrentAndRecentDrawingEvents(false, false);
                 }              
             }
         }
 
         private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)
         {
-            var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
-            int eventId = selEvent.EventId;
-            var ed = m_drawings.FirstOrDefault((d) => d.Id == selEvent.DrawingId);
-            var f = new GeneralPlayerDrawingEventViewForm(selEvent, ed);
+            var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//Get the selected Event
+            int eventId = selEvent.EventId;//Get the event Id 
+            var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(selEvent.DrawingId, eventId, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);//Run server message but this time using eventId and drawingId and do the calculation.
+            var t = drawingEvents.FirstOrDefault();//Get the selected Event - theres only single item here so just use first or default without filter.
+            var ed = m_drawings.FirstOrDefault((d) => d.Id == selEvent.DrawingId);//Get the drawing
+            var f = new GeneralPlayerDrawingEventViewForm(t, ed);
             f.ShowDialog(this);
             f.Dispose();
         }
@@ -390,6 +425,12 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
         private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadCurrentAndRecentDrawingEvents(false, false);
+            SetBtnControlDisable(false);
+        }
+
+        private void m_genderList_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);

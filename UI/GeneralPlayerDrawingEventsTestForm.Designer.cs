@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralPlayerDrawingEventsTestForm));
             this.drawingEventsLV = new System.Windows.Forms.ListView();
-            this.drawingEventsLbl = new System.Windows.Forms.Label();
             this.imgbtnRefresh = new GTI.Controls.ImageButton();
             this.imgbtnAbortResult = new GTI.Controls.ImageButton();
             this.imgbtnInitiateResults = new GTI.Controls.ImageButton();
@@ -39,7 +38,7 @@
             this.imgbtnReinstate = new GTI.Controls.ImageButton();
             this.imgbtnCancel = new GTI.Controls.ImageButton();
             this.imgBtnClose = new GTI.Controls.ImageButton();
-            this.chkbx_showAvailableDrawing = new System.Windows.Forms.CheckBox();
+            this.cmbxAvailableRaffles = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // drawingEventsLV
@@ -49,25 +48,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingEventsLV.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.drawingEventsLV.FullRowSelect = true;
-            this.drawingEventsLV.Location = new System.Drawing.Point(10, 34);
+            this.drawingEventsLV.Location = new System.Drawing.Point(10, 37);
             this.drawingEventsLV.MultiSelect = false;
             this.drawingEventsLV.Name = "drawingEventsLV";
-            this.drawingEventsLV.Size = new System.Drawing.Size(990, 544);
+            this.drawingEventsLV.Size = new System.Drawing.Size(990, 541);
             this.drawingEventsLV.TabIndex = 28;
             this.drawingEventsLV.UseCompatibleStateImageBehavior = false;
             this.drawingEventsLV.View = System.Windows.Forms.View.Details;
             this.drawingEventsLV.SelectedIndexChanged += new System.EventHandler(this.drawingEventsLV_SelectedIndexChanged);
-            // 
-            // drawingEventsLbl
-            // 
-            this.drawingEventsLbl.AutoSize = true;
-            this.drawingEventsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.drawingEventsLbl.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
-            this.drawingEventsLbl.Location = new System.Drawing.Point(12, 9);
-            this.drawingEventsLbl.Name = "drawingEventsLbl";
-            this.drawingEventsLbl.Size = new System.Drawing.Size(160, 22);
-            this.drawingEventsLbl.TabIndex = 29;
-            this.drawingEventsLbl.Text = "Scheduled Drawings";
             // 
             // imgbtnRefresh
             // 
@@ -190,36 +178,35 @@
             this.imgBtnClose.Text = "Close";
             this.imgBtnClose.Click += new System.EventHandler(this.imgBtnClose_Click);
             // 
-            // chkbx_showAvailableDrawing
+            // cmbxAvailableRaffles
             // 
-            this.chkbx_showAvailableDrawing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkbx_showAvailableDrawing.AutoSize = true;
-            this.chkbx_showAvailableDrawing.BackColor = System.Drawing.Color.Transparent;
-            this.chkbx_showAvailableDrawing.Checked = true;
-            this.chkbx_showAvailableDrawing.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkbx_showAvailableDrawing.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkbx_showAvailableDrawing.Location = new System.Drawing.Point(784, 8);
-            this.chkbx_showAvailableDrawing.Name = "chkbx_showAvailableDrawing";
-            this.chkbx_showAvailableDrawing.Size = new System.Drawing.Size(211, 26);
-            this.chkbx_showAvailableDrawing.TabIndex = 43;
-            this.chkbx_showAvailableDrawing.Text = "Show Available Drawing";
-            this.chkbx_showAvailableDrawing.UseVisualStyleBackColor = false;
-            this.chkbx_showAvailableDrawing.CheckedChanged += new System.EventHandler(this.chkbx_showAvailableDrawing_CheckedChanged);
+            this.cmbxAvailableRaffles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbxAvailableRaffles.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbxAvailableRaffles.FormattingEnabled = true;
+            this.cmbxAvailableRaffles.Items.AddRange(new object[] {
+            "Current",
+            "Completed",
+            "Cancel",
+            "All"});
+            this.cmbxAvailableRaffles.Location = new System.Drawing.Point(10, 6);
+            this.cmbxAvailableRaffles.Name = "cmbxAvailableRaffles";
+            this.cmbxAvailableRaffles.Size = new System.Drawing.Size(247, 26);
+            this.cmbxAvailableRaffles.TabIndex = 44;
+            this.cmbxAvailableRaffles.SelectedIndexChanged += new System.EventHandler(this.m_genderList_SelectedIndexChanged);
             // 
             // GeneralPlayerDrawingEventsTestForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1010, 641);
+            this.Controls.Add(this.cmbxAvailableRaffles);
             this.Controls.Add(this.imgBtnClose);
-            this.Controls.Add(this.chkbx_showAvailableDrawing);
             this.Controls.Add(this.imgbtnCancel);
             this.Controls.Add(this.imgbtnExecute);
             this.Controls.Add(this.imgbtnAbortResult);
             this.Controls.Add(this.imgbtnReinstate);
             this.Controls.Add(this.imgbtnViewEntriesResult);
             this.Controls.Add(this.imgbtnRefresh);
-            this.Controls.Add(this.drawingEventsLbl);
             this.Controls.Add(this.imgbtnInitiateResults);
             this.Controls.Add(this.drawingEventsLV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -231,14 +218,12 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ListView drawingEventsLV;
-        private System.Windows.Forms.Label drawingEventsLbl;
         private Controls.ImageButton imgbtnRefresh;
         private Controls.ImageButton imgbtnAbortResult;
         private Controls.ImageButton imgbtnInitiateResults;
@@ -247,6 +232,6 @@
         private Controls.ImageButton imgbtnReinstate;
         private Controls.ImageButton imgbtnCancel;
         private Controls.ImageButton imgBtnClose;
-        private System.Windows.Forms.CheckBox chkbx_showAvailableDrawing;
+        private System.Windows.Forms.ComboBox cmbxAvailableRaffles;
     }
 }

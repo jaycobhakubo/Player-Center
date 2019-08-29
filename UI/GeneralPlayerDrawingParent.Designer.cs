@@ -80,7 +80,7 @@
             this.Name = "GeneralPlayerDrawingParent";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Player Drawing";
+            this.Text = "General Drawing";
             this.tc_PlayerDrawing.ResumeLayout(false);
             this.ResumeLayout(false);
 

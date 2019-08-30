@@ -63,7 +63,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private string GetDisplayTextPerRaffleSetting()
         {
            m_displayedText = (raffle_Setting.RaffleTextSetting == 1) ? "Raffle" : "Drawing";
-           this.Text = "Player " + m_displayedText;
+           this.Text = "General " + m_displayedText;
            tp_PlayerDrawing.Text = m_displayedText;
            return m_displayedText;
         }

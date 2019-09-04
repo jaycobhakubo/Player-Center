@@ -101,10 +101,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     //drawingEventsLV.Columns.Add("Players");
                     //drawingEventsLV.Columns.Add("Entries");
                     //drawingEventsLV.Columns.Add("# Drawn");
-
                     bool heldPresent = false
                         , cancellationPresent = false;
-
 
 
                     foreach(GeneralPlayerDrawingEvent de in drawingEvents)

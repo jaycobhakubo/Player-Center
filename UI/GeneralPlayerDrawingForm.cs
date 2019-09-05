@@ -1171,11 +1171,11 @@ namespace GTI.Modules.PlayerCenter.UI
             //var tb = sender as TextBox;
             //int parseTarget = 0;
 
-            //if(String.IsNullOrWhiteSpace(tb.Text))
+            //if (String.IsNullOrWhiteSpace(tb.Text))
             //    SetError(tb, null);
-            //else if(!int.TryParse(tb.Text, out parseTarget))
+            //else if (!int.TryParse(tb.Text, out parseTarget))
             //    SetError(tb, "Limit must be numeric");
-            //else if(parseTarget <= 0)
+            //else if (parseTarget <= 0)
             //    SetError(tb, "Limit must be greater than 0.");
             //else
             //    SetError(tb, null);
@@ -1206,6 +1206,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     {
                         e.Handled = true;
                         //SetError(tb, "Limit must be numeric");
+                        //This limit to 10 character
                     }
                     else if (parseTarget <= 0)
                     {
@@ -1221,7 +1222,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             //var tb = sender as TextBox;
             //uint parseUInt;
-            //if(!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+            //if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
             //    SetError(tb, "Must be whole number greater than 0.");
             //else
             //    SetError(tb, null);
@@ -1234,47 +1235,99 @@ namespace GTI.Modules.PlayerCenter.UI
                 e.Handled = false;
             }
             else
-                if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                {
                     e.Handled = true;
+                }
                 else
                 {
                     var tb = sender as TextBox;
-                    uint parseUInt;
-                    if (!uint.TryParse(tb.Text, out parseUInt) || parseUInt == 0)
+                    int parseTarget = 0;
+
+                    if (String.IsNullOrWhiteSpace(tb.Text))
+                    {
+                        e.Handled = false;
+                        // SetError(tb, null);
+                    }
+                    else if (!int.TryParse(tb.Text, out parseTarget))
                     {
                         e.Handled = true;
+                        //SetError(tb, "Limit must be numeric");
                     }
+                    else if (parseTarget <= 0)
+                    {
+                        e.Handled = true;
+                        //SetError(tb, "Limit must be greater than 0.");
+                    }                  
+                    else
+                    SetError(tb, null);
                 }
         }
 
-
+        /* 9.5.2019(knc)DE14484 : Saved for future reference
         private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
         {
-            var tb = sender as TextBox;
-            int parseTarget = 0;
-            string errMsg = null;
+            //var tb = sender as TextBox;
+            //int parseTarget = 0;
+            //string errMsg = null;
 
-            if(eventRepeatsChk.Checked)
-            {
-                if(String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
-                    errMsg = "Event repeat increment must be a non-negative whole number.";
-                else if(parseTarget > Int16.MaxValue)
-                    errMsg = "Event repeat increment too large.";
-            }
+            //if(eventRepeatsChk.Checked)
+            //{
+            //    if(String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
+            //        errMsg = "Event repeat increment must be a non-negative whole number.";
+            //    else if(parseTarget > Int16.MaxValue)
+            //        errMsg = "Event repeat increment too large.";
+            //}
 
-            SetError(tb, errMsg);
+            //SetError(tb, errMsg);
 
-            if(sender != null)
-                UpdateEventExamples();
-        }
+            //if(sender != null)
+            //   UpdateEventExamples();
+        }*/
 
+        //DE14484 
         private void entryPeriodRepeatIncrementTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
-                e.Handled = true;
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+            }
+            else
+                if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    var tb = sender as TextBox;
+                    int parseTarget = 0;
 
-            if(sender != null)
-                UpdateEventExamples();
+                    if (String.IsNullOrWhiteSpace(tb.Text))
+                    {
+                        e.Handled = false;
+                        // SetError(tb, null);
+                    }
+                    else if (!int.TryParse(tb.Text, out parseTarget))
+                    {
+                        e.Handled = true;
+                        //SetError(tb, "Limit must be numeric");
+                    }
+                    else if (parseTarget <= 0)
+                    {
+                        e.Handled = true;
+                        //SetError(tb, "Limit must be greater than 0.");
+                    }
+                    else if (parseTarget > Int16.MaxValue)
+                    {
+                        e.Handled = true;
+                        //Set to 5 max character.
+                    }
+                    else
+                        SetError(tb, null);
+                }
+          
+            if (sender != null)
+            UpdateEventExamples();         
         }
 
         private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)

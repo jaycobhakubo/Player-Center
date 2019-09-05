@@ -1319,12 +1319,29 @@ namespace GTI.Modules.PlayerCenter.UI
             drawingsLV.HideSelection = false;
         }
 
-        private void revertDrawingChangesBtn_Click(object sender, EventArgs e) { LoadCurrentDrawingDetails(); }
+        private void revertDrawingChangesBtn_Click(object sender, EventArgs e) 
+        { LoadCurrentDrawingDetails(); }
+
+        private bool validateUserEntry()
+        {
+            var InvalidEntry = false;
+            if (!ValidateChildren(ValidationConstraints.Enabled | ValidationConstraints.Visible))
+            {
+                InvalidEntry = true;
+                //return;
+            }
+            return InvalidEntry;
+        }
 
         private void saveDrawingChangesBtn_Click(object sender, EventArgs e)
         {
-            var candidate = GeneratePendingDrawing();
+            if (validateUserEntry())
+            {
+                return;
+            }
 
+            var candidate = GeneratePendingDrawing();
+   
             if(candidate.Id == null && !candidate.Active)
             {
                 var dr = MessageForm.Show(this
@@ -1441,6 +1458,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void initialEventEntryPeriodEndDTP_ValueChanged(object sender, EventArgs e)
         {
+     
             if(m_loadingDetails)
                 return;
 
@@ -1456,6 +1474,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
             CheckEventDates();
             UpdateEventExamples();
+            
         }
 
         private void eventRepeatsChk_CheckedChanged(object sender, EventArgs e)
@@ -1801,5 +1820,14 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
         #endregion
+
+        private void initialEventEntryPeriodEndDTP_Validating(object sender, CancelEventArgs e)
+        {
+            if (initialEventEntryPeriodEndDTP.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
+            {
+               SetError(entryPeriodLbl, "IEntry priod end date is invalid, date should be present or future.");
+                e.Cancel = true;
+            }
+        }
     }
 }

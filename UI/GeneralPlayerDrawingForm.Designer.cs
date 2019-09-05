@@ -529,6 +529,7 @@
             this.initialEventEntryPeriodEndDTP.Size = new System.Drawing.Size(250, 26);
             this.initialEventEntryPeriodEndDTP.TabIndex = 2;
             this.initialEventEntryPeriodEndDTP.ValueChanged += new System.EventHandler(this.initialEventEntryPeriodEndDTP_ValueChanged);
+            this.initialEventEntryPeriodEndDTP.Validating += new System.ComponentModel.CancelEventHandler(this.initialEventEntryPeriodEndDTP_Validating);
             // 
             // initialEventEntryPeriodEndLbl
             // 

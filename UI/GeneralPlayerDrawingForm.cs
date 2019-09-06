@@ -221,7 +221,7 @@ namespace GTI.Modules.PlayerCenter.UI
             dgvClmnTo.Width = 100;
 
             var dgvClmnEntries = (DataGridViewTextBoxColumn)entrySpendScaleDGV.Columns["Entries"];
-            dgvClmnEntries.MaxInputLength = 10;
+            dgvClmnEntries.MaxInputLength = 9;
             dgvClmnEntries.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvClmnEntries.Width = 100;
                
@@ -233,17 +233,17 @@ namespace GTI.Modules.PlayerCenter.UI
 
             //Set Maxlenght to 10 character; Set column width to fit 10 character
             dgvClmnFrom = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["From"];
-            dgvClmnFrom.MaxInputLength = 10;
+            dgvClmnFrom.MaxInputLength = 9;
             dgvClmnFrom.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvClmnFrom.Width = 100;
 
             dgvClmnTo = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["To"];
-            dgvClmnTo.MaxInputLength = 10;
+            dgvClmnTo.MaxInputLength = 9;
             dgvClmnTo.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvClmnTo.Width = 100;
 
             dgvClmnEntries = (DataGridViewTextBoxColumn)entryVisitScaleDGV.Columns["Entries"];
-            dgvClmnEntries.MaxInputLength = 10;
+            dgvClmnEntries.MaxInputLength = 9;
             dgvClmnEntries.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvClmnEntries.Width = 100;
 
@@ -672,7 +672,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
 
                 eventRepeatsChk.Checked = m_currentGPD.EventRepeatIncrement > 0;
-                eventRepeatIncrementTxt.Text = m_currentGPD.EventRepeatIncrement.ToString();
+                eventRepeatIncrementTxt.Text = (m_currentGPD.EventRepeatIncrement == 0 ? 1 : m_currentGPD.EventRepeatIncrement).ToString();
                 eventRepeatIntervalCB.SelectedItem = m_currentGPD.EventRepeatInterval;
 
                 if (m_currentGPD.EventRepeatUntil == null)
@@ -1264,70 +1264,66 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
         }
 
-        /* 9.5.2019(knc)DE14484 : Saved for future reference
+       
         private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
         {
-            //var tb = sender as TextBox;
-            //int parseTarget = 0;
-            //string errMsg = null;
+            var tb = sender as TextBox;
+            int parseTarget = 0;
+            string errMsg = null;
 
-            //if(eventRepeatsChk.Checked)
-            //{
-            //    if(String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
-            //        errMsg = "Event repeat increment must be a non-negative whole number.";
-            //    else if(parseTarget > Int16.MaxValue)
-            //        errMsg = "Event repeat increment too large.";
-            //}
+            if (eventRepeatsChk.Checked)
+            {
+                int.TryParse(tb.Text, out parseTarget);
+                if (String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
+                    errMsg = "Event repeat increment must be a non-negative whole number.";
+                else if (parseTarget == 0)
+                    errMsg = "Event repeat must be greater than 0";
+            }
 
-            //SetError(tb, errMsg);
-
-            //if(sender != null)
-            //   UpdateEventExamples();
-        }*/
+            SetError(tb, errMsg);
+            if (sender != null)
+                UpdateEventExamples();
+        }
 
         //DE14484 
         private void entryPeriodRepeatIncrementTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Back)
+            //if(!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            //    e.Handled = true;
+            if (eventRepeatsChk.Checked)
             {
-                e.Handled = false;
-            }
-            else
-                if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+                if (e.KeyChar == (char)Keys.Back)
                 {
-                    e.Handled = true;
+                    e.Handled = false;
                 }
                 else
-                {
-                    var tb = sender as TextBox;
-                    int parseTarget = 0;
-
-                    if (String.IsNullOrWhiteSpace(tb.Text))
-                    {
-                        e.Handled = false;
-                        // SetError(tb, null);
-                    }
-                    else if (!int.TryParse(tb.Text, out parseTarget))
+                    if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
                     {
                         e.Handled = true;
-                        //SetError(tb, "Limit must be numeric");
-                    }
-                    else if (parseTarget <= 0)
-                    {
-                        e.Handled = true;
-                        //SetError(tb, "Limit must be greater than 0.");
-                    }
-                    else if (parseTarget > Int16.MaxValue)
-                    {
-                        e.Handled = true;
-                        //Set to 5 max character.
                     }
                     else
-                        SetError(tb, null);
-                }
-          
-            if (sender != null)
-            UpdateEventExamples();         
+                    {
+                        var tb = sender as TextBox;
+                        int parseTarget = 0;
+
+                        if (String.IsNullOrWhiteSpace(tb.Text))
+                        {
+                            e.Handled = false;                         
+                        }
+                        else if (!int.TryParse(tb.Text, out parseTarget))
+                        {
+                            e.Handled = true;                   
+                        }
+                        //else if (parseTarget <= 0)
+                        //{
+                        //    e.Handled = true;
+                        //}
+                        //else if (parseTarget > Int16.MaxValue)
+                        //{
+                        //    e.Handled = true;                        
+                        //}                      
+                    }
+            }
         }
 
         private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)
@@ -1534,7 +1530,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             HideOrShowRepeatsPerCheckedStatus();
             eventRepeatDetailsPnl.Enabled = eventRepeatsChk.Checked;
-            eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
+            //eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
             eventRepeatIntervalCB_SelectedIndexChanged(null, null);
             eventRepetitionEndsDTP_ValueChanged(null, null);
             UpdateEventExamples();

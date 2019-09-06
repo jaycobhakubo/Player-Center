@@ -638,6 +638,7 @@
             this.eventRepeatIncrementTxt.Name = "eventRepeatIncrementTxt";
             this.eventRepeatIncrementTxt.Size = new System.Drawing.Size(94, 30);
             this.eventRepeatIncrementTxt.TabIndex = 7;
+            this.eventRepeatIncrementTxt.Text = "1";
             this.eventRepeatIncrementTxt.TextChanged += new System.EventHandler(this.eventRepeatIncrementTxt_TextChanged);
             this.eventRepeatIncrementTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.entryPeriodRepeatIncrementTxt_KeyPress);
             // 

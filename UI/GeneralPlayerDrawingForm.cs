@@ -1100,9 +1100,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(rb.Checked)
             {
                 entrySpendTP.Text = "Spend (" + rb.Text + ")";
-
                 var entryMethodUsed = !Object.ReferenceEquals(rb, entrySpendGroupingNoneRB);
-
                 entrySpendScaleDGV.Visible = entryMethodUsed;
                 addEntrySpendTierBtn.Visible = entryMethodUsed;
                 CheckEntryScale(entrySpendScaleDGV);
@@ -1116,9 +1114,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if(rb.Checked)
             {
                 entryVisitsTP.Text = "Visits (" + rb.Text + ")";
-
                 var entryMethodUsed = !Object.ReferenceEquals(rb, entryVisitTypeNoneRB);
-
                 entryVisitScaleDGV.Visible = entryMethodUsed;
                 addEntryVisitTierBtn.Visible = entryMethodUsed;
                 CheckEntryScale(entryVisitScaleDGV);
@@ -1640,7 +1636,6 @@ namespace GTI.Modules.PlayerCenter.UI
                 if (e.KeyChar == (char)Keys.Back)
                 {
                     result = false;
-
                 }
                 if (result)
                 {
@@ -1650,8 +1645,10 @@ namespace GTI.Modules.PlayerCenter.UI
             else if (m_selectedColumnDataType == typeof(decimal))
             {
                 result = false;
+                string x = txtbxValue.Text;
+                int count = x.Split('.').Length - 1;
 
-                if (!char.IsControl(e.KeyChar)
+              /*  if (!char.IsControl(e.KeyChar)
                     && !char.IsDigit(e.KeyChar)
                     && e.KeyChar != '.')
                 {
@@ -1664,7 +1661,38 @@ namespace GTI.Modules.PlayerCenter.UI
                 {
                     e.Handled = true;
                     result = e.Handled;
+                }*/
+
+                if (!char.IsControl(e.KeyChar))
+                {
+                    switch (e.KeyChar)
+                    {
+                        case (char)46://period
+                            //allow 1 decimal point
+                            if (count > 0)
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                result = false;
+                            }
+                            break;
+                        default:
+                            result = !char.IsDigit(e.KeyChar);
+                            break;
+                    }
                 }
+
+                if (e.KeyChar == (char)Keys.Back)
+                {
+                    result = false;
+                }
+                else if (Regex.IsMatch(txtbxValue.Text, @"\.\d\d"))
+                {
+                    result = true;
+                }  
+
             }
             e.Handled = result;
         }

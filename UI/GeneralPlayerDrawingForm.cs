@@ -1380,7 +1380,7 @@ namespace GTI.Modules.PlayerCenter.UI
            
         }
 
-        private void cancelDrawingChangesBtn_Click(object sender, EventArgs e)//knc
+        private void cancelDrawingChangesBtn_Click(object sender, EventArgs e)
         {
             drawingsLV_SelectedIndexChanged(null, null);
             ToggleEditMode(false);

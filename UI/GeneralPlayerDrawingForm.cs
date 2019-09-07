@@ -588,6 +588,27 @@ namespace GTI.Modules.PlayerCenter.UI
             LoadCurrentDrawingDetails();
         }
 
+        private void revertRepeatChildrenValue()
+        {
+          //  eventRepeatsChk.Checked = m_currentGPD.EventRepeatIncrement > 0;
+            eventRepeatIncrementTxt.Text = (m_currentGPD.EventRepeatIncrement == 0 ? 1 : m_currentGPD.EventRepeatIncrement).ToString();
+            eventRepeatIntervalCB.SelectedItem = m_currentGPD.EventRepeatInterval;
+
+            if (m_currentGPD.EventRepeatUntil == null)
+            {
+                eventRepetitionEndsDTP.Value = m_currentGPD.InitialEventEntryPeriodEnd;
+                eventRepetitionEndsDTP.Checked = false;
+            }
+            else
+            {
+                eventRepetitionEndsDTP.Value = m_currentGPD.EventRepeatUntil.Value;
+                eventRepetitionEndsDTP.Checked = true;
+            }
+
+            CheckEventDates();
+        }
+
+
         private void LoadCurrentDrawingDetails()
         {
             m_loadingDetails = true;
@@ -1357,7 +1378,7 @@ namespace GTI.Modules.PlayerCenter.UI
            
         }
 
-        private void cancelDrawingChangesBtn_Click(object sender, EventArgs e)
+        private void cancelDrawingChangesBtn_Click(object sender, EventArgs e)//knc
         {
             drawingsLV_SelectedIndexChanged(null, null);
             ToggleEditMode(false);
@@ -1526,9 +1547,15 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             HideOrShowRepeatsPerCheckedStatus();
             eventRepeatDetailsPnl.Enabled = eventRepeatsChk.Checked;
-            //eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
+            eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
             eventRepeatIntervalCB_SelectedIndexChanged(null, null);
             eventRepetitionEndsDTP_ValueChanged(null, null);
+           
+            if (eventRepeatsChk.Checked == false)
+            {
+                revertRepeatChildrenValue();
+            }
+
             UpdateEventExamples();
         }
 

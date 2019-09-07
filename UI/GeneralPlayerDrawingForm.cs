@@ -1287,13 +1287,14 @@ namespace GTI.Modules.PlayerCenter.UI
             var tb = sender as TextBox;
             int parseTarget = 0;
             string errMsg = null;
-
+       
             if (eventRepeatsChk.Checked)
             {
                 int.TryParse(tb.Text, out parseTarget);
                 if (String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
                     errMsg = "Event repeat increment must be a non-negative whole number.";
-                else if (parseTarget == 0)
+                else 
+                    if (parseTarget == 0)
                     errMsg = "Event repeat must be greater than 0";
             }
 
@@ -1331,10 +1332,10 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             e.Handled = true;                   
                         }
-                        //else if (parseTarget <= 0)
-                        //{
-                        //    e.Handled = true;
-                        //}
+                        else if (parseTarget <= 0)
+                        {
+                            e.Handled = true;
+                        }
                         //else if (parseTarget > Int16.MaxValue)
                         //{
                         //    e.Handled = true;                        

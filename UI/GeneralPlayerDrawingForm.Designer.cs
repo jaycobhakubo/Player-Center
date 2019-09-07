@@ -604,6 +604,7 @@
             this.eventRepeatsChk.Text = "Repeat";
             this.eventRepeatsChk.UseVisualStyleBackColor = true;
             this.eventRepeatsChk.CheckedChanged += new System.EventHandler(this.eventRepeatsChk_CheckedChanged);
+            this.eventRepeatsChk.Click += new System.EventHandler(this.eventRepeatsChk_Click);
             // 
             // initialEventScheduledForLbl
             // 

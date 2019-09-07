@@ -606,6 +606,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
 
             CheckEventDates();
+            UpdateEventExamples();
         }
 
 
@@ -1551,12 +1552,6 @@ namespace GTI.Modules.PlayerCenter.UI
             eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);
             eventRepeatIntervalCB_SelectedIndexChanged(null, null);
             eventRepetitionEndsDTP_ValueChanged(null, null);
-           
-            if (eventRepeatsChk.Checked == false)
-            {
-                revertRepeatChildrenValue();
-            }
-
             UpdateEventExamples();
         }
 
@@ -1932,6 +1927,14 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                SetError(entryPeriodLbl, "IEntry priod end date is invalid, date should be present or future.");
                 e.Cancel = true;
+            }
+        }
+
+        private void eventRepeatsChk_Click(object sender, EventArgs e)
+        {
+            if (eventRepeatsChk.Checked == false)
+            {
+                revertRepeatChildrenValue();
             }
         }
     }

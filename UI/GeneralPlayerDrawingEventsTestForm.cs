@@ -33,10 +33,10 @@ namespace GTI.Modules.PlayerCenter.UI
         private void PopulateRaffleAvailability()
         {
             cmbxAvailableRaffles.Items.Clear();
-            cmbxAvailableRaffles.Items.Add("Current " + m_displayText);
-            cmbxAvailableRaffles.Items.Add("Completed " + m_displayText);
-            cmbxAvailableRaffles.Items.Add("Cancelled " + m_displayText);
-            cmbxAvailableRaffles.Items.Add("All " + m_displayText);
+            cmbxAvailableRaffles.Items.Add("Current " + m_displayText +"s");
+            cmbxAvailableRaffles.Items.Add("Completed " + m_displayText + "s");
+            cmbxAvailableRaffles.Items.Add("Cancelled " + m_displayText + "s");
+            cmbxAvailableRaffles.Items.Add("All " + m_displayText + "s");
         }
 
         public void SelectNone()

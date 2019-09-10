@@ -361,7 +361,8 @@ namespace GTI.Modules.PlayerCenter.UI
             else
             {
                 int eventId = drawingEvent.EventId;
-                var dr = MessageForm.Show("Are you sure you want to cancel the " + ed.Name + " " + m_displayText + Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString()+ "?", "Cancel Event", MessageFormTypes.YesNo);
+                string msgDef_IncludeScheduleDate = (drawingEvent.ScheduledForWhen != null ? Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() : "");
+                var dr = MessageForm.Show("Are you sure you want to cancel the " + ed.Name + " " + m_displayText + msgDef_IncludeScheduleDate + "?", "Cancel Event", MessageFormTypes.YesNo);
 
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {

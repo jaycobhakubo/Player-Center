@@ -320,12 +320,11 @@ namespace GTI.Modules.PlayerCenter.UI
                     else if(eeResult.Item2.CancelledWhen.HasValue)
                         msg = "Cannot hold a cancelled event.";
                     else if (minEntryRequired > eeResult.Item2.Entries.Count)
-                        msg = "Not enough entry to meet the requirements.";
+                        msg = "Cannot run the " + m_displayText + "."
+                    +  Environment.NewLine +"The required number of entries has not been met.";
                     else msg = "Event not executed.";
 
-            
-
-                    var dr = MessageForm.Show(msg + Environment.NewLine + "Show event details?", "Event Not Executed", MessageFormTypes.YesNo);
+                    var dr = MessageForm.Show(msg , "Run " + m_displayText, MessageFormTypes.OK);
                     showEvent = (dr == System.Windows.Forms.DialogResult.Yes);
                 }
                 else

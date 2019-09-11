@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using GameTech.Elite.Base;
 using GameTech.Elite.Client;
 using System.Globalization;
+using GTI.Modules.PlayerCenter.Properties;
+using System.Threading;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -17,6 +19,10 @@ namespace GTI.Modules.PlayerCenter.UI
     {
         private List<GeneralPlayerDrawing> m_drawings;
         private string m_displayText;
+        protected WaitForm m_waitForm;
+        protected BackgroundWorker m_worker;
+        protected bool m_serverCommFailed;
+   
 
         public GeneralPlayerDrawingEventsTestForm(List<GeneralPlayerDrawing> drawings, string displayText)
         {
@@ -395,16 +401,86 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)
+        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)//knc
         {
-            var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//Get the selected Event
-            int eventId = selEvent.EventId;//Get the event Id 
+            try
+            {
+                m_waitForm = new WaitForm();
+                m_waitForm.WaitImage = Resources.Waiting;
+                m_waitForm.CancelButtonVisible = false;
+                m_waitForm.ProgressBarVisible = false;
+                m_waitForm.Cursor = Cursors.WaitCursor;
+                m_waitForm.Message = "Getting result please wait.";
+
+                m_worker = new BackgroundWorker();
+                m_worker.WorkerReportsProgress = false;
+                m_worker.WorkerSupportsCancellation = false;
+                m_worker.DoWork += new DoWorkEventHandler(viewEntriesAndResults);
+                m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(viewEntriesAndResultsComplete);
+                var selEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//Get the selected Event
+                int eventId = selEvent.EventId;//Get the event Id 
+                object[] workerArgs = new object[2];
+                workerArgs[0] = selEvent;
+                workerArgs[1] = eventId;
+                m_worker.RunWorkerAsync(workerArgs);
+
+                // Block until we are finished searching.
+                //viewEntriesAndResults();
+                m_waitForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageForm.Show(this, ex.Message);
+            }
+            finally
+            {
+                if (m_waitForm != null)
+                {
+                    m_waitForm.Dispose();
+                    m_waitForm = null;
+                }
+            }
+           
+        }
+
+
+        private void viewEntriesAndResults(object sender, DoWorkEventArgs e)
+        {
+
+            object[] args = (object[])e.Argument;
+            GeneralPlayerDrawingEvent selEvent = (GeneralPlayerDrawingEvent)args[0];
+            int eventId = (int)args[1];         
             var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents(selEvent.DrawingId, eventId, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, true, true);//Run server message but this time using eventId and drawingId and do the calculation.
-            var t = drawingEvents.FirstOrDefault();//Get the selected Event - theres only single item here so just use first or default without filter.
-            var ed = m_drawings.FirstOrDefault((d) => d.Id == selEvent.DrawingId);//Get the drawing
-            var f = new GeneralPlayerDrawingEventViewForm(t, ed);
-            f.ShowDialog(this);
-            f.Dispose();
+            object[] resultObject = new object[2];
+            resultObject[0] = selEvent;
+            resultObject[1] = drawingEvents;
+            e.Result = resultObject;       
+        }
+
+        private void viewEntriesAndResultsComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                object[] result = (object[])e.Result;
+                GeneralPlayerDrawingEvent selEvent = (GeneralPlayerDrawingEvent)result[0];
+                List<GeneralPlayerDrawingEvent> drawingEvents =  (List<GeneralPlayerDrawingEvent>)result[1];
+
+                var t = drawingEvents.FirstOrDefault();//Get the selected Event - theres only single item here so just use first or default without filter.
+                var ed = m_drawings.FirstOrDefault((d) => d.Id == selEvent.DrawingId);//Get the drawing
+                var f = new GeneralPlayerDrawingEventViewForm(t, ed);
+                f.ShowDialog(this);
+                f.Dispose();
+            }
+            else // There was an error.
+            {
+                if (e.Error is GameTech.Elite.Client.ServerCommException)
+                    m_serverCommFailed = true;
+                else
+                    MessageForm.Show(this, e.Error.Message);
+            }
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
         }
 
         private void initiateEventResultsBroadcastBtn_Click(object sender, EventArgs e)

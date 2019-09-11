@@ -53,10 +53,9 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void AppliedSystemSettingDisplayedText()
         {
-            //drawingEventsLbl.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Scheduled " + m_displayText.ToLower() + "s");
-            //chkbx_showAvailableDrawing.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Show Available " + m_displayText.ToLower() + "s");
             imgbtnCancel.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Cancel " + m_displayText.ToLower());
             imgbtnExecute.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Run " + m_displayText.ToLower());
+            imgbtnReinstate.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase("Reinstate " + m_displayText.ToLower());
         }
 
         private void SetBtnControlDisable(bool set)

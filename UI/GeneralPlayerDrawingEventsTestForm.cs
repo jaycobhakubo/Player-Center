@@ -290,52 +290,43 @@ namespace GTI.Modules.PlayerCenter.UI
             SetBtnControlDisable(false);
         }
 
-        private void executeEventBtn_Click(object sender, EventArgs e)
+        private void startexecuteEventDrawing(object sender, DoWorkEventArgs e)
         {
-            var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//get the selected item data
+            int eventId = (int)e.Argument;
+            var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
+            e.Result = eeResult;       
+        }
 
-            if(drawingEvent.HeldWhen.HasValue)
+        private void executeEventDrawingComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null)
             {
-                MessageForm.Show("Cannot hold an event that has already been held.", "Execution not permitted", MessageFormTypes.OK);
-                return;
-            }
-            else if(drawingEvent.CancelledWhen.HasValue)
-            {
-                MessageForm.Show("Cannot hold an event that has been cancelled.", "Execution not permitted", MessageFormTypes.OK);
-                return;
-            }
-            else
-            {
-                int eventId = drawingEvent.EventId;
-
+                Tuple<bool, GeneralPlayerDrawingEvent> eeResult = (Tuple<bool, GeneralPlayerDrawingEvent>)e.Result;
                 bool showEvent = false;
-                var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
 
-               
-               
                 LoadCurrentAndRecentDrawingEvents(false, false);
-                if(!eeResult.Item1)
+                if (!eeResult.Item1)
                 {
                     String msg = String.Empty;
                     GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
                     var minEntryRequired = ed.MinimumEntries;
 
-                    if(eeResult.Item2.HeldWhen.HasValue)
+                    if (eeResult.Item2.HeldWhen.HasValue)
                         msg = "Event was already held.";
-                    else if(eeResult.Item2.CancelledWhen.HasValue)
+                    else if (eeResult.Item2.CancelledWhen.HasValue)
                         msg = "Cannot hold a cancelled event.";
                     else if (minEntryRequired > eeResult.Item2.Entries.Count)
                         msg = "Cannot run the " + m_displayText + "."
-                    +  Environment.NewLine +"The required number of entries has not been met.";
+                    + Environment.NewLine + "The required number of entries has not been met.";
                     else msg = "Event not executed.";
 
-                    var dr = MessageForm.Show(msg , "Run " + m_displayText, MessageFormTypes.OK);
+                    var dr = MessageForm.Show(msg, "Run " + m_displayText, MessageFormTypes.OK);
                     showEvent = (dr == System.Windows.Forms.DialogResult.Yes);
                 }
                 else
                     showEvent = true;
 
-                if(showEvent)
+                if (showEvent)
                 {
                     var ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
                     var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, ed);
@@ -345,6 +336,95 @@ namespace GTI.Modules.PlayerCenter.UI
                     imgbtnInitiateResults.PerformClick();
                     SetBtnControlDisable(false);
                 }
+                             
+            }
+            else // There was an error.
+            {
+                if (e.Error is GameTech.Elite.Client.ServerCommException)
+                    m_serverCommFailed = true;
+                else
+                    MessageForm.Show(this, e.Error.Message);
+            }
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+        }
+        
+        private void executeEventBtn_Click(object sender, EventArgs e)
+        {
+            var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//get the selected item data
+
+            if(drawingEvent.HeldWhen.HasValue)
+            {
+                MessageForm.Show("Cannot hold an event that has already been held.", "Execution not permitted", MessageFormTypes.OK);
+                return;
+            }
+            else if (drawingEvent.CancelledWhen.HasValue)
+            {
+                MessageForm.Show("Cannot hold an event that has been cancelled.", "Execution not permitted", MessageFormTypes.OK);
+                return;
+            }
+            else
+            {
+                int eventId = drawingEvent.EventId;
+               // bool showEvent = false;
+
+                m_waitForm = new WaitForm();
+                m_waitForm.WaitImage = Resources.Waiting;
+                m_waitForm.CancelButtonVisible = false;
+                m_waitForm.ProgressBarVisible = false;
+                m_waitForm.Cursor = Cursors.WaitCursor;
+                m_waitForm.Message = m_displayText +" event is running please wait. ";
+
+                m_worker = new BackgroundWorker();
+                m_worker.WorkerReportsProgress = false;
+                m_worker.WorkerSupportsCancellation = false;
+                m_worker.DoWork += new DoWorkEventHandler(startexecuteEventDrawing);
+                m_worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(executeEventDrawingComplete);                
+                m_worker.RunWorkerAsync(eventId);
+
+                // Block until we are finished searching.
+                //viewEntriesAndResults();
+                m_waitForm.ShowDialog(this);
+
+
+                // var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
+
+
+
+                //    LoadCurrentAndRecentDrawingEvents(false, false);
+                //    if(!eeResult.Item1)
+                //    {
+                //        String msg = String.Empty;
+                //        GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
+                //        var minEntryRequired = ed.MinimumEntries;
+
+                //        if(eeResult.Item2.HeldWhen.HasValue)
+                //            msg = "Event was already held.";
+                //        else if(eeResult.Item2.CancelledWhen.HasValue)
+                //            msg = "Cannot hold a cancelled event.";
+                //        else if (minEntryRequired > eeResult.Item2.Entries.Count)
+                //            msg = "Cannot run the " + m_displayText + "."
+                //        +  Environment.NewLine +"The required number of entries has not been met.";
+                //        else msg = "Event not executed.";
+
+                //        var dr = MessageForm.Show(msg , "Run " + m_displayText, MessageFormTypes.OK);
+                //        showEvent = (dr == System.Windows.Forms.DialogResult.Yes);
+                //    }
+                //    else
+                //        showEvent = true;
+
+                //    if(showEvent)
+                //    {
+                //        var ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
+                //        var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, ed);
+                //        f.ShowDialog(this);
+                //        f.Dispose();
+                //        //Lets initiate the result broadcast
+                //        imgbtnInitiateResults.PerformClick();
+                //        SetBtnControlDisable(false);
+                //    }
+                //
             }
         }
     

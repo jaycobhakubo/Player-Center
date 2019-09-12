@@ -481,7 +481,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)//knc
+        private void viewEntriesAndResultsBtn_Click(object sender, EventArgs e)
         {
             try
             {

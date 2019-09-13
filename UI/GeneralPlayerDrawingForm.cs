@@ -609,6 +609,11 @@ namespace GTI.Modules.PlayerCenter.UI
             UpdateEventExamples();
         }
 
+        private void setSessionListCheckLabel()
+        {
+            m_imgbtnSelectAllSession.Text = (entrySessionNumbersCL.Items.Count == entrySessionNumbersCL.CheckedIndices.Count ? "Clear all" : "Select all");
+        }
+
 
         private void LoadCurrentDrawingDetails()
         {
@@ -618,6 +623,8 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 drawingDetailsGB.Visible = false;
             }
+
+           
 
             #region Reset before loading
 
@@ -711,6 +718,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 CheckEventDates();
                 UpdateEventExamples();
 
+               
                 SortedSet<Byte> sessionNumbersChecked = new SortedSet<byte>();
                 for (int i = 0; i < entrySessionNumbersCL.Items.Count; ++i)
                 {
@@ -719,7 +727,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     entrySessionNumbersCL.SetItemChecked(i, check);
                     if (check)
                         sessionNumbersChecked.Add(sl.SessionNumber);
-                }
+                }          
+                //setSessionListCheckLabel();
 
                 if (m_currentGPD.EntrySessionNumbers.Count > sessionNumbersChecked.Count)
                 {
@@ -727,6 +736,8 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach (var sn in nondefaultSessionNumbers)
                         entrySessionNumbersCL.Items.Add(new SessionNumberListing(sn), true);
                 }
+                m_imgbtnSelectAllSession.Text = ( entrySessionNumbersCL.CheckedIndices.Count == entrySessionNumbersCL.Items.Count? "Clear all": "Session all");
+
 
                 entrySessionNumbersCL_ItemCheck(null, null);
                 #endregion
@@ -857,20 +868,7 @@ namespace GTI.Modules.PlayerCenter.UI
         }
 
 
-        private void SetAllItemCheck(bool check)
-        {
-            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-
-            for (int i = 0; i != entrySessionNumbersCL.Items.Count; ++i)
-            {
-                if (entrySessionNumbersCL.GetItemChecked(i) != check)
-                {
-                    entrySessionNumbersCL.SetItemChecked(i, check);
-                }
-            }
-
-            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
-        }
+      
 
         private void HideOrShowRepeatsPerCheckedStatus()
         {
@@ -1373,7 +1371,7 @@ namespace GTI.Modules.PlayerCenter.UI
             if (drawingDetailsTC.SelectedIndex != 0) drawingDetailsTC.SelectedIndex = 0;
             drawingsLV.HideSelection = true;
             SetCurrentDrawing(new GeneralPlayerDrawing());
-            SetAllItemCheck(true);
+            SetSessionCheckboxesTo(true);
             SetError(entrySessionsLbl, null);
             drawingNameTxt.Text = "New " + m_displayedText;          
             ToggleEditMode(true);
@@ -1600,27 +1598,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         }
 
-        private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            bool hasChecks = false;
-
-            if(e == null)
-                hasChecks = entrySessionNumbersCL.CheckedItems.Count > 0;
-            else if (e.NewValue == CheckState.Checked || entrySessionNumbersCL.CheckedItems.Count > 1)
-                hasChecks = true;
-
-            if (hasChecks)
-                SetError(entrySessionsLbl, null);
-            else
-                SetError(entrySessionsLbl, m_displayedText +" should have one or more sessions selected for entries to be accepted.");
-        }
-
-        private void testEventsBtn_Click(object sender, EventArgs e)
-        {
-            var f = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);
-            f.ShowDialog(this);
-            f.Dispose();
-        }
+        #region SessionCheckedListBox
 
         private void m_imgbtnSelectAllSession_Click(object sender, EventArgs e)
         {
@@ -1630,15 +1608,74 @@ namespace GTI.Modules.PlayerCenter.UI
 
             if (tCheckedItem == tSession)
             {
-                SetAllItemCheck(false);
-                 SetError(entrySessionsLbl, m_displayedText + " should have one or more sessions selected for entries to be accepted.");
+                SetSessionCheckboxesTo(false);
+                SetError(entrySessionsLbl, m_displayedText + " should have one or more sessions selected for entries to be accepted.");
             }
             else
             {
-                SetAllItemCheck(true);
+                SetSessionCheckboxesTo(true);
                 SetError(entrySessionsLbl, null);
-            }                           
+            }
         }
+
+        private void SetSessionCheckboxesTo(bool check)
+        {
+            entrySessionNumbersCL.ItemCheck -= new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+
+            for (int i = 0; i != entrySessionNumbersCL.Items.Count; ++i)
+            {
+                if (entrySessionNumbersCL.GetItemChecked(i) != check)
+                {
+                    entrySessionNumbersCL.SetItemChecked(i, check);
+                }
+            }
+
+            m_imgbtnSelectAllSession.Text = (check == true ? "Clear all" : "Select all");
+            entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
+        }
+
+        private void entrySessionNumbersCL_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            bool hasChecks = false;
+            CheckedListBox x = (CheckedListBox)sender;
+           // var y = x.CheckedItems.Count;
+           // var z = x.CheckedIndices.Count;
+
+            if (e == null)
+                hasChecks = entrySessionNumbersCL.CheckedItems.Count > 0;
+            else if (e.NewValue == CheckState.Checked || entrySessionNumbersCL.CheckedItems.Count > 1)
+                hasChecks = true;
+
+            if (hasChecks)
+            {
+                SetError(entrySessionsLbl, null);
+            }
+            else
+            {
+                SetError(entrySessionsLbl, m_displayedText + " should have one or more sessions selected for entries to be accepted.");
+            }
+
+            //int NOfItemChecked = (hasChecks == true ? entrySessionNumbersCL.CheckedIndices.Count + 1 : entrySessionNumbersCL.CheckedIndices.Count -1);
+            //m_imgbtnSelectAllSession.Text = (entrySessionNumbersCL.Items.Count == NOfItemChecked ? "Clear all" : "Select all");
+        }
+
+        private void entrySessionNumbersCL_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CheckedListBox cl_SessionList = (CheckedListBox)sender;
+            m_imgbtnSelectAllSession.Text = (cl_SessionList.CheckedIndices.Count == cl_SessionList.Items.Count? "Clear all" : "Session all");
+        }
+
+        #endregion
+
+
+        private void testEventsBtn_Click(object sender, EventArgs e)
+        {
+            var f = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);
+            f.ShowDialog(this);
+            f.Dispose();
+        }
+
+       
 
         private void entrySpendScaleDGV_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {

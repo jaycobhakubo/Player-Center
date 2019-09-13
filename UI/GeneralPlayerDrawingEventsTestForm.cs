@@ -48,6 +48,8 @@ namespace GTI.Modules.PlayerCenter.UI
         public void SelectNone()
         {
             SetBtnControlDisable(false);
+            drawingEventsLV.SelectedItems.Clear();
+     
         }
 
         private void GenerateCurrentDrawing()

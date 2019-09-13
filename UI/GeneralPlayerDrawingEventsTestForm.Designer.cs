@@ -48,6 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drawingEventsLV.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.drawingEventsLV.FullRowSelect = true;
+            this.drawingEventsLV.HideSelection = false;
             this.drawingEventsLV.Location = new System.Drawing.Point(10, 37);
             this.drawingEventsLV.MultiSelect = false;
             this.drawingEventsLV.Name = "drawingEventsLV";

@@ -574,6 +574,7 @@
             this.entrySessionNumbersCL.Size = new System.Drawing.Size(312, 184);
             this.entrySessionNumbersCL.TabIndex = 3;
             this.entrySessionNumbersCL.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.entrySessionNumbersCL_ItemCheck);
+            this.entrySessionNumbersCL.SelectedValueChanged += new System.EventHandler(this.entrySessionNumbersCL_SelectedValueChanged);
             // 
             // entrySessionsLbl
             // 

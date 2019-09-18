@@ -259,19 +259,25 @@ namespace GTI.Modules.PlayerCenter.UI
             if (selectionMade)
             {
                 var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
-
-                if (!drawingEvent.CancelledWhen.HasValue)//If drawing is not cancelled 
+                if (drawingEvent != null)
                 {
-                    imgbtnReinstate.Enabled = false;
-                    if (drawingEvent.HeldWhen.HasValue)
+                    if (!drawingEvent.CancelledWhen.HasValue)//If drawing is not cancelled 
+                    {
+                        imgbtnReinstate.Enabled = false;
+                        if (drawingEvent.HeldWhen.HasValue)
+                        {
+                            imgbtnCancel.Enabled = false;
+                        }
+                    }
+                    else
                     {
                         imgbtnCancel.Enabled = false;
                     }
                 }
                 else
                 {
-                    imgbtnCancel.Enabled = false;                
-                }               
+                    SetBtnControlDisable(false);
+                }
             }
         }
 

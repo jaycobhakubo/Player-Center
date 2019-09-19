@@ -1284,17 +1284,20 @@ namespace GTI.Modules.PlayerCenter.UI
         private void eventRepeatIncrementTxt_TextChanged(object sender, EventArgs e)
         {
             var tb = sender as TextBox;
-            int parseTarget = 0;
+            Int16 parseTarget = 0;
             string errMsg = null;
        
             if (eventRepeatsChk.Checked)
             {
-                int.TryParse(tb.Text, out parseTarget);
-                if (String.IsNullOrWhiteSpace(tb.Text) || !int.TryParse(tb.Text, out parseTarget) || parseTarget < 0)
-                    errMsg = "Event repeat increment must be a non-negative whole number.";
-                else 
-                    if (parseTarget == 0)
+                Int16.TryParse(tb.Text, out parseTarget);
+                if (String.IsNullOrWhiteSpace(tb.Text)) 
+                {
+                    errMsg = "Repeat value can not be empty.";
+                }
+                else if (parseTarget == 0)
+                {
                     errMsg = "Event repeat must be greater than 0";
+                }
             }
 
             SetError(tb, errMsg);
@@ -1320,21 +1323,21 @@ namespace GTI.Modules.PlayerCenter.UI
                     }
                     else
                     {
-                        var tb = sender as TextBox;
-                        int parseTarget = 0;
+                        //var tb = sender as TextBox;
+                        //Int16 parseTarget = 0;
 
-                        if (String.IsNullOrWhiteSpace(tb.Text))
-                        {
-                            e.Handled = false;                         
-                        }
-                        else if (!int.TryParse(tb.Text, out parseTarget))
-                        {
-                            e.Handled = true;                   
-                        }
-                        else if (parseTarget <= 0)
-                        {
-                            e.Handled = true;
-                        }
+                        //if (String.IsNullOrWhiteSpace(tb.Text))
+                        //{
+                        //    e.Handled = false;                         
+                        //}
+                        //else if (!Int16.TryParse(tb.Text, out parseTarget))
+                        //{
+                        //    e.Handled = true;                   
+                        //}
+                        //else if (parseTarget <= 0)
+                        //{
+                        //    e.Handled = true;
+                        //}
                         //else if (parseTarget > Int16.MaxValue)
                         //{
                         //    e.Handled = true;                        

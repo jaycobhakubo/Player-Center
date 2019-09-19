@@ -636,7 +636,7 @@
             // 
             this.eventRepeatIncrementTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventRepeatIncrementTxt.Location = new System.Drawing.Point(102, 20);
-            this.eventRepeatIncrementTxt.MaxLength = 9;
+            this.eventRepeatIncrementTxt.MaxLength = 3;
             this.eventRepeatIncrementTxt.Multiline = true;
             this.eventRepeatIncrementTxt.Name = "eventRepeatIncrementTxt";
             this.eventRepeatIncrementTxt.Size = new System.Drawing.Size(94, 30);

@@ -270,14 +270,17 @@ namespace GTI.Modules.PlayerCenter.UI
                     if (!drawingEvent.CancelledWhen.HasValue)//If drawing is not cancelled 
                     {
                         imgbtnReinstate.Enabled = false;
+
                         if (drawingEvent.HeldWhen.HasValue)
                         {
                             imgbtnCancel.Enabled = false;
+                            imgbtnExecute.Enabled = false;
                         }
                     }
                     else
                     {
                         imgbtnCancel.Enabled = false;
+                        imgbtnExecute.Enabled = false;
                     }
                 }
                 else
@@ -615,8 +618,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             drawingEventsLV.Items.Clear();
             drawingEventsLV.Columns.Clear();
-            //drawingEventsLV.BeginUpdate();
             drawingEventsLV.HideSelection = true;
+
             LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);
         }

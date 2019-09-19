@@ -1548,6 +1548,11 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void eventRepeatsChk_CheckedChanged(object sender, EventArgs e)
         {
+            if (eventRepeatsChk.Checked == true)
+            {
+                eventRepeatIntervalCB.SelectedIndex = 0;
+            }
+
             HideOrShowRepeatsPerCheckedStatus();
             eventRepeatDetailsPnl.Enabled = eventRepeatsChk.Checked;
             eventRepeatIncrementTxt_TextChanged(eventRepeatIncrementTxt, null);

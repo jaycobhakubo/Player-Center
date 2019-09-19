@@ -682,11 +682,11 @@
             this.eventRepeatIntervalCB.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventRepeatIntervalCB.FormattingEnabled = true;
             this.eventRepeatIntervalCB.Items.AddRange(new object[] {
-            "year",
-            "quarter",
-            "month",
             "day",
-            "week"});
+            "week",
+            "month",
+            "quarter",
+            "year"});
             this.eventRepeatIntervalCB.Location = new System.Drawing.Point(205, 20);
             this.eventRepeatIntervalCB.Name = "eventRepeatIntervalCB";
             this.eventRepeatIntervalCB.Size = new System.Drawing.Size(123, 30);

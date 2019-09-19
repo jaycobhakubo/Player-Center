@@ -78,8 +78,12 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             GeneralPlayerDrawingEvent prevSel = null;
             ListViewItem newSelLVI = null;
-            if(drawingEventsLV.SelectedItems.Count == 1)
-            prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+
+            if (drawingEventsLV.SelectedItems.Count == 1)
+            {
+                prevSel = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
+            }
+
             DataGridView dgvtest = new DataGridView();
             DataGridViewRow  dgvr = new DataGridViewRow();
             drawingEventsLV.Items.Clear();
@@ -253,6 +257,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void drawingEventsLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectionMade = drawingEventsLV.SelectedItems.Count == 1;
+          
             //eventActionsFLP.Enabled = selectionMade;
             SetBtnControlDisable(selectionMade);
 
@@ -261,6 +266,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
                 if (drawingEvent != null)
                 {
+                    drawingEventsLV.HideSelection = false;
                     if (!drawingEvent.CancelledWhen.HasValue)//If drawing is not cancelled 
                     {
                         imgbtnReinstate.Enabled = false;
@@ -613,6 +619,10 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void m_genderList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            drawingEventsLV.Items.Clear();
+            drawingEventsLV.Columns.Clear();
+            //drawingEventsLV.BeginUpdate();
+            drawingEventsLV.HideSelection = true;
             LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);
         }

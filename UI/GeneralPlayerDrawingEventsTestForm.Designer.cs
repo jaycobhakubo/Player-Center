@@ -193,7 +193,7 @@
             this.cmbxAvailableRaffles.Name = "cmbxAvailableRaffles";
             this.cmbxAvailableRaffles.Size = new System.Drawing.Size(247, 30);
             this.cmbxAvailableRaffles.TabIndex = 44;
-            this.cmbxAvailableRaffles.SelectedIndexChanged += new System.EventHandler(this.m_genderList_SelectedIndexChanged);
+            this.cmbxAvailableRaffles.SelectedIndexChanged += new System.EventHandler(this.m_cmbxAvailableRaffles_SelectedIndexChanged);
             // 
             // GeneralPlayerDrawingEventsTestForm
             // 

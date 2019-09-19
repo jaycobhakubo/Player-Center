@@ -610,14 +610,8 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             this.Close();
         }
-
-        private void chkbx_showAvailableDrawing_CheckedChanged(object sender, EventArgs e)
-        {
-            LoadCurrentAndRecentDrawingEvents(false, false);
-            SetBtnControlDisable(false);
-        }
-
-        private void m_genderList_SelectedIndexChanged(object sender, EventArgs e)
+   
+        private void m_cmbxAvailableRaffles_SelectedIndexChanged(object sender, EventArgs e)
         {
             drawingEventsLV.Items.Clear();
             drawingEventsLV.Columns.Clear();

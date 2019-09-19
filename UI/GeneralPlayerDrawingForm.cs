@@ -611,7 +611,7 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void setSessionListCheckLabel()
         {
-            m_imgbtnSelectAllSession.Text = (entrySessionNumbersCL.Items.Count == entrySessionNumbersCL.CheckedIndices.Count ? "Clear all" : "Select all");
+            m_imgbtnSelectAllSession.Text = (entrySessionNumbersCL.Items.Count == entrySessionNumbersCL.CheckedIndices.Count ? "Clear All" : "Select All");
         }
 
 
@@ -736,7 +736,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     foreach (var sn in nondefaultSessionNumbers)
                         entrySessionNumbersCL.Items.Add(new SessionNumberListing(sn), true);
                 }
-                m_imgbtnSelectAllSession.Text = ( entrySessionNumbersCL.CheckedIndices.Count == entrySessionNumbersCL.Items.Count? "Clear all": "Session all");
+                m_imgbtnSelectAllSession.Text = ( entrySessionNumbersCL.CheckedIndices.Count == entrySessionNumbersCL.Items.Count? "Clear All": "Select All");
 
 
                 entrySessionNumbersCL_ItemCheck(null, null);
@@ -1940,7 +1940,7 @@ namespace GTI.Modules.PlayerCenter.UI
                 }
             }
 
-            m_imgbtnSelectAllSession.Text = (check == true ? "Clear all" : "Select all");
+            m_imgbtnSelectAllSession.Text = (check == true ? "Clear All" : "Select All");
             entrySessionNumbersCL.ItemCheck += new ItemCheckEventHandler(entrySessionNumbersCL_ItemCheck);
         }
 
@@ -1967,7 +1967,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void entrySessionNumbersCL_SelectedValueChanged(object sender, EventArgs e)
         {
             CheckedListBox cl_SessionList = (CheckedListBox)sender;
-            m_imgbtnSelectAllSession.Text = (cl_SessionList.CheckedIndices.Count == cl_SessionList.Items.Count ? "Clear all" : "Session all");
+            m_imgbtnSelectAllSession.Text = (cl_SessionList.CheckedIndices.Count == cl_SessionList.Items.Count ? "Clear All" : "Select All");
         }
 
         #endregion

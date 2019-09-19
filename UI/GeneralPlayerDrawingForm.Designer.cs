@@ -507,7 +507,7 @@
             this.m_imgbtnSelectAllSession.SecondaryTextPadding = new System.Windows.Forms.Padding(5);
             this.m_imgbtnSelectAllSession.Size = new System.Drawing.Size(112, 32);
             this.m_imgbtnSelectAllSession.TabIndex = 4;
-            this.m_imgbtnSelectAllSession.Text = "Select all";
+            this.m_imgbtnSelectAllSession.Text = "Select All";
             this.m_imgbtnSelectAllSession.UseVisualStyleBackColor = false;
             this.m_imgbtnSelectAllSession.Click += new System.EventHandler(this.m_imgbtnSelectAllSession_Click);
             // 

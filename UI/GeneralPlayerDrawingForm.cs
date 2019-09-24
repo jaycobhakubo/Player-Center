@@ -548,6 +548,11 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+        public void clearSelectedItem()
+        {
+            drawingsLV.SelectedItems.Clear();
+        }
+
         private void CheckEntryMethods()
         {
             if (PendingEntrySpendGrouping == GeneralPlayerDrawing.SpendGrouping.NONE
@@ -570,10 +575,10 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void SetCurrentDrawing(GeneralPlayerDrawing gpd)
+        private void SetCurrentDrawing(GeneralPlayerDrawing gpd)//knc
         {
             m_currentGPD = gpd;
-            
+           
             if (m_currentGPD == null || m_editMode)
             {
                 editDrawingBtn.Enabled = false;
@@ -581,8 +586,23 @@ namespace GTI.Modules.PlayerCenter.UI
             }
             else
             {
-                editDrawingBtn.Enabled = true;
-                copyDrawingBtn.Enabled = true;
+                //check if the current drawing has existing Event
+                bool eventExists = false;
+                if (m_currentGPD.Id != null)
+                {
+                    var drawingEvents = GetGeneralDrawingEventsMessage.GetEvents((int)m_currentGPD.Id, 0, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date, false, false);
+                    eventExists = (drawingEvents.Count == 0 ? false : true);
+                }
+
+                if (eventExists == true)
+                {
+                    editDrawingBtn.Enabled = false;
+                }
+                else
+                {
+                    editDrawingBtn.Enabled = true;
+                }
+                    copyDrawingBtn.Enabled = true;
             }
 
             LoadCurrentDrawingDetails();
@@ -1349,7 +1369,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(drawingsLV.SelectedItems.Count == 1)
-                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);
+                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);//knc
             else
                 SetCurrentDrawing(null);
         }

@@ -26,7 +26,7 @@ namespace GTI.Modules.PlayerCenter.UI
             m_displayedText = GetDisplayTextPerRaffleSetting();
             m_genPlayerDrawing = new GeneralPlayerDrawingForm(m_displayedText);
             m_drawings = m_genPlayerDrawing.Drawings;
-            m_genPlayerDrawingEvent = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);
+            m_genPlayerDrawingEvent = new GeneralPlayerDrawingEventsTestForm(m_drawings, m_displayedText);           
             m_genPlayerDrawingEvent.MdiParent = this;
             m_genPlayerDrawingEvent.Dock = DockStyle.Fill;
             m_genPlayerDrawing.FormClosed += new FormClosedEventHandler(closedPlayerDrawing);
@@ -44,8 +44,10 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 m_genPlayerDrawing.MdiParent = this;
                 m_genPlayerDrawing.Dock = DockStyle.Fill;
+                m_genPlayerDrawing.clearSelectedItem();
                 m_genPlayerDrawing.Show();
-                tp.Controls.Add(m_genPlayerDrawing);          
+                tp.Controls.Add(m_genPlayerDrawing);     
+     
             }
             else
                 if (tc_PlayerDrawing.SelectedIndex == 0)

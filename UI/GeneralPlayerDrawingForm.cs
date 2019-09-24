@@ -575,7 +575,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
-        private void SetCurrentDrawing(GeneralPlayerDrawing gpd)//knc
+        private void SetCurrentDrawing(GeneralPlayerDrawing gpd)
         {
             m_currentGPD = gpd;
            
@@ -1369,7 +1369,7 @@ namespace GTI.Modules.PlayerCenter.UI
         private void drawingsLV_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(drawingsLV.SelectedItems.Count == 1)
-                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);//knc
+                SetCurrentDrawing(drawingsLV.SelectedItems[0].Tag as GeneralPlayerDrawing);
             else
                 SetCurrentDrawing(null);
         }

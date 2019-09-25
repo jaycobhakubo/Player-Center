@@ -349,8 +349,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, ed);
                     f.ShowDialog(this);
                     f.Dispose();
-                    //Lets initiate the result broadcast
-                    imgbtnInitiateResults.PerformClick();
+                    initiateEventResultsBroadcast(eeResult.Item2);
                     SetBtnControlDisable(false);
                 }
                              
@@ -584,6 +583,28 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
 
+            if (!drawingEvent.HeldWhen.HasValue)
+            {
+                MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageFormTypes.OK);
+                return;
+            }
+            else
+            {
+                int eventId = 611;
+                var displayInitiated = InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(eventId);
+
+                string msg = null;
+                if(displayInitiated)
+                    msg = String.Format("Event {0} broadcast initiated.", eventId);
+                else
+                    msg = String.Format("Event {0} broadcast not initiated.", eventId);
+
+                MessageForm.Show(msg, "Initiate Broadcast results", MessageFormTypes.OK);
+            }
+        }
+
+        private void initiateEventResultsBroadcast(GeneralPlayerDrawingEvent drawingEvent)
+        {
             if(!drawingEvent.HeldWhen.HasValue)
             {
                 MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageFormTypes.OK);

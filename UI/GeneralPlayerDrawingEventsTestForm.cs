@@ -10,8 +10,14 @@ using System.Windows.Forms;
 using GameTech.Elite.Base;
 using GameTech.Elite.Client;
 using System.Globalization;
+using System.Linq.Expressions;
 using GTI.Modules.PlayerCenter.Properties;
 using System.Threading;
+using System.Windows.Documents;
+using GTI.Modules.PlayerCenter.Business;
+using GetPlayerDataMessage = GameTech.Elite.Client.GetPlayerDataMessage;
+using Operator = GTI.Modules.Shared.Operator;
+using Player = GameTech.Elite.Base.Player;
 
 namespace GTI.Modules.PlayerCenter.UI
 {
@@ -22,7 +28,6 @@ namespace GTI.Modules.PlayerCenter.UI
         protected WaitForm m_waitForm;
         protected BackgroundWorker m_worker;
         protected bool m_serverCommFailed;
-   
 
         public GeneralPlayerDrawingEventsTestForm(List<GeneralPlayerDrawing> drawings, string displayText)
         {
@@ -311,45 +316,101 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             int eventId = (int)e.Argument;
             var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
-            e.Result = eeResult;       
+            var players = new List<Player>();
+            foreach (var drawingEventResult in eeResult.Item2.Results)
+            {
+                var playerDataMessage = new GetPlayerDataMessage(drawingEventResult.PlayerId);
+                playerDataMessage.Send();
+
+                if (playerDataMessage.ReturnCode != ServerReturnCode.Success)
+                {
+                    throw new Exception(string.Format(CultureInfo.CurrentCulture,
+                        string.Format("Unable to retrieve winner player data. {0}", ServerErrorTranslator.GetReturnCodeMessage(playerDataMessage.ReturnCode))));
+                }
+
+                players.Add(playerDataMessage.Player);
+            }
+            var getDataForReceipt = new GetOperatorCompleteMessage(GetOperatorID.operatorID);        //Run 18053 to get operator info           //Charity and operator 
+            getDataForReceipt.Send();
+
+            var gametechOperator = getDataForReceipt.OperatorList.Single(l => l.Id == GetOperatorID.operatorID);
+            var objResultArray = new object[] { eeResult, players, gametechOperator };
+            e.Result = objResultArray;
         }
 
         private void executeEventDrawingComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error == null)
             {
-                Tuple<bool, GeneralPlayerDrawingEvent> eeResult = (Tuple<bool, GeneralPlayerDrawingEvent>)e.Result;
-                bool showEvent = false;
+                //cast to result object array
+                var objResultArray = e.Result as object[];
+                if (objResultArray == null)
+                {
+                    MessageForm.Show("Unable to cast result objects", "Error " + m_displayText, MessageFormTypes.OK);
+                    return;
+                }
+
+                //0 result tuple from ExecuteGeneralDrawingEventMessage
+                var eeResult = (Tuple<bool, GeneralPlayerDrawingEvent>)objResultArray[0];
+
+                //1 player list
+                var players = objResultArray[1] as List<Player>;
+                if (players == null)
+                {
+                    MessageForm.Show("Unable to cast player information", "Run " + m_displayText, MessageFormTypes.OK);
+                    players = new List<Player>();
+                }
+
+                //2 operator
+                var gametechOperator = objResultArray[2] as Operator;
+                if (gametechOperator == null)
+                {
+                    MessageForm.Show("Unable to cast operator information", "Run " + m_displayText, MessageFormTypes.OK);
+                    gametechOperator = new Operator();
+                }
+
+                //find the general drawing
+                GeneralPlayerDrawing drawing = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
+                if (drawing == null)
+                {
+                    MessageForm.Show("Unable to find " + m_displayText, "Run " + m_displayText, MessageFormTypes.OK);
+                    drawing = new GeneralPlayerDrawing();
+                }
 
                 LoadCurrentAndRecentDrawingEvents(false, false);
+                
                 if (!eeResult.Item1)
                 {
-                    String msg = String.Empty;
-                    GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
-                    var minEntryRequired = ed.MinimumEntries;
+                    string msg = string.Empty;
+                    var minEntryRequired = drawing.MinimumEntries;
 
                     if (eeResult.Item2.HeldWhen.HasValue)
                         msg = "Event was already held.";
                     else if (eeResult.Item2.CancelledWhen.HasValue)
                         msg = "Cannot hold a cancelled event.";
                     else if (minEntryRequired > eeResult.Item2.Entries.Count)
-                        msg = "Cannot run the " + m_displayText + "."
+                        msg = "Cannot run the " +  m_displayText.ToLower() + "."
                     + Environment.NewLine + "The required number of entries has not been met.";
                     else msg = "Event not executed.";
 
-                    var dr = MessageForm.Show(msg, "Run " + m_displayText, MessageFormTypes.OK);
-                    showEvent = (dr == System.Windows.Forms.DialogResult.Yes);
+                    MessageForm.Show(msg, "Run " + m_displayText, MessageFormTypes.OK);
                 }
                 else
-                    showEvent = true;
-
-                if (showEvent)
                 {
-                    var ed = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
-                    var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, ed);
+                    try
+                    {
+                        initiateEventResultsBroadcast(eeResult.Item2);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageForm.Show(ex.Message, "Unable to broadcast result message", MessageFormTypes.OK);
+                    }
+
+                    PrintVoucher(drawing, eeResult.Item2, players, gametechOperator);
+                    
+                    var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, drawing);
                     f.ShowDialog(this);
                     f.Dispose();
-                    initiateEventResultsBroadcast(eeResult.Item2);
                     SetBtnControlDisable(false);
                 }
                              
@@ -586,18 +647,17 @@ namespace GTI.Modules.PlayerCenter.UI
             if (!drawingEvent.HeldWhen.HasValue)
             {
                 MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageFormTypes.OK);
-                return;
             }
             else
             {
-                int eventId = 611;
+                int eventId = drawingEvent.EventId;
                 var displayInitiated = InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(eventId);
 
-                string msg = null;
+                string msg;
                 if(displayInitiated)
-                    msg = String.Format("Event {0} broadcast initiated.", eventId);
+                    msg = string.Format("Event {0} broadcast initiated.", eventId);
                 else
-                    msg = String.Format("Event {0} broadcast not initiated.", eventId);
+                    msg = string.Format("Event {0} broadcast not initiated.", eventId);
 
                 MessageForm.Show(msg, "Initiate Broadcast results", MessageFormTypes.OK);
             }
@@ -605,23 +665,23 @@ namespace GTI.Modules.PlayerCenter.UI
 
         private void initiateEventResultsBroadcast(GeneralPlayerDrawingEvent drawingEvent)
         {
-            if(!drawingEvent.HeldWhen.HasValue)
+            if (!drawingEvent.HeldWhen.HasValue)
             {
-                MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held", MessageFormTypes.OK);
+                MessageForm.Show("Cannot initiate broadcast for an event that has not been held.", "Event not held",
+                    MessageFormTypes.OK);
                 return;
             }
             else
             {
                 int eventId = drawingEvent.EventId;
-                var displayInitiated = InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(eventId);
+                var displayInitiated =
+                    InitiateGeneralDrawingEventResultsNotificationsMessage.InitiateResultsNotifications(drawingEvent.EventId);
 
                 string msg = null;
-                if(displayInitiated)
-                    msg = String.Format("Event {0} broadcast initiated.", eventId);
-                else
-                    msg = String.Format("Event {0} broadcast not initiated.", eventId);
-
-                MessageForm.Show(msg, "Initiate Broadcast results", MessageFormTypes.OK);
+                if (!displayInitiated)
+                {
+                    throw new Exception(String.Format("Event {0} broadcast not initiated.", eventId));
+                }
             }
         }
 
@@ -644,5 +704,43 @@ namespace GTI.Modules.PlayerCenter.UI
             LoadCurrentAndRecentDrawingEvents(false, false);
             SetBtnControlDisable(false);
         }
+
+        private void PrintVoucher(GeneralPlayerDrawing drawing, GeneralPlayerDrawingEvent drawingEvent, List<Player> players, Operator gametechOperator)
+        {
+            var count = 1;
+            foreach (var drawingEventResult in drawingEvent.Results)
+            {
+                var player = players.FirstOrDefault(p => p.Id == drawingEventResult.PlayerId);
+                if (player == null)
+                {
+                    MessageForm.Show("Unable to find player ID:" + drawingEventResult.PlayerId, "Run " + m_displayText, MessageFormTypes.OK);
+                    continue;
+                }
+
+                var receipt = new RaffleReceipt
+                {
+                    OperatorHeaderLine1 = raffle_Setting.OperatorName,
+                    OperatorHeaderLine2 = raffle_Setting.SponsoredBy,
+                    OperatorHeaderLine3 = ((gametechOperator.Address1 != "") ? gametechOperator.Address1 + " " : "") + ((gametechOperator.Address2 != "") ? gametechOperator.Address2 + " " : ""),
+                    OperatorHeaderLine4 = ((gametechOperator.City != "") ? gametechOperator.City + " " : "") + ((gametechOperator.State != "") ? gametechOperator.State + " " : "") + ((gametechOperator.Zip != "") ? gametechOperator.Zip + " " : ""),
+                    HeaderLine1 = m_displayText,
+                    NoOfWinners = drawingEvent.Results.Count,
+                    WinnersCount = count++,
+                    RaffleName = drawing.Name,
+                    RaflleDate = DateTime.Now,
+                    RaffleDescription = drawing.PrizeDescription ?? string.Empty,
+                    RafflesWinnersID = player.Id,
+                    RafflesWinnerName = string.Format("{0} {1}", player.FirstName, player.LastName),
+                    RafflesWinnerMagCard = player.MagneticCardNumber ?? string.Empty,
+                    RafflesWinnerMailingAddress1 = player.Address.Line1 ?? string.Empty,
+                    RafflesWinnerMailingAddress2 = player.Address.Line2 ?? string.Empty,
+                    RafflesWinnerPhoneNumber = player.PhoneNumber ?? string.Empty,
+                    RaffleDisclaimer = drawing.Disclaimer ?? string.Empty
+                };
+
+                receipt.Print(new Printer("Receipt"), 1);
+            }
+        }
+
     }
 }

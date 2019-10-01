@@ -354,6 +354,7 @@
             // 
             this.maximumDrawsPerPlayerTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maximumDrawsPerPlayerTxt.Location = new System.Drawing.Point(364, 104);
+            this.maximumDrawsPerPlayerTxt.MaxLength = 9;
             this.maximumDrawsPerPlayerTxt.Name = "maximumDrawsPerPlayerTxt";
             this.maximumDrawsPerPlayerTxt.Size = new System.Drawing.Size(65, 26);
             this.maximumDrawsPerPlayerTxt.TabIndex = 12;
@@ -364,6 +365,7 @@
             // 
             this.drawingEntriesDrawnTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drawingEntriesDrawnTxt.Location = new System.Drawing.Point(364, 40);
+            this.drawingEntriesDrawnTxt.MaxLength = 9;
             this.drawingEntriesDrawnTxt.Name = "drawingEntriesDrawnTxt";
             this.drawingEntriesDrawnTxt.Size = new System.Drawing.Size(65, 26);
             this.drawingEntriesDrawnTxt.TabIndex = 10;
@@ -406,6 +408,7 @@
             this.entryLimitEventTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.entryLimitEventTxt.Location = new System.Drawing.Point(16, 216);
             this.entryLimitEventTxt.Margin = new System.Windows.Forms.Padding(8, 3, 8, 3);
+            this.entryLimitEventTxt.MaxLength = 9;
             this.entryLimitEventTxt.Name = "entryLimitEventTxt";
             this.entryLimitEventTxt.Size = new System.Drawing.Size(65, 26);
             this.entryLimitEventTxt.TabIndex = 5;
@@ -448,6 +451,7 @@
             // 
             this.minimumEntriesToRunTxt.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimumEntriesToRunTxt.Location = new System.Drawing.Point(16, 152);
+            this.minimumEntriesToRunTxt.MaxLength = 9;
             this.minimumEntriesToRunTxt.Name = "minimumEntriesToRunTxt";
             this.minimumEntriesToRunTxt.Size = new System.Drawing.Size(65, 26);
             this.minimumEntriesToRunTxt.TabIndex = 3;

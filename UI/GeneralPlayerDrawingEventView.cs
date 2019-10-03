@@ -121,7 +121,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     resultsLV.Columns.Add("Player Id Drawn");
                     foreach(var result in m_drawingEvent.Results)
                     {
-                        var lvi = resultsLV.Items.Add(result.DrawingPosition.ToString());
+                        var lvi = resultsLV.Items.Add((result.DrawingPosition + 1).ToString());
                         lvi.SubItems.Add(result.PlayerId.ToString());
                         lvi.Tag = result;
                     }

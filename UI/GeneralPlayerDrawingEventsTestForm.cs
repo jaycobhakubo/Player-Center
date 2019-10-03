@@ -278,6 +278,7 @@ namespace GTI.Modules.PlayerCenter.UI
             }
         }
 
+
         private void generateCurrentEventsBtn_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();

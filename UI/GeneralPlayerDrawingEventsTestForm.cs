@@ -533,8 +533,8 @@ namespace GTI.Modules.PlayerCenter.UI
 
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
-                    LoadCurrentAndRecentDrawingEvents(false, false);
                     SetGeneralDrawingEventCancelledMessage.CancelEvent(eventId);
+                    LoadCurrentAndRecentDrawingEvents(false, false);                 
                }              
             }
         }

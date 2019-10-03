@@ -111,17 +111,12 @@ namespace GTI.Modules.PlayerCenter.UI
                     drawingEventsLV.Columns.Add(m_displayText);
                     drawingEventsLV.Columns.Add("Entries Begin");
                     drawingEventsLV.Columns.Add("Entries End");
-                    drawingEventsLV.Columns.Add("Schedule For");
+                    drawingEventsLV.Columns.Add("Scheduled For");
                     drawingEventsLV.Columns.Add("Held On");
                     drawingEventsLV.Columns.Add("Cancelled On");
-                    //drawingEventsLV.Columns.Add("Players");
-                    //drawingEventsLV.Columns.Add("Entries");
-                    //drawingEventsLV.Columns.Add("# Drawn");
 
                     bool heldPresent = false
                         , cancellationPresent = false;
-
-
 
                     foreach(GeneralPlayerDrawingEvent de in drawingEvents)
                     {
@@ -130,25 +125,7 @@ namespace GTI.Modules.PlayerCenter.UI
                                               select e.PlayerId).Distinct();
                         var totalEntries = (from e in de.Entries
                                             select e.EntryCount).Sum();
-
-                        //default (true) show drawing that are currently available to run without any issues.
-                        //Removed drawing that are already held, cancelled and if the minimum entries is greater than the current total entries.                   
-                        //if (chkbx_showAvailableDrawing.Checked)
-                        //{
-                        //    if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue)
-                        //    {
-                        //        continue;
-                        //    }
-                        //    else                             
-                        //    if (ed.MinimumEntries > totalEntries && de.EntryPeriodEnd.Date.Subtract(DateTime.Now.Date).Days < 0)
-                        //    {
-                        //        if (de.ScheduledForWhen == null || de.ScheduledForWhen.Value.Date.Subtract(DateTime.Now.Date).Days < 0)
-                        //        {
-                        //            continue;
-                        //        }
-                        //    }
-                        //}
-
+                  
                         if (cmbxAvailableRaffles.SelectedIndex == 0)//Current
                         {
                             if (de.HeldWhen.HasValue || de.CancelledWhen.HasValue)
@@ -200,10 +177,6 @@ namespace GTI.Modules.PlayerCenter.UI
                             ? String.Format("{0} {1}", de.CancelledWhen.Value.ToShortDateString(), de.CancelledWhen.Value.ToShortTimeString())
                             : "---"
                             );
-
-                        //lvi.SubItems.Add(playersEntered.Count().ToString());
-                        //lvi.SubItems.Add(totalEntries.ToString());
-                        //lvi.SubItems.Add(de.Results.Count.ToString());
 
                         lvi.Tag = de;
 
@@ -280,6 +253,13 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             imgbtnCancel.Enabled = false;
                             imgbtnExecute.Enabled = false;
+                        }
+                        else
+                        {
+                            if (drawingEvent.ScheduledForWhen != null)
+                            {
+
+                            }
                         }
                     }
                     else
@@ -743,7 +723,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     RaffleDisclaimer = drawing.Disclaimer ?? string.Empty
                 };
 
-               // receipt.Print(new Printer("Receipt"), 1);
+              //  receipt.Print(new Printer("Receipt"), 1);
             }
         }
 

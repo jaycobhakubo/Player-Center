@@ -312,121 +312,8 @@ namespace GTI.Modules.PlayerCenter.UI
             SetBtnControlDisable(false);
         }
 
-        private void startexecuteEventDrawing(object sender, DoWorkEventArgs e)
-        {
-            int eventId = (int)e.Argument;
-            var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
-            var players = new List<Player>();
-            foreach (var drawingEventResult in eeResult.Item2.Results)
-            {
-                var playerDataMessage = new GetPlayerDataMessage(drawingEventResult.PlayerId);
-                playerDataMessage.Send();
+        #region Exucute Raffle/Drawing
 
-                if (playerDataMessage.ReturnCode != ServerReturnCode.Success)
-                {
-                    throw new Exception(string.Format(CultureInfo.CurrentCulture,
-                        string.Format("Unable to retrieve winner player data. {0}", ServerErrorTranslator.GetReturnCodeMessage(playerDataMessage.ReturnCode))));
-                }
-
-                players.Add(playerDataMessage.Player);
-            }
-            var getDataForReceipt = new GetOperatorCompleteMessage(GetOperatorID.operatorID);        //Run 18053 to get operator info           //Charity and operator 
-            getDataForReceipt.Send();
-
-            var gametechOperator = getDataForReceipt.OperatorList.Single(l => l.Id == GetOperatorID.operatorID);
-            var objResultArray = new object[] { eeResult, players, gametechOperator };
-            e.Result = objResultArray;
-        }
-
-        private void executeEventDrawingComplete(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (e.Error == null)
-            {
-                //cast to result object array
-                var objResultArray = e.Result as object[];
-                if (objResultArray == null)
-                {
-                    MessageForm.Show("Unable to cast result objects", "Error " + m_displayText, MessageFormTypes.OK);
-                    return;
-                }
-
-                //0 result tuple from ExecuteGeneralDrawingEventMessage
-                var eeResult = (Tuple<bool, GeneralPlayerDrawingEvent>)objResultArray[0];
-
-                //1 player list
-                var players = objResultArray[1] as List<Player>;
-                if (players == null)
-                {
-                    MessageForm.Show("Unable to cast player information", "Run " + m_displayText, MessageFormTypes.OK);
-                    players = new List<Player>();
-                }
-
-                //2 operator
-                var gametechOperator = objResultArray[2] as Operator;
-                if (gametechOperator == null)
-                {
-                    MessageForm.Show("Unable to cast operator information", "Run " + m_displayText, MessageFormTypes.OK);
-                    gametechOperator = new Operator();
-                }
-
-                //find the general drawing
-                GeneralPlayerDrawing drawing = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
-                if (drawing == null)
-                {
-                    MessageForm.Show("Unable to find " + m_displayText, "Run " + m_displayText, MessageFormTypes.OK);
-                    drawing = new GeneralPlayerDrawing();
-                }
-
-                LoadCurrentAndRecentDrawingEvents(false, false);
-                
-                if (!eeResult.Item1)
-                {
-                    string msg = string.Empty;
-                    var minEntryRequired = drawing.MinimumEntries;
-
-                    if (eeResult.Item2.HeldWhen.HasValue)
-                        msg = "Event was already held.";
-                    else if (eeResult.Item2.CancelledWhen.HasValue)
-                        msg = "Cannot hold a cancelled event.";
-                    else if (minEntryRequired > eeResult.Item2.Entries.Count)
-                        msg = "Cannot run the " +  m_displayText.ToLower() + "."
-                    + Environment.NewLine + "The required number of entries has not been met.";
-                    else msg = "Event not executed.";
-
-                    MessageForm.Show(msg, "Run " + m_displayText, MessageFormTypes.OK);
-                }
-                else
-                {
-                    try
-                    {
-                        initiateEventResultsBroadcast(eeResult.Item2);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageForm.Show(ex.Message, "Unable to broadcast result message", MessageFormTypes.OK);
-                    }
-
-                    PrintVoucher(drawing, eeResult.Item2, players, gametechOperator);
-                    
-                    var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, drawing);
-                    f.ShowDialog(this);
-                    f.Dispose();
-                    SetBtnControlDisable(false);
-                }
-                             
-            }
-            else // There was an error.
-            {
-                if (e.Error is GameTech.Elite.Client.ServerCommException)
-                    m_serverCommFailed = true;
-                else
-                    MessageForm.Show(this, e.Error.Message);
-            }
-
-            // Close the wait form.
-            m_waitForm.CloseForm();
-        }
-        
         private void executeEventBtn_Click(object sender, EventArgs e)
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;//get the selected item data
@@ -504,7 +391,124 @@ namespace GTI.Modules.PlayerCenter.UI
                 //
             }
         }
-    
+
+        private void startexecuteEventDrawing(object sender, DoWorkEventArgs e)
+        {
+            int eventId = (int)e.Argument;
+            var eeResult = ExecuteGeneralDrawingEventMessage.ExecuteEvent(eventId, true, true);
+            var players = new List<Player>();
+            foreach (var drawingEventResult in eeResult.Item2.Results)
+            {
+                var playerDataMessage = new GetPlayerDataMessage(drawingEventResult.PlayerId);
+                playerDataMessage.Send();
+
+                if (playerDataMessage.ReturnCode != ServerReturnCode.Success)
+                {
+                    throw new Exception(string.Format(CultureInfo.CurrentCulture,
+                        string.Format("Unable to retrieve winner player data. {0}", ServerErrorTranslator.GetReturnCodeMessage(playerDataMessage.ReturnCode))));
+                }
+
+                players.Add(playerDataMessage.Player);
+            }
+            var getDataForReceipt = new GetOperatorCompleteMessage(GetOperatorID.operatorID);        //Run 18053 to get operator info           //Charity and operator 
+            getDataForReceipt.Send();
+
+            var gametechOperator = getDataForReceipt.OperatorList.Single(l => l.Id == GetOperatorID.operatorID);
+            var objResultArray = new object[] { eeResult, players, gametechOperator };
+            e.Result = objResultArray;
+        }
+
+        private void executeEventDrawingComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null)
+            {
+                //cast to result object array
+                var objResultArray = e.Result as object[];
+                if (objResultArray == null)
+                {
+                    MessageForm.Show("Unable to cast result objects", "Error " + m_displayText, MessageFormTypes.OK);
+                    return;
+                }
+
+                //0 result tuple from ExecuteGeneralDrawingEventMessage
+                var eeResult = (Tuple<bool, GeneralPlayerDrawingEvent>)objResultArray[0];
+
+                //1 player list
+                var players = objResultArray[1] as List<Player>;
+                if (players == null)
+                {
+                    MessageForm.Show("Unable to cast player information", "Run " + m_displayText, MessageFormTypes.OK);
+                    players = new List<Player>();
+                }
+
+                //2 operator
+                var gametechOperator = objResultArray[2] as Operator;
+                if (gametechOperator == null)
+                {
+                    MessageForm.Show("Unable to cast operator information", "Run " + m_displayText, MessageFormTypes.OK);
+                    gametechOperator = new Operator();
+                }
+
+                //find the general drawing
+                GeneralPlayerDrawing drawing = m_drawings.FirstOrDefault((d) => d.Id == eeResult.Item2.DrawingId);
+                if (drawing == null)
+                {
+                    MessageForm.Show("Unable to find " + m_displayText, "Run " + m_displayText, MessageFormTypes.OK);
+                    drawing = new GeneralPlayerDrawing();
+                }
+
+                LoadCurrentAndRecentDrawingEvents(false, false);
+
+                if (!eeResult.Item1)
+                {
+                    string msg = string.Empty;
+                    var minEntryRequired = drawing.MinimumEntries;
+
+                    if (eeResult.Item2.HeldWhen.HasValue)
+                        msg = "Event was already held.";
+                    else if (eeResult.Item2.CancelledWhen.HasValue)
+                        msg = "Cannot hold a cancelled event.";
+                    else if (minEntryRequired > eeResult.Item2.Entries.Count)
+                        msg = "Cannot run the " + m_displayText.ToLower() + "."
+                    + Environment.NewLine + "The required number of entries has not been met.";
+                    else msg = "Event not executed.";
+
+                    MessageForm.Show(msg, "Run " + m_displayText, MessageFormTypes.OK);
+                }
+                else
+                {
+                    try
+                    {
+                        initiateEventResultsBroadcast(eeResult.Item2);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageForm.Show(ex.Message, "Unable to broadcast result message", MessageFormTypes.OK);
+                    }
+
+                    PrintVoucher(drawing, eeResult.Item2, players, gametechOperator);
+
+                    var f = new GeneralPlayerDrawingEventViewForm(eeResult.Item2, drawing);
+                    f.ShowDialog(this);
+                    f.Dispose();
+                    SetBtnControlDisable(false);
+                }
+
+            }
+            else // There was an error.
+            {
+                if (e.Error is GameTech.Elite.Client.ServerCommException)
+                    m_serverCommFailed = true;
+                else
+                    MessageForm.Show(this, e.Error.Message);
+            }
+
+            // Close the wait form.
+            m_waitForm.CloseForm();
+        }
+
+        #endregion
+
         private void cancelEventBtn_Click(object sender, EventArgs e)
         {
             var drawingEvent = drawingEventsLV.SelectedItems[0].Tag as GeneralPlayerDrawingEvent;
@@ -523,7 +527,7 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 int eventId = drawingEvent.EventId;
                 var dr = MessageForm.Show(
-                    "Are you sure you want to cancel the " + ed.Name + " " + m_displayText
+                    "Are you sure you want to cancel the " + ed.Name + " " + m_displayText.ToLower()
                     + (drawingEvent.ScheduledForWhen != null ? Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() : "") + 
                     "?", "Cancel Event", MessageFormTypes.YesNo);
 
@@ -548,7 +552,8 @@ namespace GTI.Modules.PlayerCenter.UI
             {
                 int eventId = drawingEvent.EventId;
                 GeneralPlayerDrawing ed = m_drawings.FirstOrDefault((d) => d.Id == drawingEvent.DrawingId);
-                var dr = MessageForm.Show("Are you sure you want to reinstate the " + ed.Name + " " + m_displayText + Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() +"?", "Reinstate Event", MessageFormTypes.YesNo);
+                var msgbx2 = (drawingEvent.ScheduledForWhen == null? ".":" " + m_displayText.ToLower() + Environment.NewLine + " scheduled for " + drawingEvent.ScheduledForWhen.Value.ToShortDateString() +"?" );
+                var dr = MessageForm.Show("Are you sure you want to reinstate the " + ed.Name + msgbx2  , "Reinstate Event", MessageFormTypes.YesNo);
                
                 if (dr == System.Windows.Forms.DialogResult.Yes)
                 {
@@ -738,7 +743,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     RaffleDisclaimer = drawing.Disclaimer ?? string.Empty
                 };
 
-                receipt.Print(new Printer("Receipt"), 1);
+               // receipt.Print(new Printer("Receipt"), 1);
             }
         }
 

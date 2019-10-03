@@ -294,6 +294,7 @@ namespace GTI.Modules.PlayerCenter.UI
         {
             GenerateCurrentDrawing();
             SetBtnControlDisable(false);
+            drawingEventsLV.SelectedItems.Clear();
         }
 
         #region Exucute Raffle/Drawing

@@ -54,6 +54,7 @@
             this.m_btnClose.TabIndex = 5;
             this.m_btnClose.Text = "Close";
             this.m_btnClose.UseVisualStyleBackColor = false;
+            this.m_btnClose.Click += new System.EventHandler(this.m_btnClose_Click);
             // 
             // m_btnPrint
             // 
@@ -69,7 +70,7 @@
             this.m_btnPrint.ShowFocus = false;
             this.m_btnPrint.Size = new System.Drawing.Size(134, 51);
             this.m_btnPrint.TabIndex = 4;
-            this.m_btnPrint.Text = "Print";
+            this.m_btnPrint.Text = "Print All\r\nFavorites";
             this.m_btnPrint.UseVisualStyleBackColor = false;
             this.m_btnPrint.Click += new System.EventHandler(this.m_btnPrint_Click);
             // 
@@ -145,7 +146,6 @@
             // m_btnClearAllFavorites
             // 
             this.m_btnClearAllFavorites.BackColor = System.Drawing.Color.Transparent;
-            this.m_btnClearAllFavorites.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.m_btnClearAllFavorites.FocusColor = System.Drawing.Color.Black;
             this.m_btnClearAllFavorites.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.m_btnClearAllFavorites.ImageNormal = global::GTI.Modules.PlayerCenter.Properties.Resources.BlueButtonUp;
@@ -157,7 +157,7 @@
             this.m_btnClearAllFavorites.ShowFocus = false;
             this.m_btnClearAllFavorites.Size = new System.Drawing.Size(134, 51);
             this.m_btnClearAllFavorites.TabIndex = 6;
-            this.m_btnClearAllFavorites.Text = "Clear All\r\nFavorites";
+            this.m_btnClearAllFavorites.Text = "Delete All\r\nFavorites";
             this.m_btnClearAllFavorites.UseVisualStyleBackColor = false;
             this.m_btnClearAllFavorites.Click += new System.EventHandler(this.m_btnClearAllFavorites_Click);
             // 

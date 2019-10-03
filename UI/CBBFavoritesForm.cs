@@ -95,10 +95,7 @@ namespace GTI.Modules.Shared
 
         private void m_btnPrint_Click(object sender, EventArgs e)
         {
-            Printer printer = new Printer(m_printerName);
-
-            printer.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
-
+            Printer printer = new Printer(m_printerName, true);
             Font ourFont;
             
             if(printer.Using58mmPaper)
@@ -127,7 +124,7 @@ namespace GTI.Modules.Shared
 
         private void m_btnClearAllFavorites_Click(object sender, EventArgs e)
         {
-            if (MessageForm.Show("Are you sure you want to delete all of this player's favorites?", "Clear Favorites", MessageFormTypes.YesNo_DefNO) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageForm.Show("Are you sure you want to delete all of this player's favorites?", "Delete Favorites", MessageFormTypes.YesNo_DefNO) == System.Windows.Forms.DialogResult.Yes)
             {
                 m_player.UpdateCBBFavoriteInfo(true);
                 m_clstFavorites.Items.Clear();
@@ -135,6 +132,11 @@ namespace GTI.Modules.Shared
                 m_btnClearAllFavorites.Enabled = false;
                 m_btnPrint.Enabled = false;
             }
+        }
+
+        private void m_btnClose_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -727,7 +727,7 @@ namespace GTI.Modules.PlayerCenter.UI
                     RaffleDisclaimer = drawing.Disclaimer ?? string.Empty
                 };
 
-              //  receipt.Print(new Printer("Receipt"), 1);
+               receipt.Print(new Printer("Receipt"), 1);
             }
         }
 

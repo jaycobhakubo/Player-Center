@@ -258,7 +258,10 @@ namespace GTI.Modules.PlayerCenter.UI
                         {
                             if (drawingEvent.ScheduledForWhen != null)
                             {
-
+                                if (DateTime.Now.Date.ToShortDateString() != drawingEvent.ScheduledForWhen.Value.ToShortDateString())
+                                {
+                                    imgbtnExecute.Enabled = false; 
+                                }
                             }
                         }
                     }
